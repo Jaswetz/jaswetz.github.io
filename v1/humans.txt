@@ -1,0 +1,15 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Jason Swetzoff -- Owner, Designer, Developer -- @jaswetz
+
+# THANKS
+
+    Ivan Vashchenko for help with the contact form.
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3, Sass, Compass, mixture.io,
+    Normalize.css, jQuery, Modernizr

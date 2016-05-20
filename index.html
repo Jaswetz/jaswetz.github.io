@@ -1,0 +1,556 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset=utf-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=description>
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <link rel=stylesheet href=assets/css/main.min.css>
+    <script src=assets/js/vendor/modernizr.min.js></script>
+    <title>Jason's Portfolio</title>
+    <meta name=mobile-web-app-capable content=yes>
+    <link rel=icon sizes=192x192 href=assets/img/favicon/android-icon-192x192.png>
+    <link rel=icon type=image/png sizes=192x192 href=assets/img/favicon/android-icon-192x192.png>
+    <meta name=apple-mobile-web-app-capable content=yes>
+    <meta name=apple-mobile-web-app-status-bar-style content=black>
+    <meta name=apple-mobile-web-app-title content="Web Starter Kit">
+    <link rel=apple-touch-icon sizes=57x57 href=assets/img/favicon/apple-icon-57x57.png>
+    <link rel=apple-touch-icon sizes=60x60 href=assets/img/favicon/apple-icon-60x60.png>
+    <link rel=apple-touch-icon sizes=72x72 href=assets/img/favicon/apple-icon-72x72.png>
+    <link rel=apple-touch-icon sizes=76x76 href=assets/img/favicon/apple-icon-76x76.png>
+    <link rel=apple-touch-icon sizes=114x114 href=assets/img/favicon/apple-icon-114x114.png>
+    <link rel=apple-touch-icon sizes=120x120 href=assets/img/favicon/apple-icon-120x120.png>
+    <link rel=apple-touch-icon sizes=144x144 href=assets/img/favicon/apple-icon-144x144.png>
+    <link rel=apple-touch-icon sizes=152x152 href=assets/img/favicon/apple-icon-152x152.png>
+    <link rel=apple-touch-icon sizes=180x180 href=assets/img/favicon/apple-icon-180x180.png>
+    <meta name=msapplication-TileImage content=assets/img/favicon/ms-icon-144x144.png>
+    <meta name=msapplication-TileColor content=#3372DF>
+    <link rel=icon type=image/png sizes=32x32 href=assets/img/favicon/favicon-32x32.png>
+    <link rel=icon type=image/png sizes=96x96 href=assets/img/favicon/favicon-96x96.png>
+    <link rel=icon type=image/png sizes=16x16 href=assets/img/favicon/favicon-16x16.png>
+    <link rel=icon type=image/png href=/favicon.ico>
+</head>
+<div style="height: 0; width: 0; position: absolute; visibility: hidden; display: none;">
+    <svg xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink>
+        <symbol id=icn-design viewbox="0 0 200 200">
+            <path fill=#fdca5c d="m100 200c-55.2 0-100-44.8-100-100 0-55.2 44.8-100 100-100 55.2 0 100 44.8 100 100 0 55.2-44.8 100-100 100"></path>
+            <circle fill=#ffdb79 cx=100 cy=100 r=65></circle>
+            <path fill=#fff d="m39.3 147.6l6.6-2v6.7l-6.6-2z"></path>
+            <path fill=#cccbca d="m39.3 149.4l6.6.8v2.1l-6.6-2z"></path>
+            <path fill=#f77b55 d="m45.9 145.6h108.1v6.7h-108.1z"></path>
+            <path fill=#ee643c d="m45.9 150.2h108.1v2.1h-108.1z"></path>
+            <path fill=#353f49 d="m39.3 150.3l-4.3-1.4 4.3-1.3z"></path>
+            <path fill=#232e38 d="m39.3 150.3l-4.3-1.4 4.3.5z"></path>
+            <path fill=#fff d="m154.1 145.6h3.7v6.7h-3.7z"></path>
+            <path fill=#cccbca d="m154.1 150.2h3.7v2.1h-3.7z"></path>
+            <path fill=#353f49 d="m161.6 152.3c.9 0 1.7-.3 2.4-1 .6-.7 1-1.5 1-2.4 0-.9-.3-1.7-1-2.4-.7-.7-1.5-1-2.4-1h-3.9v6.7h3.9z"></path>
+            <path fill=#232e38 d="m157.7 150.2h1.8c.9 0 1.7-.3 2.4-1 .7-.7 1-1.5 1-2.4 0-.4-.1-.7-.2-1.1.5.2.9.4 1.3.8.6.7 1 1.5 1 2.4 0 .9-.3 1.7-1 2.4-.7.7-1.5 1-2.4 1h-3.9v-2.1"></path>
+            <path fill=#e6e5e5 d="m113.3 143.6h-26.6l2.4-13.6h21.8z"></path>
+            <path fill=#cccbca d="m113.3 143.6l-2.4-13.6h-21.8l17.4 13.6z"></path>
+            <g fill=#fff>
+                <path d="m120.5 145.6h-41v-.7c0-.3.1-.6.4-.9.2-.2.6-.4.9-.4h38.4c.3 0 .6.1.9.4.2.2.4.6.4.9v.7"></path>
+                <path d="m148 121.2v6.5c0 1.3-1.1 2.3-2.3 2.3h-91.4c-1.3 0-2.3-1-2.3-2.3v-6.5h96"></path>
+            </g>
+            <path fill=#353f49 d="m148 121.2v-61.3c0-1.3-1.1-2.3-2.3-2.3h-91.4c-1.3 0-2.3 1.1-2.3 2.3v61.3h96"></path>
+            <path fill=#fab83e d="m56.9 62.4h86.3v53.9h-86.3z"></path>
+            <path fill=#fff d="m64.3 46.9h53v69.4h-53z"></path>
+            <path fill=#353f49 d="m64.3 39.4h53v7.5h-53z"></path>
+            <g fill=#f77b55>
+                <path d="m68.4 51h20.4v20.9h-20.4z"></path>
+                <path d="m92.9 51h20.4v20.9h-20.4z"></path>
+                <path d="m68.4 100.7h44.9v2.1h-44.9z"></path>
+                <path d="m68.4 104.9h44.9v2.1h-44.9z"></path>
+                <path d="m68.4 109.1h44.9v2.1h-44.9z"></path>
+                <path d="m68.4 76h44.9v20.6h-44.9z"></path>
+            </g>
+            <path fill=#353f49 d="m124.8 39.4v76.9h10.8v-76.9h-10.8m5.4 6.1c-.7 0-1.3-.6-1.3-1.3 0-.7.6-1.4 1.3-1.4.7 0 1.3.6 1.3 1.4.1.7-.5 1.3-1.3 1.3"></path>
+            <g fill=#fff>
+                <path d="m124.8 40.5h1.7v.6h-1.7z"></path>
+                <path d="m124.8 42.2h1.7v.6h-1.7z"></path>
+                <path d="m124.8 43.9h1.7v.6h-1.7z"></path>
+                <path d="m124.8 45.6h1.7v.6h-1.7z"></path>
+                <path d="m124.8 47.3h1.7v.6h-1.7z"></path>
+                <path d="m124.8 49h1.7v.6h-1.7z"></path>
+                <path d="m124.8 50.6h1.7v.6h-1.7z"></path>
+                <path d="m124.8 52.3h1.7v.6h-1.7z"></path>
+                <path d="m124.8 54h1.7v.6h-1.7z"></path>
+                <path d="m124.8 55.7h1.7v.6h-1.7z"></path>
+                <path d="m124.8 57.4h1.7v.6h-1.7z"></path>
+                <path d="m124.8 59.1h1.7v.6h-1.7z"></path>
+                <path d="m124.8 60.8h1.7v.6h-1.7z"></path>
+                <path d="m124.8 62.4h1.7v.6h-1.7z"></path>
+                <path d="m124.8 64.1h1.7v.6h-1.7z"></path>
+                <path d="m124.8 65.8h1.7v.6h-1.7z"></path>
+                <path d="m124.8 67.5h1.7v.6h-1.7z"></path>
+                <path d="m124.8 69.2h1.7v.6h-1.7z"></path>
+                <path d="m124.8 70.9h1.7v.6h-1.7z"></path>
+                <path d="m124.8 72.5h1.7v.6h-1.7z"></path>
+                <path d="m124.8 74.2h1.7v.6h-1.7z"></path>
+                <path d="m124.8 75.9h1.7v.6h-1.7z"></path>
+                <path d="m124.8 77.6h1.7v.6h-1.7z"></path>
+                <path d="m124.8 79.3h1.7v.6h-1.7z"></path>
+                <path d="m124.8 81h1.7v.6h-1.7z"></path>
+                <path d="m124.8 82.7h1.7v.6h-1.7z"></path>
+                <path d="m124.8 84.3h1.7v.6h-1.7z"></path>
+                <path d="m124.8 86h1.7v.6h-1.7z"></path>
+                <path d="m124.8 87.7h1.7v.6h-1.7z"></path>
+                <path d="m124.8 89.4h1.7v.6h-1.7z"></path>
+                <path d="m124.8 91.1h1.7v.6h-1.7z"></path>
+                <path d="m124.8 92.8h1.7v.6h-1.7z"></path>
+                <path d="m124.8 94.4h1.7v.6h-1.7z"></path>
+                <path d="m124.8 96.1h1.7v.6h-1.7z"></path>
+                <path d="m124.8 97.8h1.7v.6h-1.7z"></path>
+                <path d="m124.8 99.5h1.7v.6h-1.7z"></path>
+                <path d="m124.8 101.2h1.7v.6h-1.7z"></path>
+                <path d="m124.8 102.9h1.7v.6h-1.7z"></path>
+                <path d="m124.8 104.6h1.7v.6h-1.7z"></path>
+                <path d="m124.8 106.2h1.7v.6h-1.7z"></path>
+                <path d="m124.8 107.9h1.7v.6h-1.7z"></path>
+                <path d="m124.8 109.6h1.7v.6h-1.7z"></path>
+                <path d="m124.8 111.3h1.7v.6h-1.7z"></path>
+                <path d="m124.8 113h1.7v.6h-1.7z"></path>
+                <path d="m124.8 114.7h1.7v.6h-1.7z"></path>
+            </g>
+        </symbol>
+        <symbol id=icn-dribbble viewbox="0 0 32 32">
+            <path d="m16 32c-8.822 0-16-7.178-16-16s7.178-16 16-16c8.823 0 16 7.178 16 16s-7.177 16-16 16m13.494-13.81c-.468-.148-4.23-1.27-8.513-.584 1.788 4.912 2.515 8.913 2.655 9.744 3.066-2.073 5.249-5.357 5.858-9.16m-8.156 10.411c-.203-1.199-.997-5.378-2.916-10.364-.03.01-.06.02-.09.03-7.708 2.686-10.476 8.03-10.721 8.534 2.317 1.807 5.229 2.885 8.389 2.885 1.893 0 3.697-.387 5.338-1.086m-15.491-3.441c.31-.53 4.06-6.74 11.11-9.02.178-.058.358-.112.539-.162-.343-.776-.717-1.554-1.108-2.319-6.825 2.043-13.448 1.957-14.05 1.945-.004.139-.007.278-.007.418 0 3.51 1.331 6.715 3.513 9.138m-3.225-11.938c.611.008 6.242.033 12.634-1.665-2.264-4.03-4.707-7.41-5.067-7.904-3.823 1.803-6.681 5.328-7.567 9.569m10.175-10.488c.378.506 2.86 3.886 5.099 8 4.86-1.821 6.917-4.587 7.163-4.937-2.413-2.141-5.587-3.444-9.06-3.444-1.103 0-2.175.132-3.203.38zm13.782 4.644c-.288.39-2.578 3.326-7.631 5.389.318.651.623 1.313.907 1.979.101.236.199.471.294.705 4.547-.572 9.07.345 9.516.44-.03-3.226-1.183-6.188-3.086-8.513"></path>
+        </symbol>
+        <symbol id=icn-front-end viewbox="0 0 200 200">
+            <path fill=#f77b55 d="m100 200c-55.2 0-100-44.8-100-100 0-55.2 44.8-100 100-100 55.2 0 100 44.8 100 100 0 55.2-44.8 100-100 100"></path>
+            <circle fill=#ff916e cx=100 cy=100 r=65></circle>
+            <path fill=#e6e5e5 d="m125.2 145.7h-28.7l2.6-14.6h23.4z"></path>
+            <path fill=#cccbca d="m125.2 145.7l-2.7-14.6h-23.4l18.7 14.6z"></path>
+            <g fill=#fff>
+                <path d="m132.8 147.9h-44v-.8c0-.3.1-.7.4-1 .3-.3.6-.4 1-.4h41.4c.3 0 .7.1 1 .4.3.3.4.6.4 1v.8z"></path>
+                <path d="m162.5 121.6v6.9c0 1.4-1.1 2.5-2.5 2.5h-98.4c-1.4 0-2.5-1.1-2.5-2.5v-6.9h103.4"></path>
+            </g>
+            <path fill=#232e38 d="m162.5 121.6v-66c0-1.4-1.1-2.5-2.5-2.5h-98.4c-1.4 0-2.5 1.1-2.5 2.5v66h103.4"></path>
+            <path fill=#fff d="m64.3 58.3h92.9v58.1h-92.9z"></path>
+            <path fill=#e6e5e5 d="m64.3 64.8h68.5v51.6h-68.5z"></path>
+            <path fill=#fff d="m70.8 71.3h55.6v38.7h-55.6z"></path>
+            <path fill=#474f59 d="m132.8 64.8h24.4v6.5h-24.4z"></path>
+            <g fill=#cccbca>
+                <path d="m132.8 71.3h24.4v16.1h-24.4z"></path>
+                <path d="m137.2 91.7h15.8v2.1h-15.8z"></path>
+                <path d="m137.2 96h15.8v2.2h-15.8z"></path>
+                <path d="m137.2 100.3h15.8v2.2h-15.8z"></path>
+                <path d="m137.2 104.6h15.8v2.2h-15.8z"></path>
+            </g>
+            <g fill=#474f59>
+                <path d="m73 61.6c0 .6-.5 1.1-1.1 1.1-.6 0-1.1-.5-1.1-1.1 0-.6.5-1.1 1.1-1.1.6 0 1.1.5 1.1 1.1"></path>
+                <circle cx=76.2 cy=61.6 r=1.1></circle>
+                <circle cx=80.5 cy=61.6 r=1.1></circle>
+            </g>
+            <path fill=#cccbca d="m115.6 60.5h10.8v2.2h-10.8z"></path>
+            <g fill=#474f59>
+                <path d="m118.4 102.9h1.6v1.6h-1.6z"></path>
+                <path d="m116.8 104.5h-1.6v-1.6h1.6v1.6m-3.3 0h-1.6v-1.6h1.6v1.6m-3.2 0h-1.6v-1.6h1.6v1.6m-3.3 0h-1.6v-1.6h1.6v1.6m-3.3 0h-1.6v-1.6h1.6v1.6m-3.2 0h-1.6v-1.6h1.6v1.6m-3.3 0h-1.6v-1.6h1.6v1.6"></path>
+                <path d="m92.3 102.9h1.6v1.6h-1.6z"></path>
+                <path d="m93.9 101.2h-1.6v-1.6h1.6v1.6m0-3.2h-1.6v-1.6h1.6v1.6m0-3.3h-1.6v-1.6h1.6v1.6m0-3.3h-1.6v-1.6h1.6v1.6m0-3.2h-1.6v-1.6h1.6v1.6m0-3.3h-1.6v-1.6h1.6v1.6m0-3.3h-1.6v-1.6h1.6v1.6"></path>
+                <path d="m92.3 76.8h1.6v1.6h-1.6z"></path>
+                <path d="m116.8 78.4h-1.6v-1.6h1.6v1.6m-3.3 0h-1.6v-1.6h1.6v1.6m-3.2 0h-1.6v-1.6h1.6v1.6m-3.3 0h-1.6v-1.6h1.6v1.6m-3.3 0h-1.6v-1.6h1.6v1.6m-3.2 0h-1.6v-1.6h1.6v1.6m-3.3 0h-1.6v-1.6h1.6v1.6"></path>
+                <path d="m119.2 78.4h-.8v-1.6h1.6v1.6z"></path>
+                <path d="m120 101.2h-1.6v-1.6h1.6v1.6m0-3.2h-1.6v-1.6h1.6v1.6m0-3.3h-1.6v-1.6h1.6v1.6m0-3.3h-1.6v-1.6h1.6v1.6m0-3.2h-1.6v-1.6h1.6v1.6m0-3.3h-1.6v-1.6h1.6v1.6m0-3.3h-1.6v-1.6h1.6v1.6"></path>
+                <path d="m109.8 99.6l-3.6-9 9 3.6-3.5 1.9z"></path>
+                <path transform="matrix(.7071-.7071.7071.7071-35.71 108.23)" d="m112.1 95.1h1.4v4.2h-1.4z"></path>
+            </g>
+            <path fill=#f77b55 d="m37.5 77.9h48.5v70h-48.5z"></path>
+            <path fill=#ffdb79 d="m37.5 77.9h48.5v70h-48.5z"></path>
+            <path fill=#232e38 d="m37.5 71.3h48.5v6.6h-48.5z"></path>
+            <path fill=#353f49 d="m44.3 85.9h8.3v1.9h-8.3z"></path>
+            <path fill=#fff d="m74.2 95.4h4.9v1.9h-4.9z"></path>
+            <path fill=#353f49 d="m55.3 85.9h12.4v1.9h-12.4z"></path>
+            <g fill=#fff>
+                <path d="m55.3 95.4h16.2v1.9h-16.2z"></path>
+                <path d="m49.8 90.7h24.4v1.9h-24.4z"></path>
+            </g>
+            <path fill=#353f49 d="m44.3 100.1h8.3v1.9h-8.3z" id=0></path>
+            <path fill=#fff d="m74.2 109.6h4.9v1.9h-4.9z" id=1></path>
+            <path fill=#353f49 d="m55.3 100.1h12.4v1.9h-12.4z" id=2></path>
+            <path fill=#fff d="m55.3 109.6h16.2v1.9h-16.2z" id=3></path>
+            <path fill=#fff d="m49.8 104.9h24.4v1.9h-24.4z" id=4></path>
+            <path fill=#353f49 d="m44.3 114.3h8.3v1.9h-8.3z" id=5></path>
+            <path fill=#fff d="m74.2 123.8h4.9v1.9h-4.9z" id=6></path>
+            <path fill=#353f49 d="m55.3 114.3h12.4v1.9h-12.4z" id=7></path>
+            <path fill=#fff d="m55.3 123.8h16.2v1.9h-16.2z" id=8></path>
+            <path fill=#fff d="m49.8 119h24.4v1.9h-24.4z" id=9></path>
+            <use xlink:href=#0></use>
+            <use xlink:href=#1></use>
+            <use xlink:href=#2></use>
+            <use xlink:href=#3></use>
+            <use xlink:href=#4></use>
+            <use xlink:href=#5></use>
+            <use xlink:href=#6></use>
+            <use xlink:href=#7></use>
+            <use xlink:href=#8></use>
+            <use xlink:href=#9></use>
+            <path fill=#353f49 d="m44.3 128.5h8.3v1.9h-8.3z"></path>
+            <path fill=#fff d="m74.2 138h4.9v1.9h-4.9z"></path>
+            <path fill=#353f49 d="m55.3 128.5h12.4v1.9h-12.4z"></path>
+            <g fill=#fff>
+                <path d="m55.3 138h16.2v1.9h-16.2z"></path>
+                <path d="m49.8 133.2h24.4v1.9h-24.4z"></path>
+            </g>
+        </symbol>
+        <symbol id=icn-github viewbox="0 0 32 32">
+            <path d="m16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16m9.502 25.502c-1.235 1.235-2.672 2.204-4.272 2.881-.406.172-.819.323-1.238.453v-2.398c0-1.26-.432-2.188-1.297-2.781.542-.052 1.039-.125 1.492-.219s.932-.229 1.438-.406.958-.388 1.359-.633.786-.563 1.156-.953.68-.833.93-1.328.448-1.089.594-1.781.219-1.456.219-2.289c0-1.615-.526-2.99-1.578-4.125.479-1.25.427-2.609-.156-4.078l-.391-.047c-.271-.031-.758.083-1.461.344s-1.492.688-2.367 1.281c-1.24-.344-2.526-.516-3.859-.516-1.344 0-2.625.172-3.844.516-.552-.375-1.075-.685-1.57-.93s-.891-.411-1.188-.5-.573-.143-.828-.164-.419-.026-.492-.016-.125.021-.156.031c-.583 1.479-.635 2.839-.156 4.078-1.052 1.135-1.578 2.51-1.578 4.125 0 .833.073 1.596.219 2.289s.344 1.286.594 1.781.56.938.93 1.328.755.708 1.156.953.854.456 1.359.633.984.313 1.438.406.95.167 1.492.219c-.854.583-1.281 1.51-1.281 2.781v2.445c-.472-.14-.937-.306-1.394-.5-1.6-.677-3.037-1.646-4.272-2.881s-2.204-2.672-2.881-4.272c-.7-1.655-1.055-3.414-1.055-5.23s.355-3.575 1.055-5.23c.677-1.6 1.646-3.037 2.881-4.272s2.672-2.204 4.272-2.881c1.655-.7 3.415-1.055 5.23-1.055s3.575.355 5.23 1.055c1.6.677 3.037 1.646 4.272 2.881s2.204 2.672 2.881 4.272c.7 1.655 1.055 3.415 1.055 5.23s-.355 3.575-1.055 5.23c-.677 1.6-1.646 3.037-2.881 4.272z"></path>
+        </symbol>
+        <symbol id=icn-linkedin viewbox="0 0 32 32">
+            <path d="m26.625 0h-21.25c-2.956 0-5.375 2.419-5.375 5.375v21.25c0 2.956 2.419 5.375 5.375 5.375h21.25c2.956 0 5.375-2.419 5.375-5.375v-21.25c0-2.956-2.419-5.375-5.375-5.375m-14.625 26h-4v-14h4v14m-2-16c-1.105 0-2-.895-2-2s.895-2 2-2 2 .895 2 2-.895 2-2 2m16 16h-4v-8c0-1.105-.895-2-2-2s-2 .895-2 2v8h-4v-14h4v2.483c.825-1.133 2.086-2.483 3.5-2.483 2.485 0 4.5 2.239 4.5 5v9"></path>
+        </symbol>
+        <symbol id=icn-logo viewbox="0 0 39 39">
+            <path d="m19.5 10l9 17h-18l9-17"></path>
+            <g fill=none stroke-width=.75>
+                <circle cx=19.5 cy=19.5 r=16></circle>
+                <path d=m.5.5h38v38h-38z></path>
+            </g>
+        </symbol>
+        <symbol id=icn-mail viewbox="0 0 32 32">
+            <path d="m16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16m-8 8h16c.286 0 .563.061.817.177l-8.817 10.286-8.817-10.287c.254-.116.531-.177.817-.177m-2 14v-12c0-.042.002-.084.004-.125l5.864 6.842-5.8 5.8c-.045-.167-.069-.34-.069-.517zm18 2h-16c-.177 0-.35-.024-.517-.069l5.691-5.691 2.826 3.297 2.826-3.297 5.691 5.691c-.167.045-.34.069-.517.069m2-2c0 .177-.024.35-.069.517l-5.8-5.8 5.865-6.842c.003.041.004.083.004.125v12"></path>
+        </symbol>
+        <symbol id=icn-twitter viewbox="0 0 32 32">
+            <path d="m16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16m7.952 11.921c.008.176.012.353.012.531 0 5.422-4.127 11.675-11.675 11.675-2.317 0-4.474-.679-6.29-1.844.321.038.648.058.979.058 1.922 0 3.692-.656 5.096-1.757-1.796-.033-3.311-1.219-3.833-2.849.251.048.508.074.772.074.374 0 .737-.05 1.081-.144-1.877-.377-3.291-2.035-3.291-4.02 0-.017 0-.034 0-.052.553.307 1.186.492 1.858.513-1.101-.736-1.825-1.992-1.825-3.415 0-.752.202-1.457.556-2.063 2.024 2.482 5.05 4.116 8.457 4.287-.07-.3-.106-.614-.106-.935 0-2.266 1.837-4.103 4.103-4.103 1.18 0 2.247.498 2.995 1.296.935-.184 1.813-.525 2.606-.996-.306.958-.957 1.762-1.804 2.27.83-.099 1.621-.32 2.357-.646-.55.823-1.245 1.545-2.047 2.124z"></path>
+        </symbol>
+        <symbol id=icn-ux viewbox="0 0 200 200">
+            <path fill=#474f59 d="m100 200c-55.2 0-100-44.8-100-100 0-55.2 44.8-100 100-100 55.2 0 100 44.8 100 100 0 55.2-44.8 100-100 100"></path>
+            <circle fill=#353f49 cx=100 cy=100 r=65></circle>
+            <path fill=#fff d=M40,56.3v64.4c0,5.3,4.3,9.5,9.5,9.5h101c5.3,0,9.5-4.3,9.5-9.5V56.3H40z></path>
+            <g fill=#cccbca>
+                <path d="m49.5 46.8v64.4c-5.3 0-9.5 4.3-9.5 9.5v-64.4c0-5.2 4.3-9.5 9.5-9.5"></path>
+                <path d="m150.5 46.8v64.4c5.3 0 9.5 4.3 9.5 9.5v-64.4c0-5.2-4.3-9.5-9.5-9.5"></path>
+            </g>
+            <g fill=#f2f2f2>
+                <path d="m57.1 117.9h85.7v.3h-85.7z"></path>
+                <path d="m57.1 113.4h85.7v.3h-85.7z"></path>
+                <path d="m57.1 108.9h85.7v.3h-85.7z"></path>
+                <path d="m57.1 104.4h85.7v.3h-85.7z"></path>
+                <path d="m57.1 99.9h85.7v.3h-85.7z"></path>
+                <path d="m57.1 95.4h85.7v.3h-85.7z"></path>
+                <path d="m57.1 90.8h85.7v.3h-85.7z"></path>
+                <path d="m57.1 86.3h85.7v.3h-85.7z"></path>
+                <path d="m57.1 81.8h85.7v.3h-85.7z"></path>
+                <path d="m57.1 77.3h85.7v.3h-85.7z"></path>
+                <path d="m57.1 72.8h85.7v.3h-85.7z"></path>
+                <path d="m57.1 68.3h85.7v.3h-85.7z"></path>
+                <path d="m133.7 63.9h.3v58.6h-.3z"></path>
+                <path d="m138.2 63.9h.3v58.6h-.3z"></path>
+                <path d="m129.2 63.9h.3v58.6h-.3z"></path>
+                <path d="m124.6 63.9h.3v58.6h-.3z"></path>
+                <path d="m120.1 63.9h.3v58.6h-.3z"></path>
+                <path d="m115.6 63.9h.3v58.6h-.3z"></path>
+                <path d="m111.1 63.9h.3v58.6h-.3z"></path>
+                <path d="m106.6 63.9h.3v58.6h-.3z"></path>
+                <path d="m102.1 63.9h.3v58.6h-.3z"></path>
+                <path d="m97.6 63.9h.3v58.6h-.3z"></path>
+                <path d="m93.1 63.9h.3v58.6h-.3z"></path>
+                <path d="m88.6 63.9h.3v58.6h-.3z"></path>
+                <path d="m84 63.9h.3v58.6h-.3z"></path>
+                <path d="m79.5 63.9h.3v58.6h-.3z"></path>
+                <path d="m75 63.9h.3v58.6h-.3z"></path>
+                <path d="m70.5 63.9h.3v58.6h-.3z"></path>
+                <path d="m66 63.9h.3v58.6h-.3z"></path>
+                <path d="m61.5 63.9h.3v58.6h-.3z"></path>
+                <path d="M143.8,123.5H56.2V63h87.5V123.5z M58,121.7H142V64.8H58V121.7z"></path>
+                <path d="m144.7 64.8h-2.7v-2.7h1.8v.9h.9z"></path>
+                <path d="m143.8 124.4h-1.8v-2.7h2.7v1.8h-.9z"></path>
+                <path d="m58 64.8h-2.7v-1.8h.9v-.9h1.8z"></path>
+                <path d="m58 124.4h-1.8v-.9h-.9v-1.8h2.7z"></path>
+            </g>
+            <g fill=#474f59>
+                <path d="m102.3 114.5h-4.6l-.9-4.4c-.9-.2-1.7-.4-2.5-.7l-2.9 3.4-4-2.3 1.4-4.2c-.7-.6-1.3-1.2-1.9-1.9l-4.2 1.4-2.3-4 3.4-2.9c-.3-.8-.5-1.7-.7-2.5l-4.4-.9v-4.5l4.4-.9c.2-.9.4-1.7.7-2.5l-3.4-2.9 2.3-4 4.2 1.4c.6-.7 1.2-1.3 1.9-1.9l-1.4-4.2 4-2.3 2.9 3.4c.8-.3 1.7-.5 2.5-.7l.9-4.4h4.6l.9 4.4c.9.2 1.7.4 2.5.7l2.9-3.3 4 2.3-1.4 4.2c.7.6 1.3 1.2 1.9 1.9l4.2-1.4 2.3 4-3.4 2.9c.3.8.5 1.7.7 2.5l4.4.9v4.6l-4.4.9c-.2.9-.4 1.7-.7 2.5l3.3 2.9-2.3 4-4.2-1.4c-.6.7-1.2 1.3-1.9 1.9l1.4 4.2-4 2.3-2.9-3.4c-.8.3-1.7.5-2.5.7l-.8 4.2m-3.1-1.8h1.6l.8-4.2.6-.1c1.2-.2 2.3-.5 3.4-.9l.6-.2 2.8 3.2 1.4-.8-1.4-4 .5-.4c.9-.7 1.8-1.6 2.5-2.5l.4-.5 4 1.4.8-1.4-3.2-2.8.2-.6c.4-1.1.7-2.2.9-3.4l.1-.6 4.2-.8v-1.6l-4.2-.8-.1-.6c-.2-1.2-.5-2.3-.9-3.4l-.2-.6 3.2-2.8-.8-1.4-4 1.4-.4-.5c-.7-.9-1.5-1.7-2.5-2.5l-.5-.4 1.4-4-1.4-.9-2.8 3.2-.6-.2c-1.1-.4-2.2-.7-3.4-.9l-.6-.1-.8-4.2h-1.6l-.8 4.2-.6.1c-1.2.2-2.3.5-3.4.9l-.6.2-2.8-3.2-1.4.8 1.4 4-.5.4c-.9.7-1.7 1.6-2.5 2.5l-.4.5-4-1.4-.8 1.4 3.2 2.8-.2.6c-.4 1.1-.7 2.2-.9 3.4l-.1.6-4.2.8v1.6l4.2.8.1.6c.2 1.2.5 2.3.9 3.4l.2.6-3.2 2.8.8 1.4 4-1.4.4.5c.7.9 1.6 1.7 2.5 2.5l.5.4-1.4 4 1.4.8 2.8-3.2.6.2c1.1.4 2.2.7 3.4.9l.6.1.8 4.3"></path>
+                <path d="m100 105.4c-6.7 0-12.2-5.5-12.2-12.2 0-6.7 5.5-12.2 12.2-12.2 6.7 0 12.2 5.5 12.2 12.2 0 6.8-5.5 12.2-12.2 12.2m0-22.5c-5.7 0-10.4 4.7-10.4 10.4 0 5.7 4.7 10.4 10.4 10.4 5.7 0 10.4-4.7 10.4-10.4 0-5.8-4.7-10.4-10.4-10.4"></path>
+                <path d="m100 96.4c-1.7 0-3.2-1.4-3.2-3.2 0-1.7 1.4-3.2 3.2-3.2 1.7 0 3.2 1.4 3.2 3.2 0 1.8-1.5 3.2-3.2 3.2m0-4.5c-.8 0-1.4.6-1.4 1.4 0 .8.6 1.4 1.4 1.4.7 0 1.4-.6 1.4-1.4 0-.8-.6-1.4-1.4-1.4"></path>
+                <path d="m100.1 119h-.1c-.9 0-1.9 0-2.8-.1l.2-1.8c.9.1 1.7.1 2.6.1h.1v1.8m2.8-.2l-.2-1.8c.9-.1 1.7-.2 2.6-.4l.4 1.8c-.9.1-1.9.3-2.8.4m-8.4-.4c-.9-.2-1.8-.4-2.7-.7l.6-1.7c.8.3 1.7.5 2.5.7l-.4 1.7m13.8-.8l-.6-1.7c.8-.3 1.6-.6 2.4-1l.8 1.6c-.8.4-1.7.8-2.6 1.1m-19.1-1c-.8-.4-1.7-.8-2.5-1.3l.9-1.5c.7.4 1.5.8 2.3 1.2l-.7 1.6m24.2-1.4l-.9-1.5c.7-.4 1.5-.9 2.1-1.5l1.1 1.4c-.8.6-1.5 1.1-2.3 1.6m-28.9-1.5c-.7-.6-1.5-1.2-2.1-1.8l1.2-1.3c.6.6 1.3 1.2 2 1.7l-1.1 1.4m33.3-1.9l-1.2-1.3c.6-.6 1.2-1.2 1.8-1.9l1.4 1.2c-.7.7-1.4 1.4-2 2m-37.4-1.9c-.6-.7-1.2-1.4-1.7-2.2l1.5-1c.5.7 1 1.4 1.6 2.1l-1.4 1.1m40.9-2.3l-1.5-1c.5-.7.9-1.5 1.3-2.2l1.6.8c-.4.8-.8 1.6-1.4 2.4m-44-2.3c-.4-.8-.8-1.7-1.2-2.5l1.7-.7c.3.8.7 1.6 1.1 2.3l-1.6.9m46.6-2.6l-1.7-.7c.3-.8.6-1.6.8-2.5l1.7.5c-.1.9-.4 1.8-.8 2.7m-48.7-2.5c-.2-.9-.5-1.8-.6-2.7l1.8-.3c.1.8.3 1.7.6 2.5l-1.8.5m50.2-2.9l-1.8-.3c.1-.9.2-1.7.3-2.6l1.8.1c-.1.9-.2 1.9-.3 2.8m-51.1-2.6c0-.5 0-1 0-1.5 0-.4 0-.9 0-1.3l1.8.1c0 .4 0 .8 0 1.2 0 .5 0 .9 0 1.4l-1.8.1m49.6-2.9c0-.9-.1-1.7-.3-2.6l1.8-.3c.2.9.3 1.8.3 2.8l-1.8.1m-47.5-2.4l-1.8-.3c.1-.9.3-1.8.6-2.7l1.7.5c-.2.8-.4 1.7-.5 2.5m46.6-2.6c-.2-.8-.5-1.7-.8-2.4l1.7-.7c.3.9.6 1.7.9 2.6l-1.8.5m-45.2-2.3l-1.7-.7c.3-.9.7-1.7 1.2-2.5l1.6.8c-.5.8-.8 1.6-1.1 2.4m43.3-2.5c-.4-.8-.9-1.5-1.3-2.2l1.5-1c.5.8 1 1.6 1.4 2.4l-1.6.8m-40.9-2.1l-1.5-1c.5-.8 1.1-1.5 1.7-2.2l1.4 1.2c-.6.6-1.1 1.3-1.6 2m38-2.2c-.6-.7-1.2-1.3-1.8-1.9l1.2-1.3c.7.6 1.3 1.3 1.9 2l-1.3 1.2m-34.7-1.8l-1.2-1.3c.7-.6 1.4-1.2 2.1-1.8l1.1 1.4c-.7.6-1.4 1.2-2 1.7m30.9-1.7c-.7-.5-1.4-1-2.1-1.4l.9-1.5c.8.5 1.6 1 2.3 1.6l-1.1 1.3m-26.8-1.4l-.9-1.5c.8-.5 1.6-.9 2.5-1.3l.8 1.6c-.9.4-1.6.8-2.4 1.2m22.4-1.3c-.8-.4-1.6-.7-2.4-1l.6-1.7c.9.3 1.7.6 2.6 1l-.8 1.7m-17.7-.9l-.6-1.7c.9-.3 1.8-.6 2.7-.8l.4 1.8c-.8.2-1.7.4-2.5.7m12.8-.7c-.8-.2-1.7-.3-2.6-.4l.2-1.8c.9.1 1.8.2 2.7.4l-.3 1.8m-7.8-.4l-.2-1.8c.9-.1 1.9-.2 2.8-.2v1.8c-.8 0-1.7.1-2.6.2"></path>
+            </g>
+            <path fill=#fff d="m56 50.5l-1.8 5.8h5.9l-1.8-5.8z"></path>
+            <path fill=#cccbca d="m57.6 50.5l.6 5.8h1.9l-1.8-5.8z"></path>
+            <path fill=#474f59 d="m54.2 56.3h5.9v59.5h-5.9z"></path>
+            <path fill=#232e38 d="m58.2 56.3h1.8v59.5h-1.8z"></path>
+            <path fill=#656a73 d="m58.3 50.5l-1.2-3.7-1.1 3.7z"></path>
+            <path fill=#232e38 d="m58.3 50.5l-1.2-3.7.5 3.7z"></path>
+            <path fill=#f2f2f2 d="m54.2 115.8h5.9v2.2h-5.9z"></path>
+            <path fill=#cccbca d="m58.2 115.8h1.8v2.2h-1.8z"></path>
+            <path fill=#f77b55 d="m60.1 121.4c0 .8-.3 1.5-.9 2.1-.6.6-1.3.9-2.1.9-.8 0-1.5-.3-2.1-.9-.6-.6-.9-1.3-.9-2.1v-3.4h5.9v3.4z"></path>
+            <path fill=#ee643c d="m58.2 118.1v1.5c0 .8-.3 1.5-.9 2.1-.6.6-1.3.9-2.1.9-.3 0-.6-.1-.9-.2.1.4.4.8.7 1.2.6.6 1.3.9 2.1.9.8 0 1.5-.3 2.1-.9.6-.6.9-1.3.9-2.1v-3.4h-1.9"></path>
+            <path fill=#f77b55 d="m40 137.9v12.6h120v-12.6h-120m112.6 9.4c-1 0-1.8-.8-1.8-1.8 0-1 .8-1.8 1.8-1.8 1 0 1.8.8 1.8 1.8 0 1-.8 1.8-1.8 1.8"></path>
+            <g fill=#fff>
+                <path d="m157.4 137.9h.9v2.7h-.9z"></path>
+                <path d="m154.7 137.9h.9v2.7h-.9z"></path>
+                <path d="m152.1 137.9h.9v2.7h-.9z"></path>
+                <path d="m149.5 137.9h.9v2.7h-.9z"></path>
+                <path d="m146.9 137.9h.9v2.7h-.9z"></path>
+                <path d="m144.2 137.9h.9v2.7h-.9z"></path>
+                <path d="m141.6 137.9h.9v2.7h-.9z"></path>
+                <path d="m139 137.9h.9v2.7h-.9z"></path>
+                <path d="m136.3 137.9h.9v2.7h-.9z"></path>
+                <path d="m133.7 137.9h.9v2.7h-.9z"></path>
+                <path d="m131.1 137.9h.9v2.7h-.9z"></path>
+                <path d="m128.5 137.9h.9v2.7h-.9z"></path>
+                <path d="m125.8 137.9h.9v2.7h-.9z"></path>
+                <path d="m123.2 137.9h.9v2.7h-.9z"></path>
+                <path d="m120.6 137.9h.9v2.7h-.9z"></path>
+                <path d="m117.9 137.9h.9v2.7h-.9z"></path>
+                <path d="m115.3 137.9h.9v2.7h-.9z"></path>
+                <path d="m112.7 137.9h.9v2.7h-.9z"></path>
+                <path d="m110.1 137.9h.9v2.7h-.9z"></path>
+                <path d="m107.4 137.9h.9v2.7h-.9z"></path>
+                <path d="m104.8 137.9h.9v2.7h-.9z"></path>
+                <path d="m102.2 137.9h.9v2.7h-.9z"></path>
+                <path d="m99.5 137.9h.9v2.7h-.9z"></path>
+                <path d="m96.9 137.9h.9v2.7h-.9z"></path>
+                <path d="m94.3 137.9h.9v2.7h-.9z"></path>
+                <path d="m91.7 137.9h.9v2.7h-.9z"></path>
+                <path d="m89 137.9h.9v2.7h-.9z"></path>
+                <path d="m86.4 137.9h.9v2.7h-.9z"></path>
+                <path d="m83.8 137.9h.9v2.7h-.9z"></path>
+                <path d="m81.2 137.9h.9v2.7h-.9z"></path>
+                <path d="m78.5 137.9h.9v2.7h-.9z"></path>
+                <path d="m75.9 137.9h.9v2.7h-.9z"></path>
+                <path d="m73.3 137.9h.9v2.7h-.9z"></path>
+                <path d="m70.6 137.9h.9v2.7h-.9z"></path>
+                <path d="m68 137.9h.9v2.7h-.9z"></path>
+                <path d="m65.4 137.9h.9v2.7h-.9z"></path>
+                <path d="m62.8 137.9h.9v2.7h-.9z"></path>
+                <path d="m60.1 137.9h.9v2.7h-.9z"></path>
+                <path d="m57.5 137.9h.9v2.7h-.9z"></path>
+                <path d="m54.9 137.9h.9v2.7h-.9z"></path>
+                <path d="m52.2 137.9h.9v2.7h-.9z"></path>
+                <path d="m49.6 137.9h.9v2.7h-.9z"></path>
+                <path d="m47 137.9h.9v2.7h-.9z"></path>
+                <path d="m44.4 137.9h.9v2.7h-.9z"></path>
+                <path d="m41.7 137.9h.9v2.7h-.9z"></path>
+            </g>
+            <path fill=#ee643c d="m40 150.5h120v2.7h-120z"></path>
+        </symbol>
+    </svg>
+</div>
+
+<body>
+    <header>
+        <nav class=mainNav>
+            <div class="navbar js-navbar">
+                <div class=brand>
+                    <a href="/" alt="Jason Swetzoff Logo" class=logo>
+                        <svg class=icn-logo>
+                            <use xlink:href=#icn-logo></use>
+                        </svg>
+                    </a>
+                </div>
+                <ul class=listInline>
+                    <li><a href=#about class=nav-item>About</a></li>
+                    <li><a href=#work class=nav-item>Work</a></li>
+                    <li><a href=#process class=nav-item>Process</a></li>
+                    <li><a href=#contact class=nav-item>Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class=intro--pattern></div>
+        <div class=intro--cover></div>
+        <div class=intro>
+            <div class=hgroup>
+                <h1 class=introHeader>Hi, I'm Jason <span class="normal italic">&</span> I am a UX Designer and UI Developer.</h1>
+                <p><a href=#about class=downArrow alt="down arrow">&#8675;</a></p>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section id=about class="about section">
+            <h1 class=title>About Me</h1>
+            <article class=about__wrapper>
+                <figure class=about__img><img src=assets/img/jason--small.png></figure>
+                <div class=about__text>
+                    <h2>A kid playing with his Legos, that's how I feel.</h2>
+                    <p>I'm Jason and I've got a passion for creating. I enjoy the process as much as I do launching a product/feature. I believe in iteration and communication. My goal is to meet awesome people, create excellent things, and continue growing.
+                        I enjoy improv, rock climbing, skiing, camping, and learning new things.</p>
+                </div>
+                <div class=js-triggerSkillAnimation></div>
+            </article>
+            <div class=skills-wrap>
+                <article class=skill>
+                    <div class=skill-wrap>
+                        <svg class="icn icn-design" id=animation-1>
+                            <use xlink:href=#icn-design></use>
+                        </svg>
+                        <h3>Design</h3>
+                        <p>I design aesthetically pleasing, readable, browsable, and responsive content. I like to use an iterative process, I start fantastical and then strip the design down to only the optimal.</p>
+                    </div>
+                </article>
+                <article class=skill>
+                    <div class=skill-wrap>
+                        <svg class="icn icn-front-end" id=animation-2>
+                            <use xlink:href=#icn-front-end></use>
+                        </svg>
+                        <h3>UI Development</h3>
+                        <p>I build accessible interactive content that solves problems. I can prototype or build production ready code with <strong>HTML</strong>/<strong>CSS</strong>/<strong>JQuery</strong>. I keep code semantic and optimized by following
+                            best practices.</p>
+                    </div>
+                </article>
+                <article class=skill>
+                    <div class=skill-wrap>
+                        <svg class="icn icn-ux" id=animation-3>
+                            <use xlink:href=#icn-ux></use>
+                        </svg>
+                        <h3>User Experience</h3>
+                        <p>I strive to create a better relationship between humans and technology by creating an intuitive experience. My goal is not to dazzle or force the user but allow the user to follow their own flow.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <section class="section projects" id=work>
+            <h1 class=title>My Work</h1>
+            <article class=project>
+                <div class=project__img>
+                    <a href="http://masonbuilt.com/" target=_blank alt="Mason"><img src=assets/img/mason.jpg alt="Mason"></a>
+                </div>
+                <div class=project__info><a href="http://masonbuilt.com/" alt="Mason" target=_blank><h2>Mason</h2></a>
+                    <p>My friend and I started doing freelance work together. I decided we needed something to stand out from the crowd. I experimented with colors and layout. This is the site I designed and built.</p>
+                    <p class=tags><span>User Experience</span> <span>User Research</span> <span>Scss</span> <span>HTML5</span> <span>JavaScript</span> <span>Design</span></p>
+                </div>
+            </article>
+            <article class=project>
+                <div class=project__img>
+                    <a href="http://shapeslikewater.com/fnf/" target=_blank alt="Friday Night Fights"><img src=assets/img/fnf.jpg alt="Friday Night Fights"></a>
+                </div>
+                <div class=project__info><a href="http://shapeslikewater.com/fnf/" alt="Friday Night Fights" target=_blank><h2>Friday Night Fights</h2></a>
+                    <p>I built this website as a fun side project. I helped a local non-profit theater create a website for one of their improv shows. I did the UX Design and the Front-End development. I decided to make the site fun and interesting to match
+                        the style of the show.</p>
+                    <p class=tags><span>User Experience</span> <span>User Research</span> <span>Scss</span> <span>HTML5</span> <span>JavaScript</span> <span>Design</span></p>
+                </div>
+            </article>
+            <article class=project>
+                <div class=project__img>
+                    <a href="https://www.househappy.org/" target=_blank alt=Househappy.org><img src=assets/img/img_househappy.jpg alt=Househappy></a>
+                </div>
+                <div class=project__info><a href="https://www.househappy.org/" alt=Househappy.org target=_blank><h2>Househappy Web App</h2></a>
+                    <p>As a UX Designer at Househappy I worked on different features, including a full redesign and rewrite of styles, making the design and code more modular. I also helped to design and develop new features.</p>
+                    <p class=tags><span>User Experience</span> <span>Prototyping</span> <span>Wireframing</span> <span>User Stories</span> <span>User Flows</span> <span>Design</span> <span>Scss</span> <span>HTML5</span> <span>Spine.js</span> <span>Ruby</span></p>
+                </div>
+            </article>
+            <article class=project>
+                <div class=project__img>
+                    <a href="https://itunes.apple.com/us/app/househappy-real-estate-search/id880240518?mt=8" alt="Househappy iPhone app" target=_blank><img src=assets/img/househappy-app.jpg alt="Househappy Image"></a>
+                </div>
+                <div class=project__info><a href="https://itunes.apple.com/us/app/househappy-real-estate-search/id880240518?mt=8" alt="Househappy iPhone app" target=_blank><h2>Househappy iOS App</h2></a>
+                    <p>As a UX Designer at Househappy I was responsible for user experience, prototyping, and designing on both Househappy's iPhone and iPad app.</p>
+                    <p class=tags><span>User Experience</span> <span>Prototyping</span> <span>Wireframing</span> <span>Interface Maps</span> <span>Design</span> <span>Animation</span></p>
+                </div>
+            </article>
+            <article class=project>
+                <div class=project__img>
+                    <a href="http://jerhel.com/" alt="Jerhel Website" target=_blank><img src=assets/img/img_design4.jpg alt=Jerhel></a>
+                </div>
+                <div class=project__info><a href="http://jerhel.com/" alt="Jerhel Website" target=_blank><h2>Jerhel Redesign</h2></a>
+                    <p>I was hired to redesign Jerhel's website. The goal was to make all interactions more user-friendly and make the website usable on all devices.</p>
+                    <p class=tags><span>User Experience</span> <span>Responsive Design</span> <span>Content-First Design</span> <span>Compass</span> <span>HTML5</span> <span>Design</span> <span>AngularJs</span> <span>Laravel</span></p>
+                </div>
+            </article>
+            <article class=project>
+                <div class=project__img>
+                    <a href="http://v1.shapeslikewater.com/" alt="Jason Swezoff Portfolio 1" target=_blank><img src=assets/img/img_portfolio.jpg alt="Jason's Portfolio"></a>
+                </div>
+                <div class=project__info><a href="http://v1.shapeslikewater.com/" alt="Jason Swezoff Portfolio 1" target=_blank><h2>Portfolio Site v1</h2></a>
+                    <p>This was the first version of this website. My goal was not only to build a portfolio website to showcase my skills but also to have a place to experiment with new tools and ideas.</p>
+                    <p class=tags><span>User Experience</span> <span>Prototyping</span> <span>Responsive Design</span> <span>Design</span> <span>Scss</span> <span>HTML5</span> <span>Middleman</span></p>
+                </div>
+            </article>
+        </section>
+        <section class="section process" id=process>
+            <h1 class=title>My Design Process</h1>
+            <article class=career>
+                <div class=career__wrap>
+                    <h2>Simple and Usable comes from complicated</h2>
+                    <p>The design process is an agile, iterative, and malleable process. It takes experience and skill to know what to do when. My design process takes from such methodologies as <strong>Content-First Design</strong>, <strong>Style-Guide Driven Development</strong>,
+                        <strong>Agile UX</strong>, <strong>Human-Centered Design</strong>, <strong>User Research</strong> and my toolbox is still growing.</p>
+                    <h3>Methods and deliverables I might use:</h3>
+                    <ul class=methods>
+                        <li>Kickoff Meetings</li>
+                        <li>Surveys</li>
+                        <li>Interviews</li>
+                        <li>Stakeholders Interviews</li>
+                        <li>Personas</li>
+                        <li>Empathy Maps</li>
+                        <li>Journey Maps</li>
+                        <li>Alignment Meetings</li>
+                        <li>User Stories</li>
+                        <li>Storyboarding</li>
+                        <li>Team Brainstorming</li>
+                        <li>User Feedback</li>
+                        <li>Stakeholder Feedback</li>
+                        <li>Team Feedback</li>
+                        <li>Sketches</li>
+                        <li>Interface Maps</li>
+                        <li>Wireframes</li>
+                        <li>Prototyping</li>
+                        <li>Live Style-Guides</li>
+                        <li>Iteration</li>
+                    </ul><a href=assets/pdf/jason-swetzoff-design-process.pdf target=_blank class=btn>PDF of My Design Process</a></div>
+            </article>
+            <article class=what-is>
+                <div class=what-is__wrap>
+                    <h3>What is a UX Designer?</h3>
+                    <p>The term UX Designer can mean different things to different people. What I think makes a UX Designer is their ability to combine their research, knowledge of technology, and design skills to create a simple, usable, and aesthetically
+                        pleasing interface. This takes a strong working understanding of many design processes. Most importantly a UX Designer must be able to communicate and collaborate, while understanding the needs of the users and stakeholders. This
+                        is what I do.</p>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class=mainFooter>
+        <div class=thanks id=contact>
+            <div class=thanks-inner><span class=zetta>Thanks for checking out my portfolio. Please get in touch if you have any questions.</span> <a id=contact-link class=btn href=mailto:swetzoff@gmail.com>Email Me</a></div>
+        </div>
+        <div class=social-wrap>
+            <ul class=social>
+                <li>
+                    <a href=https://twitter.com/Jaswetz alt="Jason's Twitter" target=_blank>
+                        <svg class=icn-twitter>
+                            <use xlink:href=#icn-twitter></use>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href=http://dribbble.com/Jaswetz alt="Jason's Dribbble" target=_blank>
+                        <svg class=icn-dribbble>
+                            <use xlink:href=#icn-dribbble></use>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href=https://github.com/Jaswetz alt="Jason's Github" target=_blank>
+                        <svg class=icn-github>
+                            <use xlink:href=#icn-github></use>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href=http://www.linkedin.com/in/swetzoff alt="Jason's LikedIn" target=_blank>
+                        <svg class=icn-linkedin>
+                            <use xlink:href=#icn-linkedin></use>
+                        </svg>
+                    </a>
+                </li>
+                <li><address><a id=contact-link href=mailto:swetzoff@gmail.com><svg class=icn-mail><use xlink:href=#icn-mail></use></svg></a></address></li>
+            </ul>
+        </div>
+    </footer>
+    <script src=assets/js/vendor/jquery.min.js></script>
+    <script src=assets/js/main.min.js></script>
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-38074716-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</body>
+
+</html>
