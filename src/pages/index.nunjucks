@@ -1,0 +1,9 @@
+<!-- index.nunjucks -->
+{% extends "layout.nunjucks" %} {% block content %}
+<div class="home home--active">
+    {% include "partials/header.nunjucks" %}
+</div>
+<main class="home">
+    <h1>Home!</h1>
+</main>
+{% include "partials/footer.nunjucks" %} {% endblock %}

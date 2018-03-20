@@ -1,0 +1,17 @@
+<header>
+    <div class="header">
+        <div class="header__wrap">
+            <a href="#menu" class="menu-link">Menu</a>
+            <nav class="header__actions" id="menu" role="navigation">
+                <ul>
+                    <li class="home">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="contact">
+                        <a href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
