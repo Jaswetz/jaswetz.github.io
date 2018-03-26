@@ -4,6 +4,15 @@
     {% include "partials/header.nunjucks" %}
 </div>
 <main class="home">
-    <h1>Home!</h1>
+    <div class="intro__wrapper">
+        <div class="intro"></div>
+        <div class="intro__tagline font-weight--bold">
+            <div class="intro__tagline--large uppercase">UX Design</div>
+            <span class="font-weight--thin">and</span> <span class="uppercase">Strategy</span>
+        </div> 
+    </div>
+    <div class="work">
+        <h1>Work</h1>
+    </div>
 </main>
 {% include "partials/footer.nunjucks" %} {% endblock %}

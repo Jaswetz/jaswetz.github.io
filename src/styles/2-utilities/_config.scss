@@ -4,7 +4,7 @@
 
 // Debug
 $wireframe: false;
-$baseline-grid: false;
+$baseline-grid: true;
 
 // Breakpoints
 @include breakpoint-set('to ems', true);
@@ -41,8 +41,8 @@ $base__font-color: $color--grey--dark;
 
 // Font Stacks //
 $font-family--mono: 'Playfair Display SC', serif;
-$font-family--primary: 'Roboto', sans-serif;
-$font-family--secondary: 'Nunito', sans-serif;
+$font-family--primary: 'Karla', sans-serif;
+$font-family--secondary: 'Roboto', sans-serif;
 
 // Headings //
 $heading--font-family: $font-family--secondary;

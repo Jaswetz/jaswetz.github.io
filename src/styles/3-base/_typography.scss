@@ -6,24 +6,18 @@
 html {
   font-size: 80%;
   @if $baseline-grid == true {
-    &.is-lineHeight {
-      background-image: url(http://basehold.it/i/24);
-    }
+    background-image: url(http://basehold.it/i/24);
   }
   @include mq(tablet) {
     font-size: 90%;
     @if $baseline-grid == true {
-      &.is-lineHeight {
-        background-image: url(http://basehold.it/i/27);
-      }
+      background-image: url(http://basehold.it/i/27);
     }
   }
   @include mq(desktop) {
     font-size: 100%;
     @if $baseline-grid == true {
-      &.is-lineHeight {
-        background-image: url(http://basehold.it/i/30);
-      }
+      background-image: url(http://basehold.it/i/30);
     }
   }
 }
@@ -67,37 +61,29 @@ h6 {
   font-family: $heading--font-family;
   font-weight: $heading--font-weight;
   line-height: $heading--line-height;
+  margin-bottom: $spacing;
 }
 
 h1,
 .h1 {
   font-size: $text-size--mega;
-  line-height: $base__line-height * 3;
+  line-height: $base__line-height * 4;
 }
 
 h2,
 .h2 {
   font-size: $text-size--giant;
-  margin-bottom: $spacing;
+  line-height: $base__line-height * 3;
 }
 
 h3,
 .h3 {
   font-size: $text-size--xxlarge;
-  margin-bottom: $spacing--small;
+  line-height: $base__line-height * 2;
 }
 
 h4,
 .h4 {
   font-size: $text-size--xlarge;
-}
-
-h5,
-.h5 {
-  font-size: $text-size--large;
-}
-
-h6,
-.h6 {
-  font-size: $text-size--big;
+  line-height: $base__line-height * 2;
 }

@@ -5,7 +5,7 @@
 // Vendors //
 // A cleaner way to do breakpoints/media queries, http://breakpoint-sass.com/
 @import "../../node_modules/breakpoint-sass/stylesheets/breakpoint";
-@import url('https://fonts.googleapis.com/css?family=Karla|Roboto');
+// @import url("https://fonts.googleapis.com/css?family=Karla|Roboto");
 
 // Utilities //
 @import '2-utilities/colors';
@@ -28,6 +28,7 @@
 @import '3-base/animations';
 
 // Components //
+@import '4-components/intro';
 
 // Helpers //
 @import '5-helpers/theme';
