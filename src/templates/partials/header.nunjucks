@@ -1,17 +1,27 @@
 <header>
     <div class="header">
         <div class="header__wrap">
-            <a href="#menu" class="menu-link">Menu</a>
-            <nav class="header__actions" id="menu" role="navigation">
-                <ul>
-                    <li class="home">
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li class="contact">
-                        <a href="contact.html">Contact</a>
-                    </li>
-                </ul>
-            </nav>
+            <div class="container">
+                {# <a href="#menu" class="menu-link">Menu</a> #}
+                <div class="logo">
+                    <a href="#" class="">
+                        <svg>
+                            <use xlink:href="svg/sprite.svg#logo"></use>
+                        </svg>
+                        <h1>Jason Swetzoff</h1>
+                    </a>
+                </div>
+                <nav class="header__actions" id="menu" role="navigation">
+                    <ul>   
+                        <li class="home">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li class="contact">
+                            <a href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>
 </header>

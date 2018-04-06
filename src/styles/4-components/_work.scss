@@ -1,0 +1,22 @@
+main {
+  background: $color--white;
+  z-index: $zindex--1;
+  position: relative;
+}
+
+.section-header {
+  width: 100%;
+  text-align: center;
+  padding-top: $spacing;
+}
+
+.project {
+  h3 {
+    color: $color--orange;
+  }
+
+  h3, 
+  h4 {
+    margin-top: $spacing--xsmall;
+  }
+}

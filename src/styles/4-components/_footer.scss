@@ -1,0 +1,14 @@
+footer {
+  background: $color--grey--dark;
+  position: relative;
+  z-index: $zindex--2;
+  
+  p,
+  a {
+    color: $color--white;
+  }
+  
+  ul {
+    @extend .list-reset;
+  }
+}

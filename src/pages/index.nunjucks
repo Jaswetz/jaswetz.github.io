@@ -3,16 +3,87 @@
 <div class="home home--active">
     {% include "partials/header.nunjucks" %}
 </div>
-<main class="home">
-    <div class="intro__wrapper">
-        <div class="intro"></div>
-        <div class="intro__tagline font-weight--bold">
+
+<div class="intro__wrapper">
+    <div class="intro"></div>
+    <div class="intro__tagline font-weight--bold">
+        <div class="container">
             <div class="intro__tagline--large uppercase">UX Design</div>
-            <span class="font-weight--thin">and</span> <span class="uppercase">Strategy</span>
-        </div> 
+            <span class="font-weight--thin">and</span>
+            <span class="uppercase">Strategy</span>
+        </div>
     </div>
-    <div class="work">
-        <h1>Work</h1>
+</div>
+<main>
+    <div class="container">
+        <div class="work">
+            <h1 class="section-header">Work</h1>
+            <div class="g g--full g--1of2--medium g--1of3--large">
+                <div class="g__cell">
+                    <div class="project">
+                        <img src="http://via.placeholder.com/300x200" alt="Househappy on a laptop">
+                        <div class="project__content">
+                            <h3>Househappy</h3>
+                            <h4>UX, Design, and Front-End</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="g__cell">
+                    <div class="project">
+                        <img src="http://via.placeholder.com/300x200" alt="Househappy on a laptop">
+                        <div class="project__content">
+                            <h3>Househappy IOS App</h3>
+                            <h4>UX and Design</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="g__cell">
+                    <div class="project">
+                        <img src="http://via.placeholder.com/300x200" alt="Househappy on a laptop">
+                        <div class="project__content">
+                            <h3>Househappy IOS App</h3>
+                            <h4>UX and Design</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="g__cell">
+                    <div class="project">
+                        <img src="http://via.placeholder.com/300x200" alt="Househappy on a laptop">
+                        <div class="project__content">
+                            <h3>Househappy IOS App</h3>
+                            <h4>UX and Design</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="g__cell">
+                    <div class="project">
+                        <img src="http://via.placeholder.com/300x200" alt="Househappy on a laptop">
+                        <div class="project__content">
+                            <h3>Househappy IOS App</h3>
+                            <h4>UX and Design</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="g__cell">
+                    <div class="project">
+                        <img src="http://via.placeholder.com/300x200" alt="Househappy on a laptop">
+                        <div class="project__content">
+                            <h3>Househappy IOS App</h3>
+                            <h4>UX and Design</h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="about">
+            <h1 class="section-header">About</h1>
+            <div class="">
+                <img src="../images/jason-profile-pic.png" alt="">
+                <p>I’m a User Experience Designer and Strategist based in Portland, OR with over 8 years of experience. I use
+                    design thinking, research, and communication to produce excellent human experiences with technology.</p>
+            </div>
+        </div>
     </div>
 </main>
 {% include "partials/footer.nunjucks" %} {% endblock %}

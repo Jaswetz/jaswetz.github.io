@@ -4,11 +4,6 @@
   z-index: $zindex--0;  
 }
 
-.header,
-.intro__tagline {
-  position: absolute;
-}
-
 .intro {
   background-color: #999999;
   background-image: url(../images/bckg-jason-swetzoff.jpg) ;
@@ -18,11 +13,11 @@
   background-size: cover;
 
   &__tagline {
-      font-size: $text-size * 3;
+    position: absolute;    
+    font-size: $text-size * 3;
     line-height: $base__line-height * 2.5;
-    margin-right: $spacing;
-    margin-left: $spacing;
     opacity: 0.25;
+    margin-bottom: $spacing--small;
 
     @include mq(tablet) {
       font-size: $text-size * 4;
@@ -33,7 +28,7 @@
       line-height: $base__line-height * 4;
     }
 
-    &::before {
+    .container::before {
       display: block;
       height: 0.15rem;
       margin-bottom: $spacing;
@@ -45,7 +40,6 @@
       }
       @include mq(desktop) {
         margin-right: 45%;
-        margin-left: $spacing * 2;
       }
     }
   }
@@ -85,10 +79,4 @@
     text-align: right;
     color: $color--white;
   }
-}
-
-.work {
-  background: white;
-  position: relative;
-  z-index: $zindex--1;
 }

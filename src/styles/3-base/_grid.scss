@@ -1,4 +1,4 @@
-$grid-margin: $spacing--large;
+$grid-margin: $spacing;
 
 // Base
 html {
@@ -22,7 +22,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: (-$grid-margin) 0 $grid-margin (-$grid-margin);
+  margin: 0 0 0 (-$grid-margin);
   flex-wrap: wrap;
 
   > .g__cell {
