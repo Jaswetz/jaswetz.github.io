@@ -1,7 +1,8 @@
 .header {
-  position: absolute;
-  z-index: $zindex--2;
+  position: fixed;
+  z-index: $zindex--3;
   width: 100%;
+  top: 0;
 
   a {
     display: block;

@@ -4,7 +4,7 @@
             <div class="container">
                 {# <a href="#menu" class="menu-link">Menu</a> #}
                 <div class="logo">
-                    <a href="#" class="">
+                    <a href="index.html" class="">
                         <svg>
                             <use xlink:href="svg/sprite.svg#logo"></use>
                         </svg>
@@ -14,10 +14,10 @@
                 <nav class="header__actions" id="menu" role="navigation">
                     <ul>   
                         <li class="home">
-                            <a href="index.html">Home</a>
+                            <a target="_blank" href="pdf/jason-swetzoff-resume-v6.pdf" >Resume</a>
                         </li>
                         <li class="contact">
-                            <a href="contact.html">Contact</a>
+                            <a href="mailto:jaswetz@gmail.com">Email</a>
                         </li>
                     </ul>
                 </nav>

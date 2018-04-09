@@ -1,0 +1,11 @@
+$a-tags: 'a, a:active, a:hover, a:visited';
+$a-tags-hover: 'a:active, a:hover';
+ 
+#{$a-tags} {
+  color: $color--blue;
+  text-decoration: none;
+}
+
+#{$a-tags-hover} {
+  color: tint($color--blue, 10%);
+}

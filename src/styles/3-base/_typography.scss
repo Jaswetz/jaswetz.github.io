@@ -64,6 +64,12 @@ h6 {
   font-family: $heading--font-family;
   font-weight: $heading--font-weight;
   line-height: $heading--line-height;
+}
+
+h1, 
+h2, 
+h3 {
+  font-weight: 700;  
   text-transform: uppercase;
 }
 
@@ -92,7 +98,11 @@ h4,
 }
 
 .section-header {
-
+    width: 100%;
+    text-align: center;
+    padding-top: $spacing--large;
+    padding-bottom: $spacing;
+  
   &:after {
     content: "";
     display: block;

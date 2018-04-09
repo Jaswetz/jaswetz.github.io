@@ -4,7 +4,7 @@
 
 // Debug
 $wireframe: false;
-$baseline-grid: true;
+$baseline-grid: false;
 
 // Breakpoints
 @include breakpoint-set('to ems', true);

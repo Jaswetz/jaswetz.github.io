@@ -1,11 +1,13 @@
 <footer>
-    <p class="copyright">© 2018 Jason Swetzoff</p>
-    <nav>
-        <ul>
-            <li><a href="">Email</a></li>
-            <li><a href="">Github</a></li>
-            <li><a href="">LinkedIn</a></li>
-            <li><a href="">Dribble</a></li>
-        </ul>
-    </nav>
+    <div class="container">
+        <p class="copyright">© 2018 Jason Swetzoff</p>
+        <nav>
+            <ul>
+                <li><a href="">Email</a></li>
+                <li><a href="">Github</a></li>
+                <li><a href="">LinkedIn</a></li>
+                <li><a href="">Dribble</a></li>
+            </ul>
+        </nav>
+    </div>
 </footer>

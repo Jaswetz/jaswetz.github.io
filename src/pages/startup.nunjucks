@@ -1,0 +1,25 @@
+<!-- index.nunjucks -->
+{% extends "layout.nunjucks" %} {% block content %} 
+{% include "partials/header.nunjucks" %}
+<main class="proj startup">
+  <div class="proj__intro">
+    <div class="proj__header absolute-center">
+      <h1>Real Estate App</h1>
+    </div>
+  </div>
+  <div class="proj__content">
+    <div class="proj__blurb">
+      <h2></h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Levatio igitur vitiorum magna fit in iis, qui habent ad virtutem progressionis aliquantum. Tria genera bonorum; Odium autem et invidiam facile vitabis. Tecum optime, deinde etiam cum mediocri amico. Duo Reges: constructio interrete. Quid ergo hoc loco intellegit honestum? Quid, si etiam iucunda memoria est praeteritorum malorum? Negat enim summo bono afferre incrementum diem. Teneo, inquit, finem illi videri nihil dolere. Nam, ut sint illa vendibiliora, haec uberiora certe sunt. Non est igitur voluptas bonum. Quid est, quod ab ea absolvi et perfici debeat</p>
+      <ul class="tags">
+        <li>User Experience</li>
+        <li>Prototyping</li>
+        <li>Wireframing</li>
+        <li>Interface Maps</li>
+        <li>Design</li>
+        <li>Animation</li>
+      </ul>
+    </div>
+  </div>
+</main>
+{% include "partials/footer.nunjucks" %} {% endblock %}

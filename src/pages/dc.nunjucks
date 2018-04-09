@@ -1,0 +1,32 @@
+<!-- index.nunjucks -->
+{% extends "layout.nunjucks" %} {% block content %} 
+{% include "partials/header.nunjucks" %}
+<main class="proj dc">
+  <div class="proj__intro">
+    <div class="proj__header absolute-center">
+      <h1>Detroit Connect</h1>
+    </div>
+  </div>
+  <div class="proj__content">
+    <div class="proj__blurb">
+      <h2>An easy-to-access portal where users can access real-time information about their truck fleets.</h2>
+      <p>I rewrote the entire CSS front-end and developed a living styleguide for Daimlers Detroit Connect. I have also been the lead UX Designer on many small and larger features for Detroit Connect, including some updates to its iOS app. I worked directly with stakeholders to solve complex problems, improve the experience, and introduce new features with the results of winning more UX and development work for Metal Toad.</p>
+      <ul class="tags">
+        <li>CSS Architecture</li>
+        <li>Living Style-Guide</li>
+        <li>User Experience</li>
+        <li>Prototyping</li>
+        <li>Wireframing</li>
+        <li>User Flows</li>
+        <li>Design</li>
+        <li>Animation</li>
+      </ul>
+    </div>
+    <div class="container">
+        <div class="info text-align--center margin-vertical--large">
+          <p class="padding-around--large">Coming soon!</p> 
+        </div>
+    </div>
+  </div>
+</main>
+{% include "partials/footer.nunjucks" %} {% endblock %}

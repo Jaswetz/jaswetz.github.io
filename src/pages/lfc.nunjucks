@@ -1,0 +1,33 @@
+<!-- index.nunjucks -->
+{% extends "layout.nunjucks" %} {% block content %}
+{% include "partials/header.nunjucks" %}
+<main class="proj immersive-media">
+  <div class="proj__intro">
+    <div class="proj__header absolute-center">
+      <h1>LFC</h1>
+    </div>
+  </div>
+  <div class="proj__content">
+    <div class="proj__blurb">
+        <h2>An iOS and Android app to engage sports fans with immersive media</h2>
+        <p>This project's goal was to determine the MVP product features that met the stakeholders and end-user needs and would engage fans by using a multinational technology company’s premium video content and clip tagging technology. Despite working with a tight timeline, the project was incredibly successful. This project is currently under NDA.</p>
+        <ul class="tags">
+          <li>User Research</li>
+          <li>Feature Scope</li>
+          <li>User Experience</li> 
+          <li>Wireframes</li> 
+          <li>Prototypes</li> 
+          <li>User Flows</li> 
+          <li>Design</li> 
+          <li>Animation</li>
+        </ul>        
+    </div>
+    <div class="container">
+        <div class="info text-align--center margin-vertical--large">
+          <p class="padding-around--large">This project is under NDA. A case study is available upon request.</p> 
+          <a href="mailto:someone@yoursite.com?subject=Case Study Request" class="button">Request Case Study</a>
+        </div>
+    </div>    
+  </div>
+</main>
+{% include "partials/footer.nunjucks" %} {% endblock %}

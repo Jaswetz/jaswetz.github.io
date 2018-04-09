@@ -4,19 +4,152 @@ main {
   position: relative;
 }
 
-.section-header {
-  width: 100%;
-  text-align: center;
-  padding-top: $spacing;
+.tags {
+  @extend .list-reset;
+
+  li {
+    display: inline-block;
+    padding: ($spacing--xsmall / 2) $spacing--xsmall;
+    border: .05rem solid $color--grey;
+    border-radius: .2rem;
+    margin-bottom: $spacing--xsmall;
+    background: $color--white;
+    font-size: $text-size--small;
+  }
 }
 
 .project {
   h3 {
     color: $color--orange;
+    font-size: $text-size--big;
+  }
+
+  h4 {
+    font-size: $text-size;
   }
 
   h3, 
   h4 {
     margin-top: $spacing--xsmall;
+  }
+}
+
+.proj {
+  &__intro {
+    height: $spacing * 12;
+    position: fixed;
+    top: 0;
+    height: $spacing * 12;
+    width: 100%;
+    background-color: #999999;
+    z-index: $zindex--1;
+
+    &::after {
+      content: '';
+      height: $spacing * 12;
+      width: 100%;
+      display: block;
+      background: rgba(0, 0, 0, 0.75);
+      position: relative;
+      z-index: $zindex--2;
+    }
+  }
+  
+
+  &__content {
+    margin-top: $spacing * 12;
+    position: relative;
+    z-index: $zindex--3;
+    background: $color--white;
+  }
+
+  &__blurb {
+    background: $color--grey--light;
+    padding: $spacing;
+    text-align: center;
+    margin-bottom: $spacing;
+
+    h2 {
+      margin-bottom: $spacing;
+      line-height: $base__line-height * 1.5;
+    }
+    
+    h2,
+    p {
+      @extend .optimal-length;
+      margin-left: auto;
+      margin-right: auto;      
+    }
+  }
+
+  &__img {
+    max-width: rem(700px);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: $spacing;
+  }
+
+  &__header {
+    position: relative;
+    z-index: $zindex--3;
+    h1 {
+      color: $color--white;
+    }
+  }
+}
+
+.mobile-animation{
+  max-width: 400px;
+}
+
+.info {
+  background: $color--grey--light;
+  border: .05rem solid $color--grey;
+  margin-bottom: $spacing;
+
+  p {
+    font-size: $text-size--large;
+  }
+}
+
+// HOUSEHAPPY
+.househappy {
+  .proj__intro {
+    background: url(../images/projects/househappy/househappy-background.jpg) 50% 50%/cover;
+  }
+}
+
+// HOUSEHAPPY iOS
+.househappy-ios {
+  .proj__intro {
+    background: url(../images/projects/househappy-ios/househappy-background.jpg) 50% 50%/cover;
+  }
+}
+
+// IMMERSIVE MEDIA
+.immersive-media {
+  .proj__intro {
+    background: url(../images/projects/immersive-media/immersive-media-background.jpg) 50% 50%/cover;
+  }
+}
+
+// DETROIT CONNECT
+.dc {
+  .proj__intro {
+    background: url(../images/projects/dc/dc-background.jpg) 50% 50%/cover;
+  }
+}
+
+// DETROIT CONNECT ANDROID
+.dc-android {
+  .proj__intro {
+    background: url(../images/projects/dc-android/dc-android-background.jpg) 50% 50%/cover;
+  }
+}
+
+// DIGZ
+.startup {
+  .proj__intro {
+    background: url(../images/projects/startup/startup-background.jpg) 50% 50%/cover;
   }
 }

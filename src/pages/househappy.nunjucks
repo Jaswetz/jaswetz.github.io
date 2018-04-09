@@ -1,0 +1,51 @@
+<!-- index.nunjucks -->
+{% extends "layout.nunjucks" %} {% block content %}
+{% include "partials/header.nunjucks" %}
+<main class="proj househappy">
+  <div class="proj__intro">
+    <div class="proj__header absolute-center">
+      <h1>Househappy</h1>
+    </div>
+  </div>
+  <div class="proj__content">
+    <div class="proj__blurb">
+        <h2>a platform for real estate buyers and sellers to search and discover homes.</h2>
+        <p>Househappy is an end-to-end platform for supporting and navigating home buyers and sellers through the homeownership cycle—from researching and making an offer, to remodeling and selling. Househappy's goal is to simplify property search and make the home ownership process easily accessible to everyone.</p>
+        <ul class="tags">
+          <li>User Experience</li> 
+          <li>Prototyping</li> 
+          <li>Wireframing</li> 
+          <li>Interface Maps</li> 
+          <li>Design</li> 
+          <li>Animation</li>
+        </ul>
+    </div>
+    <div class="g g--full">
+      <div class="g__cell">
+        <img class="proj__img" src="images/projects/househappy/househappy-1.jpg" alt="Househappy on a Mac">
+      </div>
+      <div class="g__cell">
+        <img class="proj__img" src="images/projects/househappy/househappy-2.jpg" alt="Househappy on a Mac and Macbook">
+      </div>
+    </div>
+    <div class="g g--full g--remove-gutters">
+      <div class="g__cell">
+          <img class="margin-vertical" src="images/projects/househappy/househappy-5.jpg" alt="Guy on Macbook looking at Househappy">
+      </div>
+    </div> 
+    <div class="g g--full">
+      <div class="g__cell">
+        <img class="proj__img" src="images/projects/househappy/househappy-3.jpg" alt="HousehappyTrax on Macbook">
+      </div>
+      <div class="g__cell">
+        <img class="proj__img" src="images/projects/househappy/househappy-4.jpg" alt="Househappy Screenshots">
+      </div>
+    </div>
+    <div class="g g--full g--remove-gutters">
+        <div class="g__cell">
+            <img class="margin-top" src="images/projects/househappy/househappy-6.jpg" alt="Hands holding iPad">
+        </div>
+      </div>     
+  </div>
+</main>
+{% include "partials/footer.nunjucks" %} {% endblock %}

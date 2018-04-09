@@ -1,0 +1,18 @@
+a.button,
+button,
+button.button {
+    font-family: inherit;
+    font-size: 100%;
+    padding: $spacing--xsmall $spacing--small;
+    color: $color--white;
+    border: 0.05 solid $color--blue;
+    background-color: $color--blue;
+    text-decoration: none;
+    border-radius: 2px;
+    display: inline-block;
+    margin-bottom: $spacing--large;
+
+    &:hover {
+      background: tint($color--blue, 10%);
+    }
+}

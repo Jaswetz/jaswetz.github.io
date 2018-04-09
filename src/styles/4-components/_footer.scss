@@ -1,7 +1,25 @@
 footer {
-  background: $color--grey--dark;
+  background: $color--black;
   position: relative;
   z-index: $zindex--2;
+  padding: $spacing--small;
+  text-align: center;
+
+  @include medium {
+    text-align: left;
+  }
+
+  .container {
+    @include medium {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  p {
+    padding-bottom: 0;
+  }
   
   p,
   a {
@@ -10,5 +28,30 @@ footer {
   
   ul {
     @extend .list-reset;
+    display: flex;
+    justify-content: center;
+
+    li {
+      margin-right: $spacing;
+      
+      &:last-child {
+        margin-right: 0;
+        a::after {
+          content: "";
+          margin-left: 0;
+        }        
+      }
+    }
+
+    a {
+      width: $spacing--xlarge;
+      postion: relative;
+      
+      &::after {
+        content: " / ";
+        position: absolute;
+        margin-left: .75rem;
+      }
+    }
   }
 }
