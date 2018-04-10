@@ -1,0 +1,1 @@
+window.sr=ScrollReveal(),sr.reveal(".project",{duration:500,delay:500},50),sr.reveal(".about",{duration:500,delay:500});
