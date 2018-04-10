@@ -19,7 +19,7 @@
     </div>
     <div class="g g--full">
       <div class="g__cell">
-        <img class="proj__img" src="images/projects/dc-android/dc-android-pages.jpg" alt="Detroit Connect on iOS">
+        <img class="proj__img max-width-image" src="images/projects/dc-android/dc-android-pages.jpg" alt="Detroit Connect on iOS">
       </div>
       <div class="g__cell">
         <img class="proj__img" src="images/projects/dc-android/dc-android-flow.jpg" alt="Detroit Connect User Flow">

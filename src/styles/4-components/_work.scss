@@ -9,6 +9,8 @@ main {
 
   li {
     display: inline-block;
+    margin-left: $spacing--xsmall / 2;
+    margin-right: $spacing--xsmall / 2;
     padding: ($spacing--xsmall / 2) $spacing--xsmall;
     border: .05rem solid $color--grey;
     border-radius: .2rem;
@@ -75,6 +77,10 @@ main {
 }
 
 .proj {
+  h1 {
+    text-align: center;
+  }
+
   &__intro {
     height: $spacing * 12;
     position: fixed;
@@ -140,6 +146,10 @@ main {
 
 .mobile-animation{
   max-width: 400px;
+}
+
+.max-width-image {
+  max-width: 500px;
 }
 
 .info {
