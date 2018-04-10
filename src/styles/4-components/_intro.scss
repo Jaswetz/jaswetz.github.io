@@ -94,6 +94,8 @@
 
 .about {
   padding-bottom: $spacing--xlarge;
+  background: $color--grey--light;
+  margin-top: $spacing--large;
 
   img {
     max-width: $spacing * 5;
@@ -107,6 +109,9 @@
       margin: 0;
       margin-right: $spacing;
     }
+  }
+  p {
+    padding-bottom: 0;
   }
   &__wrapper {
     @include medium {

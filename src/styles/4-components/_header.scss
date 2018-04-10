@@ -1,41 +1,43 @@
 .header {
   position: fixed;
   z-index: $zindex--3;
-  width: 100%;
   top: 0;
+  width: 100%;
 
   a {
     display: block;
-    color: $color--white;
     text-decoration: none;
+    color: $color--white;
   }
 
   &__wrap .container {
-    display: flex;
-    align-items: center;
     position: relative;
+    display: flex;
     min-height: $spacing--xlarge;
 
+    align-items: center;
+
     &::after {
-      opacity: 0.25;
-      margin-left: $spacing;
-      flex: 1;
       display: block;
       height: 0.15rem;
+      margin-left: $spacing;
       content: '';
+      opacity: 0.25;
       background-color: $color--white;
 
+      flex: 1;
     }
   }
 
   .logo a {
     display: flex;
+
     align-items: center;
-  
+
     h1 {
       font-size: $text-size--large;
-      text-transform: uppercase;
       display: none;
+      text-transform: uppercase;
 
       @include mq(tablet) {
         display: block;
@@ -55,29 +57,29 @@
   }
 
   &__actions ul {
-    @extend .list-reset;
     display: flex;
+
+    @extend .list-reset;
     align-items: center;
 
     li {
       margin-left: $spacing;
-       
+
       &:last-child {
         a::after {
-          content: "";
-        }        
+          content: '';
+        }
       }
     }
 
     a {
-      postion: relative;
-      
+      position: relative;
+
       &::after {
-        content: " / ";
         position: absolute;
-        margin-left: .75rem;
+        margin-left: 0.75rem;
+        content: ' / ';
       }
     }
-  
   }
 }

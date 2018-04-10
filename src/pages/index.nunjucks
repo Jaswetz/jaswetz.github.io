@@ -89,13 +89,15 @@
 
             </div>
         </div>
-        <div class="about">
+    </div>
+    <div class="about">
+    <div class="container">
             <h1 class="section-header">About</h1>
             <div class="about__wrapper">
                 <img src="../images/jason-profile-pic.png" alt="">
-                <p>I’m a User Experience Designer and Strategist based in Portland, OR with over 8 years of experience. I use design thinking, research, and communication to produce excellent human experiences with technology.</p>
+                <p>Hi! I'm Jason Swetzoff and I’m a User Experience Designer and Strategist based in Portland, OR with over 8 years of experience. I use design thinking, research, and communication to produce excellent human experiences with technology.</p>
             </div>
         </div>
-    </div>
+    </div>  
 </main>
 {% include "partials/footer.nunjucks" %} {% endblock %}

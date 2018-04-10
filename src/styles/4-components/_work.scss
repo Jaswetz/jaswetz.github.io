@@ -19,9 +19,24 @@ main {
 }
 
 .project {
+  margin-bottom: $spacing;
   h3 {
     color: $color--orange;
     font-size: $text-size--big;
+    transition-property: color;
+    transition-duration: .2s;
+    transition-timing-function: ease-in;
+
+    &:after {
+      transition-property: all;
+      transition-duration: .2s;
+      transition-timing-function: ease-in;
+      content: "";
+      display: block;
+      position: absolute;
+      height: .1rem;
+      width: 0;
+    }
   }
 
   h4 {
@@ -31,6 +46,31 @@ main {
   h3, 
   h4 {
     margin-top: $spacing--xsmall;
+  }
+
+  img {
+    border: 1px solid transparent;
+    transition-property: border;
+    transition-duration: .2s;
+    transition-timing-function: ease-in;
+  }
+
+  a:active,
+  a:hover {
+    h3{
+      color: shade($color--orange, 10%);
+      position: relative;
+
+      
+      &:after {
+        width: $spacing * 2;
+        background: shade($color--orange, 10%);
+      }
+    }
+
+    img {
+      border: 1px solid $color--orange;
+    }
   }
 }
 

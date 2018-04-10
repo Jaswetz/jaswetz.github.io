@@ -4,8 +4,29 @@ $a-tags-hover: 'a:active, a:hover';
 #{$a-tags} {
   color: $color--blue;
   text-decoration: none;
+  transition-property: color;
+  transition-duration: .2s;
+  transition-timing-function: ease-out;
 }
 
 #{$a-tags-hover} {
   color: tint($color--blue, 10%);
+}
+
+header {
+  #{$a-tags} {
+    color: $color--white;
+  }
+  #{$a-tags-hover} {
+    color: shade($color--white, 30%);
+  }
+}
+
+footer {
+  #{$a-tags} {
+    color: shade($color--white, 30%);
+  }
+  #{$a-tags-hover} {
+    color: $color--white;
+  }
 }
