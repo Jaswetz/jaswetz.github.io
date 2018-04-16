@@ -8,8 +8,8 @@ $baseline-grid: false;
 
 // Breakpoints
 @include breakpoint-set('to ems', true);
-$xs: 25em;
-$small: 26em;
+$xs: max-width 25em;
+$small: 26em; //655px
 $medium: 41em;
 $large: 48em;
 $xl: 75em;

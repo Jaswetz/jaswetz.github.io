@@ -71,7 +71,7 @@
                         </a>
                         <div class="project__content">
                             <a href="househappy.html"><h3>Househappy</h3></a>
-                            <h4>UX and Design</h4>
+                            <h4>UX Design and Strategy</h4>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                         </a>
                         <div class="project__content">
                             <a href="househappy-ios.html"><h3>Househappy IOS App</h3></a>
-                            <h4>UX and Design</h4>
+                            <h4>UX Design and Strategy</h4>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
             <h1 class="section-header">About</h1>
             <div class="about__wrapper">
                 <img src="../images/jason-profile-pic.png" alt="">
-                <p>Hi! I'm Jason Swetzoff and I’m a User Experience Designer and Strategist based in Portland, OR with over 8 years of experience. I use design thinking, research, and communication to produce excellent human experiences with technology.</p>
+                <p>I am fascinated by technology that’s built around--and helps build upon--empathy for the end user. As an avid outdoorsman and active member of the improv community, I seek to restore the childlike wonder we all possess, so I can see more opportunities to explore, co-create and connect. Currently, I lead Metal Toad's user experience strategy and development.</p>
             </div>
         </div>
     </div>  

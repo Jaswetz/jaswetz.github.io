@@ -1,12 +1,12 @@
-// $(document).ready(function () {
-//   $(window).scroll(function () {
-//       if ($(document).scrollTop() > 100) {
-//           $(".header").addClass("scrolled");
-//       } else {
-//           $(".header").removeClass("scrolled");
-//       }
-//   });
-// });
+$(document).ready(function () {
+  $(window).scroll(function () {
+      if ($(document).scrollTop() > 100) {
+          $(".header").addClass("scrolled");
+      } else {
+          $(".header").removeClass("scrolled");
+      }
+  });
+});
 
 window.sr = ScrollReveal();
 sr.reveal('.project', { duration: 500, delay: 500 }, 50);

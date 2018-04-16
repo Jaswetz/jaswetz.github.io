@@ -1,24 +1,34 @@
 .intro__wrapper {
+  z-index: $zindex--0;
   width: 100%;
   height: 100vh;
-  z-index: $zindex--0;  
 }
 
 .home main {
-  padding-bottom: $spacing--xlarge;
   padding-top: $spacing;
+  padding-bottom: $spacing--xlarge;
 }
 
 .intro {
+  background: url(../images/bckg-jason-swetzoff--xsmall.jpg) 50% 50%/cover;
   background-color: #999999;
-  background: url(../images/bckg-jason-swetzoff.jpg) 50% 50%/cover;
+
+  @include medium {
+    background: url(../images/bckg-jason-swetzoff--small.jpg) 50% 50%/cover;
+  }
+  @include large {
+    background: url(../images/bckg-jason-swetzoff--medium.jpg) 50% 50%/cover;
+  }
+  @include xl {
+    background: url(../images/bckg-jason-swetzoff.jpg) 50% 50%/cover;
+  }
 
   &__tagline {
-    position: absolute;    
     font-size: $text-size * 3;
     line-height: $base__line-height * 2.5;
-    opacity: 0.25;
+    position: absolute;
     margin-bottom: $spacing--small;
+    opacity: 0.25;
 
     @include mq(tablet) {
       font-size: $text-size * 4;
@@ -89,17 +99,17 @@
 // ABOUT
 
 .about {
+  margin-top: $spacing--large;
   padding-bottom: $spacing--xlarge;
   background: $color--grey--light;
-  margin-top: $spacing--large;
 
   img {
     max-width: $spacing * 5;
     max-height: $spacing * 5;
-    margin-left: auto;
-    margin-right: auto;
     margin-top: $spacing;
+    margin-right: auto;
     margin-bottom: $spacing;
+    margin-left: auto;
 
     @include medium {
       margin: 0;
@@ -111,14 +121,14 @@
   }
   &__wrapper {
     @include medium {
-      display: flex; 
-      align-items: center;
+      display: flex;
       margin: 0;
-    }
 
+      align-items: center;
+    }
     @include large {
-      margin-left: 8.33333%;
       margin-right: 8.3333%;
+      margin-left: 8.33333%;
     }
   }
 }

@@ -10,7 +10,7 @@
   <div class="proj__content">
     <div class="proj__blurb">
         <h2>An iOS and Android app to engage sports fans with immersive media</h2>
-        <p>This project's goal was to determine the MVP product features that met the stakeholders and end-user needs and would engage fans by using a multinational technology company’s premium video content and clip tagging technology. Despite working with a tight timeline, the project was incredibly successful. This project is currently under NDA.</p>
+        <p>This project's goal was to determine the MVP product features that met the stakeholders and end-user needs and would engage fans by using a multinational technology company’s premium video content and clip tagging technology. Despite working with a tight timeline, the project was incredibly successful. This project is currently under NDA, please email me for full case study.</p>
         <ul class="tags">
           <li>User Research</li>
           <li>Feature Scope</li>
@@ -24,8 +24,8 @@
     </div>
     <div class="container">
         <div class="info text-align--center margin-vertical--large">
-          <p class="padding-around--large">This project is under NDA. A case study is available upon request.</p> 
-          <a href="mailto:someone@yoursite.com?subject=Case Study Request" class="button">Request Case Study</a>
+          <p class="padding-around--large">This project is under NDA. Please email me for a case study.</p> 
+          <a href="mailto:swetzoff@gmail.com?subject=Case Study Request" class="button">Email Case Study</a>
         </div>
     </div>    
   </div>
