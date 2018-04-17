@@ -1,1 +1,1 @@
-window.sr=ScrollReveal(),sr.reveal(".project",{duration:500,delay:500},50),sr.reveal(".about",{duration:500,delay:500});
+$(document).ready(function(){$(window).scroll(function(){100<$(document).scrollTop()?$(".header").addClass("scrolled"):$(".header").removeClass("scrolled")})}),window.sr=ScrollReveal(),sr.reveal(".project",{duration:500,delay:500},50),sr.reveal(".about",{duration:500,delay:500});
