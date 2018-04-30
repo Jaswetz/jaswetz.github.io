@@ -130,8 +130,8 @@ main {
 
   &__img {
     max-width: rem(700px);
-    margin-left: auto;
-    margin-right: auto;
+    // margin-left: auto;
+    // margin-right: auto;
     margin-bottom: $spacing;
   }
 
@@ -142,6 +142,13 @@ main {
       color: $color--white;
     }
   }
+}
+
+.img__caption {
+  display: block;
+  font-style: italic;
+  color: lighten($color--grey--dark, 20%);
+  margin-bottom: $spacing;
 }
 
 .mobile-animation{
@@ -201,5 +208,14 @@ main {
 .startup {
   .proj__intro {
     background: url(../images/projects/startup/startup-background.jpg) 50% 50%/cover;
+  }
+}
+
+.dcd {
+  .proj__intro {
+    background: url(../images/projects/dcd/dcd-background.jpg) 50% 50%/cover;
+  }
+  video {
+    width: 100%;
   }
 }
