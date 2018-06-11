@@ -1,0 +1,114 @@
+<!-- index.nunjucks -->
+{% extends "layout.nunjucks" %} {% block content %}
+<div class="home home--active">
+    {% include "partials/header.nunjucks" %}
+</div>
+
+<div class="intro__wrapper">
+    <div class="intro"></div>
+    <div class="intro__tagline font-weight--bold">
+        <div class="container">
+            <div class="intro__tagline--large uppercase">UX Design</div>
+            <span class="font-weight--thin">and</span>
+            <span class="uppercase">Strategy</span>
+        </div>
+    </div>
+</div>
+<main>
+    <div class="container">
+        <div class="work">
+            <h2 class="section-header">Work</h2>
+            <div class="g g--full g--1of2--medium g--1of3--large">
+                <div class="g__cell">
+                    <div class="project">
+                        <a href="lfc.html">
+                            <img src="images/proj-thumb-ios-android.jpg" alt="Android and iOS phones">
+                        </a>
+                        <div class="project__content">
+                            <a href="lfc.html"><h3>Immersive Media Project (NDA)</h3></a>
+                            <h4>UX Design, Research, and Strategy</h4>  
+                            <!-- <a href="lfc.html">View Project</a> -->
+                        </div>
+                    </div>
+                </div>            
+                <div class="g__cell">
+                    <div class="project">
+                        <a href="dcd.html">
+                            <img src="images/proj-thumb-dcd.jpg" alt="Detroit Connect Direct">
+                        </a>
+                        <div class="project__content">
+                            <a href="dc.html"><h3>Detroit Connect Direct (NDA)</h3></a>
+                            <h4>UX Design, Research, and Strategy</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="g__cell">
+                    <div class="project">
+                        <a href="dc.html">
+                            <img src="images/proj-thumb-dc.jpg" alt="Detroit Connect on Mac">
+                        </a>
+                        <div class="project__content">
+                            <a href="dc.html"><h3>Detroit Connect</h3></a>
+                            <h4>UX Design, Living Styleguide and CSS Architecture </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="g__cell">
+                    <div class="project">
+                        <a href="dc-android.html">
+                            <img src="images/proj-thumb-dc-android.jpg" alt="Detroit Connect on Android">
+                        </a>
+                        <div class="project__content">
+                            <a href="dc-android.html"><h3>Detroit Connect Android</h3></a>
+                            <h4>UX Design</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="g__cell">
+                    <div class="project">
+                        <a href="startup.html">
+                            <img src="images/proj-thumb-digz-meeting.jpg" alt="Meeting and Whiteboards">
+                        </a>
+                        <div class="project__content">
+                           <a href="startup.html"><h3>Real Estate App (NDA)</h3></a>
+                            <h4>User Research and Strategy</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="g__cell">
+                    <div class="project">
+                        <a href="househappy.html">
+                            <img src="images/proj-thumb-househappy.jpg" alt="Househappy on a laptop">
+                        </a>
+                        <div class="project__content">
+                            <a href="househappy.html"><h3>Househappy</h3></a>
+                            <h4>UX Design and Strategy</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="g__cell">
+                    <div class="project">
+                        <a href="househappy-ios.html">
+                            <img src="images/proj-thumb-househappy-ios.jpg" alt="Househappy on a iOS">
+                        </a>
+                        <div class="project__content">
+                            <a href="househappy-ios.html"><h3>Househappy IOS App</h3></a>
+                            <h4>UX Design and Strategy</h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="about">
+    <div class="container">
+            <h1 class="section-header">About</h1>
+            <div class="about__wrapper">
+                <img src="../images/jason-profile-pic.png" alt="">
+                <p>I am fascinated by technology that’s built around--and helps build upon--empathy for the end user. As an avid outdoorsman and active member of the improv community, I seek to restore the childlike wonder we all possess, so I can see more opportunities to explore, co-create and connect. Currently, I lead Metal Toad's user experience strategy and development.</p>
+            </div>
+        </div>
+    </div>  
+</main>
+{% include "partials/footer.nunjucks" %} {% endblock %}
