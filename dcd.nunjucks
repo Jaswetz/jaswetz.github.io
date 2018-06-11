@@ -1,0 +1,32 @@
+<!-- index.nunjucks -->
+{% extends "layout.nunjucks" %} {% block content %} 
+{% include "partials/header.nunjucks" %}
+<main class="proj dcd">
+  <div class="proj__intro">
+    <div class="proj__header absolute-center">
+      <h1>Detroit Connect Direct</h1> 
+    </div>
+  </div>
+  <div class="proj__content">
+    <div class="proj__blurb">
+      <p>DTNA’s largest customers desire an automated way to access vehicle data on an ongoing basis, in a format that is customizable to their needs based on data type and aggregation. Detroit Connect Direct enables DTNA customers to configure their data needs and then receive vehicle data directly into their systems.</p>
+      <p>Not only will Detroit Connect Direct provide an essential and valuable service to DTNA’s most valuable customers, it will also generate revenue for DTNA through the sale of data tiers at vehicle point-of-sale.</p>         
+      <ul class="tags">
+        <li>User Experience</li>
+        <li>Strategy</li>
+        <li>Prototyping</li>
+        <li>Wireframing</li>
+        <li>User Flows</li>
+        <li>Design</li>
+        <li>Animation</li>
+      </ul>
+    </div>
+    <div class="container">
+        <div class="info text-align--center margin-vertical--large">
+          <p class="padding-around--large">This project is under NDA. Please email me for a case study.</p> 
+          <a href="mailto:swetzoff@gmail.com?subject=Case Study Request" class="button">Email for Case Study</a>
+        </div>
+    </div>
+  </div>
+</main>
+{% include "partials/footer.nunjucks" %} {% endblock %}
