@@ -4,11 +4,13 @@
 <main class="proj dcd">
   <div class="proj__intro">
     <div class="proj__header absolute-center">
-      <h1>Detroit Connect Direct</h1>
+      <h1>Detroit Connect Direct</h1> 
     </div>
   </div>
   <div class="proj__content">
     <div class="proj__blurb">
+      <p>DTNA’s largest customers desire an automated way to access vehicle data on an ongoing basis, in a format that is customizable to their needs based on data type and aggregation. Detroit Connect Direct enables DTNA customers to configure their data needs and then receive vehicle data directly into their systems.</p>
+      <p>Not only will Detroit Connect Direct provide an essential and valuable service to DTNA’s most valuable customers, it will also generate revenue for DTNA through the sale of data tiers at vehicle point-of-sale.</p>         
       <ul class="tags">
         <li>User Experience</li>
         <li>Strategy</li>
@@ -20,88 +22,11 @@
       </ul>
     </div>
     <div class="container">
-        <div class="g g--full">
-          <div class="g__cell">
-            <h3 class="margin-bottom">Assignment</h3>
-            <p>Build a tool for customers to customize their desired data—truck performance, location, and safety data—so they can receive it directly from the DTNA backend in their desired format.</p>
-            <h3 class="margin-bottom">UX Challenge</h3>
-            <p>Design a configuration tool that is easy to comprehend and enjoyable to use—for everybody from the intern to the data scientist—and can be used by multiple users for different steps.</p>
-            <h3 class="margin-bottom">Business Benefit</h3>
-            <p>Detroit Connect Direct provides an essential and valuable service to DTNA’s most valuable customers; it will generate revenue for DTNA through the sale of data tiers at vehicle point-of-sale.</p>
-            <h3 class="margin-bottom">Understanding the Needs and Timeline</h3>
-            <p>In the beginning there was only a very broad idea brought to us from Daimler. They had some very rough ideas sketched out with very few business needs.</p>
-            <p>We had a kickoff meeting and did some stakeholder interviews. From this we identified key people we would need to meet with and get more information from. We also identified what meetings we would need over the next few weeks to succeed and to setup some milestones.</p>
-            <h3 class="margin-bottom">Understanding the Customer Flow</h3>
-            <p>After a few whiteboarding sessions with key stakeholders we were able to understand Daimler’s plan for the customer flow and how Detroit Connect Direct would fit in. This was essential to establish prior to creating flows.</p>
-            <img class="" src="images/projects/dcd/customer-flow.jpg" alt="Customer Flow">
-            <small class="img__caption">Customer Flow</small>
-            <h3 class="margin-bottom">Understanding the User</h3>
-            <p>Unfortunately we did not have the budget or time to talk to the user directly. However, Daimler takes pride in consistent communication with its users so we were able to gather user information from Daimler Project Managers.</p>
-            <p>We quickly realized that there would be a wide spectrum of users and there may be different users for different parts of the flow.</p>
-            <img class="proj__img" src="images/projects/dcd/user-graph.jpg" alt="User Graph">
-            <h3 class="margin-bottom">Key Terms & Understanding</h3>
-            <p>At this point, it was important to align with the client on feature names and on key business decisions made. This step helped avoid confusion and kept all the different teams aligned.</p>
-            <p>This also had a the added benefit of helping us zero in on our scope.</p>
-            <ul class="margin-bottom--large">
-              <li>Customer buys a subscription for a <strong>data tier</strong> per vehicle</li>
-              <ul>
-                <li>For MVP, fleets will only be allowed one data tier per fleet: Basic, Standard, or Premium</li>
-                <li>If a fleet desires to upgrade, will need to upgrade all vehicle subscriptions</li>
-              </ul>
-              <li>Customer creates a <strong>configuration</strong> for that tier</li>
-              <ul>
-                  <li>For MVP, fleets will only be allowed one active configuration per fleet</li>
-                  <li>Configurations may not exceed their data tier (determined by matrix)</li>
-                  <li>DTNA will also provide a recommended configuration, but not a default</li>
-              </ul>
-              <li>A configuration is made up of <strong>reports</strong> per time interval</li>
-              <ul>
-                <li>For MVP, fleets are only allowed up to three time interval reports</li>
-                <li>Time intervals will only be greater than 1 minute and will be available in 1 minute increments</li>
-              </ul>
-              <li>A report is made up of multiple <strong>nodules</strong>, which are made up by a signal plus a <strong>treatment</strong></li>
-              <ul>
-                  <li>A signal is a data type (e.g. Ambient Temperature, ESC Alert)</li>
-                  <li>All vehicles do not support all signals</li>
-                  <li> A treatment is a aggregation type for that data (e.g. Minimum, Maximum, Average)</li>
-                  <li>All signals do not support all treatments</li> 
-              </ul>
-              <li>Customer must apply desired configuration to their vehicles to receive data</li>
-            </ul> 
-            <h3 class="margin-bottom">Sketching and Whiteboarding</h3>
-            <p>After I felt like I had a good grasp around what was needed, I started sketching ideas out for the main configuration screen which was the most difficult problem.</p>
-            <p>The user would have a finite amount of data to use. Daimler would create a calculator that would factor in how many signals the user wanted, their treatments, and the interval of time that they would be delivered. The challenge I faced here was figuring out how to communicate this clearly to the user.</p>           
-            <img class="proj__img" 
-            src="images/projects/dcd/first-sketches.jpg" alt="Sketches">
-            <small class="img__caption">A few of my first sketches.</small>
-            <img class="proj__img" src="images/projects/dcd/whiteboarding.jpg" alt="Whiteboarding Sketches">
-            <small class="img__caption">Whiteboarding with Product Owner around my Ideas</small>
-            <p>After sketching, I had a much better grasp of where the interface would be headed. I chose two of my best ideas and shared them with the Product Owner. We chose one, created a higher fidelity wireframe, and showed this to the client.</p>
-            <img class="" src="images/projects/dcd/wireframe.jpg" alt="Annotated Wireframe">
-            <small class="img__caption">First wireframe shared with client</small>
-            <p>This became a great jumping off point for more discussion and deeper understanding with the client. Most of the first concept lived and made it to the final design.</p>
-            <h3 class="margin-bottom">Prototyping and Deeper Wireframing</h3>
-            <p>Now that I knew we were aligned with the client and they were happy with what I had, it was time to dive deeper into the overall flow. I started by wireframing all the different pages and states, and linking together into an Invision wireframe.</p>
-            <img class="proj__img" src="images/projects/dcd/flows.jpg" alt="DCD Flow">
-            <small class="img__caption">Exploring two different flows</small>
-            <p>Next, I went back and did some sketching and whiteboarding, as well as I playing around with many different flows and options within Sketch and Invision. This gave me the ability to emulate the flow that the user would experience and easily share it with the Product Owner and developers to get their feedback on my ideas.</p>
-            <p>I did a tremendous amount of iteration even though I had a strong solution on hand; I wanted to be sure that there weren’t better solutions. So even though I had the sign off from the stakeholders, PO, and developers on my proposed solution I continued to play around with other ideas and flows. I found it useful to go beyond Invision and add some animations to the flow using Principle.</p>
-            <video src="images/projects/dcd/dcd-flow-test.mov" preload controls></video>
-            <small class="img__caption">Exploring two different flows</small>
-            <h3 class="margin-bottom">Final Design and Prototyping</h3>
-            <p>Once I was confident and happy with my solution, it was time to create the entire design. At this point I had mapped out all the complicated flows and states. I made  sure that all states and flows were mapped out in the final design and I designed all the elements.</p>
-            <p>The prototype that I created became a very valuable tool for internal team conversations and to use in conjunction with user stories. The client also used it to show to their customers and to collect feedback.</p>
-            <img class="" src="images/projects/dcd/user-flow.jpg" alt="DCD Flow">
-            <small class="img__caption">Final design, flow, and prototype</small>
-            <h3 class="margin-bottom">Final Touches</h3>
-            <p>I attended all backlog grooming meetings, helped define user stories, and answered questions the developers had before development started.</p>
-            <p>I also took the time to identify any needed animations. We were on a very tight timeline, so I only added one animation that was necessary for the usability of the website and that was adding Nodules to Reports. I knew that the user needed a small animation for context and to show where the Nodule was added. I used Principle to come up with a few different ideas and in the end delivered a video of what the animation should look like.</p>
-            <img class="" src="images/projects/dcd/checkbox.gif" alt="Checkbox Animation">
-            <small class="img__caption">Adding a data to report animation</small>
-          </div>
+        <div class="info text-align--center margin-vertical--large">
+          <p class="padding-around--large">This project is under NDA. Please email me for a case study.</p> 
+          <a href="mailto:swetzoff@gmail.com?subject=Case Study Request" class="button">Email for Case Study</a>
         </div>
-      </div>
-      <img class="" src="images/projects/dcd/bright-view-of-the-macbook-pro-on-the-table.jpg" alt="Macbook on Table">
+    </div>
   </div>
 </main>
 {% include "partials/footer.nunjucks" %} {% endblock %}

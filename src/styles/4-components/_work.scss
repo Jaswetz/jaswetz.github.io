@@ -23,7 +23,7 @@ main {
 .project {
   margin-bottom: $spacing;
   h3 {
-    color: $color--orange;
+    color: $color--blue;
     font-size: $text-size--big;
     transition-property: color;
     transition-duration: .2s;
@@ -60,18 +60,18 @@ main {
   a:active,
   a:hover {
     h3{
-      color: shade($color--orange, 10%);
+      color: shade($color--blue, 10%);
       position: relative;
 
       
       &:after {
         width: $spacing * 2;
-        background: shade($color--orange, 10%);
+        background: shade($color--blue, 10%);
       }
     }
 
     img {
-      border: 1px solid $color--orange;
+      border: 1px solid $color--blue;
     }
   }
 }

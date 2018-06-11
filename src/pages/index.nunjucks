@@ -30,18 +30,18 @@
                             <!-- <a href="lfc.html">View Project</a> -->
                         </div>
                     </div>
-                </div>
+                </div>            
                 <div class="g__cell">
                     <div class="project">
                         <a href="dcd.html">
-                            <img src="images/proj-thumb-dcd.jpg" alt="Detroit Connect Direct on Surface">
+                            <img src="images/proj-thumb-dcd.jpg" alt="Detroit Connect Direct">
                         </a>
                         <div class="project__content">
-                            <a href="dc.html"><h3>Detroit Connect Direct</h3></a>
-                            <h4>UX Design and Strategy</h4>
+                            <a href="dc.html"><h3>Detroit Connect Direct (NDA)</h3></a>
+                            <h4>UX Design, Research, and Strategy</h4>
                         </div>
                     </div>
-                </div>                
+                </div>
                 <div class="g__cell">
                     <div class="project">
                         <a href="dc.html">
