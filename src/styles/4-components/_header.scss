@@ -1,3 +1,9 @@
+@use "sass:color";
+@use "../2-utilities/config" as *;
+@use "../2-utilities/mixins" as *;
+@use "../2-utilities/colors" as *;
+@use "../3-base/lists" as *;
+
 .header {
   position: fixed;
   z-index: $zindex--3;
@@ -7,7 +13,7 @@
   padding-bottom: $spacing--large;
 
   &.scrolled {
-      background: transparentize($color--black, .1);
+      background: color.scale($color--black, $alpha: -10%);
       padding-bottom: 0;
       border-bottom: 1px solid $color--white;
   }

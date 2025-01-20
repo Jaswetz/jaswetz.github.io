@@ -2,18 +2,22 @@
 // Config //
 ///////////
 
+@use "sass:math";
+@use "./colors" as *;
+
 // Debug
 $wireframe: false;
 $baseline-grid: false;
 
 // Breakpoints
-@include breakpoint-set('to ems', true);
-$xs: max-width 25em;
-$small: 26em; //655px
-$medium: 41em;
-$large: 48em;
-$xl: 75em;
-$max-width: 85.38rem; //1366px
+$breakpoints: (
+  xs: 25em,  // 400px
+  small: 26em,  // 655px
+  medium: 41em,  // 656px
+  large: 48em,  // 768px
+  xl: 75em,  // 1200px
+  max-width: 85.38rem  // 1366px
+);
 
 // Font Weights //
 $font-weight--thin: lighter;
@@ -31,7 +35,7 @@ $text-size--large: 1.953rem;
 $text-size--xlarge: 2.441rem;
 $text-size--xxlarge: 3.052rem;
 $text-size--giant: 3.815rem;
-$text-size--mega: 4.768em;
+$text-size--mega: 4.768rem;
 
 // Base Text //
 $base__font-size: $text-size;
@@ -52,15 +56,15 @@ $heading--color: grey;
 
 // Spacing //
 $spacing: $base__line-height;
-$spacing--small: $spacing / 2;
-$spacing--xsmall: $spacing / 3;
+$spacing--small: math.div($spacing, 2);
+$spacing--xsmall: math.div($spacing, 3);
 $spacing--large: $spacing * 2;
 $spacing--xlarge: $spacing * 3;
 
-// Breakpoints
+// Additional Breakpoints
 $mobile: 320px; // iPhone 5
 $phablet: 412px; // iPhone 6
-$tablet: 768px; // iPhone 6
+$tablet: 768px; // iPad
 
 // Border
 $border-width: .1rem;

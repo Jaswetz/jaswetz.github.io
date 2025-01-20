@@ -1,3 +1,9 @@
+@use "../2-utilities/config" as *;
+@use "../2-utilities/mixins" as *;
+@use "../2-utilities/colors" as *;
+@use "../3-base/breakpoints" as *;
+@use "../3-base/lists" as *;
+
 footer {
   background: $color--black;
   position: relative;

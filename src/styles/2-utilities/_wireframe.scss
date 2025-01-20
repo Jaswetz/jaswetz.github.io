@@ -2,6 +2,8 @@
 // Wireframe //
 ///////////////
 
+@use "./config" as *;
+
 @if $wireframe == true {
     .is-wireframe {
         section,

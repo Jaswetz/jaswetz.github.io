@@ -1,3 +1,6 @@
+@use "sass:math";
+@use "sass:color";
+
 ////////////
 // Mixins //
 ////////////
@@ -23,14 +26,14 @@
 // Calculate rem size when base size is 16px
 // rem(16px) = 1 rem
 @function rem($size) {
-  $remSize: $size / 16px;
+  $remSize: math.div($size, 16px);
   @return #{$remSize}rem;
 }
 
 /// Remove the unit of a length
 // strip-unit($length);
 @function strip-unit($value) {
-	@return $value / ($value * 0 + 1);
+	@return math.div($value, ($value * 0 + 1));
 }
 
 // Breakpoints
@@ -65,7 +68,7 @@
 /// @param {Number} $percentage - percentage of `$color` in returned color
 /// @return {Color}
 @function tint($color, $percentage) {
-  @return mix(white, $color, $percentage);
+  @return color.mix(white, $color, $percentage);
 }
 
 /// Slightly darken a color
@@ -74,5 +77,5 @@
 /// @param {Number} $percentage - percentage of `$color` in returned color
 /// @return {Color}
 @function shade($color, $percentage) {
-  @return mix(black, $color, $percentage);
+  @return color.mix(black, $color, $percentage);
 }

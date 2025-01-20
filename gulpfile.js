@@ -1,55 +1,49 @@
-// Required Plugins
-var gulp = require('gulp');
-var styleguide   = require('sc5-styleguide');
-var imagemin     = require('gulp-imagemin');
-var svgSprite    = require('gulp-svg-sprite');
-var sass = require('gulp-sass');
-var postcss = require('gulp-postcss');
-var sourcemaps = require('gulp-sourcemaps');
-var autoprefixer = require('autoprefixer');
-var notify = require('gulp-notify');
-var cleanCSS = require('gulp-clean-css');
-var del = require('del');
-var rename = require('gulp-rename');
-var plumber = require('gulp-plumber');
-var gulpif = require('gulp-if');
-var runSequence = require('run-sequence');
-var browserSync = require('browser-sync');
-var isArray = require('isarray');
-var htmlmin = require('gulp-html-minifier');
-var uglify = require('gulp-uglify');
-var nunjucksRender = require('gulp-nunjucks-render');
-
+const gulp = require('gulp');
+const imagemin = require('gulp-imagemin');
+const svgSprite = require('gulp-svg-sprite');
+const sass = require('gulp-sass')(require('sass'));
+const postcss = require('gulp-postcss');
+const sourcemaps = require('gulp-sourcemaps');
+const autoprefixer = require('autoprefixer');
+const notify = require('gulp-notify');
+const notifier = require('node-notifier');
+const cleanCSS = require('gulp-clean-css');
+const { deleteAsync } = require('del');
+const rename = require('gulp-rename');
+const plumber = require('gulp-plumber');
+const gulpif = require('gulp-if');
+const browserSync = require('browser-sync').create();
+const htmlmin = require('gulp-html-minifier-terser');
+const uglify = require('gulp-uglify');
+const nunjucksRender = require('gulp-nunjucks-render');
 
 // For production or development?
-isProd = false;
+let isProd = false;
 
 // Variables for folder paths
-sourceDir = './src/';
-destDir = './dest/';
-stylesSrc = sourceDir + 'styles/**/*.scss';
-stylesDest = destDir + 'css/';
-jsSrc = sourceDir + '**/*.js';
-htmlSrc = sourceDir + '**/*.+(html|nunjucks)';
-htmlPageSrc = sourceDir + 'pages/' + '**/*.+(html|nunjucks)';
-htmlTemplatesSrc = sourceDir + 'templates';
-htmlDest = destDir;
-jsDest = destDir;
-guideDest = destDir + 'styleguide/'
-imgSrc = sourceDir + 'images/**/*';
-imgDest = destDir + 'images';
-audioSrc = sourceDir + 'audio/*';
-audioDest = destDir + 'audio';
-svgSrc = sourceDir + 'svg';
-svgDest = destDir + 'svg';
-svgGlob = '**/*.svg';
+const sourceDir = './src/';
+const destDir = './dest/';
+const stylesSrc = sourceDir + 'styles/**/*.scss';
+const stylesDest = destDir + 'css/';
+const jsSrc = sourceDir + '**/*.js';
+const htmlSrc = sourceDir + '**/*.+(html|nunjucks)';
+const htmlPageSrc = sourceDir + 'pages/' + '**/*.+(html|nunjucks)';
+const htmlTemplatesSrc = sourceDir + 'templates';
+const htmlDest = destDir;
+const jsDest = destDir;
+const imgSrc = sourceDir + 'images/**/*';
+const imgDest = destDir + 'images';
+const audioSrc = sourceDir + 'audio/*';
+const audioDest = destDir + 'audio';
+const svgSrc = sourceDir + 'svg';
+const svgDest = destDir + 'svg';
+const svgGlob = '**/*.svg';
 
 // Define browser-sync ports
-browserPort = 3000;
-guidePort = 3002;
-UIPort = 3003;
+const browserPort = 3000;
+const UIPort = 3003;
 
-gulp.task('browserSync', function() {
+function browserSyncTask(cb) {
     browserSync.init({
         server: destDir,
         port: browserPort,
@@ -60,163 +54,130 @@ gulp.task('browserSync', function() {
             links: false
         }
     });
-
-});
+    cb();
+}
 
 function handleErrors(error) {
-    if (isProd = false) {
-        notify().write(error);
-        this.emit('end');
-    } else {
-        notify().write(error);
-        console.log(error);
+    notifier.notify({
+        title: 'Gulp Error',
+        message: error.message
+    });
+    console.log(error);
+    if (isProd) {
         process.exit(1);
+    } else {
+        this.emit('end');
     }
 }
 
-// Compile Sass for Development and Production
-// Autoprefixes browser prefixes
-gulp.task('sass', function() {
+function sassTask() {
     return gulp.src(stylesSrc)
         .pipe(sourcemaps.init())
-        // .pipe(gulpif(isProd, sourcemaps.init()))
         .pipe(sass({
-            sourceComments: isProd ? false : 'map',
-            outputStyle: isProd ? 'compressed' : 'nested'
-        }))
+            outputStyle: isProd ? 'compressed' : 'expanded'
+        }).on('error', sass.logError))
         .on('error', handleErrors)
-        .pipe(postcss([autoprefixer({
-            browsers: ['last 2 versions']
-        })]))
-        // .pipe(gulpif(isProd, sourcemaps.write('.')))
-        .pipe(sourcemaps.write())
+        .pipe(postcss([autoprefixer()]))
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(stylesDest))
-        .pipe(gulpif(browserSync.active, browserSync.reload({
-            stream: true
-        })));
-});
+        .pipe(browserSync.stream());
+}
 
-// Move and compress JavaScript
-gulp.task('js', function() {
-    gulp.src(jsSrc)
+function jsTask() {
+    return gulp.src(jsSrc)
         .pipe(gulpif(isProd, uglify()))
-        .pipe(gulp.dest(jsDest))
-});
+        .pipe(gulp.dest(jsDest));
+}
 
+function cleanTask() {
+    return deleteAsync([destDir]);
+}
 
-// Clean up desitination directory
-gulp.task('clean', function() {
-    return del([destDir]);
-});
+function nunjucksTask() {
+    return gulp.src(htmlPageSrc)
+        .pipe(nunjucksRender({
+            path: [htmlTemplatesSrc]
+        }))
+        .pipe(gulpif(isProd, htmlmin({
+            removeComments: true,
+            collapseWhitespace: true,
+            collapseBooleanAttributes: true,
+            removeAttributeQuotes: true,
+            removeRedundantAttributes: true,
+            removeEmptyAttributes: true,
+            removeScriptTypeAttributes: true,
+            removeStyleLinkTypeAttributes: true,
+        })))
+        .pipe(gulp.dest(htmlDest))
+        .pipe(browserSync.stream());
+}
 
-// Templating using Nunjucks
-gulp.task('nunjucks', function() {
-  // Gets .html and .nunjucks files in pages
-  gulp.src( htmlPageSrc )
-  // Renders template with nunjucks
-  .pipe(nunjucksRender({
-      path: [htmlTemplatesSrc]
-    }))
-  .pipe(gulpif(isProd, htmlmin({
-    removeComments: true,
-    collapseWhitespace: true,
-    collapseBooleanAttributes: true,
-    removeAttributeQuotes: true,
-    removeRedundantAttributes: true,
-    removeEmptyAttributes: true,
-    removeScriptTypeAttributes: true,
-    removeStyleLinkTypeAttributes: true,
-  })))
-  // output files in app folder
-  .pipe(gulp.dest(htmlDest))
-      .pipe(gulpif(browserSync.active, browserSync.reload({
-          stream: true
-      })));
-});
-
-// Move and compress images
-gulp.task('imgProcess', function() {
-    gulp.src(imgSrc)
+function imagesTask() {
+    return gulp.src(imgSrc)
         .pipe(gulpif(isProd, imagemin()))
-        .pipe(gulp.dest(imgDest))
-});
+        .pipe(gulp.dest(imgDest));
+}
 
-// Move Audio Files
-gulp.task('audio', function() {
-    gulp.src(audioSrc)
-        .pipe(gulp.dest(audioDest))
-});
+function audioTask() {
+    return gulp.src(audioSrc)
+        .pipe(gulp.dest(audioDest));
+}
 
-// Create SVG Sprite
-// https://github.com/jkphl/gulp-svg-sprite
-gulp.task('svgSprite', function() {
-
-    config = {
-        "svg": {
-          "namespaceClassnames": false
+function svgSpriteTask() {
+    const config = {
+        svg: {
+            namespaceClassnames: false
         },
-        "shape": {
-            "dest": "."
+        shape: {
+            dest: "."
         },
-        "mode": {
-            "symbol": {
-                "dest": ".",
-                "sprite": "sprite.svg"
+        mode: {
+            symbol: {
+                dest: ".",
+                sprite: "sprite.svg"
             }
         }
     };
 
-    return gulp.src(svgGlob, {cwd: svgSrc})
+    return gulp.src(svgGlob, { cwd: svgSrc })
         .pipe(gulpif(isProd, plumber()))
-        .pipe(svgSprite(config)).on('error', function(error){ console.log(error); })
+        .pipe(svgSprite(config)).on('error', function (error) { console.log(error); })
         .pipe(gulp.dest(svgDest))
-        .pipe(notify({ message: 'SVG task complete' }));
-});
+        .pipe(notify({
+            title: 'Gulp',
+            message: 'SVG task complete'
+        }));
+}
 
+function watchTask() {
+    gulp.watch(htmlSrc, nunjucksTask);
+    gulp.watch(stylesSrc, sassTask);
+    gulp.watch(jsSrc, jsTask);
+}
 
-// Style Guide
-gulp.task('styleguide:generate', function() {
-  return gulp.src(stylesSrc)
-    .pipe(styleguide.generate({
-        title: 'My Styleguide',
-        server: true,
-        port: guidePort,
-        rootPath: guideDest,
-        sideNav: true,
-        overviewPath: 'README.md'
-      }))
-    .pipe(gulp.dest(guideDest));
-});
+const build = gulp.series(
+    cleanTask,
+    gulp.parallel(sassTask, nunjucksTask, jsTask, imagesTask, audioTask, svgSpriteTask)
+);
 
-gulp.task('styleguide:applystyles', function() {
-  return gulp.src(stylesSrc + 'app.scss')
-    .pipe(sass({
-      errLogToConsole: true
-    }))
-    .pipe(styleguide.applyStyles())
-    .pipe(gulp.dest(guideDest));
-});
+const dev = gulp.series(
+    (cb) => {
+        isProd = false;
+        cb();
+    },
+    build,
+    gulp.parallel(watchTask, browserSyncTask)
+);
 
-gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles']);
+const prod = gulp.series(
+    (cb) => {
+        isProd = true;
+        cb();
+    },
+    build
+);
 
-// Files are automatically watched
-gulp.task('watch', ['browserSync'], function() {
-    gulp.watch(htmlSrc, ['nunjucks']);
-    gulp.watch(stylesSrc, ['sass']);
-    gulp.watch([stylesSrc], ['styleguide']);
-    gulp.watch([jsSrc], ['js']);
-});
-
-// Gulp development task
-gulp.task('dev', ['clean', ], function(cb) {
-    cb = cb || function() {};
-    isProd = false;
-    return runSequence(['sass', 'nunjucks', 'js', 'imgProcess', 'audio', 'svgSprite', 'styleguide'], 'watch', cb);
-});
-
-// Gulp prod task
-gulp.task('prod', ['clean'], function(cb) {
-    cb = cb || function() {};
-    isProd = true;
-    return runSequence(['sass', 'js', 'imgProcess', 'audio', 'svgSprite', 'nunjucks'], 'watch', cb);
-});
+exports.build = build;
+exports.dev = dev;
+exports.prod = prod;
+exports.default = dev;

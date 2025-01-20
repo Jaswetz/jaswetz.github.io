@@ -2,6 +2,10 @@
 // Typography //
 ///////////////
 
+@use "sass:color";
+@use "../2-utilities/config" as *;
+@use "../2-utilities/mixins" as *;
+@use "../2-utilities/colors" as *;
 
 html {
   font-size: 80%;
@@ -52,7 +56,7 @@ p {
 p,
 ul,
 li {
-    color: lighten($color--black, 35%);
+    color: color.scale($color--black, $lightness: 35%);
 }
 
 h1,

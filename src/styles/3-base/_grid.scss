@@ -1,3 +1,7 @@
+@use "../2-utilities/config" as *;
+@use "../2-utilities/mixins" as *;
+@use "./breakpoints" as *;
+
 $grid-margin: $spacing;
 
 // Base
@@ -22,13 +26,17 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 0 0 0 (-$grid-margin);
+  margin: 0 0 0 -$grid-margin;
   flex-wrap: wrap;
 
   > .g__cell {
     display: block;
-    padding: $grid-margin 0 0 $grid-margin;
-    // Shorthand: flex: flex-grow flex-shrink flex-basis|auto|initial|inherit;
+    padding: $grid-margin;
+    // Shorthand for setting the flex properties:
+    // flex-grow: allows the item to grow relative to the rest of the flex items
+    // flex-shrink: allows the item to shrink relative to the rest of the flex items
+    // flex-basis: defines the default size of an element before the remaining space is distributed
+    // Values can be: auto, initial, inherit, or a specific value
     flex: 1 1 0;
     -ms-flex-preferred-size: 0;
     -webkit-box-flex: 1;
@@ -209,51 +217,51 @@ body {
   }
 
   &.push-1 {
-    margin-left: 8.33333%;
+    margin-left: $grid-margin * 1;
   }
 
   &.push-2 {
-    margin-left: 16.66667%;
+    margin-left: $grid-margin * 2;
   }
 
   &.push-3 {
-    margin-left: 25%;
+    margin-left: $grid-margin * 3;
   }
 
   &.push-4 {
-    margin-left: 33.33333%;
+    margin-left: $grid-margin * 4;
   }
 
   &.push-5 {
-    margin-left: 41.66667%;
+    margin-left: $grid-margin * 5;
   }
 
   &.push-6 {
-    margin-left: 50%;
+    margin-left: $grid-margin * 6;
   }
 
   &.push-7 {
-    margin-left: 58.33333%;
+    margin-left: $grid-margin * 7;
   }
 
   &.push-8 {
-    margin-left: 66.66667%;
+    margin-left: $grid-margin * 8;
   }
 
   &.push-9 {
-    margin-left: 75%;
+    margin-left: $grid-margin * 9;
   }
 
   &.push-10 {
-    margin-left: 83.33333%;
+    margin-left: $grid-margin * 10;
   }
 
   &.push-11 {
-    margin-left: 91.66667%;
+    margin-left: $grid-margin * 11;
   }
 
   &.push-12 {
-    margin-left: 100%;
+    margin-left: $grid-margin * 12;
   }
 }
 

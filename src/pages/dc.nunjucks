@@ -37,13 +37,18 @@
             <h3 class="margin-bottom margin-top--large">iOS Notification Design and Flow</h3>
             <p>Notifications are very important to the user in Detroit Connect. We wanted to give the user the best chance of turning on their notificatins. This is why I designed a way to educate the user on why notifications are important with a soft ask improving the chances the user will turn on notifications.</p>
           </div>
+        </div>
+        <div class="g g--full">
           <div class="g__cell">
             <img class="" src="images/projects/dc/dc-ios-notification-flow.jpg" alt="Detroit Connect iOS Notification Flow">
           </div>
+        </div>  
+        <div class="g g--full">
           <div class="g__cell">
             <img class="" src="images/projects/dc/dc-ios-notification-flow-2.jpg" alt="Detroit Connect iOS Notification Flow">
           </div>
         </div>
+        
         <div class="g g--full margin-bottom--large">
             <div class="g__cell">
               <h3 class="margin-bottom margin-top--large">Remote Updates</h3>

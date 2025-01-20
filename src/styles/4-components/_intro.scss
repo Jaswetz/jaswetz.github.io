@@ -1,3 +1,8 @@
+@use "../2-utilities/config" as *;
+@use "../2-utilities/mixins" as *;
+@use "../3-base/breakpoints" as *;
+@use "../2-utilities/colors" as *;
+
 .intro__wrapper {
   z-index: $zindex--0;
   width: 100%;

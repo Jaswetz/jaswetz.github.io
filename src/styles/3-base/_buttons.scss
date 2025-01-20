@@ -1,3 +1,8 @@
+@use "../2-utilities/config" as *;
+@use "../2-utilities/mixins" as *;
+@use "../2-utilities/colors" as *;
+@use "sass:color";
+
 a.button,
 button,
 button.button {
@@ -5,7 +10,7 @@ button.button {
     font-size: 100%;
     padding: $spacing--xsmall $spacing--small;
     color: $color--white;
-    border: 0.05 solid $color--blue;
+    border: 0.05rem solid $color--blue;
     background-color: $color--blue;
     text-decoration: none;
     border-radius: 2px;
@@ -13,6 +18,6 @@ button.button {
     margin-bottom: $spacing--large;
 
     &:hover {
-      background: tint($color--blue, 10%);
+      background: color.adjust($color--blue, $lightness: 10%);
     }
 }

@@ -1,3 +1,11 @@
+@use "sass:math";
+@use "sass:color";
+@use "../2-utilities/config" as *;
+@use "../2-utilities/mixins" as *;
+@use "../2-utilities/colors" as *;
+@use "../3-base/lists" as *;
+@use "../5-helpers/type" as *;
+
 main {
   background: $color--white;
   z-index: $zindex--1;
@@ -9,9 +17,9 @@ main {
 
   li {
     display: inline-block;
-    margin-left: $spacing--xsmall / 2;
-    margin-right: $spacing--xsmall / 2;
-    padding: ($spacing--xsmall / 2) $spacing--xsmall;
+    margin-left: math.div($spacing--xsmall, 2);
+    margin-right: math.div($spacing--xsmall, 2);
+    padding: math.div($spacing--xsmall, 2) $spacing--xsmall;
     border: .05rem solid $color--grey;
     border-radius: .2rem;
     margin-bottom: $spacing--xsmall;
@@ -147,7 +155,7 @@ main {
 .img__caption {
   display: block;
   font-style: italic;
-  color: lighten($color--grey--dark, 20%);
+  color: color.scale($color--grey--dark, $lightness: 20%);
   margin-bottom: $spacing;
 }
 
