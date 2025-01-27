@@ -6,6 +6,7 @@
 @use "../2-utilities/config" as *;
 @use "../2-utilities/mixins" as *;
 @use "../2-utilities/colors" as *;
+@use "../3-base/breakpoints" as *;
 
 html {
   font-size: 80%;

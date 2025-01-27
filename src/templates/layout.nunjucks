@@ -1,33 +1,58 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Jason Swetzoff's Portfolio</title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Jason Swetzoff - UX Design and Strategy{% endblock %}</title>
+    <meta name="description" content="{% block description %}Jason Swetzoff's portfolio showcasing UX design, research, and strategy projects for web and mobile applications.{% endblock %}">
+    
+    <meta property="og:title" content="{% block og_title %}Jason Swetzoff - UX Design and Strategy{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Jason Swetzoff's portfolio showcasing UX design, research, and strategy projects for web and mobile applications.{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}/images/jason-profile-pic.png{% endblock %}">
+    <meta property="og:url" content="https://jaswetz.github.io{% block og_url %}{% endblock %}">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://code.jquery.com">
+    <link rel="preconnect" href="https://unpkg.com">
 
     <link rel="manifest" href="site.webmanifest">
     <link rel="apple-touch-icon" href="icon.png">
     
     <link rel="stylesheet" href="css/app.css">
-    <link href="https://fonts.googleapis.com/css?family=Karla|Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Karla&family=Roboto&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Jason Swetzoff",
+      "url": "https://jaswetz.github.io",
+      "sameAs": [
+        "https://www.linkedin.com/in/jasonswetzoff/",
+        "https://twitter.com/jasonswetzoff"
+      ],
+      "jobTitle": "UX Designer and Strategist",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Autodesk"
+      }
+    }
+    </script>
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     {% block content %}{% endblock %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
     <script src="js/main.js"></script>
-    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38074716-1"></script>
     <script>
-      window.ga = function () {
-        ga.q.push(arguments)
-      };
-      ga.q = [];
-      ga.l = +new Date;
-      ga('create', 'UA-38074716-1', 'auto');
-      ga('send', 'pageview')
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-38074716-1');
     </script>
-    <script src="https://www.google-analytics.com/analytics.js" async defer></script> 
   </body>
 </html>

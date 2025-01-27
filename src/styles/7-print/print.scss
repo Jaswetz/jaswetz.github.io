@@ -1,0 +1,71 @@
+@media print {
+  // Reset background colors and text color for printing
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  // Hide unnecessary elements
+  nav,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+
+  // Ensure all text is visible
+  .visually-hidden,
+  .sr-only {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    clip: auto !important;
+    clip-path: none !important;
+  }
+
+  // Adjust typography for better readability
+  body,
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: serif !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  // Show URL after links
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+  }
+
+  // Adjust layout for printing
+  .container {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  // Force page breaks where necessary
+  .page-break {
+    page-break-before: always;
+  }
+
+  // Improve table readability
+  table {
+    border-collapse: collapse !important;
+  }
+
+  table, th, td {
+    border: 1px solid #000 !important;
+  }
+}

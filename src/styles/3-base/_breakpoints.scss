@@ -3,12 +3,13 @@
 
 // Breakpoint map
 $breakpoints: (
-  xs: 25em,  // 400px
-  small: 26em,  // 655px
-  medium: 41em,  // 656px
-  large: 48em,  // 768px
-  xl: 75em,  // 1200px
-  max-width: 85.38rem  // 1366px
+  xs: 25em,     // 400px
+  small: 36em,  // 576px
+  medium: 48em, // 768px
+  large: 62em,  // 992px
+  xl: 75em,     // 1200px
+  xxl: 87.5em,  // 1400px
+  max-width: 90rem // 1440px
 );
 
 /// Mixin - Breakpoint
@@ -54,6 +55,13 @@ $breakpoints: (
 /// Mixin - xl Breakpoint
 @mixin xl {
   @include breakpoint(xl) {
+    @content;
+  }
+}
+
+/// Mixin - xxl Breakpoint
+@mixin xxl {
+  @include breakpoint(xxl) {
     @content;
   }
 }
