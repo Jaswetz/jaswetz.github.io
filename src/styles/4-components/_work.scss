@@ -30,6 +30,12 @@ main {
 
 .project {
   margin-bottom: $spacing;
+  box-shadow: 0 .1rem .1rem rgba(0, 0, 0, 0.05);
+  border: $border-width solid $color--grey--light;
+  transition-property: box-shadow;
+  transition-duration: .2s;
+  transition-timing-function: ease-in;
+
   h3 {
     color: $color--blue;
     font-size: $text-size--big;
@@ -83,6 +89,10 @@ main {
     }
   }
 }
+
+.project__content {
+  padding: $spacing--small;
+} 
 
 .proj {
   h1 {
