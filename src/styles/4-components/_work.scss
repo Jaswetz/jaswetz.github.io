@@ -32,9 +32,7 @@ main {
   margin-bottom: $spacing;
   box-shadow: 0 .1rem .1rem rgba(0, 0, 0, 0.05);
   border: $border-width solid $color--grey--light;
-  transition-property: box-shadow;
-  transition-duration: .2s;
-  transition-timing-function: ease-in;
+  transition: box-shadow .2s ease-in, transform .2s ease-in, border .2s ease-in;
 
   h3 {
     color: $color--blue;
@@ -71,22 +69,16 @@ main {
     transition-timing-function: ease-in;
   }
 
-  a:active,
-  a:hover {
-    h3{
-      color: shade($color--blue, 10%);
-      position: relative;
+  &:hover {
+    box-shadow: 0 .2rem .4rem rgba(0, 0, 0, 0.1);
+    transform: translateY(-.1rem);
+    border: $border-width solid $color--blue;
+  } 
 
-      
-      &:after {
-        width: $spacing * 2;
-        background: shade($color--blue, 10%);
-      }
-    }
-
-    img {
-      border: 1px solid $color--blue;
-    }
+  &:active {
+    box-shadow: 0 .1rem .1rem rgba(0, 0, 0, 0.05);
+    transform: translateY(0);
+    border: $border-width solid $color--blue;
   }
 }
 
@@ -186,6 +178,18 @@ main {
     font-size: $text-size--large;
   }
 }
+
+// Autodesk
+.autodesk {
+  h3 {
+    padding-bottom: $spacing--large;
+    display: block;
+  }
+  .proj__intro {
+    background: url(../images/projects/autodesk/autodesk-background.jpg) 50% 50%/cover;
+  }
+}
+
 
 // HOUSEHAPPY
 .househappy {

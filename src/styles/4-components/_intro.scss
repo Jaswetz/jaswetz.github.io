@@ -116,21 +116,19 @@
     margin-right: auto;
     margin-bottom: $spacing;
     margin-left: auto;
+    
 
     @include medium {
       margin: 0;
       margin-right: $spacing;
     }
   }
-  p {
-    padding-bottom: 0;
-  }
+  
   &__wrapper {
     @include medium {
       display: flex;
       margin: 0;
-
-      align-items: center;
+      align-items: flex-start; // Align items to the top
     }
     @include large {
       margin-right: 8.3333%;

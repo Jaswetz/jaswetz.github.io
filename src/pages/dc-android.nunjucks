@@ -1,46 +1,50 @@
 <!-- index.nunjucks -->
-{% extends "layout.nunjucks" %} {% block content %} 
-{% include "partials/header.nunjucks" %}
-<main class="proj dc-android">
-  <div class="proj__intro">
-    <div class="proj__header absolute-center">
-      <h1>Detroit Connect Android</h1>
-    </div>
-  </div>
-  <div class="proj__content">
-    <div class="proj__blurb">
-      <h2>The power of Detroit Connect available on Android</h2>
-      <p>This project required me to convert the existing iOS Detroit Connect app into an Android app. Utilizing Android’s Material Design best practices, I made the app recognizable and seamless on Android devices. This project required me to educate the client on the differences between iOS and Android, produce prototypes, work side-by-side with developers, and create animations. I not only translated an iOS app into an Android app- I also improved the usability and design in the process.</p>
-      <ul class="tags">
-        <li>User Experience</li>
-        <li>Prototyping</li>
-        <li>Animation</li>
-      </ul>
-    </div>
-    <div class="g g--full">
-      <div class="g__cell">
-        <img class="proj__img max-width-image" src="images/projects/dc-android/dc-android-pages.jpg" alt="Detroit Connect on iOS">
+{% extends "layout.nunjucks" %}
+{% block content %}
+  {% include "partials/header.nunjucks" %}
+  <main class="proj dc-android">
+    <div class="proj__intro">
+      <div class="proj__header absolute-center">
+        <h1>Detroit Connect Android</h1>
       </div>
     </div>
-    <div class="g g--full">
-      <div class="g__cell">
-        <img class="proj__img max-width-image" src="images/projects/dc-android/dc-android-flow.jpg" alt="Detroit Connect User Flow">
+    <div class="proj__content">
+      <div class="proj__blurb">
+        <h2>The power of Detroit Connect available on Android</h2>
+        <p>This project required me to convert the existing iOS Detroit Connect app into an Android app. Utilizing Android’s Material Design best practices, I made the app recognizable and seamless on Android devices. This project required me to educate the client on the differences between iOS and Android, produce prototypes, work side-by-side with developers, and create animations. I not only translated an iOS app into an Android app- I also improved the usability and design in the process.</p>
+        <ul class="tags">
+          <li>User Experience</li>
+          <li>Prototyping</li>
+          <li>Animation</li>
+        </ul>
       </div>
-    </div>
-    
-    <div class="g g--full g--remove-gutters">
-      <div class="g__cell">
+      <div class="container">
+        <div class="g g--full">
+          <div class="g__cell">
+            <img class="proj__img center" src="images/projects/dc-android/dc-android-pages.jpg" alt="Detroit Connect on iOS">
+          </div>
+        </div>
+        <div class="g g--full">
+          <div class="g__cell">
+            <img class="" src="images/projects/dc-android/dc-android-flow.jpg" alt="Detroit Connect User Flow">
+          </div>
+        </div>
+      </div>
+      <div class="g g--full g--remove-gutters">
+        <div class="g__cell">
           <img class="margin-vertical" src="images/projects/dc-android/dc-android-woman.jpg" alt="Girl holding iPhone looking at Detroit Connect">
+        </div>
+      </div>
+      <div class="g g--full">
+        <div class="g__cell">
+          <img class="proj__img mobile-animation center" src="images/projects/dc-android/dc-animation-2.gif" alt="Detroit Connect on iOS">
+        </div>
+        <div class="g__cell">
+          <img class="proj__img mobile-animation center" src="images/projects/dc-android/dc-animation-1.gif" alt="Detroit Connect User Flow">
+        </div>
       </div>
     </div>
-    <div class="g g--full">
-        <div class="g__cell">
-          <img class="proj__img mobile-animation" src="images/projects/dc-android/dc-animation-2.gif" alt="Detroit Connect on iOS">
-        </div>
-        <div class="g__cell">
-          <img class="proj__img mobile-animation" src="images/projects/dc-android/dc-animation-1.gif" alt="Detroit Connect User Flow">
-        </div>
-      </div>           
-  </div>
-</main>
-{% include "partials/footer.nunjucks" %} {% endblock %}
+  </main>
+  
+  {% include "partials/footer.nunjucks" %}
+{% endblock %}

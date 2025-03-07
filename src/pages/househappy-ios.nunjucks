@@ -22,10 +22,10 @@
     </div>
     <div class="g g--full">
       <div class="g__cell">
-        <img class="proj__img" src="images/projects/househappy-ios/househappyios-1.jpg" alt="Househappy on a iPad and iOS">
+        <img class="proj__img center" src="images/projects/househappy-ios/househappyios-1.jpg" alt="Househappy on a iPad and iOS">
       </div>
       <div class="g__cell">
-        <img class="proj__img" src="images/projects/househappy-ios/househappyios-4.jpg" alt="Househappy iOS wireframes">
+        <img class="proj__img center" src="images/projects/househappy-ios/househappyios-4.jpg" alt="Househappy iOS wireframes">
       </div>
     </div>
     <div class="g g--full g--remove-gutters">
@@ -35,7 +35,7 @@
     </div> 
     <div class="g g--full">
       <div class="g__cell">
-        <img class="proj__img" src="images/projects/househappy-ios/househappyios-3.jpg" alt="Househappy on three iPhones">
+        <img class="proj__img center" src="images/projects/househappy-ios/househappyios-3.jpg" alt="Househappy on three iPhones">
       </div>
     </div>    
   </div>

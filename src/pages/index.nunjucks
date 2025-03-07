@@ -26,98 +26,113 @@
             <h2 id="work-header" class="section-header">Featured Projects</h2>
             <div class="g g--full g--1of2--medium g--1of3--large">
                 <div class="g__cell">
-                    <article class="project">
-                        <a href="lfc.html" class="project__link">
+                    <a href="autodesk.html" class="project__link">
+                        <article class="project">
+                            <img src="images/proj-thumb-autodesk.jpg" alt="Coming Soon" class="project__image">
+                            <div class="project__content">
+                                <h3 class="project__title">Autodesk Case Studies: Coming Soon</h3>
+                                <p class="project__description">UX Design, Research, and Strategy</p>
+                                <span class="btn btn--primary">View Project</span>
+                            </div>
+                        </article>
+                    </a>
+                </div>
+                <div class="g__cell">
+                    <a href="lfc.html" class="project__link">
+                        <article class="project">
                             <img src="images/proj-thumb-ios-android.jpg" alt="Immersive Media Project showcased on Android and iOS phones" class="project__image">
-                        </a>
-                        <div class="project__content">
-                            <h3><a href="lfc.html" class="project__title">Immersive Media Project (NDA)</a></h3>
-                            <p class="project__description">UX Design, Research, and Strategy</p>
-                            <a href="lfc.html" class="btn btn--primary">View Project</a>
-                        </div>
-                    </article>
-                </div>            
+                            <div class="project__content">
+                                <h3 class="project__title">Immersive Media Project (NDA)</h3>
+                                <p class="project__description">UX Design, Research, and Strategy</p>
+                                <span class="btn btn--primary">View Project</span>
+                            </div>
+                        </article>
+                    </a>
+                </div>
                 <div class="g__cell">
-                    <article class="project">
-                        <a href="dcd.html" class="project__link">
+                    <a href="dcd.html" class="project__link">
+                        <article class="project">
                             <img src="images/proj-thumb-dcd.jpg" alt="Detroit Connect Direct interface on a laptop" class="project__image">
-                        </a>
-                        <div class="project__content">
-                            <h3><a href="dcd.html" class="project__title">Detroit Connect Direct (NDA)</a></h3>
-                            <p class="project__description">UX Design, Research, and Strategy</p>
-                            <a href="dcd.html" class="btn btn--primary">View Project</a>
-                        </div>
-                    </article>
+                            <div class="project__content">
+                                <h3 class="project__title">Detroit Connect Direct (NDA)</h3>
+                                <p class="project__description">UX Design, Research, and Strategy</p>
+                                <span class="btn btn--primary">View Project</span>
+                            </div>
+                        </article>
+                    </a>
                 </div>
                 <div class="g__cell">
-                    <article class="project">
-                        <a href="dc.html" class="project__link">
+                    <a href="dc.html" class="project__link">
+                        <article class="project">
                             <img src="images/proj-thumb-dc.jpg" alt="Detroit Connect interface on a MacBook" class="project__image">
-                        </a>
-                        <div class="project__content">
-                            <h3><a href="dc.html" class="project__title">Detroit Connect</a></h3>
-                            <p class="project__description">UX Design, Living Styleguide and CSS Architecture</p>
-                            <a href="dc.html" class="btn btn--primary">View Project</a>
-                        </div>
-                    </article>
+                            <div class="project__content">
+                                <h3 class="project__title">Detroit Connect</h3>
+                                <p class="project__description">UX Design, Living Styleguide and CSS Architecture</p>
+                                <span class="btn btn--primary">View Project</span>
+                            </div>
+                        </article>
+                    </a>
                 </div>
                 <div class="g__cell">
-                    <article class="project">
-                        <a href="dc-android.html" class="project__link">
+                    <a href="dc-android.html" class="project__link">
+                        <article class="project">
                             <img src="images/proj-thumb-dc-android.jpg" alt="Detroit Connect interface on an Android device" class="project__image">
-                        </a>
-                        <div class="project__content">
-                            <h3><a href="dc-android.html" class="project__title">Detroit Connect Android</a></h3>
-                            <p class="project__description">UX Design</p>
-                            <a href="dc-android.html" class="btn btn--primary">View Project</a>
-                        </div>
-                    </article>
+                            <div class="project__content">
+                                <h3 class="project__title">Detroit Connect Android</h3>
+                                <p class="project__description">UX Design</p>
+                                <span class="btn btn--primary">View Project</span>
+                            </div>
+                        </article>
+                    </a>
                 </div>
                 <div class="g__cell">
-                    <article class="project">
-                        <a href="househappy.html" class="project__link">
+                    <a href="househappy.html" class="project__link">
+                        <article class="project">
                             <img src="images/proj-thumb-househappy.jpg" alt="Househappy interface on a laptop" class="project__image">
-                        </a>
-                        <div class="project__content">
-                            <h3><a href="househappy.html" class="project__title">Househappy</a></h3>
-                            <p class="project__description">UX Design and Strategy</p>
-                            <a href="househappy.html" class="btn btn--primary">View Project</a>
-                        </div>
-                    </article>
+                            <div class="project__content">
+                                <h3 class="project__title">Househappy</h3>
+                                <p class="project__description">UX Design and Strategy</p>
+                                <span class="btn btn--primary">View Project</span>
+                            </div>
+                        </article>
+                    </a>
                 </div>
                 <div class="g__cell">
-                    <article class="project">
-                        <a href="househappy-ios.html" class="project__link">
+                    <a href="househappy-ios.html" class="project__link">
+                        <article class="project">
                             <img src="images/proj-thumb-househappy-ios.jpg" alt="Househappy interface on an iOS device" class="project__image">
-                        </a>
-                        <div class="project__content">
-                            <h3><a href="househappy-ios.html" class="project__title">Househappy iOS App</a></h3>
-                            <p class="project__description">UX Design and Strategy</p>
-                            <a href="househappy-ios.html" class="btn btn--primary">View Project</a>
-                        </div>
-                    </article>
+                            <div class="project__content">
+                                <h3 class="project__title">Househappy iOS App</h3>
+                                <p class="project__description">UX Design and Strategy</p>
+                                <span class="btn btn--primary">View Project</span>
+                            </div>
+                        </article>
+                    </a>
                 </div>
             </div>
         </section>
     </div>
 
-    <section class="about" aria-labelledby="about-header">
+ <section class="about" aria-labelledby="about-header">
         <div class="container">
             <h2 id="about-header" class="section-header">About Me</h2>
             <div class="about__wrapper">
-                <img src="../images/jason-profile-pic.png" alt="Jason Swetzoff, UX Designer and Strategist" class="about__image">
+                <img src="images/jason-profile-pic.png" alt="Jason Swetzoff, UX Designer and Strategist" class="about__image">
                 <div class="about__content">
-                    <p>I am fascinated by technology that's built around--and helps build upon--empathy for the end user. As an avid outdoorsman and active member of the improv community, I seek to restore the childlike wonder we all possess, so I can see more opportunities to explore, co-create and connect.</p>
-                    <p>Currently, I lead Metal Toad's user experience strategy and development, where I focus on creating intuitive and engaging digital experiences that solve real-world problems.</p>
-                    <ul class="about__skills" aria-label="Skills and expertise">
-                        <li>UX Design</li>
-                        <li>User Research</li>
-                        <li>Information Architecture</li>
-                        <li>Prototyping</li>
-                        <li>Usability Testing</li>
-                        <li>Design Systems</li>
+                    <p>As a Principal UX Designer & Front-End Specialist with over 6 years of experience at Autodesk, I specialize in leading and crafting user-centric solutions that align with both user needs and business goals. My work spans across diverse domains like growth-focused initiatives, architecting complex data management flows, scalable design systems, and cross-platform experiences.</p>
+                    <p>With extensive experience in front-end development, I am uniquely positioned to bridge the gap between strategic design vision and technical implementation. This combination of skills enables me to deliver solutions that are both innovative and technically sound.</p>
+                    <p>Collaboration is at the heart of my approach. I thrive on building strong working relationships and fostering cross-functional teamwork, believing that true innovation emerges from shared ideas and user engagement. My process is deeply rooted in user research and design thinking, ensuring every solution addresses real user needs while driving measurable business impact.</p>
+                    <h3>Key areas of expertise:</h3>
+                    <ul>
+                        <li>Growth-driven UX strategy</li>
+                        <li>Complex information architecture & data visualization</li>
+                        <li>Scalable design systems & UI frameworks</li>
+                        <li>Cross-platform & device-independent experiences</li>
+                        <li>Front-end development collaboration (HTML/CSS/JS)</li>
+                        <li>User Research and Design thinking</li>
+                        <li>Petting cats and dogs.</li>
                     </ul>
-                    <a href="#" class="btn btn--secondary" title="Download Jason Swetzoff's Resume">Download Resume</a>
+                    <p>Let's connect—I'm eager to discuss UX trends, exchange insights, or explore opportunities for new challenges! Reach out, I'm friendly :)</p>
                 </div>
             </div>
         </div>

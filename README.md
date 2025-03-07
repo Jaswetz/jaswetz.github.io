@@ -40,7 +40,7 @@ Before deploying the website, please complete the following steps:
 
 8. Accessibility testing:
    - Use a screen reader to navigate the website and ensure all content is accessible
-   - Test keyboard navigation throughout the site
+   - Test keyboard navigation throughout the sitexz
 
 9. Cross-browser testing:
    - Test the website in different browsers to ensure consistency

@@ -23,7 +23,7 @@ header {
     color: $color--white;
   }
   #{$a-tags-hover} {
-    color: color.adjust($color--white, $lightness: -30%);
+    color: color.adjust($color--white, $lightness: -20%);
 
     svg {
       opacity: .8;
@@ -38,4 +38,8 @@ footer {
   #{$a-tags-hover} {
     color: $color--white;
   }
+}
+
+a.disabled {
+  pointer-events: none;
 }
