@@ -28,6 +28,15 @@ main {
   }
 }
 
+.metadata {
+  @extend .list-reset;
+  margin-bottom: $spacing;
+
+  li{
+    margin-bottom: $spacing--xsmall;
+  }
+}
+
 .project {
   margin-bottom: $spacing;
   box-shadow: 0 .1rem .1rem rgba(0, 0, 0, 0.05);
@@ -91,6 +100,16 @@ main {
     text-align: center;
   }
 
+  h2,
+  p,
+  li,
+  .tags,
+  p, h3, figcaption {
+    @extend .optimal-length;
+    margin-left: auto;
+    margin-right: auto;      
+  }
+
   &__intro {
     height: $spacing * 12;
     position: fixed;
@@ -122,19 +141,13 @@ main {
   &__blurb {
     background: $color--grey--light;
     padding: $spacing;
-    text-align: center;
+    // text-align: center;
     margin-bottom: $spacing;
+    border-bottom: $border-width solid color.scale($color--grey, $lightness: 90%);
 
     h2 {
       margin-bottom: $spacing;
       line-height: $base__line-height * 1.5;
-    }
-    
-    h2,
-    p {
-      @extend .optimal-length;
-      margin-left: auto;
-      margin-right: auto;      
     }
   }
 
@@ -240,4 +253,21 @@ main {
   video {
     width: 100%;
   }
+
+  ul {
+    margin-bottom: $spacing;
+  }
+
+  h2 {
+    color: $color--blue;
+  }
+
+  .proj__img{
+    max-width: 54rem;
+  }
+
+  figcaption {
+    margin-bottom: $spacing;
+  }
+
 }

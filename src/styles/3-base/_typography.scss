@@ -118,3 +118,9 @@ h4,
     margin-right: auto;
   }
 }
+
+figcaption {
+  font-size: $text-size--xsmall;
+  color: $color--grey;
+  font-style: italic;
+}
