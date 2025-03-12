@@ -1,0 +1,83 @@
+@use "../2-utilities/config" as *;
+@use "../2-utilities/mixins" as *;
+@use "../2-utilities/colors" as *;
+
+// Simple lightbox functionality for all pages except index
+  .proj__img, .mobile-animation {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: $zindex--2; // Higher than the overlay
+    
+    &:hover {
+      transform: scale(1.02);
+    }
+    
+    &.lightbox-active {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      max-width: 90vw;
+      max-height: 90vh;
+      z-index: 99; // Increased z-index to be above overlay
+      cursor: zoom-out;
+      object-fit: contain;
+      
+      &:hover {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+  }
+
+// Overlay for lightbox
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 98; // Below the image
+  display: none;
+  
+  &.active {
+    display: block;
+  }
+}
+
+// Close button for lightbox
+.lightbox-close {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  z-index: 1002; // Higher than the image
+  display: none;
+  cursor: pointer;
+  
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 2px;
+    background-color: white;
+  }
+  
+  &::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  
+  &.active {
+    display: block;
+  }
+}
