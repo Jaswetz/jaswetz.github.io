@@ -42,7 +42,7 @@
                         <article class="project">
                             <img src="images/proj-thumb-ios-android.jpg" alt="Immersive Media Project showcased on Android and iOS phones" class="project__image">
                             <div class="project__content">
-                                <h3 class="project__title">Immersive Media Project (NDA)</h3>
+                                <h3 class="project__title">Immersive Media Project</h3>
                                 <p class="project__description">UX Design, Research, and Strategy</p>
                                 <span class="btn btn--primary">View Project</span>
                             </div>
@@ -54,7 +54,7 @@
                         <article class="project">
                             <img src="images/proj-thumb-dcd.jpg" alt="Detroit Connect Direct interface on a laptop" class="project__image">
                             <div class="project__content">
-                                <h3 class="project__title">Detroit Connect Direct (NDA)</h3>
+                                <h3 class="project__title">Detroit Connect Direct</h3>
                                 <p class="project__description">UX Design, Research, and Strategy</p>
                                 <span class="btn btn--primary">View Project</span>
                             </div>
