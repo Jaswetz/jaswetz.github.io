@@ -13,15 +13,23 @@
     <div class="intro" role="banner" aria-label="Introduction"></div>
     <div class="intro__tagline font-weight--bold">
         <div class="container">
-            <div class="intro__tagline--large uppercase">UX Design</div>
+            <div class="uppercase">Bridging UX, Development</div>
             <span class="font-weight--thin">and</span>
             <span class="uppercase">Strategy</span>
         </div>
     </div>
 </div>
-
+    <section class="blurb">
+        <div class="container">
+            <blockquote class="quote__content">
+                <p>"I can confidently say he (Jason) is one of the most creative and skillful designers I've ever worked with."</p>
+                <cite class="quote__author">- <span class="font-weight--bold">George</span>, Ex-Manager at Autodesk</cite>
+            </blockquote>
+        </div>
+    </section>
 <main role="main" id="main-content">
     <div class="container">
+
         <section class="work" aria-labelledby="work-header">
             <h2 id="work-header" class="section-header">Featured Projects</h2>
             <div class="g g--full g--1of2--medium g--1of3--large">
@@ -30,8 +38,8 @@
                         <article class="project">
                             <img src="images/proj-thumb-autodesk.jpg" alt="Coming Soon" class="project__image">
                             <div class="project__content">
-                                <h3 class="project__title">Autodesk Case Studies: Coming Soon</h3>
-                                <p class="project__description">UX Design, Research, and Strategy</p>
+                                <h3 class="project__title">Autodesk Case Studies</h3>
+                                <p class="project__description">COMING SOON!</p>
                                 <span class="btn btn--primary">View Project</span>
                             </div>
                         </article>
@@ -42,8 +50,8 @@
                         <article class="project">
                             <img src="images/proj-thumb-ios-android.jpg" alt="Immersive Media Project showcased on Android and iOS phones" class="project__image">
                             <div class="project__content">
-                                <h3 class="project__title">Immersive Media Project</h3>
-                                <p class="project__description">UX Design, Research, and Strategy</p>
+                                <h3 class="project__title">Securing Intel's Multi-Year Deal with an Immersive Soccer App</h3>
+                                <p class="project__description">How my research and immersive designs helped Intel secure a multi-year deal with TNT.</p>
                                 <span class="btn btn--primary">View Project</span>
                             </div>
                         </article>
@@ -54,14 +62,32 @@
                         <article class="project">
                             <img src="images/proj-thumb-dcd.jpg" alt="Detroit Connect Direct interface on a laptop" class="project__image">
                             <div class="project__content">
-                                <h3 class="project__title">Detroit Connect Direct</h3>
-                                <p class="project__description">UX Design, Research, and Strategy</p>
+                                <h3 class="project__title">Streamlining Data Access: Fleet analytics for Daimler Trucks</h3>
+                                <p class="project__description">I engineered an automated data access experience, empowering top Daimler customers with enhanced fleet analytics.</p>
                                 <span class="btn btn--primary">View Project</span>
                             </div>
                         </article>
                     </a>
                 </div>
-                <div class="g__cell">
+            </div>
+        </section>
+
+        </div>
+
+        <section class="blurb blurb--full-width">
+            <div class="container">
+            <blockquote class="quote__content">
+                <p>"Jason possesses a remarkable ability to adapt and refine user experiences across various devices and form factors, ensuring seamless and intuitive interactions. His approach can be both innovative and pragmatic, striking a thoughtful balance between user experience, usability, and business objectives."</p>
+                <cite class="quote__author">- <span class="font-weight--bold">Yushan</span>, Senior UX Designer at Autodesk</cite>
+            </blockquote>
+            </div>
+        </section>
+
+        <div class="container">
+          <section class="work" aria-labelledby="work-header">
+            <h2 id="work-header" class="section-header">Want to see more?</h2>
+            <div class="g g--full g--1of2--medium g--1of3--large">
+                                <div class="g__cell">
                     <a href="dc.html" class="project__link">
                         <article class="project">
                             <img src="images/proj-thumb-dc.jpg" alt="Detroit Connect interface on a MacBook" class="project__image">
@@ -109,9 +135,10 @@
                         </article>
                     </a>
                 </div>
-            </div>
-        </section>
+                </div>
+                </section>    
     </div>
+      
 
  <section class="about" aria-labelledby="about-header">
         <div class="container">
@@ -119,20 +146,9 @@
             <div class="about__wrapper">
                 <img src="images/jason-profile-pic.png" alt="Jason Swetzoff, UX Designer and Strategist" class="about__image">
                 <div class="about__content">
-                    <p>As a Principal UX Designer & Front-End Specialist with over 6 years of experience at Autodesk, I specialize in leading and crafting user-centric solutions that align with both user needs and business goals. My work spans across diverse domains like growth-focused initiatives, architecting complex data management flows, scalable design systems, and cross-platform experiences.</p>
-                    <p>With extensive experience in front-end development, I am uniquely positioned to bridge the gap between strategic design vision and technical implementation. This combination of skills enables me to deliver solutions that are both innovative and technically sound.</p>
-                    <p>Collaboration is at the heart of my approach. I thrive on building strong working relationships and fostering cross-functional teamwork, believing that true innovation emerges from shared ideas and user engagement. My process is deeply rooted in user research and design thinking, ensuring every solution addresses real user needs while driving measurable business impact.</p>
-                    <h3>Key areas of expertise:</h3>
-                    <ul>
-                        <li>Growth-driven UX strategy</li>
-                        <li>Complex information architecture & data visualization</li>
-                        <li>Scalable design systems & UI frameworks</li>
-                        <li>Cross-platform & device-independent experiences</li>
-                        <li>Front-end development collaboration (HTML/CSS/JS)</li>
-                        <li>User Research and Design thinking</li>
-                        <li>Petting cats and dogs.</li>
-                    </ul>
-                    <p>Let's connect—I'm eager to discuss UX trends, exchange insights, or explore opportunities for new challenges! Reach out, I'm friendly :)</p>
+                    <p>I transform complex challenges into elegant user experiences as a Principal UX Designer with front-end development expertise. I bridge business goals, user needs, and technical realities—equally comfortable coding prototypes and presenting strategic design impact to executives.</p>
+                    <p>Driven by curiosity, I constantly explore new apps, landscapes, dinner spots, and design systems. My adaptability powers my leadership of cross-functional teams and multi-device experiences. I balance deep individual work with teamwork, believing collaboration is what truly makes work fun and innovative.</p>
+                    <p>Seeking to apply my expertise in multi-platform products, growth UX strategy, and scalable design systems where asking the right questions is valued as highly as having the right answers.</p>
                 </div>
             </div>
         </div>
