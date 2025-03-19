@@ -2,82 +2,230 @@
 @use "../2-utilities/mixins" as *;
 @use "../2-utilities/colors" as *;
 
-// Simple lightbox functionality for all pages except index
-  .proj__img, .mobile-animation {
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    z-index: $zindex--2; // Higher than the overlay
-    
-    &:hover {
-      transform: scale(1.02);
-    }
-    
-    &.lightbox-active {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(1);
-      max-width: 90vw;
-      max-height: 90vh;
-      z-index: 99; // Increased z-index to be above overlay
-      cursor: zoom-out;
-      object-fit: contain;
-      
-      &:hover {
-        transform: translate(-50%, -50%) scale(1);
-      }
-    }
-  }
-
-// Overlay for lightbox
-.lightbox-overlay {
+// Lightbox container that will be injected at the end of the body
+.lightbox {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 98; // Below the image
-  display: none;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
   
   &.active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0s linear;
+  }
+  
+  // Main image container
+  &__content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    
+    .active & {
+      transform: scale(1);
+    }
+
+  }
+  
+  // The image itself
+  &__img {
     display: block;
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+  }
+  
+  // Caption for the image
+  &__caption {
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 0.9rem;
+    padding: 10px;
+    opacity: 0.8;
+  }
+  
+  // Close button
+  &__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    
+    &:focus {
+      outline: 2px solid white;
+      outline-offset: 2px;
+    }
+    
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 2px;
+      background-color: white;
+    }
+    
+    &::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    
+    &::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+  
+  // Navigation arrows
+  &__nav {
+    position: absolute;
+    top: 0;
+    width: 15%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border: none;
+    background-color: transparent;
+
+    &:hover{
+      background-color: rgba(255, 255, 255, 0.10);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+    
+    .lightbox:hover & {
+      opacity: 0.7;
+    }
+    
+    &:hover {
+      opacity: 1 !important;
+    }
+    
+    &:focus {
+      outline: none;
+      opacity: 1;
+    }
+    
+    &--prev {
+      left: 0;
+      
+      &::before {
+        content: '';
+        display: block;
+        width: 20px;
+        height: 20px;
+        border-left: 3px solid white;
+        border-bottom: 3px solid white;
+        transform: rotate(45deg);
+      }
+    }
+    
+    &--next {
+      right: 0;
+      
+      &::before {
+        content: '';
+        display: block;
+        width: 20px;
+        height: 20px;
+        border-right: 3px solid white;
+        border-top: 3px solid white;
+        transform: rotate(45deg);
+      }
+    }
   }
 }
 
-// Close button for lightbox
-.lightbox-close {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
-  z-index: 1002; // Higher than the image
-  display: none;
+// Styles for the images that will trigger the lightbox
+.proj__img, .mobile-animation {
   cursor: pointer;
+  transition: transform 0.3s ease;
   
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 20px;
-    height: 2px;
-    background-color: white;
+  &:hover {
+    transform: scale(1.02);
   }
   
-  &::before {
-    transform: translate(-50%, -50%) rotate(45deg);
+  // Accessibility focus styles
+  &:focus {
+    outline: 3px solid $color--white;
+    outline-offset: 3px;
   }
-  
-  &::after {
-    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+// Animation for the lightbox
+@keyframes lightboxIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
   }
-  
-  &.active {
-    display: block;
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes lightboxOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+// Mobile optimizations
+@media (max-width: 768px) {
+  .lightbox {
+    &__nav {
+      width: 25%; // Wider touch targets on mobile
+      
+      &--prev::before,
+      &--next::before {
+        width: 15px;
+        height: 15px;
+      }
+    }
+    
+    &__close {
+      top: 10px;
+      right: 10px;
+    }
   }
 }
