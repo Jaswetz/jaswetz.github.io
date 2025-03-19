@@ -265,12 +265,22 @@ main {
   .proj__intro {
     background: url(../images/projects/dc/dc-background.jpg) 50% 50%/cover;
   }
+
+  .proj__img {
+    max-width: 100%;
+  }
 }
 
 // DETROIT CONNECT ANDROID
 .dc-android {
+
+  margin-bottom: $spacing;
   .proj__intro {
     background: url(../images/projects/dc-android/dc-android-background.jpg) 50% 50%/cover;
+  }
+
+  .full-width {
+    max-width: 100%;
   }
 }
 
@@ -288,7 +298,9 @@ main {
   video {
     width: 100%;
   }
-
+  .users {
+    max-width: $spacing * 18 !important;
+  }
   ul {
     margin-bottom: $spacing;
   }

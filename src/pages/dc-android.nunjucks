@@ -26,7 +26,7 @@
         </div>
         <div class="g g--full">
           <div class="g__cell">
-            <img class="" src="images/projects/dc-android/dc-android-flow.jpg" alt="Detroit Connect User Flow">
+            <img class="proj__img full-width" src="images/projects/dc-android/dc-android-flow.jpg" alt="Detroit Connect User Flow">
           </div>
         </div>
       </div>

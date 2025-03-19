@@ -42,7 +42,7 @@
         <div class="proj__section">
           <h2>Users</h2>
           <figure>
-            <img class="proj__img center" src="images/projects/dcd/user-graph.jpg" alt="Users">
+            <img class="proj__img center users" src="images/projects/dcd/user-graph.jpg" alt="Users">
             <figcaption>Technical abilities of users.</figcaption>
           </figure>
         </div>
