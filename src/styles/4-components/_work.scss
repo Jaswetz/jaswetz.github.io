@@ -5,6 +5,7 @@
 @use "../2-utilities/colors" as *;
 @use "../3-base/lists" as *;
 @use "../5-helpers/type" as *;
+@use "../3-base/breakpoints" as *;
 
 main {
   background: $color--white;
@@ -130,7 +131,7 @@ main {
       height: $spacing * 12;
       width: 100%;
       display: block;
-      background: rgba(0, 0, 0, 0.75);
+      background: rgba(0, 0, 0, 0.65);
       position: relative;
       z-index: $zindex--2;
     }
@@ -164,8 +165,19 @@ main {
   &__header {
     position: relative;
     z-index: $zindex--3;
+    width: 100%;
+    padding-right: $spacing;
+    padding-left: $spacing;
+    max-width: rem(850px);
     h1 {
       color: $color--white;
+      font-size: $text-size--xlarge;
+      line-height: $base__line-height * 1.8;
+      
+      @include medium {
+        font-size: $text-size--xxlarge;
+        line-height: $base__line-height * 2;
+      }
     }
   }
 }
