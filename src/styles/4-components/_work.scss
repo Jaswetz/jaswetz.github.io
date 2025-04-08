@@ -13,6 +13,11 @@ main {
   position: relative;
 }
 
+.proj__blurb {
+  padding-top: $spacing;
+  padding-bottom: $spacing;
+}
+
 .tags {
   @extend .list-reset;
 
@@ -21,10 +26,10 @@ main {
     margin-left: math.div($spacing--xsmall, 2);
     margin-right: math.div($spacing--xsmall, 2);
     padding: math.div($spacing--xsmall, 2) $spacing--xsmall;
-    border: 0.05rem solid $color--grey;
+    border: 0.05rem solid $color--grey; // Reverted from previous attempt, keeping original
     border-radius: 0.2rem;
     margin-bottom: $spacing--xsmall;
-    background: $color--white;
+    background: $color--white; // Reverted from previous attempt, keeping original
     font-size: $text-size--small;
   }
 }
@@ -114,6 +119,11 @@ main {
 .proj {
   h1 {
     text-align: center;
+    margin-top: $spacing--large;
+    text-transform: capitalize;
+  }
+
+  h2 {
   }
 
   h2,
@@ -159,10 +169,56 @@ main {
 
   &__blurb {
     background: $color--grey--light;
-    padding: $spacing;
+
     margin-bottom: $spacing;
     border-bottom: $border-width solid
       color.scale($color--grey, $lightness: 90%);
+
+    // Accordion styles
+    .accordion-summary {
+      @extend .optimal-length; // Keep accordion width consistent
+      // Reverted background/border from previous attempt, keeping original styles from file
+      // color: $color--yellow;
+      border: $border-width solid $color--yellow;
+      border-radius: $spacing--xsmall;
+      background-color: lighten($color: $color--yellow, $amount: 35%);
+      margin-bottom: $spacing;
+      margin-left: auto;
+      margin-right: auto;
+      .accordion-content {
+        padding: $spacing;
+      }
+      p {
+        padding-bottom: $spacing--small;
+      }
+      .button {
+        margin-bottom: $spacing;
+      }
+      summary {
+        cursor: pointer;
+        padding: $spacing;
+        font-weight: $font-weight--bold;
+        // Add space below summary when open, only if details is open
+        details[open] > & {
+          margin-bottom: $spacing--small;
+        }
+
+        // Basic open/close indicator styling (optional)
+        &::marker {
+          // Style default marker if needed
+        }
+        // Or use a custom indicator:
+        // &::before { content: '+ '; }
+        // &[open]::before { content: '- '; }
+      }
+
+      // Style for the "Close" link
+      .accordion-close {
+        display: block; // Make it block level to allow text-align
+        margin-top: $spacing; // Add space above the link
+        text-align: center;
+      }
+    }
 
     h2 {
       margin-bottom: $spacing;
@@ -192,6 +248,10 @@ main {
         line-height: $base__line-height * 2;
       }
     }
+  }
+  h2 {
+    font-size: $text-size--large;
+    line-height: $base__line-height * 1.5;
   }
 }
 
@@ -255,6 +315,10 @@ main {
       50% 50% / cover;
   }
 
+  .proj__img {
+    max-width: 53rem;
+  }
+
   .proj__blurb figure {
     display: inline-block;
     margin-right: $spacing;
@@ -265,6 +329,7 @@ main {
 
   h2 {
     color: $color--blue;
+    margin-bottom: $spacing--small;
   }
 
   .container {
@@ -341,7 +406,6 @@ main {
   }
 
   h2 {
-    color: $color--blue;
     text-transform: capitalize;
   }
 
@@ -350,7 +414,10 @@ main {
   }
 
   .impact {
-    background-color: lighten($color--blue, 50%);
+    background-color: lighten(
+      $color--blue,
+      50%
+    ); // Reverted from previous attempt
     color: $color--blue;
     padding: $spacing;
     border: $border-width solid $color--blue;
@@ -369,12 +436,13 @@ main {
   }
   h3 {
     margin-bottom: $spacing--small;
-    padding-top: $spacing--small;
+    padding-top: $spacing--small; // Reverted from previous attempt
+    color: $color--blue;
   }
 
   h4 {
     margin-bottom: $spacing--small;
-    padding-top: $spacing--small;
+    padding-top: $spacing--small; // Reverted from previous attempt
   }
 }
 
@@ -400,6 +468,11 @@ blockquote {
   border-left: ($border-width * 4) solid $color--blue;
   font-size: $text-size--large;
   line-height: $base__line-height * 1.5;
+  margin: 0;
+  margin-bottom: $spacing;
+
+  @include medium {
+  }
 
   cite {
     font-size: $text-size--small;
@@ -412,3 +485,21 @@ blockquote {
     padding: 0;
   }
 }
+
+// .notification article {
+//   display: flex;
+//   align-items: top;
+//   overflow: hidden;
+
+//   img {
+//     flex-shrink: 0;
+//     width: $spacing * 12; // Adjust as needed
+//     height: auto;
+//     object-fit: cover;
+//   }
+
+//   .project__content {
+//     padding: $spacing;
+//     flex: 1;
+//   }
+// }
