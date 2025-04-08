@@ -34,6 +34,18 @@
             <h2 id="work-header" class="section-header">Featured Projects</h2>
             <div class="g g--full g--1of2--medium g--1of3--large">
                 <div class="g__cell">
+                    <a href="adsk-notifications.html" class="project__link">
+                        <article class="project">
+                            <img src="images/proj-thumb-adsk-messaging.jpg" alt="Coming Soon" class="project__image">
+                            <div class="project__content">
+                                <h3 class="project__title">Reclaiming Focus - Crafting a Unified Messaging Experience</h3>
+                                <p class="project__description">Led design and strategy to launch a new notification center and design documentation for in-product messaging, improving user focus and marketing communication effectiveness.</p>
+                                <span class="btn btn--primary">View Project</span>
+                            </div>
+                        </article>
+                    </a>
+                </div>
+                <div class="g__cell">
                     <a href="autodesk.html" class="project__link">
                         <article class="project">
                             <img src="images/proj-thumb-autodesk.jpg" alt="Coming Soon" class="project__image">
