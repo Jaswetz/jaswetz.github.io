@@ -22,7 +22,8 @@
                     <div class="center">
                         <img src="images/projects/autodesk-messaging/messaging-final.jpg"
                              alt="Notification Center"
-                             class="proj__img">
+                             class="proj__img"
+                             loading="lazy">
                     </div>
                     <ul class="tags">
                         <li>UX Design</li>
@@ -55,7 +56,8 @@
                             <figure>
                                 <img class="proj__img center"
                                      src="images/projects/autodesk-messaging/message-overload.gif"
-                                     alt="Key slide I created that helped secure funding for this notification project.">
+                                     alt="Key slide I created that helped secure funding for this notification project."
+                                     loading="lazy">
                                 <figcaption>Key slide I created that helped secure funding for this notification project.</figcaption>
                             </figure>
                             <ul>
@@ -91,16 +93,16 @@
                                 </p>
                                 <ul>
                                     <li>
-                                        <b>Enhanced visibility and effectiveness of growth and marketing messages</b>, directly contributing to a measurable increase in paid subscribers.
+                                        <strong>Enhanced visibility and effectiveness of growth and marketing messages</strong>, directly contributing to a measurable increase in paid subscribers.
                                     </li>
                                     <li>
-                                        <b>Establishment of a scalable and maintainable messaging framework</b>, streamlining product development and ensuring consistency.
+                                        <strong>Establishment of a scalable and maintainable messaging framework</strong>, streamlining product development and ensuring consistency.
                                     </li>
                                     <li>
-                                        <b>Provision of clear design patterns and documentation</b>, empowering internal teams to implement notifications effectively and autonomously.
+                                        <strong>Provision of clear design patterns and documentation</strong>, empowering internal teams to implement notifications effectively and autonomously.
                                     </li>
                                     <li>
-                                        <b>Influence on Autodesk's design system</b>, with key elements of my work and features incorporated into a new component within Weave.
+                                        <strong>Influence on Autodesk's design system</strong>, with key elements of my work and features incorporated into a new component within Weave.
                                     </li>
                                 </ul>
                             </div>
@@ -115,7 +117,8 @@
                             <figure>
                                 <img class="proj__img center"
                                      src="images/projects/autodesk-messaging/workshop-2.png"
-                                     alt="Content audit of the existing notifications.">
+                                     alt="Content audit of the existing notifications."
+                                     loading="lazy">
                                 <figcaption>Content audit of the existing notifications.</figcaption>
                             </figure>
                             <p>
@@ -124,7 +127,8 @@
                             <figure>
                                 <img class="proj__img center"
                                      src="images/projects/autodesk-messaging/analytics.png"
-                                     alt="Current analytics of the Job Status notifications.">
+                                     alt="Current analytics of the Job Status notifications."
+                                     loading="lazy">
                                 <figcaption>Current analytics of the Job Status notifications.</figcaption>
                             </figure>
                             <h4>User Research</h4>
@@ -141,7 +145,8 @@
                             <figure>
                                 <img class="proj__img center"
                                      src="images/projects/autodesk-messaging/severity-matrix.png"
-                                     alt="Severity matrix to categorize and map notifications.">
+                                     alt="Severity matrix to categorize and map notifications."
+                                     loading="lazy">
                                 <figcaption>Severity matrix.</figcaption>
                             </figure>
                             <ul>
@@ -173,7 +178,8 @@
                             <figure>
                                 <img class="proj__img center"
                                      src="images/projects/autodesk-messaging/decision-matrix.png"
-                                     alt="Decision matrix to categorize and map notifications.">
+                                     alt="Decision matrix to categorize and map notifications."
+                                     loading="lazy">
                                 <figcaption>Decision matrix.</figcaption>
                             </figure>
                             <p>
@@ -184,7 +190,7 @@
                                 The concept for the Notification Center had been on my mind for some time. To refine it, I gathered feedback from UX designers and explored potential features. While I began with sketches, I quickly transitioned to high-fidelity designs, leveraging existing design system components and tools like auto layout for faster iteration and feedback.
                             </p>
                             <p>
-                                To secure funding from the Growth Business group, <span class="highlight">I developed and delivered a compelling presentation to leadership, effectively securing buy-in by showcasing the project's strategic value.</span> It emphasized how resolving the notification issues would directly benefit both users and the business, particularly in growth and marketing. Specifically, user research indicated that excessive notifications, especially banner notifications, were causing users to miss important information.
+                                To secure funding from the Growth Business group, <strong>I developed and delivered a compelling presentation to leadership, effectively securing buy-in by showcasing the project's strategic value.</strong> It emphasized how resolving the notification issues would directly benefit both users and the business, particularly in growth and marketing. Specifically, user research indicated that excessive notifications, especially banner notifications, were causing users to miss important information.
                             </p>
                             <h4>Design and Iteration</h4>
                             <p>
@@ -193,7 +199,8 @@
                             <figure>
                                 <img class="proj__img center"
                                      src="images/projects/autodesk-messaging/sketch.jpg"
-                                     alt="Early sketches of the Notification Center.">
+                                     alt="Early sketches of the Notification Center."
+                                     loading="lazy">
                                 <figcaption>Early sketches of the Notification Center.</figcaption>
                             </figure>
                             <h4>Defining the Solution</h4>
@@ -207,7 +214,8 @@
                             <figure>
                                 <img class="proj__img center"
                                      src="images/projects/autodesk-messaging/mark-as-read.png"
-                                     alt="Mark as read and delete exploration.">
+                                     alt="Mark as read and delete exploration."
+                                     loading="lazy">
                                 <figcaption>Mark as read and delete exploration.</figcaption>
                             </figure>
                             <ul>
@@ -227,14 +235,16 @@
                             <figure>
                                 <img class="proj__img center"
                                      src="images/projects/autodesk-messaging/see-all.png"
-                                     alt="See All view of the Notification Center.">
+                                     alt="See All view of the Notification Center."
+                                     loading="lazy">
                                 <figcaption>See All view of the Notification Center.</figcaption>
                             </figure>
                             <h4>Design Challenges and Decisions</h4>
                             <figure>
                                 <img class="proj__img center"
                                      src="images/projects/autodesk-messaging/filterting.jpg"
-                                     alt="Filtering exploration.">
+                                     alt="Filtering exploration."
+                                     loading="lazy">
                                 <figcaption>Filtering exploration.</figcaption>
                             </figure>
                             <ul>
@@ -251,7 +261,8 @@
                             <figure>
                                 <img class="proj__img center"
                                      src="images/projects/autodesk-messaging/notification-visuals.jpg"
-                                     alt="Notification visuals exploration.">
+                                     alt="Notification visuals exploration."
+                                     loading="lazy">
                                 <figcaption>Notification visuals exploration.</figcaption>
                             </figure>
                             <h4>Iteration and Feedback</h4>
@@ -261,7 +272,8 @@
                             <figure>
                                 <img class="proj__img center"
                                      src="images/projects/autodesk-messaging/notification-icon.png"
-                                     alt="Itterating and feedback on the notification icon placement.">
+                                     alt="Itterating and feedback on the notification icon placement."
+                                     loading="lazy">
                                 <figcaption>Itterating and feedback on the notification icon placement.</figcaption>
                             </figure>
                             <h3>User Testing</h3>
@@ -275,7 +287,8 @@
                             <figure>
                                 <img class="proj__img center"
                                      src="images/projects/autodesk-messaging/user-testing-participants.jpg"
-                                     alt="User testing participants.">
+                                     alt="User testing participants."
+                                     loading="lazy">
                                 <figcaption>User testing participants.</figcaption>
                             </figure>
                             <h4>Hypotheses</h4>
@@ -326,7 +339,8 @@
                             <figure>
                                 <img class="proj__img center"
                                      src="images/projects/autodesk-messaging/banner-guidelines.png"
-                                     alt="Official guidelines for the banners.">
+                                     alt="Official guidelines for the banners."
+                                     loading="lazy">
                                 <figcaption>Official guidelines for the banners.</figcaption>
                             </figure>
                             <p>
@@ -336,7 +350,8 @@
                             <figure>
                                 <img class="proj__img center"
                                      src="images/projects/autodesk-messaging/airtable.png"
-                                     alt="Airtable content inventory of the existing notifications.">
+                                     alt="Airtable content inventory of the existing notifications."
+                                     loading="lazy">
                                 <figcaption>Airtable content inventory of the existing notifications.</figcaption>
                             </figure>
                             <p>
@@ -352,7 +367,8 @@
                             <figure>
                                 <img class="proj__img center"
                                      src="images/projects/autodesk-messaging/mockup-final.png"
-                                     alt="The final notification center in Fusion.">
+                                     alt="The final notification center in Fusion."
+                                     loading="lazy">
                                 <figcaption>The final notification center in Fusion.</figcaption>
                             </figure>
                             <p>
@@ -363,4 +379,4 @@
                 </article>
             </main>
             {% include "partials/footer.nunjucks" %}
-        {% endblock %}
+        {% endblock content %}
