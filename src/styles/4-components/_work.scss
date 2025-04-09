@@ -491,6 +491,78 @@ main {
   }
 }
 
+// Before-After Comparison Styles
+.before-after-comparison {
+  margin: $spacing * 2 0 $spacing * 2;
+
+  h3 {
+    text-align: center;
+    margin-bottom: $spacing;
+    color: $color--blue;
+  }
+
+  .comparison-container {
+    display: flex;
+    flex-direction: column;
+
+    @include medium {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    figure {
+      flex: 1;
+      // box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
+      // border-radius: 0.4rem;
+      // overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      img {
+        display: block;
+        border-bottom: 3px solid;
+        margin-bottom: $spacing;
+        padding-bottom: $spacing;
+        object-fit: cover;
+      }
+
+      .caption {
+        padding: $spacing $spacing 0 $spacing;
+
+        h4 {
+          font-size: $text-size--large;
+          margin-bottom: $spacing--small;
+          font-weight: $font-weight--bold;
+        }
+
+        p {
+          font-size: $text-size;
+          line-height: 1.6;
+        }
+      }
+    }
+
+    .before {
+      img {
+        border-color: $color--grey--dark;
+      }
+
+      h4 {
+        color: $color--grey--dark;
+      }
+    }
+
+    .after {
+      img {
+        border-color: $color--blue;
+      }
+
+      h4 {
+        color: $color--blue;
+      }
+    }
+  }
+}
+
 // .notification article {
 //   display: flex;
 //   align-items: top;
@@ -508,3 +580,12 @@ main {
 //     flex: 1;
 //   }
 // }
+
+.proj__separator {
+  margin-bottom: $spacing * 4;
+  border-top: $border-width solid $color--grey;
+  opacity: 0.5; // Adds slight transparency for a softer look
+  width: 80%; // Centers the separator with reduced width
+  margin-left: auto;
+  margin-right: auto;
+}
