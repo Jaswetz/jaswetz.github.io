@@ -137,10 +137,10 @@
                     </div>
                 </details>
                 <p>
-                    Autodesk Fusion unifies CAD, CAM, CAE, PCB and data management tools into one seamless manufacturing solution that is trusted by over 4.5 million users worldwide. It empowers designers, engineers, and manufacturers to innovate faster by streamlining workflows from concept to production.
+                    Autodesk Fusion is a cloud-based platform that unifies tools for 3D design (CAD), manufacturing (CAM), engineering (CAE), electronics (PCB), and product lifecycle management (PLM) into one seamless solution. It supports the entire end-to-end manufacturing process, including data management, collaboration, and workflows, enabling teams to innovate faster and manage every stage of production from concept to delivery.
                 </p>
                 <p>
-                    My leadership, design, and strategy resulted in a new notification center and comprehensive design documentation for in-product messaging. The successful launch renewed user focus and streamlined the effectiveness of growth and marketing communications.
+                    Autodesk Fusion’s fragmented notification system was causing user distraction, missed business opportunities, and development inefficiencies. My leadership in design and strategy led to a comprehensive cleanup of notifications, the creation of a new notification center, and detailed design documentation for in-product messaging. The initiative not only refocused users and boosted paid subscriptions but also established me as Fusion’s in-house notification expert and mentor—shaping messaging standards, empowering teams, and influencing Autodesk’s design system.
                 </p>
                 <div class="center">
                     <img src="images/projects/autodesk-messaging/messaging-final.jpg"
@@ -197,7 +197,7 @@
                 </ul>
                 <h3>Project Goals</h3>
                 <p>
-                    The primary objective was to transform Fusion's messaging system from a source of frustration into a strategic asset. This involved:
+                    The primary objective was to transform Fusion's messaging system from a source of frustration into a strategic asset. I defined two key goals:
                 </p>
                 <ul>
                     <li>
@@ -230,10 +230,10 @@
                 <h3>Process</h3>
                 <h4>Discovery</h4>
                 <p>
-                    Recognizing the increasing negative impact of Fusion's fragmented messaging, I initiated a proactive investigation. Analyzing available analytics data, I observed a significant drop-off in user engagement with banner notifications, suggesting they were often overlooked or dismissed. This, combined with anecdotal feedback and peer discussions, confirmed a critical need for a unified notification strategy.
+                    Recognizing Fusion's fragmented messaging was hurting user engagement, I initiated an investigation. Analytics revealed that banner notifications were frequently ignored, a trend supported by anecdotal feedback and peer discussions. This evidence underscored the need for a unified notification strategy.
                 </p>
                 <p>
-                    I began by conducting a comprehensive content inventory of existing notifications. I started the process myself before actively recruiting colleagues from various teams (UX and Development) to contribute via Mural. This collaborative approach ensured a broad perspective. I then organized these notifications into groups using affinity mapping, revealing patterns and inconsistencies, such as duplicate notifications and varying levels of importance.
+                    To tackle this, I first conducted a thorough content inventory of existing notifications. I began the process independently, then engaged colleagues from UX and Development through Mural to gain diverse insights. Using affinity mapping, I organized the notifications into groups, uncovering patterns and inconsistencies—such as duplicate alerts and varying importance levels.
                 </p>
                 <figure>
                     <img class="proj__img center"
@@ -243,10 +243,10 @@
                     <figcaption>Content audit of the existing notifications.</figcaption>
                 </figure>
                 <p>
-                    To establish a solid foundation, I reviewed the existing notification components within the Autodesk Design System (Weave), noting the lack of clear guidelines for usage. I also researched notification strategies from other internal Autodesk products (like AutoCAD and Revit) and external applications, seeking best practices and innovative solutions.
+                    To establish a solid foundation, I reviewed the Autodesk Design System (Weave) and noted unclear usage guidelines for notifications. I also examined notification strategies from internal products like AutoCAD and Revit, as well as external applications, to identify best practices and innovative solutions.
                 </p>
                 <p>
-                    This research extended to analyzing all notification types, including emails, canvas notifications, OS notifications (which analytics showed were underutilized and inconsistent), and in-line messages, to ensure a holistic approach. My goal was to develop a framework that was both user-friendly and aligned with overall business objectives. We removed OS Notifications. From here I could also start thinking of a broader notification strategy beyond just the Notification Center and Banners. But lets stay on topic.
+                    My research covered all notification types—emails, canvas alerts, job statuses, OS notifications (which analytics showed were underutilized and inconsistent, so we decided to remove), and in-line messages—to ensure a holistic approach. This helped look at notifications from a holistic POV to really figure out where best to first tackle notifications and to consider broader strategies in the future.
                 </p>
                 <figure>
                     <img class="proj__img center"
@@ -256,7 +256,9 @@
                     <figcaption>Current analytics of the Job Status notifications.</figcaption>
                 </figure>
                 <h4>User Research</h4>
-                <p>I leveraged user forums and prior research to understand current user frustrations:</p>
+                <p>
+                    Although I didn’t do any direct discovery user research, I partly started thinking about this problem based on prior user research I conducted with users on different projects. I used user forums and prior user research found in the wiki, and I asked other UX designers who have talked to users to come up with an understanding of users’ frustration with notifications. These were:
+                </p>
                 <ul>
                     <li>Overuse/Repetition</li>
                     <li>Bad content</li>
@@ -265,7 +267,13 @@
                     <li>Too many channels</li>
                 </ul>
                 <h4>Framework Development & Research</h4>
-                <p>Created a severity and decision matrix to categorize and map notifications.</p>
+                <p>
+                    At this point, I paused to consider different perspectives on notifications.
+                    One approach was factoring in <strong>severity</strong>—the intersection of
+                    <strong>importance</strong> and <strong>time sensitivity</strong>—which guided
+                    me in choosing the ideal delivery methods. From this, I created a
+                    <strong>severity matrix</strong> that helped prioritize and categorize notification types.
+                </p>
                 <figure>
                     <img class="proj__img center"
                          src="images/projects/autodesk-messaging/severity-matrix.png"
@@ -273,32 +281,12 @@
                          loading="lazy">
                     <figcaption>Severity matrix.</figcaption>
                 </figure>
-                <ul>
-                    <li>
-                        <strong>System messaging</strong>
-                        alerts the user of important system-related issues or status. It’s initiated by the system and it’s not a result of the user’s actions.
-                    </li>
-                    <li>
-                        <strong>Access messaging</strong>
-                        appears when the user tries to access an item that’s not available to them. It may be because the record has been deleted, the user doesn’t have access, etc.
-                    </li>
-                    <li>
-                        <strong>Feedback messaging</strong>
-                        is the application’s response when the user is interacting with it. The majority of create, read, update, delete (CRUD) actions will result in feedback messaging.
-                    </li>
-                    <li>
-                        <strong>Collaboration messaging</strong>
-                        appears when a user needs to be informed by anything initiated by another user.
-                    </li>
-                    <li>
-                        <strong>Additive messaging</strong>
-                        is information not crucial to user or system. Its intention is to enhance the user's experience and proficiency in using the product.
-                    </li>
-                    <li>
-                        <strong>Growth and Awareness</strong>
-                        are engagement messaging and is any messaging with the intention of driving sales or adoption. This type of message will have a direct call to action.
-                    </li>
-                </ul>
+                <p>
+                    Building on the affinity mapping done earlier, I identified
+                    six notification categories, then used a Decision Matrix
+                    (informed by the severity matrix) to align each category with the most appropriate delivery method:
+                </p>
+                
                 <figure>
                     <img class="proj__img center"
                          src="images/projects/autodesk-messaging/decision-matrix.png"
@@ -307,14 +295,13 @@
                     <figcaption>Decision matrix.</figcaption>
                 </figure>
                 <p>
-                    While these guidelines were preliminary, they provided a solid foundation for testing, getting feedback, and refinement. I would need to continue to field test these guidelines and iterate.
+                    Although these guidelines were preliminary, they established a solid starting
+                    point for testing, feedback, and ongoing refinement. Continued field testing
+                    and iteration would be necessary to ensure their effectiveness.
                 </p>
-                <h4>Scoping and Getting Stakeholder Engagement Buy-in</h4>
+                <h4>Getting Stakeholder Engagement Buy-in</h4>
                 <p>
-                    The concept for the Notification Center had been on my mind for some time. To refine it, I gathered feedback from UX designers and explored potential features. While I began with sketches, I quickly transitioned to high-fidelity designs, leveraging existing design system components and tools like auto layout for faster iteration and feedback.
-                </p>
-                <p>
-                    To secure funding from the Growth Business group, <strong>I developed and delivered a compelling presentation to leadership, effectively securing buy-in by showcasing the project's strategic value.</strong> It emphasized how resolving the notification issues would directly benefit both users and the business, particularly in growth and marketing. Specifically, user research indicated that excessive notifications, especially banner notifications, were causing users to miss important information.
+                    To secure funding from the Growth Business group, <strong class="highlight">I developed and delivered a compelling presentation to leadership, effectively securing buy-in by showcasing the project's strategic value.</strong> It emphasized how resolving the notification issues would directly benefit both users and the business, particularly in growth and marketing. Specifically, user research indicated that excessive notifications, especially banner notifications, were causing users to miss important information.
                 </p>
                 <h4>Design and Iteration</h4>
                 <p>
@@ -331,17 +318,23 @@
                 <p>
                     Weave provided two components: the notification flyout and the toast. My research revealed the need for a unified "Notification Center" that combined these elements into a centralized hub. This solution allowed users to access all notifications, including previously dismissed toasts, addressing the common frustration of missed alerts.
                 </p>
+                <p>To optimize the user experience:</p>
+                <ul>
+                    <li>High-severity notifications were shown as toasts for immediate visibility.</li>
+                    <li>Less critical messages were stored in the flyout with a blue dot indicator.</li>
+                    <li>
+                        Intermediate messages:
+                        <ul>
+                            <li>Appeared briefly as a toast.</li>
+                            <li>Dismissed after 3 seconds.</li>
+                            <li>Moved to the flyout with a blue dot indicator.</li>
+                        </ul>
+                    </li>
+                </ul>
                 <p>
-                    To optimize the user experience, I assigned high-severity notifications to toasts for immediate visibility, while less critical messages were stored in the flyout with a subtle blue dot indicator. This separation minimized workflow disruptions, ensuring users could focus on critical tasks while reviewing less urgent messages at their convenience.
+                    This separation reduced workflow disruptions, allowing users to focus on critical tasks while reviewing less urgent messages later.
                 </p>
                 <h4>Feature Exploration</h4>
-                <figure>
-                    <img class="proj__img center"
-                         src="images/projects/autodesk-messaging/mark-as-read.png"
-                         alt="Mark as read and delete exploration."
-                         loading="lazy">
-                    <figcaption>Mark as read and delete exploration.</figcaption>
-                </figure>
                 <ul>
                     <li>
                         <strong>Filtering and Settings:</strong> Users could filter notifications by type, status (read/unread), and other criteria, offering greater control and customization.
@@ -364,6 +357,11 @@
                     <figcaption>See All view of the Notification Center.</figcaption>
                 </figure>
                 <h4>Design Challenges and Decisions</h4>
+                <ul>
+                    <li>
+                        <strong>Filter Design:</strong> While tabs initially seemed intuitive, they were not scalable for adding future filters. A dropdown filter was chosen for flexibility and future-proofing.
+                    </li>
+                </ul>
                 <figure>
                     <img class="proj__img center"
                          src="images/projects/autodesk-messaging/filterting.jpg"
@@ -373,22 +371,21 @@
                 </figure>
                 <ul>
                     <li>
-                        <strong>Filter Design:</strong> While tabs initially seemed intuitive, they were not scalable for adding future filters. A dropdown filter was chosen for flexibility and future-proofing.
-                    </li>
-                    <li>
                         <strong>Visual Clarity:</strong> To improve scannability, I incorporated consistent iconography, thumbnails for files, and profile pictures for user-generated notifications. Contextual icons (e.g., error, success, or warning) were overlaid on notification imagery, enabling users to quickly assess relevance and urgency.
                     </li>
+                    <ul>
+                        <figure>
+                            <img class="proj__img center"
+                                 src="images/projects/autodesk-messaging/notification-visuals.jpg"
+                                 alt="Notification visuals exploration."
+                                 loading="lazy">
+                            <figcaption>Notification visuals exploration.</figcaption>
+                        </figure>
+                    </ul>
                     <li>
                         <strong>Grouping by Time:</strong> Time was the most critical factor for organizing notifications. Using accordions allowed users to scan updates efficiently while keeping the interface clean.
                     </li>
                 </ul>
-                <figure>
-                    <img class="proj__img center"
-                         src="images/projects/autodesk-messaging/notification-visuals.jpg"
-                         alt="Notification visuals exploration."
-                         loading="lazy">
-                    <figcaption>Notification visuals exploration.</figcaption>
-                </figure>
                 <h4>Iteration and Feedback</h4>
                 <p>
                     The design process was highly iterative and feedback-driven. I tested and refined features like grouping, filtering, and visual elements based on stakeholder input. Internal feedback helped me identify opportunities to streamline interactions, ensuring the final design balanced simplicity, scalability, and user needs.
@@ -400,9 +397,16 @@
                          loading="lazy">
                     <figcaption>Itterating and feedback on the notification icon placement.</figcaption>
                 </figure>
+                <figure>
+                    <img class="proj__img center"
+                         src="images/projects/autodesk-messaging/mark-as-read.png"
+                         alt="Mark as read and delete exploration."
+                         loading="lazy">
+                    <figcaption>Mark as read and delete exploration.</figcaption>
+                </figure>
                 <h3>User Testing</h3>
                 <p>
-                    We conducted usability sessions to evaluate the current notification system in Fusion and validate the new Notification Center. These sessions combined user research and usability testing to maximize insights, as we didn’t conduct separate kickoff research.
+                    We conducted usability sessions to evaluate Fusion's current notification system and validate the new Notification Center. These sessions combined user research and usability testing, making up for not having a separate kickoff research.
                 </p>
                 <h4>Participants</h4>
                 <p>
@@ -457,7 +461,7 @@
                 </ul>
                 <h4>Outcome</h4>
                 <p>
-                    The results gave me confidence to move forward with our MVP. We prioritized critical feedback for v1, such as improving discoverability and clarity, while reserving additional improvements, like enhanced filtering and notification persistence, for v2.
+                    These results gave me confidence to move forward with our MVP. We prioritized critical feedback—such as improving discoverability and clarity—for v1, while reserving enhancements like advanced filtering and notification persistence for v2.
                 </p>
                 <h4>Centralized Notification Guidelines & Figma Components</h4>
                 <figure>
