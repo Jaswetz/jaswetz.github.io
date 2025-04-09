@@ -1,0 +1,56 @@
+<!-- index.nunjucks -->
+{% extends "layout.nunjucks" %}
+{% block content %}
+    {% include "partials/header.nunjucks" %}
+    <main class="proj autodesk">
+        <div class="proj__intro">
+            <div class="proj__header absolute-center">
+                <h1>Autodesk Fusion: Achieving Device Independence</h1>
+            </div>
+        </div>
+        <div class="proj__content">
+            <div class="proj__blurb">
+                <h2>Leading the UX Design for Autodesk Fusion's Cross-Platform Transition (Mobile, Tablet, Web) from desktop only.</h2>
+                <p>
+                    How might we make Autodesk Fusion’s powerful design and make tools accessible to a broader audience by developing a unified, device-independent platform?
+                </p>
+                <ul class="tags">
+                    <li>User Experience</li>
+                    <li>Prototyping</li>
+                    <li>Wireframing</li>
+                    <li>User Flows</li>
+                    <li>Design</li>
+                    <li>Strategy</li>
+                    <li>Front-End Development</li>
+                    <li>User Research</li>
+                </ul>
+            </div>
+            <div class="container">
+                <p>
+                    Prior to this initiative, Autodesk Fusion was exclusively available as a desktop application for Mac and Windows. While the software provided robust functionality, its complex interface was optimized solely for mouse and keyboard interactions, limiting its usability across other devices. There was no established cross-platform strategy to extend its reach.
+                </p>
+                <p>The goal of this multiyear project was two fold:</p>
+                <ol>
+                    <li>
+                        <strong>Redefine Fusion as a device-independent product</strong> with an experience that scales seamlessly across mobile, tablet, web, and desktop platforms.
+                    </li>
+                    <li>
+                        <strong>Lay the foundation for a cross-platform design system</strong> that could serve as a framework for future Autodesk products, accommodating diverse input methods such as touch, stylus, and mouse.
+                    </li>
+                </ol>
+                <p>
+                    As the Lead Designer, I worked alongside two senior designers, taking full ownership of prototyping efforts to explore and test responsive solutions. This initiative required close collaboration with cross-functional teams over several years to align on strategy, design principles, and technical feasibility.
+                </p>
+                <hr class="proj__separator">
+                <figure>
+                    <img src="images/projects/autodesk-DI/old-fusion.jpg" alt="Old Fusion">
+                    <figcaption>Old Fusion</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/projects/autodesk-DI/fusion-di.jpg" alt="Fusion DI">
+                    <figcaption>Fusion DI</figcaption>
+                </figure>
+            </div>
+        </main>
+        {% include "partials/footer.nunjucks" %}
+    {% endblock %}
