@@ -482,6 +482,7 @@ main {
     inset 0 0.2rem 0 color.scale($color--yellow, $lightness: 60%);
   border-radius: 0.2rem;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 100;
 
   &:hover {
     background-color: color.scale($color--yellow, $lightness: 50%);
