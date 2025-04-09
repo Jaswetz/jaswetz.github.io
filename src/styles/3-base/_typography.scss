@@ -57,7 +57,7 @@ p {
 p,
 ul,
 li {
-    color: color.scale($color--black, $lightness: 35%);
+  color: color.scale($color--black, $lightness: 35%);
 }
 
 h1,
@@ -71,10 +71,10 @@ h6 {
   line-height: $heading--line-height;
 }
 
-h1, 
-h2, 
+h1,
+h2,
 h3 {
-  font-weight: 700;  
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -103,19 +103,19 @@ h4,
 }
 
 .section-header {
-    width: 100%;
-    text-align: center;
-    padding-top: $spacing--large;
-    padding-bottom: $spacing;
-  
+  width: 100%;
+  // text-align: center;
+  padding-top: $spacing--large;
+  padding-bottom: $spacing;
+
   &:after {
     content: "";
     display: block;
     width: $spacing * 2;
-    height: .1rem;
+    height: 0.1rem;
     background: $color--blue;
-    margin-left: auto;
-    margin-right: auto;
+    // margin-left: auto;
+    // margin-right: auto;
   }
 }
 
