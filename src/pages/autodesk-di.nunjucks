@@ -40,7 +40,8 @@
                                  class="proj__img">
                             {# <figcaption>BEFORE: Desktop-Only Experience</figcaption> #}
                             <div class="caption">
-                                <h4>BEFORE: Desktop-Only Experience</h4>
+                                <h4>BEFORE:</h4>
+                                <h4>Desktop-Only Experience</h4>
                                 <p>
                                     The original Autodesk Fusion was designed exclusively for desktop environments, with a complex interface optimized for mouse and keyboard interactions. While powerful, its dense UI and specialized controls limited accessibility and confined users to traditional workstations.
                                 </p>
@@ -54,7 +55,8 @@
                                  class="proj__img">
                             {# <figcaption>AFTER: Device-Independent</figcaption> #}
                             <div class="caption">
-                                <h4>AFTER: Device-Independent</h4>
+                                <h4>AFTER:</h4>
+                                <h4>Device-Independent Experience</h4>
                                 <p>
                                     The reimagined Fusion experience features a responsive, adaptive interface that seamlessly scales across mobile, tablet, web, and desktop platforms. With thoughtful architecture and support for multiple input methods (touch, stylus, and mouse), giving Fusion a path to empower creators to design anywhere, on any device.
                                 </p>
@@ -79,6 +81,14 @@
                 <p>
                     As the Lead Designer, I worked alongside two senior designers, to explore, test, and build cross-platform solutions. This initiative required close collaboration with all other UX design teams and cross-functional teams over several years to align on strategy, design principles, and technical feasibility.
                 </p>
+                <figure class="proj__img center">
+                    <img src="images/projects/autodesk-DI/mockuuups-transparent-ipad-pro-mockup.png"
+                         alt="Old Fusion Desktop Interface"
+                         width="100%"
+                         height="auto"
+                         class="proj__img">
+                    <figcaption>Mockup of Fusion on iPad Pro.</figcaption>
+                </figure>
                 <div class="margin-bottom--large"></div>
             </div>
         </main>

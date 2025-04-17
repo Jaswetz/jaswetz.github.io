@@ -86,7 +86,7 @@ main {
   }
 
   h3 {
-    color: $color--blue;
+    color: $base__font-color;
     font-size: $text-size--big;
     transition-property: color;
     transition-duration: 0.2s;
@@ -150,7 +150,9 @@ main {
     text-transform: capitalize;
   }
 
-  h2 {
+  h2,
+  h3 {
+    text-transform: capitalize;
   }
 
   h2,
@@ -311,6 +313,9 @@ main {
 
 // Autodesk
 .autodesk {
+  h2 {
+    text-transform: capitalize;
+  }
   h3 {
     padding-bottom: $spacing--large;
     display: block;
@@ -357,8 +362,9 @@ main {
   }
 
   h2 {
-    color: $color--blue;
+    // color: $color--blue;
     margin-bottom: $spacing--small;
+    text-transform: capitalize;
   }
 
   .container {
@@ -415,7 +421,7 @@ main {
   }
 
   h2 {
-    color: $color--blue;
+    // color: $color--blue;
   }
 
   .proj__img {
@@ -434,14 +440,13 @@ main {
       50% 50% / cover;
   }
 
-  h2 {
-    text-transform: capitalize;
-  }
-
   .proj__img {
     max-width: 53rem;
   }
 
+  .yellow-border {
+    border: $border-width * 2 solid $color--blue;
+  }
   .impact {
     background-color: lighten(
       $color--blue,
@@ -466,7 +471,7 @@ main {
   h3 {
     margin-bottom: $spacing--small;
     padding-top: $spacing--small; // Reverted from previous attempt
-    color: $color--blue;
+    // color: $color--blue;
   }
 
   h4 {
