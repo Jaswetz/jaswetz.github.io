@@ -1,0 +1,81 @@
+@use "sass:math";
+@use "sass:color";
+
+////////////
+// Mixins //
+////////////
+
+// Vertical Align //
+// http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
+@mixin vertical-align($position: relative) {
+  position: $position;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+// No Select //
+@mixin noselect() {
+  user-select: none;           /* non-prefixed version, currently
+                                  not supported by any browser */
+  -webkit-touch-callout: none; /* iOS Safari */
+   -khtml-user-select: none;    /* Konqueror */
+}
+
+// Calculate rem size when base size is 16px
+// rem(16px) = 1 rem
+@function rem($size) {
+  $remSize: math.div($size, 16px);
+  @return #{$remSize}rem;
+}
+
+/// Remove the unit of a length
+// strip-unit($length);
+@function strip-unit($value) {
+	@return math.div($value, ($value * 0 + 1));
+}
+
+// Breakpoints
+@mixin mq($point) {
+  @if $point == wide {
+    @media (min-width: 80em) { @content ; }
+ }
+  @if $point == desktop {
+    @media (min-width: 70em) { @content ; }
+ }
+  @else if $point == laptop {
+    @media (min-width: 64em) { @content ; }
+ }
+   @else if $point == tablet {
+    @media (min-width: 50em) { @content ; }
+ }
+  @else if $point == phablet {
+    @media (min-width: 37.5em)  { @content ; }
+ }
+ @else if $point == mobileonly {
+    @media (max-width: 37.5em)  { @content ; }
+ }
+}
+
+
+// COLORS
+//https://css-tricks.com/snippets/sass/tint-shade-functions/
+
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function tint($color, $percentage) {
+  @return color.mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function shade($color, $percentage) {
+  @return color.mix(black, $color, $percentage);
+}

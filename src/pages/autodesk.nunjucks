@@ -1,0 +1,35 @@
+<!-- index.nunjucks -->
+{% extends "layout.nunjucks" %}
+{% block content %}
+  {% include "partials/header.nunjucks" %}
+  <main class="proj autodesk">
+    <div class="proj__intro">
+      <div class="proj__header absolute-center">
+        <h1>Autodesk Case Studies</h1>
+      </div>
+    </div>
+    <div class="proj__content">
+      <div class="proj__blurb">
+        <h2>Autodesk case studies are being actively worked on.</h2>
+        <p>As a Principal UX Designer & Front-End Specialist with over 6 years of experience at Autodesk, I specialize in leading and crafting user-centric solutions that align with both user needs and business goals. My work spans across diverse domains like growth-focused initiatives, architecting complex data management flows, scalable design systems, and cross-platform experiences.</p>
+        <ul class="tags">
+          <li>User Experience</li>
+          <li>Prototyping</li>
+          <li>Wireframing</li>
+            <li>User Flows</li>
+            <li>Design</li>
+            <li>Strategy</li>
+            <li>Front-End Development</li>
+            <li>User Research</li>
+        </ul>
+      </div>
+      <div class="container">
+        <div class="info text-align--center margin-vertical--large">
+          <p class="padding-around--large">Coming soon!</p> 
+           <p class="padding-around--large"><a href="https://www.figma.com/proto/gb0I94Zd9oPZmvZycTS33K/Career?page-id=6%3A2&node-id=18-24&viewport=1268%2C827%2C0.25&scaling=contain" target="_blank">Temporary Figma Slides</a></p> 
+        </div>
+      </div>
+  </main>
+  
+  {% include "partials/footer.nunjucks" %}
+{% endblock %}

@@ -1,0 +1,21 @@
+@use "../2-utilities/config" as *;
+@use "../2-utilities/mixins" as *;
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1380px;
+  width: 100%;
+  padding-left: $spacing;
+  padding-right: $spacing;
+}

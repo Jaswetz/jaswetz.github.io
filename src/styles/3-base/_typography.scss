@@ -1,0 +1,126 @@
+/////////////////
+// Typography //
+///////////////
+
+@use "sass:color";
+@use "../2-utilities/config" as *;
+@use "../2-utilities/mixins" as *;
+@use "../2-utilities/colors" as *;
+@use "../3-base/breakpoints" as *;
+
+html {
+  font-size: 80%;
+  @if $baseline-grid == true {
+    background-image: url(http://basehold.it/i/24);
+  }
+  @include mq(tablet) {
+    font-size: 90%;
+    @if $baseline-grid == true {
+      background-image: url(http://basehold.it/i/27);
+    }
+  }
+  @include mq(desktop) {
+    font-size: 100%;
+    @if $baseline-grid == true {
+      background-image: url(http://basehold.it/i/30);
+    }
+  }
+}
+
+body {
+  line-height: $base__line-height;
+  font-family: $font-family--primary;
+  font-size: $text-size;
+  color: $base__font-color;
+}
+
+// Resets margins
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+p {
+  padding-bottom: $spacing;
+
+  .optimal-length {
+    @extend .optimal-length;
+  }
+}
+
+p,
+ul,
+li {
+  color: color.scale($color--black, $lightness: 35%);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $heading--font-family;
+  font-weight: $heading--font-weight;
+  line-height: $heading--line-height;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h1,
+.h1 {
+  font-size: $text-size--xxlarge;
+  line-height: $base__line-height * 2;
+}
+
+h2,
+.h2 {
+  font-size: $text-size--xlarge;
+  line-height: $base__line-height * 2;
+}
+
+h3,
+.h3 {
+  font-size: $text-size--large;
+  line-height: $base__line-height;
+}
+
+h4,
+.h4 {
+  font-size: $text-size--big;
+  line-height: $base__line-height;
+}
+
+.section-header {
+  width: 100%;
+  // text-align: center;
+  padding-top: $spacing--large;
+  padding-bottom: $spacing;
+
+  &:after {
+    content: "";
+    display: block;
+    width: $spacing * 2;
+    height: 0.1rem;
+    background: $color--blue;
+    // margin-left: auto;
+    // margin-right: auto;
+  }
+}
+
+figcaption {
+  font-size: $text-size--xsmall;
+  color: $color--grey;
+  font-style: italic;
+}

@@ -1,0 +1,596 @@
+@use "sass:math";
+@use "sass:color";
+@use "../2-utilities/config" as *;
+@use "../2-utilities/mixins" as *;
+@use "../2-utilities/colors" as *;
+@use "../3-base/lists" as *;
+@use "../5-helpers/type" as *;
+@use "../3-base/breakpoints" as *;
+
+main {
+  background: $color--white;
+  z-index: $zindex--1;
+  position: relative;
+}
+
+.proj__blurb {
+  padding-top: $spacing;
+  padding-bottom: $spacing;
+}
+
+.tags {
+  @extend .list-reset;
+
+  li {
+    display: inline-block;
+    margin-left: math.div($spacing--xsmall, 2);
+    margin-right: math.div($spacing--xsmall, 2);
+    padding: math.div($spacing--xsmall, 2) $spacing--xsmall;
+    border: 0.05rem solid $color--grey; // Reverted from previous attempt, keeping original
+    border-radius: 0.2rem;
+    margin-bottom: $spacing--xsmall;
+    background: $color--white; // Reverted from previous attempt, keeping original
+    font-size: $text-size--small;
+  }
+}
+
+.metadata {
+  @extend .list-reset;
+  margin-bottom: $spacing;
+
+  li {
+    margin-bottom: $spacing--xsmall;
+  }
+}
+
+.proj {
+  blockquote {
+    background: $color--grey--light;
+    margin-bottom: $spacing;
+    border-left: ($border-width * 4) solid $color--blue;
+    font-size: $text-size--large;
+    line-height: $base__line-height * 1.5;
+
+    padding: $spacing;
+    @extend .optimal-length;
+
+    @include medium {
+    }
+
+    cite {
+      font-size: $text-size--small;
+      color: $color--grey--dark;
+      display: block;
+    }
+
+    p {
+      margin-bottom: $spacing;
+      padding: 0;
+    }
+  }
+}
+
+.project {
+  margin-bottom: $spacing;
+  box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.05);
+  border: $border-width solid $color--grey--light;
+  transition: box-shadow 0.2s ease-in, transform 0.2s ease-in,
+    border 0.2s ease-in;
+  height: 100%; /* ensure the height of the project is consistent for grid layouts */
+  position: relative;
+
+  .btn {
+    position: absolute;
+    display: block;
+    bottom: $spacing;
+  }
+
+  h3 {
+    color: $base__font-color;
+    font-size: $text-size--big;
+    transition-property: color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in;
+
+    &:after {
+      transition-property: all;
+      transition-duration: 0.2s;
+      transition-timing-function: ease-in;
+      content: "";
+      display: block;
+      position: absolute;
+      height: 0.1rem;
+      width: 0;
+    }
+  }
+
+  h4 {
+    font-size: $text-size;
+  }
+
+  h3,
+  h4 {
+    margin-top: $spacing--xsmall;
+  }
+
+  img {
+    border: 1px solid transparent;
+    transition-property: border;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in;
+  }
+
+  &:hover {
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
+    transform: translateY(-0.1rem);
+    border: $border-width solid $color--blue;
+  }
+
+  &:active {
+    box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.05);
+    transform: translateY(0);
+    border: $border-width solid $color--blue;
+  }
+}
+
+.project__content {
+  padding: $spacing--small;
+
+  h3 {
+    margin-bottom: $spacing--xsmall;
+    text-transform: capitalize;
+    line-height: 2rem;
+  }
+}
+
+.proj {
+  h1 {
+    text-align: center;
+    margin-top: $spacing--large;
+    text-transform: capitalize;
+  }
+
+  h2,
+  h3 {
+    text-transform: capitalize;
+  }
+
+  h2,
+  p,
+  li,
+  .tags,
+  p,
+  h3,
+  h4,
+  cite,
+  figcaption {
+    @extend .optimal-length;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__intro {
+    height: $spacing * 12;
+    position: fixed;
+    top: 0;
+    height: $spacing * 12;
+    width: 100%;
+    background-color: #999999;
+    z-index: $zindex--1;
+
+    &::after {
+      content: "";
+      height: $spacing * 12;
+      width: 100%;
+      display: block;
+      background: rgba(0, 0, 0, 0.65);
+      position: relative;
+      z-index: $zindex--2;
+    }
+  }
+
+  &__content {
+    margin-top: $spacing * 12;
+
+    position: relative;
+    z-index: $zindex--3;
+    background: $color--white;
+  }
+
+  &__blurb {
+    background: $color--grey--light;
+    padding: $spacing;
+
+    margin-bottom: $spacing;
+    border-bottom: $border-width solid
+      color.scale($color--grey, $lightness: 90%);
+
+    // Accordion styles
+    .accordion-summary {
+      @extend .optimal-length; // Keep accordion width consistent
+      // Reverted background/border from previous attempt, keeping original styles from file
+      // color: $color--yellow;
+      border: $border-width solid $color--yellow;
+      border-radius: $spacing--xsmall;
+      background-color: lighten($color: $color--yellow, $amount: 35%);
+      margin-bottom: $spacing;
+      margin-left: auto;
+      margin-right: auto;
+      .accordion-content {
+        padding: $spacing;
+      }
+      p {
+        padding-bottom: $spacing--small;
+      }
+      .button {
+        margin-bottom: $spacing;
+      }
+      summary {
+        cursor: pointer;
+        padding: $spacing;
+        font-weight: $font-weight--bold;
+        // Add space below summary when open, only if details is open
+        details[open] > & {
+          margin-bottom: $spacing--small;
+        }
+
+        // Basic open/close indicator styling (optional)
+        &::marker {
+          // Style default marker if needed
+        }
+        // Or use a custom indicator:
+        // &::before { content: '+ '; }
+        // &[open]::before { content: '- '; }
+      }
+
+      // Style for the "Close" link
+      .accordion-close {
+        display: block; // Make it block level to allow text-align
+        margin-top: $spacing; // Add space above the link
+        text-align: center;
+      }
+    }
+
+    h2 {
+      margin-bottom: $spacing;
+      line-height: $base__line-height * 1.5;
+    }
+  }
+
+  &__img {
+    max-width: rem(700px);
+    margin-bottom: $spacing;
+  }
+
+  &__header {
+    position: relative;
+    z-index: $zindex--3;
+    width: 100%;
+    padding-right: $spacing;
+    padding-left: $spacing;
+    max-width: rem(850px);
+    h1 {
+      color: $color--white;
+      font-size: $text-size--xlarge;
+      line-height: $base__line-height * 1.8;
+
+      @include medium {
+        font-size: $text-size--xxlarge;
+        line-height: $base__line-height * 2;
+      }
+    }
+  }
+  h2 {
+    font-size: $text-size--large;
+    line-height: $base__line-height * 1.5;
+  }
+}
+
+.img__caption {
+  display: block;
+  font-style: italic;
+  color: color.scale($color--grey--dark, $lightness: 20%);
+  margin-bottom: $spacing;
+}
+
+.mobile-animation {
+  max-width: 400px;
+}
+
+.max-width-image {
+  max-width: 500px;
+}
+
+.info {
+  background: $color--grey--light;
+  border: 0.05rem solid $color--grey;
+  margin-bottom: $spacing;
+
+  p {
+    font-size: $text-size--large;
+  }
+}
+
+// Autodesk
+.autodesk {
+  h2 {
+    text-transform: capitalize;
+  }
+  h3 {
+    padding-bottom: $spacing--large;
+    display: block;
+  }
+  .proj__intro {
+    background: url(../images/projects/autodesk/autodesk-background.jpg) 50% 50% /
+      cover;
+  }
+}
+
+// HOUSEHAPPY
+.househappy {
+  .proj__intro {
+    background: url(../images/projects/househappy/househappy-background.jpg) 50%
+      50% / cover;
+  }
+}
+
+// HOUSEHAPPY iOS
+.househappy-ios {
+  .proj__intro {
+    background: url(../images/projects/househappy-ios/househappy-background.jpg)
+      50% 50% / cover;
+  }
+}
+
+// IMMERSIVE MEDIA
+.immersive-media {
+  .proj__intro {
+    background: url(../images/projects/immersive-media/immersive-media-background.jpg)
+      50% 50% / cover;
+  }
+
+  .proj__img {
+    max-width: 53rem;
+  }
+
+  .proj__blurb figure {
+    display: inline-block;
+    margin-right: $spacing;
+    img {
+      max-width: 150px;
+    }
+  }
+
+  h2 {
+    // color: $color--blue;
+    margin-bottom: $spacing--small;
+    text-transform: capitalize;
+  }
+
+  .container {
+    margin-bottom: $spacing;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+// DETROIT CONNECT
+.dc {
+  .proj__intro {
+    background: url(../images/projects/dc/dc-background.jpg) 50% 50% / cover;
+  }
+
+  .proj__img {
+    max-width: 100%;
+  }
+}
+
+// DETROIT CONNECT ANDROID
+.dc-android {
+  margin-bottom: $spacing;
+  .proj__intro {
+    background: url(../images/projects/dc-android/dc-android-background.jpg) 50%
+      50% / cover;
+  }
+
+  .full-width {
+    max-width: 100%;
+  }
+}
+
+// DIGZ
+.startup {
+  .proj__intro {
+    background: url(../images/projects/startup/startup-background.jpg) 50% 50% /
+      cover;
+  }
+}
+
+.dcd {
+  .proj__intro {
+    background: url(../images/projects/dcd/dcd-background.jpg) 50% 50% / cover;
+  }
+  video {
+    width: 100%;
+  }
+  .users {
+    max-width: $spacing * 18 !important;
+  }
+  ul {
+    margin-bottom: $spacing;
+  }
+
+  h2 {
+    // color: $color--blue;
+  }
+
+  .proj__img {
+    max-width: 54rem;
+  }
+
+  figcaption {
+    margin-bottom: $spacing;
+  }
+}
+
+// autodesk messaging
+.autodesk-messaging {
+  .proj__intro {
+    background: url(../images/projects/autodesk-messaging/autodesk-background.jpg)
+      50% 50% / cover;
+  }
+
+  .proj__img {
+    max-width: 53rem;
+  }
+
+  .yellow-border {
+    border: $border-width * 2 solid $color--blue;
+  }
+  .impact {
+    background-color: lighten(
+      $color--blue,
+      50%
+    ); // Reverted from previous attempt
+    color: $color--blue;
+    padding: $spacing;
+    border: $border-width solid $color--blue;
+    border-radius: $spacing--xsmall;
+    margin-top: $spacing--large;
+    margin-bottom: $spacing * 1.5;
+
+    p,
+    li {
+      color: $color--blue;
+    }
+  }
+
+  ul {
+    margin-top: 0;
+  }
+  h3 {
+    margin-bottom: $spacing--small;
+    padding-top: $spacing--small; // Reverted from previous attempt
+    // color: $color--blue;
+  }
+
+  h4 {
+    margin-bottom: $spacing--small;
+    padding-top: $spacing--small; // Reverted from previous attempt
+  }
+}
+
+.highlight {
+  background-color: color.scale($color--yellow, $lightness: 70%);
+  padding: math.div($spacing--xsmall, 2) $spacing--xsmall;
+  box-shadow: inset 0 -0.2rem 0 color.scale($color--yellow, $lightness: 60%),
+    inset 0 0.2rem 0 color.scale($color--yellow, $lightness: 60%);
+  border-radius: 0.2rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 100;
+
+  &:hover {
+    background-color: color.scale($color--yellow, $lightness: 50%);
+    box-shadow: inset 0 -0.3rem 0 color.scale($color--yellow, $lightness: 40%),
+      inset 0 0.3rem 0 color.scale($color--yellow, $lightness: 40%);
+  }
+}
+
+// Before-After Comparison Styles
+.before-after-comparison {
+  margin: $spacing * 2 0 $spacing * 2;
+
+  h3 {
+    text-align: center;
+    margin-bottom: $spacing;
+    color: $color--blue;
+  }
+
+  .comparison-container {
+    display: flex;
+    flex-direction: column;
+
+    @include medium {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    figure {
+      flex: 1;
+      // box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
+      // border-radius: 0.4rem;
+      // overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      img {
+        display: block;
+        border-bottom: 3px solid;
+        margin-bottom: $spacing;
+        padding-bottom: $spacing;
+        object-fit: cover;
+      }
+
+      .caption {
+        padding: $spacing $spacing 0 $spacing;
+
+        h4 {
+          font-size: $text-size--large;
+          margin-bottom: $spacing--small;
+          font-weight: $font-weight--bold;
+        }
+
+        p {
+          font-size: $text-size;
+          line-height: 1.6;
+        }
+      }
+    }
+
+    .before {
+      img {
+        border-color: $color--grey--dark;
+      }
+
+      h4 {
+        color: $color--grey--dark;
+      }
+    }
+
+    .after {
+      img {
+        border-color: $color--blue;
+      }
+
+      h4 {
+        color: $color--blue;
+      }
+    }
+  }
+}
+
+// .notification article {
+//   display: flex;
+//   align-items: top;
+//   overflow: hidden;
+
+//   img {
+//     flex-shrink: 0;
+//     width: $spacing * 12; // Adjust as needed
+//     height: auto;
+//     object-fit: cover;
+//   }
+
+//   .project__content {
+//     padding: $spacing;
+//     flex: 1;
+//   }
+// }
+
+.proj__separator {
+  margin-bottom: $spacing * 4;
+  border-top: $border-width solid $color--grey;
+  opacity: 0.5; // Adds slight transparency for a softer look
+  width: 80%; // Centers the separator with reduced width
+  margin-left: auto;
+  margin-right: auto;
+}

@@ -1,0 +1,96 @@
+<!-- index.nunjucks -->
+{% extends "layout.nunjucks" %}
+{% block content %}
+    {% include "partials/header.nunjucks" %}
+    <main class="proj autodesk">
+        <div class="proj__intro">
+            <div class="proj__header absolute-center">
+                <h1>Autodesk Fusion: Achieving Device Independence</h1>
+            </div>
+        </div>
+        <div class="proj__content">
+            <div class="proj__blurb">
+                <h2>
+                    COMING SOON: Leading the UX Design for Autodesk Fusion’s Transition from Desktop-Only to a Seamless Cross-Platform Experience
+                </h2>
+                <ul class="tags">
+                    <li>User Experience</li>
+                    <li>Prototyping</li>
+                    <li>Information Architecture</li>
+                    <li>User Flows</li>
+                    <li>Animations</li>
+                    <li>Design</li>
+                    <li>Strategy</li>
+                    <li>Front-End Development</li>
+                    <li>User Research</li>
+                    <li>Design Systems</li>
+                    <li>Accessibility</li>
+                    <li>Design Leadership</li>
+                </ul>
+            </div>
+            <div class="container">
+                <div class="before-after-comparison">
+                    <h3>The Journey to Device Independence</h3>
+                    <div class="comparison-container">
+                        <figure class="before">
+                            <img src="images/projects/autodesk-DI/old-fusion.jpg"
+                                 alt="Old Fusion Desktop Interface"
+                                 width="100%"
+                                 height="auto"
+                                 class="proj__img">
+                            {# <figcaption>BEFORE: Desktop-Only Experience</figcaption> #}
+                            <div class="caption">
+                                <h4>BEFORE:</h4>
+                                <h4>Desktop-Only Experience</h4>
+                                <p>
+                                    The original Autodesk Fusion was designed exclusively for desktop environments, with a complex interface optimized for mouse and keyboard interactions. While powerful, its dense UI and specialized controls limited accessibility and confined users to traditional workstations.
+                                </p>
+                            </div>
+                        </figure>
+                        <figure class="after">
+                            <img src="images/projects/autodesk-DI/fusion-di.jpg"
+                                 alt="New Device-Independent Fusion"
+                                 width="100%"
+                                 height="auto"
+                                 class="proj__img">
+                            {# <figcaption>AFTER: Device-Independent</figcaption> #}
+                            <div class="caption">
+                                <h4>AFTER:</h4>
+                                <h4>Device-Independent Experience</h4>
+                                <p>
+                                    The reimagined Fusion experience features a responsive, adaptive interface that seamlessly scales across mobile, tablet, web, and desktop platforms. With thoughtful architecture and support for multiple input methods (touch, stylus, and mouse), giving Fusion a path to empower creators to design anywhere, on any device.
+                                </p>
+                            </div>
+                        </figure>
+                    </div>
+                </div>
+                <hr class="proj__separator">
+                <h3>Project Overview</h3>
+                <p>
+                    Autodesk Fusion is exclusively available as a desktop application for Mac and Windows. While the software provides robust functionality, its complex interface is optimized solely for mouse and keyboard interactions, limiting its usability across other devices. There was no established cross-platform strategy to extend its reach and move it onto every device.
+                </p>
+                <p>The goal of this multiyear project was two fold:</p>
+                <ol>
+                    <li>
+                        <strong>Redefine Fusion as a device-independent product</strong> with an experience that scales seamlessly across mobile, tablet, web, and desktop platforms.
+                    </li>
+                    <li>
+                        <strong>Lay the foundation for a cross-platform design system</strong> that could serve as a framework for future Autodesk products, accommodating diverse input methods such as touch, stylus, and mouse.
+                    </li>
+                </ol>
+                <p>
+                    As the Lead Designer, I worked alongside two senior designers, to explore, test, and build cross-platform solutions. This initiative required close collaboration with all other UX design teams and cross-functional teams over several years to align on strategy, design principles, and technical feasibility.
+                </p>
+                <figure class="proj__img center">
+                    <img src="images/projects/autodesk-DI/mockuuups-transparent-ipad-pro-mockup.png"
+                         alt="Old Fusion Desktop Interface"
+                         width="100%"
+                         height="auto"
+                         class="proj__img">
+                    <figcaption>Mockup of Fusion on iPad Pro.</figcaption>
+                </figure>
+                <div class="margin-bottom--large"></div>
+            </div>
+        </main>
+        {% include "partials/footer.nunjucks" %}
+    {% endblock content %}

@@ -1,0 +1,45 @@
+@use "../2-utilities/config" as *;
+@use "../2-utilities/mixins" as *;
+@use "../2-utilities/colors" as *;
+@use "sass:color";
+
+$a-tags: 'a, a:active, a:hover, a:visited';
+$a-tags-hover: 'a:active, a:hover';
+ 
+#{$a-tags} {
+  color: $color--blue;
+  text-decoration: none;
+  transition-property: color;
+  transition-duration: .2s;
+  transition-timing-function: ease-out;
+}
+
+#{$a-tags-hover} {
+  color: color.adjust($color--blue, $lightness: 10%);
+}
+
+header {
+  #{$a-tags} {
+    color: $color--white;
+  }
+  #{$a-tags-hover} {
+    color: color.adjust($color--white, $lightness: -20%);
+
+    svg {
+      opacity: .8;
+    }
+  }
+}
+
+footer {
+  #{$a-tags} {
+    color: color.adjust($color--white, $lightness: -30%);
+  }
+  #{$a-tags-hover} {
+    color: $color--white;
+  }
+}
+
+a.disabled {
+  pointer-events: none;
+}

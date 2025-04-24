@@ -1,0 +1,4 @@
+pages:
+  script:
+    - echo "No build step needed"
+  publish: dest

@@ -1,0 +1,29 @@
+<!-- index.nunjucks -->
+{% extends "layout.nunjucks" %} {% block content %} 
+{% include "partials/header.nunjucks" %}
+<main class="proj startup">
+  <div class="proj__intro">
+    <div class="proj__header absolute-center">
+      <h1>Real Estate App</h1>
+    </div>
+  </div>
+  <div class="proj__content">
+    <div class="proj__blurb">
+      <h2>Real Estate App for Agents</h2>
+      <p>Clients came to us with a product idea that they were excited about and wanted to validate. We worked with the client to provide technical, market, and user insights. Through an onsite workshop, minimum viable product definition, user interviews, competitive analysis and a findings deck we found out that their idea had many risks. Fortunetly, in our research we did identify an exciting oppurtunity for the client to pivot twords. With the research and insights that we provided we saved the client possibly hundreds of thousands of dollars. They are currently pursuing funding for the new idea with our help.</p>
+      <ul class="tags">
+        <li>UX Strategy</li>
+        <li>Competitive Analysis</li>
+        <li>User Interviews</li>
+        <li>Analysis</li>
+        <li>Workshop Leadership</li>
+      </ul>
+    </div>
+    <div class="container">
+        <div class="info text-align--center margin-vertical--large">
+          <p class="padding-around--large">Coming soon!</p> 
+        </div>
+    </div>
+  </div>
+</main>
+{% include "partials/footer.nunjucks" %} {% endblock %}

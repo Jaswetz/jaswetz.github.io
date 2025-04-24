@@ -1,0 +1,22 @@
+<footer>
+    <div class="container">
+        <p class="copyright">© 2025 Jason Swetzoff</p>
+        <nav>
+            <ul>
+                <li>
+                    <a id="contact-link" href="mailto:swetzoff@gmail.com">Email</a>
+                </li>
+                <li>
+                    <a href="http://www.linkedin.com/in/swetzoff"
+                       alt="Jason's LikedIn"
+                       target="_blank">LinkedIn</a>
+                </li>
+                <li>
+                    <a href="https://www.kickresume.com/cv/AWKMA4/"
+                       alt="Jason's Resume"
+                       target="_blank">Resume</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</footer>

@@ -1,0 +1,174 @@
+@use "../2-utilities/config" as *;
+@use "../2-utilities/mixins" as *;
+@use "../3-base/breakpoints" as *;
+@use "../2-utilities/colors" as *;
+
+.intro__wrapper {
+  z-index: $zindex--0;
+  width: 100%;
+  height: 100vh;
+}
+
+.home main {
+  padding-top: $spacing;
+  padding-bottom: $spacing--xlarge;
+}
+
+.intro {
+  background: url(../images/bckg-jason-swetzoff--xsmall.jpg) 50% 50%/cover;
+  background-color: #999999;
+
+  @include medium {
+    background: url(../images/bckg-jason-swetzoff--small.jpg) 50% 50%/cover;
+  }
+  @include large {
+    background: url(../images/bckg-jason-swetzoff--medium.jpg) 50% 50%/cover;
+  }
+  @include xl {
+    background: url(../images/bckg-jason-swetzoff.jpg) 50% 50%/cover;
+  }
+
+  &__tagline {
+    font-size: $text-size * 2.5;
+    line-height: $base__line-height * 2;
+    position: absolute;
+    margin-bottom: $spacing--small;
+    opacity: 0.75;
+  
+
+    @include mq(tablet) {
+      font-size: $text-size * 4;
+      line-height: $base__line-height * 3;
+    }
+    // @include mq(desktop) {
+    //   font-size: $text-size * 4;
+    //   line-height: $base__line-height * 3;
+    // }
+
+    .container::before {
+      display: block;
+      height: 0.15rem;
+      margin-bottom: $spacing;
+      content: '';
+      background-color: $color--white;
+
+      @include mq(tablet) {
+        margin-right: 40%;
+      }
+      @include mq(desktop) {
+        margin-right: 45%;
+      }
+    }
+  }
+
+  &__tagline--large {
+    @include mq(tablet) {
+      font-size: $text-size * 7;
+      line-height: $base__line-height * 4;
+    }
+    @include mq(desktop) {
+      font-size: $text-size * 8;
+      line-height: $base__line-height * 4;
+    }
+  }
+
+  &,
+  &:after {
+    position: fixed;
+    z-index: $zindex--1;
+    display: table;
+    width: 100%;
+    max-width: none;
+    height: 100vh;
+    margin: 0;
+  }
+
+  &:after {
+    content: '';
+    // background: rgba(0, 0, 0, 0.75);
+    // background: rgba(28,36,65,.75);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7));
+  }
+
+  &__tagline {
+    z-index: $zindex--2;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: right;
+    color: $color--white;
+  }
+}
+
+
+
+
+// ABOUT
+
+.about {
+  margin-top: $spacing--large;
+  padding-bottom: $spacing--xlarge;
+  background: $color--grey--light;
+  border-top: $border-width solid darken($color--grey--light, 5%);
+
+
+  img {
+    max-width: $spacing * 12;
+    max-height: $spacing * 12;
+    margin-top: $spacing;
+    margin-right: auto;
+    margin-bottom: $spacing;
+    margin-left: auto;
+    
+
+    @include medium {
+      margin: 0;
+      margin-right: $spacing;
+    }
+  }
+  
+  &__wrapper {
+    @include medium {
+      display: flex;
+      margin: 0;
+      align-items: flex-start; // Align items to the top
+    }
+    @include large {
+      margin-right: 8.3333%;
+      margin-left: 8.33333%;
+    }
+  }
+}
+
+
+// Blurb
+
+.blurb--full-width {
+  border-top: $border-width solid darken($color--grey--light, 5%);
+}
+
+.blurb {
+  margin-top: $spacing--large;
+  padding-top: $spacing--large;
+  padding-bottom: $spacing--large;
+  background: $color--grey--light;
+  text-align: center;
+  position: relative;
+  z-index: $zindex--1;
+  border-bottom: $border-width solid darken($color--grey--light, 5%);
+
+
+  &__content {
+    font-size: $text-size * 1.5;
+    line-height: $base__line-height * 1.5;
+    font-style: italic;
+    color: $color--grey;
+    margin-bottom: $spacing;
+  }
+
+  &__author {
+    font-size: $text-size;
+    line-height: $base__line-height;
+    color: $color--grey--dark;
+  }
+}

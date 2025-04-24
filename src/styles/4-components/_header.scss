@@ -1,0 +1,99 @@
+@use "sass:color";
+@use "../2-utilities/config" as *;
+@use "../2-utilities/mixins" as *;
+@use "../2-utilities/colors" as *;
+@use "../3-base/lists" as *;
+
+.header {
+  position: fixed;
+  z-index: $zindex--3;
+  top: 0;
+  width: 100%;
+  transition: all .5s ease-in-out;
+  padding-bottom: $spacing--large;
+
+  &.scrolled {
+      background: color.scale($color--black, $alpha: -10%);
+      padding-bottom: 0;
+      border-bottom: 1px solid $color--white;
+  }
+
+  a {
+    display: block;
+    text-decoration: none;
+    color: $color--white;
+  }
+
+  &__wrap .container {
+    position: relative;
+    display: flex;
+    min-height: $spacing--xlarge;
+
+    align-items: center;
+
+    &::after {
+      display: block;
+      height: 0.15rem;
+      margin-left: $spacing;
+      content: '';
+      opacity: 0.25;
+      background-color: $color--white;
+
+      flex: 1;
+    }
+  }
+
+  .logo a {
+    display: flex;
+
+    align-items: center;
+
+    h1 {
+      font-size: $text-size--large;
+      display: none;
+      text-transform: uppercase;
+
+      @include mq(tablet) {
+        display: block;
+      }
+    }
+
+    svg {
+      width: $spacing * 1.5;
+      height: $spacing * 1.5;
+      margin-right: $spacing--xsmall;
+
+      @include mq(tablet) {
+        width: $spacing;
+        height: $spacing;
+      }
+    }
+  }
+
+  &__actions ul {
+    display: flex;
+
+    @extend .list-reset;
+    align-items: center;
+
+    li {
+      margin-left: $spacing;
+
+      &:last-child {
+        a::after {
+          content: '';
+        }
+      }
+    }
+
+    a {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        margin-left: 0.75rem;
+        content: ' / ';
+      }
+    }
+  }
+}

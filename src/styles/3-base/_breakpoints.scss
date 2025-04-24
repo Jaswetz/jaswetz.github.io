@@ -1,0 +1,74 @@
+@use "sass:map";
+@use "../2-utilities/config" as *;
+
+// Breakpoint map
+$breakpoints: (
+  xs: 25em,     // 400px
+  small: 36em,  // 576px
+  medium: 48em, // 768px
+  large: 62em,  // 992px
+  xl: 75em,     // 1200px
+  xxl: 87.5em,  // 1400px
+  max-width: 90rem // 1440px
+);
+
+/// Mixin - Breakpoint
+/// @param {String} $name - Breakpoint name
+@mixin breakpoint($name) {
+  @if map.has-key($breakpoints, $name) {
+    @media (min-width: map.get($breakpoints, $name)) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint `#{$name}`.";
+  }
+}
+
+/// Mixin - xs Breakpoint
+@mixin xs {
+  @include breakpoint(xs) {
+    @content;
+  }
+}
+
+/// Mixin - small Breakpoint
+@mixin small {
+  @include breakpoint(small) {
+    @content;
+  }
+}
+
+/// Mixin - medium Breakpoint
+@mixin medium {
+  @include breakpoint(medium) {
+    @content;
+  }
+}
+
+/// Mixin - large Breakpoint
+@mixin large {
+  @include breakpoint(large) {
+    @content;
+  }
+}
+
+/// Mixin - xl Breakpoint
+@mixin xl {
+  @include breakpoint(xl) {
+    @content;
+  }
+}
+
+/// Mixin - xxl Breakpoint
+@mixin xxl {
+  @include breakpoint(xxl) {
+    @content;
+  }
+}
+
+/// Mixin - max-width Breakpoint
+@mixin max-width {
+  @include breakpoint(max-width) {
+    @content;
+  }
+}

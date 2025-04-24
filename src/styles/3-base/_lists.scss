@@ -1,0 +1,13 @@
+@use "../2-utilities/config" as *;
+@use "../2-utilities/mixins" as *;
+
+.list-reset {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  > li {
+    margin: 0;
+    padding: 0;
+  }
+}
