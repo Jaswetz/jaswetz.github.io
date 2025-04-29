@@ -2,3 +2,6 @@ pages:
   script:
     - echo "No build step needed"
   publish: dest
+  artifacts:
+    paths:
+      - public
