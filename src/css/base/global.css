@@ -1,9 +1,12 @@
 /* src/css/base/global.css */
 
-/* Set a base font size on html to make rem units more predictable if needed,
-   though modern-normalize already sets line-height and text-size-adjust. */
+/* Set a base font size on html to make rem units more predictable */
 html {
     font-size: 100%; /* Ensures 1rem = 16px by default in most browsers */
+    line-height: 1.15; /* Basic line-height, modern-normalize used this, good for a base */
+    -webkit-text-size-adjust: 100%; /* Prevent adjustments of font size after orientation changes in iOS. */
+	-moz-tab-size: 4; /* More readable tab size */
+	tab-size: 4;
 }
 
 /* Apply a natural box layout model to all elements */
@@ -12,9 +15,10 @@ html {
 }
 
 body {
-    margin: 0; /* Usually covered by normalize, but good to ensure */
+    /* Basic body styling, color/background are set using CSS variables */
     background-color: var(--color-background, #fff);
     color: var(--color-text, #333);
+    /* font-family and specific line-height will be set in typography.css */
 }
 
 /* Responsive images and other media by default */
@@ -27,16 +31,15 @@ svg {
     max-width: 100%;
 }
 
-/* Remove default list styles for easier custom styling */
+/* Remove default list styles for easier custom styling if not covered by reset */
 ol,
 ul {
     list-style: none;
-    padding: 0;
-    margin: 0; /* Usually covered by normalize */
+    /* margin and padding are reset by `* { margin: 0; }` in reset.css */
 }
 
 /* Ensure a consistent tap highlight color (can be overridden) */
-/* Useful for mobile and touch devices */
+/* Useful for mobile and touch devices - uncomment if needed */
 /*
 html {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
