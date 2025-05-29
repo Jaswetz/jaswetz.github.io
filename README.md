@@ -69,4 +69,10 @@ Parcel will automatically install any necessary compilers or transformers for fi
 Builds the app for production to the `dist/` folder.\
 It correctly bundles your code in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include hashes for cache busting. 
+The build is minified and the filenames include hashes for cache busting.
+
+# Editor Configuration
+
+This project includes a recommended editor configuration for VS Code and Cursor in the `.vscode/settings.json` file. This file includes settings for formatting (Prettier) and recommends some useful extensions for web development.
+
+Since `.vscode/` is included in `.gitignore`, these settings are not committed to the repository and are intended for local development convenience. You may customize them further to your preferences. 
