@@ -1,6 +1,7 @@
 node_modules/
 .parcel-cache/
 dist/
+dest/
 
 # OS-specific files
 .DS_Store
