@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "parcel src/index.html src/styleguide.html --open",
-    "build": "parcel build src/index.html src/styleguide.html"
+    "dev": "parcel src/*.html --open",
+    "build": "parcel build src/*.html"
   },
   "keywords": [],
   "author": "",
