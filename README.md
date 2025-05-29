@@ -95,3 +95,44 @@ This page serves as a central reference for the UI of the website.
 This project includes a recommended editor configuration for VS Code and Cursor in the `.vscode/settings.json` file. This file includes settings for formatting (Prettier) and recommends some useful extensions for web development.
 
 Since `.vscode/` is included in `.gitignore`, these settings are not committed to the repository and are intended for local development convenience. You may customize them further to your preferences. 
+
+# Environment and Future-Proofing
+
+This section outlines key aspects of the development environment to ensure the project can be run and maintained in the future.
+
+## Node.js Version
+
+This project was last developed and tested with Node.js version `23.9.0`.
+An `.nvmrc` file is included in the project root. If you use [Node Version Manager (nvm)](https://github.com/nvm-sh/nvm), you can switch to the correct Node.js version by running the following command in the project root:
+
+```bash
+nvm use
+```
+
+If you don't have this version of Node.js installed, nvm will prompt you to install it.
+Using a consistent Node.js version is crucial for ensuring that dependencies, especially the Parcel.js build tool, install and operate as expected.
+
+## Dependencies
+
+The primary build-time dependency is Parcel.js. All dependencies and their exact versions are locked in the `package-lock.json` file.
+To ensure a clean and reproducible build environment when returning to the project after some time, or when setting it up on a new machine, it is highly recommended to install dependencies using:
+
+```bash
+npm ci
+```
+
+This command performs a clean install strictly based on the `package-lock.json` file.
+
+## Core Technologies
+
+The website itself is built using fundamental web technologies:
+- HTML5
+- CSS3 (including CSS Grid and Flexbox)
+- Vanilla JavaScript
+- Native Web Components
+
+These technologies are web standards and are designed for long-term browser compatibility, which significantly contributes to the future-proofing of the actual deployed website.
+
+## Build Output
+
+The `npm run build` command generates a production-ready static site in the `dist/` directory. This output consists of plain HTML, CSS, and JavaScript files that can be hosted on any static web hosting provider (like GitLab Pages, as intended for this project). Once built, the `dist/` directory is self-contained and does not require Parcel.js or Node.js to be served to users. 
