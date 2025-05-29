@@ -34,7 +34,13 @@ Use `kebab-case` for general script files. `camelCase` can be used for modules o
 Use `kebab-case` with descriptive names.
 
 - Example: `profile-picture-large.jpg`
-- Example: `project-thumbnail-blue.png` 
+- Example: `project-thumbnail-blue.png`
+
+## Web Components
+
+- Custom element names MUST contain a hyphen (e.g., `<site-header>`, `<project-card>`).
+- Component JavaScript files should be named in `PascalCase` (e.g., `SiteHeader.js`, `ProjectCard.js`).
+- Component files should be organized by feature/UI element in the `src/js/components/` directory (e.g., `src/js/components/site-header/SiteHeader.js`).
 
 # Development Environment & Tooling
 
@@ -67,9 +73,22 @@ Parcel will automatically install any necessary compilers or transformers for fi
 ### `npm run build`
 
 Builds the app for production to the `dist/` folder.\
-It correctly bundles your code in production mode and optimizes the build for the best performance.
+It correctly bundles your code in production mode and optimizes the build for the best performance. The `src/index.html` and `src/styleguide.html` pages are the entry points for the build.
 
 The build is minified and the filenames include hashes for cache busting.
+
+# HTML Structure & Templating
+
+This project uses **Native Web Components** for creating reusable UI elements such as the site header, footer, and navigation. This approach helps maintain a DRY (Don't Repeat Yourself) HTML structure without requiring additional templating engine dependencies.
+
+- Core components like `<site-header>` and `<site-footer>` are defined in `src/js/components/`.
+- These components are then used directly in the HTML pages (e.g., `src/index.html`, `src/styleguide.html`).
+- Parcel.js handles the bundling of these components as part of the standard JavaScript build process.
+
+# Living Style Guide
+
+A living style guide is available at `src/styleguide.html`. When running the development server (`npm run dev`), this page can be accessed to view and test all available Web Components, design tokens (colors, typography), and utility classes.
+This page serves as a central reference for the UI of the website.
 
 # Editor Configuration
 
