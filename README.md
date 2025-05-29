@@ -168,3 +168,33 @@ These technologies are web standards and are designed for long-term browser comp
 ## Build Output
 
 The `npm run build` command generates a production-ready static site in the `dist/` directory. This output consists of plain HTML, CSS, and JavaScript files that can be hosted on any static web hosting provider (like GitLab Pages, as intended for this project). Once built, the `dist/` directory is self-contained and does not require Parcel.js or Node.js to be served to users.
+
+# Testing Strategy
+
+This section outlines the planned testing approaches to ensure website quality, performance, and accessibility.
+
+## 11.1 Cross-Browser Testing
+
+- **Manual Testing**: The website will be manually tested on the latest versions of supported browsers (Chrome, Firefox, Safari, Edge - desktop and mobile, as per project requirements).
+- **Web Component Functionality**: Specific attention will be paid to verifying Web Components functionality and rendering across these browsers, using the `styleguide.html` as a primary tool.
+- **Graceful Degradation**: The unsupported browser warning message (to be implemented) will be tested on an older browser or by simulating an unsupported environment.
+- **Results Storage**: Cross-browser testing checklists and results may be stored as GitLab artifacts if a CI/CD pipeline is established.
+
+## 11.2 Performance Testing
+
+- **Lighthouse**: Google Lighthouse (via Chrome DevTools) will be used periodically to measure Core Web Vitals (LCP, FID/INP, CLS) and overall performance scores.
+- **Bundle Size Validation**: Production build bundle sizes will be monitored using Parcel's output and potentially bundle analysis tools if needed.
+- **Network Throttling**: Testing on throttled connections (via browser DevTools) will be performed to simulate various mobile network conditions.
+
+## 11.3 Accessibility Testing (A11Y)
+
+- **Automated Tools**: Lighthouse and the axe-core browser extension will be used for automated WCAG 2.1 Level AA compliance checks.
+- **Manual Keyboard Navigation**: Thorough manual testing of all interactive elements using only keyboard navigation.
+- **Screen Reader Verification**: Manual testing with screen reader software (e.g., VoiceOver, NVDA) to ensure a good user experience for visually impaired users.
+- **Color Contrast**: Color contrast ratios will be validated using browser DevTools or dedicated contrast checker tools.
+
+## 11.4 Component Testing
+
+- **Isolation Testing**: Web Components will be manually tested in isolation using the `styleguide.html` page to verify their appearance, functionality, and responsiveness.
+- **Integration Testing**: Components will be tested on actual pages (`index.html`, `about.html`, etc.) to ensure they integrate correctly with the page layout and other components.
+- **Encapsulation Verification**: Shadow DOM encapsulation will be implicitly verified by ensuring styles do not leak between components or the global scope.
