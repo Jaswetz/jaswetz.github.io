@@ -1,48 +1,62 @@
+/**
+ * @class SiteHeader
+ * @extends HTMLElement
+ * @description Custom element for the site-wide header, including navigation.
+ * It encapsulates its own structure, styles, and basic behavior.
+ */
 class SiteHeader extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
     }
 
+    /**
+     * Called when the element is added to the document's DOM.
+     * Renders the header structure and styles into the Shadow DOM.
+     */
     connectedCallback() {
         this.shadowRoot.innerHTML = `
             <style>
-                /* Basic styles for the header */
+                /* Component-specific styles for the header */
                 :host {
                     display: block;
-                    background-color: #f8f8f8; /* Example background */
-                    padding: 10px 20px;
-                    border-bottom: 1px solid #ddd;
+                    background-color: var(--color-background-header, #f8f8f8); /* Example, can be themed with CSS vars */
+                    padding: var(--spacing-sm) var(--spacing-md);
+                    border-bottom: var(--border-width) solid var(--color-border);
                 }
-                nav {
+                .header-content {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
+                    max-width: 1200px; /* Example max-width for content */
+                    margin: 0 auto;
                 }
                 .logo a {
                     font-weight: bold;
                     text-decoration: none;
-                    color: #333;
-                    font-size: 1.5em;
+                    color: var(--color-text, #333);
+                    font-size: var(--font-size-lg, 1.5em);
                 }
-                ul {
+                nav ul {
                     list-style: none;
                     padding: 0;
                     margin: 0;
                     display: flex;
                 }
-                li a {
+                nav li a {
                     text-decoration: none;
-                    color: #333;
-                    padding: 10px 15px;
+                    color: var(--color-text, #333);
+                    padding: var(--spacing-xs) var(--spacing-sm);
                 }
-                li a:hover {
-                    color: #007bff; /* Example hover color */
+                nav li a:hover,
+                nav li a:focus {
+                    color: var(--color-primary, #007bff);
+                    text-decoration: underline;
                 }
             </style>
-            <header>
+            <header class="header-content">
                 <div class="logo">
-                    <a href="index.html">MyPortfolio</a> <!-- Or your site title/logo -->
+                    <a href="index.html">MyPortfolio</a> <!-- Site title/logo -->
                 </div>
                 <nav>
                     <ul>
@@ -56,6 +70,9 @@ class SiteHeader extends HTMLElement {
             </header>
         `;
     }
+
+    // Future: observedAttributes and attributeChangedCallback if props are needed.
+    // Future: Methods for handling events if the header becomes more interactive.
 }
 
 export default SiteHeader; 
