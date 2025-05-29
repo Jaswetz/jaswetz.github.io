@@ -1,0 +1,44 @@
+/* src/css/base/global.css */
+
+/* Set a base font size on html to make rem units more predictable if needed,
+   though modern-normalize already sets line-height and text-size-adjust. */
+html {
+    font-size: 100%; /* Ensures 1rem = 16px by default in most browsers */
+}
+
+/* Apply a natural box layout model to all elements */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0; /* Usually covered by normalize, but good to ensure */
+    background-color: var(--color-background, #fff);
+    color: var(--color-text, #333);
+}
+
+/* Responsive images and other media by default */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* Remove default list styles for easier custom styling */
+ol,
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Usually covered by normalize */
+}
+
+/* Ensure a consistent tap highlight color (can be overridden) */
+/* Useful for mobile and touch devices */
+/*
+html {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+*/ 

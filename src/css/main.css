@@ -1,5 +1,10 @@
 @import url('variables.css');
 
+/* Base Styles */
+@import url('base/normalize.css');
+@import url('base/global.css');
+@import url('base/typography.css');
+
 /* Main CSS styles */ 
 
 /* --- Debug Styles --- */

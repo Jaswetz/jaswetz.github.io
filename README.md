@@ -91,10 +91,13 @@ The build is minified and the filenames include hashes for cache busting.
 
 Global CSS styles are managed in the `src/css/` directory.
 
-- **`src/css/main.css`**: This is the primary stylesheet linked in all HTML files. It imports other CSS files.
-- **`src/css/variables.css`**: Defines global CSS Custom Properties (design tokens) for colors, typography, spacing, etc. These variables are available globally once `variables.css` is imported into `main.css`.
+- **`src/css/main.css`**: This is the primary stylesheet linked in all HTML files. It imports other CSS files in a specific order: variables, then base styles, then other categories like layout, components (global), and utilities.
+- **`src/css/variables.css`**: Defines global CSS Custom Properties (design tokens) for colors, typography, spacing, etc.
+- **`src/css/base/normalize.css`**: Contains [Modern Normalize](https://github.com/sindresorhus/modern-normalize) to make browsers render all elements more consistently and in line with modern standards.
+- **`src/css/base/global.css`**: Includes essential global styles like `box-sizing: border-box`, responsive media defaults, and base `body` styling (background, text color).
+- **`src/css/base/typography.css`**: Sets the base `font-family` and `line-height` for the `body` and includes very minimal default styling for links. More opinionated typographic styling will be added later.
 - **Modular Structure**: For better organization, CSS is further structured into subdirectories within `src/css/`:
-    - `base/`: For CSS resets, normalization, base typography, and global element styles.
+    - `base/`: Contains `normalize.css`, `global.css`, and `typography.css`.
     - `layout/`: For page structure, grid systems, and major layout elements (though many layout concerns for specific components will be handled within the Web Component styles themselves).
     - `components/`: For styling specific UI pieces that are *not* encapsulated as Web Components (if any). Styles for Web Components are defined within their respective Shadow DOMs.
     - `utils/`: For utility classes (e.g., margin/padding helpers, text alignment, visibility classes).
