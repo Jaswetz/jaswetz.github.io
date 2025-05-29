@@ -12,5 +12,11 @@
   "license": "ISC",
   "devDependencies": {
     "parcel": "^2.15.2"
-  }
+  },
+  "browserslist": [
+    "Chrome >= 63",
+    "Firefox >= 63",
+    "Safari >= 10.1",
+    "Edge >= 79"
+  ]
 }

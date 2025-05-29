@@ -87,6 +87,11 @@ It correctly bundles your code in production mode and optimizes the build for th
 
 The build is minified and the filenames include hashes for cache busting.
 
+## Build Optimizations
+
+- **Browser Targets**: The `package.json` file includes a `"browserslist"` field. This configuration informs Parcel (and other tools) about the target browsers for the project. Parcel uses this to determine the level of JavaScript transpilation needed and to generate [differential bundling](https://parceljs.org/features/production/#differential-bundling), serving modern code to modern browsers and fallbacks to older ones, optimizing load times and performance.
+- **Automatic Optimizations**: Parcel automatically handles many optimizations during a production build (`npm run build`), including code minification (HTML, CSS, JS), tree-shaking (to remove unused code), and efficient asset bundling.
+
 # CSS Structure and Organization
 
 Global CSS styles are managed in the `src/css/` directory.
@@ -162,4 +167,4 @@ These technologies are web standards and are designed for long-term browser comp
 
 ## Build Output
 
-The `npm run build` command generates a production-ready static site in the `dist/` directory. This output consists of plain HTML, CSS, and JavaScript files that can be hosted on any static web hosting provider (like GitLab Pages, as intended for this project). Once built, the `dist/` directory is self-contained and does not require Parcel.js or Node.js to be served to users. 
+The `npm run build` command generates a production-ready static site in the `dist/` directory. This output consists of plain HTML, CSS, and JavaScript files that can be hosted on any static web hosting provider (like GitLab Pages, as intended for this project). Once built, the `dist/` directory is self-contained and does not require Parcel.js or Node.js to be served to users.
