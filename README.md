@@ -58,6 +58,16 @@ This project uses `npm` for package management and Parcel.js as the bundler and 
    npm install
    ```
 
+## Debugging Visuals (Layout & Rhythm)
+
+To aid in visual debugging of layouts and typographic rhythm, a keyboard shortcut is available:
+
+- **Press `Ctrl+Shift+D`**: This will toggle helper debug styles on the page.
+    - **Layout Outlines**: Adds outlines to all major elements and semantic sections (header, main, footer, section, etc.) to help visualize their boundaries and nesting.
+    - **Typographic Baseline Grid**: Overlays a semi-transparent baseline grid on the page to help align text and elements to a consistent vertical rhythm.
+
+Pressing `Ctrl+Shift+D` again will disable these visual aids. A message will also be logged to the browser console indicating the status of the debug styles.
+
 ## Available Scripts
 
 In the project directory, you can run the following scripts:

@@ -14,4 +14,28 @@ if (window.customElements) {
 
 //DOMContentLoaded is no longer needed for the year, 
 //as it's handled within the SiteFooter component itself.
-//Any other global JS can go here or be further modularized. 
+//Any other global JS can go here or be further modularized.
+
+// --- Debug Styles Toggle ---
+document.addEventListener('keydown', function(event) {
+    // Check for Ctrl+Shift+D
+    if (event.ctrlKey && event.shiftKey && event.key === 'D') {
+        event.preventDefault(); // Prevent default browser action for this shortcut
+
+        const body = document.body;
+        const layoutClass = 'debug-layout-outlines';
+        const rhythmClass = 'debug-typographic-rhythm';
+
+        // Toggle layout outlines
+        body.classList.toggle(layoutClass);
+        // Toggle typographic rhythm
+        body.classList.toggle(rhythmClass);
+
+        if (body.classList.contains(layoutClass) || body.classList.contains(rhythmClass)) {
+            console.log('Debug styles enabled. Press Ctrl+Shift+D to disable.');
+        } else {
+            console.log('Debug styles disabled. Press Ctrl+Shift+D to enable.');
+        }
+    }
+});
+// --- End Debug Styles Toggle --- 
