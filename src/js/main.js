@@ -1,3 +1,4 @@
+// TODO: [Unsupported Browsers] Implement a robust solution for unsupported browsers (Requirement 3.2)
 // Main JavaScript file
 
 import SiteHeader from './components/site-header/SiteHeader.js';

@@ -4,6 +4,10 @@
  * @description Custom element for the site-wide header, including navigation.
  * It encapsulates its own structure, styles, and basic behavior.
  */
+// TODO: [Component][SiteHeader] Implement props/attributes if needed (e.g., for different versions of header) (WCMP7, WCMP8)
+// TODO: [Component][SiteHeader] Implement custom events if header interactions need to notify outside (WCMP7)
+// TODO: [Component][SiteHeader] Expose CSS Custom Properties for more granular theming if needed (WCMP18)
+// TODO: [Component][SiteHeader] Enhance accessibility (e.g. ARIA for nav, focus management if complex) (A11Y4, A11Y9)
 class SiteHeader extends HTMLElement {
     constructor() {
         super();

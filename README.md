@@ -128,6 +128,16 @@ This project includes a recommended editor configuration for VS Code and Cursor 
 
 Since `.vscode/` is included in `.gitignore`, these settings are not committed to the repository and are intended for local development convenience. You may customize them further to your preferences. 
 
+# TODO Strategy
+
+This project uses a simple comment-based system for tracking tasks, issues, and optimization opportunities directly within the codebase. The following prefixes should be used:
+
+- `// TODO: [Scope] Description` - For planned features or tasks that need to be implemented. The `[Scope]` can be a component name, feature area, or general category (e.g., `[Accessibility]`, `[SiteHeader]`, `[ProjectPage]`).
+- `// FIXME: Description` - For bugs or issues that need to be addressed.
+- `// OPTIMIZE: Description` - For areas of the code that could be improved for performance, readability, or efficiency.
+
+This approach keeps tasks contextually close to the relevant code and makes them easy to find via code search.
+
 # Environment and Future-Proofing
 
 This section outlines key aspects of the development environment to ensure the project can be run and maintained in the future.
@@ -198,3 +208,71 @@ This section outlines the planned testing approaches to ensure website quality, 
 - **Isolation Testing**: Web Components will be manually tested in isolation using the `styleguide.html` page to verify their appearance, functionality, and responsiveness.
 - **Integration Testing**: Components will be tested on actual pages (`index.html`, `about.html`, etc.) to ensure they integrate correctly with the page layout and other components.
 - **Encapsulation Verification**: Shadow DOM encapsulation will be implicitly verified by ensuring styles do not leak between components or the global scope.
+
+# Deployment & Hosting (GitLab Pages)
+
+This project is intended to be deployed using GitLab Pages.
+
+## 13.1 Security Configuration
+
+- **HTTPS Enforcement**: GitLab Pages automatically enforces HTTPS for `*.gitlab.io` domains and for custom domains when using GitLab-managed Let's Encrypt certificates.
+- **Security Headers**: Custom HTTP headers are configured in the `public/_headers` file, which Parcel will copy to the `dist/` directory during the build process. This file includes:
+    - `Content-Security-Policy` (CSP): A restrictive policy is set as a baseline. **This policy will likely need adjustments** based on the final content, scripts (e.g. analytics), and styles used. For example, `script-src` includes `'wasm-unsafe-eval'` for Parcel's HMR in development; this should be reviewed for production builds. `style-src` includes `'unsafe-inline'` to support Web Component Shadow DOM styles.
+    - `X-Content-Type-Options: nosniff`
+    - `X-Frame-Options: DENY`
+    - `Referrer-Policy: strict-origin-when-cross-origin`
+    - `Permissions-Policy`: Basic policy to disable features like microphone/camera by default.
+    - (HSTS) `Strict-Transport-Security`: GitLab Pages typically manages HSTS for its domains. If a custom domain is used and HSTS is not managed by GitLab, it can be added to `_headers`.
+- **Cache Control**: The `public/_headers` file also defines caching strategies:
+    - HTML files (`/*.html`): `Cache-Control: no-cache` to ensure clients always revalidate.
+    - Versioned assets (CSS, JS, images, fonts with content hashes from Parcel): `Cache-Control: public, max-age=31536000, immutable` for long-term caching.
+
+## 13.2 Domain Configuration (GitLab Pages)
+
+- **Custom Domain**: GitLab Pages supports custom domain configuration. Refer to the official GitLab documentation for setup.
+- **SSL Certificate Management**: GitLab provides automatic SSL certificate management via Let's Encrypt for custom domains.
+- **CDN Integration**: GitLab Pages serves content via a CDN (Fastly) by default, which aids global performance.
+
+# Accessibility (A11Y) - Accessibility-by-Design
+
+This project commits to an "Accessibility-by-Design" approach, integrating accessibility considerations throughout the development lifecycle.
+
+- **A11Y1. WCAG 2.1 Level AA:** The primary goal is to meet the Web Content Accessibility Guidelines (WCAG) 2.1 at Level AA.
+- **A11Y2. Semantic HTML5:** Use HTML5 elements according to their semantic meaning to build a well-structured and understandable content hierarchy (e.g., `<header>`, `<nav>`, `<main>`, `<article>`, `<aside>`, `<footer>`).
+- **A11Y3. Keyboard Accessibility:** All interactive elements (links, buttons, future form controls) must be fully operable via keyboard. Focus states must be clear and visible.
+- **A11Y4. ARIA Attributes:** Use ARIA attributes judiciously to enhance accessibility where native HTML semantics are insufficient, especially for custom Web Components. Prefer native HTML elements and attributes first.
+- **A11Y5. Image `alt` Text:** All `<img>` tags will have descriptive `alt` text for informative images, or `alt=""` for purely decorative images.
+- **A11Y6. Color Contrast:** Text and interactive elements will maintain a minimum contrast ratio of 4.5:1 for normal text and 3:1 for large text (as defined by WCAG) against their backgrounds.
+- **A11Y7. Responsiveness & Zoom:** The website will be responsive across various screen sizes. Text must be resizable up to 200% using browser zoom features without loss of content or functionality.
+- **A11Y8. Forms:** If forms are implemented (e.g., a contact form, potentially via a third-party service), they must have clear labels, associated error messages, and support accessible validation.
+- **A11Y9. Web Component Accessibility:** Web Components will be developed with accessibility as a core requirement. This includes managing focus within Shadow DOM, providing appropriate ARIA roles and states for custom elements, and ensuring they are keyboard navigable.
+- **A11Y10. Regular Testing:** Accessibility will be regularly checked using:
+    - Automated tools (e.g., Axe DevTools, Lighthouse accessibility audits).
+    - Manual testing (keyboard-only navigation, screen reader checks with VoiceOver/NVDA, zoom testing, color contrast checks).
+
+# Outstanding Project TODOs
+
+This section lists general pending tasks. File/component-specific TODOs are typically located as comments within the relevant files.
+
+- `// TODO: [CI/CD] Create .gitlab-ci.yml file (PS9, Section 12, D4)`
+- `// TODO: [CI/CD] Define all pipeline stages in .gitlab-ci.yml (install, lint, build, accessibility-test, performance-test, deploy) (12.1, D4.2)`
+- `// TODO: [CI/CD] Implement scripts for each pipeline stage in .gitlab-ci.yml`
+- `// TODO: [CI/CD] Add deployment status badges to README.md once pipeline is operational (PS10)`
+- `// TODO: [Content] Add actual portfolio project content to src/content/projects/ (PS8, PS8.1, PS8.2)`
+- `// TODO: [CSS] Create specific CSS for case study layouts (PS3.4)`
+- `// TODO: [Optimization] Implement image optimization techniques when images are added (OP8, OP9)`
+- `// TODO: [Optimization] Implement lazy loading for non-critical assets (OP10, OP16)`
+- `// TODO: [Optimization] Implement web font optimization when custom fonts are added (OP11)`
+- `// TODO: [Accessibility] Ensure all images have appropriate alt text once added (A11Y5)`
+- `// TODO: [Testing] Implement actual linting, cross-browser, performance, and accessibility testing routines (Section 11, A11Y10, D4.2)`
+- `// TODO: [SEO] For each page: Define unique <title> tags (Phase 8.1)`
+- `// TODO: [SEO] For each page: Write meta descriptions (Phase 8.1)`
+- `// TODO: [SEO] For each page: Ensure logical heading hierarchy (Phase 8.1)`
+- `// TODO: [SEO] For each page: Use clean, keyword-relevant URLs (Phase 8.1)`
+- `// TODO: [SEO] For each page: Implement internal linking (Phase 8.1)`
+- `// TODO: [SEO] Create and configure robots.txt (Phase 8.2)`
+- `// TODO: [SEO] Generate and plan for XML sitemap submission (Phase 8.2)`
+- `// TODO: [Analytics] Integrate Google Analytics 4 (GA4) tracking code (Phase 8.3)`
+- `// TODO: [Analytics] Integrate Microsoft Clarity tracking code (Phase 8.3)`
+- `// TODO: [Analytics] Address data privacy implications of analytics tools (Phase 8.3)`
+- `// TODO: [ErrorHandling] Design and implement a user-friendly custom 404 page (Phase 8.4)`
