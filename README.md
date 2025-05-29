@@ -87,6 +87,20 @@ It correctly bundles your code in production mode and optimizes the build for th
 
 The build is minified and the filenames include hashes for cache busting.
 
+# CSS Structure and Organization
+
+Global CSS styles are managed in the `src/css/` directory.
+
+- **`src/css/main.css`**: This is the primary stylesheet linked in all HTML files. It imports other CSS files.
+- **`src/css/variables.css`**: Defines global CSS Custom Properties (design tokens) for colors, typography, spacing, etc. These variables are available globally once `variables.css` is imported into `main.css`.
+- **Modular Structure**: For better organization, CSS is further structured into subdirectories within `src/css/`:
+    - `base/`: For CSS resets, normalization, base typography, and global element styles.
+    - `layout/`: For page structure, grid systems, and major layout elements (though many layout concerns for specific components will be handled within the Web Component styles themselves).
+    - `components/`: For styling specific UI pieces that are *not* encapsulated as Web Components (if any). Styles for Web Components are defined within their respective Shadow DOMs.
+    - `utils/`: For utility classes (e.g., margin/padding helpers, text alignment, visibility classes).
+
+Individual CSS files within these directories will be imported into `main.css` as needed.
+
 # HTML Structure & Templating
 
 This project uses **Native Web Components** for creating reusable UI elements such as the site header, footer, and navigation. This approach helps maintain a DRY (Don't Repeat Yourself) HTML structure without requiring additional templating engine dependencies.
