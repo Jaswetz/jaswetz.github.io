@@ -1,0 +1,69 @@
+/* --- Debug Styles --- */
+
+/* Layout Outlines */
+.debug-layout-outlines * {
+  outline: 1px solid rgba(255, 0, 0, 0.3) !important; /* Faint red outline for all elements */
+}
+
+.debug-layout-outlines body {
+  outline: 2px solid blue !important; /* Blue for body */
+}
+
+.debug-layout-outlines header,
+.debug-layout-outlines site-header {
+  outline: 2px solid green !important; /* Green for header */
+}
+
+.debug-layout-outlines main {
+  outline: 2px solid purple !important; /* Purple for main */
+}
+
+.debug-layout-outlines footer,
+.debug-layout-outlines site-footer {
+  outline: 2px solid orange !important; /* Orange for footer */
+}
+
+.debug-layout-outlines section {
+  outline: 2px solid teal !important; /* Teal for section */
+}
+
+.debug-layout-outlines nav {
+  outline: 2px solid brown !important; /* Brown for nav */
+}
+
+.debug-layout-outlines article {
+  outline: 2px solid indigo !important; /* Indigo for article */
+}
+
+.debug-layout-outlines aside {
+  outline: 2px solid limegreen !important; /* Limegreen for aside */
+}
+
+/* Typographic Rhythm - Baseline Grid Overlay */
+.debug-typographic-rhythm body {
+  position: relative;
+}
+
+.debug-typographic-rhythm body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999; /* Ensure it's on top */
+  pointer-events: none; /* Allow interaction with elements below */
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 128, 255, 0.15) 0,
+    /* Light blue line */ rgba(0, 128, 255, 0.15) 1px,
+    /* Line thickness */ transparent 1px,
+    transparent 1.5rem
+      /* Assuming a 1.5rem (24px at 16px base) baseline. Adjust as needed. */
+  );
+  background-size: 100% 1.5rem; /* Match the repeating gradient */
+}
+
+/* --- End Debug Styles --- */

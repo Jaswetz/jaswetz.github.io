@@ -1,0 +1,68 @@
+/* src/css/utils/typography.css */
+/* Typography utilities will be defined here, within a layer */
+
+/* Text Alignment */
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.text-justify {
+  text-align: justify;
+}
+
+/* Font Weights */
+.font-light {
+  font-weight: var(--font-weight-light, 300);
+}
+.font-normal {
+  font-weight: var(--font-weight-normal, 400);
+}
+.font-medium {
+  font-weight: var(--font-weight-medium, 500);
+}
+.font-semibold {
+  font-weight: var(--font-weight-semibold, 600);
+}
+.font-bold {
+  font-weight: var(--font-weight-bold, 700);
+}
+.font-extrabold {
+  font-weight: var(--font-weight-extrabold, 800);
+}
+
+/* Text Transform */
+.uppercase {
+  text-transform: uppercase;
+}
+.lowercase {
+  text-transform: lowercase;
+}
+.capitalize {
+  text-transform: capitalize;
+}
+.normal-case {
+  text-transform: none;
+}
+
+/* Font Sizes (examples, expand based on variables.css) */
+.text-xs {
+  font-size: var(--font-size-xs, 0.75rem);
+}
+.text-sm {
+  font-size: var(--font-size-sm, 0.875rem);
+}
+.text-base {
+  font-size: var(--font-size-base, 1rem);
+}
+.text-lg {
+  font-size: var(--font-size-lg, 1.125rem);
+}
+.text-xl {
+  font-size: var(--font-size-xl, 1.25rem);
+}
+/* TODO: [CSS] Add more font-size utility classes if needed */

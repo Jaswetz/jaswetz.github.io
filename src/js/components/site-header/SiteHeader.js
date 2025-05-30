@@ -9,18 +9,19 @@
 // TODO: [Component][SiteHeader] Expose CSS Custom Properties for more granular theming if needed (WCMP18)
 // TODO: [Component][SiteHeader] Enhance accessibility (e.g. ARIA for nav, focus management if complex) (A11Y4, A11Y9)
 class SiteHeader extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({ mode: 'open' });
-    }
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+  }
 
-    /**
-     * Called when the element is added to the document's DOM.
-     * Renders the header structure and styles into the Shadow DOM.
-     */
-    connectedCallback() {
-        this.shadowRoot.innerHTML = `
+  /**
+   * Called when the element is added to the document's DOM.
+   * Renders the header structure and styles into the Shadow DOM.
+   */
+  connectedCallback() {
+    this.shadowRoot.innerHTML = /*html*/ `
             <style>
+                /*css*/
                 /* Component-specific styles for the header */
                 :host {
                     display: block;
@@ -73,10 +74,10 @@ class SiteHeader extends HTMLElement {
                 </nav>
             </header>
         `;
-    }
+  }
 
-    // Future: observedAttributes and attributeChangedCallback if props are needed.
-    // Future: Methods for handling events if the header becomes more interactive.
+  // Future: observedAttributes and attributeChangedCallback if props are needed.
+  // Future: Methods for handling events if the header becomes more interactive.
 }
 
-export default SiteHeader; 
+export default SiteHeader;

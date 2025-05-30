@@ -63,8 +63,8 @@ This project uses `npm` for package management and Parcel.js as the bundler and 
 To aid in visual debugging of layouts and typographic rhythm, a keyboard shortcut is available:
 
 - **Press `Ctrl+Shift+D`**: This will toggle helper debug styles on the page.
-    - **Layout Outlines**: Adds outlines to all major elements and semantic sections (header, main, footer, section, etc.) to help visualize their boundaries and nesting.
-    - **Typographic Baseline Grid**: Overlays a semi-transparent baseline grid on the page to help align text and elements to a consistent vertical rhythm.
+  - **Layout Outlines**: Adds outlines to all major elements and semantic sections (header, main, footer, section, etc.) to help visualize their boundaries and nesting.
+  - **Typographic Baseline Grid**: Overlays a semi-transparent baseline grid on the page to help align text and elements to a consistent vertical rhythm.
 
 Pressing `Ctrl+Shift+D` again will disable these visual aids. A message will also be logged to the browser console indicating the status of the debug styles.
 
@@ -94,20 +94,91 @@ The build is minified and the filenames include hashes for cache busting.
 
 # CSS Structure and Organization
 
-Global CSS styles are managed in the `src/css/` directory.
+This project employs a hybrid CSS strategy. Global styles are organized using CSS Cascade Layers (`@layer`), and Web Components use encapsulated BEM-style naming within their Shadow DOM. CSS Custom Properties are central for theming.
 
-- **`src/css/main.css`**: This is the primary stylesheet linked in all HTML files. It imports other CSS files in a specific order: variables, then base styles, then other categories like layout, components (global), and utilities.
-- **`src/css/variables.css`**: Defines global CSS Custom Properties (design tokens) for colors, typography, spacing, etc.
-- **`src/css/base/reset.css`**: Contains a minimal custom CSS reset to remove default browser margins, apply a universal box-sizing model, and set a few other sensible defaults.
-- **`src/css/base/global.css`**: Includes essential global HTML and body styles, such as base `font-size`, `line-height` for `html`, default background/text colors for `body`, and responsive media defaults.
-- **`src/css/base/typography.css`**: Sets the base `font-family` and `line-height` for the `body` and includes very minimal default styling for links. More opinionated typographic styling will be added later.
-- **Modular Structure**: For better organization, CSS is further structured into subdirectories within `src/css/`:
-    - `base/`: Contains `reset.css`, `global.css`, and `typography.css`.
-    - `layout/`: For page structure, grid systems, and major layout elements (though many layout concerns for specific components will be handled within the Web Component styles themselves).
-    - `components/`: For styling specific UI pieces that are *not* encapsulated as Web Components (if any). Styles for Web Components are defined within their respective Shadow DOMs.
-    - `utils/`: For utility classes (e.g., margin/padding helpers, text alignment, visibility classes).
+## Overall CSS Architecture with `@layer`
 
-Individual CSS files within these directories will be imported into `main.css` as needed.
+```text
+src/
+└── css/
+    ├── main.css                # Primary CSS entry point. Defines @layer order and imports.
+    │                           # @import "../variables.css"; (before layers or in an early layer)
+    │                           # @layer reset, base, theme, layout, components, utilities;
+    │
+    ├── variables.css           # Global CSS Custom Properties (design tokens).
+    │
+    ├── base/                   # Styles imported into the 'reset' and 'base' layers.
+    │   ├── reset.css           #   -> @layer reset
+    │   ├── global.css          #   -> @layer base
+    │   └── typography.css      #   -> @layer base
+    │
+    ├── theme/                  # Styles imported into the 'theme' layer.
+    │   └── default-theme.css   #   -> @layer theme (example for default theme)
+    │
+    ├── layout/                 # (Optional) Global layout files for the 'layout' layer.
+    │   └── grid.css            #   -> @layer layout (example)
+    │
+    ├── components/             # (Optional) Styles for non-Web Component UI for the 'components' layer.
+    │   └── buttons.css         #   -> @layer components (example)
+    │
+    └── utils/                  # Utility class files for the 'utilities' layer.
+        ├── spacing.css         #   -> @layer utilities
+        ├── typography.css      #   -> @layer utilities
+        ├── flexbox.css         #   -> @layer utilities
+        ├── layout.css          #   -> @layer utilities
+        └── debug.css           #   -> @layer utilities
+
+src/
+└── js/
+    └── components/
+        └── [ComponentName]/
+            └── [ComponentName].js
+                └── <style> /* Shadow DOM Styles (Not part of global @layers) */
+                    /* :host { ... } Block styles */
+                    /* .element { ... } BEM __element styles */
+                    /* .element--modifier { ... } BEM --modifier styles */
+                    /* Consumes global CSS vars from variables.css */
+                </style>
+```
+
+## 1. Global CSS (`src/css/`) with `@layer`
+
+- **`variables.css`**: Defines global CSS Custom Properties. These are imported in `main.css` _before_ any `@layer` declarations or within an early, unlayered import to ensure they are universally available.
+- **`main.css`**: This is the primary stylesheet linked in all HTML files. Its main responsibilities are:
+  1.  Importing `variables.css`.
+  2.  Defining the order of cascade layers: `@layer reset, base, theme, layout, components, utilities;`.
+  3.  Importing other CSS files directly into their designated layers.
+      - `@layer reset { @import url("base/reset.css"); }`
+      - `@layer base { @import url("base/global.css"); @import url("base/typography.css"); }`
+      - `@layer theme { @import url("theme/default-theme.css"); }`
+      - `@layer layout { /* @import url("layout/grid.css"); */ }`
+      - `@layer components { /* @import url("components/buttons.css"); */ }`
+      - `@layer utilities { @import url("utils/spacing.css"); /* etc. */ }`
+- **Layer Content:**
+  - **`reset` layer**: Contains minimal custom CSS reset (`base/reset.css`).
+  - **`base` layer**: Holds essential global HTML/body styles, base typography, etc. (`base/global.css`, `base/typography.css`).
+  - **`theme` layer**: Contains theme-specific styles, primarily CSS variable definitions/overrides for different themes (e.g., `default-theme.css`, `dark-theme.css`). This layer allows themes to adapt the look and feel defined in `base` without altering its core structure.
+  - **`layout` layer (Optional)**: For global page structure, grid systems not encapsulated in components.
+  - **`components` layer (Optional)**: For styling UI pieces that are _not_ Web Components.
+  - **`utilities` layer**: Contains single-purpose utility classes (spacing, typography, flexbox, etc.). Styles in this layer will generally override styles from `reset`, `base`, `theme`, `layout`, and `components` layers for the same properties on the same elements, due to layer order, potentially reducing the need for `!important` on some utilities (though `!important` might still be used for highly specific overrides like `.hidden`).
+
+## 2. Web Component Styles (BEM-like within Shadow DOM)
+
+- This part of the strategy remains consistent: Styles are defined within the `<style>` tags of each Web Component's Shadow DOM.
+- **Encapsulation**: Shadow DOM ensures these styles are scoped and don't interfere with global layers or other components.
+- **Naming Convention (BEM-inspired)**: `:host` for the block, and simple, descriptive class names for elements and modifiers (e.g., `.nav-list`, `.nav-link--active`).
+- **Consuming Global Variables**: Component styles use global CSS Custom Properties from `variables.css`.
+
+## Guiding Principles for This `@layer` Hybrid Strategy
+
+- **Manage Cascade with Layers**: Use `@layer` in `main.css` to explicitly control the cascade order for global stylesheets (reset, base, theme, layout, global components, utilities).
+- **Theme for Broad Visual Styles**: Use the `theme` layer to define or override CSS Custom Properties that control the overall look and feel (colors, font families, etc.), making it easier to switch between or add new themes like a dark mode.
+- **Utilities for Override Power**: Place utility classes in the `utilities` layer, which is typically the last defined layer, giving them precedence over earlier layers for un-important styles.
+- **BEM for Component Internals**: Continue using BEM-style classes within Web Component Shadow DOM for clarity and encapsulation.
+- **CSS Custom Properties as the Theming Bridge**: Universal use of global CSS variables for design tokens.
+- **Respect Shadow DOM Encapsulation**: Global layers do not directly style inside Shadow DOM. Web Components are styled internally or themed via CSS Custom Properties.
+
+This `@layer` approach provides more explicit control over the CSS cascade for global styles, making the utility layer's overrides more predictable without always resorting to `!important`.
 
 # HTML Structure & Templating
 
@@ -126,7 +197,7 @@ This page serves as a central reference for the UI of the website.
 
 This project includes a recommended editor configuration for VS Code and Cursor in the `.vscode/settings.json` file. This file includes settings for formatting (Prettier) and recommends some useful extensions for web development.
 
-Since `.vscode/` is included in `.gitignore`, these settings are not committed to the repository and are intended for local development convenience. You may customize them further to your preferences. 
+Since `.vscode/` is included in `.gitignore`, these settings are not committed to the repository and are intended for local development convenience. You may customize them further to your preferences.
 
 # TODO Strategy
 
@@ -168,6 +239,7 @@ This command performs a clean install strictly based on the `package-lock.json` 
 ## Core Technologies
 
 The website itself is built using fundamental web technologies:
+
 - HTML5
 - CSS3 (including CSS Grid and Flexbox)
 - Vanilla JavaScript
@@ -217,15 +289,15 @@ This project is intended to be deployed using GitLab Pages.
 
 - **HTTPS Enforcement**: GitLab Pages automatically enforces HTTPS for `*.gitlab.io` domains and for custom domains when using GitLab-managed Let's Encrypt certificates.
 - **Security Headers**: Custom HTTP headers are configured in the `public/_headers` file, which Parcel will copy to the `dist/` directory during the build process. This file includes:
-    - `Content-Security-Policy` (CSP): A restrictive policy is set as a baseline. **This policy will likely need adjustments** based on the final content, scripts (e.g. analytics), and styles used. For example, `script-src` includes `'wasm-unsafe-eval'` for Parcel's HMR in development; this should be reviewed for production builds. `style-src` includes `'unsafe-inline'` to support Web Component Shadow DOM styles.
-    - `X-Content-Type-Options: nosniff`
-    - `X-Frame-Options: DENY`
-    - `Referrer-Policy: strict-origin-when-cross-origin`
-    - `Permissions-Policy`: Basic policy to disable features like microphone/camera by default.
-    - (HSTS) `Strict-Transport-Security`: GitLab Pages typically manages HSTS for its domains. If a custom domain is used and HSTS is not managed by GitLab, it can be added to `_headers`.
+  - `Content-Security-Policy` (CSP): A restrictive policy is set as a baseline. **This policy will likely need adjustments** based on the final content, scripts (e.g. analytics), and styles used. For example, `script-src` includes `'wasm-unsafe-eval'` for Parcel's HMR in development; this should be reviewed for production builds. `style-src` includes `'unsafe-inline'` to support Web Component Shadow DOM styles.
+  - `X-Content-Type-Options: nosniff`
+  - `X-Frame-Options: DENY`
+  - `Referrer-Policy: strict-origin-when-cross-origin`
+  - `Permissions-Policy`: Basic policy to disable features like microphone/camera by default.
+  - (HSTS) `Strict-Transport-Security`: GitLab Pages typically manages HSTS for its domains. If a custom domain is used and HSTS is not managed by GitLab, it can be added to `_headers`.
 - **Cache Control**: The `public/_headers` file also defines caching strategies:
-    - HTML files (`/*.html`): `Cache-Control: no-cache` to ensure clients always revalidate.
-    - Versioned assets (CSS, JS, images, fonts with content hashes from Parcel): `Cache-Control: public, max-age=31536000, immutable` for long-term caching.
+  - HTML files (`/*.html`): `Cache-Control: no-cache` to ensure clients always revalidate.
+  - Versioned assets (CSS, JS, images, fonts with content hashes from Parcel): `Cache-Control: public, max-age=31536000, immutable` for long-term caching.
 
 ## 13.2 Domain Configuration (GitLab Pages)
 
@@ -247,8 +319,8 @@ This project commits to an "Accessibility-by-Design" approach, integrating acces
 - **A11Y8. Forms:** If forms are implemented (e.g., a contact form, potentially via a third-party service), they must have clear labels, associated error messages, and support accessible validation.
 - **A11Y9. Web Component Accessibility:** Web Components will be developed with accessibility as a core requirement. This includes managing focus within Shadow DOM, providing appropriate ARIA roles and states for custom elements, and ensuring they are keyboard navigable.
 - **A11Y10. Regular Testing:** Accessibility will be regularly checked using:
-    - Automated tools (e.g., Axe DevTools, Lighthouse accessibility audits).
-    - Manual testing (keyboard-only navigation, screen reader checks with VoiceOver/NVDA, zoom testing, color contrast checks).
+  - Automated tools (e.g., Axe DevTools, Lighthouse accessibility audits).
+  - Manual testing (keyboard-only navigation, screen reader checks with VoiceOver/NVDA, zoom testing, color contrast checks).
 
 # Outstanding Project TODOs
 
