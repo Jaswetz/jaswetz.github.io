@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Living Style Guide - [Your Name/Project Name] UX Portfolio</title>
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Styleguide-specific CSS can be added here if needed -->
+    <style>
+        /* Basic styling for style guide sections for clarity */
+        .styleguide-section {
+            border: 1px solid #eee;
+            padding: 1.5em;
+            margin-bottom: 2em;
+            border-radius: 8px;
+        }
+        .styleguide-section h2 {
+            margin-top: 0;
+            border-bottom: 2px solid #007bff; /* Example accent color */
+            padding-bottom: 0.5em;
+            margin-bottom: 1em;
+        }
+        .styleguide-section h3 {
+            margin-top: 1.5em;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 0.3em;
+            margin-bottom: 0.8em;
+        }
+        .color-swatch {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+            line-height: 100px; /* For color name, if short */
+        }
+        .spacing-example {
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 1px dashed #ccc;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 1em;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <site-header>
+        <div style="text-align: center; padding: 1em; background-color: #f0f0f0;">
+            <p>Loading Site Header...</p>
+            <p><em>This is a Light DOM fallback. If you see this, the SiteHeader Web Component hasn't loaded.</em></p>
+        </div>
+    </site-header>
+
+    <main style="padding: 2em;">
+        <header style="text-align: center; margin-bottom: 3em;">
+            <h1>Living Style Guide</h1>
+            <p>Welcome to the living style guide. This document showcases the core visual and functional building blocks of the website. It helps ensure consistency and provides a reference for developers and designers.</p>
+        </header>
+
+        <section id="core-styles" class="styleguide-section">
+            <h2>Core Styles</h2>
+            <p>These are the foundational styles that define the global look and feel of the website, including typography, color palette, spacing, and grid system (if applicable).</p>
+
+            <section id="typography" class="styleguide-section">
+                <h3>3.1 Typography</h3>
+                <p>Demonstrates standard HTML typographic elements.</p>
+                
+                <h1>Heading 1</h1>
+                <p>Paragraph text associated with H1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#">This is a link</a>.</p>
+                
+                <h2>Heading 2</h2>
+                <p>Paragraph text associated with H2. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                
+                <h3>Heading 3</h3>
+                <p>Paragraph text associated with H3. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                
+                <h4>Heading 4</h4>
+                <p>Paragraph text associated with H4. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                
+                <h5>Heading 5</h5>
+                <p>Paragraph text associated with H5. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                
+                <h6>Heading 6</h6>
+                <p>Paragraph text associated with H6. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+
+                <h4>Lists</h4>
+                <h5>Unordered List</h5>
+                <ul>
+                    <li>List item 1</li>
+                    <li>List item 2
+                        <ul>
+                            <li>Nested item 2.1</li>
+                            <li>Nested item 2.2</li>
+                        </ul>
+                    </li>
+                    <li>List item 3</li>
+                </ul>
+
+                <h5>Ordered List</h5>
+                <ol>
+                    <li>First item</li>
+                    <li>Second item
+                        <ol>
+                            <li>Nested item 2.1</li>
+                            <li>Nested item 2.2</li>
+                        </ol>
+                    </li>
+                    <li>Third item</li>
+                </ol>
+            </section>
+
+            <section id="color-palette" class="styleguide-section">
+                <h3>3.2 Color Palette</h3>
+                <p>The project's color palette. Colors are defined as CSS Custom Properties in <code>src/css/variables.css</code>.</p>
+                <!-- TODO: [Styleguide] Dynamically display colors and their variable names from variables.css (LSG3.2) -->
+                <h4>Primary Colors</h4>
+                <div class="color-swatch" style="background-color: var(--primary-color, #007bff); color: var(--text-on-primary, #fff)">--primary-color</div>
+                <div class="color-swatch" style="background-color: var(--primary-hover-color, #0056b3); color: var(--text-on-primary, #fff)">--primary-hover-color</div>
+
+                <h4>Secondary Colors</h4>
+                <div class="color-swatch" style="background-color: var(--secondary-color, #6c757d); color: var(--text-on-secondary, #fff)">--secondary-color</div>
+
+                <h4>Accent Colors</h4>
+                <div class="color-swatch" style="background-color: var(--accent-color, #17a2b8); color: var(--text-on-accent, #fff)">--accent-color</div>
+
+                <h4>Neutral Colors</h4>
+                <div class="color-swatch" style="background-color: var(--neutral-light-color, #f8f9fa); color: var(--neutral-dark-color, #343a40)">--neutral-light-color</div>
+                <div class="color-swatch" style="background-color: var(--neutral-medium-color, #e9ecef); color: var(--neutral-dark-color, #343a40)">--neutral-medium-color</div>
+                <div class="color-swatch" style="background-color: var(--neutral-dark-color, #343a40); color: var(--neutral-light-color, #f8f9fa)">--neutral-dark-color</div>
+                
+                <h4>Text Colors</h4>
+                <div class="color-swatch" style="background-color: #fff; border: 1px solid #eee; color: var(--text-color, #212529)">--text-color (on light)</div>
+                <div class="color-swatch" style="background-color: #333; color: var(--text-color-light, #f8f9fa)">--text-color-light (on dark)</div>
+                <div class="color-swatch" style="background-color: #fff; border: 1px solid #eee; color: var(--link-color, #007bff)">--link-color</div>
+
+                <p><em>Note: The displayed colors use fallback values if the CSS variables are not defined. The actual colors are sourced from <code>variables.css</code>.</em></p>
+            </section>
+
+            <section id="spacing-system" class="styleguide-section">
+                <h3>3.3 Spacing System</h3>
+                <p>Documentation for the project's spacing units (margins, paddings). Spacing values are typically defined as CSS Custom Properties in <code>src/css/variables.css</code>.</p>
+                <!-- TODO: [Styleguide] Demonstrate spacing units from variables.css and their usage (LSG3.3) -->
+                <div class="spacing-example" style="margin-bottom: var(--spacing-xs, 4px);"><code>--spacing-xs</code> (e.g., 4px)</div>
+                <div class="spacing-example" style="margin-bottom: var(--spacing-sm, 8px);"><code>--spacing-sm</code> (e.g., 8px)</div>
+                <div class="spacing-example" style="margin-bottom: var(--spacing-md, 16px);"><code>--spacing-md</code> (e.g., 16px)</div>
+                <div class="spacing-example" style="margin-bottom: var(--spacing-lg, 24px);"><code>--spacing-lg</code> (e.g., 24px)</div>
+                <div class="spacing-example" style="margin-bottom: var(--spacing-xl, 32px);"><code>--spacing-xl</code> (e.g., 32px)</div>
+                <p><em>Note: Fallback values are used if CSS variables are not defined.</em></p>
+            </section>
+
+            <section id="grid-system" class="styleguide-section">
+                <h3>3.4 Grid System</h3>
+                <p>If a global CSS grid or layout system is used, it will be documented here. Many layout concerns may be handled by individual components or page-specific CSS.</p>
+                <!-- TODO: [Styleguide] Document global grid system if applicable (LSG3.4) -->
+            </section>
+        </section>
+
+        <section id="ui-components" class="styleguide-section">
+            <h2>UI Web Components</h2>
+            <!-- TODO: [Styleguide] Showcase content display components (project cards, etc.) when created (LSG8) -->
+            <p>This section details all custom Web Components used in the project. Each component is shown with its variations, usage instructions, and relevant documentation.</p>
+
+            <section id="component-site-header" class="styleguide-section">
+                <h3>Site Header (<code>&lt;site-header&gt;</code>)</h3>
+                <!-- TODO: [Styleguide][SiteHeader] Add interactive examples if/when applicable (LSG5) -->
+                <!-- TODO: [Styleguide][SiteHeader] Document attributes/props when added (LSG4.1, WCMP7, WCMP8) -->
+                <!-- TODO: [Styleguide][SiteHeader] Document custom events when added (LSG4.1, WCMP7) -->
+                <!-- TODO: [Styleguide][SiteHeader] Document exposed CSS Custom Properties for theming when added (LSG4.1, WCMP18) -->
+                <!-- TODO: [Styleguide][SiteHeader] Enhance accessibility notes with specific details (LSG7) -->
+                <p>The main site header, typically containing navigation and branding.</p>
+                <h4>Example:</h4>
+                <site-header>
+                     <div style="text-align: center; padding: 1em; background-color: #f0f0f0;">
+                        <p>Loading Site Header for Style Guide Example...</p>
+                        <p><em>This is a Light DOM fallback.</em></p>
+                    </div>
+                </site-header>
+                <h4>HTML Usage:</h4>
+                <pre><code>&lt;site-header&gt;
+    &lt;!-- Optional: Light DOM fallback content --&gt;
+    &lt;div&gt;Fallback Header Content&lt;/div&gt;
+&lt;/site-header&gt;</code></pre>
+                <h4>Attributes/Properties:</h4>
+                <p>Currently, this component does not accept any specific attributes or properties for customization.</p>
+                <h4>Custom Events:</h4>
+                <p>This component does not currently emit any custom events.</p>
+                <h4>CSS Custom Properties for Theming:</h4>
+                <p>This component uses global CSS variables (e.g., <code>--primary-color</code>) for its internal styling. It does not currently expose component-specific CSS variables for theming.</p>
+                <h4>Accessibility Notes:</h4>
+                <p>The SiteHeader component should ensure its navigation links are keyboard accessible and have appropriate ARIA roles if complex navigation patterns are used.</p>
+            </section>
+
+            <section id="component-site-footer" class="styleguide-section">
+                <h3>Site Footer (<code>&lt;site-footer&gt;</code>)</h3>
+                <!-- TODO: [Styleguide][SiteFooter] Add interactive examples if/when applicable (LSG5) -->
+                <!-- TODO: [Styleguide][SiteFooter] Document attributes/props when added (LSG4.1, WCMP7, WCMP8) -->
+                <!-- TODO: [Styleguide][SiteFooter] Document custom events when added (LSG4.1, WCMP7) -->
+                <!-- TODO: [Styleguide][SiteFooter] Document exposed CSS Custom Properties for theming when added (LSG4.1, WCMP18) -->
+                <!-- TODO: [Styleguide][SiteFooter] Enhance accessibility notes with specific details (LSG7) -->
+                <p>The main site footer, typically containing copyright information and secondary links.</p>
+                <h4>Example:</h4>
+                <site-footer>
+                    <div style="text-align: center; padding: 1em; background-color: #333; color: #fff;">
+                        <p>Loading Site Footer for Style Guide Example...</p>
+                        <p><em>This is a Light DOM fallback.</em></p>
+                    </div>
+                </site-footer>
+                <h4>HTML Usage:</h4>
+                <pre><code>&lt;site-footer&gt;
+    &lt;!-- Optional: Light DOM fallback content --&gt;
+    &lt;div&gt;Fallback Footer Content&lt;/div&gt;
+&lt;/site-footer&gt;</code></pre>
+                <h4>Attributes/Properties:</h4>
+                <p>Currently, this component does not accept any specific attributes or properties for customization.</p>
+                <h4>Custom Events:</h4>
+                <p>This component does not currently emit any custom events.</p>
+                <h4>CSS Custom Properties for Theming:</h4>
+                <p>This component uses global CSS variables for its internal styling. It does not currently expose component-specific CSS variables for theming.</p>
+                <h4>Accessibility Notes:</h4>
+                <p>The SiteFooter component should ensure its links are keyboard accessible.</p>
+            </section>
+            <!-- TODO: [Styleguide] Add sections for other Web Components as they are created (e.g., buttons, cards, navigation) (LSG4.1) -->
+        </section>
+    </main>
+    
+    <script src="js/main.js" type="module"></script>
+</body>
+</html> 

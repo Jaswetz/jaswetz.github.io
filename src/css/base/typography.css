@@ -1,0 +1,19 @@
+/* src/css/base/typography.css */
+
+body {
+    font-family: var(--font-family-sans-serif);
+    line-height: var(--line-height-base);
+    -webkit-font-smoothing: antialiased; /* Improve font rendering on WebKit */
+    -moz-osx-font-smoothing: grayscale; /* Improve font rendering on Firefox */
+}
+
+/* Basic link styling - can be expanded */
+a {
+    color: var(--color-primary);
+    text-decoration: none; /* Opinion: remove underline by default, add on hover/focus */
+}
+
+a:hover,
+a:focus {
+    text-decoration: underline;
+} 

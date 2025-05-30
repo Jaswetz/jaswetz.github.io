@@ -1,0 +1,41 @@
+:root {
+    /* Colors */
+    --color-primary: #007bff; /* Example Blue */
+    --color-secondary: #6c757d; /* Example Gray */
+    --color-success: #28a745; /* Example Green */
+    --color-danger: #dc3545; /* Example Red */
+    --color-warning: #ffc107; /* Example Yellow */
+    --color-info: #17a2b8; /* Example Teal */
+
+    --color-text: #333;
+    --color-text-light: #555;
+    --color-background: #fff;
+    --color-border: #ddd;
+
+    /* Typography */
+    --font-family-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+    --font-size-base: 1rem; /* Typically 16px */
+    --font-size-sm: calc(var(--font-size-base) * 0.875);
+    --font-size-lg: calc(var(--font-size-base) * 1.25);
+
+    --line-height-base: 1.5;
+    --line-height-sm: 1.4;
+    --line-height-lg: 1.6;
+
+    /* Spacing (can be expanded significantly) */
+    --spacing-unit: 0.5rem; /* 8px if base is 16px */
+    --spacing-xs: var(--spacing-unit);
+    --spacing-sm: calc(var(--spacing-unit) * 2); /* 1rem / 16px */
+    --spacing-md: calc(var(--spacing-unit) * 3); /* 1.5rem / 24px */
+    --spacing-lg: calc(var(--spacing-unit) * 4); /* 2rem / 32px */
+    --spacing-xl: calc(var(--spacing-unit) * 6); /* 3rem / 48px */
+
+    /* Borders */
+    --border-radius: 0.25rem;
+    --border-width: 1px;
+
+    /* Transitions */
+    --transition-base: all 0.2s ease-in-out;
+} 
