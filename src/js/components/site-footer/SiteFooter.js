@@ -9,20 +9,21 @@
 // TODO: [Component][SiteFooter] Expose CSS Custom Properties for more granular theming if needed (WCMP18)
 // TODO: [Component][SiteFooter] Enhance accessibility (e.g. ARIA for links if complex) (A11Y4, A11Y9)
 class SiteFooter extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({ mode: 'open' });
-    }
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+  }
 
-    /**
-     * Called when the element is added to the document's DOM.
-     * Renders the footer structure and styles into the Shadow DOM.
-     * The current year is dynamically inserted into the copyright notice.
-     */
-    connectedCallback() {
-        const currentYear = new Date().getFullYear();
-        this.shadowRoot.innerHTML = `
+  /**
+   * Called when the element is added to the document's DOM.
+   * Renders the footer structure and styles into the Shadow DOM.
+   * The current year is dynamically inserted into the copyright notice.
+   */
+  connectedCallback() {
+    const currentYear = new Date().getFullYear();
+    this.shadowRoot.innerHTML = /*html*/ `
             <style>
+                /*css*/
                 /* Component-specific styles for the footer */
                 :host {
                     display: block;
@@ -55,9 +56,9 @@ class SiteFooter extends HTMLElement {
                 <!-- Add other footer links or social media icons here -->
             </footer>
         `;
-    }
+  }
 
-    // Future: observedAttributes and attributeChangedCallback if props are needed.
+  // Future: observedAttributes and attributeChangedCallback if props are needed.
 }
 
-export default SiteFooter; 
+export default SiteFooter;

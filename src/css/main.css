@@ -1,19 +1,26 @@
-@import "./variables.css"; /* Global Design Tokens - not layered or part of an early layer */
+@import "./variables.css";
+@import "./base/reset.css";
+@import "./base/global.css";
+@import "./base/typography.css";
+@import "./theme/default-theme.css";
+@import "./utils/spacing.css";
+@import "./utils/typography.css";
+@import "./utils/flexbox.css";
+@import "./utils/layout.css";
+@import "./utils/debug.css";
 
 @layer reset, base, theme, layout, components, utilities;
 
 @layer reset {
-  @import "./base/reset.css";
+  /* reset.css content will be included here by import */
 }
 
 @layer base {
-  @import "./base/global.css";
-  @import "./base/typography.css";
+  /* global.css and typography.css content will be included here by import */
 }
 
 @layer theme {
-  /* Theme-specific styles, e.g., for light/dark mode variable overrides */
-  @import "./theme/default-theme.css";
+  /* default-theme.css content will be included here by import */
 }
 
 @layer layout {
@@ -27,9 +34,5 @@
 }
 
 @layer utilities {
-  @import "./utils/spacing.css";
-  @import "./utils/typography.css";
-  @import "./utils/flexbox.css";
-  @import "./utils/layout.css";
-  @import "./utils/debug.css"; /* Debug utilities */
+  /* spacing.css, typography.css, flexbox.css, layout.css, debug.css content will be included here by import */
 }
