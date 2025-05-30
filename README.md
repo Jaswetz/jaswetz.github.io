@@ -169,6 +169,68 @@ src/
 - **Naming Convention (BEM-inspired)**: `:host` for the block, and simple, descriptive class names for elements and modifiers (e.g., `.nav-list`, `.nav-link--active`).
 - **Consuming Global Variables**: Component styles use global CSS Custom Properties from `variables.css`.
 
+## 3. Web Component CSS in Separate Files
+
+- For maintainability and better tooling support, each Web Component can have its own CSS file (e.g., `SiteHeader.css` for `SiteHeader.js`).
+- The CSS file is imported into the component JavaScript using:
+  ```js
+  import * as styles from "./SiteHeader.css";
+  // ...
+  this.shadowRoot.innerHTML = `
+    <style>${styles.default}</style>
+    ...
+  `;
+  ```
+- This approach enables full syntax highlighting, code completion, and easier reuse of styles.
+- **Note:** If you see a linter warning like "Cannot find module './SiteHeader.css' or its corresponding type declarations," you can safely ignore it for plain JS projects. For TypeScript, add a declaration file as described below.
+
+### TypeScript Users: CSS Module Declaration
+
+If you use TypeScript and want to remove the import warning, add a file like `src/js/components/site-header/declaration.d.ts`:
+
+```ts
+declare module "*.css" {
+  const content: { [className: string]: string; default: string };
+  export = content;
+}
+```
+
+## 4. Recommended VS Code Extensions & Settings for Web Components
+
+- **lit-html** by Rune Mehlsen: Syntax highlighting for HTML and CSS in template literals.
+- **es6-string-html** by Tzvetan Mikov: Highlights HTML and CSS inside JavaScript template strings.
+- **Template Literal Editor** by plievone: (Optional) Edit template literals as if they were standalone files.
+- **CSS Peek** by Pranay Prakash: (Optional) Jump to CSS definitions from HTML.
+
+### VS Code Settings
+
+Add to `.vscode/settings.json` for best experience:
+
+```json
+{
+  "emmet.includeLanguages": {
+    "javascript": "html",
+    "javascriptreact": "html"
+  },
+  "files.associations": {
+    "*.js": "javascript"
+  },
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "string.template.js",
+        "settings": {
+          "foreground": "#9CDCFE"
+        }
+      }
+    ]
+  }
+}
+```
+
+- For CSS syntax highlighting inside template literals, use the comment `/* language=CSS */` before your CSS block in the template string.
+- For HTML, use `/*html*/` before the template literal.
+
 ## Guiding Principles for This `@layer` Hybrid Strategy
 
 - **Manage Cascade with Layers**: Use `@layer` in `main.css` to explicitly control the cascade order for global stylesheets (reset, base, theme, layout, global components, utilities).

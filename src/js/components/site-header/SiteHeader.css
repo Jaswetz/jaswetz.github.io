@@ -1,0 +1,41 @@
+/* language=CSS */
+:host {
+  /* display: block; */
+  /* background-color: var(--color-background-header, #f8f8f8); */
+  /* padding: var(--spacing-sm) var(--spacing-md); */
+  /* border-bottom: var(--border-width) solid var(--color-border); */
+}
+
+.header-content {
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  /* max-width: 1200px; */ /* Example max-width for content */
+  /* margin: 0 auto; */
+}
+
+.logo a {
+  /* font-weight: bold; */
+  /* text-decoration: none; */
+  /* color: var(--color-text, #333); */
+  /* font-size: var(--font-size-lg, 1.5em); */
+}
+
+nav ul {
+  /* list-style: none; */
+  /* padding: 0; */
+  /* margin: 0; */
+  /* display: flex; */
+}
+
+nav li a {
+  /* text-decoration: none; */
+  /* color: var(--color-text, #333); */
+  /* padding: var(--spacing-xs) var(--spacing-sm); */
+}
+
+nav li a:hover,
+nav li a:focus {
+  /* color: var(--color-primary, #007bff); */
+  /* text-decoration: underline; */
+}
