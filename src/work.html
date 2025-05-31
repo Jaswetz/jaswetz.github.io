@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Work - My Portfolio</title>
-    <link rel="stylesheet" href="css/main.css">
-</head>
-<body>
-    <site-header>
-        <div style="text-align: center; padding: 1em; background-color: #f0f0f0;">
-            <p>Loading Site Header...</p>
-        </div>
-    </site-header>
-
-    <main>
-        <section id="portfolio-gallery">
-            <h1>My Work</h1>
-            <p>This page will showcase my projects. Project details will be loaded from src/content/projects/.</p>
-            <!-- Project listings/cards will go here -->
-        </section>
-    </main>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <base-template title="My Work - My Portfolio">
+      <section id="portfolio-gallery">
+        <h1>My Work</h1>
+        <p>
+          This page will showcase my projects. Project details will be loaded
+          from src/content/projects/.
+        </p>
+        <!-- Project listings/cards will go here -->
+      </section>
+    </base-template>
 
     <site-footer>
-        <div style="text-align: center; padding: 1em; background-color: #333; color: #fff;">
-            <p>Loading Site Footer...</p>
-        </div>
+      <div
+        style="
+          text-align: center;
+          padding: 1em;
+          background-color: #333;
+          color: #fff;
+        "
+      >
+        <p>Loading Site Footer...</p>
+      </div>
     </site-footer>
 
-    <script src="js/main.js" type="module"></script>
-</body>
-</html> 
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
