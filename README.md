@@ -409,4 +409,3 @@ This section lists general pending tasks. File/component-specific TODOs are typi
 - `// TODO: [Analytics] Integrate Google Analytics 4 (GA4) tracking code (Phase 8.3)`
 - `// TODO: [Analytics] Integrate Microsoft Clarity tracking code (Phase 8.3)`
 - `// TODO: [Analytics] Address data privacy implications of analytics tools (Phase 8.3)`
-- `// TODO: [ErrorHandling] Design and implement a user-friendly custom 404 page (Phase 8.4)`
