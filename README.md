@@ -388,10 +388,10 @@ This project commits to an "Accessibility-by-Design" approach, integrating acces
 
 This section lists general pending tasks. File/component-specific TODOs are typically located as comments within the relevant files.
 
-- `// TODO: [CI/CD] Create .gitlab-ci.yml file (PS9, Section 12, D4)`
-- `// TODO: [CI/CD] Define all pipeline stages in .gitlab-ci.yml (install, lint, build, accessibility-test, performance-test, deploy) (12.1, D4.2)`
-- `// TODO: [CI/CD] Implement scripts for each pipeline stage in .gitlab-ci.yml`
-- `// TODO: [CI/CD] Add deployment status badges to README.md once pipeline is operational (PS10)`
+- `// TODO: [CI/CD] Create .github/workflows/ci.yml file (PS9, Section 12, D4)`
+- `// TODO: [CI/CD] Define all pipeline jobs in ci.yml (install, lint, build, accessibility-test, performance-test, deploy) (12.1, D4.2)`
+- `// TODO: [CI/CD] Implement scripts for each pipeline job in ci.yml`
+- `// TODO: [CI/CD] Add GitHub Actions deployment status badges to README.md once pipeline is operational (PS10)`
 - `// TODO: [Content] Add actual portfolio project content to src/content/projects/ (PS8, PS8.1, PS8.2)`
 - `// TODO: [CSS] Create specific CSS for case study layouts (PS3.4)`
 - `// TODO: [Optimization] Implement image optimization techniques when images are added (OP8, OP9)`

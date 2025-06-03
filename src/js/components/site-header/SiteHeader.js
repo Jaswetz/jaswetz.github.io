@@ -32,7 +32,7 @@ class SiteHeader extends HTMLElement {
           transform: translateX(-50%);
           width: calc(100% - var(--space-8));
           z-index: 1000;
-          transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         :host(.scrolled) {
@@ -52,7 +52,7 @@ class SiteHeader extends HTMLElement {
           padding: var(--space-4) var(--space-6);
           border-radius: 999px;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-          transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         :host(.scrolled) .header-content {
@@ -66,7 +66,7 @@ class SiteHeader extends HTMLElement {
           color: var(--color-primary);
           font-size: var(--font-size-xl);
           z-index: 2;
-          transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         :host(.scrolled) .logo a {
@@ -88,7 +88,7 @@ class SiteHeader extends HTMLElement {
           height: 2px;
           background-color: var(--color-text);
           margin: 4px 0;
-          transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         nav {
@@ -111,7 +111,7 @@ class SiteHeader extends HTMLElement {
           padding: var(--space-2) var(--space-3);
           font-size: var(--font-size-base);
           border-radius: var(--border-radius);
-          transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
           font-family: var(--font-family-sans);
           text-transform: uppercase;
         }
@@ -149,7 +149,7 @@ class SiteHeader extends HTMLElement {
             height: 100vh;
             background-color: var(--color-surface);
             transform: translateX(100%);
-            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform .2s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             align-items: center;
             justify-content: center;
