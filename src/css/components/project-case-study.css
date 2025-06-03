@@ -1,0 +1,122 @@
+/* src/css/components/project-case-study.css */
+
+.project-case-study {
+  padding: var(--space-l) var(--space-m); /* Add some padding */
+  max-width: var(
+    --container-max-width,
+    1200px
+  ); /* Max width for content area */
+  margin-inline: auto; /* Center the container */
+}
+
+.notification-case-study-grid {
+  display: grid;
+  gap: var(--space-l); /* Gap between grid items */
+  grid-template-columns: 1fr; /* Mobile first - single column */
+  width: 100%; /* Ensure it takes full width of its parent */
+}
+
+/* Allow grid items to shrink properly */
+.notification-case-study-grid > * {
+  min-width: 0;
+}
+
+.notification-case-study-grid .project-process > .process-step {
+  min-width: 0;
+}
+
+.notification-case-study-grid .project-header,
+.notification-case-study-grid .case-main-visual,
+.notification-case-study-grid .project-solution,
+.notification-case-study-grid .project-results,
+.notification-case-study-grid .project-learnings,
+.notification-case-study-grid .project-navigation {
+  grid-column: 1 / -1; /* Span full width by default */
+}
+
+.notification-case-study-grid .project-hero-image,
+.notification-case-study-grid .challenge-image,
+.notification-case-study-grid .process-image,
+.notification-case-study-grid .solution-image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius-medium);
+  margin-block-start: var(--space-s);
+}
+
+.notification-case-study-grid .project-process {
+  grid-column: 1 / -1; /* Span full width by default */
+  display: grid;
+  gap: var(--space-m);
+  grid-template-columns: 1fr; /* Stack process steps on mobile */
+}
+
+.notification-case-study-grid .process-step {
+  padding: var(--space-m);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--border-radius-medium);
+}
+
+.notification-case-study-grid .project-overview ul,
+.notification-case-study-grid .project-results ul,
+.notification-case-study-grid .project-learnings ul {
+  list-style: disc;
+  padding-inline-start: var(--space-l);
+}
+.notification-case-study-grid .project-overview ul ul {
+  list-style: circle;
+  margin-block-start: var(--space-xs);
+}
+
+/* Desktop layout adjustments */
+@media (min-width: 768px) {
+  .notification-case-study-grid {
+    grid-template-columns: repeat(12, 1fr); /* 12-column grid for desktop */
+    gap: var(--space-xl);
+  }
+
+  .notification-case-study-grid .grid-hero {
+    grid-column: 1 / -1; /* Full width */
+  }
+
+  .notification-case-study-grid .grid-main-visual {
+    grid-column: 2 / span 10; /* Centered, not full width to allow some breathing room */
+  }
+
+  .notification-case-study-grid .grid-challenge {
+    grid-column: 1 / span 7; /* Left column, ~2/3 */
+  }
+
+  .notification-case-study-grid .grid-overview {
+    grid-column: 8 / span 5; /* Right column, ~1/3 */
+  }
+
+  .notification-case-study-grid .project-process.grid-iterations {
+    grid-column: 1 / -1; /* Full width */
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for process steps */
+  }
+
+  .notification-case-study-grid .grid-solution,
+  .notification-case-study-grid .grid-results,
+  .notification-case-study-grid .grid-learnings,
+  .notification-case-study-grid .project-navigation {
+    grid-column: 2 / span 10; /* Centered, not full width */
+  }
+}
+
+@media (min-width: 1024px) {
+  .notification-case-study-grid .grid-main-visual {
+    grid-column: 3 / span 8;
+  }
+  .notification-case-study-grid .grid-challenge {
+    grid-column: 2 / span 5; /* Adjust for larger screens */
+  }
+  .notification-case-study-grid .grid-overview {
+    grid-column: 7 / span 4; /* Adjust for larger screens */
+  }
+  .notification-case-study-grid .grid-solution,
+  .notification-case-study-grid .grid-results,
+  .notification-case-study-grid .grid-learnings {
+    grid-column: 3 / span 8;
+  }
+}

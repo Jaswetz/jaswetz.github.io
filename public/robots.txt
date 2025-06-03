@@ -1,0 +1,7 @@
+# TODO: [SEO] Configure robots.txt based on sitemap and desired indexing (Phase 8.2)
+User-agent: *
+Allow: /
+
+# Disallow: /private/ # Example: if you have private directories
+
+# Sitemap: # TODO: [SEO] Add sitemap URL once generated, e.g., https://www.yourdomain.com/sitemap.xml 

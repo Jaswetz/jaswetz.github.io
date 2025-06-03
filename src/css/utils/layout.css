@@ -1,0 +1,71 @@
+/* src/css/utils/layout.css */
+/* Layout utilities will be defined here, within a layer */
+
+/* Display */
+.block {
+  display: block;
+}
+.inline-block {
+  display: inline-block;
+}
+.inline {
+  display: inline;
+}
+.grid {
+  display: grid;
+}
+.hidden,
+.d-none {
+  display: none !important;
+} /* display: none often needs to be !important */
+
+/* Visibility */
+.visible {
+  visibility: visible;
+}
+.invisible {
+  visibility: hidden;
+}
+
+/* Position */
+.static {
+  position: static;
+}
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.fixed {
+  position: fixed;
+}
+.sticky {
+  position: sticky;
+}
+
+/* Overflow */
+.overflow-auto {
+  overflow: auto;
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+.overflow-visible {
+  overflow: visible;
+}
+.overflow-scroll {
+  overflow: scroll;
+}
+
+/* Z-index (use with caution, prefer contextual stacking) */
+.z-0 {
+  z-index: 0;
+}
+.z-10 {
+  z-index: 10;
+}
+.z-20 {
+  z-index: 20;
+}
+/* TODO: [CSS] Add more z-index utilities if needed */
