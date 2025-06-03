@@ -1,0 +1,25 @@
+/* Global variables - imported first to be globally available */
+@import "./variables.css";
+
+/* Import styles into their respective layers */
+@import "./base/reset.css" layer(reset);
+@import "./base/global.css" layer(base);
+@import "./base/typography.css" layer(base);
+
+@import "./theme/default-theme.css" layer(theme);
+
+@import "./components/error-page.css" layer(components);
+@import "./components/project-case-study.css" layer(components);
+/* Add other component imports here and assign to 'components' layer */
+
+@import "./utils/spacing.css" layer(utilities);
+@import "./utils/typography.css" layer(utilities);
+@import "./utils/flexbox.css" layer(utilities);
+@import "./utils/layout.css" layer(utilities);
+@import "./utils/debug.css" layer(utilities);
+/* Add other utility imports here and assign to 'utilities' layer */
+
+@import "./debug/vertical-rhythm.css" layer(debug);
+
+/* Define layer order LAST - this confirms the order of layers established by imports */
+@layer reset, base, theme, components, utilities, debug;

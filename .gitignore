@@ -1,2 +1,12 @@
+node_modules/
+.parcel-cache/
+dist/
+dest/
+
+# OS-specific files
 .DS_Store
-.DS_Store
+Thumbs.db
+
+# Editor-specific files
+.vscode/
+.idea/ 

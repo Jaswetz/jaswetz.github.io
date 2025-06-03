@@ -1,0 +1,93 @@
+:root {
+  /* Base Unit */
+  --unit: 0.25rem; /* 4px */
+
+  /* Colors */
+  --color-primary: #2569ed;
+  --color-primary-alt: #1746a0;
+  --color-surface: #ffffff;
+  --color-text: #2569ed;
+  --color-quote-bg: #e6eefc;
+  --color-quote-border: #2569ed;
+  --color-muted: #7a99c8;
+  --color-success: #28a745; /* Example Green */
+  --color-danger: #dc3545; /* Example Red */
+  --color-warning: #ffc107; /* Example Yellow */
+  --color-info: #17a2b8; /* Example Teal */
+
+  --color-text: #333;
+  --color-text-light: #555;
+  --color-background: #f7f3eb;
+  --color-border: #ddd;
+
+  /* Site Width */
+  --site-width: 1200px;
+
+  /* Typography */
+  --font-family-heading: "Laila", serif;
+  --font-family-body: "Gentium Plus", serif;
+  --font-family-sans: "PT Sans", sans-serif;
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Font Sizes (based on 4px unit) */
+  --font-size-base: 1.125rem; /* 18px */
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-md: 1.125rem; /* 18px */
+  --font-size-lg: 1.25rem; /* 20px */
+  --font-size-xl: 1.5rem; /* 24px */
+  --font-size-2xl: 2rem; /* 32px */
+  --font-size-3xl: 2.5rem; /* 40px */
+  --font-size-4xl: 3rem; /* 48px */
+
+  /* Line Heights (based on 4px unit) */
+  --line-height-tight: 1.2; /* For headings, may need adjustment for strict rhythm with all font sizes */
+  --line-height-base: calc(
+    14 / 9
+  ); /* Approx 1.555... Ensures 1.125rem (18px) font has 1.75rem (28px) line height, a multiple of 0.25rem */
+  --line-height-loose: 1.8; /* May also need adjustment for strict rhythm if used with specific font sizes */
+
+  /* Vertical Spacing Scale (based on 4px unit) */
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.25rem; /* 20px */
+  --space-6: 1.5rem; /* 24px */
+  --space-8: 2rem; /* 32px */
+  --space-10: 2.5rem; /* 40px */
+  --space-12: 3rem; /* 48px */
+  --space-16: 4rem; /* 64px */
+  --space-20: 5rem; /* 80px */
+  --space-24: 6rem; /* 96px */
+
+  /* Margin and Padding Utilities */
+  --margin-base: var(--space-4);
+  --padding-base: var(--space-4);
+
+  /* Component Spacing */
+  --component-spacing: var(--space-6);
+  --section-spacing: var(--space-12);
+  --page-spacing: var(--space-16);
+
+  /* Typography Spacing */
+  --paragraph-spacing: var(--space-4);
+  --heading-spacing: var(--space-6);
+  --list-spacing: var(--space-4);
+
+  /* Borders */
+  --border-radius: 0.25rem; /* 4px */
+  --border-width: 1px;
+
+  /* Transitions */
+  --transition-base: all 0.2s ease-in-out;
+}

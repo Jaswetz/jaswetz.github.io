@@ -1,0 +1,147 @@
+/* src/css/base/typography.css */
+
+/* Base Typography */
+html {
+  font-size: 16px; /* Base font size for rem calculations */
+}
+
+body {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-heading);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--heading-spacing);
+  color: var(--color-text);
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+}
+
+h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+h3 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+h4 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+}
+
+h5 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+}
+
+h6 {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: var(--paragraph-spacing);
+}
+
+/* Lists */
+ul,
+ol {
+  margin-bottom: var(--list-spacing);
+  padding-left: var(--space-6);
+}
+
+li {
+  margin-bottom: var(--space-2);
+  /* border: 10px dotted lime !important; */ /* TEMPORARY TEST STYLE REMOVED */
+  /* background-color: fuchsia !important; */ /* TEMPORARY TEST STYLE REMOVED */
+}
+
+li:last-child {
+  margin-bottom: 0;
+}
+
+/* Links */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+a:hover {
+  color: var(--color-primary-alt);
+}
+
+/* Blockquotes */
+blockquote {
+  font-family: var(--font-family-body);
+  font-style: italic;
+  margin: var(--space-6) 0;
+  padding: var(--space-4);
+  background-color: var(--color-quote-bg);
+  border-left: 4px solid var(--color-quote-border);
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Code */
+code {
+  font-family: var(--font-family-monospace);
+  font-size: 0.9em;
+  padding: 0.2em 0.4em;
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius);
+}
+
+pre {
+  margin: var(--space-6) 0;
+  padding: var(--space-4);
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius);
+  overflow-x: auto;
+}
+
+pre code {
+  padding: 0;
+  background-color: transparent;
+}
+
+/* Small text */
+small {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+}
+
+/* Horizontal Rule */
+hr {
+  margin: var(--space-8) 0;
+  border: 0;
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+/* Text Selection */
+::selection {
+  background-color: var(--color-primary);
+  color: white;
+}
