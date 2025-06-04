@@ -8,18 +8,3 @@ html {
   -moz-tab-size: 4; /* More readable tab size */
   tab-size: 4;
 }
-
-body {
-  /* Basic body styling, color/background are set using CSS variables */
-  font-family: var(--font-family-body);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-base);
-  color: var(--color-text);
-  background-color: var(--color-background);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size-adjust: from-font;
-  min-height: 100vh;
-  overflow-x: hidden;
-  /* font-family and specific line-height will be set in typography.css */
-}
