@@ -1,5 +1,9 @@
 /* src/css/base/typography.css */
 
+/*
+  Refined for strict vertical rhythm and clear hierarchy, inspired by Piccalilli best practices.
+*/
+
 /* Base Typography */
 html {
   font-size: 16px; /* Base font size for rem calculations */
@@ -7,12 +11,16 @@ html {
 
 body {
   font-family: var(--font-family-body);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-base);
+  font-size: var(--text-size-base);
+  line-height: var(--leading);
   color: var(--color-text);
   background-color: var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size-adjust: from-font;
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* Headings */
@@ -23,59 +31,62 @@ h4,
 h5,
 h6 {
   font-family: var(--font-family-heading);
-  line-height: var(--line-height-tight);
-  margin-bottom: var(--heading-spacing);
   color: var(--color-text);
+  margin-top: 0;
+  /* margin-bottom: var(--space-6); */
+  font-weight: var(--font-weight-bold);
+
+  font-feature-settings: "cpsp" on;
+  /* font-weight: var(--heading-font-weight, var(--font-bold)); */
+  letter-spacing: var(--heading-kerning, var(--kerning));
+  line-height: var(--heading-line-height, var(--leading-fine));
+  overflow-wrap: anywhere;
+  text-wrap: balance;
 }
 
 h1 {
-  font-size: var(--font-size-4xl);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--text-size-heading-1);
 }
 
 h2 {
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-semibold);
+  font-size: var(--text-size-heading-2);
 }
-
 h3 {
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-semibold);
+  font-size: var(--text-size-heading-3);
 }
-
 h4 {
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-medium);
+  font-size: var(--text-size-heading-4);
 }
-
 h5 {
   font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-medium);
 }
-
 h6 {
   font-size: var(--font-size-base);
-  font-weight: var(--font-weight-medium);
+}
+
+.hero__heading {
+  font-family: var(--font-family-sans);
+  font-size: var(--hero-heading-font-size, var(--size-step-7));
+  line-height: var(--hero-heading-leading, var(--leading-flat));
 }
 
 /* Paragraphs */
 p {
+  margin-top: 0;
   margin-bottom: var(--paragraph-spacing);
+  line-height: var(--line-height-base);
 }
 
 /* Lists */
 ul,
 ol {
+  margin-top: 0;
   margin-bottom: var(--list-spacing);
   padding-left: var(--space-6);
 }
-
 li {
   margin-bottom: var(--space-2);
-  /* border: 10px dotted lime !important; */ /* TEMPORARY TEST STYLE REMOVED */
-  /* background-color: fuchsia !important; */ /* TEMPORARY TEST STYLE REMOVED */
 }
-
 li:last-child {
   margin-bottom: 0;
 }
@@ -86,7 +97,6 @@ a {
   text-decoration: none;
   transition: var(--transition-base);
 }
-
 a:hover {
   color: var(--color-primary-alt);
 }
@@ -100,7 +110,6 @@ blockquote {
   background-color: var(--color-quote-bg);
   border-left: 4px solid var(--color-quote-border);
 }
-
 blockquote p:last-child {
   margin-bottom: 0;
 }
@@ -113,7 +122,6 @@ code {
   background-color: var(--color-surface);
   border-radius: var(--border-radius);
 }
-
 pre {
   margin: var(--space-6) 0;
   padding: var(--space-4);
@@ -121,7 +129,6 @@ pre {
   border-radius: var(--border-radius);
   overflow-x: auto;
 }
-
 pre code {
   padding: 0;
   background-color: transparent;
