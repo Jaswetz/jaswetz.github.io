@@ -97,16 +97,24 @@ class SiteHeader extends HTMLElement {
           border: none;
           padding: var(--space-2);
           cursor: pointer;
-          z-index: 2;
+          z-index: 1001; /* Ensure toggle is above nav */
+          position: relative; /* For positioning the close text */
+          color: var(--color-text); /* For the "Close" text */
         }
 
-        .menu-toggle span {
+        .menu-toggle .hamburger-icon span {
           display: block;
           width: 24px;
           height: 2px;
           background-color: var(--color-text);
           margin: 4px 0;
           transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .menu-toggle .close-text {
+          display: none; /* Hidden by default */
+          margin-left: var(--space-1);
+          font-size: var(--font-size-sm);
         }
 
         nav {
@@ -167,47 +175,65 @@ class SiteHeader extends HTMLElement {
           }
 
           .menu-toggle {
-            display: block;
+            display: flex; /* Use flex to align icon and text */
+            align-items: center;
           }
 
           nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
+            /* Changes for dropdown behavior */
+            position: absolute;
+            top: calc(100% + var(--space-2)); /* Position below the header */
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - var(--space-4)); /* Slightly less than header width */
+            max-width: 300px; /* Max width for the dropdown */
             background-color: var(--color-surface);
-            transform: translateX(100%);
-            transition: transform .2s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border-radius: var(--border-radius-pill, 999px); /* Pill shape */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: var(--space-3);
+            opacity: 0;
+            visibility: hidden;
+            transform: translate(-50%, 10px); /* Start slightly lower for animation */
+            transition: opacity .3s ease, transform .3s ease, visibility .3s ease;
+            z-index: 1000; /* Ensure nav is below toggle if overlapping, but above other content */
+            display: block; /* Reset from flex if it was set for desktop */
           }
 
           nav.active {
-            transform: translateX(0);
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, 0);
           }
 
           nav ul {
             flex-direction: column;
-            gap: var(--space-4);
+            gap: var(--space-2); /* Reduced gap for dropdown */
+            align-items: stretch; /* Make items take full width */
           }
 
           nav li a {
-            font-size: var(--font-size-lg);
-            padding: var(--space-3) var(--space-4);
+            font-size: var(--font-size-base); /* Adjusted font size */
+            padding: var(--space-2) var(--space-3);
+            display: block; /* Make links block for full-width click area */
+            text-align: center;
           }
 
-          .menu-toggle.active span:nth-child(1) {
+          .menu-toggle.active .hamburger-icon span:nth-child(1) {
             transform: rotate(45deg) translate(5px, 5px);
           }
 
-          .menu-toggle.active span:nth-child(2) {
+          .menu-toggle.active .hamburger-icon span:nth-child(2) {
             opacity: 0;
           }
 
-          .menu-toggle.active span:nth-child(3) {
+          .menu-toggle.active .hamburger-icon span:nth-child(3) {
             transform: rotate(-45deg) translate(7px, -7px);
+          }
+          .menu-toggle.active .close-text {
+            display: inline; /* Show "Close" text */
+          }
+          .menu-toggle.active .hamburger-icon {
+            /* Optionally hide hamburger lines if "Close X" text is enough, or keep for X icon */
           }
         }
     </style>
@@ -230,9 +256,12 @@ class SiteHeader extends HTMLElement {
           </a>
         </div>
         <button class="menu-toggle" aria-label="Toggle menu">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span class="hamburger-icon">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+            <span class="close-text">Close</span>
         </button>
         <nav>
             <ul>
