@@ -61,12 +61,30 @@ class SiteHeader extends HTMLElement {
         }
 
         .logo a {
-          font-weight: var(--font-weight-bold);
+          font-weight: var(--font-weight-medium);
+          font-family: var(--font-family-sans);
           text-decoration: none;
           color: var(--color-primary);
-          font-size: var(--font-size-xl);
+          font-size: var(--text-size-heading-2);
           z-index: 2;
           transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
+          display: flex;
+          align-items: center;
+          gap: var(--space-2, 0.5em);
+        }
+
+        .logo-svg {
+          height: 1em;
+          width: auto;
+          min-width: 1em;
+          min-height: 1em;
+          display: inline-block;
+        }
+
+        .logo-text {
+          margin-left: var(--space-1, 0.25em);
+          display: inline-block;
+          text-transform: uppercase;
         }
 
         :host(.scrolled) .logo a {
@@ -121,6 +139,17 @@ class SiteHeader extends HTMLElement {
           color: var(--color-primary-alt);
           background-color: var(--color-quote-bg);
           text-decoration: none;
+        }
+
+        .logo a:hover,
+        .logo a:focus {
+          color: var(--color-primary-alt);
+          background-color: var(--color-quote-bg);
+          text-decoration: none;
+        }
+        .logo a:hover .logo-svg,
+        .logo a:focus .logo-svg {
+          /* Change SVG fill on hover to match text color */
         }
 
         @media (max-width: 768px) {
@@ -184,7 +213,21 @@ class SiteHeader extends HTMLElement {
     </style>
     <header class="header-content">
         <div class="logo">
-            <a href="/index.html">MyPortfolio</a>
+          <a href="/index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="logo-svg" width="32" height="32" viewBox="0 0 39 39">
+              <defs>
+                <clipPath id="clipPath2973389018">
+                  <path d="M0 0L39 0L39 39L0 39L0 0Z" fill-rule="nonzero" transform="matrix(1 0 0 1 0 0)"/>
+                </clipPath>
+              </defs>
+              <g clip-path="url(#clipPath2973389018)">
+                <path d="M9 0L18 17L0 17L9 0Z" fill-rule="nonzero" transform="matrix(1 0 0 1 10.5 10)" fill="rgb(37, 105, 237)"/>
+                <path d="M16 -0.5Q19.3566 -0.5 22.4227 0.796857Q25.3838 2.04931 27.6673 4.33274Q29.9507 6.61615 31.2031 9.5773Q32.5 12.6434 32.5 16Q32.5 19.3566 31.2031 22.4227Q29.9507 25.3838 27.6673 27.6673Q25.3839 29.9507 22.4227 31.2031Q19.3566 32.5 16 32.5Q12.6434 32.5 9.5773 31.2031Q6.61615 29.9507 4.33274 27.6673Q2.04931 25.3838 0.796855 22.4227Q-0.500002 19.3566 -0.500002 16Q-0.5 12.6434 0.796857 9.5773Q2.04931 6.61617 4.33274 4.33274Q6.61617 2.04931 9.5773 0.796855Q12.6434 -0.500002 16 -0.500002L16 -0.5ZM16 0.499998Q12.8462 0.499998 9.96685 1.71786Q7.18536 2.89433 5.03984 5.03984Q2.89433 7.18535 1.71786 9.96685Q0.5 12.8462 0.499998 16Q0.499998 19.1538 1.71786 22.0331Q2.89433 24.8147 5.03984 26.9602Q7.18534 29.1057 9.96685 30.2821Q12.8462 31.5 16 31.5Q19.1538 31.5 22.0331 30.2821Q24.8147 29.1057 26.9602 26.9602Q29.1057 24.8147 30.2821 22.0331Q31.5 19.1538 31.5 16Q31.5 12.8462 30.2821 9.96685Q29.1057 7.18534 26.9602 5.03984Q24.8146 2.89434 22.0331 1.71786Q19.1538 0.5 16 0.5L16 0.499998Z" fill-rule="nonzero" transform="matrix(1 0 0 1 3.5 3.5)" fill="rgb(37, 105, 237)"/>
+                <path d="M-0.5 -0.5L38.5 -0.5L38.5 38.5L-0.5 38.5L-0.5 -0.5ZM0.5 0.5L0.5 37.5L37.5 37.5L37.5 0.5L0.5 0.5Z" fill-rule="nonzero" transform="matrix(1 0 0 1 0.5 0.5)" fill="rgb(37, 105, 237)"/>
+              </g>
+            </svg>
+            <span class="logo-text">Jason Swetzoff</span>
+          </a>
         </div>
         <button class="menu-toggle" aria-label="Toggle menu">
             <span></span>
