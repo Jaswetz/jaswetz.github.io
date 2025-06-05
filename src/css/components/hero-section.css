@@ -1,7 +1,25 @@
 /* src/css/components/hero-section.css */
 
+@keyframes gradientBackground {
+  0% {
+    background-size: 200% 200%;
+    background-position: left top;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right bottom;
+  }
+  100% {
+    background-size: 200% 200%;
+    background-position: left top;
+  }
+}
+
 .hero-section {
-  background-color: var(--color-background);
+  position: relative;
+  /* background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee); */
+  animation: gradientBackground 20s ease-in-out infinite;
+  background-size: 100% 100%;
   padding: var(--space-4xl) var(--space-xl); /* Generous padding */
   min-height: 60vh; /* Ensure it takes up a good portion of the viewport */
   display: flex;
@@ -9,6 +27,35 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.75) 20%,
+    rgba(210, 206, 200, 0.1) 60%
+  );
+  background-repeat: repeat;
+  background-position: left top;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: #f7f3eb;
+  opacity: 0.2;
+  background-image: linear-gradient(#d6d6d6 0.9px, transparent 0.9px),
+    linear-gradient(to right, #d6d6d6 0.9px, #f7f3eb 0.9px);
+  background-size: 18px 18px; */
+  background-color: #f7f3eb;
+  opacity: 0.8;
+  background-image: radial-gradient(
+    #999 0.7000000000000001px,
+    #f7f3eb 0.7000000000000001px
+  );
+  background-size: 14px 14px;
+  z-index: -1; /* Ensure it stays behind the content */
 }
 
 .hero-content {
