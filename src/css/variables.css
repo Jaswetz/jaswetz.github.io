@@ -160,11 +160,11 @@
   --list-spacing: var(--space-s);
 
   /* Borders */
-  --border-radius: 0.25rem; /* 4px */
+  --border-radius: 0.75rem; /* 4px */
   --border-width: 1px;
 
   /* Transitions */
   --transition-base: all 0.2s ease-in-out;
 
-  --wrapper-max-width: 1680px;
+  --max-width: 1200px; /* Maximum width for main content */
 }
