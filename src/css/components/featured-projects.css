@@ -1,4 +1,6 @@
-.featured-projects-section {
+.main-content {
+  position: relative;
+  margin-bottom: var(--space-l-3xl);
   top: calc(-1 * var(--space-l-3xl));
   background: var(--color-background);
   box-shadow: 0 -12px 12px -8px rgba(0, 0, 0, 0.05);
@@ -7,9 +9,39 @@
   border-top-left-radius: var(--border-radius);
   border-top-right-radius: var(--border-radius);
   width: var(--section-width);
+}
 
+h2::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 0.2rem;
+  background: var(--color-primary);
+}
+
+.quotes-section__rotator {
+}
+
+.quote {
+  display: block;
+}
+
+.main-content section {
+  padding-bottom: var(--space-3xl);
+  margin-top: var(--space-3xl);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.page__home {
   h2 {
-    margin-bottom: var(--space-xl);
-    margin-top: var(--space-xl);
+    margin-bottom: var(--space-l);
+    font-size: var(--text-size-heading-4);
+    font-weight: var(--font-weight-semibold);
   }
+}
+
+.project-thumbnail {
+  border-radius: var(
+    --border-radius
+  ); /* Use your existing border-radius variable */
 }
