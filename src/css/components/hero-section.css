@@ -76,7 +76,8 @@
   /* Uses --text-size-heading-1 and --font-weight-bold from base/typography.css */
   /* We can override if needed, but let's see base styles first */
   margin-bottom: var(--space-3);
-  color: var(--color-text); /* Ensure it uses the main text color */
+  color: var(--color-primary); /* Ensure it uses the main text color */
+  font-size: var(--size-step-6);
 }
 
 .hero__tagline {

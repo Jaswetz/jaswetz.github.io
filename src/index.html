@@ -26,29 +26,67 @@
     />
     <link rel="apple-touch-icon" href="./assets/favicons/apple-icon.png" />
   </head>
-  <body>
+  <body class="page__home">
     <site-header></site-header>
 
     <!-- End Vertical Rhythm Test Block -->
-    <main>
-      <!-- TODO: [SEO][index.html] Ensure logical heading hierarchy (H1, H2, H3...) (Phase 8.1) -->
-      <!-- TODO: [SEO][index.html] Implement internal linking between relevant pages (Phase 8.1) -->
-      <!-- TODO: [Analytics][index.html] Integrate GA4 tracking code (Phase 8.3) -->
-      <!-- TODO: [Analytics][index.html] Integrate Microsoft Clarity tracking code (Phase 8.3) -->
-      <!-- TODO: [Analytics][index.html] Address data privacy implications (Phase 8.3) -->
-      <section id="hero" class="hero-section">
-        <div class="hero-content">
-          <p class="hero-subtitle">Need a UX profesional?</p>
-          <h1>You need Jason.</h1>
-          <p class="hero__tagline">
-            A systems thinker specializing in platform and growth.
-          </p>
+
+    <!-- TODO: [SEO][index.html] Ensure logical heading hierarchy (H1, H2, H3...) (Phase 8.1) -->
+    <!-- TODO: [SEO][index.html] Implement internal linking between relevant pages (Phase 8.1) -->
+    <!-- TODO: [Analytics][index.html] Integrate GA4 tracking code (Phase 8.3) -->
+    <!-- TODO: [Analytics][index.html] Integrate Microsoft Clarity tracking code (Phase 8.3) -->
+    <!-- TODO: [Analytics][index.html] Address data privacy implications (Phase 8.3) -->
+    <section id="hero" class="hero-section">
+      <div class="hero-content">
+        <p class="hero-subtitle">Need a UX profesional?</p>
+        <h1>You need Jason.</h1>
+        <p class="hero__tagline">
+          A systems thinker specializing in platform and growth.
+        </p>
+      </div>
+    </section>
+
+    <main class="main-content wrapper">
+      <section class="quotes-section">
+        <h2>Don't take my word for it...</h2>
+        <div class="quotes-section__rotator grid grid--3-column">
+          <blockquote class="quote">
+            <p>
+              "I can confidently say Jason is one of the most creative and
+              skillful designers I've ever worked with."
+            </p>
+            <cite class="quote__author"
+              >- <span class="font-weight--bold">George</span>, UX Manager at
+              Autodesk</cite
+            >
+          </blockquote>
+          <blockquote class="quote">
+            <p>
+              "As a developer, I really appreciated how well Jason bridged
+              design and implementation."
+            </p>
+            <cite class="quote__author"
+              >- <span class="font-weight--bold">Alyssa</span>, Principal
+              Software Engineer at Autodesk</cite
+            >
+          </blockquote>
+          <blockquote class="quote">
+            <p>
+              "Jason's approach can be both innovative and pragmatic, striking a
+              thoughtful balance between user experience, usability, and
+              business objectives."
+            </p>
+            <cite class="quote__author"
+              >- <span class="font-weight--bold">Yushan</span>, Principal UX
+              Designer at Autodesk</cite
+            >
+          </blockquote>
         </div>
       </section>
 
-      <section id="featured-projects" class="featured-projects-section wrapper">
+      <section id="featured-projects" class="featured-projects-section">
         <h2>Featured Projects</h2>
-        <div class="grid">
+        <div class="grid grid--2-column">
           <article class="project-snippet grid__item card card--vertical">
             <img
               src="./img/proj-thumb-autodesk.jpg"

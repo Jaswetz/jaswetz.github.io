@@ -19,10 +19,10 @@
     rgba(0, 128, 255, 0.15) 0,
     /* Light blue line */ rgba(0, 128, 255, 0.15) 1px,
     /* Line thickness */ transparent 1px,
-    transparent var(--space-2)
+    transparent var(--space-2xs)
       /* Assuming a 1.5rem (24px at 16px base) baseline. Adjust as needed. */
   );
-  background-size: 100% var(--space-2); /* Match the repeating gradient */
+  background-size: 100% var(--space-2xs); /* Match the repeating gradient */
 }
 
 /* --- End Debug Styles --- */

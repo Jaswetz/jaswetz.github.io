@@ -28,10 +28,10 @@ class SiteHeader extends HTMLElement {
       :host {
         display: block;
         position: fixed;
-        top: var(--space-4);
-        left: 50%;
+        top: var(--space-s);
+        left: 50%; 
         transform: translateX(-50%);
-        width: calc(100% - var(--space-8));
+        width: var(--section-width);
         z-index: 1000;
         transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
         max-width: var(--max-width);
@@ -43,6 +43,7 @@ class SiteHeader extends HTMLElement {
         transform: none;
         width: 100%;
         border-radius: 0;
+        max-width: none;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       }
 
@@ -51,7 +52,7 @@ class SiteHeader extends HTMLElement {
         justify-content: space-between;
         align-items: center;
         background-color: var(--color-surface);
-        padding: var(--space-4) var(--space-6);
+        padding: var(--space-s) var(--space-m);
         border-radius: var(--border-radius);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -59,7 +60,7 @@ class SiteHeader extends HTMLElement {
 
       :host(.scrolled) .header-content {
         border-radius: 0;
-        padding: var(--space-3) var(--space-6);
+        padding: var(--space-xs) var(--space-m);
       }
 
       .logo a {
@@ -72,11 +73,11 @@ class SiteHeader extends HTMLElement {
         transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
         align-items: center;
-        gap: var(--space-2, 0.5em);
+        gap: var(--space-2xs, 0.5em);
       }
 
       .logo-text {
-        margin-left: var(--space-1, 0.25em);
+        margin-left: var(--space-2xs, 0.25em);
         display: inline-block;
       }
 
@@ -88,7 +89,7 @@ class SiteHeader extends HTMLElement {
         display: none;
         background: none;
         border: none;
-        padding: var(--space-2);
+        padding: var(--space-2xs);
         cursor: pointer;
         z-index: 1001;
         position: relative;
@@ -139,13 +140,13 @@ class SiteHeader extends HTMLElement {
         margin: 0;
         display: flex;
         align-items: center;
-        gap: var(--space-6);
+        gap: var(--space-m);
       }
 
       nav li a {
         text-decoration: none;
         color: var(--color-text);
-        padding: var(--space-2) var(--space-3);
+        padding: var(--space-2xs) var(--space-xs);
         font-size: var(--text-size-heading-5);
         border-radius: var(--border-radius);
         transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -189,11 +190,11 @@ class SiteHeader extends HTMLElement {
         position: absolute;
         right: 0;
         border-radius: var(--border-radius);
-        top: calc(100% + var(--space-2));
+        top: calc(100% + var(--space-2xs));
         max-width: 300px;
         width: var(--space-4xl);
         background-color: var(--color-surface);
-        padding: var(--space-3);
+        padding: var(--space-xs);
         opacity: 0;
         visibility: hidden;
         transition: opacity .3s ease, transform .3s ease, visibility .3s ease;
@@ -209,13 +210,13 @@ class SiteHeader extends HTMLElement {
 
         nav ul {
         flex-direction: column;
-        gap: var(--space-2);
+        gap: var(--space-2xs);
         align-items: stretch;
         }
 
         nav li a {
         font-size: var(--font-size-base);
-        padding: var(--space-2) var(--space-3);
+        padding: var(--space-2xs) var(--space-xs);
         display: block;
         text-align: center;
         }
@@ -267,22 +268,22 @@ class SiteHeader extends HTMLElement {
     });
 
     // Handle scroll events
-    window.addEventListener("scroll", this.handleScroll.bind(this));
+    // window.addEventListener("scroll", this.handleScroll.bind(this));
   }
 
-  // handleScroll() {
-  //   const currentScrollY = window.scrollY;
-  //   const header = this;
+  handleScroll() {
+    const currentScrollY = window.scrollY;
+    const header = this;
 
-  //   if (currentScrollY > 50) {
-  //     // Changed from 100 to 50 for earlier animation
-  //     header.classList.add("scrolled");
-  //   } else {
-  //     header.classList.remove("scrolled");
-  //   }
+    if (currentScrollY > 50) {
+      // Changed from 100 to 50 for earlier animation
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
 
-  //   this.lastScrollY = currentScrollY;
-  // }
+    this.lastScrollY = currentScrollY;
+  }
 
   disconnectedCallback() {
     // Clean up event listeners
