@@ -1,17 +1,91 @@
+.featured-projects-section {
+  top: calc(-1 * var(--space-l-3xl));
+  background: var(--color-background);
+  box-shadow: 0 -12px 12px -8px rgba(0, 0, 0, 0.05);
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+  border-top: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+  width: calc(100% - var(--space-8));
+
+  h2 {
+    margin-bottom: var(--space-xl);
+    margin-top: var(--space-xl);
+  }
+}
+
 .wrapper {
   margin-inline: auto;
-  max-width: var(--wrapper-max-width);
+  max-width: var(--max-width);
   padding-inline: var(--space-xl);
   position: relative;
+  /* display: grid; */
+  gap: var(--space-xl); /* Add space between children */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+
+@media (min-width: 48em) {
+  .grid {
+    grid-template-columns: 1fr 1fr; /* 2 per row on medium+ screens */
+  }
 }
 
 @media (min-width: 66em) {
   .grid {
-    grid-template-columns: calc(10rem + var(--gutter) * 2) 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* Keep 2 per row on large screens */
+    gap: var(--space-xl); /* Add space between grid columns */
   }
 }
+
 @media (min-width: 66em) {
   .grid__item {
-    grid-area: 3;
+    grid-area: auto;
   }
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  /* background-color: var(--color-surface); */
+  border-radius: var(--border-radius);
+
+  transition: var(--transition-base);
+  overflow: hidden; /* Ensure content stays within rounded corners */
+  margin-bottom: var(--space-m);
+}
+
+.card__image {
+  flex-shrink: 0;
+  margin-right: var(--space-m);
+  max-width: 150px;
+  border-radius: var(--border-radius);
+}
+
+.card__content {
+  flex: 1;
+}
+
+/* New card style with image at the top and text below */
+.card--vertical {
+  display: flex;
+  flex-direction: column; /* Stack image and content vertically */
+}
+
+.card--vertical .card__image {
+  width: 100%; /* Full width image */
+  height: auto; /* Maintain aspect ratio */
+  margin: 0; /* Remove margin */
+  max-width: 100%; /* Ensure it doesn't exceed container width */
+}
+
+.card--vertical .card__content {
+  padding: var(--space-m); /* Add padding for text content */
+  text-align: left; /* Align text to the left */
+  width: 100%;
 }

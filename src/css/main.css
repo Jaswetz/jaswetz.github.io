@@ -12,6 +12,7 @@
 @import "./components/error-page.css" layer(components);
 @import "./components/project-case-study.css" layer(components);
 @import "./components/hero-section.css" layer(components);
+@import "./components/featured-projects.css" layer(components);
 /* Add other component imports here and assign to 'components' layer */
 
 @import "./utils/spacing.css" layer(utilities);

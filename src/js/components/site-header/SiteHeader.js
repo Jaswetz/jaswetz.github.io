@@ -50,7 +50,7 @@ class SiteHeader extends HTMLElement {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: white;
+        background-color: var(--color-surface);
         padding: var(--space-4) var(--space-6);
         border-radius: var(--border-radius);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
