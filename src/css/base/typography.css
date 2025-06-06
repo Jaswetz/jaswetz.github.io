@@ -14,6 +14,7 @@ body {
   font-size: var(--text-size-base);
   line-height: var(--leading);
   color: var(--color-text);
+  text-rendering: optimizeLegibility;
   background-color: var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -33,8 +34,9 @@ h6 {
   font-family: var(--font-family-heading);
   color: var(--color-text);
   margin-top: 0;
+
   /* margin-bottom: var(--space-6); */
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-med);
 
   font-feature-settings: "cpsp" on;
   /* font-weight: var(--heading-font-weight, var(--font-bold)); */

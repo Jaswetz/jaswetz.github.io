@@ -166,5 +166,6 @@
   /* Transitions */
   --transition-base: all 0.2s ease-in-out;
 
-  --max-width: 1200px; /* Maximum width for main content */
+  --max-width: 1880px; /* Maximum width for main content */
+  --section-width: calc(100% - var(--space-8)); /* Full width minus padding */
 }
