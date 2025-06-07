@@ -153,6 +153,60 @@
 
   /* Transitions */
   --transition-base: all 0.2s ease-in-out;
+  --transition-interactive: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-quick: all 0.2s ease;
+
+  /* Interactive State Variables */
+  /* Hover States */
+  --hover-transform: translateY(-2px);
+  --hover-transform-card: translateY(-8px) scale(1.02);
+  --hover-transform-small: translateY(-1px);
+  --hover-scale: 1.02;
+  --hover-scale-large: 1.05;
+  --hover-shadow: 0 4px 12px rgba(37, 105, 237, 0.3),
+    0 0 0 1px rgba(37, 105, 237, 0.1);
+  --hover-shadow-large: 0 8px 25px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(37, 105, 237, 0.1);
+  --hover-shadow-small: 0 2px 8px rgba(37, 105, 237, 0.3);
+
+  /* Focus States */
+  --focus-outline: 2px solid var(--color-primary);
+  --focus-outline-offset: 2px;
+  --focus-shadow: 0 0 0 4px rgba(37, 105, 237, 0.1);
+  --focus-shadow-enhanced: var(--hover-shadow), var(--focus-shadow);
+
+  /* Active States */
+  --active-transform: translateY(0) scale(0.98);
+  --active-transform-card: translateY(-4px) scale(1.01);
+  --active-scale: 0.95;
+  --active-shadow: 0 2px 6px rgba(37, 105, 237, 0.4),
+    0 0 0 1px rgba(37, 105, 237, 0.2);
+
+  /* Disabled States */
+  --disabled-opacity: 0.6;
+  --disabled-cursor: not-allowed;
+
+  /* Gradient Overlays */
+  --overlay-gradient-light: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
+  --overlay-gradient-primary: linear-gradient(
+    135deg,
+    rgba(37, 105, 237, 0.05),
+    rgba(23, 70, 160, 0.1)
+  );
+  --overlay-gradient-enhanced: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.1)
+  );
+
+  /* Touch Targets */
+  --touch-target-min: 44px;
+  --touch-target-small: 36px;
+  --touch-target-large: 52px;
 
   --max-width: 1880px; /* Maximum width for main content */
   --section-width: calc(100% - var(--space-l)); /* Full width minus padding */

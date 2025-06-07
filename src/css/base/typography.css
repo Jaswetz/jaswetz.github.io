@@ -102,6 +102,10 @@ a {
 a:hover {
   color: var(--color-primary-alt);
 }
+a:active {
+  color: var(--color-primary-alt);
+  transform: scale(0.98);
+}
 
 /* Blockquotes */
 blockquote {

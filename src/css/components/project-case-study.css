@@ -68,6 +68,147 @@
   margin-block-start: var(--space-xs);
 }
 
+/* Project Navigation Styles */
+.project-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-m);
+  margin-top: var(--space-2xl);
+  padding: var(--space-l) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.project-navigation a {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-s) var(--space-m);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--border-radius);
+  background-color: transparent;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  min-height: 44px;
+  gap: var(--space-xs);
+}
+
+.project-navigation a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(37, 105, 237, 0.05),
+    rgba(23, 70, 160, 0.1)
+  );
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Hover states */
+.prev-project:hover,
+.next-project:hover,
+.back-to-portfolio:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+  transform: var(--hover-transform);
+  box-shadow: var(--hover-shadow);
+  text-decoration: none;
+}
+
+.prev-project:hover::before,
+.next-project:hover::before,
+.back-to-portfolio:hover::before {
+  background: var(--overlay-gradient-light);
+  opacity: 1;
+}
+
+/* Focus states */
+.prev-project:focus,
+.next-project:focus,
+.back-to-portfolio:focus {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+  transform: var(--hover-transform);
+  box-shadow: var(--focus-shadow-enhanced);
+  text-decoration: none;
+}
+
+.prev-project:focus::before,
+.next-project:focus::before,
+.back-to-portfolio:focus::before {
+  background: var(--overlay-gradient-light);
+  opacity: 1;
+}
+
+/* Active/pressed states */
+.prev-project:active,
+.next-project:active,
+.back-to-portfolio:active {
+  background-color: var(--color-primary-alt);
+  border-color: var(--color-primary-alt);
+  color: white;
+  transform: var(--active-transform);
+  box-shadow: var(--active-shadow);
+  text-decoration: none;
+}
+
+.prev-project:active::before,
+.next-project:active::before,
+.back-to-portfolio:active::before {
+  background: var(--overlay-gradient-enhanced);
+  opacity: 1;
+}
+
+/* Special styling for back-to-portfolio link */
+.back-to-portfolio {
+  border-color: var(--color-text-light, #666);
+  color: var(--color-text-light, #666);
+}
+
+.back-to-portfolio:hover,
+.back-to-portfolio:focus {
+  background-color: var(--color-text-light, #666);
+  border-color: var(--color-text-light, #666);
+  color: white;
+}
+
+.back-to-portfolio:active {
+  background-color: var(--color-text, #333);
+  border-color: var(--color-text, #333);
+  color: white;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .project-navigation {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-s);
+  }
+
+  .project-navigation a {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* Desktop layout adjustments */
 @media (min-width: 768px) {
   .notification-case-study-grid {

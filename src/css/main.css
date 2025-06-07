@@ -13,6 +13,9 @@
 @import "./components/project-case-study.css" layer(components);
 @import "./components/hero-section.css" layer(components);
 @import "./components/featured-projects.css" layer(components);
+@import "./components/buttons.css" layer(components);
+@import "./components/forms.css" layer(components);
+@import "./components/accessibility.css" layer(components);
 /* Add other component imports here and assign to 'components' layer */
 
 @import "./utils/spacing.css" layer(utilities);
