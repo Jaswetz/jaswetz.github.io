@@ -10,16 +10,12 @@
   border-top-right-radius: var(--border-radius);
   width: var(--section-width);
 }
-
 h2::after {
   content: "";
   display: block;
   width: 3rem;
   height: 0.2rem;
   background: var(--color-primary);
-}
-
-.quotes-section__rotator {
 }
 
 .quote {
@@ -41,7 +37,92 @@ h2::after {
 }
 
 .project-thumbnail {
-  border-radius: var(
-    --border-radius
-  ); /* Use your existing border-radius variable */
+  border-radius: var(--border-radius);
+  transition: var(--transition-interactive);
+}
+
+/* Card link styles - make entire card clickable */
+.card__link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-interactive);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  position: relative;
+}
+
+.card__link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay-gradient-primary);
+  opacity: 0;
+  transition: var(--transition-interactive);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card__link:hover {
+  color: inherit;
+  transform: var(--hover-transform-card);
+  box-shadow: var(--hover-shadow-large);
+}
+
+.card__link:hover::before {
+  opacity: 1;
+}
+
+.card__link:hover .project-thumbnail {
+  transform: scale(var(--hover-scale-large));
+}
+
+.card__link:hover .tag {
+  transform: var(--hover-transform-small);
+  box-shadow: var(--hover-shadow-small);
+}
+
+.card__link:focus {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
+
+.card__link:active {
+  transform: var(--active-transform-card);
+}
+
+/* Project tags styles */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: var(--space-s);
+}
+
+.tag {
+  display: inline-block;
+  padding: var(--space-2xs) var(--space-xs);
+  background-color: var(--color-primary);
+  color: white;
+  font-size: var(--font-size-sm);
+  border-radius: var(--border-radius);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  transition: var(--transition-quick);
+}
+
+.tag:hover {
+  background-color: var(--color-primary-alt);
+}
+
+.tag:active {
+  background-color: var(--color-primary-alt);
+  transform: scale(var(--active-scale));
+  box-shadow: var(--active-shadow);
 }

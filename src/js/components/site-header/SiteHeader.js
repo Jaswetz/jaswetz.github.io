@@ -35,6 +35,11 @@ class SiteHeader extends HTMLElement {
         z-index: 1000;
         transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
         max-width: var(--max-width);
+        outline: none; /* Prevent any outline on the host element */
+      }
+
+      :host:focus {
+        outline: none; /* Explicitly prevent focus outline on host */
       }
 
       :host(.scrolled) {
@@ -56,6 +61,11 @@ class SiteHeader extends HTMLElement {
         border-radius: var(--border-radius);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
+        outline: none; /* Prevent outline on header content */
+      }
+
+      .header-content:focus {
+        outline: none; /* Explicitly prevent focus outline on header content */
       }
 
       :host(.scrolled) .header-content {
@@ -70,10 +80,28 @@ class SiteHeader extends HTMLElement {
         color: var(--color-text);
         font-size: var(--text-size-heading-4);
         z-index: 2;
-        transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
         align-items: center;
         gap: var(--space-2xs, 0.5em);
+        padding: var(--space-2xs) var(--space-xs);
+        border-radius: var(--border-radius);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .logo a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(37, 105, 237, 0.05), rgba(23, 70, 160, 0.1));
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: -1;
       }
 
       .logo-text {
@@ -94,6 +122,53 @@ class SiteHeader extends HTMLElement {
         z-index: 1001;
         position: relative;
         color: var(--color-text);
+        border-radius: var(--border-radius);
+        transition: var(--transition-interactive);
+        overflow: hidden;
+      }
+
+      .menu-toggle::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--overlay-gradient-primary);
+        opacity: 0;
+        transition: var(--transition-quick);
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .menu-toggle:hover {
+        transform: var(--hover-transform) scale(var(--hover-scale));
+        box-shadow: var(--hover-shadow);
+      }
+
+      .menu-toggle:focus {
+        outline: var(--focus-outline);
+        outline-offset: var(--focus-outline-offset);
+        transform: var(--hover-transform) scale(var(--hover-scale));
+        box-shadow: var(--focus-shadow-enhanced);
+      }
+
+      .menu-toggle:active {
+        transform: translateY(0) scale(0.98);
+        box-shadow: var(--active-shadow);
+      }
+
+      .menu-toggle:hover::before {
+        opacity: 1;
+      }
+
+      .menu-toggle:focus::before {
+        opacity: 1;
+      }
+
+      .menu-toggle:active::before {
+        opacity: 1;
+        background: var(--overlay-gradient-enhanced);
       }
 
       .plus-icon {
@@ -149,26 +224,84 @@ class SiteHeader extends HTMLElement {
         padding: var(--space-2xs) var(--space-xs);
         font-size: var(--text-size-heading-5);
         border-radius: var(--border-radius);
-        transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: var(--transition-interactive);
         font-family: var(--font-family-sans);
         font-weight: var(--font-weight-medium);
+        position: relative;
+        overflow: hidden;
+      }
+
+      nav li a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--overlay-gradient-primary);
+        opacity: 0;
+        transition: var(--transition-quick);
+        pointer-events: none;
+        z-index: -1;
       }
 
       nav li a:hover,
       nav li a:focus {
         color: var(--color-primary-alt);
-        background-color: var(--color-quote-bg);
+        transform: var(--hover-transform) scale(var(--hover-scale));
+        box-shadow: var(--hover-shadow);
         text-decoration: none;
+      }
+
+      nav li a:active {
+        color: var(--color-primary-alt);
+        transform: translateY(0) scale(0.98);
+        box-shadow: var(--active-shadow);
+        text-decoration: none;
+      }
+
+      nav li a:hover::before,
+      nav li a:focus::before {
+        opacity: 1;
+      }
+
+      nav li a:active::before {
+        opacity: 1;
+        background: var(--overlay-gradient-enhanced);
       }
 
       .logo a:hover,
       .logo a:focus {
         color: var(--color-primary-alt);
-        background-color: var(--color-quote-bg);
+        transform: var(--hover-transform) scale(var(--hover-scale));
+        box-shadow: var(--hover-shadow);
         text-decoration: none;
       }
+
+      .logo a:active {
+        color: var(--color-primary-alt);
+        transform: translateY(0) scale(0.98);
+        box-shadow: var(--active-shadow);
+        text-decoration: none;
+      }
+
+      .logo a:hover::before,
+      .logo a:focus::before {
+        opacity: 1;
+      }
+
+      .logo a:active::before {
+        opacity: 1;
+        background: linear-gradient(135deg, rgba(37, 105, 237, 0.1), rgba(23, 70, 160, 0.15));
+      }
+
       .logo a:hover .logo-svg,
       .logo a:focus .logo-svg {
+        transform: scale(var(--hover-scale-large));
+      }
+
+      .logo a:active .logo-svg {
+        transform: scale(var(--hover-scale));
       }
       .logo-svg {
         height: var(--space-m-l);
@@ -176,6 +309,7 @@ class SiteHeader extends HTMLElement {
         min-width: 1em;
         min-height: 1em;
         display: inline-block;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       @media (max-width: 768px) {
@@ -261,10 +395,18 @@ class SiteHeader extends HTMLElement {
     const menuToggle = this.shadowRoot.querySelector(".menu-toggle");
     const nav = this.shadowRoot.querySelector("nav");
 
-    menuToggle.addEventListener("click", () => {
+    menuToggle.addEventListener("click", (e) => {
+      e.preventDefault(); // Prevent any default behavior
+      e.stopPropagation(); // Stop event bubbling
+
       this.isMenuOpen = !this.isMenuOpen;
       menuToggle.classList.toggle("active");
       nav.classList.toggle("active");
+
+      // Keep focus on the button after click
+      if (menuToggle instanceof HTMLElement) {
+        menuToggle.focus();
+      }
     });
 
     // Handle scroll events
