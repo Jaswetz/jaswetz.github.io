@@ -8,6 +8,7 @@
   --color-surface: #ffffff;
   --color-text: #2569ed;
   --color-quote-bg: var(--color-surface);
+  --color-quote-bg-alt: #f0e9da;
   --color-quote-border: #2569ed;
   --color-muted: #7a99c8;
   --color-success: #28a745; /* Example Green */
@@ -210,4 +211,10 @@
 
   --max-width: 1880px; /* Maximum width for main content */
   --section-width: calc(100% - var(--space-l)); /* Full width minus padding */
+
+  @media (min-width: 66em) {
+    --section-width: calc(
+      100% - var(--space-2xl)
+    ); /* Full width minus larger padding */
+  }
 }

@@ -231,20 +231,6 @@ class SiteHeader extends HTMLElement {
         overflow: hidden;
       }
 
-      nav li a::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: var(--overlay-gradient-primary);
-        opacity: 0;
-        transition: var(--transition-quick);
-        pointer-events: none;
-        z-index: -1;
-      }
-
       nav li a:hover,
       nav li a:focus {
         color: var(--color-primary-alt);

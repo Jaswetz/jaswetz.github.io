@@ -36,13 +36,18 @@
   transition: var(--transition-base);
   overflow: hidden; /* Ensure content stays within rounded corners */
   margin-bottom: var(--space-m);
+  background: var(--color-quote-bg-alt);
 }
 
 .card__image {
   flex-shrink: 0;
   margin-right: var(--space-m);
   max-width: 150px;
-  border-radius: var(--border-radius);
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background: var(--color-surface); /* Background for the image area */
 }
 
 .card__content {
