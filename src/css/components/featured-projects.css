@@ -10,6 +10,7 @@
   border-top-right-radius: var(--border-radius);
   width: var(--section-width);
 }
+
 h2::after {
   content: "";
   display: block;
@@ -38,7 +39,10 @@ h2::after {
 
 .project-thumbnail {
   border-radius: var(--border-radius);
-  transition: var(--transition-interactive);
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 /* Card link styles - make entire card clickable */
