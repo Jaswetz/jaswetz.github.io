@@ -26,6 +26,7 @@
     />
     <link rel="apple-touch-icon" href="./assets/favicons/apple-icon.png" />
   </head>
+
   <body class="page__home">
     <site-header></site-header>
 
@@ -38,7 +39,7 @@
     <!-- TODO: [Analytics][index.html] Address data privacy implications (Phase 8.3) -->
     <section id="hero" class="hero-section">
       <div class="hero-content">
-        <p class="hero-subtitle">Need deep platform experience?</p>
+        <p class="hero-subtitle">Need a platform UX that scales?</p>
         <h1>Hi, I'm Jason ✍️</h1>
         <p class="hero__tagline">
           Proven results in scaling products and simplifying complexity.
@@ -151,34 +152,79 @@
         </div>
       </section>
 
-      <section id="skills-overview" class="skills-overview-section">
-        <h2>Skills & Expertise</h2>
-        <ul>
-          <li>User Research</li>
-          <li>Wireframing</li>
-          <li>Prototyping</li>
-          <li>Usability Testing</li>
-          <li>UI Design</li>
-          <li>Interaction Design</li>
-          <!-- Add more skills as needed -->
-        </ul>
-      </section>
-
-      <section id="about-snippet" class="about-snippet-section">
-        <h2>About Me</h2>
-        <p>
-          A short paragraph about Jason, leading to the full "About" page. Lorem
-          ipsum dolor sit amet, consectetur adipiscing elit.
-          <a href="about.html">Read More About Me</a>.
-        </p>
+      <section id="about" class="about-section">
+        <h2 class="section-header">About Me</h2>
+        <div class="about-section__content grid grid--2-column">
+          <div class="about-section__image-wrapper">
+            <img
+              src="./img/jason-profile-pic-square.png"
+              alt="Jason Swetzoff, UX Designer and Strategist"
+              class="about-section__image"
+            />
+          </div>
+          <div class="about-section__text">
+            <p>
+              I architect unified, scalable user experiences for complex
+              enterprise platforms, specializing in information architecture,
+              cross-team alignment, and design systems that drive organizational
+              growth. As a Senior UX Architect with front-end expertise, I
+              bridge business goals, user needs, and technical realities.
+              Equally comfortable prototyping solutions as presenting strategic
+              designs to leadership.
+            </p>
+            <p>
+              Driven by curiosity, I constantly explore new apps, landscapes,
+              dinner spots, and design systems. My adaptability powers my
+              leadership of cross-functional teams and multi-device experiences.
+              I balance deep individual work with teamwork, believing
+              collaboration is what truly makes work fun and innovative.
+            </p>
+            <p>
+              Seeking to apply my expertise in multi-platform enterprise
+              solutions, growth strategy, and scalable design systems at a place
+              where asking the right questions is valued as highly as having the
+              right answers.
+            </p>
+          </div>
+        </div>
       </section>
 
       <section id="contact-cta" class="contact-cta-section">
         <h2>Get In Touch</h2>
-        <p>Interested in collaborating or have a question?</p>
-        <a href="contact.html" class="cta-button secondary-cta"
-          >Let's Connect</a
-        >
+        <p>
+          I'd love to hear from you! Whether you have a question, a project
+          proposal, or just want to say hello, feel free to reach out through
+          any of the channels below.
+        </p>
+        <ul class="contact-links">
+          <li>
+            <a href="mailto:jaswetz@google.com" class="contact-link button">
+              Email
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/yourprofile"
+              class="contact-link button--secondary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/yourusername"
+              class="contact-link button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+          </li>
+        </ul>
+        <p>Or, visit my contact page for more options:</p>
+        <a href="contact.html" class="cta-button secondary-cta">Contact Page</a>
       </section>
     </main>
     <site-footer></site-footer>
