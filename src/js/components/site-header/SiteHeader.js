@@ -298,6 +298,104 @@ class SiteHeader extends HTMLElement {
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
+      /* Added button styles */
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        text-decoration: none;
+        text-align: center;
+        border: 2px solid var(--color-primary);
+        border-radius: var(--border-radius);
+        background-color: var(--color-primary);
+        color: white;
+        cursor: pointer;
+        transition: var(--transition-interactive);
+        position: relative;
+        overflow: hidden;
+        gap: var(--space-xs);
+      }
+
+      .button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--overlay-gradient-light);
+        opacity: 0;
+        transition: var(--transition-quick);
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* Hover state */
+      .button:hover {
+        background-color: var(--color-primary-alt);
+        border-color: var(--color-primary-alt);
+        color: white;
+        transform: var(--hover-transform);
+        box-shadow: var(--hover-shadow);
+        text-decoration: none;
+      }
+
+      .button:hover::before {
+        opacity: 1;
+      }
+
+      /* Focus state */
+      .button:focus {
+        outline: var(--focus-outline);
+        outline-offset: var(--focus-outline-offset);
+        background-color: var(--color-primary-alt);
+        border-color: var(--color-primary-alt);
+        color: white;
+        transform: var(--hover-transform);
+        box-shadow: var(--focus-shadow-enhanced);
+        text-decoration: none;
+      }
+
+      .button:focus::before {
+        opacity: 1;
+      }
+
+      /* Active/pressed state */
+      .button:active {
+        background-color: var(--color-primary-alt);
+        border-color: var(--color-primary-alt);
+        color: white;
+        transform: var(--active-transform);
+        box-shadow: var(--active-shadow);
+        text-decoration: none;
+      }
+
+      .button:active::before {
+        opacity: 1;
+        background: var(--overlay-gradient-enhanced);
+      }
+
+      /* Secondary button styles */
+      .button--secondary {
+        background-color: transparent;
+        color: var(--color-primary);
+        border-color: var(--color-primary);
+      }
+
+      .button--secondary::before {
+        background: var(--overlay-gradient-primary);
+      }
+
+      .button--secondary:hover {
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+        color: white;
+        transform: var(--hover-transform);
+      }
+      /* End of added button styles */
+
+
       @media (max-width: 768px) {
   
 
@@ -371,7 +469,7 @@ class SiteHeader extends HTMLElement {
           <li><a href="/index.html">Home</a></li>
           <li><a href="/work.html">Work</a></li>
           <li><a href="/about.html">About</a></li>
-          <li><a href="/contact.html">Contact</a></li>
+          <li><a class="button" href="/contact.html">Get in Touch!</a></li>
         </ul>
       </nav>
     </header>

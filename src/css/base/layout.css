@@ -20,6 +20,12 @@
     grid-area: auto;
   }
 
+  .grid--2-column--uneven {
+    grid-template-columns: 1fr 2fr; /* Left column is 1/3 of the right column */
+    gap: var(--space-3xl); /* Add space between grid columns */
+    grid-area: auto;
+  }
+
   .grid--3-column {
     grid-template-columns: 1fr 1fr 1fr; /* Keep 3 per row on large screens */
     gap: var(--space-xl); /* Add space between grid columns */

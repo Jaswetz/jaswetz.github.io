@@ -1,0 +1,147 @@
+/* Specialized form input components - textarea, select, checkboxes, radio buttons */
+
+/* Textarea specific styles */
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Select specific styles */
+select {
+  cursor: pointer;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23333" d="m0 1 2 2 2-2z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right var(--space-s) center;
+  background-size: 12px;
+  padding-right: var(--space-l);
+  appearance: none;
+}
+
+select:focus {
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%232569ed" d="m0 1 2 2 2-2z"/></svg>');
+}
+
+/* Checkbox and Radio styles */
+input[type="checkbox"],
+input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  margin-right: var(--space-xs);
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+/* Checkbox and Radio labels */
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+  display: inline-block;
+  margin-bottom: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Checkbox and Radio container adjustments */
+input[type="checkbox"]:focus,
+input[type="radio"]:focus {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
+
+input[type="checkbox"]:hover,
+input[type="radio"]:hover {
+  transform: scale(1.1);
+}
+
+input[type="checkbox"]:active,
+input[type="radio"]:active {
+  transform: scale(var(--active-scale));
+}
+
+/* Custom checkbox styling for better cross-browser consistency */
+.custom-checkbox,
+.custom-radio {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.custom-checkbox input[type="checkbox"],
+.custom-radio input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  width: 0;
+  height: 0;
+}
+
+.custom-checkbox .checkmark,
+.custom-radio .checkmark {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: var(--space-xs);
+  border: 2px solid var(--color-border, #ddd);
+  background-color: var(--color-surface, #fff);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.custom-checkbox .checkmark {
+  border-radius: var(--border-radius-small, 4px);
+}
+
+.custom-radio .checkmark {
+  border-radius: 50%;
+}
+
+.custom-checkbox:hover .checkmark,
+.custom-radio:hover .checkmark {
+  border-color: var(--color-primary);
+  transform: scale(1.1);
+}
+
+.custom-checkbox input:focus + .checkmark,
+.custom-radio input:focus + .checkmark {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.custom-checkbox input:active + .checkmark,
+.custom-radio input:active + .checkmark {
+  transform: scale(0.95);
+  border-color: var(--color-primary-alt);
+}
+
+.custom-checkbox input:checked + .checkmark,
+.custom-radio input:checked + .checkmark {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.custom-checkbox input:checked + .checkmark::after {
+  content: "✓";
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.custom-radio input:checked + .checkmark::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

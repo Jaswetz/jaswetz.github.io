@@ -1,0 +1,57 @@
+/* Card component styles */
+
+/* Base card link styles - make entire card clickable */
+.card__link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-interactive);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  position: relative;
+}
+
+.card__link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay-gradient-primary);
+  opacity: 0;
+  transition: var(--transition-interactive);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Card interactive states */
+.card__link:hover {
+  color: inherit;
+  transform: var(--hover-transform-card);
+  box-shadow: var(--hover-shadow-large);
+}
+
+.card__link:hover::before {
+  opacity: 1;
+}
+
+.card__link:hover .project-thumbnail {
+  transform: scale(var(--hover-scale-large));
+}
+
+.card__link:hover .tag {
+  transform: var(--hover-transform-small);
+  box-shadow: var(--hover-shadow-small);
+}
+
+.card__link:focus {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
+
+.card__link:active {
+  transform: var(--active-transform-card);
+}
