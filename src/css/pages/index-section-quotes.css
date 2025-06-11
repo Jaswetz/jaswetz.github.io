@@ -1,0 +1,30 @@
+/* src/css/pages/index-section-quotes.css */
+/* Quotes section styles for the index page */
+
+
+.quotes-container {
+    max-width: var(--measure-xl);
+    margin: 0 auto;
+}
+
+.quote-item {
+    margin-bottom: var(--space-2xl);
+}
+
+.quote-text {
+    font-size: var(--font-size-xl);
+    font-style: italic;
+    color: var(--color-text);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-lg);
+}
+
+.quote-author {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-light);
+}
+
+.quote-author::before {
+    content: "— ";
+}
