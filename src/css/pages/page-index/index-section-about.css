@@ -1,0 +1,9 @@
+/* src/css/pages/index-section-about.css */
+/* About section styles for the index page */
+
+
+.about-section__image {
+    border-radius: var(--border-radius);
+    width: 100%;
+    height: auto;
+}

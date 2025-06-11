@@ -11,12 +11,25 @@
 
 @import "./components/error-page.css" layer(components);
 @import "./components/project-case-study.css" layer(components);
-@import "./components/hero-section.css" layer(components);
 @import "./components/featured-projects.css" layer(components);
+@import "./components/main-content.css" layer(components);
+@import "./components/cards.css" layer(components);
+@import "./components/tags.css" layer(components);
 @import "./components/buttons.css" layer(components);
 @import "./components/forms.css" layer(components);
+@import "./components/form-controls.css" layer(components);
+@import "./components/form-inputs.css" layer(components);
+@import "./components/form-layout.css" layer(components);
+@import "./components/form-validation.css" layer(components);
 @import "./components/accessibility.css" layer(components);
 /* Add other component imports here and assign to 'components' layer */
+
+@import "./pages/page-about.css" layer(utilities);
+@import "./pages/page-index/index-section-hero.css" layer(utilities);
+@import "./pages/page-index/index-section-quotes.css" layer(utilities);
+@import "./pages/page-index/index-section-featured-projects.css" layer(utilities);
+@import "./pages/page-index/index-section-about.css" layer(utilities);
+@import "./pages/page-index/index-section-contact.css" layer(utilities);
 
 @import "./utils/spacing.css" layer(utilities);
 @import "./utils/typography.css" layer(utilities);

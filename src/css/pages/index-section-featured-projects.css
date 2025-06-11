@@ -1,0 +1,10 @@
+/* src/css/pages/index-section-featured-projects.css */
+/* Featured projects section styles for the index page */
+
+.project-thumbnail {
+    border-radius: var(--border-radius);
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
