@@ -54,27 +54,48 @@ class SiteFooter extends HTMLElement {
           z-index: -1; /* Ensure it stays behind the content */
         }
         .footer-content {
-
-        display: grid;
+          
+          width: var(--section-width);
+          display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
         padding: var(--space-xl) 0;
         /* Ensure footer has enough height */
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
         max-width: var(--max-width);
         <!-- padding-inline: var(--space-xl); -->
         position: relative;
         /* display: grid; */
         gap: var(--space-xl); /* Add space between children */
         margin: 0 auto;
-        text-align: left;
+        text-align: center;
         min-height: inherit; /* Ensure it takes up the host's min-height */
+        max-width: var(--max-width);
+    padding-inline: var(--space-xl);
+    gap: var(--space-xl);
+    margin-inline: auto;
+    position: relative;
         }
         .footer-content__text {
         width: 100%;
         }
-        .social-links {
+
+
+        @media (min-width: 66em) { 
+          .footer-content {
+            grid-template-columns: 1fr 1fr;
+    /* Keep 2 per row on large screens */
+    gap: var(--space-xl);
+    /* Add space between grid columns */
+    grid-area: auto;
+    text-align: left;
+          }
+
+          .social-links {
         width: 100%;
         align-items: center; /* Vertically center grid items */
         display: flex;
+        text-align: left;
+        }
         }
         a {
         display: inline-flex;
@@ -120,7 +141,7 @@ class SiteFooter extends HTMLElement {
         padding: 0;
         }
       </style>
-      <footer class="footer-content">
+      <footer class="footer-content grid grid--2-column">
 
       <div class="footer-content__text">
         <p class="footer-tag">&copy; <span id="current-year">${currentYear}</span> Jason Swetzoff. All rights reserved.</p>
@@ -145,13 +166,12 @@ class SiteFooter extends HTMLElement {
            rel="noopener noreferrer"
            href="pdf/Jason_Swetzoff_Principal_UX_Designer_Resume.pdf">Resume</a>
         </li>
+
       </ul>
       </nav>
 
        
-        
-        <!-- Optional: Link back to the top of the page -->
-        <!-- <p><a href="#top">Back to Top</a></p> -->
+
       </footer>
       `;
   }

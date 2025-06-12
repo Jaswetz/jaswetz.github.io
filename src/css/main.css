@@ -10,8 +10,6 @@
 @import "./theme/default-theme.css" layer(theme);
 
 @import "./components/error-page.css" layer(components);
-@import "./components/project-case-study.css" layer(components);
-@import "./components/featured-projects.css" layer(components);
 @import "./components/main-content.css" layer(components);
 @import "./components/cards.css" layer(components);
 @import "./components/tags.css" layer(components);

@@ -16,6 +16,7 @@ class SiteHeader extends HTMLElement {
     this.attachShadow({ mode: "open" });
     this.isMenuOpen = false;
     this.lastScrollY = 0;
+    this.updateActiveSection = null; // Store reference for cleanup
   }
 
   /**
@@ -23,6 +24,12 @@ class SiteHeader extends HTMLElement {
    * Renders the header structure and styles into the Shadow DOM.
    */
   connectedCallback() {
+    // Check if we're on the home page to determine navigation behavior
+    const isHomePage =
+      window.location.pathname === "/" ||
+      window.location.pathname === "/index.html" ||
+      window.location.pathname.endsWith("/index.html");
+
     this.shadowRoot.innerHTML = /*html*/ `  
     <style>
       :host {
@@ -229,6 +236,11 @@ class SiteHeader extends HTMLElement {
         font-weight: var(--font-weight-medium);
         position: relative;
         overflow: hidden;
+      }
+
+      nav li a.active {
+        color: var(--color-primary-alt);
+        background-color: rgba(37, 105, 237, 0.1);
       }
 
       nav li a:hover,
@@ -466,10 +478,17 @@ class SiteHeader extends HTMLElement {
       </button>
       <nav>
         <ul>
-          <li><a href="/index.html">Home</a></li>
-          <li><a href="/work.html">Work</a></li>
-          <li><a href="/about.html">About</a></li>
-          <li><a class="button" href="/contact.html">Get in Touch!</a></li>
+          ${
+            isHomePage
+              ? `<li><a href="#quotes" data-scroll="true">Testimonials</a></li>
+             <li><a href="#featured-projects" data-scroll="true">Work</a></li>
+             <li><a href="#about" data-scroll="true">About</a></li>
+             <li><a class="button" href="#footer" data-scroll="true">Get in Touch!</a></li>`
+              : `<li><a href="/index.html">Home</a></li>
+             <li><a href="/work.html">Work</a></li>
+             <li><a href="/about.html">About</a></li>
+             <li><a class="button" href="/contact.html">Get in Touch!</a></li>`
+          }
         </ul>
       </nav>
     </header>
@@ -493,6 +512,76 @@ class SiteHeader extends HTMLElement {
       }
     });
 
+    // Add smooth scrolling for section navigation (only on home page)
+    if (isHomePage) {
+      const scrollLinks = this.shadowRoot.querySelectorAll(
+        'a[data-scroll="true"]'
+      );
+      scrollLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            // Close mobile menu if open
+            this.isMenuOpen = false;
+            menuToggle.classList.remove("active");
+            nav.classList.remove("active");
+
+            // Smooth scroll to target using native behavior
+            const targetId = link.getAttribute("href");
+            if (targetId.startsWith("#")) {
+              window.location.hash = targetId;
+            }
+          }
+        });
+      });
+
+      // Add scroll detection for active section highlighting
+      const sections = [
+        "hero",
+        "quotes",
+        "featured-projects",
+        "about",
+        "footer",
+      ];
+      this.updateActiveSection = () => {
+        const headerHeight = this.offsetHeight || 80;
+        const scrollPosition = window.scrollY + headerHeight + 50; // Offset for header height + padding
+
+        let activeSection = "hero"; // Default to hero
+
+        for (const sectionId of sections) {
+          const sectionElement = document.querySelector(`#${sectionId}`);
+          if (
+            sectionElement instanceof HTMLElement &&
+            scrollPosition >= sectionElement.offsetTop
+          ) {
+            activeSection = sectionId;
+          }
+        }
+
+        // Update active states
+        scrollLinks.forEach((link) => {
+          const href = link.getAttribute("href");
+          if (href === `#${activeSection}`) {
+            link.classList.add("active");
+          } else {
+            link.classList.remove("active");
+          }
+        });
+      };
+
+      // Set initial active section
+      this.updateActiveSection();
+
+      // Listen for scroll events
+      window.addEventListener("scroll", this.updateActiveSection, {
+        passive: true,
+      });
+    }
+
     // Handle scroll events
     // window.addEventListener("scroll", this.handleScroll.bind(this));
   }
@@ -513,6 +602,9 @@ class SiteHeader extends HTMLElement {
 
   disconnectedCallback() {
     // Clean up event listeners
+    if (this.updateActiveSection) {
+      window.removeEventListener("scroll", this.updateActiveSection);
+    }
     window.removeEventListener("scroll", this.handleScroll.bind(this));
   }
 }
