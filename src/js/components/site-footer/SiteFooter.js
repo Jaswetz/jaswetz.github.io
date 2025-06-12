@@ -29,36 +29,38 @@ class SiteFooter extends HTMLElement {
         <!-- background: var(--footer-background, #f8f9fa); -->
         margin-inline: auto;
         <!-- min-height: calc(var(--space-xl) * 8); -->
-        padding: var(--space-xl) 0;
+        min-height: calc(var(--space-l-3xl) * 2); /* Ensure footer has enough height */
         position: relative; /* Ensure pseudo-element is positioned relative to the host */
+        top: calc(-1 * var(--space-l-3xl));
         }
         
 
         :host::after {
-        border-top: 1px solid var(--footer-border-color, #dee2e6);
-        
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-
-  height: 100%;
-  background-color: #f7f3eb;
-  opacity: 0.8;
-  background-image: radial-gradient(
-    #999 0.7000000000000001px,
-    #f7f3eb 0.7000000000000001px
-  );
-  background-size: 14px 14px;
-  z-index: -1; /* Ensure it stays behind the content */
-}
+          
+          border-top: 1px solid var(--footer-border-color, #dee2e6);
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: #f7f3eb;
+          opacity: 0.8;
+          background-image: radial-gradient(
+            #999 0.7000000000000001px,
+            #f7f3eb 0.7000000000000001px
+          );
+          background-size: 14px 14px;
+          z-index: -1; /* Ensure it stays behind the content */
+        }
         .footer-content {
+
         display: grid;
+        padding: var(--space-xl) 0;
         /* Ensure footer has enough height */
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
         max-width: var(--max-width);
-        padding-inline: var(--space-xl);
+        <!-- padding-inline: var(--space-xl); -->
         position: relative;
         /* display: grid; */
         gap: var(--space-xl); /* Add space between children */
