@@ -11,7 +11,10 @@ html {
   -moz-tab-size: 4;
   /* More readable tab size */
   tab-size: 4;
-
+  scroll-behavior: smooth;
+  /* Enable smooth scrolling for anchor links */
+  scroll-padding-top: 100px;
+  /* Account for fixed header when scrolling to anchors */
 }
 
 body {
