@@ -45,7 +45,12 @@ class SiteHeader extends HTMLElement {
         transform: translateX(-50%);
         width: var(--section-width);
         z-index: 1000;
-        transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
+        /* MODIFIED transition property */
+        transition: top 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                    width 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                    max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                    box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: top, width, max-width, box-shadow; /* ADDED */
         max-width: var(--max-width);
         outline: none; /* Prevent any outline on the host element */
       }
@@ -72,7 +77,12 @@ class SiteHeader extends HTMLElement {
         padding: var(--space-s) var(--space-m);
         border-radius: var(--border-radius);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
+        /* MODIFIED transition property */
+        transition: padding 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                    border-radius 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                    background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                    box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: padding, border-radius, background-color, box-shadow; /* ADDED */
         outline: none; /* Prevent outline on header content */
       }
 
@@ -83,6 +93,7 @@ class SiteHeader extends HTMLElement {
       :host(.scrolled) .header-content {
         border-radius: 0;
         padding: var(--space-xs) var(--space-m);
+        box-shadow: none; /* ADDED to remove inner shadow when host has shadow */
       }
 
       .logo a {
@@ -465,10 +476,18 @@ class SiteHeader extends HTMLElement {
       </button>
       <nav>
         <ul>
-          <li><a href="${isHomePage ? "#" : "/index.html#"}quotes" data-scroll="true">Testimonials</a></li>
-          <li><a href="${isHomePage ? "#" : "/index.html#"}featured-projects" data-scroll="true">Work</a></li>
-          <li><a href="${isHomePage ? "#" : "/index.html#"}about" data-scroll="true">About</a></li>
-          <li><a class="button" href="${isHomePage ? "#" : "/index.html#"}footer" data-scroll="true">Get in Touch!</a></li>
+          <li><a href="${
+            isHomePage ? "#" : "/index.html#"
+          }quotes" data-scroll="true">Testimonials</a></li>
+          <li><a href="${
+            isHomePage ? "#" : "/index.html#"
+          }featured-projects" data-scroll="true">Work</a></li>
+          <li><a href="${
+            isHomePage ? "#" : "/index.html#"
+          }about" data-scroll="true">About</a></li>
+          <li><a class="button" href="${
+            isHomePage ? "#" : "/index.html#"
+          }footer" data-scroll="true">Get in Touch!</a></li>
         </ul>
       </nav>
     </header>
@@ -563,15 +582,15 @@ class SiteHeader extends HTMLElement {
     }
 
     // Handle scroll events
-    // window.addEventListener("scroll", this.handleScroll.bind(this));
+    window.addEventListener("scroll", this.handleScroll.bind(this));
   }
 
   handleScroll() {
     const currentScrollY = window.scrollY;
     const header = this;
 
-    if (currentScrollY > 50) {
-      // Changed from 100 to 50 for earlier animation
+    if (currentScrollY > 10) {
+      // Changed from 50 to 10 for earlier animation
       header.classList.add("scrolled");
     } else {
       header.classList.remove("scrolled");
