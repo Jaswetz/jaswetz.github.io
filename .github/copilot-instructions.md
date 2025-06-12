@@ -92,6 +92,11 @@ src/
     ├── components/             # (Optional) Styles for non-Web Component UI for the 'components' layer.
     │   └── buttons.css         #   -> @layer components (example)
     │
+    ├── pages/                  # Page-specific styles, typically imported into the 'components' or 'layout' layer.
+    │   ├── page-about.css      #   -> @layer components (example for about page styles)
+    │   └── page-index/         #   (example for page-specific component styles)
+    │       └── hero-section.css #  -> @layer components
+    │
     └── utils/                  # Utility class files for the 'utilities' layer.
         ├── spacing.css         #   -> @layer utilities
         ├── typography.css      #   -> @layer utilities
@@ -123,14 +128,14 @@ src/
       - `@layer base { @import url("base/global.css"); @import url("base/typography.css"); }`
       - `@layer theme { @import url("theme/default-theme.css"); }`
       - `@layer layout { /* @import url("layout/grid.css"); */ }`
-      - `@layer components { /* @import url("components/buttons.css"); */ }`
+      - `@layer components { /* @import url("components/buttons.css"); @import url("pages/page-about.css"); */ }`
       - `@layer utilities { @import url("utils/spacing.css"); /* etc. */ }`
 - **Layer Content:**
   - **`reset` layer**: Contains minimal custom CSS reset (`base/reset.css`).
   - **`base` layer**: Holds essential global HTML/body styles, base typography, etc. (`base/global.css`, `base/typography.css`).
   - **`theme` layer**: Contains theme-specific styles, primarily CSS variable definitions/overrides for different themes (e.g., `default-theme.css`, `dark-theme.css`). This layer allows themes to adapt the look and feel defined in `base` without altering its core structure.
   - **`layout` layer (Optional)**: For global page structure, grid systems not encapsulated in components.
-  - **`components` layer (Optional)**: For styling UI pieces that are _not_ Web Components.
+  - **`components` layer (Optional)**: For styling UI pieces that are _not_ Web Components. This can include styles for specific pages (e.g., `pages/page-about.css`) or reusable non-web-component UI elements (e.g., `components/buttons.css`).
   - **`utilities` layer**: Contains single-purpose utility classes (spacing, typography, flexbox, etc.). Styles in this layer will generally override styles from `reset`, `base`, `theme`, `layout`, and `components` layers for the same properties on the same elements, due to layer order, potentially reducing the need for `!important` on some utilities (though `!important` might still be used for highly specific overrides like `.hidden`).
 
 ## 2. Web Component Styles (BEM-like within Shadow DOM)
