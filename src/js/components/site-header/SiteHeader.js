@@ -25,10 +25,15 @@ class SiteHeader extends HTMLElement {
    */
   connectedCallback() {
     // Check if we're on the home page to determine navigation behavior
+    const currentPath = window.location.pathname;
+    console.log("SiteHeader - Current path:", currentPath); // Debug logging
+
     const isHomePage =
-      window.location.pathname === "/" ||
-      window.location.pathname === "/index.html" ||
-      window.location.pathname.endsWith("/index.html");
+      currentPath === "/" ||
+      currentPath === "/index.html" ||
+      currentPath.endsWith("/index.html") ||
+      currentPath === "" ||
+      currentPath.includes("index.html");
 
     this.shadowRoot.innerHTML = /*html*/ `  
     <style>
@@ -97,19 +102,7 @@ class SiteHeader extends HTMLElement {
         overflow: hidden;
       }
 
-      .logo a::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(135deg, rgba(37, 105, 237, 0.05), rgba(23, 70, 160, 0.1));
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
-        z-index: -1;
-      }
+
 
       .logo-text {
         margin-left: var(--space-2xs, 0.25em);
@@ -244,7 +237,9 @@ class SiteHeader extends HTMLElement {
       }
 
       nav li a:hover,
-      nav li a:focus {
+      nav li a:focus,
+      .logo a:hover,
+      .logo a:focus  {
         color: var(--color-primary-alt);
         transform: var(--hover-transform) scale(var(--hover-scale));
         box-shadow: var(--hover-shadow);
@@ -266,14 +261,6 @@ class SiteHeader extends HTMLElement {
       nav li a:active::before {
         opacity: 1;
         background: var(--overlay-gradient-enhanced);
-      }
-
-      .logo a:hover,
-      .logo a:focus {
-        color: var(--color-primary-alt);
-        transform: var(--hover-transform) scale(var(--hover-scale));
-        box-shadow: var(--hover-shadow);
-        text-decoration: none;
       }
 
       .logo a:active {
@@ -478,17 +465,10 @@ class SiteHeader extends HTMLElement {
       </button>
       <nav>
         <ul>
-          ${
-            isHomePage
-              ? `<li><a href="#quotes" data-scroll="true">Testimonials</a></li>
-             <li><a href="#featured-projects" data-scroll="true">Work</a></li>
-             <li><a href="#about" data-scroll="true">About</a></li>
-             <li><a class="button" href="#footer" data-scroll="true">Get in Touch!</a></li>`
-              : `<li><a href="/index.html">Home</a></li>
-             <li><a href="/work.html">Work</a></li>
-             <li><a href="/about.html">About</a></li>
-             <li><a class="button" href="/contact.html">Get in Touch!</a></li>`
-          }
+          <li><a href="${isHomePage ? "#" : "/index.html#"}quotes" data-scroll="true">Testimonials</a></li>
+          <li><a href="${isHomePage ? "#" : "/index.html#"}featured-projects" data-scroll="true">Work</a></li>
+          <li><a href="${isHomePage ? "#" : "/index.html#"}about" data-scroll="true">About</a></li>
+          <li><a class="button" href="${isHomePage ? "#" : "/index.html#"}footer" data-scroll="true">Get in Touch!</a></li>
         </ul>
       </nav>
     </header>

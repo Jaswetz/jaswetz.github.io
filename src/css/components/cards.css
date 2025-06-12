@@ -9,8 +9,12 @@
   color: inherit;
   transition: var(--transition-interactive);
   border-radius: var(--border-radius);
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
+
+  .project-thumbnail {
+    transition: var(--transition-interactive);
+  }
 }
 
 .card__link::before {
@@ -20,18 +24,26 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--overlay-gradient-primary);
+  background: var(--overlay-gradient-light);
   opacity: 0;
-  transition: var(--transition-interactive);
+  transition: var(--transition-quick);
   pointer-events: none;
   z-index: 1;
+  border-radius: var(--border-radius);
 }
 
 /* Card interactive states */
 .card__link:hover {
-  color: inherit;
-  transform: var(--hover-transform-card);
-  box-shadow: var(--hover-shadow-large);
+  color: var(--color-primary-alt);
+  transform: var(--hover-transform) scale(var(--hover-scale));
+  box-shadow: var(--hover-shadow);
+  text-decoration: none;
+  background-color: var(--color-surface);
+
+  h3 {
+    color: var(--color-primary-alt);
+  }
+
 }
 
 .card__link:hover::before {
@@ -42,10 +54,10 @@
   transform: scale(var(--hover-scale-large));
 }
 
-.card__link:hover .tag {
+/* .card__link:hover .tag {
   transform: var(--hover-transform-small);
   box-shadow: var(--hover-shadow-small);
-}
+} */
 
 .card__link:focus {
   outline: var(--focus-outline);
@@ -54,4 +66,64 @@
 
 .card__link:active {
   transform: var(--active-transform-card);
+}
+
+/* ------- */
+.card {
+  display: flex;
+  align-items: center;
+  /* background-color: var(--color-surface); */
+  border-radius: var(--border-radius);
+
+  transition: var(--transition-base);
+  /* overflow: hidden; */
+  /* Ensure content stays within rounded corners */
+  margin-bottom: var(--space-m);
+  /* background: var(--color-quote-bg-alt); */
+}
+
+.card__image {
+  flex-shrink: 0;
+  margin-right: var(--space-m);
+  max-width: 150px;
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  /* background: var(--color-surface); */
+  /* Background for the image area */
+}
+
+.card__content {
+  flex: 1;
+
+  h3 {
+    padding-bottom: var(--heading-spacing);
+  }
+}
+
+/* New card style with image at the top and text below */
+.card--vertical {
+  display: flex;
+  flex-direction: column;
+  /* Stack image and content vertically */
+}
+
+.card--vertical .card__image {
+  width: 100%;
+  /* Full width image */
+  height: auto;
+  /* Maintain aspect ratio */
+  margin: 0;
+  /* Remove margin */
+  max-width: 100%;
+  /* Ensure it doesn't exceed container width */
+}
+
+.card--vertical .card__content {
+  padding: var(--space-m);
+  /* Add padding for text content */
+  text-align: left;
+  /* Align text to the left */
+  width: 100%;
 }
