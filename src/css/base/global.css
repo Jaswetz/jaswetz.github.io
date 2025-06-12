@@ -2,9 +2,18 @@
 
 /* Set a base font size on html to make rem units more predictable */
 html {
-  font-size: 100%; /* Ensures 1rem = 16px by default in most browsers */
-  line-height: 1.15; /* Basic line-height, modern-normalize used this, good for a base */
-  -webkit-text-size-adjust: 100%; /* Prevent adjustments of font size after orientation changes in iOS. */
-  -moz-tab-size: 4; /* More readable tab size */
+  font-size: 100%;
+  /* Ensures 1rem = 16px by default in most browsers */
+  line-height: 1.15;
+  /* Basic line-height, modern-normalize used this, good for a base */
+  -webkit-text-size-adjust: 100%;
+  /* Prevent adjustments of font size after orientation changes in iOS. */
+  -moz-tab-size: 4;
+  /* More readable tab size */
   tab-size: 4;
+
+}
+
+body {
+  height: 100vh;
 }
