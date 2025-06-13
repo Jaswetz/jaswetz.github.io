@@ -9,7 +9,8 @@
 
 @import "./theme/default-theme.css" layer(theme);
 
-@import "./layout/projects.css" layer(layout); /* Added projects.css to layout layer */
+@import "./layout/projects.css" layer(layout);
+/* Added projects.css to layout layer */
 
 @import "./components/error-page.css" layer(components);
 @import "./components/main-content.css" layer(components);
@@ -41,4 +42,5 @@
 @import "./debug/debug.css" layer(utilities);
 
 /* Define layer order LAST - this confirms the order of layers established by imports */
-@layer reset, base, theme, layout, components, utilities, debug; /* Added layout to layer order */
+@layer reset, base, theme, layout, components, utilities, debug;
+/* Added layout to layer order */
