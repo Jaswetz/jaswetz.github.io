@@ -35,10 +35,8 @@ h6 {
   font-family: var(--font-family-heading);
   color: var(--color-text);
   margin-top: 0;
-
   /* margin-bottom: var(--space-6); */
   font-weight: var(--font-weight-med);
-
   font-feature-settings: "cpsp" on;
   /* font-weight: var(--heading-font-weight, var(--font-bold)); */
   letter-spacing: var(--heading-kerning, var(--kerning));
