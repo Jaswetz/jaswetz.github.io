@@ -23,7 +23,8 @@
     h1 {
         color: white;
         font-weight: bold;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Added text-shadow */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        /* Added text-shadow */
     }
 }
 
