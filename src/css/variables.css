@@ -26,8 +26,7 @@
   --color-background: #f7f3eb;
   --color-border: #ddd;
 
-  /* Site Width */
-  --site-width: 1200px;
+
 
   /* Typography */
   --font-family-heading: "Laila", serif;
@@ -234,6 +233,7 @@
   --touch-target-large: 52px;
 
   --max-width: 1880px;
+  --reading-width: 800px;
   /* Maximum width for main content */
   --section-width: calc(100% - var(--space-l));
   /* Full width minus padding */

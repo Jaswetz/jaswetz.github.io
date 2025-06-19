@@ -31,236 +31,238 @@
     <link rel="apple-touch-icon" href="../assets/favicons/apple-icon.png" />
   </head>
   <body>
-    <div class="banner">
-      <div class="banner__text">
-        <h1>Crafting A Unified Messaging Experience</h1>
-      </div>
-    </div>
     <site-header></site-header>
     <main
       class="project-case-study notification-case-study-grid main-content wrapper"
     >
-      <article>
-        <header class="project-header grid-hero">
-          <p class="project-tagline">
-            How I redesigned a complex notification system to reduce user
-            distraction and improve communication clarity, ultimately leading to
-            a 15,000 increase in paid users in the first month.
-          </p>
-        </header>
+      <article class="article">
+        <div class="sidebar grid grid--2-column--sidebar">
+          <div class="article__content">
+            <header class="project-header grid-hero">
+              <h1>Crafting A Unified Messaging Experience</h1>
 
-        <section class="case-main-visual grid-main-visual">
-          <img
-            src="../img/projects/autodesk-messaging/messaging-final.jpg"
-            alt="Autodesk Notification Center final design"
-            class="project-hero-image"
-          />
-        </section>
+              <p class="project-tagline">
+                How I redesigned a complex notification system to reduce user
+                distraction and improve communication clarity, ultimately
+                leading to a 15,000 increase in paid users in the first month.
+              </p>
+            </header>
 
-        <section class="project-challenge grid-challenge">
-          <h2>The Problem</h2>
-          <p>
-            Notifications were a non-standardized mess causing confusion,
-            reduced growth opportunities, and a bad taste with customers,
-            risking brand quality and customer loyalty.
-          </p>
-          <ul>
-            <li>
-              <strong>User Experience:</strong> The inconsistent volume of
-              notifications disrupted workflows, creating an overwhelming
-              experience. Users struggled to prioritize information and
-              efficiently manage in-app communication.
-            </li>
-            <li>
-              <strong>Business Impact:</strong> Key communications, particularly
-              those related to subscriber acquisition, were being lost in the
-              noise, significantly reducing their impact on business goals.
-            </li>
-            <li>
-              <strong>Product Perception:</strong> The lack of a cohesive
-              notification experience detracted from the perceived quality and
-              coherence of Autodesk Fusion, presenting an unpolished and
-              fragmented appearance.
-            </li>
-            <li>
-              <strong>Internal Friction:</strong> The absence of a unified
-              notification strategy increased development complexity and led to
-              redundant implementation efforts, making the notification system
-              difficult to manage and evolve.
-            </li>
-          </ul>
-          <img
-            src="../img/projects/autodesk-messaging/message-overload.gif"
-            alt="Notification overload visual"
-            class="challenge-image"
-          />
-        </section>
+            <img
+              src="../img/projects/autodesk-messaging/messaging-final.jpg"
+              alt="Autodesk Notification Center final design"
+              class="project-hero-image"
+            />
 
-        <section class="project-overview grid-overview">
-          <h2>Project Overview</h2>
-          <ul>
-            <li><strong>Client/Company:</strong> Autodesk Fusion</li>
-            <li>
-              <strong>My Role:</strong> Lead UX Designer. I was responsible for
-              the project's launch, UX vision, and strategy, as well as
-              overseeing user research and collaborating closely with a project
-              manager (who joined later) and two developers. I also proactively
-              gathered feedback from UX designers across other Autodesk teams to
-              ensure broader alignment.
-            </li>
-            <li><strong>Duration/Timeline:</strong> 8 months</li>
-            <li>
-              <strong>Tools & Technologies:</strong> Figma, Mural, Airtable,
-              Weave Design System
-            </li>
-            <li>
-              <strong>Project Goals:</strong>
+            <h2 id="the-problem">The Problem</h2>
+            <p>
+              Notifications were a non-standardized mess causing confusion,
+              reduced growth opportunities, and a bad taste with customers,
+              risking brand quality and customer loyalty.
+            </p>
+            <ul>
+              <li>
+                <strong>User Experience:</strong> The inconsistent volume of
+                notifications disrupted workflows, creating an overwhelming
+                experience. Users struggled to prioritize information and
+                efficiently manage in-app communication.
+              </li>
+              <li>
+                <strong>Business Impact:</strong> Key communications,
+                particularly those related to subscriber acquisition, were being
+                lost in the noise, significantly reducing their impact on
+                business goals.
+              </li>
+              <li>
+                <strong>Product Perception:</strong> The lack of a cohesive
+                notification experience detracted from the perceived quality and
+                coherence of Autodesk Fusion, presenting an unpolished and
+                fragmented appearance.
+              </li>
+              <li>
+                <strong>Internal Friction:</strong> The absence of a unified
+                notification strategy increased development complexity and led
+                to redundant implementation efforts, making the notification
+                system difficult to manage and evolve.
+              </li>
+            </ul>
+            <img
+              src="../img/projects/autodesk-messaging/message-overload.gif"
+              alt="Notification overload visual"
+              class="challenge-image"
+            />
+
+            <h2 id="project-overview">Project Overview</h2>
+            <ul>
+              <li><strong>Client/Company:</strong> Autodesk Fusion</li>
+              <li>
+                <strong>My Role:</strong> Lead UX Designer. I was responsible
+                for the project's launch, UX vision, and strategy, as well as
+                overseeing user research and collaborating closely with a
+                project manager (who joined later) and two developers. I also
+                proactively gathered feedback from UX designers across other
+                Autodesk teams to ensure broader alignment.
+              </li>
+              <li><strong>Duration/Timeline:</strong> 8 months</li>
+              <li>
+                <strong>Tools & Technologies:</strong> Figma, Mural, Airtable,
+                Weave Design System
+              </li>
+              <li>
+                <strong>Project Goals:</strong>
+                <ul>
+                  <li>
+                    User Goal: Significantly reduce notification fatigue and
+                    distraction by creating a clear, consistent, and predictable
+                    system for receiving and managing messages.
+                  </li>
+                  <li>
+                    Business Goal: Increase the visibility and effectiveness of
+                    critical communications, especially growth messaging.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
+            <h2 id="process">Process</h2>
+            <div class="process-step">
+              <h3>Discovery & Research</h3>
+              <p>
+                Recognizing Fusion's fragmented messaging hurt user engagement,
+                I initiated an investigation. A thorough content inventory of
+                existing notifications, affinity mapping, and review of the
+                Autodesk Design System (Weave) and other products helped
+                identify inconsistencies. User research highlighted key
+                frustrations: overuse/repetition, bad content, difficult access,
+                lack of user control, and too many channels.
+              </p>
+              <img
+                src="../img/projects/autodesk-messaging/workshop-2.png"
+                alt="Content audit of existing notifications"
+                class="process-image"
+              />
+            </div>
+            <div class="process-step">
+              <h3>Framework Development & Design</h3>
+              <p>
+                I created a severity matrix and notification categories to guide
+                delivery methods. After securing stakeholder buy-in, I moved
+                from rapid sketches to high-fidelity designs using Weave
+                components. This led to defining a centralized Notification
+                Center, combining flyout and toast notifications, and exploring
+                features like filtering, collapsible sections, and bulk actions,
+                while addressing design challenges like filter scalability and
+                visual clarity.
+              </p>
+              <img
+                src="../img/projects/autodesk-messaging/severity-matrix.png"
+                alt="Severity matrix for notifications"
+                class="process-image"
+              />
+            </div>
+            <div class="process-step">
+              <h3>User Testing & Iteration</h3>
+              <p>
+                Usability sessions were conducted to evaluate the current system
+                and validate the new Notification Center concept. Key hypotheses
+                around centralization, intuitiveness of flyouts/toasts, and
+                workflow disruption were tested. Findings informed iterative
+                improvements, prioritizing critical feedback for the initial
+                version and deferring some enhancements.
+              </p>
+              <img
+                src="../img/projects/autodesk-messaging/user-testing-participants.jpg"
+                alt="User testing participant overview"
+                class="process-image"
+              />
+            </div>
+
+            <h2 id="centralized-solution">A Centralized Solution</h2>
+            <p>
+              My work successfully transformed Fusion's notifications from a
+              source of user frustration into a strategic communication tool. I
+              designed a centralized notification center that reduced user
+              distraction. Coupled with clear guidelines and prioritization
+              strategies, this demonstrably reduced user distraction and
+              improved the overall clarity of in-app messaging. The solution
+              involved high-severity messages appearing as toasts, less critical
+              ones stored in a flyout, and intermediate messages briefly
+              appearing as toasts before moving to the flyout, minimizing
+              workflow disruption.
+            </p>
+            <img
+              src="../img/projects/autodesk-messaging/mockup-final.png"
+              alt="Final Notification Center design"
+              class="solution-image"
+            />
+
+            <h2 id="results-impact">Results & Impact</h2>
+            <ul>
+              <li>
+                <strong
+                  >Enhanced visibility and effectiveness of growth and marketing
+                  messages</strong
+                >, directly contributing to a measurable increase of 15,000 paid
+                subscribers in the first month.
+              </li>
+              <li>
+                <strong
+                  >Establishment of a scalable and maintainable messaging
+                  framework</strong
+                >, streamlining product development and ensuring consistency.
+              </li>
+              <li>
+                <strong
+                  >Provision of clear design patterns and documentation</strong
+                >, empowering internal teams to implement notifications
+                effectively and autonomously.
+              </li>
+              <li>
+                <strong>Influence on Autodesk's design system</strong>, with key
+                elements of my work and features incorporated into a new
+                component within Weave.
+              </li>
+              <li>Established as in-house notification expert and mentor.</li>
+            </ul>
+
+            <h2 id="key-learnings">Key Learnings</h2>
+            <ul>
+              <li>
+                The critical importance of a unified messaging strategy was
+                underscored; fragmented systems invariably lead to user
+                frustration and missed business opportunities.
+              </li>
+              <li>
+                Iterative design, strongly backed by comprehensive user research
+                and continuous stakeholder buy-in, is paramount when redesigning
+                complex systems.
+              </li>
+              <li>
+                Developing and providing clear guidelines alongside reusable
+                design components significantly empowers other teams, fostering
+                consistency and efficiency across the product ecosystem.
+              </li>
+              <li>
+                A deep understanding of user pain points through direct research
+                and analytics is fundamental to designing solutions that
+                genuinely improve user experience and achieve business goals.
+              </li>
+            </ul>
+          </div>
+          <div class="article__sidebar">
+            <nav class="sidebar-nav">
+              <h3>Contents</h3>
               <ul>
-                <li>
-                  User Goal: Significantly reduce notification fatigue and
-                  distraction by creating a clear, consistent, and predictable
-                  system for receiving and managing messages.
-                </li>
-                <li>
-                  Business Goal: Increase the visibility and effectiveness of
-                  critical communications, especially growth messaging.
-                </li>
+                <li><a href="#the-problem">The Problem</a></li>
+                <li><a href="#project-overview">Project Overview</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#centralized-solution">A Centralized Solution</a></li>
+                <li><a href="#results-impact">Results & Impact</a></li>
+                <li><a href="#key-learnings">Key Learnings</a></li>
               </ul>
-            </li>
-          </ul>
-        </section>
-
-        <section class="project-process grid-iterations">
-          <h2>Process</h2>
-          <div class="process-step">
-            <h3>Discovery & Research</h3>
-            <p>
-              Recognizing Fusion's fragmented messaging hurt user engagement, I
-              initiated an investigation. A thorough content inventory of
-              existing notifications, affinity mapping, and review of the
-              Autodesk Design System (Weave) and other products helped identify
-              inconsistencies. User research highlighted key frustrations:
-              overuse/repetition, bad content, difficult access, lack of user
-              control, and too many channels.
-            </p>
-            <img
-              src="../img/projects/autodesk-messaging/workshop-2.png"
-              alt="Content audit of existing notifications"
-              class="process-image"
-            />
+            </nav>
           </div>
-          <div class="process-step">
-            <h3>Framework Development & Design</h3>
-            <p>
-              I created a severity matrix and notification categories to guide
-              delivery methods. After securing stakeholder buy-in, I moved from
-              rapid sketches to high-fidelity designs using Weave components.
-              This led to defining a centralized Notification Center, combining
-              flyout and toast notifications, and exploring features like
-              filtering, collapsible sections, and bulk actions, while
-              addressing design challenges like filter scalability and visual
-              clarity.
-            </p>
-            <img
-              src="../img/projects/autodesk-messaging/severity-matrix.png"
-              alt="Severity matrix for notifications"
-              class="process-image"
-            />
-          </div>
-          <div class="process-step">
-            <h3>User Testing & Iteration</h3>
-            <p>
-              Usability sessions were conducted to evaluate the current system
-              and validate the new Notification Center concept. Key hypotheses
-              around centralization, intuitiveness of flyouts/toasts, and
-              workflow disruption were tested. Findings informed iterative
-              improvements, prioritizing critical feedback for the initial
-              version and deferring some enhancements.
-            </p>
-            <img
-              src="../img/projects/autodesk-messaging/user-testing-participants.jpg"
-              alt="User testing participant overview"
-              class="process-image"
-            />
-          </div>
-        </section>
-
-        <section class="project-solution grid-solution">
-          <h2>A Centralized Solution</h2>
-          <p>
-            My work successfully transformed Fusion's notifications from a
-            source of user frustration into a strategic communication tool. I
-            designed a centralized notification center that reduced user
-            distraction. Coupled with clear guidelines and prioritization
-            strategies, this demonstrably reduced user distraction and improved
-            the overall clarity of in-app messaging. The solution involved
-            high-severity messages appearing as toasts, less critical ones
-            stored in a flyout, and intermediate messages briefly appearing as
-            toasts before moving to the flyout, minimizing workflow disruption.
-          </p>
-          <img
-            src="../img/projects/autodesk-messaging/mockup-final.png"
-            alt="Final Notification Center design"
-            class="solution-image"
-          />
-        </section>
-
-        <section class="project-results grid-results">
-          <h2>Results & Impact</h2>
-          <ul>
-            <li>
-              <strong
-                >Enhanced visibility and effectiveness of growth and marketing
-                messages</strong
-              >, directly contributing to a measurable increase of 15,000 paid
-              subscribers in the first month.
-            </li>
-            <li>
-              <strong
-                >Establishment of a scalable and maintainable messaging
-                framework</strong
-              >, streamlining product development and ensuring consistency.
-            </li>
-            <li>
-              <strong
-                >Provision of clear design patterns and documentation</strong
-              >, empowering internal teams to implement notifications
-              effectively and autonomously.
-            </li>
-            <li>
-              <strong>Influence on Autodesk's design system</strong>, with key
-              elements of my work and features incorporated into a new component
-              within Weave.
-            </li>
-            <li>Established as in-house notification expert and mentor.</li>
-          </ul>
-        </section>
-
-        <section class="project-learnings grid-learnings">
-          <h2>Key Learnings</h2>
-          <ul>
-            <li>
-              The critical importance of a unified messaging strategy was
-              underscored; fragmented systems invariably lead to user
-              frustration and missed business opportunities.
-            </li>
-            <li>
-              Iterative design, strongly backed by comprehensive user research
-              and continuous stakeholder buy-in, is paramount when redesigning
-              complex systems.
-            </li>
-            <li>
-              Developing and providing clear guidelines alongside reusable
-              design components significantly empowers other teams, fostering
-              consistency and efficiency across the product ecosystem.
-            </li>
-            <li>
-              A deep understanding of user pain points through direct research
-              and analytics is fundamental to designing solutions that genuinely
-              improve user experience and achieve business goals.
-            </li>
-          </ul>
-        </section>
+        </div>
 
         <nav class="project-navigation">
           <a href="./ux-research-platform.html" class="prev-project"
