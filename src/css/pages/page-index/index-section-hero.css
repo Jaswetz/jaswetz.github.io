@@ -19,24 +19,26 @@
 
 .hero-section {
     position: relative;
-    animation: gradientBackground 20s ease-in-out infinite;
-    background-size: 100% 100%;
-    padding: var(--space-4xl, 4rem) var(--space-xl, 2rem);
     /* Generous padding with fallbacks */
-    min-height: 60vh;
+    padding: var(--space-4xl, 4rem) var(--space-xl, 2rem);
     /* Ensure it takes up a good portion of the viewport */
+    min-height: 60vh;
+    /* Subtle border for separation with fallback */
+    border-bottom: 1px solid var(--color-border, #ddd);
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
+    animation: gradientBackground 20s ease-in-out infinite;
+    background-size: 100% 100%;
     background-image: radial-gradient(circle,
             rgba(255, 255, 255, 0.75) 20%,
             rgba(210, 206, 200, 0.1) 60%);
     background-repeat: repeat;
     background-position: left top;
-    border-bottom: 1px solid var(--color-border, #ddd);
-    /* Subtle border for separation with fallback */
+
 }
 
 .hero-section::before {

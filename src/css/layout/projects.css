@@ -1,5 +1,123 @@
+.hero--project {
+    background-image:
+        linear-gradient(to right, hsla(from var(--color-background) h s l / 0.70), hsla(0 0% 100% / 0.70));
+    /* linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)); */
+
+
+
+}
+
+.hero--project::before {
+    content: "";
+    /* Required for pseudo-elements */
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../img/projects/autodesk-messaging/banner-adsk.jpg");
+    ;
+    /* Replace with your image URL */
+    opacity: 0.25;
+    /* Adjust opacity as desired (0.0 to 1.0) */
+    z-index: -1;
+    /* Place the pseudo-element behind the content */
+}
+
+
+
+.hero--project .wrapper {
+    max-width: var(--reading-width);
+}
+
+.hero--project__content {}
+
+.hero--project__label {}
+
+.hero--project__header {}
+
+.hero--project__tagline {}
+
+.hero--project__meta {}
+
+.hero--project__role {
+    background: var(--color-primary);
+    color: white;
+
+}
+
+.hero--project__timeline {}
+
+.hero--project__impact {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    padding: var(--space-s);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    /* max-width: 400px; */
+
+    width: 100%;
+}
+
+.hero--project__impact-label {
+    font-size: var(--size-step--1);
+    color: var(--color-text-subtle);
+    margin-bottom: var(--space-2xs);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+}
+
+.hero--project__impact-value {
+    font-size: var(--size-step-2);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--space-3xs);
+}
+
+.hero--project__impact-description {
+    font-size: var(--size-step--1);
+    color: var(--color-text-subtle);
+    line-height: var(--leading-normal);
+}
+
+/* New styles for project hero image */
+.project-hero-image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    margin: var(--space-2xl) 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero--project {
+        min-height: 60vh;
+    }
+
+    .hero--project__header {
+        font-size: var(--size-step-4);
+    }
+
+    .hero--project__meta {
+        flex-direction: column;
+        gap: var(--space-s);
+    }
+
+    .hero--project__impact {
+        margin-top: var(--space-l);
+    }
+}
+
+
+
 .project-case-study {
-    margin-top: calc(var(--space-3xl-4xl) * 2);
+    /* margin-top: calc(var(--space-3xl-4xl) * 2); */
     /* max-width: var(--reading-width); */
 
     h1 {
