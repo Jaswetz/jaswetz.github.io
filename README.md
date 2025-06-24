@@ -415,3 +415,24 @@ This section lists general pending tasks. File/component-specific TODOs are typi
 - `// TODO: [Analytics] Integrate Microsoft Clarity tracking code (Phase 8.3)`
 - `// TODO: [Analytics] Address data privacy implications of analytics tools (Phase 8.3)`
 - `// TODO: add a scroll to top floating button`
+
+## Case Study Updates
+
+### Autodesk Notification System Case Study
+
+#### Added Sections
+
+- **Problem Section**: Explained the challenges with the existing notification system
+- **Approach Section**: Added a three-phase approach with tag-like phase badges and checkmark bullets
+- **Solution Section**: Implemented a "Centralized Notification Center" with solution points, main image, key features box, and severity levels grid
+- **Results & Impact Section**: Added subscriber results card, business benefit cards with icons, and professional growth highlight
+- **Key Learnings Section**: Added four numbered cards with titles and descriptions
+- **Testimonial Section**: Added a testimonial quote from Alyssa (Sr. Software Engineer) with styled quote design
+
+#### Styling Enhancements
+
+- Created custom styling for each section to ensure visual consistency
+- Implemented responsive layouts for all sections
+- Added visual elements like icons, badges, and cards
+- Ensured accessibility with proper contrast and semantic HTML
+- Added navigation links in the sidebar for all new sections
