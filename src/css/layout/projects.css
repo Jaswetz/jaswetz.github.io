@@ -746,6 +746,68 @@
     }
 }
 
+/* Key Learnings Section */
+.key-learnings-section {
+    margin-bottom: var(--space-3xl);
+}
+
+.key-learnings-section h2 {
+    font-size: var(--size-step-3);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--space-xl);
+}
+
+.key-learnings-section__intro {
+    font-size: var(--size-step-1);
+    color: var(--color-text-subtle);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-xl);
+    max-width: 70ch;
+}
+
+.key-learnings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+}
+
+.key-learning-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    padding: var(--space-l);
+    position: relative;
+}
+
+.key-learning-number {
+    color: var(--color-primary);
+    font-size: var(--size-step-3);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: var(--space-xs);
+}
+
+.key-learning-title {
+    color: var(--color-text);
+    font-size: var(--size-step-1);
+    font-weight: 600;
+    margin-bottom: var(--space-s);
+}
+
+.key-learning-description {
+    color: var(--color-text-subtle);
+    font-size: var(--size-step-0);
+    line-height: var(--leading-normal);
+}
+
+@media (max-width: 768px) {
+    .key-learnings-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-l);
+    }
+}
+
 .project-case-study {
     /* margin-top: calc(var(--space-3xl-4xl) * 2); */
     /* max-width: var(--reading-width); */
