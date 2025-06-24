@@ -36,7 +36,7 @@ body {
   width: var(--section-width);
 }
 
-.main-content section {
+.page__home section {
   padding-bottom: var(--space-3xl);
   margin-top: var(--space-3xl);
   border-bottom: 1px solid var(--color-border);
