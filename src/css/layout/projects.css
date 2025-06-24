@@ -247,8 +247,87 @@
     margin: 0;
 }
 
-.hero--project__header {
-    font-weight: bold;
+/* Approach Section */
+.project-approach {
+    /* margin-bottom: var(--space-3xl); */
+}
+
+.project-approach h2 {
+    font-size: var(--size-step-3);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--space-xl);
+}
+
+.approach-phase__badge {
+    display: inline-block;
+    padding: var(--space-2xs) var(--space-xs);
+    background-color: hsla(from var(--color-primary) h s l / 0.15);
+    color: var(--color-primary);
+    font-size: var(--font-size-sm);
+    border-radius: var(--border-radius);
+    font-weight: var(--font-weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    transition: var(--transition-quick);
+    margin-bottom: var(--space-s);
+    border: 1px solid hsla(from var(--color-primary) h s l / 0.3);
+}
+
+.approach-phase__title {
+    font-size: var(--size-step-2);
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--space-s);
+}
+
+.approach-phase__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+}
+
+.approach-phase__item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2xs);
+    margin-bottom: var(--space-xs);
+}
+
+.approach-phase__item-icon {
+    background-color: var(--color-primary);
+    color: white;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: var(--space-3xs);
+    flex-shrink: 0;
+    font-size: var(--size-step--1);
+    position: relative;
+}
+
+.approach-phase__item-text {
+    font-size: var(--size-step-0);
+    color: var(--color-text-subtle);
+    line-height: var(--leading-normal);
+    margin: 0;
+}
+
+.approach-phase__image {
+    margin-top: auto;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: var(--space-m);
+}
+
+.approach-phase__image img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* Responsive adjustments */
@@ -287,6 +366,11 @@
 
     .project-summary__description {
         font-size: var(--size-step-0);
+    }
+
+    .approach-phases {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
     }
 }
 
