@@ -10,7 +10,7 @@
 
 .project-case-study section {
     padding-bottom: var(--space-3xl);
-    padding-top: var(--space-3xl);
+    padding-top: var(--space-xl);
     border-bottom: 1px solid var(--color-border);
 }
 
@@ -778,6 +778,27 @@ div.goals {
     .testimonial-container {
         padding: var(--space-m);
     }
+
+    /* User Testing Section */
+    .testing-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-l);
+    }
+
+    .testing-image-placeholder,
+    .implementation-image-placeholder {
+        margin-bottom: var(--space-l);
+    }
+
+    .image-placeholder {
+        height: 150px;
+    }
+
+    /* Implementation Section */
+    .implementation-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-l);
+    }
 }
 
 /* --------------------------------------------------------------------------
@@ -786,7 +807,7 @@ div.goals {
 
 .sidebar-nav {
     position: sticky;
-    top: var(--space-2xl-3xl);
+    top: calc(var(--space-2xl-3xl)* 2);
     padding: var(--space-l);
     border: 1px solid var(--color-border);
     border-radius: var(--border-radius);
@@ -927,8 +948,8 @@ div.goals {
 }
 
 /* --------------------------------------------------------------------------
-Itteration    
--------------------------------------------------------------------------- */
+    Itteration    
+    -------------------------------------------------------------------------- */
 
 
 
@@ -992,4 +1013,157 @@ Itteration
     margin-right: calc(var(--space-xl) * -1);
     padding-left: var(--space-xl);
     padding-right: var(--space-xl);
+}
+
+/* --------------------------------------------------------------------------
+    User Testing Section
+    -------------------------------------------------------------------------- */
+
+.user-testing-section {
+    margin-bottom: var(--space-3xl);
+}
+
+.user-testing-section h2 {
+    margin-bottom: var(--space-xl);
+    font-size: var(--size-step-3);
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.testing-content {
+    margin-bottom: var(--space-xl);
+}
+
+.testing-participants h3,
+.testing-findings h3 {
+    margin-bottom: var(--space-m);
+    font-size: var(--size-step-1);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.testing-description {
+    margin-bottom: var(--space-m);
+    font-size: var(--size-step-0);
+    line-height: var(--leading-normal);
+    color: var(--color-text-subtle);
+}
+
+.findings-section {
+    margin-bottom: var(--space-m);
+}
+
+.findings-subtitle {
+    margin-bottom: var(--space-s);
+    font-size: var(--size-step-0);
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.testing-outcome {
+    margin-bottom: var(--space-xl);
+    padding: var(--space-m);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+}
+
+.testing-outcome h3 {
+    margin-bottom: var(--space-s);
+    font-size: var(--size-step-1);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.outcome-text {
+    font-size: var(--size-step-0);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-subtle);
+}
+
+.testing-image-placeholder {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+.image-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    background-color: var(--color-neutral-100);
+    border: 2px dashed var(--color-border);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--space-s);
+}
+
+.image-placeholder-text {
+    color: var(--color-text-subtle);
+    font-size: var(--size-step-0);
+    font-style: italic;
+}
+
+.image-caption-text {
+    font-size: var(--size-step--1);
+    color: var(--color-text-subtle);
+    font-style: italic;
+    text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+    Implementation Section
+    -------------------------------------------------------------------------- */
+
+.implementation-section {
+    margin-bottom: var(--space-3xl);
+}
+
+.implementation-section h2 {
+    margin-bottom: var(--space-xl);
+    font-size: var(--size-step-3);
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.implementation-content {
+    margin-bottom: var(--space-xl);
+}
+
+.guidelines-components h3,
+.development-collaboration h3 {
+    margin-bottom: var(--space-m);
+    font-size: var(--size-step-1);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.implementation-item {
+    margin-bottom: var(--space-m);
+    padding: var(--space-m);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+}
+
+.implementation-item:last-child {
+    margin-bottom: 0;
+}
+
+.implementation-subtitle {
+    margin-bottom: var(--space-xs);
+    font-size: var(--size-step-0);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.implementation-description {
+    font-size: var(--size-step-0);
+    line-height: var(--leading-normal);
+    color: var(--color-text-subtle);
+    margin: 0;
+}
+
+.implementation-image-placeholder {
+    text-align: center;
+    margin-bottom: var(--space-xl);
 }
