@@ -183,7 +183,7 @@
                 </div>
               </div>
             </section>
-            <section>
+            <section class="change-background">
               <div class="card--outline goals">
                 <h2>Goal</h2>
                 <p class="">
@@ -196,6 +196,7 @@
 
             <section class="project-process" id="process">
               <h2>Discovery and Research</h2>
+              <hr class="phase-divider" />
 
               <div class="phases">
                 <div class="phase grid grid--2-column">
@@ -232,7 +233,7 @@
                     />
                   </div>
                 </div>
-
+                <hr class="phase-divider" />
                 <div class="phase grid grid--2-column">
                   <div class="phase__image">
                     <img
@@ -284,7 +285,7 @@
                     </div>
                   </div>
                 </div>
-
+                <hr class="phase-divider" />
                 <div class="phase grid grid--2-column">
                   <div class="phase__content">
                     <div class="phase__badge">Phase 3</div>
@@ -321,6 +322,7 @@
                     />
                   </div>
                 </div>
+                <hr class="phase-divider" />
                 <div class="phase grid grid--2-column">
                   <div class="phase__image">
                     <img
@@ -351,7 +353,10 @@
               </div>
             </section>
 
-            <section class="project-process itteration" id="process">
+            <section
+              class="project-process itteration change-background"
+              id="process"
+            >
               <div class="phase__badge">Phase 5</div>
               <h2>Design and Itteration</h2>
               <!-- <img
@@ -359,6 +364,8 @@
                 src="../img/projects/autodesk-messaging/sketch.jpg"
                 alt="Early itteration of the notfication center."
               /> -->
+              <hr class="phase-divider" />
+
               <div class="phases">
                 <div class="phase grid grid--2-column">
                   <div class="phase__content">
@@ -401,8 +408,15 @@
                     />
                   </div>
                 </div>
-
+                <hr class="phase-divider" />
                 <div class="phase grid grid--2-column">
+                  <div class="phase__image">
+                    <img
+                      src="../img/projects/autodesk-messaging/notification-icon.jpg"
+                      alt="Itterating and feedback on the notification icon placement.
+                      "
+                    />
+                  </div>
                   <div class="phase__content">
                     <h3 class="phase__title">
                       Visual Clarity and Discoverability
@@ -435,28 +449,25 @@
                       </div>
                     </div>
                   </div>
-                  <div class="phase__image">
-                    <img
-                      src="../img/projects/autodesk-messaging/notification-icon.jpg"
-                      alt="Itterating and feedback on the notification icon placement.
-                      "
-                    />
-                  </div>
                 </div>
-
+                <hr class="phase-divider" />
                 <div class="phase grid grid--2-column">
                   <div class="phase__content">
-                    <div class="phase__badge">Phase 3</div>
-                    <h3 class="phase__title">Framework Development</h3>
+                    <h3 class="phase__title">
+                      Technical Constraints and Implementation
+                    </h3>
                     <div class="bullet-points">
                       <div class="phase__item bullet-point">
-                        <span class="bullet-point__icon">
-                          <i data-feather="check-circle"></i>
+                        <span
+                          class="bullet-point__icon bullet-point__icon--problem"
+                        >
+                          <i data-feather="alert-octagon"></i>
                         </span>
                         <p class="phase__item-text bullet-point__text">
-                          Developed a <strong>severity matrix</strong> to
-                          categorize notifications based on importance and time
-                          sensitivity.
+                          <strong>Problem:</strong> Legacy systems and
+                          inconsistent backend implementations made it difficult
+                          to centralize notifications without breaking existing
+                          functionality.
                         </p>
                       </div>
                       <div class="phase__item bullet-point">
@@ -464,17 +475,18 @@
                           <i data-feather="check-circle"></i>
                         </span>
                         <p class="phase__item-text bullet-point__text">
-                          Created a <strong>decision matrix</strong> to align
-                          notification types with appropriate delivery methods
-                          (e.g., toasts for high-severity alerts, flyouts for
-                          less critical messages).
+                          <strong>Iteration:</strong> I worked closely with
+                          developers to audit the current system, track progress
+                          in Airtable, and advocate for a unified front-end and
+                          back-end approach. This required ongoing iteration as
+                          technical limitations surfaced during development
                         </p>
                       </div>
                     </div>
                   </div>
                   <div class="phase__image">
                     <img
-                      src="../img/projects/autodesk-messaging/severity-matrix.jpg"
+                      src="../img/projects/autodesk-messaging/airtable.png"
                       alt="Severity matrix.
                       "
                     />
@@ -484,6 +496,7 @@
             </section>
 
             <section class="user-testing-section" id="user-testing">
+              <div class="phase__badge">Phase 6</div>
               <h2>User Testing</h2>
 
               <div class="testing-content grid grid--2-column">
@@ -552,7 +565,7 @@
                 </div>
               </div>
 
-              <div class="testing-outcome">
+              <div class="testing-outcome card--white">
                 <h3>Outcome</h3>
                 <p class="outcome-text">
                   The testing validated our MVP approach and helped prioritize
@@ -565,13 +578,14 @@
             </section>
 
             <section class="implementation-section" id="implementation">
+              <div class="phase__badge">Phase 7</div>
               <h2>Implementation</h2>
 
               <div class="implementation-content grid grid--2-column">
                 <div class="guidelines-components">
                   <h3>Guidelines and Components</h3>
 
-                  <div class="implementation-item">
+                  <div class="implementation-item card--white">
                     <h4 class="implementation-subtitle">
                       Comprehensive Guidelines
                     </h4>
@@ -582,7 +596,7 @@
                     </p>
                   </div>
 
-                  <div class="implementation-item">
+                  <div class="implementation-item card--white">
                     <h4 class="implementation-subtitle">Figma Components</h4>
                     <p class="implementation-description">
                       Created reusable components to streamline implementation
@@ -594,7 +608,7 @@
                 <div class="development-collaboration">
                   <h3>Development Collaboration</h3>
 
-                  <div class="implementation-item">
+                  <div class="implementation-item card--white">
                     <h4 class="implementation-subtitle">Code Audit</h4>
                     <p class="implementation-description">
                       Conducted a thorough code audit to centralize
@@ -602,7 +616,7 @@
                     </p>
                   </div>
 
-                  <div class="implementation-item">
+                  <div class="implementation-item card--white">
                     <h4 class="implementation-subtitle">Tracking Progress</h4>
                     <p class="implementation-description">
                       Used Airtable to track notification types and progress,
@@ -628,7 +642,10 @@
               </blockquote>
             </section>
 
-            <section class="solution-section" id="centralized-solution">
+            <section
+              class="solution-section change-background"
+              id="centralized-solution"
+            >
               <h2>Centralized Notification Center</h2>
               <p class="solution-section__intro">
                 The final solution delivered a comprehensive notification system
@@ -682,13 +699,11 @@
                     src="../img/projects/autodesk-messaging/mockup-final.png"
                     alt="Final Notification Center design"
                   />
-                  <div class="image-caption">
-                    <button class="image-caption-button">Final Design</button>
-                  </div>
+                  <div class="image-caption tag">Final Design</div>
                 </div>
               </div>
 
-              <div class="key-features">
+              <div class="key-features card--white">
                 <h3>Key Features</h3>
                 <div class="key-features-list">
                   <div class="key-feature-item">
@@ -724,7 +739,7 @@
               </div>
 
               <div class="severity-levels">
-                <div class="severity-level">
+                <div class="severity-level card--white">
                   <div class="severity-level__icon severity-level__icon--high">
                     <i data-feather="alert-triangle"></i>
                   </div>
@@ -735,7 +750,7 @@
                   </p>
                 </div>
 
-                <div class="severity-level">
+                <div class="severity-level card--white">
                   <div
                     class="severity-level__icon severity-level__icon--medium"
                   >
@@ -748,7 +763,7 @@
                   </p>
                 </div>
 
-                <div class="severity-level">
+                <div class="severity-level card--white">
                   <div class="severity-level__icon severity-level__icon--low">
                     <i data-feather="clock"></i>
                   </div>
@@ -769,7 +784,7 @@
               </p>
 
               <div class="results-grid">
-                <div class="result-subscriber-card">
+                <div class="result-subscriber-card card--white">
                   <div class="result-subscriber-number">+15,000</div>
                   <div class="result-subscriber-label">
                     New Paid Subscribers
@@ -781,7 +796,7 @@
                 </div>
 
                 <div class="result-benefits">
-                  <div class="result-benefit">
+                  <div class="result-benefit card--white">
                     <div class="result-benefit__icon">
                       <i data-feather="book-open"></i>
                     </div>
@@ -794,7 +809,7 @@
                     </div>
                   </div>
 
-                  <div class="result-benefit">
+                  <div class="result-benefit card--white">
                     <div class="result-benefit__icon">
                       <i data-feather="file-text"></i>
                     </div>
@@ -808,7 +823,7 @@
                     </div>
                   </div>
 
-                  <div class="result-benefit">
+                  <div class="result-benefit card--white">
                     <div class="result-benefit__icon">
                       <i data-feather="star"></i>
                     </div>
@@ -851,7 +866,7 @@
               </p>
 
               <div class="key-learnings-grid">
-                <div class="key-learning-card">
+                <div class="key-learning-card card--white">
                   <div class="key-learning-number">01</div>
                   <h3 class="key-learning-title">
                     Unified messaging is essential
@@ -862,7 +877,7 @@
                   </p>
                 </div>
 
-                <div class="key-learning-card">
+                <div class="key-learning-card card--white">
                   <div class="key-learning-number">02</div>
                   <h3 class="key-learning-title">Iterative design is key</h3>
                   <p class="key-learning-description">
@@ -871,7 +886,7 @@
                   </p>
                 </div>
 
-                <div class="key-learning-card">
+                <div class="key-learning-card card--white">
                   <div class="key-learning-number">03</div>
                   <h3 class="key-learning-title">
                     Reusable components foster consistency
@@ -882,7 +897,7 @@
                   </p>
                 </div>
 
-                <div class="key-learning-card">
+                <div class="key-learning-card card--white">
                   <div class="key-learning-number">04</div>
                   <h3 class="key-learning-title">
                     User understanding drives impact

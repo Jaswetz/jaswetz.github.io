@@ -4,13 +4,12 @@
 
 .project-case-study h2 {
     margin-bottom: var(--heading-spacing);
-    margin-top: var(--space-3xl);
     font-weight: var(--font-weight-semibold);
 }
 
 .project-case-study section {
-    padding-bottom: var(--space-3xl);
-    padding-top: var(--space-xl);
+    padding-bottom: var(--space-2xl);
+    padding-top: var(--space-2xl);
     border-bottom: 1px solid var(--color-border);
 }
 
@@ -102,19 +101,19 @@
     Project Summary Section
     -------------------------------------------------------------------------- */
 
-.project-summary {
-    margin-top: var(--space-xl);
-}
-
 .project-summary__image {
     margin-bottom: var(--space-xl);
 }
 
 .project-summary__description {
-    margin-bottom: var(--space-xl);
     font-size: var(--size-step-1);
     line-height: var(--leading-normal);
     color: var(--color-text-subtle);
+    margin-bottom: 0;
+}
+
+.project-summary__description:first-of-type {
+    margin-bottom: var(--space-l);
 }
 
 .project-summary__cards {
@@ -141,10 +140,6 @@
 /* --------------------------------------------------------------------------
     Problem Section
     -------------------------------------------------------------------------- */
-
-.project-problem {
-    margin-bottom: var(--space-xl);
-}
 
 .problem-cards {
     display: grid;
@@ -189,10 +184,8 @@
 
 div.goals {
     font-size: var(--text-size-lede);
-    margin-bottom: var(--space-xl);
-    margin-top: var(--space-3xl);
-    background: var(--color-info);
-    border-color: var(--color-primary);
+    /* background: var(--color-info); */
+    border: none;
 }
 
 .goals h2 {
@@ -204,9 +197,9 @@ div.goals {
     Approach Section
     -------------------------------------------------------------------------- */
 
-.phase {
-    margin-bottom: var(--space-3xl);
-    align-items: center;
+.phase-divider {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-xl);
 }
 
 .phase__content {
@@ -237,7 +230,7 @@ div.goals {
 .phase__image {
     border-radius: var(--border-radius);
     overflow: hidden;
-    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     border: var(--border-width) solid var(--color-border);
 }
 
@@ -251,23 +244,10 @@ div.goals {
     Solution Section
     -------------------------------------------------------------------------- */
 
-.solution-section {
-    margin-bottom: var(--space-3xl);
-}
-
-.solution-section h2 {
-    margin-bottom: var(--space-xl);
-    font-size: var(--size-step-3);
-    font-weight: 700;
-    color: var(--color-text);
-}
-
 .solution-section__intro {
-    max-width: 70ch;
     margin-bottom: var(--space-xl);
     font-size: var(--size-step-1);
     line-height: var(--leading-relaxed);
-    color: var(--color-text-subtle);
 }
 
 .solution-content {
@@ -280,9 +260,7 @@ div.goals {
 .solution-image {
     position: relative;
     width: 100%;
-    border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .solution-image img {
@@ -297,18 +275,6 @@ div.goals {
     right: var(--space-s);
 }
 
-.image-caption-button {
-    padding: var(--space-2xs) var(--space-s);
-    background-color: var(--color-primary);
-    border: none;
-    border-radius: var(--border-radius);
-    color: white;
-    font-size: var(--size-step--1);
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
 .image-caption-button:hover {
     background-color: var(--color-primary-alt);
 }
@@ -316,23 +282,22 @@ div.goals {
 /* Key Features Sub-section */
 .key-features {
     margin-bottom: var(--space-xl);
-    padding: var(--space-m) var(--space-l);
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
 }
 
 .key-features h3 {
     margin-bottom: var(--space-m);
     font-size: var(--size-step-1);
     font-weight: 600;
-    color: var(--color-text);
+}
+
+.key-features p {
+    margin-bottom: 0;
 }
 
 .key-features-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-s) var(--space-xl);
+    gap: var(--space-xs) var(--space-xl);
 }
 
 .key-feature-item {
@@ -357,14 +322,9 @@ div.goals {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-m);
-    margin-bottom: var(--space-xl);
 }
 
 .severity-level {
-    padding: var(--space-m);
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
@@ -410,23 +370,10 @@ div.goals {
     Results & Impact Section
     -------------------------------------------------------------------------- */
 
-.results-section {
-    margin-bottom: var(--space-3xl);
-}
-
-.results-section h2 {
-    margin-bottom: var(--space-xl);
-    font-size: var(--size-step-3);
-    font-weight: 700;
-    color: var(--color-text);
-}
-
 .results-section__intro {
-    max-width: 70ch;
     margin-bottom: var(--space-xl);
     font-size: var(--size-step-1);
     line-height: var(--leading-relaxed);
-    color: var(--color-text-subtle);
 }
 
 .results-grid {
@@ -438,9 +385,6 @@ div.goals {
 
 .result-subscriber-card {
     padding: var(--space-xl);
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     text-align: center;
 }
@@ -455,17 +399,15 @@ div.goals {
 
 .result-subscriber-label {
     margin-bottom: var(--space-s);
-    font-size: var(--size-step-1);
+    font-size: var(--size-step-2);
     font-weight: 600;
-    color: var(--color-text);
 }
 
 .result-subscriber-description {
     max-width: 30ch;
     margin: 0 auto;
-    font-size: var(--size-step-0);
+    font-size: var(--size-step-1);
     line-height: var(--leading-normal);
-    color: var(--color-text-subtle);
 }
 
 .result-benefits {
@@ -478,10 +420,6 @@ div.goals {
     display: flex;
     align-items: flex-start;
     gap: var(--space-m);
-    padding: var(--space-m);
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -563,30 +501,16 @@ div.goals {
 .professional-growth__description {
     font-size: var(--size-step-0);
     line-height: var(--leading-relaxed);
-    color: var(--color-text-subtle);
 }
 
 /* --------------------------------------------------------------------------
     Key Learnings Section
     -------------------------------------------------------------------------- */
 
-.key-learnings-section {
-    margin-bottom: var(--space-3xl);
-}
-
-.key-learnings-section h2 {
-    margin-bottom: var(--space-xl);
-    font-size: var(--size-step-3);
-    font-weight: 700;
-    color: var(--color-text);
-}
-
 .key-learnings-section__intro {
-    max-width: 70ch;
     margin-bottom: var(--space-xl);
     font-size: var(--size-step-1);
     line-height: var(--leading-relaxed);
-    color: var(--color-text-subtle);
 }
 
 .key-learnings-grid {
@@ -598,9 +522,6 @@ div.goals {
 .key-learning-card {
     position: relative;
     padding: var(--space-l);
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
 }
 
 .key-learning-number {
@@ -615,78 +536,13 @@ div.goals {
     margin-bottom: var(--space-s);
     font-size: var(--size-step-1);
     font-weight: 600;
-    color: var(--color-text);
 }
 
 .key-learning-description {
-    font-size: var(--size-step-0);
     line-height: var(--leading-normal);
     color: var(--color-text-subtle);
 }
 
-/* --------------------------------------------------------------------------
-    Testimonial Section
-    -------------------------------------------------------------------------- */
-
-.testimonial-section {
-    margin: var(--space-xl) 0;
-}
-
-.testimonial-container {
-    position: relative;
-    padding: var(--space-l);
-    background-color: var(--color-subtle-background);
-    border-left: 4px solid var(--color-accent);
-    border-radius: var(--border-radius-lg);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-.testimonial-quote {
-    position: relative;
-    padding-left: var(--space-m);
-}
-
-.testimonial-quote-icon {
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: var(--color-accent);
-    transform: translateY(-50%);
-}
-
-.testimonial-text {
-    margin-bottom: var(--space-m);
-    font-size: var(--text-size-lg);
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.6;
-    color: var(--color-text);
-}
-
-.testimonial-author {
-    display: flex;
-    align-items: center;
-    margin-top: var(--space-m);
-    padding-left: var(--space-m);
-}
-
-.testimonial-author-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.testimonial-author-name {
-    margin: 0;
-    font-size: var(--text-size-base);
-    font-weight: 600;
-    color: var(--color-text);
-}
-
-.testimonial-author-title {
-    margin: 0;
-    font-size: var(--text-size-sm);
-    color: var(--color-text-muted);
-}
 
 /* --------------------------------------------------------------------------
     Project Case Study Layout
@@ -706,16 +562,6 @@ div.goals {
 
     .hero--project__impact {
         margin-top: var(--space-l);
-    }
-
-    /* Project Introduction */
-    .project-intro {
-        padding: var(--space-l);
-        margin-bottom: var(--space-xl);
-    }
-
-    .project-intro__text {
-        font-size: var(--size-step-0);
     }
 
     /* Summary Cards */
@@ -770,14 +616,7 @@ div.goals {
         gap: var(--space-l);
     }
 
-    /* Testimonial */
-    .testimonial-text {
-        font-size: var(--text-size-base);
-    }
 
-    .testimonial-container {
-        padding: var(--space-m);
-    }
 
     /* User Testing Section */
     .testing-content {
@@ -785,14 +624,7 @@ div.goals {
         gap: var(--space-l);
     }
 
-    .testing-image-placeholder,
-    .implementation-image-placeholder {
-        margin-bottom: var(--space-l);
-    }
 
-    .image-placeholder {
-        height: 150px;
-    }
 
     /* Implementation Section */
     .implementation-content {
@@ -809,9 +641,6 @@ div.goals {
     position: sticky;
     top: calc(var(--space-2xl-3xl)* 2);
     padding: var(--space-l);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     margin-top: var(--space-xl);
 }
 
@@ -825,22 +654,21 @@ div.goals {
     margin-bottom: var(--space-2xs);
 }
 
+
 .sidebar-nav li:last-child {
     margin-bottom: 0;
 }
 
+
 .sidebar-nav a {
     display: block;
-    padding: var(--space-xs) var(--space-s);
-    color: var(--color-text-light);
-    text-decoration: none;
-    font-size: var(--size-step--1);
-    line-height: var(--leading-normal);
-    border-radius: var(--border-radius-sm);
+    padding: var(--space-xs) var(--space-l);
+    color: var(--color-text);
     transition: var(--transition-base);
     position: relative;
     border-left: 2px solid transparent;
 }
+
 
 .sidebar-nav a:hover {
     background-color: hsla(from var(--color-primary) h s l / 0.05);
@@ -855,25 +683,6 @@ div.goals {
     color: var(--color-primary);
     border-left-color: var(--color-primary);
     font-weight: 500;
-}
-
-.sidebar-nav a::before {
-    content: "";
-    position: absolute;
-    left: var(--space-2xs);
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 4px;
-    background-color: var(--color-border);
-    border-radius: 50%;
-    transition: var(--transition-base);
-}
-
-.sidebar-nav a:hover::before,
-.sidebar-nav a.active::before {
-    background-color: var(--color-primary);
-    transform: translateY(-50%) scale(1.2);
 }
 
 /* --------------------------------------------------------------------------
@@ -948,18 +757,6 @@ div.goals {
 }
 
 /* --------------------------------------------------------------------------
-    Itteration    
-    -------------------------------------------------------------------------- */
-
-
-
-.itteration__image {
-    margin-bottom: var(--space-xl);
-    border-radius: var(--border-radius);
-    max-width: 800px;
-}
-
-/* --------------------------------------------------------------------------
     Bullet Points Component (Reusable)
     -------------------------------------------------------------------------- */
 
@@ -1003,25 +800,11 @@ div.goals {
     background-color: var(--color-danger);
 }
 
-/* --------------------------------------------------------------------------
-    Change Background (Reusable)
-    -------------------------------------------------------------------------- */
 
-.change-background {
-    background: rgba(255, 255, 255, 0.4);
-    margin-left: calc(var(--space-xl) * -1);
-    margin-right: calc(var(--space-xl) * -1);
-    padding-left: var(--space-xl);
-    padding-right: var(--space-xl);
-}
 
 /* --------------------------------------------------------------------------
     User Testing Section
     -------------------------------------------------------------------------- */
-
-.user-testing-section {
-    margin-bottom: var(--space-3xl);
-}
 
 .user-testing-section h2 {
     margin-bottom: var(--space-xl);
@@ -1053,20 +836,9 @@ div.goals {
     margin-bottom: var(--space-m);
 }
 
-.findings-subtitle {
-    margin-bottom: var(--space-s);
-    font-size: var(--size-step-0);
-    font-weight: 600;
-    color: var(--color-primary);
-}
 
-.testing-outcome {
-    margin-bottom: var(--space-xl);
-    padding: var(--space-m);
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
-}
+
+
 
 .testing-outcome h3 {
     margin-bottom: var(--space-s);
@@ -1081,49 +853,13 @@ div.goals {
     color: var(--color-text-subtle);
 }
 
-.testing-image-placeholder {
-    text-align: center;
-    margin-bottom: var(--space-xl);
-}
 
-.image-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 200px;
-    background-color: var(--color-neutral-100);
-    border: 2px dashed var(--color-border);
-    border-radius: var(--border-radius);
-    margin-bottom: var(--space-s);
-}
 
-.image-placeholder-text {
-    color: var(--color-text-subtle);
-    font-size: var(--size-step-0);
-    font-style: italic;
-}
-
-.image-caption-text {
-    font-size: var(--size-step--1);
-    color: var(--color-text-subtle);
-    font-style: italic;
-    text-align: center;
-}
 
 /* --------------------------------------------------------------------------
     Implementation Section
     -------------------------------------------------------------------------- */
 
-.implementation-section {
-    margin-bottom: var(--space-3xl);
-}
-
-.implementation-section h2 {
-    margin-bottom: var(--space-xl);
-    font-size: var(--size-step-3);
-    font-weight: 700;
-    color: var(--color-text);
-}
 
 .implementation-content {
     margin-bottom: var(--space-xl);
@@ -1139,10 +875,6 @@ div.goals {
 
 .implementation-item {
     margin-bottom: var(--space-m);
-    padding: var(--space-m);
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
 }
 
 .implementation-item:last-child {
@@ -1153,17 +885,26 @@ div.goals {
     margin-bottom: var(--space-xs);
     font-size: var(--size-step-0);
     font-weight: 600;
-    color: var(--color-text);
 }
 
 .implementation-description {
-    font-size: var(--size-step-0);
     line-height: var(--leading-normal);
-    color: var(--color-text-subtle);
     margin: 0;
 }
 
-.implementation-image-placeholder {
-    text-align: center;
-    margin-bottom: var(--space-xl);
+/* --------------------------------------------------------------------------
+    Change Background (Reusable)
+    -------------------------------------------------------------------------- */
+
+.change-background {
+    background: rgba(255, 255, 255, 0.4);
+    margin-left: calc(var(--space-xl) * -1);
+    margin-right: calc(var(--space-3xl) * -1);
+    padding-left: var(--space-xl);
+    padding-right: var(--space-3xl);
+}
+
+
+.article__sidebar {
+    border-left: var(--border-width) solid var(--color-border);
 }

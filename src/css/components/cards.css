@@ -145,3 +145,10 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 
 }
+
+.card--white {
+  padding: var(--space-m);
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+}
