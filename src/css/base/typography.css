@@ -172,3 +172,7 @@ hr {
   background-color: var(--color-primary);
   color: white;
 }
+
+.highlight {
+  position: relative;
+}

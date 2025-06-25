@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notification System Redesign - Case Study</title>
     <link rel="stylesheet" href="../css/main.css" />
+
+    <!-- Feather Icons CDN -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
     <link
       rel="icon"
       type="image/x-icon"
@@ -29,6 +33,7 @@
       href="../assets/favicons/favicon-96x96.png"
     />
     <link rel="apple-touch-icon" href="../assets/favicons/apple-icon.png" />
+    <script src="https://unpkg.com/feather-icons"></script>
   </head>
   <body>
     <site-header></site-header>
@@ -44,18 +49,9 @@
             <span class="hero--project__role">Lead UX Designer</span>
             <span class="hero--project__timeline">8-month project</span>
           </div>
-          <div class="hero--project__impact">
+          <!-- <div class="hero--project__impact">
             <div class="hero--project__impact-label">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"></polyline>
-              </svg>
+              <i data-feather="trending-up"></i>
               Project Impact
             </div>
             <div class="hero--project__impact-value">
@@ -64,7 +60,7 @@
             <div class="hero--project__impact-description">
               in the first month after launch
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
@@ -75,32 +71,38 @@
         <div class="sidebar grid grid--2-column--sidebar">
           <div class="article__content">
             <section class="project-summary" id="project-summary">
-              <h2>Project Summary</h2>
-              <p class="project-summary__description">
-                Redesigned Autodesk Fusion's notification system to reduce user
-                distraction and improve communication clarity, resulting in
-                15,000 new paid users in the first month after launch.
-              </p>
-
+              <!-- <h2>Overview</h2> -->
+              <img
+                src="../img/projects/autodesk-messaging/messaging-final.jpg"
+                alt="Autodesk Notification Center final design"
+                class="project-summary__image"
+              />
               <div class="project-summary__cards">
-                <div class="project-summary__card">
+                <div class="project-summary__card card--outline">
                   <h3>Team</h3>
                   <p>Product Manager, 2 Developers</p>
                 </div>
-                <div class="project-summary__card">
+                <div class="project-summary__card card--outline">
                   <h3>Stakeholders</h3>
                   <p>Every other UX team, Business Group, Marketing</p>
                 </div>
-                <div class="project-summary__card">
+                <div class="project-summary__card card--outline">
                   <h3>Tools</h3>
                   <p>Figma, Mural, Airtable, Confluence, Jira</p>
                 </div>
               </div>
-              <img
-                src="../img/projects/autodesk-messaging/messaging-final.jpg"
-                alt="Autodesk Notification Center final design"
-                class="project-hero-image"
-              />
+              <p class="project-summary__description">
+                Autodesk Fusion is a cloud-based platform that integrates tools
+                for 3D CAD design, manufacturing, engineering, and product
+                lifecycle management, supporting the entire production process
+                from concept to delivery.
+              </p>
+              <p class="project-summary__description">
+                I redesigned and revamped Autodesk Fusion’s notification system,
+                including its guidelines and patterns. This initiative led to
+                reduced user distraction, improved communication, and enabled
+                product teams to design more consistent experiences quickly.
+              </p>
             </section>
 
             <section class="project-problem">
@@ -176,6 +178,16 @@
                 </div>
               </div>
             </section>
+            <section>
+              <div class="card--outline goals">
+                <h2>Goal</h2>
+                <p class="">
+                  How might we design a notification system that reduces user
+                  fatigue while ensuring critical communications are visible,
+                  effective, and aligned with business growth objectives?
+                </p>
+              </div>
+            </section>
 
             <section class="project-approach" id="approach">
               <h2>Approach</h2>
@@ -183,27 +195,36 @@
                 <div class="approach-phase grid grid--2-column">
                   <div class="approach-phase__content">
                     <div class="approach-phase__badge">Phase 1</div>
+
                     <h3 class="approach-phase__title">Discovery & Research</h3>
-                    <div class="approach-phase__item">
-                      <span class="approach-phase__item-icon">✓</span>
-                      <p class="approach-phase__item-text">
-                        Conducted a comprehensive audit of existing notification
-                        across the platform.
-                      </p>
-                    </div>
-                    <div class="approach-phase__item">
-                      <span class="approach-phase__item-icon">✓</span>
-                      <p class="approach-phase__item-text">
-                        Mapped user pain points: overuse, poor content, lack of
-                        control, too many channels.
-                      </p>
-                    </div>
-                    <div class="approach-phase__item">
-                      <span class="approach-phase__item-icon">✓</span>
-                      <p class="approach-phase__item-text">
-                        Benchmarked against the Autodesk Design System (Weave)
-                        and peer products.
-                      </p>
+                    <div class="bullet-points">
+                      <div class="approach-phase__item bullet-point">
+                        <span class="bullet-point__icon">
+                          <i data-feather="check-circle"></i>
+                        </span>
+                        <p class="approach-phase__item-text bullet-point__text">
+                          Conducted a comprehensive audit of existing
+                          notification across the platform.
+                        </p>
+                      </div>
+                      <div class="approach-phase__item bullet-point">
+                        <span class="bullet-point__icon">
+                          <i data-feather="check-circle"></i>
+                        </span>
+                        <p class="approach-phase__item-text bullet-point__text">
+                          Mapped user pain points: overuse, poor content, lack
+                          of control, too many channels.
+                        </p>
+                      </div>
+                      <div class="approach-phase__item bullet-point">
+                        <span class="bullet-point__icon">
+                          <i data-feather="check-circle"></i>
+                        </span>
+                        <p class="approach-phase__item-text bullet-point__text">
+                          Benchmarked against the Autodesk Design System (Weave)
+                          and peer products.
+                        </p>
+                      </div>
                     </div>
                   </div>
                   <div class="approach-phase__image">
@@ -224,33 +245,43 @@
                   <div class="approach-phase__content">
                     <div class="approach-phase__badge">Phase 2</div>
                     <h3 class="approach-phase__title">Framework & Design</h3>
-                    <div class="approach-phase__item">
-                      <span class="approach-phase__item-icon">✓</span>
-                      <p class="approach-phase__item-text">
-                        Developed a severity matrix and notification categories
-                        to standardize messaging.
-                      </p>
-                    </div>
-                    <div class="approach-phase__item">
-                      <span class="approach-phase__item-icon">✓</span>
-                      <p class="approach-phase__item-text">
-                        Designed a centralized Notification Center using Weave
-                        components.
-                      </p>
-                    </div>
-                    <div class="approach-phase__item">
-                      <span class="approach-phase__item-icon">✓</span>
-                      <p class="approach-phase__item-text">
-                        Implemented features like filtering, collapsible
-                        sections, and bulk actions.
-                      </p>
-                    </div>
-                    <div class="approach-phase__item">
-                      <span class="approach-phase__item-icon">✓</span>
-                      <p class="approach-phase__item-text">
-                        Balanced high-severity (toast) and lower-severity
-                        (flyout) notifications.
-                      </p>
+                    <div class="bullet-points">
+                      <div class="approach-phase__item bullet-point">
+                        <span class="bullet-point__icon">
+                          <i data-feather="check-circle"></i>
+                        </span>
+                        <p class="approach-phase__item-text bullet-point__text">
+                          Developed a severity matrix and notification
+                          categories to standardize messaging.
+                        </p>
+                      </div>
+                      <div class="approach-phase__item bullet-point">
+                        <span class="bullet-point__icon">
+                          <i data-feather="check-circle"></i>
+                        </span>
+                        <p class="approach-phase__item-text bullet-point__text">
+                          Designed a centralized Notification Center using Weave
+                          components.
+                        </p>
+                      </div>
+                      <div class="approach-phase__item bullet-point">
+                        <span class="bullet-point__icon">
+                          <i data-feather="check-circle"></i>
+                        </span>
+                        <p class="approach-phase__item-text bullet-point__text">
+                          Implemented features like filtering, collapsible
+                          sections, and bulk actions.
+                        </p>
+                      </div>
+                      <div class="approach-phase__item bullet-point">
+                        <span class="bullet-point__icon">
+                          <i data-feather="check-circle"></i>
+                        </span>
+                        <p class="approach-phase__item-text bullet-point__text">
+                          Balanced high-severity (toast) and lower-severity
+                          (flyout) notifications.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -259,26 +290,34 @@
                   <div class="approach-phase__content">
                     <div class="approach-phase__badge">Phase 3</div>
                     <h3 class="approach-phase__title">Usability & Iteration</h3>
-                    <div class="approach-phase__item">
-                      <span class="approach-phase__item-icon">✓</span>
-                      <p class="approach-phase__item-text">
-                        Ran usability sessions with 12 users to validate
-                        concepts and test hypotheses.
-                      </p>
-                    </div>
-                    <div class="approach-phase__item">
-                      <span class="approach-phase__item-icon">✓</span>
-                      <p class="approach-phase__item-text">
-                        Pilot-tested feedback for launch, delivering
-                        non-critical enhancements.
-                      </p>
-                    </div>
-                    <div class="approach-phase__item">
-                      <span class="approach-phase__item-icon">✓</span>
-                      <p class="approach-phase__item-text">
-                        Refined the design based on user feedback and
-                        stakeholder input.
-                      </p>
+                    <div class="bullet-points">
+                      <div class="approach-phase__item bullet-point">
+                        <span class="bullet-point__icon">
+                          <i data-feather="check-circle"></i>
+                        </span>
+                        <p class="approach-phase__item-text bullet-point__text">
+                          Ran usability sessions with 12 users to validate
+                          concepts and test hypotheses.
+                        </p>
+                      </div>
+                      <div class="approach-phase__item bullet-point">
+                        <span class="bullet-point__icon">
+                          <i data-feather="check-circle"></i>
+                        </span>
+                        <p class="approach-phase__item-text bullet-point__text">
+                          Pilot-tested feedback for launch, delivering
+                          non-critical enhancements.
+                        </p>
+                      </div>
+                      <div class="approach-phase__item bullet-point">
+                        <span class="bullet-point__icon">
+                          <i data-feather="check-circle"></i>
+                        </span>
+                        <p class="approach-phase__item-text bullet-point__text">
+                          Refined the design based on user feedback and
+                          stakeholder input.
+                        </p>
+                      </div>
                     </div>
                   </div>
                   <div class="approach-phase__image">
@@ -302,16 +341,7 @@
                 <div class="solution-points">
                   <div class="solution-point">
                     <span class="solution-point__icon">
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="3"
-                      >
-                        <circle cx="12" cy="12" r="10"></circle>
-                      </svg>
+                      <i data-feather="check-circle"></i>
                     </span>
                     <p class="solution-point__text">
                       Implemented a centralized Notification Center with clear
@@ -321,16 +351,7 @@
 
                   <div class="solution-point">
                     <span class="solution-point__icon">
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="3"
-                      >
-                        <circle cx="12" cy="12" r="10"></circle>
-                      </svg>
+                      <i data-feather="check-circle"></i>
                     </span>
                     <p class="solution-point__text">
                       High-severity messages appear as toasts; less critical
@@ -340,16 +361,7 @@
 
                   <div class="solution-point">
                     <span class="solution-point__icon">
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="3"
-                      >
-                        <circle cx="12" cy="12" r="10"></circle>
-                      </svg>
+                      <i data-feather="check-circle"></i>
                     </span>
                     <p class="solution-point__text">
                       Intermediate messages briefly toast, then move to the
@@ -359,16 +371,7 @@
 
                   <div class="solution-point">
                     <span class="solution-point__icon">
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="3"
-                      >
-                        <circle cx="12" cy="12" r="10"></circle>
-                      </svg>
+                      <i data-feather="check-circle"></i>
                     </span>
                     <p class="solution-point__text">
                       Reduced workflow disruption and improved message clarity.
@@ -425,20 +428,7 @@
               <div class="severity-levels">
                 <div class="severity-level">
                   <div class="severity-level__icon severity-level__icon--high">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
-                      ></path>
-                      <line x1="12" y1="9" x2="12" y2="13"></line>
-                      <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                    </svg>
+                    <i data-feather="alert-triangle"></i>
                   </div>
                   <h4 class="severity-level__title">High Severity</h4>
                   <p class="severity-level__description">
@@ -451,18 +441,7 @@
                   <div
                     class="severity-level__icon severity-level__icon--medium"
                   >
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <line x1="12" y1="16" x2="12" y2="12"></line>
-                      <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                    </svg>
+                    <i data-feather="info"></i>
                   </div>
                   <h4 class="severity-level__title">Medium Severity</h4>
                   <p class="severity-level__description">
@@ -473,17 +452,7 @@
 
                 <div class="severity-level">
                   <div class="severity-level__icon severity-level__icon--low">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <polyline points="12 6 12 12 16 14"></polyline>
-                    </svg>
+                    <i data-feather="clock"></i>
                   </div>
                   <h4 class="severity-level__title">Low Severity</h4>
                   <p class="severity-level__description">
@@ -516,19 +485,7 @@
                 <div class="result-benefits">
                   <div class="result-benefit">
                     <div class="result-benefit__icon">
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                      >
-                        <path
-                          d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"
-                        ></path>
-                        <path
-                          d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"
-                        ></path>
-                      </svg>
+                      <i data-feather="book-open"></i>
                     </div>
                     <div class="result-benefit__content">
                       <h4 class="result-benefit__title">Scalable Framework</h4>
@@ -541,20 +498,7 @@
 
                   <div class="result-benefit">
                     <div class="result-benefit__icon">
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                      >
-                        <path
-                          d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                        ></path>
-                        <polyline points="14 2 14 8 20 8"></polyline>
-                        <line x1="16" y1="13" x2="8" y2="13"></line>
-                        <line x1="16" y1="17" x2="8" y2="17"></line>
-                        <polyline points="10 9 9 9 8 9"></polyline>
-                      </svg>
+                      <i data-feather="file-text"></i>
                     </div>
                     <div class="result-benefit__content">
                       <h4 class="result-benefit__title">
@@ -568,16 +512,7 @@
 
                   <div class="result-benefit">
                     <div class="result-benefit__icon">
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                      >
-                        <polygon
-                          points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                        ></polygon>
-                      </svg>
+                      <i data-feather="star"></i>
                     </div>
                     <div class="result-benefit__content">
                       <h4 class="result-benefit__title">
@@ -594,15 +529,7 @@
 
               <div class="professional-growth">
                 <div class="professional-growth__icon">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                  </svg>
+                  <i data-feather="user"></i>
                 </div>
                 <div class="professional-growth__content">
                   <h3 class="professional-growth__title">
@@ -675,29 +602,7 @@
               <h2 class="section-title">Team Feedback</h2>
               <div class="testimonial-container">
                 <div class="testimonial-quote">
-                  <svg
-                    class="testimonial-quote-icon"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M10 11H6C4.9 11 4 10.1 4 9V7C4 5.9 4.9 5 6 5H8C9.1 5 10 5.9 10 7V9V11ZM10 11V13C10 14.1 9.1 15 8 15H6"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M20 11H16C14.9 11 14 10.1 14 9V7C14 5.9 14.9 5 16 5H18C19.1 5 20 5.9 20 7V9V11ZM20 11V13C20 14.1 19.1 15 18 15H16"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
+                  <i data-feather="quote" class="testimonial-quote-icon"></i>
                   <p class="testimonial-text">
                     Jason brought valuable design expertise to our notification
                     system overhaul. His collaborative approach and attention to
@@ -719,7 +624,6 @@
           </div>
           <div class="article__sidebar">
             <nav class="sidebar-nav">
-              <h3>Contents</h3>
               <ul>
                 <li><a href="#project-summary">Project Summary</a></li>
                 <li><a href="#the-problem">The Problem</a></li>
@@ -749,5 +653,10 @@
     </main>
     <site-footer></site-footer>
     <script type="module" src="../js/main.js?v=1"></script>
+
+    <!-- Initialize Feather Icons -->
+    <script>
+      feather.replace();
+    </script>
   </body>
 </html>
