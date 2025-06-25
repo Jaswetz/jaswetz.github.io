@@ -355,7 +355,7 @@
 
             <section
               class="project-process itteration change-background"
-              id="process"
+              id="design-iteration"
             >
               <div class="phase__badge">Phase 5</div>
               <h2>Design and Itteration</h2>
@@ -915,8 +915,8 @@
               <ul>
                 <li><a href="#project-summary">Project Summary</a></li>
                 <li><a href="#the-problem">The Problem</a></li>
-                <li><a href="#approach">Approach</a></li>
-                <li><a href="#process">Process</a></li>
+                <li><a href="#process">Discovery & Research</a></li>
+                <li><a href="#design-iteration">Design & Iteration</a></li>
                 <li><a href="#user-testing">User Testing</a></li>
                 <li><a href="#implementation">Implementation</a></li>
                 <li>
@@ -924,7 +924,6 @@
                 </li>
                 <li><a href="#results-impact">Results & Impact</a></li>
                 <li><a href="#key-learnings">Key Learnings</a></li>
-                <li><a href="#testimonial">Testimonial</a></li>
               </ul>
             </nav>
           </div>
@@ -947,6 +946,61 @@
     <!-- Initialize Feather Icons -->
     <script>
       feather.replace();
+    </script>
+
+    <!-- Sidebar Navigation Active State Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const sections = document.querySelectorAll("section[id], h2[id]");
+        const navLinks = document.querySelectorAll(".sidebar-nav a");
+
+        function updateActiveNav() {
+          let current = "";
+          const scrollY = window.pageYOffset;
+
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop - 100; // Offset for header
+            const sectionHeight = section.offsetHeight;
+
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+              current = section.getAttribute("id");
+            }
+          });
+
+          navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === "#" + current) {
+              link.classList.add("active");
+            }
+          });
+        }
+
+        // Update on scroll
+        window.addEventListener("scroll", updateActiveNav);
+
+        // Update on load
+        updateActiveNav();
+
+        // Smooth scroll for navigation links
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection) {
+              const headerOffset = 80; // Account for fixed header
+              const elementPosition = targetSection.offsetTop;
+              const offsetPosition = elementPosition - headerOffset;
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
     </script>
   </body>
 </html>
