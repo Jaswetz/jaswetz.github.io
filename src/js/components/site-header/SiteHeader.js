@@ -67,13 +67,13 @@ class SiteHeader extends HTMLElement {
       border-radius: 0;
       max-width: none;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
       }
 
       .header-content {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: var(--color-surface);
       padding: var(--space-s) var(--space-m);
       border-radius: var(--border-radius);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -84,6 +84,9 @@ class SiteHeader extends HTMLElement {
             box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       will-change: padding, border-radius, background-color, box-shadow; /* ADDED */
       outline: none; /* Prevent outline on header content */
+      backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        background-color: rgba(255, 255, 255, 0.3);
       }
 
       .header-content:focus {
@@ -94,6 +97,9 @@ class SiteHeader extends HTMLElement {
       border-radius: 0;
       padding: var(--space-xs) var(--space-m);
       box-shadow: none; /* ADDED to remove inner shadow when host has shadow */
+      background-color: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
       }
 
       .logo a {
