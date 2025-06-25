@@ -2,8 +2,10 @@
     PROJECT LAYOUT STYLES
     ========================================================================== */
 
-
-
+.project h2 {
+    margin-bottom: var(--heading-spacing);
+    margin-top: var(--space-3xl);
+}
 
 /* --------------------------------------------------------------------------
     Hero Section
@@ -173,9 +175,12 @@
     Goals
     -------------------------------------------------------------------------- */
 
-.goals {
+div.goals {
     font-size: var(--text-size-lede);
     margin-bottom: var(--space-xl);
+    margin-top: var(--space-3xl);
+    background: var(--color-info);
+    border-color: var(--color-primary);
 }
 
 .goals h2 {
@@ -247,37 +252,6 @@
     grid-template-columns: 1fr 1fr;
     gap: var(--space-xl);
     margin-bottom: var(--space-xl);
-}
-
-.solution-points {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-m);
-}
-
-.solution-point {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-xs);
-}
-
-.solution-point__icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    margin-top: var(--space-2xs);
-    background-color: var(--color-primary);
-    border-radius: 50%;
-    color: white;
-    flex-shrink: 0;
-}
-
-.solution-point__text {
-    font-size: var(--size-step-0);
-    line-height: var(--leading-normal);
-    color: var(--color-text);
 }
 
 .solution-image {
@@ -970,7 +944,5 @@
 
 .bullet-point__text {
     margin: 0;
-    font-size: var(--size-step-0);
     line-height: var(--leading-normal);
-    color: var(--color-text-subtle);
 }
