@@ -2,9 +2,16 @@
     PROJECT LAYOUT STYLES
     ========================================================================== */
 
-.project h2 {
+.project-case-study h2 {
     margin-bottom: var(--heading-spacing);
     margin-top: var(--space-3xl);
+    font-weight: var(--font-weight-semibold);
+}
+
+.project-case-study section {
+    padding-bottom: var(--space-3xl);
+    margin-top: var(--space-3xl);
+    border-bottom: 1px solid var(--color-border);
 }
 
 /* --------------------------------------------------------------------------
@@ -17,6 +24,11 @@
             hsla(from var(--color-background) h s l / 0.40),
             hsla(0 0% 100% / 0.40));
     min-height: calc(var(--space-3xl) * 4.5);
+}
+
+.hero--project__header {
+    color: var(--color-primary);
+    font-weight: 600;
 }
 
 .hero--project::before {
@@ -192,33 +204,44 @@ div.goals {
     Approach Section
     -------------------------------------------------------------------------- */
 
-.approach-phase__badge {
+.phase {
+    margin-bottom: var(--space-3xl);
+    align-items: center;
+}
+
+.phase__content {
+    place-self: center;
+}
+
+
+.phase__badge {
     background-color: var(--color-info);
     display: inline-block;
-    padding: var(--space-2xs) var(--space-xs);
+    padding: var(--space-2xs) var(--space-xs-s);
     color: var(--color-primary);
     letter-spacing: 0.025em;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-md);
     border-radius: var(--border-radius);
     font-family: var(--font-family-sans);
+    margin-bottom: var(--space-xs);
 
 }
 
-.approach-phase__title {
+.phase__title {
     margin-bottom: var(--space-s);
     font-size: var(--size-step-2);
     font-weight: 600;
 }
 
 
-.approach-phase__image {
-    margin-top: var(--space-m);
+.phase__image {
     border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+    border: var(--border-width) solid var(--color-border);
 }
 
-.approach-phase__image img {
+.phase__image img {
     width: 100%;
     height: auto;
     display: block;
@@ -669,10 +692,6 @@ div.goals {
     Project Case Study Layout
     -------------------------------------------------------------------------- */
 
-.article__sidebar {
-    /* border-left: solid var(--border-width) var(--color-border); */
-}
-
 /* ==========================================================================
     RESPONSIVE STYLES
     ========================================================================== */
@@ -716,7 +735,7 @@ div.goals {
     }
 
     /* Approach Phases */
-    .approach-phases {
+    .phases {
         grid-template-columns: 1fr;
         gap: var(--space-xl);
     }
