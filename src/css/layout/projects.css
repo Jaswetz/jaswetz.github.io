@@ -468,7 +468,7 @@ div.goals {
     align-items: flex-start;
     gap: var(--space-l);
     margin-top: var(--space-xl);
-    padding: var(--space-xl);
+    padding: var(--space-xl) var(--space-xl) 0 var(--space-xl);
     background-color: var(--color-neutral-100);
     border-radius: var(--border-radius);
 }
