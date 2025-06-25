@@ -118,11 +118,9 @@ a:active {
 blockquote {
   font-family: var(--font-family-body);
   padding: var(--space-m);
-  background-color: var(--color-quote-bg);
-  /* border-left: 4px solid var(--color-quote-border); */
+  /* background-color: var(--color-quote-bg); */
+  border-left: 4px solid var(--color-quote-border);
   font-size: var(--text-size-lede);
-  /* font-weight: var(--font-weight-semibold); */
-  border-radius: var(--border-radius);
 }
 
 cite {
