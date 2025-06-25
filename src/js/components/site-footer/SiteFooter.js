@@ -145,7 +145,7 @@ class SiteFooter extends HTMLElement {
 
       <div class="footer-content__text">
         <p class="footer-tag">&copy; <span id="current-year">${currentYear}</span> Jason Swetzoff. All rights reserved.</p>
-        <p class="made-with">Crafted with HTML, CSS, JS, and Parcel</p>
+        <p class="made-with">Designed by Jason Swetzoff and AI. Hand coded with HTML, CSS, JS, Parcel and AI. </p>
         </div>
        
       <nav class="social-links">

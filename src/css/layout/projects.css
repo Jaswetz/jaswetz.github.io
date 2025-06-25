@@ -631,6 +631,31 @@ div.goals {
         grid-template-columns: 1fr;
         gap: var(--space-l);
     }
+
+
+}
+
+/* Sidebar Navigation - Hide on mobile */
+.article__sidebar {
+    display: none;
+}
+
+/* Full width content on mobile when sidebar is hidden */
+.sidebar.grid--2-column--sidebar {
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 100em) {
+
+    /* Sidebar Navigation - Hide on mobile */
+    .article__sidebar {
+        display: block;
+    }
+
+    /* Full width content on mobile when sidebar is hidden */
+    .sidebar.grid--2-column--sidebar {
+        grid-template-columns: 3fr 1fr;
+    }
 }
 
 /* --------------------------------------------------------------------------
