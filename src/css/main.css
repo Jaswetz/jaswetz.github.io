@@ -9,9 +9,6 @@
 
 @import "./theme/default-theme.css" layer(theme);
 
-@import "./layout/projects.css" layer(layout);
-/* Added projects.css to layout layer */
-
 @import "./components/error-page.css" layer(components);
 @import "./components/main-content.css" layer(components);
 @import "./components/cards.css" layer(components);
@@ -37,6 +34,9 @@
 @import "./utils/flexbox.css" layer(utilities);
 @import "./utils/layout.css" layer(utilities);
 /* Add other utility imports here and assign to 'utilities' layer */
+
+@import "./layout/projects.css" layer(layout);
+/* Added projects.css to layout layer */
 
 @import "./debug/vertical-rhythm.css" layer(debug);
 @import "./debug/debug.css" layer(utilities);
