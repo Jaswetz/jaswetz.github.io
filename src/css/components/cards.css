@@ -125,6 +125,28 @@
     Project-Specific Card Components (Reusable)
     -------------------------------------------------------------------------- */
 
+/* Project Summary Cards (Team, Stakeholders, Tools) */
+.project-summary__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-l);
+    margin-bottom: var(--space-xl);
+}
+
+.project-summary__card h3 {
+    margin-bottom: var(--space-s);
+    font-size: var(--size-step-0);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.project-summary__card p {
+    margin: 0;
+    font-size: var(--size-step-0);
+    line-height: var(--leading-normal);
+    color: var(--color-text-subtle);
+}
+
 /* Summary Cards */
 .summary-cards {
     display: grid;
@@ -386,6 +408,7 @@
 
 /* Card Responsive Styles */
 @media (max-width: 768px) {
+    .project-summary__cards,
     .summary-cards,
     .problem-cards {
         grid-template-columns: 1fr;
