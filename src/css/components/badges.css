@@ -51,6 +51,18 @@
     Phase Badge (Project-specific variant)
     -------------------------------------------------------------------------- */
 
+.phase__badge {
+    background-color: var(--color-info);
+    display: inline-block;
+    padding: var(--space-2xs) var(--space-xs-s);
+    color: var(--color-primary);
+    letter-spacing: 0.025em;
+    font-size: var(--font-size-md);
+    border-radius: var(--border-radius);
+    font-family: var(--font-family-sans);
+    margin-bottom: var(--space-xs);
+}
+
 .badge--phase {
     margin-bottom: var(--space-xs);
 }

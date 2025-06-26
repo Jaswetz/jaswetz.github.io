@@ -272,6 +272,59 @@
     color: var(--color-text-subtle);
 }
 
+/* Legacy severity-levels (for backwards compatibility) */
+.severity-levels {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-m);
+}
+
+.severity-level {
+    padding: var(--space-m);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.severity-level__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin-bottom: var(--space-s);
+    border-radius: 50%;
+}
+
+.severity-level__icon--high {
+    background-color: rgba(244, 67, 54, 0.1);
+    color: #f44336;
+}
+
+.severity-level__icon--medium {
+    background-color: rgba(33, 150, 243, 0.1);
+    color: #2196f3;
+}
+
+.severity-level__icon--low {
+    background-color: rgba(139, 195, 74, 0.1);
+    color: #8bc34a;
+}
+
+.severity-level__title {
+    margin-bottom: var(--space-xs);
+    font-size: var(--size-step-1);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.severity-level__description {
+    font-size: var(--size-step-0);
+    line-height: var(--leading-normal);
+    color: var(--color-text-subtle);
+}
+
 /* Professional Growth Card */
 .growth-card {
     display: flex;
@@ -300,6 +353,37 @@
     line-height: var(--leading-relaxed);
 }
 
+/* Results Subscriber Cards (Legacy support) */
+.result-subscriber-card {
+    padding: var(--space-xl);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+}
+
+.result-subscriber-number {
+    margin-bottom: var(--space-xs);
+    font-size: calc(var(--size-step-4) * 1.5);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-primary);
+}
+
+.result-subscriber-label {
+    margin-bottom: var(--space-s);
+    font-size: var(--size-step-2);
+    font-weight: 600;
+}
+
+.result-subscriber-description {
+    max-width: 30ch;
+    margin: 0 auto;
+    font-size: var(--size-step-1);
+    line-height: var(--leading-normal);
+}
+
 /* Card Responsive Styles */
 @media (max-width: 768px) {
     .summary-cards,
@@ -308,7 +392,8 @@
         gap: var(--space-m);
     }
 
-    .severity-cards {
+    .severity-cards,
+    .severity-levels {
         grid-template-columns: 1fr;
     }
 

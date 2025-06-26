@@ -197,6 +197,53 @@
 }
 
 /* --------------------------------------------------------------------------
+    Results Section
+    -------------------------------------------------------------------------- */
+
+.results-section__intro {
+    margin-bottom: var(--space-xl);
+    font-size: var(--size-step-1);
+    line-height: var(--leading-relaxed);
+}
+
+/* --------------------------------------------------------------------------
+    Key Learnings Section
+    -------------------------------------------------------------------------- */
+
+.key-learnings-section__intro {
+    margin-bottom: var(--space-xl);
+    font-size: var(--size-step-1);
+    line-height: var(--leading-relaxed);
+}
+
+.key-learning-card {
+    position: relative;
+    padding: var(--space-l);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+}
+
+.key-learning-number {
+    margin-bottom: var(--space-xs);
+    font-size: var(--size-step-3);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-primary);
+}
+
+.key-learning-title {
+    margin-bottom: var(--space-s);
+    font-size: var(--size-step-1);
+    font-weight: 600;
+}
+
+.key-learning-description {
+    line-height: var(--leading-normal);
+    color: var(--color-text-subtle);
+}
+
+/* --------------------------------------------------------------------------
     Goals Section
     -------------------------------------------------------------------------- */
 
