@@ -1,0 +1,145 @@
+/* ==========================================================================
+    HERO COMPONENTS
+    ========================================================================== */
+
+/* --------------------------------------------------------------------------
+    Base Hero Styles
+    -------------------------------------------------------------------------- */
+
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: var(--color-surface);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.hero--project {
+    background-image: linear-gradient(to right,
+            hsla(from var(--color-background) h s l / 0.40),
+            hsla(0 0% 100% / 0.40));
+    min-height: calc(var(--space-3xl) * 4.5);
+}
+
+.hero--project::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--hero-background-image, none);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.25;
+    z-index: -1;
+}
+
+/* --------------------------------------------------------------------------
+    Hero Content
+    -------------------------------------------------------------------------- */
+
+.hero__content {
+    padding: var(--space-xl);
+    width: 100%;
+    z-index: 1;
+}
+
+.hero--project__content {
+    padding-top: var(--space-m);
+}
+
+.hero__header {
+    color: var(--color-text);
+    font-weight: 600;
+    margin-bottom: var(--space-m);
+}
+
+.hero--project__header {
+    color: var(--color-primary);
+}
+
+/* --------------------------------------------------------------------------
+    Hero Meta Information
+    -------------------------------------------------------------------------- */
+
+.hero__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-m);
+    margin-bottom: var(--space-m);
+    font-size: var(--size-step-0);
+}
+
+.hero__role {
+    font-weight: bold;
+}
+
+.hero__role::after {
+    content: "|";
+    margin-left: var(--space-xs);
+    color: var(--color-text-subtle);
+}
+
+.hero__timeline {
+    margin-left: var(--space-xs);
+}
+
+/* --------------------------------------------------------------------------
+    Hero Impact/Stats Card
+    -------------------------------------------------------------------------- */
+
+.hero__impact {
+    width: 100%;
+    margin-top: var(--space-m);
+    padding: var(--space-s);
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.hero__impact-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    margin-bottom: var(--space-2xs);
+    font-size: var(--size-step--1);
+    color: var(--color-primary);
+}
+
+.hero__impact-value {
+    margin-bottom: var(--space-3xs);
+    font-size: var(--size-step-2);
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.hero__impact-description {
+    font-size: var(--size-step--1);
+    color: var(--color-text-subtle);
+    line-height: var(--leading-normal);
+}
+
+/* --------------------------------------------------------------------------
+    Hero Responsive Styles
+    -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+    .hero__content {
+        padding: var(--space-l);
+    }
+
+    .hero__meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-s);
+    }
+
+    .hero__impact {
+        margin-top: var(--space-l);
+    }
+}

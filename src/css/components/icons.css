@@ -1,0 +1,103 @@
+/* ==========================================================================
+    ICON COMPONENTS
+    ========================================================================== */
+
+/* --------------------------------------------------------------------------
+    Base Icon Styles
+    -------------------------------------------------------------------------- */
+
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.icon--sm {
+    width: 20px;
+    height: 20px;
+}
+
+.icon--md {
+    width: 24px;
+    height: 24px;
+}
+
+.icon--lg {
+    width: 32px;
+    height: 32px;
+}
+
+.icon--xl {
+    width: 48px;
+    height: 48px;
+}
+
+/* --------------------------------------------------------------------------
+    Icon with Background Styles
+    -------------------------------------------------------------------------- */
+
+.icon--background {
+    border-radius: var(--border-radius);
+    background-color: var(--color-neutral-100);
+    color: var(--color-primary);
+}
+
+.icon--background-circle {
+    border-radius: 50%;
+    background-color: var(--color-neutral-100);
+    color: var(--color-primary);
+}
+
+.icon--background-primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.icon--background-white {
+    background-color: white;
+    color: var(--color-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+    Severity Level Icons
+    -------------------------------------------------------------------------- */
+
+.icon--severity-high {
+    background-color: rgba(244, 67, 54, 0.1);
+    color: #f44336;
+}
+
+.icon--severity-medium {
+    background-color: rgba(33, 150, 243, 0.1);
+    color: #2196f3;
+}
+
+.icon--severity-low {
+    background-color: rgba(139, 195, 74, 0.1);
+    color: #8bc34a;
+}
+
+/* --------------------------------------------------------------------------
+    Icon SVG Styles
+    -------------------------------------------------------------------------- */
+
+.icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    fill: none;
+}
+
+.icon--stroke-thin svg {
+    stroke-width: 1.5;
+}
+
+.icon--stroke-normal svg {
+    stroke-width: 2;
+}
+
+.icon--stroke-bold svg {
+    stroke-width: 2.5;
+}
