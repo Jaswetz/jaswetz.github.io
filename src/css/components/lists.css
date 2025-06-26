@@ -1,0 +1,160 @@
+/* ==========================================================================
+    LIST COMPONENTS (Reusable)
+    ========================================================================== */
+
+/* --------------------------------------------------------------------------
+    Bullet Points Component
+    -------------------------------------------------------------------------- */
+
+.bullet-points {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+}
+
+.bullet-point {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-xs);
+}
+
+.bullet-point__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-top: var(--space-2xs);
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    color: white;
+    flex-shrink: 0;
+}
+
+.bullet-point__icon i {
+    width: 12px;
+    height: 12px;
+    stroke-width: 2.5;
+}
+
+.bullet-point__text {
+    margin: 0;
+    line-height: var(--leading-normal);
+}
+
+/* Bullet point variants */
+.bullet-point__icon--problem {
+    background-color: var(--color-danger);
+}
+
+.bullet-point__icon--success {
+    background-color: #8bc34a;
+}
+
+.bullet-point__icon--warning {
+    background-color: #2196f3;
+}
+
+/* --------------------------------------------------------------------------
+    Feature Lists
+    -------------------------------------------------------------------------- */
+
+.feature-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.feature-list li {
+    position: relative;
+    padding-left: var(--space-l);
+    margin-bottom: var(--space-s);
+}
+
+.feature-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+/* --------------------------------------------------------------------------
+    Step Lists (Numbered)
+    -------------------------------------------------------------------------- */
+
+.step-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: step-counter;
+}
+
+.step-list li {
+    position: relative;
+    padding-left: var(--space-xl);
+    margin-bottom: var(--space-l);
+    counter-increment: step-counter;
+}
+
+.step-list li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: var(--space-l);
+    height: var(--space-l);
+    background-color: var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: var(--size-step--1);
+}
+
+/* --------------------------------------------------------------------------
+    Grid Lists (for cards/items)
+    -------------------------------------------------------------------------- */
+
+.grid-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-l);
+}
+
+.grid-list--2-column {
+    grid-template-columns: 1fr 1fr;
+}
+
+.grid-list--3-column {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-list--auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* --------------------------------------------------------------------------
+    Responsive List Styles
+    -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+    .grid-list--2-column,
+    .grid-list--3-column {
+        grid-template-columns: 1fr;
+    }
+
+    .step-list li {
+        padding-left: var(--space-l);
+    }
+
+    .step-list li::before {
+        width: var(--space-m);
+        height: var(--space-m);
+    }
+}

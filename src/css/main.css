@@ -12,6 +12,13 @@
 @import "./components/error-page.css" layer(components);
 @import "./components/main-content.css" layer(components);
 @import "./components/cards.css" layer(components);
+@import "./components/heroes.css" layer(components);
+@import "./components/badges.css" layer(components);
+@import "./components/grids.css" layer(components);
+@import "./components/navigation.css" layer(components);
+@import "./components/icons.css" layer(components);
+@import "./components/sections.css" layer(components);
+@import "./components/lists.css" layer(components);
 @import "./components/tags.css" layer(components);
 @import "./components/buttons.css" layer(components);
 @import "./components/forms.css" layer(components);

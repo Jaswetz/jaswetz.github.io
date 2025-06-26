@@ -9,6 +9,7 @@
   color: inherit;
   transition: var(--transition-interactive);
   border-radius: var(--border-radius);
+  /* overflow: hidden; */
   position: relative;
 
   .project-thumbnail {
@@ -42,6 +43,7 @@
   h3 {
     color: var(--color-primary-alt);
   }
+
 }
 
 .card__link:hover::before {
@@ -52,6 +54,11 @@
   transform: scale(var(--hover-scale-large));
 }
 
+/* .card__link:hover .tag {
+  transform: var(--hover-transform-small);
+  box-shadow: var(--hover-shadow-small);
+} */
+
 .card__link:focus {
   outline: var(--focus-outline);
   outline-offset: var(--focus-outline-offset);
@@ -61,13 +68,18 @@
   transform: var(--active-transform-card);
 }
 
-/* Base card styles */
+/* ------- */
 .card {
   display: flex;
   align-items: center;
+  /* background-color: var(--color-surface); */
   border-radius: var(--border-radius);
+
   transition: var(--transition-base);
+  /* overflow: hidden; */
+  /* Ensure content stays within rounded corners */
   margin-bottom: var(--space-m);
+  /* background: var(--color-quote-bg-alt); */
 }
 
 .card__image {
@@ -78,6 +90,8 @@
   border-top-right-radius: var(--border-radius);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  /* background: var(--color-surface); */
+  /* Background for the image area */
 }
 
 .card__content {
@@ -88,31 +102,49 @@
   }
 }
 
-/* Card variations */
+/* New card style with image at the top and text below */
 .card--vertical {
   display: flex;
   flex-direction: column;
+  /* Stack image and content vertically */
 }
 
 .card--vertical .card__image {
   width: 100%;
+  /* Full width image */
   height: auto;
+  /* Maintain aspect ratio */
   margin: 0;
+  /* Remove margin */
   max-width: 100%;
+  /* Ensure it doesn't exceed container width */
 }
 
 .card--vertical .card__content {
   padding: var(--space-m);
+  /* Add padding for text content */
   text-align: left;
+  /* Align text to the left */
   width: 100%;
 }
+
+
+/* --------------------------------------------------------------------------
+    Decrotative Cards
+    -------------------------------------------------------------------------- */
 
 .card--outline {
   padding: var(--space-l);
   background: var(--color-neutral-50);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
+  /* transition: box-shadow 0.2s ease; */
 }
+
+/* .card--outline:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+} */
 
 .card--white {
   padding: var(--space-m);
@@ -317,3 +349,97 @@
         padding: var(--space-l);
     }
 }
+
+/* --------------------------------------------------------------------------
+    Project-Specific Card Components (Reusable)
+    -------------------------------------------------------------------------- */
+
+/* Summary Cards */
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-l);
+    margin-bottom: var(--space-xl);
+}
+
+.summary-card h3 {
+    margin-bottom: var(--space-s);
+    font-size: var(--size-step-0);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.summary-card p {
+    margin: 0;
+    font-size: var(--size-step-0);
+    line-height: var(--leading-normal);
+    color: var(--color-text-subtle);
+}
+
+/* Problem Cards */
+.problem-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-l);
+}
+
+.problem-card {
+    position: relative;
+    padding: var(--space-m);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    transition: all 0.2s ease;
+}
+
+.problem-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.problem-card__icon img {
+    width: var(--space-3xl);
+    margin-bottom: var(--space-xs);
+}
+
+.problem-card h3 {
+    margin-bottom: var(--space-s);
+    font-size: var(--size-step-1);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.problem-card p {
+    margin: 0;
+    line-height: var(--leading-normal);
+}
+
+/* Result Cards */
+.result-card {
+    padding: var(--space-xl);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+}
+
+.result-card__number {
+    margin-bottom: var(--space-xs);
+    font-size: calc(var(--size-step-4) * 1.5);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-primary);
+}
+
+.result-card__label {
+    margin-bottom: var(--space-s);
+    font-size: var(--size-step-2);
+    font-weight: 600;
+}
+
+.result-card__description {
+    max-width: 30ch;
+    margin: 0 auto;
+    font-size: var(--size-step-1);
+    line-height: var(--leading-normal
