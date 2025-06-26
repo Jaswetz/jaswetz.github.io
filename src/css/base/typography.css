@@ -12,7 +12,7 @@ html {
 
 body {
   font-family: var(--font-family-body);
-  font-size: var(--text-size-base);
+  font-size: var(--font-size-xl);
   line-height: var(--leading);
   color: var(--color-text);
   text-rendering: optimizeLegibility;
