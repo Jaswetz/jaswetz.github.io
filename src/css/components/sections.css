@@ -44,6 +44,18 @@
     margin-bottom: var(--space-l);
 }
 
+/* Project Summary Section */
+.project-summary__description {
+    font-size: var(--size-step-1);
+    line-height: var(--leading-normal);
+    color: var(--color-text-subtle);
+    margin-bottom: 0;
+}
+
+.project-summary__description:first-of-type {
+    margin-bottom: var(--space-l);
+}
+
 /* --------------------------------------------------------------------------
     Phase Section (for project workflows)
     -------------------------------------------------------------------------- */
@@ -178,6 +190,23 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
+.result-benefit__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-s);
+    background-color: var(--color-neutral-100);
+    border-radius: var(--border-radius);
+    color: var(--color-primary);
+    flex-shrink: 0;
+}
+
+.result-benefit__icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+}
+
 .result-benefit__content {
     display: flex;
     flex-direction: column;
@@ -194,6 +223,50 @@
     font-size: var(--size-step-0);
     line-height: var(--leading-normal);
     color: var(--color-text-subtle);
+}
+
+/* --------------------------------------------------------------------------
+    Professional Growth Section
+    -------------------------------------------------------------------------- */
+
+.professional-growth {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-l);
+    margin-top: var(--space-xl);
+    padding: var(--space-xl) var(--space-xl) 0 var(--space-xl);
+    background-color: var(--color-neutral-100);
+    border-radius: var(--border-radius);
+}
+
+.professional-growth__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: white;
+    border-radius: 50%;
+    color: var(--color-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    flex-shrink: 0;
+}
+
+.professional-growth__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.professional-growth__title {
+    font-size: var(--size-step-2);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.professional-growth__description {
+    font-size: var(--size-step-0);
+    line-height: var(--leading-relaxed);
 }
 
 /* --------------------------------------------------------------------------
@@ -349,5 +422,10 @@
         margin-right: calc(var(--space-l) * -1);
         padding-left: var(--space-l);
         padding-right: var(--space-l);
+    }
+
+    .professional-growth {
+        flex-direction: column;
+        padding: var(--space-l);
     }
 }
