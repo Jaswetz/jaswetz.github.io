@@ -38,6 +38,11 @@
     /* Add space between grid columns */
     grid-area: auto;
   }
+
+  .grid--auto-fit-300 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-l);
+  }
 }
 
 .hero {
