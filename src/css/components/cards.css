@@ -150,8 +150,6 @@
 /* Problem Cards */
 .problem-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-l);
 }
 
 .problem-card {

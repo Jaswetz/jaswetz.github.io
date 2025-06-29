@@ -82,6 +82,8 @@
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     border: var(--border-width) solid var(--color-border);
+    width: fit-content;
+    height: fit-content;
 }
 
 .phase__image img {
