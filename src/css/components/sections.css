@@ -378,6 +378,23 @@
     margin: 0;
 }
 
+.implementation-section h3 {
+    margin-bottom: var(--heading-spacing);
+}
+
+.implementation-subtitle {
+    margin-bottom: var(--space-s);
+    font-size: var(--size-step-1);
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.implementation-description {
+    font-size: var(--size-step-0);
+    line-height: var(--leading-normal);
+    color: var(--color-text-subtle);
+}
+
 /* --------------------------------------------------------------------------
     Testing Sections
     -------------------------------------------------------------------------- */
@@ -404,6 +421,7 @@
     -------------------------------------------------------------------------- */
 
 @media (max-width: 768px) {
+
     .phase,
     .content-grid,
     .solution-content,

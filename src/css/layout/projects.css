@@ -18,17 +18,14 @@
 }
 
 /* --------------------------------------------------------------------------
-    Project-Specific Hero Background Override
+    Project-Specific Hero Background Override (if needed per project)
     -------------------------------------------------------------------------- */
 
-.hero--project::before {
-    background-image: url("../../img/projects/autodesk-messaging/banner-adsk.jpg");
+/* Individual projects can override the background pattern if needed:
+.hero--project[data-bg-pattern="custom"] {
+    background-image: custom-pattern;
 }
-
-/* This can be overridden per project with CSS custom properties or inline styles */
-.hero--project[data-bg-image] {
-    --hero-background-image: attr(data-bg-image);
-}
+*/
 
 /* --------------------------------------------------------------------------
     Project Summary Image
@@ -59,12 +56,4 @@
     .sidebar.grid--2-column--sidebar {
         grid-template-columns: 3fr 1fr;
     }
-}
-
-/* --------------------------------------------------------------------------
-    Project Summary Image
-    -------------------------------------------------------------------------- */
-
-.project-summary__image {
-    margin-bottom: var(--space-xl);
 }
