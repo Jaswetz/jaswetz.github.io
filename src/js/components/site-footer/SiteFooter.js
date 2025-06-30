@@ -62,7 +62,6 @@ class SiteFooter extends HTMLElement {
         padding: var(--space-xl) 0;
         /* Ensure footer has enough height */
         max-width: var(--max-width);
-        <!-- padding-inline: var(--space-xl); -->
         position: relative;
         /* display: grid; */
         gap: var(--space-xl); /* Add space between children */
@@ -70,7 +69,6 @@ class SiteFooter extends HTMLElement {
         text-align: center;
         min-height: inherit; /* Ensure it takes up the host's min-height */
         max-width: var(--max-width);
-    padding-inline: var(--space-xl);
     gap: var(--space-xl);
     margin-inline: auto;
     position: relative;
