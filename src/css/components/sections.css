@@ -1,0 +1,460 @@
+/* ==========================================================================
+    SECTION COMPONENTS (Reusable Layout Patterns)
+    ========================================================================== */
+
+/* --------------------------------------------------------------------------
+    Base Section Styles
+    -------------------------------------------------------------------------- */
+
+/* TODO: Move back to projects.css */
+
+.section {
+    padding-bottom: var(--space-2xl);
+    padding-top: var(--space-2xl);
+}
+
+.section--bordered {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.section--background {
+    background: rgba(255, 255, 255, 0.4);
+    margin-left: calc(var(--space-xl) * -1);
+    margin-right: calc(var(--space-3xl) * -1);
+    padding-left: var(--space-xl);
+    padding-right: var(--space-3xl);
+}
+
+/* --------------------------------------------------------------------------
+    Section Content Patterns
+    -------------------------------------------------------------------------- */
+
+.section__intro {
+    margin-bottom: var(--space-xl);
+    font-size: var(--size-step-1);
+    line-height: var(--leading-relaxed);
+}
+
+.section__description {
+    font-size: var(--size-step-1);
+    line-height: var(--leading-normal);
+    color: var(--color-text-subtle);
+    margin-bottom: 0;
+}
+
+.section__description:first-of-type {
+    margin-bottom: var(--space-l);
+}
+
+/* Project Summary Section */
+.project-summary__description {
+    font-size: var(--size-step-1);
+    line-height: var(--leading-normal);
+    color: var(--color-text-subtle);
+    margin-bottom: 0;
+}
+
+.project-summary__cards {
+    margin-bottom: var(--heading-spacing);
+}
+
+.project-summary__description:first-of-type {
+    margin-bottom: var(--space-l);
+}
+
+/* --------------------------------------------------------------------------
+    Phase Section (for project workflows)
+    -------------------------------------------------------------------------- */
+
+.phase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xl);
+}
+
+.phase__content {
+    place-self: center;
+}
+
+.phase__title {
+    margin-bottom: var(--space-s);
+    font-size: var(--size-step-2);
+    font-weight: 600;
+}
+
+.phase__image {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: var(--border-width) solid var(--color-border);
+    width: fit-content;
+    height: fit-content;
+}
+
+.phase__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.phase-divider {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-xl);
+}
+
+/* --------------------------------------------------------------------------
+    Content Grid Sections
+    -------------------------------------------------------------------------- */
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xl);
+}
+
+.solution-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xl);
+}
+
+.testing-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xl);
+}
+
+.implementation-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xl);
+}
+
+.solution-section__intro {
+    margin-bottom: var(--heading-spacing)
+}
+
+/* --------------------------------------------------------------------------
+    Feature Lists
+    -------------------------------------------------------------------------- */
+
+.key-features {
+    margin-bottom: var(--space-xl);
+}
+
+.key-features h3 {
+    margin-bottom: var(--space-m);
+    font-size: var(--size-step-1);
+    font-weight: 600;
+}
+
+.key-features p {
+    margin-bottom: 0;
+}
+
+.key-features-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xs) var(--space-xl);
+}
+
+.key-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2xs);
+}
+
+.key-feature-item__icon {
+    color: var(--color-primary);
+    font-size: var(--size-step--1);
+    flex-shrink: 0;
+}
+
+.key-feature-item__text {
+    font-size: var(--size-step--1);
+    color: var(--color-text);
+}
+
+/* --------------------------------------------------------------------------
+    Benefit Lists
+    -------------------------------------------------------------------------- */
+
+.result-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+}
+
+.result-benefit {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-m);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.result-benefit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.result-benefit__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-s);
+    background-color: var(--color-neutral-100);
+    border-radius: var(--border-radius);
+    color: var(--color-primary);
+    flex-shrink: 0;
+}
+
+.result-benefit__icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+}
+
+.result-benefit__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+}
+
+.result-benefit__title {
+    font-size: var(--size-step-1);
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.result-benefit__description {
+    font-size: var(--size-step--1);
+    line-height: var(--leading-normal);
+    color: var(--color-text-subtle);
+}
+
+/* --------------------------------------------------------------------------
+    Professional Growth Section
+    -------------------------------------------------------------------------- */
+
+.professional-growth {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-l);
+    margin-top: var(--space-xl);
+    padding: var(--space-xl) var(--space-xl) 0 var(--space-xl);
+    background-color: var(--color-neutral-100);
+    border-radius: var(--border-radius);
+}
+
+.professional-growth__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: white;
+    border-radius: 50%;
+    color: var(--color-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    flex-shrink: 0;
+}
+
+.professional-growth__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.professional-growth__title {
+    font-size: var(--size-step-2);
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.professional-growth__description {
+    font-size: var(--size-step--1);
+    line-height: var(--leading-relaxed);
+}
+
+/* --------------------------------------------------------------------------
+    Results Section
+    -------------------------------------------------------------------------- */
+
+.results-section__intro {
+    margin-bottom: var(--space-xl);
+    font-size: var(--size-step-1);
+    line-height: var(--leading-relaxed);
+}
+
+/* --------------------------------------------------------------------------
+    Key Learnings Section
+    -------------------------------------------------------------------------- */
+
+.key-learnings-section__intro {
+    margin-bottom: var(--space-xl);
+    font-size: var(--size-step-1);
+    line-height: var(--leading-relaxed);
+}
+
+.key-learning-card {
+    position: relative;
+    padding: var(--space-l);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+}
+
+.key-learning-number {
+    margin-bottom: var(--space-xs);
+    font-size: var(--size-step-3);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-primary);
+}
+
+.key-learning-title {
+    margin-bottom: var(--space-s);
+    font-size: var(--size-step-1);
+    font-weight: 600;
+}
+
+.key-learning-description {
+    line-height: var(--leading-normal);
+    color: var(--color-text-subtle);
+}
+
+/* --------------------------------------------------------------------------
+    Goals Section
+    -------------------------------------------------------------------------- */
+
+.goals {
+    font-size: var(--text-size-lede);
+}
+
+.goals h2 {
+    margin-top: 0;
+}
+
+/* --------------------------------------------------------------------------
+    Image Sections
+    -------------------------------------------------------------------------- */
+
+.solution-image {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.solution-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.image-caption {
+    position: absolute;
+    bottom: var(--space-s);
+    right: var(--space-s);
+}
+
+.image-caption-button:hover {
+    background-color: var(--color-primary-alt);
+}
+
+/* --------------------------------------------------------------------------
+    Implementation Sections
+    -------------------------------------------------------------------------- */
+
+.implementation-item {
+    margin-bottom: var(--space-m);
+}
+
+.implementation-item:last-child {
+    margin-bottom: 0;
+}
+
+.implementation-subtitle {
+    margin-bottom: var(--space-xs);
+    font-size: var(--size-step--1);
+    font-weight: 600;
+}
+
+.implementation-description {
+    line-height: var(--leading-normal);
+    margin: 0;
+}
+
+.implementation-section h3 {
+    margin-bottom: var(--heading-spacing);
+}
+
+.implementation-subtitle {
+    margin-bottom: var(--space-s);
+    font-size: var(--size-step-1);
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.implementation-description {
+    font-size: var(--size-step--1);
+    line-height: var(--leading-normal);
+    color: var(--color-text-subtle);
+}
+
+/* --------------------------------------------------------------------------
+    Testing Sections
+    -------------------------------------------------------------------------- */
+
+.testing-description {
+    margin-bottom: var(--space-m);
+    font-size: var(--size-step--1);
+    line-height: var(--leading-normal);
+    color: var(--color-text-subtle);
+}
+
+.findings-section {
+    margin-bottom: var(--space-m);
+}
+
+.outcome-text {
+    font-size: var(--size-step--1);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-subtle);
+}
+
+/* --------------------------------------------------------------------------
+    Responsive Section Styles
+    -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+    .phase,
+    .content-grid,
+    .solution-content,
+    .testing-content,
+    .implementation-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-l);
+    }
+
+    .key-features-list {
+        grid-template-columns: 1fr;
+    }
+
+    .section--background {
+        margin-left: calc(var(--space-l) * -1);
+        margin-right: calc(var(--space-l) * -1);
+        padding-left: var(--space-l);
+        padding-right: var(--space-l);
+    }
+
+    .professional-growth {
+        flex-direction: column;
+        padding: var(--space-l);
+    }
+}

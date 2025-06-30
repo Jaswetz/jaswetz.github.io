@@ -1,0 +1,168 @@
+/* Skip Links - Hidden by default, shown on focus */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-primary);
+  color: white;
+  padding: var(--space-xs) var(--space-s);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--size-step--1);
+  z-index: 9999;
+  transition: var(--transition-interactive);
+  box-shadow: var(--hover-shadow);
+}
+
+.skip-link:focus {
+  top: 6px;
+  outline: 2px solid var(--color-background);
+  outline-offset: var(--focus-outline-offset);
+  transform: var(--hover-transform);
+  box-shadow: var(--hover-shadow-large);
+}
+
+.skip-link:hover {
+  background: var(--color-primary-alt);
+  transform: var(--hover-transform);
+  box-shadow: var(--hover-shadow-large);
+}
+
+.skip-link:active {
+  background: var(--color-primary-alt);
+  transform: none;
+  box-shadow: var(--active-shadow);
+}
+
+/* Screen reader only text */
+.sr-only,
+.screen-reader-only,
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Focus management for all interactive elements */
+*:focus {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
+
+/* Enhanced focus for critical navigation elements */
+nav a:focus,
+.logo a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+  box-shadow: var(--focus-shadow);
+}
+
+/* Focus styles for card links - ensure accessibility */
+.card__link:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(37, 105, 237, 0.1), 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+
+  .card__link:focus,
+  button:focus,
+  input:focus,
+  textarea:focus,
+  select:focus,
+  nav a:focus {
+    outline: 3px solid;
+    outline-offset: 2px;
+  }
+
+  .card__link:hover,
+  button:hover,
+  nav a:hover {
+    background: ButtonHighlight;
+    color: ButtonText;
+  }
+}
+
+/* Touch target sizes - ensure minimum 44px touch targets */
+@media (pointer: coarse) {
+
+  button,
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  .card__link,
+  nav a,
+  .logo a,
+  .tag {
+    min-height: var(--touch-target-min);
+    min-width: var(--touch-target-min);
+  }
+
+  .tag {
+    padding: var(--space-xs) var(--space-s);
+  }
+}
+
+/* Keyboard navigation enhancement */
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
+
+.js-focus-visible .focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
+
+/* Error states for form elements */
+input:invalid,
+textarea:invalid,
+select:invalid {
+  border-color: var(--color-error, #dc2626);
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.1);
+}
+
+input:invalid:focus,
+textarea:invalid:focus,
+select:invalid:focus {
+  outline-color: var(--color-error, #dc2626);
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.1),
+    0 0 0 4px rgba(220, 38, 38, 0.05);
+}
+
+/* Custom Element Focus Management */
+/* Prevent unwanted focus outlines on custom elements */
+site-header,
+site-footer {
+  outline: none !important;
+}
+
+site-header:focus,
+site-footer:focus {
+  outline: none !important;
+}

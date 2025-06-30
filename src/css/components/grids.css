@@ -1,0 +1,99 @@
+/* ==========================================================================
+    GRID LAYOUTS
+    ========================================================================== */
+
+/* --------------------------------------------------------------------------
+    Base Grid Patterns
+    -------------------------------------------------------------------------- */
+
+.grid {
+    display: grid;
+    gap: var(--space-l);
+}
+
+.grid--auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid--auto-fit-sm {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.grid--auto-fit-lg {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.grid--2-column {
+    grid-template-columns: 1fr 1fr;
+}
+
+.grid--3-column {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--2-column--sidebar {
+    grid-template-columns: 3fr 1fr;
+}
+
+/* --------------------------------------------------------------------------
+    Gap Variations
+    -------------------------------------------------------------------------- */
+
+.grid--gap-s {
+    gap: var(--space-s);
+}
+
+.grid--gap-m {
+    gap: var(--space-m);
+}
+
+.grid--gap-l {
+    gap: var(--space-l);
+}
+
+.grid--gap-xl {
+    gap: var(--space-xl);
+}
+
+/* --------------------------------------------------------------------------
+    Responsive Grid Behaviors
+    -------------------------------------------------------------------------- */
+
+/* Results Grid (Legacy support) */
+.results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xl);
+}
+
+/* Key Learnings Grid (Legacy support) */
+.key-learnings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+}
+
+@media (max-width: 768px) {
+    .grid--2-column,
+    .grid--3-column,
+    .grid--2-column--sidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .grid--auto-fit {
+        grid-template-columns: 1fr;
+    }
+
+    .results-grid,
+    .key-learnings-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-l);
+    }
+}
+
+@media (min-width: 100em) {
+    .grid--2-column--sidebar {
+        grid-template-columns: 3fr 1fr;
+    }
+}

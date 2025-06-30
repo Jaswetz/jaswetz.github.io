@@ -1,0 +1,97 @@
+/* ==========================================================================
+    PROJECT LAYOUT STYLES (Project-specific only)
+    ========================================================================== */
+
+/* --------------------------------------------------------------------------
+    Project Case Study Base Layout
+    -------------------------------------------------------------------------- */
+
+.project-case-study h2 {
+    font-weight: var(--font-weight-semibold);
+}
+
+.project-case-study section {
+    padding-bottom: var(--space-2xl);
+    padding-top: var(--space-2xl);
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* --------------------------------------------------------------------------
+    Project-Specific Hero Background Override (if needed per project)
+    -------------------------------------------------------------------------- */
+
+/* Individual projects can override the background pattern if needed:
+.hero--project[data-bg-pattern="custom"] {
+    background-image: custom-pattern;
+}
+*/
+
+/* --------------------------------------------------------------------------
+    Project Summary Image
+    -------------------------------------------------------------------------- */
+
+.notification .project__img.project-summary__image {
+    max-width: 100%;
+}
+
+
+
+/* --------------------------------------------------------------------------
+    Project Image Figures
+    -------------------------------------------------------------------------- */
+
+.project__img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-subtle);
+    max-width: 53rem;
+}
+
+.phase__img img {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* --------------------------------------------------------------------------
+    Sidebar Layout (Project-specific)
+    -------------------------------------------------------------------------- */
+
+.article__sidebar {
+    display: none;
+    border-left: var(--border-width) solid var(--color-border);
+}
+
+.sidebar.grid--2-column--sidebar {
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 100em) {
+    .article__sidebar {
+        display: block;
+    }
+
+    .sidebar.grid--2-column--sidebar {
+        grid-template-columns: 3fr 1fr;
+    }
+}
+
+
+/* --------------------------------------------------------------------------
+    LFC & Intel
+    -------------------------------------------------------------------------- */
+
+
+.lfc-intel figure {
+    margin: var(--space-xl) 0;
+}
+
+.features {
+    margin-bottom: var(--heading-spacing);
+}
+
+.features .card__icon {
+    color: var(--color-primary);
+    margin-bottom: var(--space-s);
+
+}

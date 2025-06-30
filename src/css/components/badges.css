@@ -1,0 +1,87 @@
+/* ==========================================================================
+    BADGE COMPONENTS
+    ========================================================================== */
+
+/* --------------------------------------------------------------------------
+    Base Badge Styles
+    -------------------------------------------------------------------------- */
+
+.badge {
+    display: inline-block;
+    padding: var(--space-2xs) var(--space-xs-s);
+    font-size: var(--font-size-md);
+    font-family: var(--font-family-sans);
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    border-radius: var(--border-radius);
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+    Badge Variants
+    -------------------------------------------------------------------------- */
+
+.badge--primary {
+    background-color: var(--color-info);
+    color: var(--color-primary);
+}
+
+.badge--secondary {
+    background-color: var(--color-neutral-100);
+    color: var(--color-text);
+}
+
+.badge--success {
+    background-color: rgba(139, 195, 74, 0.1);
+    color: #8bc34a;
+}
+
+.badge--warning {
+    background-color: rgba(33, 150, 243, 0.1);
+    color: #2196f3;
+}
+
+.badge--danger {
+    background-color: rgba(244, 67, 54, 0.1);
+    color: #f44336;
+}
+
+/* --------------------------------------------------------------------------
+    Phase Badge (Project-specific variant)
+    -------------------------------------------------------------------------- */
+
+.phase__badge {
+    background-color: var(--color-info);
+    display: inline-block;
+    padding: var(--space-2xs) var(--space-xs-s);
+    color: var(--color-primary);
+    letter-spacing: 0.025em;
+    font-size: var(--font-size-md);
+    border-radius: var(--border-radius);
+    font-family: var(--font-family-sans);
+    margin-bottom: var(--space-xs);
+}
+
+.badge--phase {
+    margin-bottom: var(--space-xs);
+}
+
+/* --------------------------------------------------------------------------
+    Severity Level Badges
+    -------------------------------------------------------------------------- */
+
+.badge--severity-high {
+    background-color: rgba(244, 67, 54, 0.1);
+    color: #f44336;
+}
+
+.badge--severity-medium {
+    background-color: rgba(33, 150, 243, 0.1);
+    color: #2196f3;
+}
+
+.badge--severity-low {
+    background-color: rgba(139, 195, 74, 0.1);
+    color: #8bc34a;
+}

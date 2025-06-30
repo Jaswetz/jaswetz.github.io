@@ -1,0 +1,89 @@
+/* Vertical Rhythm Debug Grid */
+.debug-rhythm {
+  position: relative;
+}
+
+.debug-rhythm::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 0, 0, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 100% 0.25rem; /* 4px = 0.25rem */
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Optional: Add markers for larger intervals */
+.debug-rhythm::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 255, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 100% 1rem; /* 16px = 1rem */
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* Add labels for the grid lines */
+.debug-rhythm .grid-label {
+  position: fixed;
+  right: 1rem;
+  font-family: var(--font-family-monospace);
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: 10000;
+}
+
+/* Add this class to your body or container to enable the grid */
+body.debug-rhythm-enabled {
+  position: relative;
+}
+
+body.debug-rhythm-enabled::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 0, 0, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 100% 0.25rem;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+body.debug-rhythm-enabled::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 255, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 100% 1rem;
+  pointer-events: none;
+  z-index: 9998;
+}

@@ -1,0 +1,33 @@
+/* src/css/pages/index-section-contact.css */
+/* Contact section styles for the index page */
+
+.contact-section {
+  padding: var(--space-3xl) var(--space-xl);
+  background-color: var(--color-surface-secondary);
+  text-align: center;
+}
+
+.contact-container {
+  max-width: var(--measure-m);
+  margin: 0 auto;
+}
+
+.contact-title {
+  font-size: var(--size-step-3);
+  color: var(--color-primary);
+  margin-bottom: var(--space-lg);
+}
+
+.contact-description {
+  font-size: var(--font-size-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text);
+  margin-bottom: var(--space-xl);
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: var(--space);
+  flex-wrap: wrap;
+}

@@ -1,0 +1,174 @@
+/* --------------------------------------------------------------------------
+    Hero Section
+    -------------------------------------------------------------------------- */
+
+/* TODO: Cleanup up header section. Decided to make header look similar throughout. Projects will probably be left aligned. */
+
+.hero--project {
+    min-height: calc(var(--space-3xl) * 4.5);
+
+}
+
+.hero--project__header {}
+
+
+.hero--project__content {
+    padding-top: var(--space-m);
+}
+
+.hero--project__role {
+    font-weight: bold;
+}
+
+.hero--project__role::after {
+    content: "|";
+    margin-left: var(--space-xs);
+    color: var(--color-text-subtle);
+}
+
+.hero--project__timeline {
+    margin-left: var(--space-xs);
+}
+
+.hero--project__impact {
+    width: 100%;
+    margin-top: var(--space-m);
+    padding: var(--space-s);
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.hero--project__impact-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    margin-bottom: var(--space-2xs);
+    font-size: var(--size-step--1);
+    color: var(--color-primary);
+}
+
+.hero--project__impact-value {
+    margin-bottom: var(--space-3xs);
+    font-size: var(--size-step-2);
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.hero--project__impact-description {
+    font-size: var(--size-step--1);
+    color: var(--color-text-subtle);
+    line-height: var(--leading-normal);
+}
+
+/* --------------------------------------------------------------------------
+    Hero Responsive Styles
+    -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+    .hero__content,
+    .hero--project__content {
+        padding: var(--space-l);
+    }
+
+    .hero__meta,
+    .hero--project__meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-s);
+    }
+
+    .hero__impact,
+    .hero--project__impact {
+        margin-top: var(--space-l);
+    }
+}
+
+
+/* src/css/components/hero-section.css */
+
+@keyframes gradientBackground {
+    0% {
+        background-size: 200% 200%;
+        background-position: left top;
+    }
+
+    50% {
+        background-size: 200% 200%;
+        background-position: right bottom;
+    }
+
+    100% {
+        background-size: 200% 200%;
+        background-position: left top;
+    }
+}
+
+.hero-section {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: gradientBackground 20s ease-in-out infinite;
+    background-size: 100% 100%;
+    background-image: radial-gradient(circle,
+            rgba(255, 255, 255, 0.75) 20%,
+            rgba(210, 206, 200, 0.1) 60%);
+    background-repeat: repeat;
+    background-position: left top;
+    margin-top: 0;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f7f3eb;
+    background-image: radial-gradient(#999 0.7000000000000001px,
+            #f7f3eb 0.7000000000000001px);
+    background-size: 14px 14px;
+    z-index: -1;
+    /* Ensure it stays behind the content */
+}
+
+.hero-content {
+    /* Limit content width for readability with fallback */
+    /* max-width: var(--measure-l, 75ch); */
+
+}
+
+.hero-subtitle {
+    font-family: var(--font-family-sans);
+    /* Match other UI text */
+    font-size: var(--font-size-lg);
+    /* e.g., 20px */
+    font-style: italic;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-light);
+    /* Slightly less prominent */
+    margin-bottom: var(--space-2);
+    /* As seen in the "Product Designer" example */
+    letter-spacing: var(--kerning-loose, 0.05em);
+}
+
+.hero-section h1 {
+    /* Uses --text-size-heading-1 and --font-weight-bold from base/typography.css */
+    /* We can override if needed, but let's see base styles first */
+    margin-bottom: var(--space-3);
+    color: var(--color-primary);
+    /* Ensure it uses the main text color */
+    font-size: var(--size-step-6);
+}
+
+.hero__tagline {
+    /* e.g., 24px */
+}

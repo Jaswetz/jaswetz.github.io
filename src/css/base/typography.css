@@ -1,0 +1,192 @@
+/* src/css/base/typography.css */
+
+/*
+  Refined for strict vertical rhythm and clear hierarchy, inspired by Piccalilli best practices.
+*/
+
+/* Base Typography */
+html {
+  font-size: 16px;
+  /* Base font size for rem calculations */
+}
+
+body {
+  font-family: var(--font-family-body);
+  font-size: var(--text-size-base);
+  line-height: var(--leading);
+  color: var(--color-text);
+  text-rendering: optimizeLegibility;
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size-adjust: from-font;
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-heading);
+  color: var(--color-text);
+  margin-top: 0;
+  margin-bottom: var(--heading-spacing);
+  font-weight: var(--font-weight-med);
+  font-feature-settings: "cpsp" on;
+  font-weight: var(--heading-font-weight, var(--font-bold));
+  letter-spacing: var(--heading-kerning, var(--kerning));
+  line-height: var(--heading-line-height, var(--leading-fine));
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--text-size-heading-1);
+}
+
+h2 {
+  font-size: var(--text-size-heading-2);
+  margin-bottom: var(--space-xl);
+}
+
+h3 {
+  font-size: var(--text-size-heading-3);
+}
+
+h4 {
+  font-size: var(--text-size-heading-4);
+}
+
+h5 {
+  font-size: var(--font-size-lg);
+}
+
+h6 {
+  font-size: var(--font-size-base);
+}
+
+.hero__heading {
+  font-family: var(--font-family-sans);
+  font-size: var(--hero-heading-font-size, var(--size-step-7));
+  line-height: var(--hero-heading-leading, var(--leading-flat));
+}
+
+/* Paragraphs */
+p {
+  margin-top: 0;
+  margin-bottom: var(--paragraph-spacing);
+  line-height: var(--line-height-base);
+}
+
+/* Lists */
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: var(--list-spacing);
+  padding-left: var(--space-m);
+}
+
+li {
+  margin-bottom: var(--space-2xs);
+}
+
+li:last-child {
+  margin-bottom: 0;
+}
+
+/* Links */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+a:hover {
+  color: var(--color-primary-alt);
+}
+
+a:active {
+  color: var(--color-primary-alt);
+  transform: scale(0.98);
+}
+
+/* Blockquotes */
+blockquote {
+  font-family: var(--font-family-body);
+  padding: var(--space-m);
+  /* background-color: var(--color-quote-bg); */
+  border-left: 4px solid var(--color-quote-border);
+  font-size: var(--text-size-lede);
+}
+
+cite {
+  display: block;
+  margin-top: var(--space-xs);
+  color: var(--color-text-light);
+  font-weight: var(--font-weight-normal);
+}
+
+/* Code */
+code {
+  font-family: var(--font-family-monospace);
+  font-size: 0.9em;
+  padding: 0.2em 0.4em;
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius);
+}
+
+pre {
+  margin: var(--space-l) 0;
+  padding: var(--space-s);
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius);
+  overflow-x: auto;
+}
+
+pre code {
+  padding: 0;
+  background-color: transparent;
+}
+
+/* Small text */
+small {
+  font-size: var(--size-step--1);
+  color: var(--color-text-light);
+}
+
+/* Horizontal Rule */
+hr {
+  margin: var(--space-8) 0;
+  border: 0;
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+/* Text Selection */
+::selection {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Figure and Figcaption */
+figure {
+  margin: 0;
+  margin-bottom: var(--space-m);
+}
+
+figcaption {
+  font-size: var(--size-step--1);
+  color: var(--color-text-light);
+  margin-top: var(--space-xs);
+  margin-left: var(--space-xs);
+  font-style: italic;
+  line-height: var(--leading);
+}
+
+.highlight {
+  position: relative;
+}

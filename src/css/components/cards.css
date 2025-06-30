@@ -1,0 +1,416 @@
+/* Card component styles */
+
+/* Base card link styles - make entire card clickable */
+
+/*TODO: Cleanup and make more modular and reusable with BEM methodology*/
+
+.card__link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-interactive);
+  border-radius: var(--border-radius);
+  position: relative;
+
+  .project-thumbnail {
+    transition: var(--transition-interactive);
+  }
+}
+
+.card__link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay-gradient-light);
+  opacity: 0;
+  transition: var(--transition-quick);
+  pointer-events: none;
+  z-index: 1;
+  border-radius: var(--border-radius);
+}
+
+/* Card interactive states */
+.card__link:hover {
+  color: var(--color-primary-alt);
+  transform: var(--hover-transform) scale(var(--hover-scale));
+  box-shadow: var(--hover-shadow);
+  text-decoration: none;
+  background-color: var(--color-surface);
+
+  h3 {
+    color: var(--color-primary-alt);
+  }
+}
+
+.card__link:hover::before {
+  opacity: 1;
+}
+
+.card__link:hover .project-thumbnail {
+  transform: scale(var(--hover-scale-large));
+}
+
+.card__link:focus {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
+
+.card__link:active {
+  transform: var(--active-transform-card);
+}
+
+/* Base card styles */
+.card {
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius);
+  transition: var(--transition-base);
+  margin-bottom: var(--space-m);
+}
+
+.card__image {
+  flex-shrink: 0;
+  margin-right: var(--space-m);
+  max-width: 150px;
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.card__content {
+  flex: 1;
+
+  h3 {
+    padding-top: var(--heading-spacing);
+  }
+}
+
+/* Card variations */
+.card--vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.card--vertical .card__image {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  max-width: 100%;
+}
+
+.card--vertical .card__content {
+  padding: var(--space-m);
+  text-align: left;
+  width: 100%;
+}
+
+.card--outline {
+  padding: var(--space-l);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+
+  background-color: #f7f3eb;
+  background-image: linear-gradient(#99999922 0.6000000000000001px, transparent 0.6000000000000001px), linear-gradient(to right, #99999922 0.6000000000000001px, #f7f3eb 0.6000000000000001px);
+  background-size: 12px 12px;
+  box-shadow: inset 0 -2px #6f7b901a;
+
+}
+
+.card--white {
+  padding: var(--space-m);
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+}
+
+.card--white p:last-child {
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+    Project-Specific Card Components (Reusable)
+    -------------------------------------------------------------------------- */
+
+/* Project Summary Cards (Team, Stakeholders, Tools) */
+.cards__layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-l);
+  /* margin-bottom: var(--space-xl); */
+}
+
+.card__text h3 {
+  margin-bottom: var(--space-s);
+  font-size: var(--size-step-0);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.card__text p {
+  margin: 0;
+  font-size: var(--size-step-0);
+  line-height: var(--leading-normal);
+  color: var(--color-text-subtle);
+}
+
+/* Problem Cards */
+.problem-cards {
+  display: grid;
+}
+
+.problem-card {
+  position: relative;
+  padding: var(--space-m);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  transition: all 0.2s ease;
+}
+
+.problem-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.problem-card__icon img {
+  width: var(--space-3xl);
+  margin-bottom: var(--space-xs);
+}
+
+.problem-card h3 {
+  margin-bottom: var(--space-s);
+  font-size: var(--size-step-1);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.problem-card p {
+  margin: 0;
+  line-height: var(--leading-normal);
+}
+
+/* Result Cards */
+.result-card {
+  padding: var(--space-xl);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+}
+
+.result-card__number {
+  margin-bottom: var(--space-xs);
+  font-size: calc(var(--size-step-4) * 1.5);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-primary);
+}
+
+.result-card__label {
+  margin-bottom: var(--space-s);
+  font-size: var(--size-step-2);
+  font-weight: 600;
+}
+
+.result-card__description {
+  max-width: 30ch;
+  margin: 0 auto;
+  font-size: var(--size-step-1);
+  line-height: var(--leading-normal);
+}
+
+/* Learning Cards */
+.learning-card {
+  position: relative;
+  padding: var(--space-l);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+}
+
+.learning-card__number {
+  margin-bottom: var(--space-xs);
+  font-size: var(--size-step-3);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-primary);
+}
+
+.learning-card__title {
+  margin-bottom: var(--space-s);
+  font-size: var(--size-step-1);
+  font-weight: 600;
+}
+
+.learning-card__description {
+  line-height: var(--leading-normal);
+  color: var(--color-text-subtle);
+}
+
+/* Severity Level Cards */
+.severity-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-m);
+}
+
+.severity-card {
+  padding: var(--space-m);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.severity-card__title {
+  margin-bottom: var(--space-xs);
+  font-size: var(--size-step-1);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.severity-card__description {
+  font-size: var(--size-step-0);
+  line-height: var(--leading-normal);
+  color: var(--color-text-subtle);
+}
+
+/* Legacy severity-levels (for backwards compatibility) */
+.severity-levels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-m);
+}
+
+.severity-level {
+  padding: var(--space-m);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.severity-level__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-bottom: var(--space-s);
+  border-radius: 50%;
+}
+
+.severity-level__icon--high {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+}
+
+.severity-level__icon--medium {
+  background-color: rgba(33, 150, 243, 0.1);
+  color: #2196f3;
+}
+
+.severity-level__icon--low {
+  background-color: rgba(139, 195, 74, 0.1);
+  color: #8bc34a;
+}
+
+.severity-level__title {
+  margin-bottom: var(--space-xs);
+  font-size: var(--size-step-1);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.severity-level__description {
+  font-size: var(--size-step-0);
+  line-height: var(--leading-normal);
+  color: var(--color-text-subtle);
+}
+
+/* Professional Growth Card */
+.growth-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-l);
+  margin-top: var(--space-xl);
+  padding: var(--space-xl) var(--space-xl) 0 var(--space-xl);
+  background-color: var(--color-neutral-100);
+  border-radius: var(--border-radius);
+}
+
+.growth-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.growth-card__title {
+  font-size: var(--size-step-2);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.growth-card__description {
+  font-size: var(--size-step-0);
+  line-height: var(--leading-relaxed);
+}
+
+/* Results Subscriber Cards (Legacy support) */
+.result-subscriber-card {
+  padding: var(--space-xl);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+}
+
+.result-subscriber-number {
+  margin-bottom: var(--space-xs);
+  font-size: calc(var(--size-step-4) * 1.5);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-primary);
+}
+
+.result-subscriber-label {
+  margin-bottom: var(--space-s);
+  font-size: var(--size-step-2);
+  font-weight: 600;
+}
+
+.result-subscriber-description {
+  max-width: 30ch;
+  margin: 0 auto;
+  font-size: var(--size-step-1);
+  line-height: var(--leading-normal);
+}
+
+/* Card Responsive Styles */
+@media (max-width: 768px) {
+
+  .project-summary__cards,
+  .summary-cards,
+  .problem-cards {
+    grid-template-columns: 1fr;
+    gap: var(--space-m);
+  }
+
+  .severity-cards,
+  .severity-levels {
+    grid-template-columns: 1fr;
+  }
+
+  .growth-card {
+    flex-direction: column;
+    padding: var(--space-l);
+  }
+}

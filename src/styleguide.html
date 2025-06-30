@@ -1,0 +1,443 @@
+<!  <head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Living Style Guide - My Portfolio</title>
+
+<!-- Google Analytics 4 -->
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG"
+></script>
+<script src="./js/analytics.js"></script>
+
+<link rel="stylesheet" href="./css/main.css" />
+<link rel="icon" type="image/x-icon" href="./assets/favicons/favicon.ico" />E
+html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Living Style Guide - Jason Swetz UX Portfolio</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="icon" type="image/x-icon" href="./assets/favicons/favicon.ico" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/favicons/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="./assets/favicons/favicon-96x96.png"
+    />
+    <link rel="apple-touch-icon" href="./assets/favicons/apple-icon.png" />
+  </head>
+  <body>
+    <site-header></site-header>
+    <main>
+      <style>
+        /* Basic styling for style guide sections for clarity */
+        .styleguide-section {
+          border: 1px solid #eee;
+          padding: 1.5em;
+          margin-bottom: 2em;
+          border-radius: 8px;
+        }
+        .styleguide-section h2 {
+          margin-top: 0;
+          border-bottom: 2px solid #007bff; /* Example accent color */
+          padding-bottom: 0.5em;
+          margin-bottom: 1em;
+        }
+        .styleguide-section h3 {
+          margin-top: 1.5em;
+          border-bottom: 1px solid #ccc;
+          padding-bottom: 0.3em;
+          margin-bottom: 0.8em;
+        }
+        .color-swatch {
+          display: inline-block;
+          width: 100px;
+          height: 100px;
+          margin-right: 10px;
+          margin-bottom: 10px;
+          border: 1px solid #ccc;
+          text-align: center;
+          line-height: 100px; /* For color name, if short */
+        }
+        .spacing-example {
+          background-color: #f0f0f0;
+          padding: 10px;
+          margin-bottom: 5px;
+          border: 1px dashed #ccc;
+        }
+        code {
+          background-color: #f4f4f4;
+          padding: 2px 4px;
+          border-radius: 4px;
+          font-family: monospace;
+        }
+        pre {
+          background-color: #f4f4f4;
+          padding: 1em;
+          border-radius: 4px;
+          overflow-x: auto;
+        }
+      </style>
+
+      <div style="padding: 2em">
+        <header style="text-align: center; margin-bottom: 3em">
+          <h1>Living Style Guide</h1>
+          <p>
+            Welcome to the living style guide. This document showcases the core
+            visual and functional building blocks of the website. It helps
+            ensure consistency and provides a reference for developers and
+            designers.
+          </p>
+        </header>
+
+        <section id="core-styles" class="styleguide-section">
+          <h2>Core Styles</h2>
+          <p>
+            These are the foundational styles that define the global look and
+            feel of the website, including typography, color palette, spacing,
+            and grid system (if applicable).
+          </p>
+
+          <section id="typography" class="styleguide-section">
+            <h3>3.1 Typography</h3>
+            <p>Demonstrates standard HTML typographic elements.</p>
+
+            <h1>Heading 1</h1>
+            <p>
+              Paragraph text associated with H1. Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit. <a href="#">This is a link</a>.
+            </p>
+
+            <h2>Heading 2</h2>
+            <p>
+              Paragraph text associated with H2. Sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua.
+            </p>
+
+            <h3>Heading 3</h3>
+            <p>
+              Paragraph text associated with H3. Ut enim ad minim veniam, quis
+              nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat.
+            </p>
+
+            <h4>Heading 4</h4>
+            <p>
+              Paragraph text associated with H4. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur.
+            </p>
+
+            <h5>Heading 5</h5>
+            <p>
+              Paragraph text associated with H5. Excepteur sint occaecat
+              cupidatat non proident, sunt in culpa qui officia deserunt mollit
+              anim id est laborum.
+            </p>
+
+            <h6>Heading 6</h6>
+            <p>
+              Paragraph text associated with H6. Nemo enim ipsam voluptatem quia
+              voluptas sit aspernatur aut odit aut fugit.
+            </p>
+
+            <h4>Lists</h4>
+            <h5>Unordered List</h5>
+            <ul>
+              <li>List item 1</li>
+              <li>
+                List item 2
+                <ul>
+                  <li>Nested item 2.1</li>
+                  <li>Nested item 2.2</li>
+                </ul>
+              </li>
+              <li>List item 3</li>
+            </ul>
+
+            <h5>Ordered List</h5>
+            <ol>
+              <li>First item</li>
+              <li>
+                Second item
+                <ol>
+                  <li>Nested item 2.1</li>
+                  <li>Nested item 2.2</li>
+                </ol>
+              </li>
+              <li>Third item</li>
+            </ol>
+          </section>
+
+          <section id="color-palette" class="styleguide-section">
+            <h3>3.2 Color Palette</h3>
+            <p>
+              The project's color palette. Colors are defined as CSS Custom
+              Properties in <code>src/css/variables.css</code>.
+            </p>
+            <!-- TODO: [Styleguide] Dynamically display colors and their variable names from variables.css (LSG3.2) -->
+            <h4>Primary Colors</h4>
+            <div
+              class="color-swatch"
+              style="
+                background-color: var(--primary-color, #007bff);
+                color: var(--text-on-primary, #fff);
+              "
+            >
+              --primary-color
+            </div>
+            <div
+              class="color-swatch"
+              style="
+                background-color: var(--primary-hover-color, #0056b3);
+                color: var(--text-on-primary, #fff);
+              "
+            >
+              --primary-hover-color
+            </div>
+
+            <h4>Secondary Colors</h4>
+            <div
+              class="color-swatch"
+              style="
+                background-color: var(--secondary-color, #6c757d);
+                color: var(--text-on-secondary, #fff);
+              "
+            >
+              --secondary-color
+            </div>
+
+            <h4>Accent Colors</h4>
+            <div
+              class="color-swatch"
+              style="
+                background-color: var(--accent-color, #17a2b8);
+                color: var(--text-on-accent, #fff);
+              "
+            >
+              --accent-color
+            </div>
+
+            <h4>Neutral Colors</h4>
+            <div
+              class="color-swatch"
+              style="
+                background-color: var(--color-text, #333);
+                color: var(--color-surface, #fff);
+              "
+            >
+              --color-text
+            </div>
+            <div
+              class="color-swatch"
+              style="
+                background-color: var(--color-text-light, #555);
+                color: var(--color-surface, #fff);
+              "
+            >
+              --color-text-light
+            </div>
+            <div
+              class="color-swatch"
+              style="
+                background-color: var(--color-background, #f7f3eb);
+                color: var(--color-text, #333);
+              "
+            >
+              --color-background
+            </div>
+            <div
+              class="color-swatch"
+              style="
+                background-color: var(--color-border, #ddd);
+                color: var(--color-text, #333);
+              "
+            >
+              --color-border
+            </div>
+          </section>
+
+          <section id="spacing-system" class="styleguide-section">
+            <h3>3.3 Spacing System</h3>
+            <p>
+              Consistent spacing is key to a well-designed interface. We use a
+              spacing scale based on multiples of a base unit (e.g., 4px or
+              8px). This is implemented using CSS Custom Properties in
+              <code>src/css/variables.css</code>.
+            </p>
+            <!-- TODO: [Styleguide] Show examples of spacing units (LSG3.3) -->
+            <p>Examples:</p>
+            <div
+              class="spacing-example"
+              style="margin-bottom: var(--spacing-xs)"
+            >
+              <code>--spacing-xs</code> (e.g., 4px)
+            </div>
+            <div
+              class="spacing-example"
+              style="margin-bottom: var(--spacing-sm)"
+            >
+              <code>--spacing-sm</code> (e.g., 8px)
+            </div>
+            <div
+              class="spacing-example"
+              style="margin-bottom: var(--spacing-md)"
+            >
+              <code>--spacing-md</code> (e.g., 16px)
+            </div>
+            <div
+              class="spacing-example"
+              style="margin-bottom: var(--spacing-lg)"
+            >
+              <code>--spacing-lg</code> (e.g., 24px)
+            </div>
+            <div
+              class="spacing-example"
+              style="margin-bottom: var(--spacing-xl)"
+            >
+              <code>--spacing-xl</code> (e.g., 32px)
+            </div>
+            <p>
+              These variables should be used for margins, paddings, and gaps to
+              maintain vertical and horizontal rhythm.
+            </p>
+          </section>
+
+          <section id="grid-system" class="styleguide-section">
+            <h3>3.4 Grid System</h3>
+            <p>
+              If a global CSS grid or layout system is used, it will be
+              documented here. Many layout concerns may be handled by individual
+              components or page-specific CSS.
+            </p>
+            <!-- TODO: [Styleguide] Document global grid system if applicable (LSG3.4) -->
+          </section>
+        </section>
+
+        <section id="components" class="styleguide-section">
+          <h2>UI Components</h2>
+          <p>
+            Reusable UI components that form the building blocks of the
+            application. These are defined as Web Components in
+            <code>src/js/components/</code>.
+          </p>
+
+          <section id="buttons" class="styleguide-section">
+            <h3>Buttons</h3>
+            <p>Examples of different button styles and states.</p>
+            <h4>Primary Button</h4>
+            <button class="button">Primary Button</button>
+            <button class="button" disabled>Disabled Primary</button>
+            <h4>Secondary Button</h4>
+            <button class="button button--secondary">Secondary Button</button>
+            <button class="button button--secondary" disabled>
+              Disabled Secondary
+            </button>
+            <h4>Link Button</h4>
+            <a href="#" class="button">Link as Button</a>
+            <a href="#" class="button button--secondary">Secondary Link</a>
+
+            <pre><code>&lt;button class="button"&gt;Primary Button&lt;/button&gt;
+&lt;button class="button button--secondary"&gt;Secondary Button&lt;/button&gt;
+&lt;a href="#" class="button"&gt;Link as Button&lt;/a&gt;</code></pre>
+          </section>
+
+          <section id="forms" class="styleguide-section">
+            <h3>Forms</h3>
+            <p>Standard form elements and their styling.</p>
+            <form>
+              <div>
+                <label for="text-input">Text Input:</label>
+                <input type="text" id="text-input" name="text-input" />
+              </div>
+              <div>
+                <label for="select-input">Select Input:</label>
+                <select id="select-input" name="select-input">
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                </select>
+              </div>
+              <div>
+                <label for="textarea-input">Textarea:</label>
+                <textarea id="textarea-input" name="textarea-input"></textarea>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="checkbox-input"
+                  name="checkbox-input"
+                />
+                <label for="checkbox-input">Checkbox</label>
+              </div>
+              <div>
+                <input type="radio" id="radio1" name="radio-group" value="1" />
+                <label for="radio1">Radio 1</label>
+                <input type="radio" id="radio2" name="radio-group" value="2" />
+                <label for="radio2">Radio 2</label>
+              </div>
+              <button type="submit" class="button">Submit</button>
+            </form>
+          </section>
+
+          <section id="navigation" class="styleguide-section">
+            <h3>Navigation</h3>
+            <p>Main site navigation component.</p>
+            <!-- Placeholder for SiteHeader component -->
+            <site-header></site-header>
+            <p><em>(Live SiteHeader component above)</em></p>
+          </section>
+
+          <section id="footer-component" class="styleguide-section">
+            <h3>Footer</h3>
+            <p>Main site footer component.</p>
+            <!-- Placeholder for SiteFooter component -->
+            <site-footer></site-footer>
+            <p><em>(Live SiteFooter component above)</em></p>
+          </section>
+
+          <!-- Add more component showcases as they are developed -->
+        </section>
+
+        <section id="utility-classes" class="styleguide-section">
+          <h2>Utility Classes</h2>
+          <p>
+            Helper classes for common styling adjustments (e.g., text alignment,
+            visibility).
+          </p>
+          <!-- Examples: .text-center, .hidden, .sr-only -->
+          <p><code>.text-center</code>: Centers text.</p>
+          <p class="text-center">This text is centered.</p>
+          <p>
+            <code>.hidden</code>: Hides an element (visually and from screen
+            readers).
+          </p>
+          <div class="hidden">This element is hidden.</div>
+          <p>More to be added.</p>
+        </section>
+
+        <section id="page-layouts" class="styleguide-section">
+          <h2>Page Layouts</h2>
+          <p>Examples or descriptions of common page layouts.</p>
+          <!-- Example: Two-column layout, full-width layout -->
+          <p>Details to be added.</p>
+        </section>
+      </div>
+    </main>
+    <site-footer></site-footer>
+    <script type="module" src="./js/main.js?v=1"></script>
+  </body>
+</html>

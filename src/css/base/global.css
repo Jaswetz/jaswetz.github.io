@@ -1,0 +1,71 @@
+/* src/css/base/global.css */
+
+/* Set a base font size on html to make rem units more predictable */
+html {
+  font-size: 100%;
+  /* Ensures 1rem = 16px by default in most browsers */
+  line-height: 1.15;
+  /* Basic line-height, modern-normalize used this, good for a base */
+  -webkit-text-size-adjust: 100%;
+  /* Prevent adjustments of font size after orientation changes in iOS. */
+  -moz-tab-size: 4;
+  /* More readable tab size */
+  tab-size: 4;
+  scroll-behavior: smooth;
+  /* Enable smooth scrolling for anchor links */
+  scroll-padding-top: 100px;
+  /* Account for fixed header when scrolling to anchors */
+}
+
+body {
+  height: 100vh;
+
+}
+
+/* Main content layout and section styles */
+
+.main-content {
+  position: relative;
+  /* margin-bottom: var(--space-l-3xl); */
+  top: calc(-1 * var(--space-3xl));
+  background: var(--color-background);
+  box-shadow: 0 -12px 12px -8px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  width: var(--section-width);
+  margin-bottom: var(--space-3xl);
+}
+
+.page__home section {
+  padding-bottom: var(--space-3xl);
+  margin-top: var(--space-3xl);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.main-content section:last-child {
+  border-bottom: none;
+}
+
+.wrapper {
+  margin-inline: auto;
+  max-width: var(--max-width);
+  padding-inline: var(--space-xl);
+  position: relative;
+  /* display: grid; */
+  gap: var(--space-xl);
+  /* Add space between children */
+}
+
+/* Heading decorative elements */
+h2::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 0.2rem;
+  background: var(--color-primary);
+}
+
+/* Quote styles */
+.quote {
+  display: block;
+}

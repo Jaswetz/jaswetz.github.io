@@ -1,0 +1,10 @@
+/* 
+ * Forms - Main component file
+ * This file imports modular CSS components for better organization
+ */
+
+/* Import form component modules */
+@import url('./form-layout.css');
+@import url('./form-inputs.css');
+@import url('./form-controls.css');
+@import url('./form-validation.css');
