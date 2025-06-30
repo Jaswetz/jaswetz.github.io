@@ -159,7 +159,7 @@ class SiteFooter extends HTMLElement {
            target="_blank" class="button">LinkedIn</a>
         </li>
             <li>
-           <a href="https://jaswetz.github.io" target="_blank" rel="noopener noreferrer" class="button">GitHub</a>
+           <a href="https://github.com/Jaswetz" target="_blank" rel="noopener noreferrer" class="button">GitHub</a>
         </li>
         <li>
         <a target="_blank"

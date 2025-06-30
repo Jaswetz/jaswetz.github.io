@@ -35,6 +35,7 @@
   --font-family-sans: "PT Sans", sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
+  --heading-font-weight: var(--font-weight-semibold);
 
   /* Font Weights */
   --font-weight-light: 300;

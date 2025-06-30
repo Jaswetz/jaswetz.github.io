@@ -2,32 +2,15 @@
     Hero Section
     -------------------------------------------------------------------------- */
 
+/* TODO: Cleanup up header section. Decided to make header look similar throughout. Projects will probably be left aligned. */
+
 .hero--project {
-    position: relative;
-    background-image: linear-gradient(to right,
-            hsla(from var(--color-background) h s l / 0.40),
-            hsla(0 0% 100% / 0.40));
     min-height: calc(var(--space-3xl) * 4.5);
+
 }
 
-.hero--project__header {
-    color: var(--color-primary);
-    font-weight: 600;
-}
+.hero--project__header {}
 
-.hero--project::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("../../img/projects/autodesk-messaging/banner-adsk.jpg");
-    background-size: cover;
-    background-position: center;
-    opacity: 0.25;
-    z-index: -1;
-}
 
 .hero--project__content {
     padding-top: var(--space-m);
