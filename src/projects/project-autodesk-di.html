@@ -7,7 +7,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Autodesk Fusion: Achieving Device Independence - Case Study</title>
+    <title>Autodesk Fusion: Achieving Device Independence</title>
     <link rel="stylesheet" href="../css/main.css" />
 
     <!-- Feather Icons CDN -->
@@ -38,771 +38,117 @@
     />
     <link rel="apple-touch-icon" href="../assets/favicons/apple-icon.png" />
   </head>
-  <body>
+  <body class="project">
     <site-header></site-header>
-    <main
-      class="project-case-study device-independence-case-study-grid main-content wrapper"
-    >
-      <article class="article">
-        <div class="sidebar grid grid--2-column--sidebar">
-          <div class="article__content">
-            <!-- Project Hero -->
-            <section class="project-hero" id="project-hero">
-              <h1>Autodesk Fusion: Achieving Device Independence</h1>
-              <p class="project-hero__subtitle">
-                Transforming a desktop-only CAD application into a unified,
-                cross-platform experience that scales seamlessly across all
-                devices
-              </p>
-              <img
-                src="../img/projects/autodesk-DI/fusion-di.jpg"
-                alt="Autodesk Fusion device independence showcase"
-                class="project-hero-image"
-              />
-            </section>
-
-            <section class="project-summary" id="project-summary">
-              <h2>Project Summary</h2>
-              <p class="project-summary__description">
-                Over three years, I led the UX architecture for transforming
-                Autodesk Fusion from a desktop-only application into a
-                device-independent platform that works seamlessly across mobile,
-                tablet, web, and desktop environments.
-              </p>
-
-              <div class="project-summary__cards">
-                <div class="project-summary__card">
-                  <h3>Role</h3>
-                  <p>UX Architect (iOS/Web)</p>
-                </div>
-                <div class="project-summary__card">
-                  <h3>Duration</h3>
-                  <p>3+ Years</p>
-                </div>
-                <div class="project-summary__card">
-                  <h3>Team</h3>
-                  <p>
-                    2 Senior UX Designers, 2 User Researchers, Design Manager,
-                    Multiple Dev Teams
-                  </p>
-                </div>
-                <div class="project-summary__card">
-                  <h3>Platform</h3>
-                  <p>Cross-platform (Mobile, Tablet, Web, Desktop)</p>
-                </div>
-              </div>
-
-              <div class="challenge-callout">
-                <h3>The Challenge</h3>
-                <p>
-                  <strong
-                    >"How might we design a unified responsive experience that
-                    scales across all platforms?"</strong
-                  >
-                </p>
-                <p>
-                  Fusion faced increasing pressure from competitors who already
-                  had web, tablet, and phone apps. Device availability is
-                  becoming the default expectation for any modern product, and
-                  mobilizing Fusion had the potential to grow adoption and sales
-                  significantly.
-                </p>
-              </div>
-            </section>
-
-            <section class="project-problem" id="the-problem">
-              <h2>Understanding the Problem</h2>
-
-              <div class="problem-statement">
-                <h3>What is Fusion?</h3>
-                <p>
-                  Autodesk Fusion helps users manufacture products, supporting
-                  the end-to-end workflow. Users range from large mining
-                  equipment manufacturers to footwear designers. While best
-                  known for its 3D design environment, Fusion has acquired many
-                  technologies over the years, adding workspaces like
-                  simulation, generative design, electronics, and drawings. It
-                  also has a robust data management system.
-                </p>
-                <p>
-                  <strong
-                    >In short: it's complex, has design consistency issues, and
-                    features a dense UI optimized exclusively for desktop
-                    use.</strong
-                  >
-                </p>
-              </div>
-
-              <div class="problem-cards">
-                <div class="problem-card">
-                  <div class="problem-card__content">
-                    <h3>Competitive Pressure</h3>
-                    <p>
-                      Competitors already had web, tablet, and phone apps while
-                      Fusion remained desktop-only, risking subscription loss in
-                      5-10 years.
-                    </p>
-                  </div>
-                </div>
-                <div class="problem-card">
-                  <div class="problem-card__content">
-                    <h3>Complex Dense UI</h3>
-                    <p>
-                      Fusion's interface was optimized solely for mouse and
-                      keyboard interactions, limiting usability across other
-                      devices and contexts.
-                    </p>
-                  </div>
-                </div>
-                <div class="problem-card">
-                  <div class="problem-card__content">
-                    <h3>No Cross-Platform Strategy</h3>
-                    <p>
-                      There was no established framework to extend Fusion's
-                      reach across devices or accommodate diverse input methods.
-                    </p>
-                  </div>
-                </div>
-                <div class="problem-card">
-                  <div class="problem-card__content">
-                    <h3>Modern Expectations</h3>
-                    <p>
-                      Availability on any device is becoming the default
-                      expectation for modern software products.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="before-after-comparison">
-                <div class="comparison-container">
-                  <figure class="before">
-                    <img
-                      src="../img/projects/autodesk-DI/old-fusion.jpg"
-                      alt="Original desktop-only Fusion interface"
-                      class="comparison__image"
-                    />
-                    <div class="caption">
-                      <h4>Before: Desktop-Only Experience</h4>
-                      <p>
-                        Complex interface optimized solely for mouse and
-                        keyboard interactions, with dense UI and specialized
-                        controls that limited accessibility to traditional
-                        workstations.
-                      </p>
-                    </div>
-                  </figure>
-                  <figure class="after">
-                    <img
-                      src="../img/projects/autodesk-DI/fusion-di.jpg"
-                      alt="New device-independent Fusion experience"
-                      class="comparison__image"
-                    />
-                    <div class="caption">
-                      <h4>After: Device-Independent Experience</h4>
-                      <p>
-                        Responsive, adaptive interface that scales across all
-                        platforms with support for multiple input methods
-                        (touch, stylus, mouse), empowering creators to design
-                        anywhere.
-                      </p>
-                    </div>
-                  </figure>
-                </div>
-              </div>
-            </section>
-
-            <section class="project-approach" id="approach">
-              <h2>Strategic Approach</h2>
-              <p class="approach-overview">
-                This project required a dual strategy: developing capabilities
-                guidelines for what workflows and data are available on each
-                device, and creating new interaction concepts for cross-platform
-                experiences.
-              </p>
-
-              <div class="approach-phases">
-                <div class="approach-phase grid grid--2-column">
-                  <div class="approach-phase__content">
-                    <div class="approach-phase__badge">Phase 1</div>
-                    <h3 class="approach-phase__title">Capabilities Strategy</h3>
-                    <p>
-                      Guidelines & rules for what workflows and data are
-                      available on what devices & contexts
-                    </p>
-
-                    <h4>User Value Framework</h4>
-                    <p>
-                      Working with our user researcher, we created a
-                      Practitioner Value Framework based on comprehensive user
-                      surveys. This revealed that to drive adoption, we needed
-                      to focus on <strong>features/functionality</strong> and
-                      deliver an exceptional <strong>user experience</strong>.
-                    </p>
-
-                    <h4>Customer Workshop at Autodesk University</h4>
-                    <p>
-                      I ran a customer-focused workshop with 20 users to gain
-                      deeper understanding of specific needs on each device
-                      type.
-                    </p>
-                    <div class="key-insight">
-                      <p>
-                        <strong>Key Finding:</strong> "Customers want to perform
-                        existing tasks with more mobility."
-                      </p>
-                    </div>
-                  </div>
-                  <div class="approach-phase__image">
-                    <img
-                      src="../img/projects/autodesk-DI/old-fusion.jpg"
-                      alt="Current desktop interface analysis"
-                    />
-                  </div>
-                </div>
-
-                <div class="approach-phase grid grid--2-column">
-                  <div class="approach-phase__image">
-                    <img
-                      src="../img/projects/autodesk-DI/mockuuups-transparent-ipad-pro-mockup.png"
-                      alt="Interaction strategy prototype"
-                    />
-                  </div>
-                  <div class="approach-phase__content">
-                    <div class="approach-phase__badge">Phase 2</div>
-                    <h3 class="approach-phase__title">Interaction Strategy</h3>
-                    <p>
-                      Concepts for new workflows and components optimized for
-                      different devices and input methods
-                    </p>
-
-                    <h4>Device-Specific User Insights</h4>
-                    <ul>
-                      <li>
-                        <strong>📱 Phone:</strong> Mostly used for sharing,
-                        quick edits, and quick annotations. Users will edit "in
-                        a pinch"
-                      </li>
-                      <li>
-                        <strong>📊 Tablet:</strong> High demand for modeling,
-                        annotation, and CNC updates. Most 'authoring' personas
-                        want Fusion on tablets
-                      </li>
-                      <li>
-                        <strong>🌐 Browser:</strong> Preferred for flexibility
-                        but concerns about performance limitations
-                      </li>
-                      <li>
-                        <strong>🔄 Cross-Device:</strong> Users frequently
-                        switch devices and locations for collaboration and
-                        different tasks
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div class="approach-phase grid grid--2-column">
-                  <div class="approach-phase__content">
-                    <div class="approach-phase__badge">Phase 3</div>
-                    <h3 class="approach-phase__title">
-                      Tasks Don't Differ, They Scale
-                    </h3>
-                    <p>
-                      A crucial insight emerged: users wanted to perform the
-                      same types of tasks on all devices, but the complexity and
-                      duration of these tasks scaled based on device mobility.
-                    </p>
-
-                    <h4>Task Rationalization: Consumption vs Creation</h4>
-                    <p>
-                      <strong>Consumption Tasks:</strong> Analyze documents,
-                      view markups, analyze 3D models, view tasks from project
-                      manager
-                    </p>
-                    <p>
-                      <strong>Creation Tasks:</strong> Create 3D models, create
-                      renderings, create toolpaths, adjust 3D models
-                    </p>
-                    <p>
-                      <strong>Insight:</strong> Consumption tasks are naturally
-                      more mobile-friendly than creation tasks, informing our
-                      progressive disclosure strategy.
-                    </p>
-                  </div>
-                  <div class="approach-phase__image">
-                    <img
-                      src="../img/projects/autodesk-DI/fusion-di.jpg"
-                      alt="Final device-independent architecture"
-                    />
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section class="project-solution" id="solution">
-              <h2>Design Solutions</h2>
-              <p class="solution-overview">
-                Based on our research insights, I developed comprehensive design
-                strategies addressing three critical areas that needed
-                rethinking for device independence.
-              </p>
-
-              <div class="solution-areas">
-                <div class="solution-area">
-                  <h3>1. Information Density</h3>
-                  <p>
-                    Adapting the interface for smaller displays while
-                    maintaining functionality through progressive disclosure and
-                    direct manipulation.
-                  </p>
-                  <ul>
-                    <li>
-                      <strong>Smaller Displays & Larger Targets:</strong> Mobile
-                      devices require larger touch targets and display less
-                      information at once
-                    </li>
-                    <li>
-                      <strong>Progressive Disclosure:</strong> Creating a less
-                      cluttered interface while providing access to necessary
-                      features when needed
-                    </li>
-                    <li>
-                      <strong>Direct Manipulation:</strong> Allowing users to
-                      interact directly with objects in the canvas
-                    </li>
-                    <li>
-                      <strong>Single Window Mode:</strong> Using single-document
-                      workflows or letting the browser handle tabs
-                    </li>
-                  </ul>
-                </div>
-
-                <div class="solution-area">
-                  <h3>2. Input Methods</h3>
-                  <p>
-                    Addressing new ergonomics, missing inputs, and feedback
-                    limitations across different devices.
-                  </p>
-                  <ul>
-                    <li>
-                      <strong>New Ergonomics:</strong> Commands placed near
-                      edges for easier thumb access on tablets
-                    </li>
-                    <li>
-                      <strong>Rethinking Missing Interactions:</strong>
-                      Multi-select enabled by default when no keyboard detected
-                    </li>
-                    <li>
-                      <strong>Prioritized UI Feedback:</strong> Developing UI in
-                      separate threads for more responsive feedback
-                    </li>
-                  </ul>
-                </div>
-
-                <div class="solution-area">
-                  <h3>3. Data Assumptions</h3>
-                  <p>
-                    Rethinking our save model and data handling for mobile and
-                    web contexts.
-                  </p>
-                  <ul>
-                    <li>
-                      <strong>Rethinking Save Model:</strong> Mobile and web
-                      users expect "always-save" functionality
-                    </li>
-                    <li>
-                      <strong>Fluid Resiliency:</strong> Designing for less
-                      stable connections and varying data costs
-                    </li>
-                    <li>
-                      <strong>Minimizing Large Transfers:</strong> Optimizing
-                      data usage for mobile contexts
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="architecture-section">
-                <h3>New Canvas Architecture</h3>
-                <p>
-                  I redesigned the core canvas experience, focusing on the 7
-                  main areas that make up Fusion's interface:
-                </p>
-
-                <div class="architecture-components">
-                  <span class="component">Tabs</span>
-                  <span class="component">Toolbar</span>
-                  <span class="component">Canvas</span>
-                  <span class="component">Browser</span>
-                  <span class="component">Panel</span>
-                  <span class="component">Display Toolbar</span>
-                  <span class="component">Timeline</span>
-                </div>
-
-                <div class="architecture-highlight">
-                  <h4>Responsive Toolbar Positioning</h4>
-                  <p>
-                    Created a condensed toolbar version with device-specific
-                    positioning:
-                  </p>
-                  <ul>
-                    <li>
-                      <strong>Desktop & Web:</strong> Top placement (familiar)
-                    </li>
-                    <li>
-                      <strong>Tablet:</strong> Left placement (thumb-accessible)
-                    </li>
-                    <li>
-                      <strong>Mobile:</strong> Bottom placement
-                      (thumb-optimized)
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-
-            <section class="project-case-study" id="case-study">
-              <h2>Deep Dive: Navigation Toolbar & Views Feature</h2>
-              <p class="case-study-intro">
-                During user testing of our surface prototype, several users
-                suggested moving the navigation bar to the top-right corner next
-                to the view cube. This feedback prompted a comprehensive
-                research and redesign effort.
-              </p>
-
-              <h3>Research Process</h3>
-              <div class="research-step">
-                <h4>Card Sorting Study</h4>
-                <p>
-                  Conducted unmoderated closed card sorting with 22 users across
-                  4 personas: Design, Manufacturing, Engineering, and
-                  Electronics.
-                </p>
-              </div>
-
-              <div class="problems-identified">
-                <h4>Problems Identified</h4>
-                <ul class="problem-list">
-                  <li>
-                    Navigation bar contained tools not relevant to navigation
-                  </li>
-                  <li>Inconsistent navigation bars across workspaces</li>
-                  <li>Hard to access, discoverability issues</li>
-                  <li>Taking up too much vertical space</li>
-                  <li>Bottom-center placement not ideal for smaller screens</li>
-                  <li>Not scalable across devices</li>
-                  <li>Not aligned with similar tools in other software</li>
-                </ul>
-              </div>
-
-              <h3>Information Architecture Approach</h3>
-              <p>
-                I used a multifaceted approach to tool placement, balancing
-                frequency of use, hierarchy, existing user habits, and new user
-                friendliness.
-              </p>
-
-              <div class="ia-factors">
-                <div class="factor">
-                  <h4>Usage Frequency</h4>
-                  <p>
-                    Analytics revealed rarely-used commands that could move to
-                    preferences
-                  </p>
-                </div>
-                <div class="factor">
-                  <h4>Customer Expectations</h4>
-                  <p>
-                    Card sorting revealed users' mental models for tool
-                    organization
-                  </p>
-                </div>
-                <div class="factor">
-                  <h4>Hierarchy Analysis</h4>
-                  <p>
-                    Categorized application-level vs. document-specific vs.
-                    workspace commands
-                  </p>
-                </div>
-                <div class="factor">
-                  <h4>New User Consideration</h4>
-                  <p>
-                    Ensuring approachability for users unfamiliar with the
-                    system
-                  </p>
-                </div>
-              </div>
-
-              <h3>Competitive Analysis & Results</h3>
-              <p>
-                Research revealed that leading CAD and 3D tools place navigation
-                controls near the ViewCube, typically in the upper right on
-                desktop, web, and tablet. This validated our direction and
-                aligned with user mental models from other similar software.
-              </p>
-
-              <div class="design-evolution">
-                <h4>Design Evolution</h4>
-                <p>
-                  <strong>Before:</strong> Cluttered bottom-center navigation
-                  with mixed functionality
-                </p>
-                <p>
-                  <strong>After:</strong> Clean, modern navigation in top-right
-                  with improved IA:
-                </p>
-                <ul>
-                  <li>Multiple views moved to Views menu</li>
-                  <li>Canvas display settings in toolbar</li>
-                  <li>Redundant options removed</li>
-                  <li>Logical groupings with labels</li>
-                  <li>Collapsible for space-saving</li>
-                </ul>
-              </div>
-            </section>
-
-            <section class="results-section" id="results-impact">
-              <h2>Results & Impact</h2>
-              <p class="results-section__intro">
-                The Surface prototype testing validated our architectural
-                decisions and demonstrated strong user satisfaction with the new
-                device-independent approach.
-              </p>
-
-              <div class="results-grid">
-                <div class="result-subscriber-card">
-                  <div class="result-subscriber-number">4.4/5</div>
-                  <div class="result-subscriber-label">User Satisfaction</div>
-                  <div class="result-subscriber-description">
-                    From 5 on-site user testing sessions with Surface prototype
-                  </div>
-                </div>
-
-                <div class="result-benefits">
-                  <div class="result-benefit">
-                    <div class="result-benefit__icon">
-                      <i data-feather="check-circle"></i>
-                    </div>
-                    <div class="result-benefit__content">
-                      <h3 class="result-benefit__title">
-                        6 New Interactions Proven
-                      </h3>
-                      <p class="result-benefit__description">
-                        Validated new interaction patterns through comprehensive
-                        user testing
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="result-benefit">
-                    <div class="result-benefit__icon">
-                      <i data-feather="search"></i>
-                    </div>
-                    <div class="result-benefit__content">
-                      <h3 class="result-benefit__title">
-                        7 Opportunities Identified
-                      </h3>
-                      <p class="result-benefit__description">
-                        Discovered new areas for improvement and future
-                        development
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="result-benefit">
-                    <div class="result-benefit__icon">
-                      <i data-feather="layers"></i>
-                    </div>
-                    <div class="result-benefit__content">
-                      <h3 class="result-benefit__title">
-                        Framework Established
-                      </h3>
-                      <p class="result-benefit__description">
-                        Created reusable patterns for future Autodesk products
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="user-feedback">
-                <h3>Key User Feedback</h3>
-                <div class="feedback-items">
-                  <div class="feedback-item">
-                    <h4>Design Appreciation</h4>
-                    <p>
-                      Participants liked that the interface was consistent and
-                      familiar with other Autodesk applications and Fusion
-                      desktop. Many appreciated the minimal and clean interface.
-                    </p>
-                  </div>
-                  <div class="feedback-item">
-                    <h4>Tablet Value Recognition</h4>
-                    <p>
-                      Participants clearly saw the usefulness of tablet
-                      functionality and the convenience it offered for their
-                      workflows.
-                    </p>
-                  </div>
-                  <div class="feedback-item">
-                    <h4>Navigation Familiarity</h4>
-                    <p>
-                      The navigation bar location felt familiar to users,
-                      similar to other Autodesk products like Revit.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="project-management">
-                <h3>Project Management & Collaboration</h3>
-                <p>
-                  Managing this complex, multi-year project required innovative
-                  approaches:
-                </p>
-                <ul>
-                  <li>
-                    <strong>Asynchronous Stakeholder Engagement:</strong>
-                    Created recorded presentations linked to Mural boards for
-                    global feedback collection
-                  </li>
-                  <li>
-                    <strong>Comprehensive Project Tracking:</strong> Built
-                    Airtable system connecting features, tasks, research, and
-                    feedback
-                  </li>
-                  <li>
-                    <strong>Orchestra Conductor Role:</strong> Balanced core
-                    design with coordination across multiple UX teams and POC
-                    projects
-                  </li>
-                </ul>
-              </div>
-
-              <div class="professional-growth">
-                <div class="professional-growth__icon">
-                  <i data-feather="trending-up"></i>
-                </div>
-                <div class="professional-growth__content">
-                  <h3 class="professional-growth__title">
-                    Strategic Leadership Impact
-                  </h3>
-                  <p class="professional-growth__description">
-                    Led cross-functional collaboration across UX teams,
-                    established async feedback systems via Mural and Airtable,
-                    and balanced current product needs with future architecture
-                    requirements - demonstrating systems thinking at enterprise
-                    scale.
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            <section class="key-learnings-section" id="key-learnings">
-              <h2>Key Learnings</h2>
-              <p class="key-learnings-section__intro">
-                This multi-year project provided valuable insights into
-                enterprise-scale UX architecture and cross-platform design
-                strategy.
-              </p>
-
-              <div class="key-learnings-grid">
-                <div class="key-learning-card">
-                  <div class="key-learning-number">01</div>
-                  <h3 class="key-learning-title">Tasks Scale, Don't Change</h3>
-                  <p class="key-learning-description">
-                    Users want to perform the same core tasks on all devices,
-                    but complexity scales down as mobility increases. This
-                    insight drove our progressive disclosure strategy.
-                  </p>
-                </div>
-
-                <div class="key-learning-card">
-                  <div class="key-learning-number">02</div>
-                  <h3 class="key-learning-title">Mental Models Matter</h3>
-                  <p class="key-learning-description">
-                    Balancing existing user habits with new interaction patterns
-                    requires careful research. Card sorting and competitive
-                    analysis were crucial for navigation decisions.
-                  </p>
-                </div>
-
-                <div class="key-learning-card">
-                  <div class="key-learning-number">03</div>
-                  <h3 class="key-learning-title">
-                    Async Collaboration at Scale
-                  </h3>
-                  <p class="key-learning-description">
-                    Managing global stakeholders requires creative communication
-                    strategies. Recorded presentations + Mural boards enabled
-                    meaningful async feedback collection.
-                  </p>
-                </div>
-
-                <div class="key-learning-card">
-                  <div class="key-learning-number">04</div>
-                  <h3 class="key-learning-title">
-                    Architecture Enables Innovation
-                  </h3>
-                  <p class="key-learning-description">
-                    Strong information architecture and systematic component
-                    thinking create foundations that accelerate future product
-                    development and maintain consistency.
-                  </p>
-                </div>
-
-                <div class="key-learning-card">
-                  <div class="key-learning-number">05</div>
-                  <h3 class="key-learning-title">Prototype Early and Often</h3>
-                  <p class="key-learning-description">
-                    The Surface prototype allowed us to validate architectural
-                    decisions and interaction patterns before full development,
-                    saving time and ensuring user satisfaction.
-                  </p>
-                </div>
-
-                <div class="key-learning-card">
-                  <div class="key-learning-number">06</div>
-                  <h3 class="key-learning-title">Cross-Platform Thinking</h3>
-                  <p class="key-learning-description">
-                    Designing for device independence required fundamentally
-                    rethinking assumptions about input methods, display
-                    constraints, and user contexts.
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            <section class="project-status" id="project-status">
-              <div class="status-callout">
-                <h2>Project Status</h2>
-                <p>
-                  While I wasn't able to see this product launched during my
-                  tenure, the foundation and architecture I established should
-                  be released by the end of 2025. The comprehensive research,
-                  testing, and design work provides a solid foundation for
-                  Autodesk Fusion's device-independent future.
-                </p>
-              </div>
-            </section>
-          </div>
-
-          <div class="article__sidebar">
-            <nav class="sidebar-nav">
-              <h3>Contents</h3>
-              <ul>
-                <li><a href="#project-summary">Project Summary</a></li>
-                <li><a href="#the-problem">The Challenge</a></li>
-                <li><a href="#approach">Strategic Approach</a></li>
-                <li><a href="#solution">Design Solutions</a></li>
-                <li><a href="#case-study">Navigation Case Study</a></li>
-                <li><a href="#results-impact">Results & Impact</a></li>
-                <li><a href="#key-learnings">Key Learnings</a></li>
-                <li><a href="#project-status">Project Status</a></li>
-              </ul>
-            </nav>
+    <section class="hero hero--project">
+      <div class="wrapper">
+        <div class="hero--project__content">
+          <div class="hero--project__label">Autodesk</div>
+          <h1 class="hero--project__header">
+            Architecting a multi-device platform.
+          </h1>
+          <div class="hero--project__meta">
+            <span class="hero--project__role">UX Architect (iOS/Web)</span>
+            <span class="hero--project__timeline">3+ Years</span>
           </div>
         </div>
+      </div>
+    </section>
+    <main class="main-content wrapper">
+      <article class="article">
+        <section class="journey-section">
+          <h2>The Journey To Device Independence</h2>
+
+          <div class="before-after-comparison grid grid--auto-fit">
+            <div class="comparison-item card--white">
+              <figure>
+                <img
+                  src="../img/projects/autodesk-DI/old-fusion.jpg"
+                  alt="Original desktop-only Fusion interface"
+                  class="comparison-image"
+                />
+              </figure>
+              <div class="comparison-content">
+                <h3><strong>BEFORE:</strong> Desktop-Only Experience</h3>
+                <p>
+                  The original Autodesk Fusion was designed exclusively for
+                  desktop environments, with a complex interface optimized for
+                  mouse and keyboard interactions. While powerful, its dense UI
+                  and specialized controls limited accessibility and confined
+                  users to traditional workstations.
+                </p>
+              </div>
+            </div>
+
+            <div class="comparison-item after card--white">
+              <figure>
+                <img
+                  src="../img/projects/autodesk-DI/fusion-di.jpg"
+                  alt="New device-independent Fusion experience"
+                  class="comparison-image"
+                />
+              </figure>
+              <div class="comparison-content">
+                <h3><strong>AFTER:</strong> Device-Independent Experience</h3>
+                <p>
+                  The reimagined Fusion experience features a responsive,
+                  adaptive interface that seamlessly scales across mobile,
+                  tablet, web, and desktop platforms. With thoughtful
+                  architecture and support for multiple input methods (touch,
+                  stylus, and mouse), giving Fusion a path to empower creators
+                  to design anywhere, on any device.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="project-overview">
+          <h3>Project Overview</h3>
+          <p>
+            Autodesk Fusion is exclusively available as a desktop application
+            for Mac and Windows. While the software provides robust
+            functionality, its complex interface is optimized solely for mouse
+            and keyboard interactions, limiting its usability across other
+            devices. There was no established cross-platform strategy to extend
+            its reach and move it onto every device.
+          </p>
+
+          <p>
+            <strong>The goal of this multiyear project was two fold:</strong>
+          </p>
+
+          <ul class="grid grid--auto-fit">
+            <li class="card--outline">
+              <strong>Redefine Fusion as a device-independent product</strong>
+              with an experience that scales seamlessly across mobile, tablet,
+              web, and desktop platforms.
+            </li>
+            <li class="card--outline">
+              <strong
+                >Lay the foundation for a cross-platform design system </strong
+              >that could serve as a framework for future Autodesk products,
+              accommodating diverse input methods such as touch, stylus, and
+              mouse.
+            </li>
+          </ul>
+
+          <p>
+            As the Lead Designer, I worked alongside two senior designers, to
+            explore, test, and build cross-platform solutions. This initiative
+            required close collaboration with all other UX design teams and
+            cross-functional teams over several years to align on strategy,
+            design principles, and technical feasibility.
+          </p>
+          <figure class="mockup-section">
+            <img
+              src="../img/projects/autodesk-DI/mockuuups-transparent-ipad-pro-mockup.png"
+              alt="Mockup of Fusion on iPad Pro"
+              class="mockup-image"
+            />
+            <figcaption>Mockup of Fusion on iPad Pro.</figcaption>
+          </figure>
+        </section>
 
         <nav class="project-navigation">
           <a href="./project-adsk-notification.html" class="prev-project"

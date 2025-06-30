@@ -31,6 +31,7 @@
 /* Add other component imports here and assign to 'components' layer */
 
 @import "./pages/page-about.css" layer(utilities);
+@import "./pages/page-autodesk-di.css" layer(utilities);
 @import "./pages/page-index/index-section-hero.css" layer(utilities);
 @import "./pages/page-index/index-section-quotes.css" layer(utilities);
 @import "./pages/page-index/index-section-featured-projects.css" layer(utilities);

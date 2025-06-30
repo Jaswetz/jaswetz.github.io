@@ -38,7 +38,7 @@ h6 {
   /* margin-bottom: var(--space-6); */
   font-weight: var(--font-weight-med);
   font-feature-settings: "cpsp" on;
-  /* font-weight: var(--heading-font-weight, var(--font-bold)); */
+  font-weight: var(--heading-font-weight, var(--font-bold));
   letter-spacing: var(--heading-kerning, var(--kerning));
   line-height: var(--heading-line-height, var(--leading-fine));
   overflow-wrap: anywhere;

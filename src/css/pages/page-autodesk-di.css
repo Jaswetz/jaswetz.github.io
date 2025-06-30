@@ -1,0 +1,125 @@
+/* ==========================================================================
+    AUTODESK DI PROJECT PAGE STYLES
+    ========================================================================== */
+
+/* --------------------------------------------------------------------------
+    Journey Section
+    -------------------------------------------------------------------------- */
+.journey-section {
+    margin: var(--space-3xl) 0;
+}
+
+/* --------------------------------------------------------------------------
+    Before/After Comparison
+    -------------------------------------------------------------------------- */
+
+.before-after-comparison {
+    margin: var(--space-2xl) 0;
+}
+
+.comparison-item {
+    margin-bottom: var(--space-3xl);
+    height: auto;
+}
+
+.comparison-item:last-child {
+    margin-bottom: 0;
+}
+
+.comparison-image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-medium);
+    margin-bottom: var(--space-l);
+}
+
+.comparison-content h3 strong {
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+}
+
+.comparison-content h3 {
+    margin-bottom: var(--space-s);
+    font-weight: var(--font-weight-normal);
+}
+
+
+.after {
+    border-color: var(--color-primary);
+}
+
+
+/* --------------------------------------------------------------------------
+    Project Overview Section
+    -------------------------------------------------------------------------- */
+
+
+.project-overview h3 {
+    margin-bottom: var(--heading-spacing);
+}
+
+.project-overview p {
+    margin-bottom: var(--space-m);
+}
+
+.project-overview ul {
+    padding-left: 0;
+    list-style-type: none;
+    counter-reset: item;
+}
+
+.project-overview ul li {
+    position: relative;
+}
+
+.project-overview ul li.card--outline {
+    padding-left: var(--space-3xl);
+}
+
+/* Create the numbered circle */
+.project-overview ul li.card--outline::before {
+    content: counter(item);
+    counter-increment: item;
+    position: absolute;
+    top: var(--space-l);
+    left: var(--space-m);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--font-weight-bold);
+}
+
+/* --------------------------------------------------------------------------
+    Mockup Section
+    -------------------------------------------------------------------------- */
+
+.mockup-section {
+    text-align: center;
+    margin-top: var(--space-2xl);
+    padding: var(--space-xl) 0;
+    background-color: var(--color-background-secondary);
+    border-radius: var(--border-radius);
+}
+
+.mockup-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: var(--space-m);
+}
+
+/* --------------------------------------------------------------------------
+    Responsive Design
+    -------------------------------------------------------------------------- */
+
+@media (min-width: 768px) {
+
+    .comparison-item {
+        margin-bottom: 0;
+    }
+}
