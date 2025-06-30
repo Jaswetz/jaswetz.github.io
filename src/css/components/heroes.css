@@ -151,11 +151,11 @@
     /* Match other UI text */
     font-size: var(--font-size-lg);
     /* e.g., 20px */
-    font-weight: var(--font-weight-bold);
+    font-style: italic;
+    font-weight: var(--font-weight-semibold);
     color: var(--color-text-light);
     /* Slightly less prominent */
     margin-bottom: var(--space-2);
-    text-transform: uppercase;
     /* As seen in the "Product Designer" example */
     letter-spacing: var(--kerning-loose, 0.05em);
 }
