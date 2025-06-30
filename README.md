@@ -260,6 +260,78 @@ This project uses **Native Web Components** for creating reusable UI elements su
 A living style guide is available at `src/styleguide.html`. When running the development server (`npm run dev`), this page can be accessed to view and test all available Web Components, design tokens (colors, typography), and utility classes.
 This page serves as a central reference for the UI of the website.
 
+Add any new components or styles or layouts to this page when created.
+
+# Password Protection System
+
+This project includes a modular password protection system for case studies that contain confidential or sensitive design work. The system provides client-side password protection with session management.
+
+## Features
+
+- **Modular Configuration**: Centralized configuration for easy management
+- **User-Friendly Interface**: Clean, accessible password prompt with proper styling
+- **Session Management**: 24-hour authentication sessions stored in localStorage
+- **Responsive Design**: Works across all device sizes and input methods
+- **Accessibility**: Full keyboard navigation, screen reader support, high contrast mode
+- **Easy Integration**: Simple script import to protect any case study
+
+## Quick Start
+
+### Protecting a Case Study
+
+1. **Add the case study to the configuration** in `src/js/auth/password-config.js`:
+
+```javascript
+protectedCaseStudies: {
+  'your-case-study-id': {
+    password: 'YourSecurePassword',
+    title: 'Your Case Study Title',
+    description: 'This case study contains confidential design work.',
+    redirectOnCancel: '../work.html'
+  }
+}
+```
+
+2. **Add the protection script** to your case study HTML file before the closing `</body>` tag:
+
+```html
+<script type="module">
+  import { protectCaseStudy } from "../js/password-protection-init.js";
+  protectCaseStudy("your-case-study-id");
+</script>
+```
+
+### Currently Protected Case Studies
+
+- **project-autodesk-di**: Autodesk Fusion Device Independence case study
+  - Password: `CuriousDesign404`
+  - Protected due to confidential enterprise design work
+
+## System Architecture
+
+The password protection system consists of:
+
+- `src/js/auth/password-config.js` - Central configuration
+- `src/js/auth/password-protection.js` - Core protection logic
+- `src/js/auth/password-protection-init.js` - Integration helpers
+- `src/css/components/password-protection.css` - UI styling
+
+## Security Considerations
+
+⚠️ **Important**: This is client-side protection suitable for:
+
+- Portfolio access control and sharing
+- Keeping case studies out of search engines
+- Basic access control for confidential work samples
+
+**Not suitable for**: Protecting truly sensitive data or defense against determined attackers.
+
+For more detailed documentation, see `PASSWORD_PROTECTION.md`.
+
+## Testing
+
+A demo page is available at `src/projects/password-protection-demo.html` for testing the system functionality.
+
 # Editor Configuration
 
 This project includes a recommended editor configuration for VS Code and Cursor in the `.vscode/settings.json` file. This file includes settings for formatting (Prettier) and recommends some useful extensions for web development.

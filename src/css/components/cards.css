@@ -1,6 +1,9 @@
 /* Card component styles */
 
 /* Base card link styles - make entire card clickable */
+
+/*TODO: Cleanup and make more modular and reusable with BEM methodology*/
+
 .card__link {
   display: flex;
   flex-direction: column;
