@@ -332,6 +332,44 @@ For more detailed documentation, see `PASSWORD_PROTECTION.md`.
 
 A demo page is available at `src/projects/password-protection-demo.html` for testing the system functionality.
 
+# Analytics and Tracking
+
+This project uses Google Analytics 4 (GA4) to gather insights into user behavior and site performance.
+
+## Integration
+
+-   **Measurement ID**: `G-Z5DNDF44NG`
+-   **Implementation**: The core GA4 logic is managed in `src/js/analytics.js`. This script is loaded on all HTML pages via a `<script>` tag in the `<head>`.
+-   **Bundling**: The `analytics.js` script is imported into the main `src/index.js` file to ensure it is included in the final production build by Parcel.
+
+## Tracked Events
+
+The analytics setup includes both standard and custom event tracking:
+
+### Enhanced Measurement (Automatic)
+
+GA4's enhanced measurement is enabled to automatically track:
+
+-   Page views
+-   Scroll depth
+-   Outbound link clicks
+-   File downloads (`.pdf`, `.docx`, etc.)
+-   Site search (if implemented)
+-   Video engagement (if implemented)
+
+### Custom Event Tracking
+
+The `src/js/analytics.js` script includes custom logic to track specific user interactions:
+
+-   **Project Clicks**: Tracks when a user clicks on a project card to view details.
+-   **Resume Downloads**: Specifically tracks clicks on links identified as a resume download.
+-   **Time on Page**: A basic mechanism to track time spent on each page.
+-   **External Link Clicks**: Tracks clicks on links leading to external domains.
+
+## Data Privacy
+
+The current implementation is basic. For production environments, it's important to consider data privacy regulations (like GDPR and CCPA). This may involve adding a cookie consent banner and allowing users to opt-out of tracking. The `allow_ad_personalization_signals` flag in the GA4 config is currently set to `false`.
+
 # Editor Configuration
 
 This project includes a recommended editor configuration for VS Code and Cursor in the `.vscode/settings.json` file. This file includes settings for formatting (Prettier) and recommends some useful extensions for web development.
