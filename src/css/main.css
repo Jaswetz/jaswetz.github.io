@@ -27,6 +27,7 @@
 @import "./components/form-layout.css" layer(components);
 @import "./components/form-validation.css" layer(components);
 @import "./components/accessibility.css" layer(components);
+@import "./components/password-protection.css" layer(components);
 /* Add other component imports here and assign to 'components' layer */
 
 @import "./pages/page-about.css" layer(utilities);

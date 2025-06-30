@@ -818,6 +818,12 @@
     <site-footer></site-footer>
     <script type="module" src="../js/main.js?v=1"></script>
 
+    <!-- Password Protection -->
+    <script type="module">
+      import { protectCaseStudy } from "../js/password-protection-init.js";
+      protectCaseStudy("project-autodesk-di");
+    </script>
+
     <!-- Initialize Feather Icons -->
     <script>
       feather.replace();
