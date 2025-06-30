@@ -126,6 +126,16 @@ class SiteHeader extends HTMLElement {
       display: inline-block;
       }
 
+      .beta-tag {
+        background-color: color-mix(in srgb, var(--color-warning), white 65%); /* Lighten --color-primary by mixing it with 25% white *//* A nice yellow */
+        font-size: var(--size-step--2);
+        padding: 0.2em 0.5em;
+        border-radius: var(--border-radius);
+        margin-left: var(--space-xs);
+        vertical-align: middle; /* Align with the text */
+        border: var(--border-width) solid var(--color-warning);
+      }
+
       :host(.scrolled) .logo a {
       font-size: var(--font-size-lg);
       }
@@ -449,6 +459,7 @@ class SiteHeader extends HTMLElement {
       z-index: 1000;
       display: block;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: calc(var(--space-2xl-3xl) * 2.1);
       }
 
       nav.active {
@@ -486,6 +497,7 @@ class SiteHeader extends HTMLElement {
         </g>
       </svg>
       <span class="logo-text">Jason Swetzoff</span>
+      <span class="beta-tag">Beta :)</span>
       </a>
       </div>
       <button class="menu-toggle" aria-label="Toggle menu">

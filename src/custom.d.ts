@@ -17,6 +17,6 @@ declare global {
       trackTimeOnPage: () => void;
     };
   }
-  
+
   function gtag(...args: any[]): void;
 }
