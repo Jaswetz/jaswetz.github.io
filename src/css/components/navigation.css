@@ -76,7 +76,7 @@
     background-color: var(--color-primary);
     color: white;
     text-decoration: none;
-    font-size: var(--size-step-0);
+    font-size: var(--size-step--1);
     font-weight: 500;
     border-radius: var(--border-radius);
     transition: var(--transition-base);
@@ -105,7 +105,7 @@
     background-color: var(--color-background);
     color: var(--color-text);
     text-decoration: none;
-    font-size: var(--size-step-0);
+    font-size: var(--size-step--1);
     border: 1px solid var(--color-border);
     border-radius: var(--border-radius);
     transition: var(--transition-base);
@@ -120,7 +120,7 @@
 
 .back-to-portfolio::before {
     content: "←";
-    font-size: var(--size-step-0);
+    font-size: var(--size-step--1);
 }
 
 /* --------------------------------------------------------------------------

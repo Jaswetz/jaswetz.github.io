@@ -186,7 +186,7 @@
 /* Size variants */
 .button--small {
   padding: var(--space-xs) var(--space-s);
-  font-size: var(--font-size-sm);
+  font-size: var(--size-step--1);
   min-height: var(--touch-target-small);
 }
 

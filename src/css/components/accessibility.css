@@ -9,7 +9,7 @@
   text-decoration: none;
   border-radius: var(--border-radius);
   font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-sm);
+  font-size: var(--size-step--1);
   z-index: 9999;
   transition: var(--transition-interactive);
   box-shadow: var(--hover-shadow);
@@ -77,6 +77,7 @@ select:focus {
 
 /* Reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -89,6 +90,7 @@ select:focus {
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
+
   .card__link:focus,
   button:focus,
   input:focus,
@@ -109,6 +111,7 @@ select:focus {
 
 /* Touch target sizes - ensure minimum 44px touch targets */
 @media (pointer: coarse) {
+
   button,
   input[type="button"],
   input[type="submit"],

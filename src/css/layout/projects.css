@@ -7,7 +7,6 @@
     -------------------------------------------------------------------------- */
 
 .project-case-study h2 {
-    margin-bottom: var(--heading-spacing);
     font-weight: var(--font-weight-semibold);
 }
 
@@ -31,8 +30,27 @@
     Project Summary Image
     -------------------------------------------------------------------------- */
 
-.project-summary__image {
-    margin-bottom: var(--space-xl);
+.project__img.project-summary__image {
+    max-width: 100%;
+}
+
+
+
+/* --------------------------------------------------------------------------
+    Project Image Figures
+    -------------------------------------------------------------------------- */
+
+.project__img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-subtle);
+    max-width: 53rem;
+}
+
+.phase__img img {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 /* --------------------------------------------------------------------------
