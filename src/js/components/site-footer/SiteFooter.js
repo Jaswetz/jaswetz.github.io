@@ -164,7 +164,7 @@ class SiteFooter extends HTMLElement {
         <li>
         <a target="_blank"
            rel="noopener noreferrer"
-           href="/assets/Jason Swetzoff - Principal UX Designer - Resume.pdf">Resume</a>
+           href="/assets/pdf/Jason_Swetzoff_Principal_UX_Designer_Resume.pdf">Resume</a>
         </li>
 
       </ul>
