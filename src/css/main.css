@@ -32,11 +32,9 @@
 
 @import "./pages/page-about.css" layer(utilities);
 @import "./pages/page-autodesk-di.css" layer(utilities);
-@import "./pages/page-index/index-section-hero.css" layer(utilities);
 @import "./pages/page-index/index-section-quotes.css" layer(utilities);
 @import "./pages/page-index/index-section-featured-projects.css" layer(utilities);
 @import "./pages/page-index/index-section-about.css" layer(utilities);
-@import "./pages/page-index/index-section-contact.css" layer(utilities);
 
 @import "./utils/spacing.css" layer(utilities);
 @import "./utils/typography.css" layer(utilities);
