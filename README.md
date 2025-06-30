@@ -338,9 +338,9 @@ This project uses Google Analytics 4 (GA4) to gather insights into user behavior
 
 ## Integration
 
--   **Measurement ID**: `G-Z5DNDF44NG`
--   **Implementation**: The core GA4 logic is managed in `src/js/analytics.js`. This script is loaded on all HTML pages via a `<script>` tag in the `<head>`.
--   **Bundling**: The `analytics.js` script is imported into the main `src/index.js` file to ensure it is included in the final production build by Parcel.
+- **Measurement ID**: `G-Z5DNDF44NG`
+- **Implementation**: The core GA4 logic is managed in `src/js/analytics.js`. This script is loaded on all HTML pages via a `<script>` tag in the `<head>`.
+- **Bundling**: The `analytics.js` script is imported into the main `src/index.js` file to ensure it is included in the final production build by Parcel.
 
 ## Tracked Events
 
@@ -350,21 +350,21 @@ The analytics setup includes both standard and custom event tracking:
 
 GA4's enhanced measurement is enabled to automatically track:
 
--   Page views
--   Scroll depth
--   Outbound link clicks
--   File downloads (`.pdf`, `.docx`, etc.)
--   Site search (if implemented)
--   Video engagement (if implemented)
+- Page views
+- Scroll depth
+- Outbound link clicks
+- File downloads (`.pdf`, `.docx`, etc.)
+- Site search (if implemented)
+- Video engagement (if implemented)
 
 ### Custom Event Tracking
 
 The `src/js/analytics.js` script includes custom logic to track specific user interactions:
 
--   **Project Clicks**: Tracks when a user clicks on a project card to view details.
--   **Resume Downloads**: Specifically tracks clicks on links identified as a resume download.
--   **Time on Page**: A basic mechanism to track time spent on each page.
--   **External Link Clicks**: Tracks clicks on links leading to external domains.
+- **Project Clicks**: Tracks when a user clicks on a project card to view details.
+- **Resume Downloads**: Specifically tracks clicks on links identified as a resume download.
+- **Time on Page**: A basic mechanism to track time spent on each page.
+- **External Link Clicks**: Tracks clicks on links leading to external domains.
 
 ## Data Privacy
 

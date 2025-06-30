@@ -161,11 +161,7 @@ class SiteFooter extends HTMLElement {
             <li>
            <a href="https://github.com/Jaswetz" target="_blank" rel="noopener noreferrer" class="button">GitHub</a>
         </li>
-        <li>
-        <a target="_blank"
-           rel="noopener noreferrer"
-           href="/assets/pdf/Jason_Swetzoff_Principal_UX_Designer_Resume.pdf">Resume</a>
-        </li>
+
 
       </ul>
       </nav>
