@@ -136,6 +136,8 @@
   --size-step-2: clamp(1.3125rem, 1.1951rem + 0.5872vi, 1.75rem);
   --size-step-1: clamp(1.1875rem, 1.1036rem + 0.4195vi, 1.5rem);
   --size-step-0: clamp(1.0625rem, 0.9954rem + 0.3356vi, 1.3125rem);
+  --size-step--1: clamp(0.9375rem, 0.8705rem + 0.3356vi, 1.1875rem);
+  --size-step--2: clamp(0.8125rem, 0.7455rem + 0.3356vi, 1.0625rem);
 
   --gutter: var(--space-l-xl);
 
@@ -150,7 +152,7 @@
 
   /* Typography Spacing */
   --paragraph-spacing: var(--space-s);
-  --heading-spacing: var(--space-xl);
+  --heading-spacing: var(--space-m);
   --list-spacing: var(--space-s);
 
   /* Borders */

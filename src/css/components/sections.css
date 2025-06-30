@@ -131,6 +131,10 @@
     margin-bottom: var(--space-xl);
 }
 
+.solution-section__intro {
+    margin-bottom: var(--heading-spacing)
+}
+
 /* --------------------------------------------------------------------------
     Feature Lists
     -------------------------------------------------------------------------- */
@@ -163,12 +167,12 @@
 
 .key-feature-item__icon {
     color: var(--color-primary);
-    font-size: var(--size-step-0);
+    font-size: var(--size-step--1);
     flex-shrink: 0;
 }
 
 .key-feature-item__text {
-    font-size: var(--size-step-0);
+    font-size: var(--size-step--1);
     color: var(--color-text);
 }
 
@@ -220,11 +224,11 @@
 .result-benefit__title {
     font-size: var(--size-step-1);
     font-weight: 600;
-    color: var(--color-text);
+    margin-bottom: 0;
 }
 
 .result-benefit__description {
-    font-size: var(--size-step-0);
+    font-size: var(--size-step--1);
     line-height: var(--leading-normal);
     color: var(--color-text-subtle);
 }
@@ -269,7 +273,7 @@
 }
 
 .professional-growth__description {
-    font-size: var(--size-step-0);
+    font-size: var(--size-step--1);
     line-height: var(--leading-relaxed);
 }
 
@@ -326,7 +330,6 @@
 
 .goals {
     font-size: var(--text-size-lede);
-    border: none;
 }
 
 .goals h2 {
@@ -373,7 +376,7 @@
 
 .implementation-subtitle {
     margin-bottom: var(--space-xs);
-    font-size: var(--size-step-0);
+    font-size: var(--size-step--1);
     font-weight: 600;
 }
 
@@ -394,7 +397,7 @@
 }
 
 .implementation-description {
-    font-size: var(--size-step-0);
+    font-size: var(--size-step--1);
     line-height: var(--leading-normal);
     color: var(--color-text-subtle);
 }
@@ -405,7 +408,7 @@
 
 .testing-description {
     margin-bottom: var(--space-m);
-    font-size: var(--size-step-0);
+    font-size: var(--size-step--1);
     line-height: var(--leading-normal);
     color: var(--color-text-subtle);
 }
@@ -415,7 +418,7 @@
 }
 
 .outcome-text {
-    font-size: var(--size-step-0);
+    font-size: var(--size-step--1);
     line-height: var(--leading-relaxed);
     color: var(--color-text-subtle);
 }

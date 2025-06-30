@@ -12,7 +12,7 @@ html {
 
 body {
   font-family: var(--font-family-body);
-  font-size: var(--size-step-1);
+  font-size: var(--text-size-base);
   line-height: var(--leading);
   color: var(--color-text);
   text-rendering: optimizeLegibility;
@@ -35,7 +35,7 @@ h6 {
   font-family: var(--font-family-heading);
   color: var(--color-text);
   margin-top: 0;
-  /* margin-bottom: var(--space-6); */
+  margin-bottom: var(--heading-spacing);
   font-weight: var(--font-weight-med);
   font-feature-settings: "cpsp" on;
   font-weight: var(--heading-font-weight, var(--font-bold));
@@ -51,6 +51,7 @@ h1 {
 
 h2 {
   font-size: var(--text-size-heading-2);
+  margin-bottom: var(--space-xl);
 }
 
 h3 {
@@ -154,7 +155,7 @@ pre code {
 
 /* Small text */
 small {
-  font-size: var(--font-size-sm);
+  font-size: var(--size-step--1);
   color: var(--color-text-light);
 }
 
@@ -169,6 +170,21 @@ hr {
 ::selection {
   background-color: var(--color-primary);
   color: white;
+}
+
+/* Figure and Figcaption */
+figure {
+  margin: 0;
+  margin-bottom: var(--space-m);
+}
+
+figcaption {
+  font-size: var(--size-step--1);
+  color: var(--color-text-light);
+  margin-top: var(--space-xs);
+  margin-left: var(--space-xs);
+  font-style: italic;
+  line-height: var(--leading);
 }
 
 .highlight {
