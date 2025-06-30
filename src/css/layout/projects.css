@@ -30,7 +30,7 @@
     Project Summary Image
     -------------------------------------------------------------------------- */
 
-.project__img.project-summary__image {
+.notification .project__img.project-summary__image {
     max-width: 100%;
 }
 
@@ -74,4 +74,24 @@
     .sidebar.grid--2-column--sidebar {
         grid-template-columns: 3fr 1fr;
     }
+}
+
+
+/* --------------------------------------------------------------------------
+    LFC & Intel
+    -------------------------------------------------------------------------- */
+
+
+.lfc-intel figure {
+    margin: var(--space-xl) 0;
+}
+
+.features {
+    margin-bottom: var(--heading-spacing);
+}
+
+.features .card__icon {
+    color: var(--color-primary);
+    margin-bottom: var(--space-s);
+
 }
