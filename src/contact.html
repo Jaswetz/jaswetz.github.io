@@ -5,11 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Me - Jason Swetzoff's Portfolio</title>
 
-    <!-- Google Analytics 4 -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG"
-    ></script>
+    <!-- Google Analytics 4 - Only load in production -->
+    <script>
+      // Only load GA4 in production environment
+      if (window.location.hostname !== 'localhost' && 
+          window.location.hostname !== '127.0.0.1' && 
+          !window.location.hostname.includes('127.0.0.1') &&
+          window.location.port === '') {
+        // Load GA4 script
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG';
+        document.head.appendChild(script);
+      }
+    </script>
     <script src="./js/analytics.js"></script>
 
     <!-- Microsoft Clarity for heatmaps and session recordings -->

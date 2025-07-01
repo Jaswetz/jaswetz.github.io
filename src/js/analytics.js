@@ -3,25 +3,47 @@
  * Measurement ID: G-Z5DNDF44NG
  */
 
-// Initialize Google Analytics 4
-window.dataLayer = window.dataLayer || [];
-function gtag() {
-  dataLayer.push(arguments);
-}
-gtag("js", new Date());
+// Check if we're in development environment
+const isDevelopment = 
+  window.location.hostname === 'localhost' || 
+  window.location.hostname === '127.0.0.1' || 
+  window.location.hostname.includes('127.0.0.1') ||
+  window.location.port !== '';
 
-// Configure GA4 with enhanced measurement
-gtag("config", "G-Z5DNDF44NG", {
-  // Enable enhanced measurement features
-  enhanced_measurement: true,
-  // Track page views automatically
-  page_title: document.title,
-  page_location: window.location.href,
-  // Enable demographic reports (optional)
-  allow_ad_personalization_signals: false, // Set to true if you want ad personalization
-  // Enable Google Signals for cross-device tracking (optional)
-  allow_google_signals: true,
-});
+// Initialize Google Analytics 4 only in production or when explicitly enabled
+if (!isDevelopment || window.location.search.includes('ga=true')) {
+  // @ts-ignore - Google Analytics dataLayer
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    // @ts-ignore - Google Analytics dataLayer
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  // Configure GA4 with enhanced measurement
+  gtag("config", "G-Z5DNDF44NG", {
+    // Enable enhanced measurement features
+    enhanced_measurement: true,
+    // Track page views automatically
+    page_title: document.title,
+    page_location: window.location.href,
+    // Enable demographic reports (optional)
+    allow_ad_personalization_signals: false, // Set to true if you want ad personalization
+    // Enable Google Signals for cross-device tracking (optional)
+    allow_google_signals: true,
+  });
+
+  console.log('Google Analytics 4 initialized');
+} else {
+  // Create mock gtag function for development
+  // @ts-ignore - Mock function for development
+  window.gtag = function() {
+    console.log('GA4 (dev mode):', arguments);
+  };
+  // @ts-ignore - Google Analytics dataLayer
+  window.dataLayer = [];
+  console.log('Google Analytics disabled in development environment');
+}
 
 /**
  * Custom Event Tracking Functions
@@ -170,6 +192,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Export functions for manual tracking if needed
+// @ts-ignore - Custom analytics object
 window.portfolioAnalytics = {
   trackProjectClick,
   trackResumeDownload,
