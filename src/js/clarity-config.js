@@ -16,8 +16,18 @@
  * - Performance metrics: Page load times and user experience data
  */
 
-// Microsoft Clarity tracking code
+// Microsoft Clarity tracking code with error handling
 (function (c, l, a, r, i, t, y) {
+  // Only load Clarity in production (not localhost or dev environments)
+  if (
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1" ||
+    window.location.hostname.includes("local")
+  ) {
+    console.log("Clarity disabled in development environment");
+    return;
+  }
+
   c[a] =
     c[a] ||
     function () {
@@ -26,6 +36,12 @@
   t = l.createElement(r);
   t.async = 1;
   t.src = "https://www.clarity.ms/tag/" + i;
+  
+  // Add error handling for script loading
+  t.onerror = function() {
+    console.warn("Microsoft Clarity script failed to load - this is normal in development or with ad blockers");
+  };
+  
   y = l.getElementsByTagName(r)[0];
   y.parentNode.insertBefore(t, y);
 })(window, document, "clarity", "script", "s7dys3l8mm");
@@ -37,8 +53,12 @@
 
 // Track custom events in Clarity
 function trackClarityEvent(eventName, eventData = {}) {
-  if (typeof clarity === "function") {
-    clarity("event", eventName, eventData);
+  // @ts-ignore - Clarity is dynamically loaded
+  if (typeof window.clarity === "function") {
+    // @ts-ignore - Clarity is dynamically loaded
+    window.clarity("event", eventName, eventData);
+  } else {
+    console.log("Clarity event tracked (dev mode):", eventName, eventData);
   }
 }
 
@@ -78,28 +98,39 @@ function trackNavigationClarity(page, source) {
 
 // Set user identifiers (optional - use for logged-in users)
 function setClarityUserID(userID) {
-  if (typeof clarity === "function") {
-    clarity("identify", userID);
+  // @ts-ignore - Clarity is dynamically loaded
+  if (typeof window.clarity === "function") {
+    // @ts-ignore - Clarity is dynamically loaded
+    window.clarity("identify", userID);
+  } else {
+    console.log("Clarity user ID set (dev mode):", userID);
   }
 }
 
 // Tag users with custom attributes
 function tagClarityUser(key, value) {
-  if (typeof clarity === "function") {
-    clarity("set", key, value);
+  // @ts-ignore - Clarity is dynamically loaded
+  if (typeof window.clarity === "function") {
+    // @ts-ignore - Clarity is dynamically loaded
+    window.clarity("set", key, value);
+  } else {
+    console.log("Clarity user tagged (dev mode):", key, value);
   }
 }
 
 // Export functions for use in other scripts
-window.clarityTracking = {
-  trackEvent: trackClarityEvent,
-  trackProject: trackProjectInteraction,
-  trackResume: trackResumeDownloadClarity,
-  trackContact: trackContactFormClarity,
-  trackNavigation: trackNavigationClarity,
-  setUserID: setClarityUserID,
-  tagUser: tagClarityUser,
-};
+if (typeof window !== "undefined") {
+  // @ts-ignore - Adding custom properties to window
+  window.clarityTracking = {
+    trackEvent: trackClarityEvent,
+    trackProject: trackProjectInteraction,
+    trackResume: trackResumeDownloadClarity,
+    trackContact: trackContactFormClarity,
+    trackNavigation: trackNavigationClarity,
+    setUserID: setClarityUserID,
+    tagUser: tagClarityUser,
+  };
+}
 
 // Initialize Clarity with basic page information
 document.addEventListener("DOMContentLoaded", function () {
