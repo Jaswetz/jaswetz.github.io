@@ -128,7 +128,7 @@
   }
 }
 
-/* Tablet (md breakpoint: 48rem+) - Limited columns */
+/* Tablet (md breakpoint) - Limited columns */
 @media (min-width: 48rem) and (max-width: 63.9375rem) {
   .grid--3-column,
   .grid--4-column {
@@ -141,7 +141,7 @@
   }
 }
 
-/* Desktop (lg breakpoint: 64rem+) - Full layouts */
+/* Desktop (lg breakpoint) - Full layouts */
 @media (min-width: 64rem) {
   .grid--2-column {
     grid-template-columns: repeat(2, 1fr);
@@ -168,7 +168,7 @@
   }
 }
 
-/* Extra Large (xl breakpoint: 80rem+) - Enhanced layouts */
+/* Extra Large (xl breakpoint) - Enhanced layouts */
 @media (min-width: 80rem) {
   .grid--2-column--sidebar {
     grid-template-columns: 1fr 22rem; /* Increase sidebar width */
@@ -331,20 +331,20 @@
    ========================================================================== */
 
 /* Apply grid settings above certain breakpoints */
-@media (min-width: var(--breakpoint-md)) {
+@media (min-width: 48rem) {
   .grid-2-col-desktop {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: var(--breakpoint-lg)) {
+@media (min-width: 64rem) {
   .grid-sidebar-desktop {
     grid-template-columns: 1fr 20rem; /* Content and sidebar */
   }
 }
 
 /* Asymmetric Grids */
-@media (min-width: var(--breakpoint-md)) {
+@media (min-width: 48rem) {
   .grid-asymmetric-2-1-desktop {
     grid-template-columns: 2fr 1fr;
   }
@@ -355,7 +355,7 @@
 }
 
 /* Sidebar Layout */
-@media (min-width: var(--breakpoint-md)) {
+@media (min-width: 48rem) {
   .grid--2-column--sidebar {
     display: grid;
     grid-template-columns: 1fr;
@@ -363,13 +363,13 @@
   }
 }
 
-@media (min-width: var(--breakpoint-lg)) {
+@media (min-width: 64rem) {
   .grid--2-column--sidebar {
     grid-template-columns: 1fr 15rem; /* Content and sidebar */
   }
 }
 
-@media (min-width: var(--breakpoint-xl)) {
+@media (min-width: 80rem) {
   .grid--2-column--sidebar {
     grid-template-columns: 1fr 20rem; /* Wider sidebar on larger screens */
   }
