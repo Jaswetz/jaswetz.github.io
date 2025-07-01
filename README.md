@@ -168,12 +168,12 @@ src/
   1. Importing `variables.css`.
   2. Defining the order of cascade layers: `@layer reset, base, theme, layout, components, utilities;`.
   3. Importing other CSS files directly into their designated layers.
-      - `@layer reset { @import url("base/reset.css"); }`
-      - `@layer base { @import url("base/global.css"); @import url("base/typography.css"); }`
-      - `@layer theme { @import url("theme/default-theme.css"); }`
-      - `@layer layout { /* @import url("layout/grid.css"); */ }`
-      - `@layer components { /* @import url("components/buttons.css"); @import url("pages/page-about.css"); */ }`
-      - `@layer utilities { @import url("utils/spacing.css"); /* etc. */ }`
+     - `@layer reset { @import url("base/reset.css"); }`
+     - `@layer base { @import url("base/global.css"); @import url("base/typography.css"); }`
+     - `@layer theme { @import url("theme/default-theme.css"); }`
+     - `@layer layout { /* @import url("layout/grid.css"); */ }`
+     - `@layer components { /* @import url("components/buttons.css"); @import url("pages/page-about.css"); */ }`
+     - `@layer utilities { @import url("utils/spacing.css"); /* etc. */ }`
 - **Layer Content:**
   - **`reset` layer**: Contains minimal custom CSS reset (`base/reset.css`).
   - **`base` layer**: Holds essential global HTML/body styles, base typography, etc. (`base/global.css`, `base/typography.css`).
@@ -273,12 +273,12 @@ The project uses a standardized, mobile-first breakpoint system for consistent r
 All breakpoints use `rem` units for better accessibility and are defined as CSS Custom Properties in `src/css/variables.css`:
 
 ```css
---breakpoint-xs: 20rem;    /* 320px - Small phones */
---breakpoint-sm: 36rem;    /* 576px - Large phones */
---breakpoint-md: 48rem;    /* 768px - Tablets */
---breakpoint-lg: 64rem;    /* 1024px - Desktop */
---breakpoint-xl: 80rem;    /* 1280px - Large desktop */
---breakpoint-2xl: 96rem;   /* 1536px - Extra large */
+--breakpoint-xs: 20rem; /* 320px - Small phones */
+--breakpoint-sm: 36rem; /* 576px - Large phones */
+--breakpoint-md: 48rem; /* 768px - Tablets */
+--breakpoint-lg: 64rem; /* 1024px - Desktop */
+--breakpoint-xl: 80rem; /* 1280px - Large desktop */
+--breakpoint-2xl: 96rem; /* 1536px - Extra large */
 ```
 
 ### Usage in Media Queries
@@ -287,17 +287,17 @@ All breakpoints use `rem` units for better accessibility and are defined as CSS 
 
 ```css
 /* ✅ Correct - Mobile First (Preferred) */
-@media (min-width: 48rem) { 
-  /* Tablet and up styles */ 
+@media (min-width: 48rem) {
+  /* Tablet and up styles */
 }
 
-@media (min-width: 64rem) { 
-  /* Desktop and up styles */ 
+@media (min-width: 64rem) {
+  /* Desktop and up styles */
 }
 
 /* ✅ Correct - Desktop First (When Needed) */
-@media (max-width: 47.9375rem) { 
-  /* Mobile only styles */ 
+@media (max-width: 47.9375rem) {
+  /* Mobile only styles */
 }
 ```
 
