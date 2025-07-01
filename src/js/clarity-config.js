@@ -36,12 +36,14 @@
   t = l.createElement(r);
   t.async = 1;
   t.src = "https://www.clarity.ms/tag/" + i;
-  
+
   // Add error handling for script loading
-  t.onerror = function() {
-    console.warn("Microsoft Clarity script failed to load - this is normal in development or with ad blockers");
+  t.onerror = function () {
+    console.warn(
+      "Microsoft Clarity script failed to load - this is normal in development or with ad blockers"
+    );
   };
-  
+
   y = l.getElementsByTagName(r)[0];
   y.parentNode.insertBefore(t, y);
 })(window, document, "clarity", "script", "s7dys3l8mm");
