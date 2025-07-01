@@ -260,6 +260,74 @@ Add to `.vscode/settings.json` for best experience:
 
 This `@layer` approach provides more explicit control over the CSS cascade for global styles, making the utility layer's overrides more predictable without always resorting to `!important`.
 
+## Responsive Breakpoint System
+
+The project uses a standardized, mobile-first breakpoint system for consistent responsive design across all components and layouts.
+
+### Breakpoint Scale
+
+All breakpoints use `rem` units for better accessibility and are defined as CSS Custom Properties in `src/css/variables.css`:
+
+```css
+--breakpoint-xs: 20rem;    /* 320px - Small phones */
+--breakpoint-sm: 36rem;    /* 576px - Large phones */
+--breakpoint-md: 48rem;    /* 768px - Tablets */
+--breakpoint-lg: 64rem;    /* 1024px - Desktop */
+--breakpoint-xl: 80rem;    /* 1280px - Large desktop */
+--breakpoint-2xl: 96rem;   /* 1536px - Extra large */
+```
+
+### Usage in Media Queries
+
+**Important**: CSS custom properties cannot be used directly in `@media` queries. Use the actual `rem` values:
+
+```css
+/* ✅ Correct - Mobile First (Preferred) */
+@media (min-width: 48rem) { 
+  /* Tablet and up styles */ 
+}
+
+@media (min-width: 64rem) { 
+  /* Desktop and up styles */ 
+}
+
+/* ✅ Correct - Desktop First (When Needed) */
+@media (max-width: 47.9375rem) { 
+  /* Mobile only styles */ 
+}
+```
+
+### Migration from Legacy Breakpoints
+
+Common conversions from previous inconsistent breakpoints:
+
+- `@media (max-width: 768px)` → `@media (max-width: 47.9375rem)`
+- `@media (min-width: 768px)` → `@media (min-width: 48rem)`
+- `@media (min-width: 66em)` → `@media (min-width: 64rem)`
+- `@media (min-width: 100em)` → `@media (min-width: 96rem)`
+
+### Container System
+
+Responsive containers automatically adjust max-width and padding at each breakpoint:
+
+```css
+.container {
+  /* Responsive max-widths and padding */
+}
+
+.container-narrow {
+  /* Constrained to reading width */
+}
+
+.container-full {
+  /* Full width, responsive padding only */
+}
+```
+
+### Documentation
+
+See `src/css/utils/media-queries.css` for complete documentation and examples. The living style guide at `/styleguide.html` includes an interactive breakpoint demo.
+
 # HTML Structure & Templating
 
 This project uses **Native Web Components** for creating reusable UI elements such as the site header, footer, and navigation. This approach helps maintain a DRY (Don't Repeat Yourself) HTML structure without requiring additional templating engine dependencies.
