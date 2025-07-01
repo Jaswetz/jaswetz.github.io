@@ -121,8 +121,26 @@ blockquote {
   padding: var(--space-m);
   /* background-color: var(--color-quote-bg); */
   border-left: 4px solid var(--color-quote-border);
-  font-size: var(--text-size-lede);
+  font-size: var(--text-size-base);
+  position: relative;
 }
+
+/* blockquote::before {
+  content: "\201C";
+  position: absolute;
+  left: var(--space-xs);
+  top: var(--space-2xs);
+  font-size: 3em;
+  line-height: 1;
+  color: var(--color-primary);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+blockquote p {
+  position: relative;
+  z-index: 1;
+} */
 
 cite {
   display: block;

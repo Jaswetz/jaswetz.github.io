@@ -74,7 +74,8 @@
     gap: var(--space-xl);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 60em) {
+
     .grid--2-column,
     .grid--3-column,
     .grid--2-column--sidebar {
