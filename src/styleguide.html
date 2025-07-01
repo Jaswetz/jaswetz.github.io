@@ -271,8 +271,108 @@ html>
             </div>
           </section>
 
+          <section id="breakpoint-system" class="styleguide-section">
+            <h3>3.3 Responsive Breakpoint System</h3>
+            <p>
+              Standardized breakpoint system for consistent responsive design.
+              All breakpoints use <code>rem</code> units for better accessibility
+              and are defined as CSS Custom Properties in <code>src/css/variables.css</code>.
+            </p>
+            
+            <h4>Breakpoint Reference</h4>
+            <div class="breakpoint-demo">
+              <div class="breakpoint-item">
+                <code>--breakpoint-xs: 20rem</code> <span class="muted">(320px)</span> - Small phones
+              </div>
+              <div class="breakpoint-item">
+                <code>--breakpoint-sm: 36rem</code> <span class="muted">(576px)</span> - Large phones
+              </div>
+              <div class="breakpoint-item">
+                <code>--breakpoint-md: 48rem</code> <span class="muted">(768px)</span> - Tablets
+              </div>
+              <div class="breakpoint-item">
+                <code>--breakpoint-lg: 64rem</code> <span class="muted">(1024px)</span> - Desktop
+              </div>
+              <div class="breakpoint-item">
+                <code>--breakpoint-xl: 80rem</code> <span class="muted">(1280px)</span> - Large desktop
+              </div>
+              <div class="breakpoint-item">
+                <code>--breakpoint-2xl: 96rem</code> <span class="muted">(1536px)</span> - Extra large
+              </div>
+            </div>
+
+            <h4>Current Breakpoint Demo</h4>
+            <p>Resize your browser to see the active breakpoint:</p>
+            <div class="breakpoint-indicator">
+              <span class="current-breakpoint">Current: <strong id="current-bp">Unknown</strong></span>
+            </div>
+
+            <style>
+              .breakpoint-demo {
+                display: grid;
+                gap: var(--space-s);
+                margin: var(--space-m) 0;
+              }
+              
+              .breakpoint-item {
+                padding: var(--space-s);
+                background: var(--color-info);
+                border-radius: var(--border-radius);
+                font-family: var(--font-family-monospace);
+                font-size: var(--font-size-sm);
+              }
+              
+              .breakpoint-item code {
+                color: var(--color-primary);
+                font-weight: var(--font-weight-semibold);
+              }
+              
+              .breakpoint-item .muted {
+                color: var(--color-text-light);
+                font-family: var(--font-family-sans);
+              }
+              
+              .breakpoint-indicator {
+                padding: var(--space-m);
+                background: var(--color-primary);
+                color: white;
+                border-radius: var(--border-radius);
+                text-align: center;
+                margin: var(--space-m) 0;
+              }
+              
+              .current-breakpoint {
+                font-size: var(--font-size-lg);
+              }
+            </style>
+
+            <script>
+              // Simple breakpoint detector for demo
+              function updateBreakpointIndicator() {
+                const width = window.innerWidth;
+                let currentBp = 'xs';
+                
+                if (width >= 1536) currentBp = '2xl (1536px+)';
+                else if (width >= 1280) currentBp = 'xl (1280px+)';
+                else if (width >= 1024) currentBp = 'lg (1024px+)';
+                else if (width >= 768) currentBp = 'md (768px+)';
+                else if (width >= 576) currentBp = 'sm (576px+)';
+                else currentBp = 'xs (<576px)';
+                
+                const indicator = document.getElementById('current-bp');
+                if (indicator) {
+                  indicator.textContent = currentBp;
+                }
+              }
+              
+              // Update on load and resize
+              window.addEventListener('load', updateBreakpointIndicator);
+              window.addEventListener('resize', updateBreakpointIndicator);
+            </script>
+          </section>
+
           <section id="spacing-system" class="styleguide-section">
-            <h3>3.3 Spacing System</h3>
+            <h3>3.4 Spacing System</h3>
             <p>
               Consistent spacing is key to a well-designed interface. We use a
               spacing scale based on multiples of a base unit (e.g., 4px or
@@ -318,7 +418,7 @@ html>
           </section>
 
           <section id="grid-system" class="styleguide-section">
-            <h3>3.4 Grid System</h3>
+            <h3>3.5 Grid System</h3>
             <p>
               If a global CSS grid or layout system is used, it will be
               documented here. Many layout concerns may be handled by individual
