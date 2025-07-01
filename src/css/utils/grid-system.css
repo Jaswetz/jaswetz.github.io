@@ -51,6 +51,12 @@
   grid-template-columns: 1fr;
 }
 
+/* Ensure sidebar is hidden by default */
+.grid--2-column--sidebar .article__sidebar,
+.grid--2-column--reverse-sidebar .article__sidebar {
+  display: none;
+}
+
 /* Auto-fit layouts */
 .grid--auto-fit {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -108,8 +114,9 @@
    RESPONSIVE BREAKPOINTS
    ========================================================================== */
 
-/* Mobile and Tablet (below xl breakpoint) - Single column and hide sidebar */
-@media (max-width: 79.9375rem) {
+/* Default: Mobile and Tablet (below xl breakpoint) - Single column and hide sidebar */
+/* This applies to all screen sizes below 80rem (1280px) */
+@media screen and (max-width: 79.9375rem) {
 
   .grid--2-column,
   .grid--3-column,
@@ -117,13 +124,13 @@
   .grid--2-column--uneven,
   .grid--2-column--sidebar,
   .grid--2-column--reverse-sidebar {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 
-  /* Hide sidebar on mobile and tablet */
+  /* Ensure sidebar is hidden on smaller screens */
   .grid--2-column--sidebar .article__sidebar,
   .grid--2-column--reverse-sidebar .article__sidebar {
-    display: none;
+    display: none !important;
   }
 
   .grid--auto-fit,
@@ -144,8 +151,9 @@
   }
 }
 
-/* Desktop (xl breakpoint) - Show sidebar at wider breakpoint */
-@media (min-width: 80rem) {
+/* Desktop (xl breakpoint and above) - Show sidebar at wider breakpoint */
+/* This applies to all screen sizes 80rem (1280px) and above */
+@media screen and (min-width: 80rem) {
   .grid--2-column {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -163,19 +171,19 @@
   }
 
   .grid--2-column--sidebar {
-    grid-template-columns: 1fr 20rem;
+    grid-template-columns: 1fr 20rem !important;
     /* Main content and fixed 20rem sidebar */
   }
 
   .grid--2-column--reverse-sidebar {
-    grid-template-columns: 20rem 1fr;
+    grid-template-columns: 20rem 1fr !important;
     /* Fixed 20rem sidebar and main content */
   }
 
   /* Show sidebar at desktop breakpoint */
   .grid--2-column--sidebar .article__sidebar,
   .grid--2-column--reverse-sidebar .article__sidebar {
-    display: block;
+    display: block !important;
   }
 }
 
