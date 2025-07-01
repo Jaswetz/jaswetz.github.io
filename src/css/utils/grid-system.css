@@ -108,8 +108,8 @@
    RESPONSIVE BREAKPOINTS
    ========================================================================== */
 
-/* Mobile (below md breakpoint) - Stack columns and hide sidebar */
-@media (max-width: 47.9375rem) {
+/* Mobile and Tablet (below xl breakpoint) - Single column and hide sidebar */
+@media (max-width: 55rem) {
 
   .grid--2-column,
   .grid--3-column,
@@ -120,7 +120,7 @@
     grid-template-columns: 1fr;
   }
 
-  /* Hide sidebar on mobile */
+  /* Hide sidebar on mobile and tablet */
   .grid--2-column--sidebar .article__sidebar,
   .grid--2-column--reverse-sidebar .article__sidebar {
     display: none;
@@ -135,24 +135,12 @@
   }
 }
 
-/* Tablet (md breakpoint) - Limited columns and hide sidebar */
+/* Tablet specific - Allow some multi-column layouts */
 @media (min-width: 48rem) and (max-width: 79.9375rem) {
 
   .grid--3-column,
   .grid--4-column {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .grid--2-column--sidebar,
-  .grid--2-column--reverse-sidebar {
-    grid-template-columns: 1fr;
-    /* Single column on tablet */
-  }
-
-  /* Hide sidebar on tablet as well */
-  .grid--2-column--sidebar .article__sidebar,
-  .grid--2-column--reverse-sidebar .article__sidebar {
-    display: none;
   }
 }
 
