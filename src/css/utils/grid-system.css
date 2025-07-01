@@ -109,7 +109,7 @@
    ========================================================================== */
 
 /* Mobile and Tablet (below xl breakpoint) - Single column and hide sidebar */
-@media (max-width: 55rem) {
+@media (max-width: 79.9375rem) {
 
   .grid--2-column,
   .grid--3-column,
