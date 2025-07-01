@@ -1,16 +1,10 @@
-/* --------------------------------------------------------------------------
-    Hero Section
-    -------------------------------------------------------------------------- */
-
-/* TODO: Cleanup up header section. Decided to make header look similar throughout. Projects will probably be left aligned. */
+/* ==========================================================================
+   PROJECT HERO COMPONENTS
+   ========================================================================== */
 
 .hero--project {
     min-height: calc(var(--space-3xl) * 4.5);
-
 }
-
-.hero--project__header {}
-
 
 .hero--project__content {
     padding-top: var(--space-m);
@@ -64,9 +58,9 @@
     line-height: var(--leading-normal);
 }
 
-/* --------------------------------------------------------------------------
-    Hero Responsive Styles
-    -------------------------------------------------------------------------- */
+/* ==========================================================================
+   HERO RESPONSIVE STYLES
+   ========================================================================== */
 
 @media (max-width: 768px) {
 
@@ -88,8 +82,9 @@
     }
 }
 
-
-/* src/css/components/hero-section.css */
+/* ==========================================================================
+   MAIN HERO SECTION
+   ========================================================================== */
 
 @keyframes gradientBackground {
     0% {
@@ -109,7 +104,6 @@
 }
 
 .hero-section {
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -137,38 +131,25 @@
             #f7f3eb 0.7000000000000001px);
     background-size: 14px 14px;
     z-index: -1;
-    /* Ensure it stays behind the content */
-}
-
-.hero-content {
-    /* Limit content width for readability with fallback */
-    /* max-width: var(--measure-l, 75ch); */
-
 }
 
 .hero-subtitle {
     font-family: var(--font-family-sans);
-    /* Match other UI text */
     font-size: var(--font-size-lg);
-    /* e.g., 20px */
     font-style: italic;
     font-weight: var(--font-weight-semibold);
     color: var(--color-text-light);
-    /* Slightly less prominent */
     margin-bottom: var(--space-2);
-    /* As seen in the "Product Designer" example */
     letter-spacing: var(--kerning-loose, 0.05em);
 }
 
 .hero-section h1 {
-    /* Uses --text-size-heading-1 and --font-weight-bold from base/typography.css */
-    /* We can override if needed, but let's see base styles first */
     margin-bottom: var(--space-3);
     color: var(--color-primary);
-    /* Ensure it uses the main text color */
     font-size: var(--size-step-6);
 }
 
 .hero__tagline {
-    /* e.g., 24px */
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-xl);
 }

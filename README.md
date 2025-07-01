@@ -334,13 +334,23 @@ A demo page is available at `src/projects/password-protection-demo.html` for tes
 
 # Analytics and Tracking
 
-This project uses Google Analytics 4 (GA4) to gather insights into user behavior and site performance.
+This project uses multiple analytics tools to gather comprehensive insights into user behavior and site performance:
 
-## Integration
+- **Google Analytics 4 (GA4)**: For traffic analysis and conversion tracking
+- **Microsoft Clarity**: For user behavior insights through heatmaps and session recordings
+
+## Google Analytics 4 Integration
 
 - **Measurement ID**: `G-Z5DNDF44NG`
 - **Implementation**: The core GA4 logic is managed in `src/js/analytics.js`. This script is loaded on all HTML pages via a `<script>` tag in the `<head>`.
 - **Bundling**: The `analytics.js` script is imported into the main `src/index.js` file to ensure it is included in the final production build by Parcel.
+
+## Microsoft Clarity Integration
+
+- **Implementation**: The Clarity configuration is managed in `src/js/clarity-config.js`. This script is loaded on all HTML pages.
+- **Features**: Provides heatmaps, session recordings, user insights, and performance metrics
+- **Setup**: See `CLARITY_SETUP.md` for detailed setup instructions including how to configure your Project ID
+- **Privacy**: Automatically masks sensitive information and complies with GDPR requirements
 
 ## Tracked Events
 
@@ -359,16 +369,33 @@ GA4's enhanced measurement is enabled to automatically track:
 
 ### Custom Event Tracking
 
-The `src/js/analytics.js` script includes custom logic to track specific user interactions:
+Both analytics tools include custom logic to track specific user interactions:
+
+**Google Analytics 4**:
 
 - **Project Clicks**: Tracks when a user clicks on a project card to view details.
 - **Resume Downloads**: Specifically tracks clicks on links identified as a resume download.
 - **Time on Page**: A basic mechanism to track time spent on each page.
 - **External Link Clicks**: Tracks clicks on links leading to external domains.
 
+**Microsoft Clarity**:
+
+- **Project Interactions**: Tracks project card clicks and views
+- **Resume Downloads**: Tracks resume download events
+- **Contact Form**: Tracks form interactions and submissions
+- **Navigation**: Tracks navigation patterns between pages
+- **Custom Events**: Flexible event tracking for any user interaction
+
 ## Data Privacy
 
-The current implementation is basic. For production environments, it's important to consider data privacy regulations (like GDPR and CCPA). This may involve adding a cookie consent banner and allowing users to opt-out of tracking. The `allow_ad_personalization_signals` flag in the GA4 config is currently set to `false`.
+Both analytics tools are configured with privacy in mind:
+
+- **Google Analytics**: The `allow_ad_personalization_signals` flag is set to `false`
+- **Microsoft Clarity**: Automatically masks sensitive information and PII
+- **GDPR Compliance**: Both tools comply with European privacy regulations
+- **IP Anonymization**: User IP addresses are anonymized
+
+For production environments, consider adding a cookie consent banner and allowing users to opt-out of tracking as required by GDPR and CCPA regulations.
 
 # Editor Configuration
 
@@ -522,7 +549,7 @@ This section lists general pending tasks. File/component-specific TODOs are typi
 - `// TODO: [SEO] Create and configure robots.txt (Phase 8.2)`
 - `// TODO: [SEO] Generate and plan for XML sitemap submission (Phase 8.2)`
 - `// TODO: [Analytics] Integrate Google Analytics 4 (GA4) tracking code (Phase 8.3)`
-- `// TODO: [Analytics] Integrate Microsoft Clarity tracking code (Phase 8.3)`
+- `// COMPLETED: [Analytics] Integrate Microsoft Clarity tracking code (Phase 8.3) - See CLARITY_SETUP.md for configuration`
 - `// TODO: [Analytics] Address data privacy implications of analytics tools (Phase 8.3)`
 - `// TODO: add a scroll to top floating button`
 
