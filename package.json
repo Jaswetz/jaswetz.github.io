@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "parcel src/*.html --open",
-    "build": "parcel build src/*.html --dist-dir dist --public-url / && mkdir -p dist/assets && cp -r src/assets/favicons dist/assets/ && cp -r src/assets/pdf dist/assets/",
+    "build": "parcel build src/*.html --dist-dir dist --public-url / && cp -r src/assets dist/",
     "clean": "rm -rf dist .parcel-cache"
   },
   "keywords": [],
