@@ -240,7 +240,7 @@
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
+@media (max-width: 47.9375rem) {
     .about-page-content {
         padding: var(--space-m);
         gap: var(--space-l);
@@ -282,7 +282,7 @@
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 35.9375rem) {
     .about-page-content {
         padding: var(--space-s);
     }

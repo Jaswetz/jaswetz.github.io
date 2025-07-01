@@ -123,7 +123,7 @@ class SiteFooter extends HTMLElement {
           outline-offset: var(--focus-outline-offset);
         }
 
-        @media (min-width: 66em) {
+        @media (min-width: 64rem) {
           .footer-content {
             grid-template-columns: 1fr 1fr; /* Keep 2 per row on large screens */
             text-align: left;

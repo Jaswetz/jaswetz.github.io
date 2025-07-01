@@ -62,7 +62,7 @@
    HERO RESPONSIVE STYLES
    ========================================================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 47.9375rem) {
 
     .hero__content,
     .hero--project__content {
