@@ -459,7 +459,7 @@ class SiteHeader extends HTMLElement {
       z-index: 1000;
       display: block;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      width: calc(var(--space-2xl-3xl) * 2.1);
+      width: calc(var(--space-2xl-3xl) * 3.0);
       }
 
       nav.active {
@@ -478,6 +478,11 @@ class SiteHeader extends HTMLElement {
       padding: var(--space-2xs) var(--space-xs);
       display: block;
       text-align: center;
+      }
+
+      nav li a.button {
+      width: 87%;
+      justify-content: center;
       }
       }
     </style>

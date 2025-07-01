@@ -116,12 +116,26 @@
 
 /* Default: Mobile and Tablet (below xl breakpoint) - Single column and hide sidebar */
 /* This applies to all screen sizes below 80rem (1280px) */
-@media screen and (max-width: 79.9375rem) {
+@media screen and (max-width: 50rem) {
 
   .grid--2-column,
   .grid--3-column,
   .grid--4-column,
-  .grid--2-column--uneven,
+  .grid--2-column--uneven {
+    grid-template-columns: 1fr !important;
+  }
+
+  .grid--auto-fit,
+  .grid--auto-fit-sm,
+  .grid--auto-fit-md,
+  .grid--auto-fit-lg,
+  .grid--auto-fit-xl {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 79.9375rem) {
+
   .grid--2-column--sidebar,
   .grid--2-column--reverse-sidebar {
     grid-template-columns: 1fr !important;
@@ -133,13 +147,6 @@
     display: none !important;
   }
 
-  .grid--auto-fit,
-  .grid--auto-fit-sm,
-  .grid--auto-fit-md,
-  .grid--auto-fit-lg,
-  .grid--auto-fit-xl {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* Tablet specific - Allow some multi-column layouts */
