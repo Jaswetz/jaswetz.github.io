@@ -1,3 +1,16 @@
+# Jason Swetzoff's UX Portfolio
+
+[![Deploy to GitHub Pages](https://github.com/jaswetz/jaswetz.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/jaswetz/jaswetz.github.io/actions/workflows/deploy.yml)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://jaswetz.github.io/)
+
+A modern UX portfolio website built with fundamental web technologies and native Web Components.
+
+## 🚀 Live Site
+
+Visit the portfolio at: [https://jaswetz.github.io/](https://jaswetz.github.io/)
+
+---
+
 # Project Naming Conventions
 
 ## Folders
@@ -552,6 +565,25 @@ This section lists general pending tasks. File/component-specific TODOs are typi
 - `// COMPLETED: [Analytics] Integrate Microsoft Clarity tracking code (Phase 8.3) - See CLARITY_SETUP.md for configuration`
 - `// TODO: [Analytics] Address data privacy implications of analytics tools (Phase 8.3)`
 - `// TODO: add a scroll to top floating button`
+
+## Future Implementation Recommendations
+
+These are enhancement suggestions for continued development beyond the core requirements:
+
+- `// TODO: [Content] Consider moving project content to src/content/projects/ structure for better organization (PS8)`
+- `// TODO: [Performance] Implement image optimization with WebP/AVIF formats using Parcel's image transformer (OP8, OP9)`
+- `// TODO: [Performance] Add responsive image srcsets with different sizes for various breakpoints (OP8)`
+- `// TODO: [Testing] Add automated visual regression testing with tools like Percy or Chromatic`
+- `// TODO: [Security] Add security headers to public/_headers for enhanced security (CSP, HSTS, etc.)`
+- `// TODO: [Accessibility] Add more comprehensive ARIA labels for complex interactions`
+- `// TODO: [Accessibility] Implement skip navigation links for better keyboard navigation`
+- `// TODO: [Performance] Consider implementing Service Worker for offline functionality`
+- `// TODO: [SEO] Add structured data markup (JSON-LD) for better search engine understanding`
+- `// TODO: [Analytics] Consider privacy-focused analytics alternatives like Plausible or Fathom`
+- `// TODO: [Monitoring] Add error tracking with tools like Sentry for production monitoring`
+- `// TODO: [Components] Create additional reusable Web Components (project-card, modal, carousel)`
+- `// TODO: [CSS] Implement CSS Container Queries for more responsive component design`
+- `// TODO: [Build] Add bundle analysis tools to monitor and optimize bundle sizes`
 
 ## Case Study Updates
 
