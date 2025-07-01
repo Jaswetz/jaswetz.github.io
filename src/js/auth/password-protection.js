@@ -226,9 +226,15 @@ export class PasswordProtection {
    * Handle cancel button click
    */
   handleCancel() {
-    const redirectUrl =
-      this.config.redirectOnCancel || PASSWORD_CONFIG.global.defaultRedirect;
-    window.location.href = redirectUrl;
+    // Try to go back to the previous page in browser history
+    if (window.history.length > 1 && document.referrer) {
+      window.history.back();
+    } else {
+      // Fallback to configured redirect URL if no previous page
+      const redirectUrl =
+        this.config.redirectOnCancel || PASSWORD_CONFIG.global.defaultRedirect;
+      window.location.href = redirectUrl;
+    }
   }
 
   /**
