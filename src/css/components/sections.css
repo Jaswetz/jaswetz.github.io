@@ -458,3 +458,24 @@
         padding: var(--space-l);
     }
 }
+
+
+/*=============================================
+=            Index: Projects            =
+=============================================*/
+
+.featured-projects-section .card__link {
+    padding: var(--space-l);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+}
+
+.project-snippet h3::after {
+    content: " →";
+    margin-left: 0.25em;
+    /* Adjust spacing as needed */
+}
+
+
+
+/*=====  End of Index: Projects  ======*/

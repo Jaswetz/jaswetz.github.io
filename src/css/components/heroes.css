@@ -147,9 +147,12 @@
     margin-bottom: var(--space-3);
     color: var(--color-primary);
     font-size: var(--size-step-6);
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--space-xs);
 }
 
 .hero__tagline {
     font-family: var(--font-family-heading);
     font-size: var(--font-size-xl);
+    line-height: var(--line-height-tight);
 }

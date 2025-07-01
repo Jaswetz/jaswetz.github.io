@@ -8,7 +8,7 @@
 
 .sidebar-nav {
     position: sticky;
-    top: calc(var(--space-2xl-3xl) * 2);
+    top: calc(var(--space-2xl) * 2);
     margin-top: var(--space-xl);
 }
 
@@ -28,12 +28,14 @@
 
 .sidebar-nav a {
     display: block;
-    padding: var(--space-xs) var(--space-l);
+    padding: var(--space-xs) var(--space-xs);
     color: var(--color-text);
     text-decoration: none;
     transition: var(--transition-base);
     position: relative;
+    font-family: var(--font-family-heading);
     border-left: 2px solid transparent;
+    font-size: var(--size-step--1);
 }
 
 .sidebar-nav a:hover {
@@ -127,7 +129,7 @@
 
 /* Responsive styles for mobile */
 @media (max-width: 47.9375rem) {
-  .site-header__nav {
-    display: none;
-  }
+    .site-header__nav {
+        display: none;
+    }
 }
