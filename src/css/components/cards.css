@@ -396,6 +396,25 @@
   Only component-specific overrides should remain here.
 */
 @media (max-width: 47.9375rem) {
+  .card--project {
+    /* Switch to vertical layout on mobile */
+    flex-direction: column;
+  }
+
+  .card__image {
+    margin-bottom: var(--space-m);
+    max-width: 100%;
+  }
+
+  .card__content {
+    padding: var(--space-m);
+  }
+
+  .result-card,
+  .result-subscriber-card {
+    padding: var(--space-l);
+  }
+
   .growth-card {
     flex-direction: column;
     padding: var(--space-l);

@@ -124,3 +124,10 @@
         justify-content: center;
     }
 }
+
+/* Responsive styles for mobile */
+@media (max-width: 47.9375rem) {
+  .site-header__nav {
+    display: none;
+  }
+}
