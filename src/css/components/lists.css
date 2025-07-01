@@ -119,36 +119,29 @@
     Grid Lists (for cards/items)
     -------------------------------------------------------------------------- */
 
-.grid-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: var(--space-l);
-}
+/*
+  The `.grid-list` component has been deprecated and its functionality is 
+  now handled by the unified grid system (`utils/grid-system.css`).
 
-.grid-list--2-column {
-    grid-template-columns: 1fr 1fr;
-}
+  To create a grid of list items, apply the `.grid` utility class directly
+  to your `<ul>` or `<ol>` element, along with any desired column and gap modifiers.
 
-.grid-list--3-column {
-    grid-template-columns: repeat(3, 1fr);
-}
+  Example:
+  <ul class="grid grid--3-column grid--gap-l">
+    <li>...</li>
+    <li>...</li>
+    <li>...</li>
+  </ul>
 
-.grid-list--auto-fit {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
+  The old `.grid-list`, `.grid-list--2-column`, `.grid-list--3-column`, and 
+  `.grid-list--auto-fit` classes have been removed.
+*/
 
 /* --------------------------------------------------------------------------
     Responsive List Styles
     -------------------------------------------------------------------------- */
 
-@media (max-width: 768px) {
-    .grid-list--2-column,
-    .grid-list--3-column {
-        grid-template-columns: 1fr;
-    }
-
+@media (max-width: 47.9375rem) {
     .step-list li {
         padding-left: var(--space-l);
     }

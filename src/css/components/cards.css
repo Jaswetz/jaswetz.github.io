@@ -137,13 +137,11 @@
     Project-Specific Card Components (Reusable)
     -------------------------------------------------------------------------- */
 
-/* Project Summary Cards (Team, Stakeholders, Tools) */
-.cards__layout {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-l);
-  /* margin-bottom: var(--space-xl); */
-}
+/* 
+  Project Summary Cards (Team, Stakeholders, Tools) 
+  Layout is controlled by utility classes from grid-system.css.
+  Example: <div class="grid grid--auto-fit-lg grid--gap-l">
+*/
 
 .card__text h3 {
   margin-bottom: var(--space-s);
@@ -159,10 +157,10 @@
   color: var(--color-text-subtle);
 }
 
-/* Problem Cards */
-.problem-cards {
-  display: grid;
-}
+/* 
+  Problem Cards
+  Layout is controlled by utility classes from grid-system.css.
+*/
 
 .problem-card {
   position: relative;
@@ -254,12 +252,11 @@
   color: var(--color-text-subtle);
 }
 
-/* Severity Level Cards */
-.severity-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-m);
-}
+/* 
+  Severity Level Cards
+  Layout is controlled by utility classes from grid-system.css.
+  Example: <div class="grid grid--3-column grid--gap-m">
+*/
 
 .severity-card {
   padding: var(--space-m);
@@ -282,12 +279,11 @@
   color: var(--color-text-subtle);
 }
 
-/* Legacy severity-levels (for backwards compatibility) */
-.severity-levels {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-m);
-}
+/* 
+  Legacy severity-levels (for backwards compatibility) 
+  Layout is controlled by utility classes from grid-system.css.
+  Example: <div class="grid grid--3-column grid--gap-m">
+*/
 
 .severity-level {
   padding: var(--space-m);
@@ -394,21 +390,12 @@
   line-height: var(--leading-normal);
 }
 
-/* Card Responsive Styles */
-@media (max-width: 768px) {
-
-  .project-summary__cards,
-  .summary-cards,
-  .problem-cards {
-    grid-template-columns: 1fr;
-    gap: var(--space-m);
-  }
-
-  .severity-cards,
-  .severity-levels {
-    grid-template-columns: 1fr;
-  }
-
+/* 
+  Card Responsive Styles 
+  Most responsive grid behavior is now handled by the global grid-system.css.
+  Only component-specific overrides should remain here.
+*/
+@media (max-width: 47.9375rem) {
   .growth-card {
     flex-direction: column;
     padding: var(--space-l);

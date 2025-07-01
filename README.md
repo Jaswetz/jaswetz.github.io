@@ -129,7 +129,7 @@ src/
     │   └── default-theme.css   #   -> @layer theme (example for default theme)
     │
     ├── layout/                 # (Optional) Global layout files for the 'layout' layer.
-    │   └── grid.css            #   -> @layer layout (example)
+    │   └── projects.css        #   -> @layer layout (example for project-specific layouts)
     │
     ├── components/             # (Optional) Styles for non-Web Component UI for the 'components' layer.
     │   └── buttons.css         #   -> @layer components (example)
@@ -144,6 +144,8 @@ src/
         ├── typography.css      #   -> @layer utilities
         ├── flexbox.css         #   -> @layer utilities
         ├── layout.css          #   -> @layer utilities
+        ├── grid-system.css     #   -> @layer utilities
+        ├── media-queries.css   #   -> @layer utilities
         └── debug.css           #   -> @layer utilities
 
 src/
@@ -163,9 +165,9 @@ src/
 
 - **`variables.css`**: Defines global CSS Custom Properties. These are imported in `main.css` _before_ any `@layer` declarations or within an early, unlayered import to ensure they are universally available.
 - **`main.css`**: This is the primary stylesheet linked in all HTML files. Its main responsibilities are:
-  1.  Importing `variables.css`.
-  2.  Defining the order of cascade layers: `@layer reset, base, theme, layout, components, utilities;`.
-  3.  Importing other CSS files directly into their designated layers.
+  1. Importing `variables.css`.
+  2. Defining the order of cascade layers: `@layer reset, base, theme, layout, components, utilities;`.
+  3. Importing other CSS files directly into their designated layers.
       - `@layer reset { @import url("base/reset.css"); }`
       - `@layer base { @import url("base/global.css"); @import url("base/typography.css"); }`
       - `@layer theme { @import url("theme/default-theme.css"); }`
@@ -191,6 +193,7 @@ src/
 
 - For maintainability and better tooling support, each Web Component can have its own CSS file (e.g., `SiteHeader.css` for `SiteHeader.js`).
 - The CSS file is imported into the component JavaScript using:
+
   ```js
   import * as styles from "./SiteHeader.css";
   // ...
@@ -199,6 +202,7 @@ src/
     ...
   `;
   ```
+
 - This approach enables full syntax highlighting, code completion, and easier reuse of styles.
 - **Note:** If you see a linter warning like "Cannot find module './SiteHeader.css' or its corresponding type declarations," you can safely ignore it for plain JS projects. For TypeScript, add a declaration file as described below.
 
@@ -324,11 +328,55 @@ Responsive containers automatically adjust max-width and padding at each breakpo
 }
 ```
 
-### Documentation
+### Breakpoint System Documentation
 
 See `src/css/utils/media-queries.css` for complete documentation and examples. The living style guide at `/styleguide.html` includes an interactive breakpoint demo.
 
-# HTML Structure & Templating
+## Unified Grid & Layout System
+
+The project uses a comprehensive, utility-first grid and layout system located in `src/css/utils/grid-system.css`. This system replaces all previous grid implementations (`base/layout.css`, `components/grids.css`) and provides a single, consistent way to create responsive layouts.
+
+### Core Concepts
+
+- **Utility-First**: Compose complex layouts by applying small, single-purpose utility classes directly in your HTML.
+- **CSS Grid & Flexbox**: The system provides utilities for both CSS Grid and Flexbox, allowing you to choose the best tool for the job.
+- **Responsive by Default**: All layout utilities can be applied conditionally at different breakpoints using prefixes (e.g., `md:grid-cols-4`).
+
+### CSS Grid Utilities
+
+Create grid containers and define column structures with simple classes.
+
+- `.grid`: Establishes a grid container.
+- `.grid-cols-[1-12]`: Defines a grid with a fixed number of equal-width columns.
+- `.grid-cols-auto-fit`: Creates a responsive grid where columns automatically wrap and fill the available space (ideal for cards).
+- `.gap-[1-6]`: Applies consistent spacing between grid items.
+
+**Example:**
+
+```html
+<!-- A 2-column grid on mobile, 4-column on desktop -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+  <div>Item 4</div>
+</div>
+```
+
+### Flexbox Utilities
+
+For one-dimensional layouts, use the flexbox utilities.
+
+- `.flex`: Establishes a flex container.
+- `.flex-row`, `.flex-col`: Defines the direction of the flex items.
+- `.justify-center`, `.items-center`, etc.: For alignment.
+- `.gap-[1-6]`: Applies spacing between flex items.
+
+### Grid System Documentation
+
+See `src/css/utils/grid-system.css` for a complete list of available utilities. The living style guide at `/styleguide.html` includes comprehensive documentation and live, interactive demos for all grid and flexbox variations.
+
+## HTML Structure & Templating
 
 This project uses **Native Web Components** for creating reusable UI elements such as the site header, footer, and navigation. This approach helps maintain a DRY (Don't Repeat Yourself) HTML structure without requiring additional templating engine dependencies.
 
@@ -336,14 +384,14 @@ This project uses **Native Web Components** for creating reusable UI elements su
 - These components are then used directly in the HTML pages (e.g., `src/index.html`, `src/about.html`, `src/styleguide.html`).
 - Parcel.js handles the bundling of these components as part of the standard JavaScript build process.
 
-# Living Style Guide
+## Living Style Guide
 
 A living style guide is available at `src/styleguide.html`. When running the development server (`npm run dev`), this page can be accessed to view and test all available Web Components, design tokens (colors, typography), and utility classes.
 This page serves as a central reference for the UI of the website.
 
 Add any new components or styles or layouts to this page when created.
 
-# Password Protection System
+## Password Protection System
 
 This project includes a modular password protection system for case studies that contain confidential or sensitive design work. The system provides client-side password protection with session management.
 
@@ -362,25 +410,25 @@ This project includes a modular password protection system for case studies that
 
 1. **Add the case study to the configuration** in `src/js/auth/password-config.js`:
 
-```javascript
-protectedCaseStudies: {
-  'your-case-study-id': {
-    password: 'YourSecurePassword',
-    title: 'Your Case Study Title',
-    description: 'This case study contains confidential design work.',
-    redirectOnCancel: '../work.html'
-  }
-}
-```
+   ```javascript
+   protectedCaseStudies: {
+     'your-case-study-id': {
+       password: 'YourSecurePassword',
+       title: 'Your Case Study Title',
+       description: 'This case study contains confidential design work.',
+       redirectOnCancel: '../work.html'
+     }
+   }
+   ```
 
 2. **Add the protection script** to your case study HTML file before the closing `</body>` tag:
 
-```html
-<script type="module">
-  import { protectCaseStudy } from "../js/password-protection-init.js";
-  protectCaseStudy("your-case-study-id");
-</script>
-```
+   ```html
+   <script type="module">
+     import { protectCaseStudy } from "../js/password-protection-init.js";
+     protectCaseStudy("your-case-study-id");
+   </script>
+   ```
 
 ### Currently Protected Case Studies
 

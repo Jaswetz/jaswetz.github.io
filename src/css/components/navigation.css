@@ -9,7 +9,6 @@
 .sidebar-nav {
     position: sticky;
     top: calc(var(--space-2xl-3xl) * 2);
-    padding: var(--space-l);
     margin-top: var(--space-xl);
 }
 
@@ -114,7 +113,7 @@
     Navigation Responsive Styles
     -------------------------------------------------------------------------- */
 
-@media (max-width: 768px) {
+@media (max-width: 47.9375rem) {
     .project-navigation {
         flex-direction: column;
         gap: var(--space-s);

@@ -418,13 +418,149 @@ html>
           </section>
 
           <section id="grid-system" class="styleguide-section">
-            <h3>3.5 Grid System</h3>
+            <h3>3.5 Unified Grid System</h3>
             <p>
-              If a global CSS grid or layout system is used, it will be
-              documented here. Many layout concerns may be handled by individual
-              components or page-specific CSS.
+                A comprehensive, mobile-first, responsive grid system designed for creating flexible and consistent layouts. The system is built with CSS Grid and includes utility classes for columns, gaps, and responsive visibility.
             </p>
-            <!-- TODO: [Styleguide] Document global grid system if applicable (LSG3.4) -->
+
+            <h4>Core Usage</h4>
+            <p>
+                To create a grid, add the <code>.grid</code> class to a container. Then, add modifier classes to define the column structure and gap size.
+            </p>
+            <pre><code>&lt;div class="grid grid--3-column grid--gap-m"&gt;
+    &lt;div&gt;Item 1&lt;/div&gt;
+    &lt;div&gt;Item 2&lt;/div&gt;
+    &lt;div&gt;Item 3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+            <h4>Fixed-Column Layouts</h4>
+            <p>Use these classes for a specific number of columns. They automatically stack to a single column on mobile screens (&lt;48rem).</p>
+            <div class="grid-demo-container">
+                <strong>2 Columns: <code>.grid--2-column</code></strong>
+                <div class="grid grid--2-column grid--gap-m">
+                    <div class="grid-demo-item">Column 1</div>
+                    <div class="grid-demo-item">Column 2</div>
+                </div>
+            </div>
+            <div class="grid-demo-container">
+                <strong>3 Columns: <code>.grid--3-column</code></strong>
+                <div class="grid grid--3-column grid--gap-m">
+                    <div class="grid-demo-item">Column 1</div>
+                    <div class="grid-demo-item">Column 2</div>
+                    <div class="grid-demo-item">Column 3</div>
+                </div>
+            </div>
+            <div class="grid-demo-container">
+                <strong>4 Columns: <code>.grid--4-column</code></strong>
+                <div class="grid grid--4-column grid--gap-m">
+                    <div class="grid-demo-item">Column 1</div>
+                    <div class="grid-demo-item">Column 2</div>
+                    <div class="grid-demo-item">Column 3</div>
+                    <div class="grid-demo-item">Column 4</div>
+                </div>
+            </div>
+
+            <h4>Auto-Fit Layouts</h4>
+            <p>These classes create a responsive grid where columns automatically wrap to fit the available space. The <code>minmax()</code> function determines the minimum item width.</p>
+            <div class="grid-demo-container">
+                <strong>Auto-Fit (min 280px): <code>.grid--auto-fit</code></strong>
+                <div class="grid grid--auto-fit grid--gap-m">
+                    <div class="grid-demo-item">Item</div>
+                    <div class="grid-demo-item">Item</div>
+                    <div class="grid-demo-item">Item</div>
+                    <div class="grid-demo-item">Item</div>
+                </div>
+            </div>
+            <p>Other auto-fit variations: <code>.grid--auto-fit-sm</code> (200px), <code>.grid--auto-fit-md</code> (300px), <code>.grid--auto-fit-lg</code> (350px), <code>.grid--auto-fit-xl</code> (400px).</p>
+
+            <h4>Asymmetric Layouts</h4>
+            <p>For common layouts like main content with a sidebar. The sidebar has a fixed width on larger screens.</p>
+            <div class="grid-demo-container">
+                <strong>Sidebar (Content | Sidebar): <code>.grid--2-column--sidebar</code></strong>
+                <div class="grid grid--2-column--sidebar grid--gap-l">
+                    <div class="grid-demo-item">Main Content</div>
+                    <div class="grid-demo-item">Sidebar</div>
+                </div>
+            </div>
+            <div class="grid-demo-container">
+                <strong>Reverse Sidebar (Sidebar | Content): <code>.grid--2-column--reverse-sidebar</code></strong>
+                <div class="grid grid--2-column--reverse-sidebar grid--gap-l">
+                    <div class="grid-demo-item">Sidebar</div>
+                    <div class="grid-demo-item">Main Content</div>
+                </div>
+            </div>
+            <div class="grid-demo-container">
+                <strong>Uneven (1fr 2fr): <code>.grid--2-column--uneven</code></strong>
+                <div class="grid grid--2-column--uneven grid--gap-l">
+                    <div class="grid-demo-item">Left (1fr)</div>
+                    <div class="grid-demo-item">Right (2fr)</div>
+                </div>
+            </div>
+
+            <h4>Gap Variations</h4>
+            <p>Control the space between grid items using gap utilities. The default gap is <code>--space-l</code>.</p>
+            <ul>
+                <li><code>.grid--gap-xs</code></li>
+                <li><code>.grid--gap-s</code></li>
+                <li><code>.grid--gap-m</code></li>
+                <li><code>.grid--gap-l</code></li>
+                <li><code>.grid--gap-xl</code></li>
+                <li><code>.grid--gap-2xl</code></li>
+                <li><code>.grid--gap-3xl</code></li>
+            </ul>
+
+            <h4>Responsive Visibility Utilities</h4>
+            <p>Show or hide elements at specific breakpoints.</p>
+            <ul>
+                <li><code>.hide-mobile</code>: Hidden below 48rem.</li>
+                <li><code>.hide-tablet</code>: Hidden between 48rem and 64rem.</li>
+                <li><code>.hide-desktop</code>: Hidden above 64rem.</li>
+                <li><code>.hide-until-lg</code>: Hidden until 64rem.</li>
+                <li><code>.hide-until-xl</code>: Hidden until 80rem.</li>
+                <li><code>.hide-until-xxl</code>: Hidden until 96rem.</li>
+            </ul>
+
+            <h4>Flexbox Grid Alternatives</h4>
+            <p>For cases where CSS Flexbox is more suitable, a flex-based grid is available.</p>
+            <div class="grid-demo-container">
+                <strong>Flex Grid (flex: 1 1 280px): <code>.flex-grid</code></strong>
+                <div class="flex-grid">
+                    <div class="grid-demo-item">Flex Item</div>
+                    <div class="grid-demo-item">Flex Item</div>
+                    <div class="grid-demo-item">Flex Item</div>
+                </div>
+            </div>
+            <p>Column variations like <code>.flex-grid--2-column</code> and <code>.flex-grid--3-column</code> are also available.</p>
+
+            <style>
+              .grid-demo-container {
+                margin: var(--space-m) 0;
+                padding: var(--space-m);
+                border: 1px solid var(--color-border);
+                border-radius: var(--border-radius);
+                background: var(--color-surface-secondary);
+              }
+              
+              .grid-demo-item {
+                background: var(--color-surface-tertiary);
+                color: var(--color-text);
+                padding: var(--space-m);
+                border-radius: var(--border-radius);
+                text-align: center;
+                font-weight: var(--font-weight-medium);
+              }
+              
+              .grid-demo-container strong {
+                  display: block;
+                  margin-bottom: var(--space-s);
+              }
+
+              .grid-demo-container code {
+                font-size: var(--font-size-sm);
+                color: var(--color-text-light);
+                font-family: var(--font-family-monospace);
+              }
+            </style>
           </section>
         </section>
 

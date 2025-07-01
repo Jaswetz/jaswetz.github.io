@@ -436,7 +436,7 @@ class SiteHeader extends HTMLElement {
       /* End of added button styles */
 
 
-      @media (max-width: 768px) {
+      @media (max-width: 47.9375rem) {
     
 
       .menu-toggle {
