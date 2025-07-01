@@ -104,7 +104,7 @@ class SiteHeader extends HTMLElement {
 
       .logo a {
       font-weight: var(--font-weight-medium);
-      font-family: var(--font-family-heading);
+      font-family: var(--font-family-sans);
       text-decoration: none;
       color: var(--color-text);
       font-size: var(--text-size-heading-4);
@@ -252,7 +252,7 @@ class SiteHeader extends HTMLElement {
       font-size: var(--text-size-heading-5);
       border-radius: var(--border-radius);
       transition: var(--transition-interactive);
-      font-family: var(--font-family-sans);
+      font-family: var(--font-family-heading);
       font-weight: var(--font-weight-medium);
       position: relative;
       overflow: hidden;

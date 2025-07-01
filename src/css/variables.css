@@ -1,9 +1,13 @@
 :root {
-  /* Base Unit */
+  /* ==========================================================================
+     BASE UNIT
+     ========================================================================== */
   --unit: 0.25rem;
   /* 4px */
 
-  /* Colors */
+  /* ==========================================================================
+     COLORS
+     ========================================================================== */
   --color-primary: #2569ed;
   --color-primary-alt: #1746a0;
   --color-surface: #ffffff;
@@ -27,12 +31,12 @@
   --color-border: #ddd;
   --color-text-subtle: #555;
 
-
-
-  /* Typography */
-  --font-family-heading: "Laila", serif;
-  --font-family-body: "Gentium Plus", serif;
-  --font-family-sans: "PT Sans", sans-serif;
+  /* ==========================================================================
+     TYPOGRAPHY
+     ========================================================================== */
+  --font-family-heading: "Laila", "Times New Roman", "Georgia", "Baskerville", serif;
+  --font-family-body: "Gentium Plus", "Times New Roman", "Georgia", "Baskerville", serif;
+  --font-family-sans: "PT Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
   --heading-font-weight: var(--font-weight-semibold);
