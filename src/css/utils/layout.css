@@ -69,3 +69,94 @@
   z-index: 20;
 }
 /* TODO: [CSS] Add more z-index utilities if needed */
+
+/* ==========================================================================
+   CONTAINER UTILITIES
+   ========================================================================== */
+
+/* Base container with responsive max-widths */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-m);
+  padding-right: var(--space-m);
+}
+
+/* Responsive container max-widths using new breakpoint system */
+@media (min-width: 36rem) {
+  .container {
+    max-width: var(--container-sm);
+  }
+}
+
+@media (min-width: 48rem) {
+  .container {
+    max-width: var(--container-md);
+    padding-left: var(--space-l);
+    padding-right: var(--space-l);
+  }
+}
+
+@media (min-width: 64rem) {
+  .container {
+    max-width: var(--container-lg);
+    padding-left: var(--space-xl);
+    padding-right: var(--space-xl);
+  }
+}
+
+@media (min-width: 80rem) {
+  .container {
+    max-width: var(--container-xl);
+  }
+}
+
+@media (min-width: 96rem) {
+  .container {
+    max-width: var(--container-2xl);
+  }
+}
+
+/* Container variants */
+.container-full {
+  width: 100%;
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-m);
+  padding-right: var(--space-m);
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: var(--reading-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-m);
+  padding-right: var(--space-m);
+}
+
+/* ==========================================================================
+   WIDTH UTILITIES
+   ========================================================================== */
+
+.w-full {
+  width: 100%;
+}
+
+.w-auto {
+  width: auto;
+}
+
+.max-w-none {
+  max-width: none;
+}
+
+.max-w-reading {
+  max-width: var(--reading-width);
+}
+
+.max-w-container {
+  max-width: var(--max-width);
+}
