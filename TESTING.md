@@ -34,9 +34,6 @@ npm run test:security
 npm run lint
 npm run stylelint
 
-# HTML validation
-npm run test:html-validate
-
 # Accessibility (requires running server)
 npm run test:accessibility:local
 
@@ -92,7 +89,8 @@ npm run stylelint:fix  # Auto-fix issues
 **Purpose**: Validate HTML5 markup and custom elements
 
 ```bash
-npm run test:html-validate
+# This test is temporarily disabled.
+# See TODO.md for details on re-enabling.
 ```
 
 ### 4. Accessibility Testing

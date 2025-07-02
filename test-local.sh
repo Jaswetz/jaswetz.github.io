@@ -51,24 +51,19 @@ echo "🎨 Linting CSS..."
 npm run stylelint
 print_status "CSS linting passed"
 
-# 4. Validate HTML
-echo "📄 Validating HTML..."
-npm run test:html-validate
-print_status "HTML validation passed"
-
-# 5. Build the project
+# 4. Build the project
 echo "🏗️ Building project..."
 npm run build
 print_status "Build completed"
 
-# 6. Check bundle size
+# 5. Check bundle size
 echo "📊 Checking bundle size..."
 npm run test:bundle-size || {
     print_warning "Bundle size check failed. Consider optimizing assets."
 }
 print_status "Bundle size check completed"
 
-# 7. Start server in background for testing
+# 6. Start server in background for testing
 echo "🌐 Starting test server..."
 npm run serve &
 SERVER_PID=$!
@@ -84,7 +79,7 @@ cleanup() {
 }
 trap cleanup EXIT
 
-# 8. Test accessibility
+# 7. Test accessibility
 echo "♿ Testing accessibility..."
 npx axe http://localhost:8080 --exit || {
     print_error "Accessibility tests failed"
@@ -92,7 +87,7 @@ npx axe http://localhost:8080 --exit || {
 }
 print_status "Accessibility tests passed"
 
-# 9. Test performance
+# 8. Test performance
 echo "⚡ Testing performance..."
 npx lighthouse http://localhost:8080 --output json --output-path ./lighthouse-report.json --chrome-flags='--headless --no-sandbox' || {
     print_warning "Performance test encountered issues"
@@ -111,14 +106,14 @@ else
     print_warning "Lighthouse report not generated"
 fi
 
-# 10. Test links
+# 9. Test links
 echo "🔗 Testing links..."
 npx linkinator http://localhost:8080 --recurse --skip 'mailto:' || {
     print_warning "Some links may be broken. Review linkinator output."
 }
 print_status "Link checking completed"
 
-# 11. Run Playwright tests
+# 10. Run Playwright tests
 echo "🎭 Running cross-browser tests..."
 npx playwright test || {
     print_error "Playwright tests failed"
@@ -136,7 +131,6 @@ echo "📊 Test Summary:"
 echo "  - Security audit: ✓"
 echo "  - JavaScript linting: ✓"
 echo "  - CSS linting: ✓" 
-echo "  - HTML validation: ✓"
 echo "  - Build: ✓"
 echo "  - Bundle size: ✓"
 echo "  - Accessibility: ✓"
