@@ -12,29 +12,30 @@ console.log("🔤 Analyzing font usage and generating optimizations...\n");
 
 function analyzeFontUsage() {
   console.log("📊 Current font configuration:");
-  
+
   const fonts = {
-    "Laila": {
+    Laila: {
       usage: "Headings",
       weights: ["400", "600"],
       googleFonts: true,
       preload: true,
-      fallback: "\"Times New Roman\", \"Georgia\", \"Baskerville\", serif"
+      fallback: "\"Times New Roman\", \"Georgia\", \"Baskerville\", serif",
     },
     "Gentium Plus": {
       usage: "Body text",
       weights: ["400", "700"],
       googleFonts: true,
       preload: true,
-      fallback: "\"Times New Roman\", \"Georgia\", \"Baskerville\", serif"
+      fallback: "\"Times New Roman\", \"Georgia\", \"Baskerville\", serif",
     },
     "PT Sans": {
       usage: "UI elements",
       weights: ["400", "700"],
       googleFonts: true,
       preload: false,
-      fallback: "-apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Helvetica Neue\", Arial, sans-serif"
-    }
+      fallback:
+        "-apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Helvetica Neue\", Arial, sans-serif",
+    },
   };
 
   Object.entries(fonts).forEach(([fontName, config]) => {
@@ -64,8 +65,10 @@ function generateFontOptimizations(fonts) {
   Object.entries(fonts).forEach(([fontName, config]) => {
     if (config.preload) {
       const safeFontName = fontName.replace(/ /g, "+");
-      config.weights.forEach(weight => {
-        console.log(`   <link rel="preload" href="https://fonts.gstatic.com/s/${safeFontName.toLowerCase()}/v1/${safeFontName}-${weight}.woff2" as="font" type="font/woff2" crossorigin>`);
+      config.weights.forEach((weight) => {
+        console.log(
+          `   <link rel="preload" href="https://fonts.gstatic.com/s/${safeFontName.toLowerCase()}/v1/${safeFontName}-${weight}.woff2" as="font" type="font/woff2" crossorigin>`
+        );
       });
     }
   });
@@ -85,13 +88,13 @@ function generateFontOptimizations(fonts) {
 
   return {
     googleFontsUrl,
-    preloadLinks: generatePreloadLinks(fonts)
+    preloadLinks: generatePreloadLinks(fonts),
   };
 }
 
 function generateOptimizedGoogleFontsUrl(fonts) {
   const fontRequests = [];
-  
+
   Object.entries(fonts).forEach(([fontName, config]) => {
     if (config.googleFonts) {
       const safeName = fontName.replace(/ /g, "+");
@@ -100,7 +103,9 @@ function generateOptimizedGoogleFontsUrl(fonts) {
     }
   });
 
-  return `https://fonts.googleapis.com/css2?${fontRequests.map(f => `family=${f}`).join("&")}&display=swap`;
+  return `https://fonts.googleapis.com/css2?${fontRequests
+    .map((f) => `family=${f}`)
+    .join("&")}&display=swap`;
 }
 
 function generatePreloadLinks(fonts) {
@@ -108,11 +113,11 @@ function generatePreloadLinks(fonts) {
   Object.entries(fonts).forEach(([fontName, config]) => {
     if (config.preload && config.googleFonts) {
       const safeName = fontName.replace(/ /g, "+");
-      config.weights.forEach(weight => {
+      config.weights.forEach((weight) => {
         links.push({
           fontName,
           weight,
-          href: `https://fonts.gstatic.com/s/${safeName.toLowerCase()}/v1/${safeName}-${weight}.woff2`
+          href: `https://fonts.gstatic.com/s/${safeName.toLowerCase()}/v1/${safeName}-${weight}.woff2`,
         });
       });
     }
@@ -123,11 +128,13 @@ function generatePreloadLinks(fonts) {
 function generateFontLoadingStrategy() {
   console.log("5. 🚀 Font loading strategy:");
   console.log("   a) Preload critical fonts (headings, body text)");
-  console.log("   b) Use font-display: swap for non-critical fonts");  
+  console.log("   b) Use font-display: swap for non-critical fonts");
   console.log("   c) Implement fallback font matching");
-  console.log("   d) Consider using a font loading library like Web Font Loader");
+  console.log(
+    "   d) Consider using a font loading library like Web Font Loader"
+  );
   console.log("");
-  
+
   console.log("6. 📱 Performance recommendations:");
   console.log("   - Limit to 2-3 font families maximum");
   console.log("   - Use system fonts as fallbacks");
@@ -138,7 +145,7 @@ function generateFontLoadingStrategy() {
 
 function createFontOptimizationReport() {
   const reportPath = path.join(projectRoot, "FONT_OPTIMIZATION_REPORT.md");
-  
+
   const report = `# Font Optimization Report
 
 ## Current Font Stack
@@ -212,4 +219,6 @@ generateFontLoadingStrategy();
 createFontOptimizationReport();
 
 console.log("✨ Font optimization analysis complete!");
-console.log("💡 Check FONT_OPTIMIZATION_REPORT.md for detailed implementation steps.");
+console.log(
+  "💡 Check FONT_OPTIMIZATION_REPORT.md for detailed implementation steps."
+);

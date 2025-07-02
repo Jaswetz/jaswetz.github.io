@@ -19,28 +19,29 @@ class SmartImageLoader {
   async getBestImagePath(imagePath, preferWebP = true) {
     // Remove leading ./ if present
     const cleanPath = imagePath.replace(/^\.\/img\//, "");
-    
+
     // Try WebP first if supported and preferred
     if (preferWebP && this.supportsWebP()) {
-      const webpPath = this.webpBasePath + cleanPath.replace(/\.(jpg|jpeg|png)$/i, ".webp");
+      const webpPath =
+        this.webpBasePath + cleanPath.replace(/\.(jpg|jpeg|png)$/i, ".webp");
       if (await this.imageExists(webpPath)) {
         return webpPath;
       }
     }
-    
+
     // Try optimized version
     const optimizedPath = this.optimizedBasePath + cleanPath;
     if (await this.imageExists(optimizedPath)) {
       return optimizedPath;
     }
-    
+
     // Fall back to original
     return this.fallbackBasePath + cleanPath;
   }
 
   /**
    * Check if an image exists
-   * @param {string} imagePath 
+   * @param {string} imagePath
    * @returns {Promise<boolean>}
    */
   async imageExists(imagePath) {
@@ -73,13 +74,13 @@ class SmartImageLoader {
       const originalSrc = imageElement.src;
       const relativePath = originalSrc.replace(window.location.origin, "");
       const optimizedPath = await this.getBestImagePath(relativePath);
-      
+
       if (optimizedPath !== relativePath) {
         imageElement.src = optimizedPath;
         console.log(`✅ Optimized: ${relativePath} → ${optimizedPath}`);
       }
     });
-    
+
     await Promise.all(promises);
   }
 }
@@ -87,7 +88,7 @@ class SmartImageLoader {
 // Auto-initialize and optimize images
 if (typeof window !== "undefined") {
   const smartLoader = new SmartImageLoader();
-  
+
   // Wait for DOM to be ready
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", () => {
@@ -96,9 +97,9 @@ if (typeof window !== "undefined") {
   } else {
     smartLoader.optimizePageImages();
   }
-  
+
   // Make available globally
-  /** @type {any} */(window).smartImageLoader = smartLoader;
+  /** @type {any} */ (window).smartImageLoader = smartLoader;
 }
 
 export default SmartImageLoader;

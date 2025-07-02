@@ -31,9 +31,9 @@ async function optimizeImages() {
       plugins: [
         imageminMozjpeg({
           quality: 85, // Good balance between quality and file size
-          progressive: true
-        })
-      ]
+          progressive: true,
+        }),
+      ],
     });
     console.log(`✅ Optimized ${jpegFiles.length} JPEG images`);
 
@@ -44,23 +44,26 @@ async function optimizeImages() {
       plugins: [
         imageminPngquant({
           quality: [0.8, 0.9], // Good quality range
-          strip: true // Remove metadata
-        })
-      ]
+          strip: true, // Remove metadata
+        }),
+      ],
     });
     console.log(`✅ Optimized ${pngFiles.length} PNG images`);
 
     // Create WebP versions
     console.log("⚡ Creating WebP versions...");
-    const webpFiles = await imagemin([path.join(inputDir, "**/*.{jpg,jpeg,png}")], {
-      destination: path.join(outputDir, "webp"),
-      plugins: [
-        imageminWebp({
-          quality: 85,
-          alphaQuality: 85
-        })
-      ]
-    });
+    const webpFiles = await imagemin(
+      [path.join(inputDir, "**/*.{jpg,jpeg,png}")],
+      {
+        destination: path.join(outputDir, "webp"),
+        plugins: [
+          imageminWebp({
+            quality: 85,
+            alphaQuality: 85,
+          }),
+        ],
+      }
+    );
     console.log(`✅ Created ${webpFiles.length} WebP images`);
 
     // Generate responsive sizes for large images
@@ -69,8 +72,9 @@ async function optimizeImages() {
 
     console.log("\n✨ Image optimization complete!");
     console.log("💡 Images are optimized but originals are preserved.");
-    console.log("💡 Update your HTML to use the optimized versions and WebP with fallbacks.");
-    
+    console.log(
+      "💡 Update your HTML to use the optimized versions and WebP with fallbacks."
+    );
   } catch (error) {
     console.error("❌ Error optimizing images:", error);
     process.exit(1);
@@ -84,14 +88,16 @@ async function generateResponsiveImages() {
     "hero-backgrounds": [640, 1024, 1440, 1920],
     "project-thumbnails": [300, 600, 900],
     "project-images": [400, 800, 1200],
-    "profile-images": [150, 300, 600]
+    "profile-images": [150, 300, 600],
   };
 
   console.log("📋 Responsive image sizes to create:");
   Object.entries(responsiveSizes).forEach(([category, sizes]) => {
     console.log(`  ${category}: ${sizes.join("w, ")}w`);
   });
-  console.log("💡 Consider using a service like Cloudinary or creating these sizes manually.");
+  console.log(
+    "💡 Consider using a service like Cloudinary or creating these sizes manually."
+  );
 }
 
 optimizeImages();

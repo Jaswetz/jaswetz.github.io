@@ -614,6 +614,46 @@ This section outlines the planned testing approaches to ensure website quality, 
 - **Integration Testing**: Components will be tested on actual pages (`index.html`, `about.html`, etc.) to ensure they integrate correctly with the page layout and other components.
 - **Encapsulation Verification**: Shadow DOM encapsulation will be implicitly verified by ensuring styles do not leak between components or the global scope.
 
+# Git Workflow & Quality Assurance
+
+This project implements a streamlined git workflow with automated quality checks to maintain code quality without slowing down development.
+
+## 12.1 Git Hooks Strategy
+
+### Pre-Commit Hook (Lightweight)
+- **Purpose**: Quick essential checks to catch critical errors
+- **Runs**: ESLint on JavaScript files only
+- **Behavior**: Auto-fixes issues when possible, fails only on critical errors
+- **Speed**: Fast (< 5 seconds typically)
+- **Bypass**: Use `git commit --no-verify` if needed
+
+### Pre-Push Hook (Comprehensive)
+- **Purpose**: Thorough testing before sharing code
+- **Runs on Main Branch**: Full test suite (ESLint, Stylelint, HTML validation, accessibility)
+- **Runs on Feature Branches**: Basic ESLint checks only
+- **Behavior**: Prevents push if critical issues found
+- **Bypass**: Use `git push --no-verify` for emergencies
+
+### CI/CD Pipeline
+- **Purpose**: Final verification and deployment
+- **Runs**: Complete test suite including cross-browser testing
+- **Triggers**: On push to main branch
+- **Result**: Automatic deployment if all tests pass
+
+## 12.2 Development Workflow
+
+```bash
+# Normal development cycle
+git add .
+git commit -m "feat: add new feature"  # Runs quick ESLint check
+git push origin feature-branch         # Runs basic checks
+
+# When ready to merge to main
+git checkout main
+git merge feature-branch
+git push origin main                   # Runs full test suite
+```
+
 # Deployment & Hosting (Github Pages)
 
 This project is intended to be deployed using GitLab Pages.
@@ -675,7 +715,7 @@ This section lists general pending tasks. File/component-specific TODOs are typi
   - Bundle size monitoring
   - Link checking
 - **[Testing] ✅ Created local testing script** (`./test-local.sh`)
-- **[Testing] ✅ Added pre-commit hooks** for quality checks
+- **[Testing] ✅ Added optimized git hooks** (Lightweight pre-commit + comprehensive pre-push)
 - **[Optimization] ✅ Implemented comprehensive asset optimization** (Image compression, WebP conversion, lazy loading)
 - **[Optimization] ✅ Implemented web font optimization** (Preconnect, preload, font-display: swap)
 - **[Optimization] ✅ Updated all HTML files with optimized font loading** (All 9 HTML files now use optimized headers)
