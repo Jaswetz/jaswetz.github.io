@@ -513,15 +513,16 @@ class SiteHeader extends HTMLElement {
       </button>
       <nav>
       <ul>
-        <li><a href="${
-          isHomePage ? "#" : "/index.html#"
-        }quotes" data-scroll="true">Testimonials</a></li>
+   
         <li><a href="${
           isHomePage ? "#" : "/index.html#"
         }featured-projects" data-scroll="true">Work</a></li>
         <li><a href="${
           isHomePage ? "#" : "/index.html#"
         }about" data-scroll="true">About</a></li>
+        <li><a href="${
+          isHomePage ? "#" : "/index.html#"
+        }quotes" data-scroll="true">Testimonials</a></li>
         <li><a href="https://www.linkedin.com/in/swetzoff/" class="button" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in new tab)">Say Hello!<svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 17 10-10"></path><path d="M7 7h10v10"></path></svg></a></li>
 
       </ul>
