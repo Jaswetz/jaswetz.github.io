@@ -73,7 +73,8 @@ jobs:
   # Deploy to GitHub Pages
   deploy:
     needs: [build-and-deploy]
-    if: github.event.inputs.deploy
+    # This condition ensures the job only runs when manually triggered with the 'deploy' input set to true.
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.deploy
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
