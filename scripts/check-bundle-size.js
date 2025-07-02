@@ -31,19 +31,19 @@ function formatBytes(bytes) {
 
 function findFiles(dir, pattern) {
   const files = [];
-  
+
   if (!fs.existsSync(dir)) {
     console.log(`⚠️  Directory ${dir} does not exist`);
     return files;
   }
-  
+
   function walkDir(currentPath) {
     const items = fs.readdirSync(currentPath);
-    
+
     for (const item of items) {
       const fullPath = path.join(currentPath, item);
       const stat = fs.statSync(fullPath);
-      
+
       if (stat.isDirectory()) {
         walkDir(fullPath);
       } else if (pattern.test(item)) {
@@ -51,23 +51,23 @@ function findFiles(dir, pattern) {
       }
     }
   }
-  
+
   walkDir(dir);
   return files;
 }
 
 function checkBundleSize() {
   console.log("📦 Checking bundle sizes...\n");
-  
+
   const projectRoot = path.resolve(__dirname, "..");
   const distDir = path.join(projectRoot, "dist");
-  
+
   let hasErrors = false;
-  
+
   // Check JavaScript files
   const jsFiles = findFiles(distDir, /\.js$/);
   const jsLimit = LIMITS["dist/**/*.js"];
-  
+
   console.log("JavaScript files:");
   if (jsFiles.length === 0) {
     console.log("  No JS files found");
@@ -79,8 +79,12 @@ function checkBundleSize() {
       const relativePath = path.relative(projectRoot, file);
       console.log(`  ${relativePath}: ${formatBytes(size)}`);
     }
-    
-    console.log(`  Total JS size: ${formatBytes(totalJsSize)} (limit: ${formatBytes(jsLimit)})`);
+
+    console.log(
+      `  Total JS size: ${formatBytes(totalJsSize)} (limit: ${formatBytes(
+        jsLimit
+      )})`
+    );
     if (totalJsSize > jsLimit) {
       console.log("  ❌ JS bundle size exceeds limit!");
       hasErrors = true;
@@ -88,13 +92,13 @@ function checkBundleSize() {
       console.log("  ✅ JS bundle size OK");
     }
   }
-  
+
   console.log();
-  
+
   // Check CSS files
   const cssFiles = findFiles(distDir, /\.css$/);
   const cssLimit = LIMITS["dist/**/*.css"];
-  
+
   console.log("CSS files:");
   if (cssFiles.length === 0) {
     console.log("  No CSS files found");
@@ -106,8 +110,12 @@ function checkBundleSize() {
       const relativePath = path.relative(projectRoot, file);
       console.log(`  ${relativePath}: ${formatBytes(size)}`);
     }
-    
-    console.log(`  Total CSS size: ${formatBytes(totalCssSize)} (limit: ${formatBytes(cssLimit)})`);
+
+    console.log(
+      `  Total CSS size: ${formatBytes(totalCssSize)} (limit: ${formatBytes(
+        cssLimit
+      )})`
+    );
     if (totalCssSize > cssLimit) {
       console.log("  ❌ CSS bundle size exceeds limit!");
       hasErrors = true;
@@ -115,7 +123,7 @@ function checkBundleSize() {
       console.log("  ✅ CSS bundle size OK");
     }
   }
-  
+
   if (hasErrors) {
     console.log("\n❌ Bundle size check failed!");
     process.exit(1);

@@ -4,6 +4,14 @@
 import "../css/main.css";
 import SiteHeader from "./components/site-header/SiteHeader.js";
 import SiteFooter from "./components/site-footer/SiteFooter.js";
+import LazyLoader from "./lazy-loading.js";
+
+// Initialize lazy loading
+const lazyLoader = new LazyLoader({
+  rootMargin: "50px 0px",
+  threshold: 0.01,
+  enableWebP: true
+});
 
 // Define the custom elements
 if (window.customElements) {

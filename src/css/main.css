@@ -18,6 +18,7 @@
 @import url("./components/main-content.css") layer(components);
 @import url("./components/cards.css") layer(components);
 @import url("./components/heroes.css") layer(components);
+@import url("./components/images.css") layer(components);
 @import url("./components/badges.css") layer(components);
 @import url("./components/navigation.css") layer(components);
 @import url("./components/icons.css") layer(components);
