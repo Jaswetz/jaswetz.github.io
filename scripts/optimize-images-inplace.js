@@ -39,9 +39,9 @@ async function optimizeImagesInPlace() {
       plugins: [
         imageminMozjpeg({
           quality: 85,
-          progressive: true
-        })
-      ]
+          progressive: true,
+        }),
+      ],
     });
     console.log(`✅ Optimized ${jpegFiles.length} JPEG images`);
 
@@ -52,30 +52,32 @@ async function optimizeImagesInPlace() {
       plugins: [
         imageminPngquant({
           quality: [0.8, 0.9],
-          strip: true
-        })
-      ]
+          strip: true,
+        }),
+      ],
     });
     console.log(`✅ Optimized ${pngFiles.length} PNG images`);
 
     // Create WebP versions in separate folder
     console.log("⚡ Creating WebP versions...");
-    const webpFiles = await imagemin([path.join(inputDir, "**/*.{jpg,jpeg,png}")], {
-      destination: webpDir,
-      plugins: [
-        imageminWebp({
-          quality: 85,
-          alphaQuality: 85
-        })
-      ]
-    });
+    const webpFiles = await imagemin(
+      [path.join(inputDir, "**/*.{jpg,jpeg,png}")],
+      {
+        destination: webpDir,
+        plugins: [
+          imageminWebp({
+            quality: 85,
+            alphaQuality: 85,
+          }),
+        ],
+      }
+    );
     console.log(`✅ Created ${webpFiles.length} WebP images`);
 
     console.log("\n✨ In-place image optimization complete!");
     console.log("💡 Original images backed up to src/img-backup/");
     console.log("💡 WebP versions available in src/img/webp/");
     console.log("💡 Your HTML can now use the existing image paths!");
-    
   } catch (error) {
     console.error("❌ Error optimizing images:", error);
     process.exit(1);

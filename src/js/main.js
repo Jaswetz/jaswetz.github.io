@@ -10,7 +10,7 @@ import LazyLoader from "./lazy-loading.js";
 const lazyLoader = new LazyLoader({
   rootMargin: "50px 0px",
   threshold: 0.01,
-  enableWebP: true
+  enableWebP: true,
 });
 
 // Define the custom elements
