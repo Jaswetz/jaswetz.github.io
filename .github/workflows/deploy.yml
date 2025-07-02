@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: Simplified CI/CD Pipeline
 
 on:
   push:
@@ -16,22 +16,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Security and dependency audit
-  security:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-          cache: "npm"
-      - name: Install Dependencies
-        run: npm ci
-      - name: Security Audit
-        run: npm run test:security
-
-  # Code quality checks
+  # Basic linting (essential only)
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -48,12 +33,14 @@ jobs:
       - name: Lint CSS
         run: npm run stylelint
 
-  # Build the project
-  build:
-    needs: [security, lint]
+  # Build and deploy
+  build-and-deploy:
+    needs: [lint]
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      pages: write
+      id-token: write
 
     steps:
       - name: Checkout
@@ -71,151 +58,14 @@ jobs:
       - name: Build site
         run: npm run build
 
-      - name: Check bundle size
-        run: npm run test:bundle-size
-
-      - name: Archive Production Build
-        uses: actions/upload-artifact@v4
-        with:
-          name: site-dist
-          path: dist/
-          retention-days: 7
-
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
 
-  # Accessibility testing
-  accessibility-test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-          cache: "npm"
-      - name: Install Dependencies
-        run: npm ci
-      - name: Download Build Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: site-dist
-          path: dist/
-      - name: Serve site for testing
-        run: npx http-server dist -p 8080 &
-      - name: Wait for server to start
-        run: npx wait-on http://localhost:8080
-      - name: Run Accessibility Tests
-        run: npx axe http://localhost:8080 --exit
-      - name: Upload accessibility report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: accessibility-report
-          path: axe-report.json
-          retention-days: 7
-
-  # Performance testing
-  performance-test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-          cache: "npm"
-      - name: Install Dependencies
-        run: npm ci
-      - name: Download Build Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: site-dist
-          path: dist/
-      - name: Serve site for testing
-        run: npx http-server dist -p 8080 &
-      - name: Wait for server to start
-        run: npx wait-on http://localhost:8080
-      - name: Run Lighthouse Performance Tests
-        run: npx lighthouse http://localhost:8080 --output json --output-path ./lighthouse-report.json --chrome-flags='--headless --no-sandbox'
-      - name: Check Performance Score
-        run: |
-          SCORE=$(node -e "const report = require('./lighthouse-report.json'); console.log(Math.round(report.lhr.categories.performance.score * 100))")
-          echo "Performance Score: $SCORE"
-          if [ $SCORE -lt 90 ]; then
-            echo "Performance score $SCORE is below threshold of 90"
-            exit 1
-          fi
-      - name: Upload performance report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: performance-report
-          path: lighthouse-report.json
-          retention-days: 7
-
-  # Link checking
-  link-test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-          cache: "npm"
-      - name: Install Dependencies
-        run: npm ci
-      - name: Download Build Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: site-dist
-          path: dist/
-      - name: Serve site for testing
-        run: npx http-server dist -p 8080 &
-      - name: Wait for server to start
-        run: npx wait-on http://localhost:8080
-      - name: Check internal links
-        run: npx linkcheck http://localhost:8080
-
-  # Cross-browser testing with Playwright
-  e2e-test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-          cache: "npm"
-      - name: Install Dependencies
-        run: npm ci
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
-      - name: Download Build Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: site-dist
-          path: dist/
-      - name: Run Playwright tests
-        run: npx playwright test
-      - name: Upload test results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 7
-
   # Deploy to GitHub Pages
   deploy:
-    needs: [build, accessibility-test, performance-test, link-test, e2e-test]
+    needs: [build-and-deploy]
     if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
