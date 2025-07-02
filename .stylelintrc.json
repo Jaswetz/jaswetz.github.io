@@ -1,6 +1,6 @@
 {
   "extends": ["stylelint-config-standard"],
-  "ignoreFiles": ["dist/**/*", ".parcel-cache/**/*", "node_modules/**/*"],
+  "ignoreFiles": ["dist/**/*", "dev-build/**/*", ".parcel-cache/**/*", "node_modules/**/*"],
   "rules": {
     "custom-property-pattern": null,
     "selector-class-pattern": null,

@@ -1,6 +1,7 @@
 node_modules/
 .parcel-cache/
 dist/
+dev-build/
 dest/
 
 # OS-specific files
