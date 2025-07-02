@@ -112,11 +112,13 @@ Modified the CI/CD pipeline to allow working in main branch without automatic de
 6. Click "Run workflow"
 
 **Workflow Behavior:**
+
 - **Push to main**: Runs linting and builds site (no deployment)
 - **Manual trigger**: Can choose to deploy or just run tests
 - **Pull requests**: Runs linting and builds (no deployment)
 
 **Benefits:**
+
 - Work freely in main branch
 - Test changes without deploying
 - Deploy only when ready
@@ -130,34 +132,38 @@ Modified the CI/CD pipeline to allow working in main branch without automatic de
 
 **Issue:** Header and footer Web Components were not loading in production (jaswetz.github.io).
 
-**Root Cause:** 
+**Root Cause:**
 ✅ **IDENTIFIED**: LazyLoader import was causing `TypeError: (0 , c.default) is not a constructor`
 ✅ **RESOLVED**: Removed LazyLoader completely to allow Web Components to load properly
 
 **Solution Applied:**
+
 1. ✅ Removed duplicate script imports from HTML files
-2. ✅ Consolidated script imports into `main.js` module using ES6 imports  
+2. ✅ Consolidated script imports into `main.js` module using ES6 imports
 3. ✅ Fixed Parcel build process to properly bundle scripts
-4. ✅ Fixed deployment workflow condition issue  
+4. ✅ Fixed deployment workflow condition issue
 5. ✅ Removed problematic LazyLoader import and initialization
 6. ✅ **DEPLOYED AND VERIFIED**: Web Components now render correctly in production
 
 **Result:** ✅ Site is now fully functional with header and footer displaying correctly.
 
 **Next Steps:**
+
 1. **Deploy the fix** - Trigger manual deployment to test Web Components
 2. **Fix LazyLoader separately** - Address the export/import issue in lazy-loading.js
 3. **Re-enable LazyLoader** - Once fixed, restore lazy loading functionality
 
 **How to Deploy:**
+
 1. Go to GitHub repository → Actions tab
-2. Select "Simplified CI/CD Pipeline" workflow  
+2. Select "Simplified CI/CD Pipeline" workflow
 3. Click "Run workflow" → Set "Deploy to GitHub Pages: true"
 4. Click "Run workflow" to deploy the fix
 
 **Files Modified:**
+
 - `src/index.html` - Removed duplicate script tags
-- `src/404.html` - Removed duplicate script tags  
+- `src/404.html` - Removed duplicate script tags
 - `src/about.html` - Removed duplicate script tags
 - `src/contact.html` - Removed duplicate script tags
 - `src/work.html` - Removed duplicate script tags
@@ -174,18 +180,21 @@ Modified the CI/CD pipeline to allow working in main branch without automatic de
 
 **Issue:** LazyLoader causing `TypeError: (0 , c.default) is not a constructor` in production.
 
-**Root Cause:** 
+**Root Cause:**
+
 - Mixed export system in `lazy-loading.js` (both `module.exports` and `export default`)
 - Parcel bundler having issues with the dual export approach
 - Initialization code in the module conflicting with ES6 imports
 
 **Solution Needed:**
+
 1. Clean up `lazy-loading.js` export system - use only ES6 exports
 2. Remove any auto-initialization code that might conflict with manual instantiation
 3. Test the import/export compatibility with Parcel bundler
 4. Re-enable LazyLoader in `main.js` once fixed
 
 **Files to Modify:**
+
 - `src/js/lazy-loading.js` - Fix export system
 - `src/js/main.js` - Re-enable LazyLoader import and instantiation
 
