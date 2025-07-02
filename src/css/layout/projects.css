@@ -57,23 +57,20 @@
     Sidebar Layout (Project-specific)
     -------------------------------------------------------------------------- */
 
+/* 
+  The project sidebar layout is now controlled by utility classes 
+  from the unified grid system (grid-system.css).
+
+  To implement the sidebar:
+  - Add `.hide-until-xxl` to the sidebar element (e.g., `<aside class="article__sidebar hide-until-xxl">`).
+  - Use `.grid--2-column--sidebar-xxl` on the parent grid container.
+
+  This replaces the previous custom media query and class structure.
+*/
+
 .article__sidebar {
-    display: none;
     border-left: var(--border-width) solid var(--color-border);
-}
-
-.sidebar.grid--2-column--sidebar {
-    grid-template-columns: 1fr;
-}
-
-@media (min-width: 100em) {
-    .article__sidebar {
-        display: block;
-    }
-
-    .sidebar.grid--2-column--sidebar {
-        grid-template-columns: 3fr 1fr;
-    }
+    padding-left: var(--space-xl);
 }
 
 

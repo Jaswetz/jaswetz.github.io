@@ -2,7 +2,7 @@
 
 /* Base card link styles - make entire card clickable */
 
-/*TODO: Cleanup and make more modular and reusable with BEM methodology*/
+/* TODO: Cleanup and make more modular and reusable with BEM methodology */
 
 .card__link {
   display: flex;
@@ -13,19 +13,24 @@
   transition: var(--transition-interactive);
   border-radius: var(--border-radius);
   position: relative;
+}
 
-  .project-thumbnail {
-    transition: var(--transition-interactive);
-  }
+.card__link .project-thumbnail {
+  transition: var(--transition-interactive);
+}
+
+.card__link h3 {
+  color: var(--color-text);
+}
+
+.card__link p {
+  color: var(--color-text-subtle);
 }
 
 .card__link::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background: var(--overlay-gradient-light);
   opacity: 0;
   transition: var(--transition-quick);
@@ -41,10 +46,6 @@
   box-shadow: var(--hover-shadow);
   text-decoration: none;
   background-color: var(--color-surface);
-
-  h3 {
-    color: var(--color-primary-alt);
-  }
 }
 
 .card__link:hover::before {
@@ -77,18 +78,15 @@
   flex-shrink: 0;
   margin-right: var(--space-m);
   max-width: 150px;
-  border-top-left-radius: var(--border-radius);
-  border-top-right-radius: var(--border-radius);
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
 .card__content {
   flex: 1;
+}
 
-  h3 {
-    padding-top: var(--heading-spacing);
-  }
+.card__content h3 {
+  padding-top: var(--heading-spacing);
 }
 
 /* Card variations */
@@ -101,7 +99,7 @@
   width: 100%;
   height: auto;
   margin: 0;
-  max-width: 100%;
+  max-width: fit-content;
 }
 
 .card--vertical .card__content {
@@ -114,9 +112,8 @@
   padding: var(--space-l);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
-
   background-color: #f7f3eb;
-  background-image: linear-gradient(#99999922 0.6000000000000001px, transparent 0.6000000000000001px), linear-gradient(to right, #99999922 0.6000000000000001px, #f7f3eb 0.6000000000000001px);
+  background-image: linear-gradient(#9992 0.6px, transparent 0.6px), linear-gradient(to right, #9992 0.6px, #f7f3eb 0.6px);
   background-size: 12px 12px;
   box-shadow: inset 0 -2px #6f7b901a;
 
@@ -129,21 +126,15 @@
   border-radius: var(--border-radius);
 }
 
-.card--white p:last-child {
-  margin-bottom: 0;
-}
-
 /* --------------------------------------------------------------------------
     Project-Specific Card Components (Reusable)
     -------------------------------------------------------------------------- */
 
-/* Project Summary Cards (Team, Stakeholders, Tools) */
-.cards__layout {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-l);
-  /* margin-bottom: var(--space-xl); */
-}
+/* 
+  Project Summary Cards (Team, Stakeholders, Tools) 
+  Layout is controlled by utility classes from grid-system.css.
+  Example: <div class="grid grid--auto-fit-lg grid--gap-l">
+*/
 
 .card__text h3 {
   margin-bottom: var(--space-s);
@@ -159,10 +150,10 @@
   color: var(--color-text-subtle);
 }
 
-/* Problem Cards */
-.problem-cards {
-  display: grid;
-}
+/* 
+  Problem Cards
+  Layout is controlled by utility classes from grid-system.css.
+*/
 
 .problem-card {
   position: relative;
@@ -175,7 +166,7 @@
 
 .problem-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
 }
 
 .problem-card__icon img {
@@ -195,10 +186,20 @@
   line-height: var(--leading-normal);
 }
 
+/* Card white variant p styles - must come after base p styles */
+.card--white p:last-child {
+  margin-bottom: 0;
+}
+
+/* Card hover states for h3 elements - must come after base h3 styles */
+.card__link:hover h3 {
+  color: var(--color-primary-alt);
+}
+
 /* Result Cards */
 .result-card {
   padding: var(--space-xl);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
   text-align: center;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -254,19 +255,18 @@
   color: var(--color-text-subtle);
 }
 
-/* Severity Level Cards */
-.severity-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-m);
-}
+/* 
+  Severity Level Cards
+  Layout is controlled by utility classes from grid-system.css.
+  Example: <div class="grid grid--3-column grid--gap-m">
+*/
 
 .severity-card {
   padding: var(--space-m);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
 }
 
 .severity-card__title {
@@ -282,19 +282,18 @@
   color: var(--color-text-subtle);
 }
 
-/* Legacy severity-levels (for backwards compatibility) */
-.severity-levels {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-m);
-}
+/* 
+  Legacy severity-levels (for backwards compatibility) 
+  Layout is controlled by utility classes from grid-system.css.
+  Example: <div class="grid grid--3-column grid--gap-m">
+*/
 
 .severity-level {
   padding: var(--space-m);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
 }
 
 .severity-level__icon {
@@ -308,17 +307,17 @@
 }
 
 .severity-level__icon--high {
-  background-color: rgba(244, 67, 54, 0.1);
+  background-color: rgb(244 67 54 / 10%);
   color: #f44336;
 }
 
 .severity-level__icon--medium {
-  background-color: rgba(33, 150, 243, 0.1);
+  background-color: rgb(33 150 243 / 10%);
   color: #2196f3;
 }
 
 .severity-level__icon--low {
-  background-color: rgba(139, 195, 74, 0.1);
+  background-color: rgb(139 195 74 / 10%);
   color: #8bc34a;
 }
 
@@ -366,7 +365,7 @@
 /* Results Subscriber Cards (Legacy support) */
 .result-subscriber-card {
   padding: var(--space-xl);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
   text-align: center;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -394,19 +393,29 @@
   line-height: var(--leading-normal);
 }
 
-/* Card Responsive Styles */
-@media (max-width: 768px) {
-
-  .project-summary__cards,
-  .summary-cards,
-  .problem-cards {
-    grid-template-columns: 1fr;
-    gap: var(--space-m);
+/* 
+  Card Responsive Styles 
+  Most responsive grid behavior is now handled by the global grid-system.css.
+  Only component-specific overrides should remain here.
+*/
+@media (width <=47.9375rem) {
+  .card--project {
+    /* Switch to vertical layout on mobile */
+    flex-direction: column;
   }
 
-  .severity-cards,
-  .severity-levels {
-    grid-template-columns: 1fr;
+  .card__image {
+    margin-bottom: var(--space-m);
+    max-width: 100%;
+  }
+
+  .card__content {
+    padding: var(--space-m);
+  }
+
+  .result-card,
+  .result-subscriber-card {
+    padding: var(--space-l);
   }
 
   .growth-card {

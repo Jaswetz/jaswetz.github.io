@@ -3,17 +3,20 @@
 /* Set a base font size on html to make rem units more predictable */
 html {
   font-size: 100%;
+
   /* Ensures 1rem = 16px by default in most browsers */
   line-height: 1.15;
+
   /* Basic line-height, modern-normalize used this, good for a base */
-  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+
   /* Prevent adjustments of font size after orientation changes in iOS. */
-  -moz-tab-size: 4;
-  /* More readable tab size */
   tab-size: 4;
   scroll-behavior: smooth;
+
   /* Enable smooth scrolling for anchor links */
   scroll-padding-top: 100px;
+
   /* Account for fixed header when scrolling to anchors */
 }
 
@@ -26,10 +29,11 @@ body {
 
 .main-content {
   position: relative;
+
   /* margin-bottom: var(--space-l-3xl); */
   top: calc(-1 * var(--space-3xl));
   background: var(--color-background);
-  box-shadow: 0 -12px 12px -8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 -12px 12px -8px rgb(0 0 0 / 5%);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
   width: var(--section-width);
@@ -51,8 +55,10 @@ body {
   max-width: var(--max-width);
   padding-inline: var(--space-xl);
   position: relative;
+
   /* display: grid; */
   gap: var(--space-xl);
+
   /* Add space between children */
 }
 

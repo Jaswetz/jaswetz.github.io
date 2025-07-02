@@ -1,0 +1,111 @@
+/* ==========================================================================
+   MEDIA QUERY UTILITIES
+   ========================================================================== */
+
+/* 
+   Standardized media query system using consistent breakpoint values.
+   
+   IMPORTANT: CSS custom properties cannot be used directly in @media queries.
+   The variables in variables.css are for reference and consistency.
+   Use the actual rem values shown below in your media queries.
+   
+   Usage Examples:
+   @media (min-width: 48rem) { ... }  // Tablet and up
+   @media (max-width: 47.9375rem) { ... }  // Mobile only
+   
+   Note: For max-width queries, subtract 0.0625rem (1px) to prevent overlap
+   between breakpoints.
+*/
+
+/* ==========================================================================
+   BREAKPOINT REFERENCE
+   ========================================================================== */
+
+/*
+   --breakpoint-xs: 20rem    (320px)  - Small phones
+   --breakpoint-sm: 36rem    (576px)  - Large phones  
+   --breakpoint-md: 48rem    (768px)  - Tablets
+   --breakpoint-lg: 64rem    (1024px) - Desktop
+   --breakpoint-xl: 80rem    (1280px) - Large desktop
+   --breakpoint-2xl: 96rem   (1536px) - Extra large
+*/
+
+/* ==========================================================================
+   COMMON MEDIA QUERY PATTERNS
+   ========================================================================== */
+
+/* Mobile-first approach - preferred method */
+
+/* 
+   @media (min-width: 36rem) { ... }   // sm and up
+   @media (min-width: 48rem) { ... }   // md and up  
+   @media (min-width: 64rem) { ... }   // lg and up
+   @media (min-width: 80rem) { ... }   // xl and up
+   @media (min-width: 96rem) { ... }   // 2xl and up
+*/
+
+/* Desktop-first approach - when needed */
+
+/* 
+   @media (max-width: 63.9375rem) { ... }  // Below lg
+   @media (max-width: 47.9375rem) { ... }  // Below md
+   @media (max-width: 35.9375rem) { ... }  // Below sm
+*/
+
+/* Specific ranges */
+
+/* 
+   @media (min-width: 48rem) and (max-width: 63.9375rem) { ... }  // md to lg only
+*/
+
+/* ==========================================================================
+   ACCESSIBILITY & PREFERENCE QUERIES
+   ========================================================================== */
+
+/* Reduced motion preference */
+
+/* 
+   @media (prefers-reduced-motion: reduce) { ... }
+*/
+
+/* High contrast preference */
+
+/* 
+   @media (prefers-contrast: high) { ... }
+*/
+
+/* Color scheme preference */
+
+/* 
+   @media (prefers-color-scheme: dark) { ... }
+*/
+
+/* Touch vs pointer devices */
+
+/* 
+   @media (pointer: coarse) { ... }  // Touch devices
+   @media (hover: hover) { ... }     // Devices that can hover
+*/
+
+/* ==========================================================================
+   MIGRATION HELPERS
+   ========================================================================== */
+
+/* Common legacy breakpoints mapped to new system */
+
+/*
+   OLD: @media (max-width: 768px)
+   NEW: @media (max-width: 47.9375rem)  // 767px
+   
+   OLD: @media (min-width: 768px)  
+   NEW: @media (min-width: 48rem)       // 768px
+   
+   OLD: @media (min-width: 66em)        // 1056px
+   NEW: @media (min-width: 64rem)       // 1024px
+   
+   OLD: @media (max-width: 60em)        // 960px
+   NEW: @media (max-width: 63.9375rem)  // 1023px
+   
+   OLD: @media (min-width: 100em)       // 1600px
+   NEW: @media (min-width: 96rem)       // 1536px
+*/

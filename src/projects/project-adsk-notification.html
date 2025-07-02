@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Notification System Redesign - Case Study</title>
+    <title>Notification System Redesign - Jason Swetzoff's Portfolio</title>
 
     <!-- Google Analytics 4 -->
     <script
@@ -11,6 +11,33 @@
       src="https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG"
     ></script>
     <script src="../js/analytics.js"></script>
+
+    <!-- Font optimization -->
+    <!-- Preconnect to Google Fonts for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Preload critical fonts -->
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/laila/v18/LYjCdG7kmE0gdQhfgCNqqVIuTN4.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/gentiumplus/v6/CoIGjMz5OlKwGK-Bz_Nx2SOx1RiKBK-X8A.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Optimized Google Fonts CSS with font-display: swap -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Laila:wght@400;600&family=PT+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="../css/main.css" />
 
@@ -90,7 +117,7 @@
                   Final design of the Autodesk Notification Center
                 </figcaption>
               </figure>
-              <div class="project-summary__cards cards__layout">
+              <div class="project-summary__cards grid grid--3-column">
                 <div class="project-summary__card card--outline card__text">
                   <h3>Team</h3>
                   <p>Product Manager, 2 Developers</p>
@@ -126,7 +153,7 @@
             <section class="project-problem">
               <h2 id="the-problem">The Problem</h2>
 
-              <div class="cards__layout">
+              <div class="grid grid--2-column">
                 <div class="problem-card">
                   <div class="problem-card__icon">
                     <img
@@ -790,7 +817,7 @@
                 </div>
               </div>
 
-              <div class="severity-levels">
+              <div class="severity-levels grid grid--3-column">
                 <div class="severity-level card--white">
                   <div class="severity-level__icon severity-level__icon--high">
                     <i data-feather="alert-triangle"></i>

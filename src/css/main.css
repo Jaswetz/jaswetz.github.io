@@ -1,53 +1,56 @@
 /* Global variables - imported first to be globally available */
-@import "./variables.css";
+@import url("./variables.css");
 
 /* Import styles into their respective layers */
-@import "./base/reset.css" layer(reset);
-@import "./base/global.css" layer(base);
-@import "./base/typography.css" layer(base);
-@import "./base/layout.css" layer(base);
+@import url("./base/reset.css") layer(reset);
+@import url("./base/global.css") layer(base);
+@import url("./base/typography.css") layer(base);
+@import url("./theme/default-theme.css") layer(theme);
 
-@import "./theme/default-theme.css" layer(theme);
+/* --- Layout Layer --- */
 
-@import "./components/error-page.css" layer(components);
-@import "./components/main-content.css" layer(components);
-@import "./components/cards.css" layer(components);
-@import "./components/heroes.css" layer(components);
-@import "./components/badges.css" layer(components);
-@import "./components/grids.css" layer(components);
-@import "./components/navigation.css" layer(components);
-@import "./components/icons.css" layer(components);
-@import "./components/sections.css" layer(components);
-@import "./components/lists.css" layer(components);
-@import "./components/tags.css" layer(components);
-@import "./components/buttons.css" layer(components);
-@import "./components/forms.css" layer(components);
-@import "./components/form-controls.css" layer(components);
-@import "./components/form-inputs.css" layer(components);
-@import "./components/form-layout.css" layer(components);
-@import "./components/form-validation.css" layer(components);
-@import "./components/accessibility.css" layer(components);
-@import "./components/password-protection.css" layer(components);
-/* Add other component imports here and assign to 'components' layer */
+/* Consolidated grid system and project-specific layouts */
+@import url("./utils/grid-system.css") layer(layout);
+@import url("./layout/projects.css") layer(layout);
 
-@import "./pages/page-about.css" layer(utilities);
-@import "./pages/page-autodesk-di.css" layer(utilities);
-@import "./pages/page-index/index-section-quotes.css" layer(utilities);
-@import "./pages/page-index/index-section-featured-projects.css" layer(utilities);
-@import "./pages/page-index/index-section-about.css" layer(utilities);
+/* --- Components Layer --- */
+@import url("./components/error-page.css") layer(components);
+@import url("./components/main-content.css") layer(components);
+@import url("./components/cards.css") layer(components);
+@import url("./components/heroes.css") layer(components);
+@import url("./components/images.css") layer(components);
+@import url("./components/badges.css") layer(components);
+@import url("./components/navigation.css") layer(components);
+@import url("./components/icons.css") layer(components);
+@import url("./components/sections.css") layer(components);
+@import url("./components/lists.css") layer(components);
+@import url("./components/tags.css") layer(components);
+@import url("./components/buttons.css") layer(components);
+@import url("./components/forms.css") layer(components);
+@import url("./components/form-controls.css") layer(components);
+@import url("./components/form-inputs.css") layer(components);
+@import url("./components/form-layout.css") layer(components);
+@import url("./components/form-validation.css") layer(components);
+@import url("./components/accessibility.css") layer(components);
+@import url("./components/password-protection.css") layer(components);
 
-@import "./utils/spacing.css" layer(utilities);
-@import "./utils/typography.css" layer(utilities);
-@import "./utils/flexbox.css" layer(utilities);
-@import "./utils/layout.css" layer(utilities);
-/* Add other utility imports here and assign to 'utilities' layer */
+/* --- Pages Layer (treated as components) --- */
+@import url("./pages/page-about.css") layer(components);
+@import url("./pages/page-autodesk-di.css") layer(components);
+@import url("./pages/page-index/index-section-quotes.css") layer(components);
+@import url("./pages/page-index/index-section-featured-projects.css") layer(components);
+@import url("./pages/page-index/index-section-about.css") layer(components);
 
-@import "./layout/projects.css" layer(layout);
-/* Added projects.css to layout layer */
+/* --- Utilities Layer --- */
+@import url("./utils/spacing.css") layer(utilities);
+@import url("./utils/typography.css") layer(utilities);
+@import url("./utils/flexbox.css") layer(utilities);
+@import url("./utils/layout.css") layer(utilities);
+@import url("./utils/media-queries.css") layer(utilities);
 
-@import "./debug/vertical-rhythm.css" layer(debug);
-@import "./debug/debug.css" layer(utilities);
+/* --- Debug Layer --- */
+@import url("./debug/vertical-rhythm.css") layer(debug);
+@import url("./debug/debug.css") layer(debug);
 
 /* Define layer order LAST - this confirms the order of layers established by imports */
 @layer reset, base, theme, layout, components, utilities, debug;
-/* Added layout to layer order */

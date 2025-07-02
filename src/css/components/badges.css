@@ -33,17 +33,17 @@
 }
 
 .badge--success {
-    background-color: rgba(139, 195, 74, 0.1);
+    background-color: rgb(139 195 74 / 10%);
     color: #8bc34a;
 }
 
 .badge--warning {
-    background-color: rgba(33, 150, 243, 0.1);
+    background-color: rgb(33 150 243 / 10%);
     color: #2196f3;
 }
 
 .badge--danger {
-    background-color: rgba(244, 67, 54, 0.1);
+    background-color: rgb(244 67 54 / 10%);
     color: #f44336;
 }
 
@@ -72,16 +72,16 @@
     -------------------------------------------------------------------------- */
 
 .badge--severity-high {
-    background-color: rgba(244, 67, 54, 0.1);
+    background-color: rgb(244 67 54 / 10%);
     color: #f44336;
 }
 
 .badge--severity-medium {
-    background-color: rgba(33, 150, 243, 0.1);
+    background-color: rgb(33 150 243 / 10%);
     color: #2196f3;
 }
 
 .badge--severity-low {
-    background-color: rgba(139, 195, 74, 0.1);
+    background-color: rgb(139 195 74 / 10%);
     color: #8bc34a;
 }

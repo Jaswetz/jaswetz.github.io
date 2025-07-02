@@ -3,11 +3,12 @@ declare module "*.css" {
   export default cssText;
 }
 
-// Google Analytics 4 type declarations
+// Google Analytics 4 & Microsoft Clarity type declarations
 declare global {
   interface Window {
     dataLayer: any[];
     gtag: (...args: any[]) => void;
+    clarity: (action: string, ...args: any[]) => void;
     portfolioAnalytics: {
       trackProjectClick: (projectName: string, projectType: string) => void;
       trackResumeDownload: () => void;
@@ -15,6 +16,15 @@ declare global {
       trackExternalLink: (url: string, linkText: string) => void;
       trackScrollDepth: () => void;
       trackTimeOnPage: () => void;
+    };
+    clarityTracking: {
+      trackEvent: (eventName: string, eventData?: any) => void;
+      trackProject: (projectName: string, interactionType: string) => void;
+      trackResume: () => void;
+      trackContact: (action: string) => void;
+      trackNavigation: (page: string, source: string) => void;
+      setUserID: (userID: string) => void;
+      tagUser: (key: string, value: string) => void;
     };
   }
 

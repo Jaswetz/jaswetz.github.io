@@ -1,0 +1,400 @@
+/* ==========================================================================
+   UNIFIED GRID SYSTEM
+   ========================================================================== */
+
+/* 
+   Consolidated grid system using standardized breakpoints.
+   Combines functionality from base/layout.css and components/grids.css
+   with consistent responsive behavior using new breakpoint system.
+*/
+
+/* ==========================================================================
+   BASE GRID CLASSES
+   ========================================================================== */
+
+.grid {
+  display: grid;
+  gap: var(--space-l);
+}
+
+/* ==========================================================================
+   COLUMN LAYOUTS
+   ========================================================================== */
+
+/* Standard column layouts */
+.grid--1-column {
+  grid-template-columns: 1fr;
+}
+
+.grid--2-column {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3-column {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--4-column {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Asymmetric layouts */
+.grid--2-column--uneven {
+  grid-template-columns: 1fr 2fr;
+}
+
+.grid--2-column--sidebar {
+  grid-template-columns: 1fr;
+}
+
+.grid--2-column--reverse-sidebar {
+  grid-template-columns: 1fr;
+}
+
+/* Ensure sidebar is hidden by default */
+.grid--2-column--sidebar .article__sidebar,
+.grid--2-column--reverse-sidebar .article__sidebar {
+  display: none;
+}
+
+/* Auto-fit layouts */
+.grid--auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid--auto-fit-sm {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.grid--auto-fit-md {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid--auto-fit-lg {
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.grid--auto-fit-xl {
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+/* ==========================================================================
+   GAP VARIATIONS
+   ========================================================================== */
+
+.grid--gap-xs {
+  gap: var(--space-xs);
+}
+
+.grid--gap-s {
+  gap: var(--space-s);
+}
+
+.grid--gap-m {
+  gap: var(--space-m);
+}
+
+.grid--gap-l {
+  gap: var(--space-l);
+}
+
+.grid--gap-xl {
+  gap: var(--space-xl);
+}
+
+.grid--gap-2xl {
+  gap: var(--space-2xl);
+}
+
+.grid--gap-3xl {
+  gap: var(--space-3xl);
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
+/* Default: Mobile and Tablet (below xl breakpoint) - Single column and hide sidebar */
+
+/* This applies to all screen sizes below 80rem (1280px) */
+@media screen and (width <= 50rem) {
+  .grid--2-column,
+  .grid--3-column,
+  .grid--4-column,
+  .grid--2-column--uneven {
+    grid-template-columns: 1fr !important;
+  }
+
+  .grid--auto-fit,
+  .grid--auto-fit-sm,
+  .grid--auto-fit-md,
+  .grid--auto-fit-lg,
+  .grid--auto-fit-xl {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (width <= 79.9375rem) {
+  .grid--2-column--sidebar,
+  .grid--2-column--reverse-sidebar {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Ensure sidebar is hidden on smaller screens */
+  .grid--2-column--sidebar .article__sidebar,
+  .grid--2-column--reverse-sidebar .article__sidebar {
+    display: none !important;
+  }
+
+}
+
+/* Tablet specific - Allow some multi-column layouts */
+@media (width >= 48rem) and (width <= 79.9375rem) {
+  .grid--3-column,
+  .grid--4-column {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop (xl breakpoint and above) - Show sidebar at wider breakpoint */
+
+/* This applies to all screen sizes 80rem (1280px) and above */
+@media screen and (width >= 80rem) {
+  .grid--2-column {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--3-column {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grid--4-column {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .grid--2-column--uneven {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .grid--2-column--sidebar {
+    grid-template-columns: 1fr 20rem !important;
+
+    /* Main content and fixed 20rem sidebar */
+  }
+
+  .grid--2-column--reverse-sidebar {
+    grid-template-columns: 20rem 1fr !important;
+
+    /* Fixed 20rem sidebar and main content */
+  }
+
+  /* Show sidebar at desktop breakpoint */
+  .grid--2-column--sidebar .article__sidebar,
+  .grid--2-column--reverse-sidebar .article__sidebar {
+    display: block !important;
+  }
+}
+
+/* Extra Large (xxl breakpoint) - Enhanced layouts */
+@media (width >= 96rem) {
+  .grid--2-column--sidebar {
+    grid-template-columns: 1fr 25rem;
+
+    /* Final sidebar width */
+  }
+
+  .grid--2-column--sidebar-xxl {
+    grid-template-columns: 3fr 1fr;
+    gap: var(--space-2xl);
+  }
+}
+
+/* ==========================================================================
+   LEGACY SUPPORT (For gradual migration)
+   ========================================================================== */
+
+/* Keep existing legacy classes for backward compatibility */
+.results-grid {
+  display: grid;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+.key-learnings-grid {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+/* Mobile-first responsive behavior for legacy grids */
+@media (width >= 48rem) {
+  .results-grid,
+  .key-learnings-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width <= 47.9375rem) {
+  .results-grid,
+  .key-learnings-grid {
+    gap: var(--space-l);
+  }
+}
+
+/* ==========================================================================
+   HERO LAYOUT (Moved from base/layout.css)
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  padding: var(--space-4xl, 4rem) var(--space-xl, 2rem);
+  min-height: 60vh;
+  border-bottom: 1px solid var(--color-border, #ddd);
+}
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT UTILITIES
+   ========================================================================== */
+
+/* Show/hide at different breakpoints */
+.hide-mobile {
+  display: none;
+}
+
+.hide-tablet {
+  display: block;
+}
+
+.hide-desktop {
+  display: block;
+}
+
+.hide-until-lg {
+  display: none;
+}
+
+.hide-until-xl {
+  display: none;
+}
+
+.hide-until-xxl {
+  display: none;
+}
+
+@media (width >= 48rem) {
+  .hide-mobile {
+    display: block;
+  }
+
+  .hide-tablet {
+    display: none;
+  }
+}
+
+@media (width >= 64rem) {
+  .hide-tablet {
+    display: block;
+  }
+
+  .hide-desktop {
+    display: none;
+  }
+}
+
+@media (width >= 80rem) {
+  .hide-until-xl {
+    display: block;
+  }
+}
+
+@media (width >= 96rem) {
+  .hide-until-xxl {
+    display: block;
+  }
+}
+
+/* ==========================================================================
+   FLEXBOX GRID ALTERNATIVES
+   ========================================================================== */
+
+.flex-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-l);
+}
+
+.flex-grid>* {
+  flex: 1 1 280px;
+  min-width: 0;
+
+  /* Prevent flex item overflow */
+}
+
+.flex-grid--2-column>* {
+  flex: 1 1 calc(50% - var(--space-l) / 2);
+}
+
+.flex-grid--3-column>* {
+  flex: 1 1 calc(33.333% - var(--space-l) / 3 * 2);
+}
+
+@media (width <= 47.9375rem) {
+  .flex-grid--2-column>*,
+  .flex-grid--3-column>* {
+    flex: 1 1 100%;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE GRID UTILITIES
+   ========================================================================== */
+
+/* Apply grid settings above certain breakpoints */
+@media (width >= 48rem) {
+  .grid-2-col-desktop {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 64rem) {
+  .grid-sidebar-desktop {
+    grid-template-columns: 1fr 20rem;
+
+    /* Content and sidebar */
+  }
+}
+
+/* Asymmetric Grids */
+@media (width >= 48rem) {
+  .grid-asymmetric-2-1-desktop {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .grid-asymmetric-1-2-desktop {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+/* Sidebar Layout */
+@media (width >= 48rem) {
+  .grid--2-column--sidebar {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-l);
+  }
+}
+
+@media (width >= 64rem) {
+  .grid--2-column--sidebar {
+    grid-template-columns: 1fr 15rem;
+
+    /* Content and sidebar */
+  }
+}
+
+@media (width >= 80rem) {
+  .grid--2-column--sidebar {
+    grid-template-columns: 1fr 20rem;
+
+    /* Wider sidebar on larger screens */
+  }
+}

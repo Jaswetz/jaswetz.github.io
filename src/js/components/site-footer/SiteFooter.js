@@ -25,18 +25,14 @@ class SiteFooter extends HTMLElement {
       <style>
         /* Component-specific styles for the footer */
         :host {
-        display: block;
-        <!-- background: var(--footer-background, #f8f9fa); -->
-        margin-inline: auto;
-        <!-- min-height: calc(var(--space-xl) * 8); -->
-        min-height: calc(var(--space-l-3xl) * 2); /* Ensure footer has enough height */
-        position: relative; /* Ensure pseudo-element is positioned relative to the host */
-        top: calc(-1 * var(--space-l-3xl));
+          display: block;
+          margin-inline: auto;
+          min-height: calc(var(--space-l-3xl) * 2); /* Ensure footer has enough height */
+          position: relative; /* Ensure pseudo-element is positioned relative to the host */
+          top: calc(-1 * var(--space-l-3xl));
         }
-        
 
         :host::after {
-          
           border-top: 1px solid var(--footer-border-color, #dee2e6);
           content: "";
           position: absolute;
@@ -53,121 +49,141 @@ class SiteFooter extends HTMLElement {
           background-size: 14px 14px;
           z-index: -1; /* Ensure it stays behind the content */
         }
+
         .footer-content {
-          
           width: var(--section-width);
           display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-xl);
-        padding: var(--space-xl) 0;
-        /* Ensure footer has enough height */
-        max-width: var(--max-width);
-        position: relative;
-        /* display: grid; */
-        gap: var(--space-xl); /* Add space between children */
-        margin: 0 auto;
-        text-align: center;
-        min-height: inherit; /* Ensure it takes up the host's min-height */
-        max-width: var(--max-width);
-    gap: var(--space-xl);
-    margin-inline: auto;
-    position: relative;
+          grid-template-columns: 1fr;
+          gap: var(--space-xl); /* Add space between children */
+          padding: var(--space-xl) 0;
+          max-width: var(--max-width);
+          position: relative;
+          margin: 0 auto;
+          text-align: center;
+          min-height: inherit; /* Ensure it takes up the host's min-height */
         }
+
         .footer-content__text {
-        width: 100%;
+          width: 100%;
         }
 
-
-        @media (min-width: 66em) { 
-          .footer-content {
-            grid-template-columns: 1fr 1fr;
-    /* Keep 2 per row on large screens */
-    gap: var(--space-xl);
-    /* Add space between grid columns */
-    grid-area: auto;
-    text-align: left;
-          }
-
-          .social-links {
-        width: 100%;
-        align-items: center; /* Vertically center grid items */
-        display: flex;
-        text-align: left;
-        }
-        }
-        a {
-        display: inline-flex;
-        cursor: pointer;
-        text-decoration: none;
-        transition: var(--transition-interactive);
-        position: relative;
-        overflow: hidden;
-        align-items: center;
-        justify-content: center;
-        background-color: transparent;
-        border-color: var(--color-primary);
-        padding: var(--space-xs) var(--space-xs);
-        text-align: center;
-        border-radius: var(--border-radius);
-        color: var(--color-primary-hover);
-        border-color: var(--color-primary-hover);
-        }
-        a:hover {
-        color: var(--color-primary);
-        }
-        a:hover::after {
-        content: " →";
-        margin-left: 0.25em; /* Adjust spacing as needed */
-        }
-        .social-links__list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        /* display: flex; */
-        /* gap: 1rem; */
-        }
         .footer-tag {
-        font-weight: bold;
-        margin-bottom: 0;
-        padding: 0;
+          font-weight: bold;
+          margin-bottom: 0;
+          padding: 0;
         }
 
         .made-with {
-        font-style: italic;
-        color: var(--color-secondary);
-        margin: 0;
-        padding: 0;
+          font-style: italic;
+          color: var(--color-secondary);
+          margin: 0;
+          padding: 0;
+        }
+
+        .social-links__list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          gap: var(--space-s);
+          justify-content: center;
+        }
+
+        a {
+          display: inline-flex;
+          cursor: pointer;
+          text-decoration: none;
+          transition: var(--transition-interactive);
+          position: relative;
+          overflow: hidden;
+          align-items: center;
+          justify-content: center;
+          background-color: transparent;
+          padding: var(--space-xs) var(--space-xs);
+          text-align: center;
+          border-radius: var(--border-radius);
+          color: var(--color-primary-hover);
+          border-color: var(--color-primary-hover);
+          font-family: var(--font-family-heading);
+        }
+
+        a:hover {
+          color: var(--color-primary);
+          border-color: var(--color-primary-alt);
+          transform: var(--hover-transform-small);
+        }
+
+        a::after {
+          content: " →";
+          margin-left: 0.25em; /* Adjust spacing as needed */
+        }
+
+        a:focus {
+          outline: var(--focus-outline);
+          outline-offset: var(--focus-outline-offset);
+        }
+
+        @media (min-width: 64rem) {
+          .footer-content {
+            grid-template-columns: 1fr 1fr; /* Keep 2 per row on large screens */
+            text-align: left;
+          }
+
+          .social-links {
+            display: flex;
+            align-items: center; /* Vertically center grid items */
+            justify-content: flex-start;
+          }
+
+          .social-links__list {
+            justify-content: flex-end;
+            display: block;
+          }
         }
       </style>
-      <footer class="footer-content grid grid--2-column">
-
-      <div class="footer-content__text">
-        <p class="footer-tag">&copy; <span id="current-year">${currentYear}</span> Jason Swetzoff. All rights reserved.</p>
-        <p class="made-with">Designed by Jason Swetzoff and AI. Hand coded with HTML, CSS, JS, Parcel and AI. </p>
+      <footer class="footer-content">
+        <div class="footer-content__text">
+          <p class="footer-tag">
+            &copy; <span id="current-year">${currentYear}</span> Jason Swetzoff. All rights reserved.
+          </p>
+          <p class="made-with">
+            Designed by Jason Swetzoff and AI. Hand-coded with HTML, CSS, JS, Parcel and AI.
+          </p>
         </div>
-       
-      <nav class="social-links">
-      <ul class="social-links__list">
-        <li>
-        <a id="contact-link" href="mailto:swetzoff@gmail.com" class="button">Email</a>
-        </li>
-        <li>
-        <a href="http://www.linkedin.com/in/swetzoff"
-           alt="Jason's LikedIn"
-           target="_blank" class="button">LinkedIn</a>
-        </li>
+
+        <nav class="social-links">
+          <ul class="social-links__list">
             <li>
-           <a href="https://github.com/Jaswetz" target="_blank" rel="noopener noreferrer" class="button">GitHub</a>
-        </li>
-
-
-      </ul>
-      </nav>
-
-       
-
+              <a id="contact-link" href="mailto:swetzoff@gmail.com" class="button">
+                Email
+              </a>
+            </li>
+            <li>
+              <a
+                href="http://www.linkedin.com/in/swetzoff"
+                aria-label="Jason's LinkedIn Profile"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button"
+              >
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/Jaswetz"
+                aria-label="Jason's GitHub Profile"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button"
+              >
+                GitHub
+              </a>
+            </li>
+          </ul>
+        </nav>
       </footer>
-      `;
+    `;
   }
 
   // Future: observedAttributes and attributeChangedCallback if props are needed.

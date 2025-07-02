@@ -1,26 +1,33 @@
 /* src/css/utils/spacing.css */
+
 /* Spacing utilities will be defined here, within a layer */
 
 /* Margins */
 .m-0 {
   margin: 0;
 }
+
 .mt-1 {
   margin-top: var(--spacing-xs, 4px);
 }
+
 .mr-1 {
   margin-right: var(--spacing-xs, 4px);
 }
+
 .mb-1 {
   margin-bottom: var(--spacing-xs, 4px);
 }
+
 .ml-1 {
   margin-left: var(--spacing-xs, 4px);
 }
+
 .mx-1 {
   margin-left: var(--spacing-xs, 4px);
   margin-right: var(--spacing-xs, 4px);
 }
+
 .my-1 {
   margin-top: var(--spacing-xs, 4px);
   margin-bottom: var(--spacing-xs, 4px);
@@ -29,19 +36,24 @@
 .mt-2 {
   margin-top: var(--spacing-sm, 8px);
 }
+
 .mr-2 {
   margin-right: var(--spacing-sm, 8px);
 }
+
 .mb-2 {
   margin-bottom: var(--spacing-sm, 8px);
 }
+
 .ml-2 {
   margin-left: var(--spacing-sm, 8px);
 }
+
 .mx-2 {
   margin-left: var(--spacing-sm, 8px);
   margin-right: var(--spacing-sm, 8px);
 }
+
 .my-2 {
   margin-top: var(--spacing-sm, 8px);
   margin-bottom: var(--spacing-sm, 8px);
@@ -50,28 +62,35 @@
 .mt-3 {
   margin-top: var(--spacing-md, 16px);
 }
+
 /* TODO: [CSS] Add more margin utility classes for md, lg, xl spacing units */
 
 /* Paddings */
 .p-0 {
   padding: 0;
 }
+
 .pt-1 {
   padding-top: var(--spacing-xs, 4px);
 }
+
 .pr-1 {
   padding-right: var(--spacing-xs, 4px);
 }
+
 .pb-1 {
   padding-bottom: var(--spacing-xs, 4px);
 }
+
 .pl-1 {
   padding-left: var(--spacing-xs, 4px);
 }
+
 .px-1 {
   padding-left: var(--spacing-xs, 4px);
   padding-right: var(--spacing-xs, 4px);
 }
+
 .py-1 {
   padding-top: var(--spacing-xs, 4px);
   padding-bottom: var(--spacing-xs, 4px);
@@ -80,4 +99,5 @@
 .pt-2 {
   padding-top: var(--spacing-sm, 8px);
 }
+
 /* TODO: [CSS] Add more padding utility classes for sm, md, lg, xl spacing units */

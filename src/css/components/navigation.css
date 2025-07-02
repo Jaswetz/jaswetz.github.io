@@ -8,8 +8,7 @@
 
 .sidebar-nav {
     position: sticky;
-    top: calc(var(--space-2xl-3xl) * 2);
-    padding: var(--space-l);
+    top: calc(var(--space-2xl) * 2);
     margin-top: var(--space-xl);
 }
 
@@ -29,16 +28,18 @@
 
 .sidebar-nav a {
     display: block;
-    padding: var(--space-xs) var(--space-l);
+    padding: var(--space-xs) var(--space-xs);
     color: var(--color-text);
     text-decoration: none;
     transition: var(--transition-base);
     position: relative;
+    font-family: var(--font-family-heading);
     border-left: 2px solid transparent;
+    font-size: var(--size-step--1);
 }
 
 .sidebar-nav a:hover {
-    background-color: hsla(from var(--color-primary) h s l / 0.05);
+    background-color: hsl(from var(--color-primary) h s l / 5%);
     color: var(--color-primary);
     border-left-color: var(--color-primary);
     transform: translateX(2px);
@@ -46,7 +47,7 @@
 
 .sidebar-nav a:active,
 .sidebar-nav a.active {
-    background-color: hsla(from var(--color-primary) h s l / 0.1);
+    background-color: hsl(from var(--color-primary) h s l / 10%);
     color: var(--color-primary);
     border-left-color: var(--color-primary);
     font-weight: 500;
@@ -114,7 +115,7 @@
     Navigation Responsive Styles
     -------------------------------------------------------------------------- */
 
-@media (max-width: 768px) {
+@media (width <= 47.9375rem) {
     .project-navigation {
         flex-direction: column;
         gap: var(--space-s);
@@ -123,5 +124,12 @@
     .project-navigation a {
         width: 100%;
         justify-content: center;
+    }
+}
+
+/* Responsive styles for mobile */
+@media (width <= 47.9375rem) {
+    .site-header__nav {
+        display: none;
     }
 }

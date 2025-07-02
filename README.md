@@ -1,3 +1,16 @@
+# Jason Swetzoff's UX Portfolio
+
+[![Deploy to GitHub Pages](https://github.com/jaswetz/jaswetz.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/jaswetz/jaswetz.github.io/actions/workflows/deploy.yml)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://jaswetz.github.io/)
+
+A modern UX portfolio website built with fundamental web technologies and native Web Components.
+
+## 🚀 Live Site
+
+Visit the portfolio at: [https://jaswetz.github.io/](https://jaswetz.github.io/)
+
+---
+
 # Project Naming Conventions
 
 ## Folders
@@ -116,7 +129,7 @@ src/
     │   └── default-theme.css   #   -> @layer theme (example for default theme)
     │
     ├── layout/                 # (Optional) Global layout files for the 'layout' layer.
-    │   └── grid.css            #   -> @layer layout (example)
+    │   └── projects.css        #   -> @layer layout (example for project-specific layouts)
     │
     ├── components/             # (Optional) Styles for non-Web Component UI for the 'components' layer.
     │   └── buttons.css         #   -> @layer components (example)
@@ -131,6 +144,8 @@ src/
         ├── typography.css      #   -> @layer utilities
         ├── flexbox.css         #   -> @layer utilities
         ├── layout.css          #   -> @layer utilities
+        ├── grid-system.css     #   -> @layer utilities
+        ├── media-queries.css   #   -> @layer utilities
         └── debug.css           #   -> @layer utilities
 
 src/
@@ -150,15 +165,15 @@ src/
 
 - **`variables.css`**: Defines global CSS Custom Properties. These are imported in `main.css` _before_ any `@layer` declarations or within an early, unlayered import to ensure they are universally available.
 - **`main.css`**: This is the primary stylesheet linked in all HTML files. Its main responsibilities are:
-  1.  Importing `variables.css`.
-  2.  Defining the order of cascade layers: `@layer reset, base, theme, layout, components, utilities;`.
-  3.  Importing other CSS files directly into their designated layers.
-      - `@layer reset { @import url("base/reset.css"); }`
-      - `@layer base { @import url("base/global.css"); @import url("base/typography.css"); }`
-      - `@layer theme { @import url("theme/default-theme.css"); }`
-      - `@layer layout { /* @import url("layout/grid.css"); */ }`
-      - `@layer components { /* @import url("components/buttons.css"); @import url("pages/page-about.css"); */ }`
-      - `@layer utilities { @import url("utils/spacing.css"); /* etc. */ }`
+  1. Importing `variables.css`.
+  2. Defining the order of cascade layers: `@layer reset, base, theme, layout, components, utilities;`.
+  3. Importing other CSS files directly into their designated layers.
+     - `@layer reset { @import url("base/reset.css"); }`
+     - `@layer base { @import url("base/global.css"); @import url("base/typography.css"); }`
+     - `@layer theme { @import url("theme/default-theme.css"); }`
+     - `@layer layout { /* @import url("layout/grid.css"); */ }`
+     - `@layer components { /* @import url("components/buttons.css"); @import url("pages/page-about.css"); */ }`
+     - `@layer utilities { @import url("utils/spacing.css"); /* etc. */ }`
 - **Layer Content:**
   - **`reset` layer**: Contains minimal custom CSS reset (`base/reset.css`).
   - **`base` layer**: Holds essential global HTML/body styles, base typography, etc. (`base/global.css`, `base/typography.css`).
@@ -178,6 +193,7 @@ src/
 
 - For maintainability and better tooling support, each Web Component can have its own CSS file (e.g., `SiteHeader.css` for `SiteHeader.js`).
 - The CSS file is imported into the component JavaScript using:
+
   ```js
   import * as styles from "./SiteHeader.css";
   // ...
@@ -186,6 +202,7 @@ src/
     ...
   `;
   ```
+
 - This approach enables full syntax highlighting, code completion, and easier reuse of styles.
 - **Note:** If you see a linter warning like "Cannot find module './SiteHeader.css' or its corresponding type declarations," you can safely ignore it for plain JS projects. For TypeScript, add a declaration file as described below.
 
@@ -247,7 +264,119 @@ Add to `.vscode/settings.json` for best experience:
 
 This `@layer` approach provides more explicit control over the CSS cascade for global styles, making the utility layer's overrides more predictable without always resorting to `!important`.
 
-# HTML Structure & Templating
+## Responsive Breakpoint System
+
+The project uses a standardized, mobile-first breakpoint system for consistent responsive design across all components and layouts.
+
+### Breakpoint Scale
+
+All breakpoints use `rem` units for better accessibility and are defined as CSS Custom Properties in `src/css/variables.css`:
+
+```css
+--breakpoint-xs: 20rem; /* 320px - Small phones */
+--breakpoint-sm: 36rem; /* 576px - Large phones */
+--breakpoint-md: 48rem; /* 768px - Tablets */
+--breakpoint-lg: 64rem; /* 1024px - Desktop */
+--breakpoint-xl: 80rem; /* 1280px - Large desktop */
+--breakpoint-2xl: 96rem; /* 1536px - Extra large */
+```
+
+### Usage in Media Queries
+
+**Important**: CSS custom properties cannot be used directly in `@media` queries. Use the actual `rem` values:
+
+```css
+/* ✅ Correct - Mobile First (Preferred) */
+@media (min-width: 48rem) {
+  /* Tablet and up styles */
+}
+
+@media (min-width: 64rem) {
+  /* Desktop and up styles */
+}
+
+/* ✅ Correct - Desktop First (When Needed) */
+@media (max-width: 47.9375rem) {
+  /* Mobile only styles */
+}
+```
+
+### Migration from Legacy Breakpoints
+
+Common conversions from previous inconsistent breakpoints:
+
+- `@media (max-width: 768px)` → `@media (max-width: 47.9375rem)`
+- `@media (min-width: 768px)` → `@media (min-width: 48rem)`
+- `@media (min-width: 66em)` → `@media (min-width: 64rem)`
+- `@media (min-width: 100em)` → `@media (min-width: 96rem)`
+
+### Container System
+
+Responsive containers automatically adjust max-width and padding at each breakpoint:
+
+```css
+.container {
+  /* Responsive max-widths and padding */
+}
+
+.container-narrow {
+  /* Constrained to reading width */
+}
+
+.container-full {
+  /* Full width, responsive padding only */
+}
+```
+
+### Breakpoint System Documentation
+
+See `src/css/utils/media-queries.css` for complete documentation and examples. The living style guide at `/styleguide.html` includes an interactive breakpoint demo.
+
+## Unified Grid & Layout System
+
+The project uses a comprehensive, utility-first grid and layout system located in `src/css/utils/grid-system.css`. This system replaces all previous grid implementations (`base/layout.css`, `components/grids.css`) and provides a single, consistent way to create responsive layouts.
+
+### Core Concepts
+
+- **Utility-First**: Compose complex layouts by applying small, single-purpose utility classes directly in your HTML.
+- **CSS Grid & Flexbox**: The system provides utilities for both CSS Grid and Flexbox, allowing you to choose the best tool for the job.
+- **Responsive by Default**: All layout utilities can be applied conditionally at different breakpoints using prefixes (e.g., `md:grid-cols-4`).
+
+### CSS Grid Utilities
+
+Create grid containers and define column structures with simple classes.
+
+- `.grid`: Establishes a grid container.
+- `.grid-cols-[1-12]`: Defines a grid with a fixed number of equal-width columns.
+- `.grid-cols-auto-fit`: Creates a responsive grid where columns automatically wrap and fill the available space (ideal for cards).
+- `.gap-[1-6]`: Applies consistent spacing between grid items.
+
+**Example:**
+
+```html
+<!-- A 2-column grid on mobile, 4-column on desktop -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+  <div>Item 4</div>
+</div>
+```
+
+### Flexbox Utilities
+
+For one-dimensional layouts, use the flexbox utilities.
+
+- `.flex`: Establishes a flex container.
+- `.flex-row`, `.flex-col`: Defines the direction of the flex items.
+- `.justify-center`, `.items-center`, etc.: For alignment.
+- `.gap-[1-6]`: Applies spacing between flex items.
+
+### Grid System Documentation
+
+See `src/css/utils/grid-system.css` for a complete list of available utilities. The living style guide at `/styleguide.html` includes comprehensive documentation and live, interactive demos for all grid and flexbox variations.
+
+## HTML Structure & Templating
 
 This project uses **Native Web Components** for creating reusable UI elements such as the site header, footer, and navigation. This approach helps maintain a DRY (Don't Repeat Yourself) HTML structure without requiring additional templating engine dependencies.
 
@@ -255,14 +384,14 @@ This project uses **Native Web Components** for creating reusable UI elements su
 - These components are then used directly in the HTML pages (e.g., `src/index.html`, `src/about.html`, `src/styleguide.html`).
 - Parcel.js handles the bundling of these components as part of the standard JavaScript build process.
 
-# Living Style Guide
+## Living Style Guide
 
 A living style guide is available at `src/styleguide.html`. When running the development server (`npm run dev`), this page can be accessed to view and test all available Web Components, design tokens (colors, typography), and utility classes.
 This page serves as a central reference for the UI of the website.
 
 Add any new components or styles or layouts to this page when created.
 
-# Password Protection System
+## Password Protection System
 
 This project includes a modular password protection system for case studies that contain confidential or sensitive design work. The system provides client-side password protection with session management.
 
@@ -281,25 +410,25 @@ This project includes a modular password protection system for case studies that
 
 1. **Add the case study to the configuration** in `src/js/auth/password-config.js`:
 
-```javascript
-protectedCaseStudies: {
-  'your-case-study-id': {
-    password: 'YourSecurePassword',
-    title: 'Your Case Study Title',
-    description: 'This case study contains confidential design work.',
-    redirectOnCancel: '../work.html'
-  }
-}
-```
+   ```javascript
+   protectedCaseStudies: {
+     'your-case-study-id': {
+       password: 'YourSecurePassword',
+       title: 'Your Case Study Title',
+       description: 'This case study contains confidential design work.',
+       redirectOnCancel: '../work.html'
+     }
+   }
+   ```
 
 2. **Add the protection script** to your case study HTML file before the closing `</body>` tag:
 
-```html
-<script type="module">
-  import { protectCaseStudy } from "../js/password-protection-init.js";
-  protectCaseStudy("your-case-study-id");
-</script>
-```
+   ```html
+   <script type="module">
+     import { protectCaseStudy } from "../js/password-protection-init.js";
+     protectCaseStudy("your-case-study-id");
+   </script>
+   ```
 
 ### Currently Protected Case Studies
 
@@ -334,13 +463,23 @@ A demo page is available at `src/projects/password-protection-demo.html` for tes
 
 # Analytics and Tracking
 
-This project uses Google Analytics 4 (GA4) to gather insights into user behavior and site performance.
+This project uses multiple analytics tools to gather comprehensive insights into user behavior and site performance:
 
-## Integration
+- **Google Analytics 4 (GA4)**: For traffic analysis and conversion tracking
+- **Microsoft Clarity**: For user behavior insights through heatmaps and session recordings
+
+## Google Analytics 4 Integration
 
 - **Measurement ID**: `G-Z5DNDF44NG`
 - **Implementation**: The core GA4 logic is managed in `src/js/analytics.js`. This script is loaded on all HTML pages via a `<script>` tag in the `<head>`.
 - **Bundling**: The `analytics.js` script is imported into the main `src/index.js` file to ensure it is included in the final production build by Parcel.
+
+## Microsoft Clarity Integration
+
+- **Implementation**: The Clarity configuration is managed in `src/js/clarity-config.js`. This script is loaded on all HTML pages.
+- **Features**: Provides heatmaps, session recordings, user insights, and performance metrics
+- **Setup**: See `CLARITY_SETUP.md` for detailed setup instructions including how to configure your Project ID
+- **Privacy**: Automatically masks sensitive information and complies with GDPR requirements
 
 ## Tracked Events
 
@@ -359,16 +498,33 @@ GA4's enhanced measurement is enabled to automatically track:
 
 ### Custom Event Tracking
 
-The `src/js/analytics.js` script includes custom logic to track specific user interactions:
+Both analytics tools include custom logic to track specific user interactions:
+
+**Google Analytics 4**:
 
 - **Project Clicks**: Tracks when a user clicks on a project card to view details.
 - **Resume Downloads**: Specifically tracks clicks on links identified as a resume download.
 - **Time on Page**: A basic mechanism to track time spent on each page.
 - **External Link Clicks**: Tracks clicks on links leading to external domains.
 
+**Microsoft Clarity**:
+
+- **Project Interactions**: Tracks project card clicks and views
+- **Resume Downloads**: Tracks resume download events
+- **Contact Form**: Tracks form interactions and submissions
+- **Navigation**: Tracks navigation patterns between pages
+- **Custom Events**: Flexible event tracking for any user interaction
+
 ## Data Privacy
 
-The current implementation is basic. For production environments, it's important to consider data privacy regulations (like GDPR and CCPA). This may involve adding a cookie consent banner and allowing users to opt-out of tracking. The `allow_ad_personalization_signals` flag in the GA4 config is currently set to `false`.
+Both analytics tools are configured with privacy in mind:
+
+- **Google Analytics**: The `allow_ad_personalization_signals` flag is set to `false`
+- **Microsoft Clarity**: Automatically masks sensitive information and PII
+- **GDPR Compliance**: Both tools comply with European privacy regulations
+- **IP Anonymization**: User IP addresses are anonymized
+
+For production environments, consider adding a cookie consent banner and allowing users to opt-out of tracking as required by GDPR and CCPA regulations.
 
 # Editor Configuration
 
@@ -458,6 +614,49 @@ This section outlines the planned testing approaches to ensure website quality, 
 - **Integration Testing**: Components will be tested on actual pages (`index.html`, `about.html`, etc.) to ensure they integrate correctly with the page layout and other components.
 - **Encapsulation Verification**: Shadow DOM encapsulation will be implicitly verified by ensuring styles do not leak between components or the global scope.
 
+# Git Workflow & Quality Assurance
+
+This project implements a streamlined git workflow with automated quality checks to maintain code quality without slowing down development.
+
+## 12.1 Git Hooks Strategy
+
+### Pre-Commit Hook (Lightweight)
+
+- **Purpose**: Quick essential checks to catch critical errors
+- **Runs**: ESLint on JavaScript files only
+- **Behavior**: Auto-fixes issues when possible, fails only on critical errors
+- **Speed**: Fast (< 5 seconds typically)
+- **Bypass**: Use `git commit --no-verify` if needed
+
+### Pre-Push Hook (Comprehensive)
+
+- **Purpose**: Thorough testing before sharing code
+- **Runs on Main Branch**: Full test suite (ESLint, Stylelint, HTML validation, accessibility)
+- **Runs on Feature Branches**: Basic ESLint checks only
+- **Behavior**: Prevents push if critical issues found
+- **Bypass**: Use `git push --no-verify` for emergencies
+
+### CI/CD Pipeline
+
+- **Purpose**: Final verification and deployment
+- **Runs**: Complete test suite including cross-browser testing
+- **Triggers**: On push to main branch
+- **Result**: Automatic deployment if all tests pass
+
+## 12.2 Development Workflow
+
+```bash
+# Normal development cycle
+git add .
+git commit -m "feat: add new feature"  # Runs quick ESLint check
+git push origin feature-branch         # Runs basic checks
+
+# When ready to merge to main
+git checkout main
+git merge feature-branch
+git push origin main                   # Runs full test suite
+```
+
 # Deployment & Hosting (Github Pages)
 
 This project is intended to be deployed using GitLab Pages.
@@ -503,17 +702,32 @@ This project commits to an "Accessibility-by-Design" approach, integrating acces
 
 This section lists general pending tasks. File/component-specific TODOs are typically located as comments within the relevant files.
 
-- `// TODO: [CI/CD] Create .github/workflows/ci.yml file (PS9, Section 12, D4)`
-- `// TODO: [CI/CD] Define all pipeline jobs in ci.yml (install, lint, build, accessibility-test, performance-test, deploy) (12.1, D4.2)`
-- `// TODO: [CI/CD] Implement scripts for each pipeline job in ci.yml`
-- `// TODO: [CI/CD] Add GitHub Actions deployment status badges to README.md once pipeline is operational (PS10)`
+## ✅ Completed
+
+- **[CI/CD] ✅ Created comprehensive CI/CD pipeline** (`.github/workflows/deploy.yml`)
+- **[CI/CD] ✅ Implemented all pipeline jobs** (security, lint, build, accessibility-test, performance-test, deploy)
+- **[CI/CD] ✅ Added GitHub Actions deployment status badges** (See top of README)
+- **[Testing] ✅ Implemented comprehensive testing suite** (See `TESTING.md`)
+  - Security auditing with npm audit
+  - JavaScript linting with ESLint
+  - CSS linting with Stylelint
+  - HTML validation with html-validate
+  - Accessibility testing with axe-core
+  - Performance testing with Lighthouse
+  - Cross-browser testing with Playwright
+  - Bundle size monitoring
+  - Link checking
+- **[Testing] ✅ Created local testing script** (`./test-local.sh`)
+- **[Testing] ✅ Added optimized git hooks** (Lightweight pre-commit + comprehensive pre-push)
+- **[Optimization] ✅ Implemented comprehensive asset optimization** (Image compression, WebP conversion, lazy loading)
+- **[Optimization] ✅ Implemented web font optimization** (Preconnect, preload, font-display: swap)
+- **[Optimization] ✅ Updated all HTML files with optimized font loading** (All 9 HTML files now use optimized headers)
+
+## 🚧 In Progress / Remaining
+
 - `// TODO: [Content] Add actual portfolio project content to src/content/projects/ (PS8, PS8.1, PS8.2)`
 - `// TODO: [CSS] Create specific CSS for case study layouts (PS3.4)`
-- `// TODO: [Optimization] Implement image optimization techniques when images are added (OP8, OP9)`
-- `// TODO: [Optimization] Implement lazy loading for non-critical assets (OP10, OP16)`
-- `// TODO: [Optimization] Implement web font optimization when custom fonts are added (OP11)`
 - `// TODO: [Accessibility] Ensure all images have appropriate alt text once added (A11Y5)`
-- `// TODO: [Testing] Implement actual linting, cross-browser, performance, and accessibility testing routines (Section 11, A11Y10, D4.2)`
 - `// TODO: [SEO] For each page: Define unique <title> tags (Phase 8.1)`
 - `// TODO: [SEO] For each page: Write meta descriptions (Phase 8.1)`
 - `// TODO: [SEO] For each page: Ensure logical heading hierarchy (Phase 8.1)`
@@ -522,9 +736,27 @@ This section lists general pending tasks. File/component-specific TODOs are typi
 - `// TODO: [SEO] Create and configure robots.txt (Phase 8.2)`
 - `// TODO: [SEO] Generate and plan for XML sitemap submission (Phase 8.2)`
 - `// TODO: [Analytics] Integrate Google Analytics 4 (GA4) tracking code (Phase 8.3)`
-- `// TODO: [Analytics] Integrate Microsoft Clarity tracking code (Phase 8.3)`
+- `// COMPLETED: [Analytics] Integrate Microsoft Clarity tracking code (Phase 8.3) - See CLARITY_SETUP.md for configuration`
 - `// TODO: [Analytics] Address data privacy implications of analytics tools (Phase 8.3)`
 - `// TODO: add a scroll to top floating button`
+
+## Future Implementation Recommendations
+
+These are enhancement suggestions for continued development beyond the core requirements:
+
+- `// TODO: [Content] Consider moving project content to src/content/projects/ structure for better organization (PS8)`
+- `// TODO: [Performance] Add responsive image srcsets with different sizes for various breakpoints (OP8)`
+- `// TODO: [Testing] Add automated visual regression testing with tools like Percy or Chromatic`
+- `// TODO: [Security] Add security headers to public/_headers for enhanced security (CSP, HSTS, etc.)`
+- `// TODO: [Accessibility] Add more comprehensive ARIA labels for complex interactions`
+- `// TODO: [Accessibility] Implement skip navigation links for better keyboard navigation`
+- `// TODO: [Performance] Consider implementing Service Worker for offline functionality`
+- `// TODO: [SEO] Add structured data markup (JSON-LD) for better search engine understanding`
+- `// TODO: [Analytics] Consider privacy-focused analytics alternatives like Plausible or Fathom`
+- `// TODO: [Monitoring] Add error tracking with tools like Sentry for production monitoring`
+- `// TODO: [Components] Create additional reusable Web Components (project-card, modal, carousel)`
+- `// TODO: [CSS] Implement CSS Container Queries for more responsive component design`
+- `// TODO: [Build] Add bundle analysis tools to monitor and optimize bundle sizes`
 
 ## Case Study Updates
 
@@ -546,3 +778,62 @@ This section lists general pending tasks. File/component-specific TODOs are typi
 - Added visual elements like icons, badges, and cards
 - Ensured accessibility with proper contrast and semantic HTML
 - Added navigation links in the sidebar for all new sections
+
+# Testing
+
+This project utilizes a comprehensive testing strategy to ensure code quality, performance, and accessibility. The testing process is divided into several key areas:
+
+## 1. Automated Testing
+
+Automated tests are run on each commit and pull request to the main branch. These tests include:
+
+- **Security Audits**: Using `npm audit` to identify and fix vulnerabilities in dependencies.
+- **JavaScript Linting**: Using ESLint to enforce coding standards and catch errors in JavaScript code.
+- **CSS Linting**: Using Stylelint to ensure CSS code quality and consistency.
+- **HTML Validation**: Using html-validate to check HTML files for compliance with web standards.
+- **Accessibility Testing**: Using axe-core to automatically check for WCAG 2.1 accessibility compliance.
+- **Performance Testing**: Using Lighthouse to measure and report on performance metrics.
+- **Cross-Browser Testing**: Using Playwright to test website functionality and layout in different browsers.
+
+These automated tests help catch issues early in the development process and ensure that the website remains secure, performant, and accessible.
+
+## 2. Manual Testing
+
+In addition to automated tests, manual testing is performed to catch issues that automated tests might miss. This includes:
+
+- **Visual Inspection**: Manually checking the website in different browsers and devices to ensure consistent appearance and behavior.
+- **Interactive Testing**: Using the website as an end user would, to identify any usability or functional issues.
+- **Accessibility Testing**: Manual checks with screen readers (e.g., VoiceOver, NVDA) and keyboard navigation to ensure a fully accessible experience.
+
+## 3. Testing Tools and Scripts
+
+Several tools and scripts are used to facilitate testing:
+
+- **Playwright**: For automated cross-browser testing.
+- **Lighthouse**: For performance and accessibility audits.
+- **axe-core**: For automated accessibility testing.
+- **npm scripts**: Custom npm scripts are defined in `package.json` to run the various tests and linters. Some of the key scripts include:
+  - `npm run test`: Runs the JavaScript and CSS linters, HTML validator, and accessibility tests.
+  - `npm run test:watch`: Runs the tests in watch mode, re-running them on file changes.
+  - `npm run test:all`: Runs all tests, including accessibility and performance tests (requires the development server to be running).
+
+## 4. Testing Workflow
+
+The typical workflow for testing is as follows:
+
+1. **Code Changes**: Make changes to the codebase.
+2. **Automated Tests**: Push the changes to the repository. Automated tests will run on the CI server.
+3. **Review Results**: Review the results of the automated tests. Fix any issues that are identified.
+4. **Manual Testing**: Perform manual testing as needed, especially for accessibility and cross-browser compatibility.
+5. **Merge Changes**: Once all tests pass and the code is reviewed, merge the changes into the main branch.
+
+## 5. Testing Documentation
+
+Detailed documentation for testing procedures, tools, and scripts is available in the `TESTING.md` file. This includes:
+
+- How to run tests locally
+- How to interpret test results
+- How to fix common issues identified by the tests
+- Guidelines for writing accessible and high-quality code
+
+By following this testing strategy, the project aims to maintain a high standard of quality, performance, and accessibility throughout its development and maintenance lifecycle.

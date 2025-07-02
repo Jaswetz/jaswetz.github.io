@@ -67,13 +67,13 @@
     max-width: 300px;
     height: auto;
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow-medium, 0 4px 12px rgba(0, 0, 0, 0.1));
+    box-shadow: var(--shadow-medium, 0 4px 12px rgb(0 0 0 / 10%));
     transition: var(--transition-interactive);
 }
 
 .profile-photo:hover {
     transform: var(--hover-transform, scale(1.02));
-    box-shadow: var(--shadow-large, 0 8px 24px rgba(0, 0, 0, 0.15));
+    box-shadow: var(--shadow-large, 0 8px 24px rgb(0 0 0 / 15%));
 }
 
 /* Skills and expertise section */
@@ -104,11 +104,7 @@
 
 .skills-expertise-section li {
     padding: var(--space-xs) 0;
-    border-bottom: 1px solid var(--color-border-light, rgba(0, 0, 0, 0.05));
-}
-
-.skills-expertise-section li:last-child {
-    border-bottom: none;
+    border-bottom: 1px solid var(--color-border-light, rgb(0 0 0 / 5%));
 }
 
 /* Resume highlights section */
@@ -133,7 +129,7 @@
 }
 
 .resume-entry:hover {
-    box-shadow: var(--shadow-medium, 0 4px 12px rgba(0, 0, 0, 0.1));
+    box-shadow: var(--shadow-medium, 0 4px 12px rgb(0 0 0 / 10%));
     transform: translateY(-2px);
 }
 
@@ -202,7 +198,7 @@
     background-color: var(--color-primary);
     color: white;
     transform: translateY(-2px);
-    box-shadow: var(--shadow-medium, 0 4px 12px rgba(0, 0, 0, 0.1));
+    box-shadow: var(--shadow-medium, 0 4px 12px rgb(0 0 0 / 10%));
 }
 
 /* CTA button in resume section */
@@ -226,7 +222,7 @@
     background-color: var(--color-primary-alt);
     border-color: var(--color-primary-alt);
     transform: var(--hover-transform, translateY(-2px));
-    box-shadow: var(--shadow-medium, 0 4px 12px rgba(0, 0, 0, 0.15));
+    box-shadow: var(--shadow-medium, 0 4px 12px rgb(0 0 0 / 15%));
     color: white;
 }
 
@@ -240,7 +236,7 @@
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
+@media (width <=47.9375rem) {
     .about-page-content {
         padding: var(--space-m);
         gap: var(--space-l);
@@ -282,7 +278,7 @@
     }
 }
 
-@media (max-width: 480px) {
+@media (width <=35.9375rem) {
     .about-page-content {
         padding: var(--space-s);
     }

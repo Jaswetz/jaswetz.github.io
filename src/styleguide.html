@@ -1,23 +1,44 @@
-<!  <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Living Style Guide - My Portfolio</title>
-
-<!-- Google Analytics 4 -->
-<script
-  async
-  src="https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG"
-></script>
-<script src="./js/analytics.js"></script>
-
-<link rel="stylesheet" href="./css/main.css" />
-<link rel="icon" type="image/x-icon" href="./assets/favicons/favicon.ico" />E
-html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Living Style Guide - Jason Swetz UX Portfolio</title>
+    <title>Living Style Guide - Jason Swetzoff's Portfolio</title>
+
+    <!-- Google Analytics 4 -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG"
+    ></script>
+    <script src="./js/analytics.js"></script>
+
+    <!-- Font optimization -->
+    <!-- Preconnect to Google Fonts for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Preload critical fonts -->
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/laila/v18/LYjCdG7kmE0gdQhfgCNqqVIuTN4.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/gentiumplus/v6/CoIGjMz5OlKwGK-Bz_Nx2SOx1RiKBK-X8A.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Optimized Google Fonts CSS with font-display: swap -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Laila:wght@400;600&family=PT+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="icon" type="image/x-icon" href="./assets/favicons/favicon.ico" />
     <link
@@ -271,8 +292,117 @@ html>
             </div>
           </section>
 
+          <section id="breakpoint-system" class="styleguide-section">
+            <h3>3.3 Responsive Breakpoint System</h3>
+            <p>
+              Standardized breakpoint system for consistent responsive design.
+              All breakpoints use <code>rem</code> units for better
+              accessibility and are defined as CSS Custom Properties in
+              <code>src/css/variables.css</code>.
+            </p>
+
+            <h4>Breakpoint Reference</h4>
+            <div class="breakpoint-demo">
+              <div class="breakpoint-item">
+                <code>--breakpoint-xs: 20rem</code>
+                <span class="muted">(320px)</span> - Small phones
+              </div>
+              <div class="breakpoint-item">
+                <code>--breakpoint-sm: 36rem</code>
+                <span class="muted">(576px)</span> - Large phones
+              </div>
+              <div class="breakpoint-item">
+                <code>--breakpoint-md: 48rem</code>
+                <span class="muted">(768px)</span> - Tablets
+              </div>
+              <div class="breakpoint-item">
+                <code>--breakpoint-lg: 64rem</code>
+                <span class="muted">(1024px)</span> - Desktop
+              </div>
+              <div class="breakpoint-item">
+                <code>--breakpoint-xl: 80rem</code>
+                <span class="muted">(1280px)</span> - Large desktop
+              </div>
+              <div class="breakpoint-item">
+                <code>--breakpoint-2xl: 96rem</code>
+                <span class="muted">(1536px)</span> - Extra large
+              </div>
+            </div>
+
+            <h4>Current Breakpoint Demo</h4>
+            <p>Resize your browser to see the active breakpoint:</p>
+            <div class="breakpoint-indicator">
+              <span class="current-breakpoint"
+                >Current: <strong id="current-bp">Unknown</strong></span
+              >
+            </div>
+
+            <style>
+              .breakpoint-demo {
+                display: grid;
+                gap: var(--space-s);
+                margin: var(--space-m) 0;
+              }
+
+              .breakpoint-item {
+                padding: var(--space-s);
+                background: var(--color-info);
+                border-radius: var(--border-radius);
+                font-family: var(--font-family-monospace);
+                font-size: var(--font-size-sm);
+              }
+
+              .breakpoint-item code {
+                color: var(--color-primary);
+                font-weight: var(--font-weight-semibold);
+              }
+
+              .breakpoint-item .muted {
+                color: var(--color-text-light);
+                font-family: var(--font-family-sans);
+              }
+
+              .breakpoint-indicator {
+                padding: var(--space-m);
+                background: var(--color-primary);
+                color: white;
+                border-radius: var(--border-radius);
+                text-align: center;
+                margin: var(--space-m) 0;
+              }
+
+              .current-breakpoint {
+                font-size: var(--font-size-lg);
+              }
+            </style>
+
+            <script>
+              // Simple breakpoint detector for demo
+              function updateBreakpointIndicator() {
+                const width = window.innerWidth;
+                let currentBp = "xs";
+
+                if (width >= 1536) currentBp = "2xl (1536px+)";
+                else if (width >= 1280) currentBp = "xl (1280px+)";
+                else if (width >= 1024) currentBp = "lg (1024px+)";
+                else if (width >= 768) currentBp = "md (768px+)";
+                else if (width >= 576) currentBp = "sm (576px+)";
+                else currentBp = "xs (<576px)";
+
+                const indicator = document.getElementById("current-bp");
+                if (indicator) {
+                  indicator.textContent = currentBp;
+                }
+              }
+
+              // Update on load and resize
+              window.addEventListener("load", updateBreakpointIndicator);
+              window.addEventListener("resize", updateBreakpointIndicator);
+            </script>
+          </section>
+
           <section id="spacing-system" class="styleguide-section">
-            <h3>3.3 Spacing System</h3>
+            <h3>3.4 Spacing System</h3>
             <p>
               Consistent spacing is key to a well-designed interface. We use a
               spacing scale based on multiples of a base unit (e.g., 4px or
@@ -318,13 +448,194 @@ html>
           </section>
 
           <section id="grid-system" class="styleguide-section">
-            <h3>3.4 Grid System</h3>
+            <h3>3.5 Unified Grid System</h3>
             <p>
-              If a global CSS grid or layout system is used, it will be
-              documented here. Many layout concerns may be handled by individual
-              components or page-specific CSS.
+              A comprehensive, mobile-first, responsive grid system designed for
+              creating flexible and consistent layouts. The system is built with
+              CSS Grid and includes utility classes for columns, gaps, and
+              responsive visibility.
             </p>
-            <!-- TODO: [Styleguide] Document global grid system if applicable (LSG3.4) -->
+
+            <h4>Core Usage</h4>
+            <p>
+              To create a grid, add the <code>.grid</code> class to a container.
+              Then, add modifier classes to define the column structure and gap
+              size.
+            </p>
+            <pre><code>&lt;div class="grid grid--3-column grid--gap-m"&gt;
+    &lt;div&gt;Item 1&lt;/div&gt;
+    &lt;div&gt;Item 2&lt;/div&gt;
+    &lt;div&gt;Item 3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+            <h4>Fixed-Column Layouts</h4>
+            <p>
+              Use these classes for a specific number of columns. They
+              automatically stack to a single column on mobile screens
+              (&lt;48rem).
+            </p>
+            <div class="grid-demo-container">
+              <strong>2 Columns: <code>.grid--2-column</code></strong>
+              <div class="grid grid--2-column grid--gap-m">
+                <div class="grid-demo-item">Column 1</div>
+                <div class="grid-demo-item">Column 2</div>
+              </div>
+            </div>
+            <div class="grid-demo-container">
+              <strong>3 Columns: <code>.grid--3-column</code></strong>
+              <div class="grid grid--3-column grid--gap-m">
+                <div class="grid-demo-item">Column 1</div>
+                <div class="grid-demo-item">Column 2</div>
+                <div class="grid-demo-item">Column 3</div>
+              </div>
+            </div>
+            <div class="grid-demo-container">
+              <strong>4 Columns: <code>.grid--4-column</code></strong>
+              <div class="grid grid--4-column grid--gap-m">
+                <div class="grid-demo-item">Column 1</div>
+                <div class="grid-demo-item">Column 2</div>
+                <div class="grid-demo-item">Column 3</div>
+                <div class="grid-demo-item">Column 4</div>
+              </div>
+            </div>
+
+            <h4>Auto-Fit Layouts</h4>
+            <p>
+              These classes create a responsive grid where columns automatically
+              wrap to fit the available space. The
+              <code>minmax()</code> function determines the minimum item width.
+            </p>
+            <div class="grid-demo-container">
+              <strong
+                >Auto-Fit (min 280px): <code>.grid--auto-fit</code></strong
+              >
+              <div class="grid grid--auto-fit grid--gap-m">
+                <div class="grid-demo-item">Item</div>
+                <div class="grid-demo-item">Item</div>
+                <div class="grid-demo-item">Item</div>
+                <div class="grid-demo-item">Item</div>
+              </div>
+            </div>
+            <p>
+              Other auto-fit variations:
+              <code>.grid--auto-fit-sm</code> (200px),
+              <code>.grid--auto-fit-md</code> (300px),
+              <code>.grid--auto-fit-lg</code> (350px),
+              <code>.grid--auto-fit-xl</code> (400px).
+            </p>
+
+            <h4>Asymmetric Layouts</h4>
+            <p>
+              For common layouts like main content with a sidebar. The sidebar
+              has a fixed width on larger screens.
+            </p>
+            <div class="grid-demo-container">
+              <strong
+                >Sidebar (Content | Sidebar):
+                <code>.grid--2-column--sidebar</code></strong
+              >
+              <div class="grid grid--2-column--sidebar grid--gap-l">
+                <div class="grid-demo-item">Main Content</div>
+                <div class="grid-demo-item">Sidebar</div>
+              </div>
+            </div>
+            <div class="grid-demo-container">
+              <strong
+                >Reverse Sidebar (Sidebar | Content):
+                <code>.grid--2-column--reverse-sidebar</code></strong
+              >
+              <div class="grid grid--2-column--reverse-sidebar grid--gap-l">
+                <div class="grid-demo-item">Sidebar</div>
+                <div class="grid-demo-item">Main Content</div>
+              </div>
+            </div>
+            <div class="grid-demo-container">
+              <strong
+                >Uneven (1fr 2fr): <code>.grid--2-column--uneven</code></strong
+              >
+              <div class="grid grid--2-column--uneven grid--gap-l">
+                <div class="grid-demo-item">Left (1fr)</div>
+                <div class="grid-demo-item">Right (2fr)</div>
+              </div>
+            </div>
+
+            <h4>Gap Variations</h4>
+            <p>
+              Control the space between grid items using gap utilities. The
+              default gap is <code>--space-l</code>.
+            </p>
+            <ul>
+              <li><code>.grid--gap-xs</code></li>
+              <li><code>.grid--gap-s</code></li>
+              <li><code>.grid--gap-m</code></li>
+              <li><code>.grid--gap-l</code></li>
+              <li><code>.grid--gap-xl</code></li>
+              <li><code>.grid--gap-2xl</code></li>
+              <li><code>.grid--gap-3xl</code></li>
+            </ul>
+
+            <h4>Responsive Visibility Utilities</h4>
+            <p>Show or hide elements at specific breakpoints.</p>
+            <ul>
+              <li><code>.hide-mobile</code>: Hidden below 48rem.</li>
+              <li>
+                <code>.hide-tablet</code>: Hidden between 48rem and 64rem.
+              </li>
+              <li><code>.hide-desktop</code>: Hidden above 64rem.</li>
+              <li><code>.hide-until-lg</code>: Hidden until 64rem.</li>
+              <li><code>.hide-until-xl</code>: Hidden until 80rem.</li>
+              <li><code>.hide-until-xxl</code>: Hidden until 96rem.</li>
+            </ul>
+
+            <h4>Flexbox Grid Alternatives</h4>
+            <p>
+              For cases where CSS Flexbox is more suitable, a flex-based grid is
+              available.
+            </p>
+            <div class="grid-demo-container">
+              <strong
+                >Flex Grid (flex: 1 1 280px): <code>.flex-grid</code></strong
+              >
+              <div class="flex-grid">
+                <div class="grid-demo-item">Flex Item</div>
+                <div class="grid-demo-item">Flex Item</div>
+                <div class="grid-demo-item">Flex Item</div>
+              </div>
+            </div>
+            <p>
+              Column variations like <code>.flex-grid--2-column</code> and
+              <code>.flex-grid--3-column</code> are also available.
+            </p>
+
+            <style>
+              .grid-demo-container {
+                margin: var(--space-m) 0;
+                padding: var(--space-m);
+                border: 1px solid var(--color-border);
+                border-radius: var(--border-radius);
+                background: var(--color-surface-secondary);
+              }
+
+              .grid-demo-item {
+                background: var(--color-surface-tertiary);
+                color: var(--color-text);
+                padding: var(--space-m);
+                border-radius: var(--border-radius);
+                text-align: center;
+                font-weight: var(--font-weight-medium);
+              }
+
+              .grid-demo-container strong {
+                display: block;
+                margin-bottom: var(--space-s);
+              }
+
+              .grid-demo-container code {
+                font-size: var(--font-size-sm);
+                color: var(--color-text-light);
+                font-family: var(--font-family-monospace);
+              }
+            </style>
           </section>
         </section>
 
@@ -394,17 +705,64 @@ html>
           </section>
 
           <section id="navigation" class="styleguide-section">
-            <h3>Navigation</h3>
-            <p>Main site navigation component.</p>
-            <!-- Placeholder for SiteHeader component -->
+            <h3>SiteHeader Component</h3>
+            <p>Main site navigation component with responsive mobile menu.</p>
+
+            <h4>Usage</h4>
+            <pre><code>&lt;site-header&gt;&lt;/site-header&gt;</code></pre>
+
+            <h4>Features</h4>
+            <ul>
+              <li>Responsive navigation with mobile hamburger menu</li>
+              <li>Smooth scrolling navigation for single-page sections</li>
+              <li>Hide/show on scroll behavior</li>
+              <li>Keyboard accessible</li>
+            </ul>
+
+            <h4>Custom Events</h4>
+            <ul>
+              <li>
+                <code>navigation-changed</code> - Fired when navigation state
+                changes
+              </li>
+            </ul>
+
+            <h4>CSS Custom Properties</h4>
+            <ul>
+              <li><code>--header-bg-color</code> - Background color</li>
+              <li><code>--header-text-color</code> - Text color</li>
+              <li><code>--header-height</code> - Header height</li>
+            </ul>
+
+            <h4>Live Example</h4>
             <site-header></site-header>
             <p><em>(Live SiteHeader component above)</em></p>
           </section>
 
           <section id="footer-component" class="styleguide-section">
-            <h3>Footer</h3>
-            <p>Main site footer component.</p>
-            <!-- Placeholder for SiteFooter component -->
+            <h3>SiteFooter Component</h3>
+            <p>
+              Main site footer component with contact information and links.
+            </p>
+
+            <h4>Usage</h4>
+            <pre><code>&lt;site-footer&gt;&lt;/site-footer&gt;</code></pre>
+
+            <h4>Features</h4>
+            <ul>
+              <li>Contact information display</li>
+              <li>Social media links</li>
+              <li>Copyright information</li>
+              <li>Responsive design</li>
+            </ul>
+
+            <h4>CSS Custom Properties</h4>
+            <ul>
+              <li><code>--footer-bg-color</code> - Background color</li>
+              <li><code>--footer-text-color</code> - Text color</li>
+            </ul>
+
+            <h4>Live Example</h4>
             <site-footer></site-footer>
             <p><em>(Live SiteFooter component above)</em></p>
           </section>

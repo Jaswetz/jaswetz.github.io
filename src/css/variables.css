@@ -1,24 +1,33 @@
 :root {
-  /* Base Unit */
+  /* ==========================================================================
+     BASE UNIT
+     ========================================================================== */
   --unit: 0.25rem;
+
   /* 4px */
 
-  /* Colors */
+  /* ==========================================================================
+     COLORS
+     ========================================================================== */
   --color-primary: #2569ed;
   --color-primary-alt: #1746a0;
-  --color-surface: #ffffff;
+  --color-surface: #fff;
   --color-quote-bg: var(--color-surface);
   --color-quote-bg-alt: #f0e9da;
   --footer-background: var(--color-quote-bg-alt);
   --color-quote-border: #2569ed;
   --color-muted: #7a99c8;
   --color-success: #28a745;
+
   /* Example Green */
   --color-danger: #dc3545;
+
   /* Example Red */
   --color-warning: #ffc107;
+
   /* Example Yellow */
   --color-info: #E8EDF5;
+
   /* Example Teal */
 
   --color-text: #333;
@@ -27,13 +36,13 @@
   --color-border: #ddd;
   --color-text-subtle: #555;
 
-
-
-  /* Typography */
-  --font-family-heading: "Laila", serif;
-  --font-family-body: "Gentium Plus", serif;
-  --font-family-sans: "PT Sans", sans-serif;
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+  /* ==========================================================================
+     TYPOGRAPHY
+     ========================================================================== */
+  --font-family-heading: "Laila", "Times New Roman", "Georgia", "Baskerville", serif;
+  --font-family-body: "Gentium Plus", "Times New Roman", "Georgia", "Baskerville", serif;
+  --font-family-sans: "PT Sans", -apple-system, blinkmacsystemfont, "Segoe UI", "Helvetica Neue", arial, sans-serif;
+  --font-family-monospace: sfmono-regular, menlo, monaco, consolas,
     "Liberation Mono", "Courier New", monospace;
   --heading-font-weight: var(--font-weight-semibold);
 
@@ -44,7 +53,6 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
-
   --leading: 1.4;
   --leading-short: 1.3;
   --leading-slim: 1.2;
@@ -55,7 +63,6 @@
   --kerning-tight: -0.04ch;
   --kerning-loose: 0.1ch;
   --heading-kerning: -0.015em;
-
   --measure: 65ch;
   --measure-xs: 20ch;
   --measure-s: 35ch;
@@ -71,38 +78,54 @@
 
   /* Font Sizes (based on 4px unit) */
   --font-size-base: 1rem;
+
   /* 16px */
   --font-size-xs: 0.75rem;
+
   /* 12px */
   --font-size-sm: 0.875rem;
+
   /* 14px */
   --font-size-md: 1rem;
+
   /* 16px */
   --font-size-lg: 1.25rem;
+
   /* 20px */
   --font-size-xl: 1.5rem;
+
   /* 24px */
   --font-size-2xl: 2rem;
+
   /* 32px */
   --font-size-3xl: 2.5rem;
+
   /* 40px */
   --font-size-4xl: 3rem;
+
   /* 54px */
   --font-size-5xl: 3.5rem;
+
   /* 63px */
   --font-size-6xl: 4rem;
+
   /* 72px */
   --font-size-7xl: 5rem;
+
   /* 90px */
   --font-size-8xl: 6rem;
+
   /* 108px */
 
   /* Line Heights (strict 4px rhythm) */
   --line-height-tight: 1.25;
+
   /* 20px for 16px font, good for headings */
   --line-height-base: 1.5;
+
   /* 24px for 16px font, standard for body */
   --line-height-loose: 1.75;
+
   /* 28px for 16px font, for extra space */
   --heading-line-height: var(--leading-fine);
 
@@ -126,7 +149,6 @@
   --space-3xl-4xl: clamp(3.75rem, 2.7433rem + 5.0336vi, 7.5rem);
   --space-s-l: clamp(0.75rem, 0.4144rem + 1.6779vi, 2rem);
   --space-l-3xl: clamp(1.5rem, 0.5604rem + 4.698vw, 5rem);
-
   --size-step-8: clamp(2.3125rem, 0.1313rem + 10.906vi, 10.4375rem);
   --size-step-7: clamp(2.0625rem, 0.7706rem + 6.4597vi, 6.875rem);
   --size-step-6: clamp(1.8125rem, 1.0742rem + 3.6913vi, 4.5625rem);
@@ -138,7 +160,6 @@
   --size-step-0: clamp(1.0625rem, 0.9954rem + 0.3356vi, 1.3125rem);
   --size-step--1: clamp(0.9375rem, 0.8705rem + 0.3356vi, 1.1875rem);
   --size-step--2: clamp(0.8125rem, 0.7455rem + 0.3356vi, 1.0625rem);
-
   --gutter: var(--space-l-xl);
 
   /* Margin and Padding Utilities */
@@ -158,13 +179,18 @@
   /* Borders */
   --border-radius: 0.75rem;
   --border-radius-sm: 0.375rem;
+
   /* 6px */
   --border-radius-md: 0.5rem;
+
   /* 8px */
   --border-radius-lg: 1rem;
+
   /* 16px */
   --border-radius-xl: 1.5rem;
+
   /* 24px */
+
   /* 4px */
   --border-width: 1px;
 
@@ -174,30 +200,31 @@
   --transition-quick: all 0.2s ease;
 
   /* Interactive State Variables */
+
   /* Hover States */
   --hover-transform: translateY(-2px);
   --hover-transform-card: translateY(-8px) scale(1.02);
   --hover-transform-small: translateY(-1px);
   --hover-scale: 1.02;
   --hover-scale-large: 1.05;
-  --hover-shadow: 0 4px 12px rgba(37, 105, 237, 0.3),
-    0 0 0 1px rgba(37, 105, 237, 0.1);
-  --hover-shadow-large: 0 8px 25px rgba(0, 0, 0, 0.15),
-    0 0 0 1px rgba(37, 105, 237, 0.1);
-  --hover-shadow-small: 0 2px 8px rgba(37, 105, 237, 0.3);
+  --hover-shadow: 0 4px 12px rgb(37 105 237 / 30%),
+    0 0 0 1px rgb(37 105 237 / 10%);
+  --hover-shadow-large: 0 8px 25px rgb(0 0 0 / 15%),
+    0 0 0 1px rgb(37 105 237 / 10%);
+  --hover-shadow-small: 0 2px 8px rgb(37 105 237 / 30%);
 
   /* Focus States */
   --focus-outline: 2px solid var(--color-primary);
   --focus-outline-offset: 2px;
-  --focus-shadow: 0 0 0 4px rgba(37, 105, 237, 0.1);
+  --focus-shadow: 0 0 0 4px rgb(37 105 237 / 10%);
   --focus-shadow-enhanced: var(--hover-shadow), var(--focus-shadow);
 
   /* Active States */
   --active-transform: translateY(0) scale(0.98);
   --active-transform-card: translateY(-4px) scale(1.01);
   --active-scale: 0.95;
-  --active-shadow: 0 2px 6px rgba(37, 105, 237, 0.4),
-    0 0 0 1px rgba(37, 105, 237, 0.2);
+  --active-shadow: 0 2px 6px rgb(37 105 237 / 40%),
+    0 0 0 1px rgb(37 105 237 / 20%);
 
   /* Disabled States */
   --disabled-opacity: 0.6;
@@ -205,28 +232,56 @@
 
   /* Gradient Overlays */
   --overlay-gradient-light: linear-gradient(135deg,
-      rgba(255, 255, 255, 0.1),
-      rgba(255, 255, 255, 0.05));
+      rgb(255 255 255 / 10%),
+      rgb(255 255 255 / 5%));
   --overlay-gradient-primary: linear-gradient(135deg,
-      rgba(37, 105, 237, 0.05),
-      rgba(23, 70, 160, 0.1));
+      rgb(37 105 237 / 5%),
+      rgb(23 70 160 / 10%));
   --overlay-gradient-enhanced: linear-gradient(135deg,
-      rgba(255, 255, 255, 0.2),
-      rgba(255, 255, 255, 0.1));
+      rgb(255 255 255 / 20%),
+      rgb(255 255 255 / 10%));
 
   /* Touch Targets */
   --touch-target-min: 44px;
   --touch-target-small: 36px;
   --touch-target-large: 52px;
-
   --max-width: 1880px;
   --reading-width: 800px;
+
   /* Maximum width for main content */
   --section-width: calc(100% - var(--space-l));
+
   /* Full width minus padding */
 
-  @media (min-width: 66em) {
+  /* ==========================================================================
+     RESPONSIVE BREAKPOINTS
+     ========================================================================== */
+
+  /* Mobile-first breakpoint system using rem units for better accessibility */
+  --breakpoint-xs: 20rem;    /* 320px - Small phones */
+  --breakpoint-sm: 36rem;    /* 576px - Large phones */
+  --breakpoint-md: 48rem;    /* 768px - Tablets */
+  --breakpoint-lg: 64rem;    /* 1024px - Desktop */
+  --breakpoint-xl: 80rem;    /* 1280px - Large desktop */
+  --breakpoint-xxl: 96rem;   /* 1536px - Extra large */
+
+  /* Container max-widths for consistent content boundaries */
+  --container-xs: 100%;
+  --container-sm: 33.75rem;   /* 540px */
+  --container-md: 45rem;      /* 720px */
+  --container-lg: 60rem;      /* 960px */
+  --container-xl: 75rem;      /* 1200px */
+  --container-2xl: 81.25rem;  /* 1300px */
+  --container-full: 100%;
+
+  /* Legacy breakpoint mapping for gradual migration */
+  --breakpoint-mobile: var(--breakpoint-md);     /* 768px equivalent */
+  --breakpoint-desktop: var(--breakpoint-lg);    /* 1024px equivalent */
+  --breakpoint-large: var(--breakpoint-xl);      /* 1280px equivalent */
+
+  @media (width >= 64rem) {
     --section-width: calc(100% - var(--space-2xl));
+
     /* Full width minus larger padding */
   }
 }

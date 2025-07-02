@@ -72,12 +72,11 @@ select:focus {
 .card__link:focus {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
-  box-shadow: 0 0 0 4px rgba(37, 105, 237, 0.1), 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 0 4px rgb(37 105 237 / 10%), 0 8px 25px rgb(0 0 0 / 15%);
 }
 
 /* Reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
@@ -89,8 +88,7 @@ select:focus {
 }
 
 /* High contrast mode support */
-@media (prefers-contrast: high) {
-
+@media (prefers-contrast: more) {
   .card__link:focus,
   button:focus,
   input:focus,
@@ -104,14 +102,13 @@ select:focus {
   .card__link:hover,
   button:hover,
   nav a:hover {
-    background: ButtonHighlight;
-    color: ButtonText;
+    background: var(--color-accent);
+    color: var(--color-text-primary);
   }
 }
 
 /* Touch target sizes - ensure minimum 44px touch targets */
 @media (pointer: coarse) {
-
   button,
   input[type="button"],
   input[type="submit"],
@@ -144,18 +141,19 @@ input:invalid,
 textarea:invalid,
 select:invalid {
   border-color: var(--color-error, #dc2626);
-  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.1);
+  box-shadow: 0 0 0 2px rgb(220 38 38 / 10%);
 }
 
 input:invalid:focus,
 textarea:invalid:focus,
 select:invalid:focus {
   outline-color: var(--color-error, #dc2626);
-  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.1),
-    0 0 0 4px rgba(220, 38, 38, 0.05);
+  box-shadow: 0 0 0 2px rgb(220 38 38 / 10%),
+    0 0 0 4px rgb(220 38 38 / 5%);
 }
 
 /* Custom Element Focus Management */
+
 /* Prevent unwanted focus outlines on custom elements */
 site-header,
 site-footer {

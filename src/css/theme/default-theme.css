@@ -12,8 +12,11 @@
 
 :root {
   /* Example: Define or override specific theme variables if needed */
+
   /* --theme-primary-color: var(--color-blue-500); */
+
   /* --theme-background-color: var(--color-neutral-100); */
+
   /* --theme-text-color: var(--color-neutral-900); */
 
   /* Or, if variables.css already defines your default theme, 
@@ -23,6 +26,7 @@
 
 /* You could also include specific selectors if a theme requires it, 
    but it's often cleaner to manage themes primarily through variable overrides. */
+
 /* 
 body.dark-theme {
   --theme-background-color: var(--color-neutral-900);
@@ -33,4 +37,5 @@ body.dark-theme {
 */
 
 /* TODO: [Theme] Define default theme variables and styles. */
+
 /* TODO: [Theme] Plan and implement dark mode or alternative theme strategy. */

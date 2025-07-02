@@ -1,0 +1,200 @@
+/* Image optimization styles */
+
+/* =============================================================================
+   LAZY LOADING STYLES
+   ============================================================================= */
+
+/* Base image styles */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Lazy loading states */
+img.loading {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    min-height: 200px;
+
+    /* Prevent layout shift */
+}
+
+img.loaded {
+    animation: fade-in 0.3s ease-in-out;
+}
+
+img.error {
+    background: #f8f8f8;
+    border: 2px dashed #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    position: relative;
+}
+
+img.error::after {
+    content: '🖼️ Image failed to load';
+    color: #666;
+    font-size: 0.9rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Loading animation */
+@keyframes loading {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Fade in animation */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* =============================================================================
+   RESPONSIVE IMAGES
+   ============================================================================= */
+
+/* Hero background optimizations */
+.hero-section {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Project thumbnails */
+.project-card-thumbnail {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--border-radius-sm);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-card-thumbnail {
+    transform: scale(1.02);
+}
+
+/* Profile images */
+.profile-image {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+/* =============================================================================
+   PICTURE ELEMENT SUPPORT
+   ============================================================================= */
+
+picture {
+    display: block;
+    width: 100%;
+}
+
+picture img {
+    width: 100%;
+    height: auto;
+}
+
+/* =============================================================================
+   RESPONSIVE BREAKPOINTS FOR IMAGES
+   ============================================================================= */
+
+/* Small screens */
+@media (width <=640px) {
+    .project-card-thumbnail {
+        height: 150px;
+    }
+
+    .profile-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    img.loading {
+        min-height: 150px;
+    }
+}
+
+/* Medium screens */
+@media (width >=641px) and (width <=1024px) {
+    .project-card-thumbnail {
+        height: 180px;
+    }
+}
+
+/* Large screens */
+@media (width >=1025px) {
+    .project-card-thumbnail {
+        height: 220px;
+    }
+
+    .profile-image {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+/* =============================================================================
+   PRINT STYLES
+   ============================================================================= */
+
+@media print {
+    img {
+        break-inside: avoid;
+        max-width: 100% !important;
+    }
+
+    .project-card-thumbnail {
+        height: auto !important;
+    }
+}
+
+/* =============================================================================
+   ACCESSIBILITY
+   ============================================================================= */
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    img.loading {
+        animation: none;
+        background: #f0f0f0;
+    }
+
+    img.loaded {
+        animation: none;
+    }
+
+    .project-card-thumbnail {
+        transition: none;
+    }
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+    img.error {
+        border-color: #000;
+        background: #fff;
+    }
+
+    img.error::after {
+        color: #000;
+    }
+}

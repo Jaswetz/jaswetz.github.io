@@ -252,7 +252,7 @@ class SiteHeader extends HTMLElement {
       font-size: var(--text-size-heading-5);
       border-radius: var(--border-radius);
       transition: var(--transition-interactive);
-      font-family: var(--font-family-sans);
+      font-family: var(--font-family-heading);
       font-weight: var(--font-weight-medium);
       position: relative;
       overflow: hidden;
@@ -436,7 +436,7 @@ class SiteHeader extends HTMLElement {
       /* End of added button styles */
 
 
-      @media (max-width: 768px) {
+      @media (max-width: 47.9375rem) {
     
 
       .menu-toggle {
@@ -459,7 +459,7 @@ class SiteHeader extends HTMLElement {
       z-index: 1000;
       display: block;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      width: calc(var(--space-2xl-3xl) * 2.1);
+      width: calc(var(--space-2xl-3xl) * 3.0);
       }
 
       nav.active {
@@ -478,6 +478,11 @@ class SiteHeader extends HTMLElement {
       padding: var(--space-2xs) var(--space-xs);
       display: block;
       text-align: center;
+      }
+
+      nav li a.button {
+      width: 87%;
+      justify-content: center;
       }
       }
     </style>
