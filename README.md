@@ -7,6 +7,12 @@
 
 A modern UX portfolio website built with fundamental web technologies and native Web Components.
 
+## ✨ Key Features
+
+- **🎨 Animated 2D Logo**: Interactive animated logo in the hero section featuring the three signature shapes (triangle, circle, square) with smooth CSS animations
+- **📱 Responsive Design**: Mobile-first approach with optimized layouts for all screen sizes
+- **⚡ Performance Optimized**: Lightweight bundle sizes and fast loading times
+
 ## 🚀 Live Site
 
 Visit the portfolio at: [https://jaswetz.github.io/](https://jaswetz.github.io/)

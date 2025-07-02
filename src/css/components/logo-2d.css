@@ -1,0 +1,151 @@
+/* ==========================================================================
+   2D ANIMATED LOGO
+   ========================================================================== */
+
+.logo-2d {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: var(--space-m) auto var(--space-l) auto;
+  animation: logoFloat 4s ease-in-out infinite;
+  filter: drop-shadow(0 4px 8px rgba(37, 105, 237, 0.15));
+}
+
+.logo-2d__shape {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Square (Outer shape) */
+.logo-2d__square {
+  width: 100px;
+  height: 100px;
+  background: transparent;
+  border: 3px solid var(--color-primary);
+  animation: shapeRotate 8s linear infinite;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+/* Circle (Middle shape) */
+.logo-2d__circle {
+  width: 80px;
+  height: 80px;
+  background: transparent;
+  border: 3px solid var(--color-primary);
+  border-radius: 50%;
+  animation: shapeRotate 6s linear infinite reverse;
+  opacity: 0.95;
+  transition: all 0.3s ease;
+}
+
+/* Triangle (Inner shape) */
+.logo-2d__triangle {
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 43px solid var(--color-primary);
+  transform: translate(-50%, -60%);
+  animation: trianglePulse 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+/* Animations */
+@keyframes logoFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shapeRotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes trianglePulse {
+  0%, 100% {
+    transform: translate(-50%, -60%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -60%) scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* Hover effects */
+.logo-2d:hover .logo-2d__square {
+  animation-duration: 4s;
+  border-color: var(--color-primary-alt);
+  border-width: 4px;
+}
+
+.logo-2d:hover .logo-2d__circle {
+  animation-duration: 3s;
+  border-color: var(--color-primary-alt);
+  border-width: 4px;
+}
+
+.logo-2d:hover .logo-2d__triangle {
+  animation-duration: 1.5s;
+  border-bottom-color: var(--color-primary-alt);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .logo-2d {
+    width: 80px;
+    height: 80px;
+    margin: var(--space-s) auto var(--space-m) auto;
+  }
+  
+  .logo-2d__square {
+    width: 80px;
+    height: 80px;
+    border-width: 2px;
+  }
+  
+  .logo-2d__circle {
+    width: 64px;
+    height: 64px;
+    border-width: 2px;
+  }
+  
+  .logo-2d__triangle {
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 34px solid var(--color-primary);
+  }
+}
+
+/* Accessibility: Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .logo-2d,
+  .logo-2d__square,
+  .logo-2d__circle,
+  .logo-2d__triangle {
+    animation: none;
+  }
+  
+  .logo-2d {
+    transform: none;
+  }
+  
+  .logo-2d__shape {
+    transform: translate(-50%, -50%);
+  }
+  
+  .logo-2d__triangle {
+    transform: translate(-50%, -60%);
+  }
+}
