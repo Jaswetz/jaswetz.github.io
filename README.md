@@ -621,6 +621,7 @@ This project implements a streamlined git workflow with automated quality checks
 ## 12.1 Git Hooks Strategy
 
 ### Pre-Commit Hook (Lightweight)
+
 - **Purpose**: Quick essential checks to catch critical errors
 - **Runs**: ESLint on JavaScript files only
 - **Behavior**: Auto-fixes issues when possible, fails only on critical errors
@@ -628,6 +629,7 @@ This project implements a streamlined git workflow with automated quality checks
 - **Bypass**: Use `git commit --no-verify` if needed
 
 ### Pre-Push Hook (Comprehensive)
+
 - **Purpose**: Thorough testing before sharing code
 - **Runs on Main Branch**: Full test suite (ESLint, Stylelint, HTML validation, accessibility)
 - **Runs on Feature Branches**: Basic ESLint checks only
@@ -635,6 +637,7 @@ This project implements a streamlined git workflow with automated quality checks
 - **Bypass**: Use `git push --no-verify` for emergencies
 
 ### CI/CD Pipeline
+
 - **Purpose**: Final verification and deployment
 - **Runs**: Complete test suite including cross-browser testing
 - **Triggers**: On push to main branch

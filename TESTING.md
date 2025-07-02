@@ -59,6 +59,8 @@ npm test
 npm run test:security
 ```
 
+**Common Issue**: Image optimization dependencies (imagemin-*) may have security vulnerabilities due to outdated transitive dependencies. See [Troubleshooting](#troubleshooting) section for resolution strategies.
+
 ### 2. Code Quality
 
 #### JavaScript Linting
@@ -216,7 +218,47 @@ Recommended VS Code extensions:
 
 ### Common Issues
 
-**Tests fail in CI but pass locally**
+#### Security Vulnerabilities in Image Optimization Dependencies
+
+**Problem**: npm audit reports vulnerabilities in imagemin-webp, imagemin-mozjpeg, imagemin-pngquant
+**Root Cause**: These packages depend on outdated binary tools with security issues
+**Impact**: Development dependencies only - does not affect production bundle
+
+**Solutions** (in order of preference):
+
+1. **Accept as Development Risk** (Recommended for now)
+   ```bash
+   # Run audit but exclude dev dependencies from CI/CD
+   npm audit --production
+   ```
+
+2. **Use npm audit override** (Temporary solution)
+   ```json
+   // Add to package.json
+   "overrides": {
+     "cross-spawn": "^6.0.6",
+     "got": "^12.0.0", 
+     "http-cache-semantics": "^4.1.1",
+     "semver-regex": "^4.0.0"
+   }
+   ```
+
+3. **Alternative: Use Sharp for image optimization** (Long-term solution)
+   ```bash
+   npm uninstall imagemin imagemin-webp imagemin-mozjpeg imagemin-pngquant
+   npm install sharp --save-dev
+   # Update optimization scripts to use Sharp
+   ```
+
+4. **Docker-based optimization** (Production solution)
+   ```bash
+   # Use Docker container with updated binaries
+   docker run --rm -v $(pwd):/work node:latest npm audit fix
+   ```
+
+**Note**: Since these are development dependencies used only for asset optimization, the vulnerabilities don't affect the production website. The optimized images are safe to use.
+
+#### **Tests fail in CI but pass locally**
 
 - Ensure you're testing against the built version (`npm run build`)
 - Check that all dependencies are properly installed
