@@ -73,7 +73,7 @@ jobs:
   # Deploy to GitHub Pages
   deploy:
     needs: [build-and-deploy]
-    if: github.event.inputs.deploy == 'true'
+    if: github.event.inputs.deploy
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
