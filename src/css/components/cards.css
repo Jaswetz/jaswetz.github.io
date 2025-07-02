@@ -13,10 +13,18 @@
   transition: var(--transition-interactive);
   border-radius: var(--border-radius);
   position: relative;
+}
 
-  .project-thumbnail {
-    transition: var(--transition-interactive);
-  }
+.card__link .project-thumbnail {
+  transition: var(--transition-interactive);
+}
+
+.card__link h3 {
+  color: var(--color-text);
+}
+
+.card__link p {
+  color: var(--color-text-subtle);
 }
 
 .card__link::before {
@@ -38,10 +46,6 @@
   box-shadow: var(--hover-shadow);
   text-decoration: none;
   background-color: var(--color-surface);
-
-  h3 {
-    color: var(--color-primary-alt);
-  }
 }
 
 .card__link:hover::before {
@@ -79,10 +83,10 @@
 
 .card__content {
   flex: 1;
+}
 
-  h3 {
-    padding-top: var(--heading-spacing);
-  }
+.card__content h3 {
+  padding-top: var(--heading-spacing);
 }
 
 /* Card variations */
@@ -109,7 +113,7 @@
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
   background-color: #f7f3eb;
-  background-image: linear-gradient(#9992 0.6000000000000001px, transparent 0.6000000000000001px), linear-gradient(to right, #9992 0.6000000000000001px, #f7f3eb 0.6000000000000001px);
+  background-image: linear-gradient(#9992 0.6px, transparent 0.6px), linear-gradient(to right, #9992 0.6px, #f7f3eb 0.6px);
   background-size: 12px 12px;
   box-shadow: inset 0 -2px #6f7b901a;
 
@@ -120,10 +124,6 @@
   background-color: var(--color-surface);
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--border-radius);
-}
-
-.card--white p:last-child {
-  margin-bottom: 0;
 }
 
 /* --------------------------------------------------------------------------
@@ -184,6 +184,16 @@
 .problem-card p {
   margin: 0;
   line-height: var(--leading-normal);
+}
+
+/* Card white variant p styles - must come after base p styles */
+.card--white p:last-child {
+  margin-bottom: 0;
+}
+
+/* Card hover states for h3 elements - must come after base h3 styles */
+.card__link:hover h3 {
+  color: var(--color-primary-alt);
 }
 
 /* Result Cards */
@@ -388,7 +398,7 @@
   Most responsive grid behavior is now handled by the global grid-system.css.
   Only component-specific overrides should remain here.
 */
-@media (width <= 47.9375rem) {
+@media (width <=47.9375rem) {
   .card--project {
     /* Switch to vertical layout on mobile */
     flex-direction: column;

@@ -59,7 +59,7 @@ npm test
 npm run test:security
 ```
 
-**Common Issue**: Image optimization dependencies (imagemin-*) may have security vulnerabilities due to outdated transitive dependencies. See [Troubleshooting](#troubleshooting) section for resolution strategies.
+**Common Issue**: Image optimization dependencies (imagemin-\*) may have security vulnerabilities due to outdated transitive dependencies. See [Troubleshooting](#troubleshooting) section for resolution strategies.
 
 ### 2. Code Quality
 
@@ -227,23 +227,26 @@ Recommended VS Code extensions:
 **Solutions** (in order of preference):
 
 1. **Accept as Development Risk** (Recommended for now)
+
    ```bash
    # Run audit but exclude dev dependencies from CI/CD
    npm audit --production
    ```
 
 2. **Use npm audit override** (Temporary solution)
+
    ```json
    // Add to package.json
    "overrides": {
      "cross-spawn": "^6.0.6",
-     "got": "^12.0.0", 
+     "got": "^12.0.0",
      "http-cache-semantics": "^4.1.1",
      "semver-regex": "^4.0.0"
    }
    ```
 
 3. **Alternative: Use Sharp for image optimization** (Long-term solution)
+
    ```bash
    npm uninstall imagemin imagemin-webp imagemin-mozjpeg imagemin-pngquant
    npm install sharp --save-dev
