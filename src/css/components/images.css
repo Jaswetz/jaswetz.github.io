@@ -17,11 +17,12 @@ img.loading {
     background-size: 200% 100%;
     animation: loading 1.5s infinite;
     min-height: 200px;
+
     /* Prevent layout shift */
 }
 
 img.loaded {
-    animation: fadeIn 0.3s ease-in-out;
+    animation: fade-in 0.3s ease-in-out;
 }
 
 img.error {
@@ -56,7 +57,7 @@ img.error::after {
 }
 
 /* Fade in animation */
-@keyframes fadeIn {
+@keyframes fade-in {
     from {
         opacity: 0;
     }
@@ -117,7 +118,7 @@ picture img {
    ============================================================================= */
 
 /* Small screens */
-@media (max-width: 640px) {
+@media (width <=640px) {
     .project-card-thumbnail {
         height: 150px;
     }
@@ -133,14 +134,14 @@ picture img {
 }
 
 /* Medium screens */
-@media (min-width: 641px) and (max-width: 1024px) {
+@media (width >=641px) and (width <=1024px) {
     .project-card-thumbnail {
         height: 180px;
     }
 }
 
 /* Large screens */
-@media (min-width: 1025px) {
+@media (width >=1025px) {
     .project-card-thumbnail {
         height: 220px;
     }
@@ -187,7 +188,7 @@ picture img {
 }
 
 /* High contrast mode support */
-@media (prefers-contrast: high) {
+@media (forced-colors: active) {
     img.error {
         border-color: #000;
         background: #fff;

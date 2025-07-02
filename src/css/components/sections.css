@@ -379,21 +379,6 @@
 }
 
 .implementation-subtitle {
-    margin-bottom: var(--space-xs);
-    font-size: var(--size-step--1);
-    font-weight: 600;
-}
-
-.implementation-description {
-    line-height: var(--leading-normal);
-    margin: 0;
-}
-
-.implementation-section h3 {
-    margin-bottom: var(--heading-spacing);
-}
-
-.implementation-subtitle {
     margin-bottom: var(--space-s);
     font-size: var(--size-step-1);
     color: var(--color-text);
@@ -404,6 +389,11 @@
     font-size: var(--size-step--1);
     line-height: var(--leading-normal);
     color: var(--color-text-subtle);
+    margin: 0;
+}
+
+.implementation-section h3 {
+    margin-bottom: var(--heading-spacing);
 }
 
 /* --------------------------------------------------------------------------
@@ -431,7 +421,7 @@
     Responsive Section Styles
     -------------------------------------------------------------------------- */
 
-@media (width <= 47.9375rem) {
+@media (width <=47.9375rem) {
     .phase,
     .content-grid,
     .solution-content,

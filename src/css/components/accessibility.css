@@ -88,7 +88,7 @@ select:focus {
 }
 
 /* High contrast mode support */
-@media (prefers-contrast: high) {
+@media (prefers-contrast: more) {
   .card__link:focus,
   button:focus,
   input:focus,
@@ -102,8 +102,8 @@ select:focus {
   .card__link:hover,
   button:hover,
   nav a:hover {
-    background: ButtonHighlight;
-    color: ButtonText;
+    background: var(--color-accent);
+    color: var(--color-text-primary);
   }
 }
 

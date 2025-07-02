@@ -107,10 +107,6 @@
     border-bottom: 1px solid var(--color-border-light, rgb(0 0 0 / 5%));
 }
 
-.skills-expertise-section li:last-child {
-    border-bottom: none;
-}
-
 /* Resume highlights section */
 .resume-highlights-section {
     padding: var(--space-xl) 0;
@@ -240,7 +236,7 @@
 }
 
 /* Responsive design */
-@media (width <= 47.9375rem) {
+@media (width <=47.9375rem) {
     .about-page-content {
         padding: var(--space-m);
         gap: var(--space-l);
@@ -282,7 +278,7 @@
     }
 }
 
-@media (width <= 35.9375rem) {
+@media (width <=35.9375rem) {
     .about-page-content {
         padding: var(--space-s);
     }

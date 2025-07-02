@@ -39,7 +39,7 @@ async function optimizeImagesWithSharp() {
     try {
       const relativePath = path.relative(inputDir, filePath);
       const ext = path.extname(filePath).toLowerCase();
-      
+
       // Skip if in webp directory or already processed
       if (relativePath.startsWith("webp/") || relativePath.startsWith("../")) {
         continue;
@@ -55,7 +55,7 @@ async function optimizeImagesWithSharp() {
         await sharp(filePath)
           .jpeg({ quality: 85, progressive: true })
           .toFile(filePath + ".tmp");
-        
+
         fs.renameSync(filePath + ".tmp", filePath);
         newSize = fs.statSync(filePath).size;
       } else if (ext === ".png") {
@@ -63,25 +63,26 @@ async function optimizeImagesWithSharp() {
         await sharp(filePath)
           .png({ compressionLevel: 9, quality: 90 })
           .toFile(filePath + ".tmp");
-        
+
         fs.renameSync(filePath + ".tmp", filePath);
         newSize = fs.statSync(filePath).size;
       }
 
       // Create WebP version
-      const webpPath = path.join(webpDir, path.basename(filePath, ext) + ".webp");
-      await sharp(filePath)
-        .webp({ quality: 85, effort: 6 })
-        .toFile(webpPath);
+      const webpPath = path.join(
+        webpDir,
+        path.basename(filePath, ext) + ".webp"
+      );
+      await sharp(filePath).webp({ quality: 85, effort: 6 }).toFile(webpPath);
 
       const savedBytes = originalSize - newSize;
       totalSavedBytes += savedBytes;
       optimizedCount++;
 
-      const savings = savedBytes > 0 ? ` (saved ${formatBytes(savedBytes)})` : "";
+      const savings =
+        savedBytes > 0 ? ` (saved ${formatBytes(savedBytes)})` : "";
       console.log(`   ✅ ${relativePath}${savings}`);
       console.log(`   📦 Created WebP: webp/${path.basename(webpPath)}`);
-
     } catch (error) {
       console.error(`   ❌ Error processing ${filePath}:`, error.message);
     }
@@ -100,10 +101,10 @@ async function findImageFiles(dir) {
 
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
-    
+
     if (entry.isDirectory()) {
       // Recursively search subdirectories
-      files.push(...await findImageFiles(fullPath));
+      files.push(...(await findImageFiles(fullPath)));
     } else if (entry.isFile()) {
       const ext = path.extname(entry.name).toLowerCase();
       if ([".jpg", ".jpeg", ".png"].includes(ext)) {
