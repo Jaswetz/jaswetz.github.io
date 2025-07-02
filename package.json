@@ -7,10 +7,22 @@
     "build": "parcel build src/*.html --dist-dir dist --public-url / && cp -r src/assets dist/",
     "clean": "rm -rf dist .parcel-cache",
     "lint": "eslint src/js/**/*.js",
+    "lint:fix": "eslint src/js/**/*.js --fix",
     "stylelint": "stylelint 'src/css/**/*.css'",
+    "stylelint:fix": "stylelint 'src/css/**/*.css' --fix",
+    "test": "npm run lint && npm run stylelint && npm run test:html-validate",
+    "test:html-validate": "html-validate 'src/**/*.html'",
     "test:accessibility": "axe http://localhost:1234 --exit",
+    "test:accessibility:local": "start-server-and-test dev http-get://localhost:1234 test:accessibility",
     "test:performance": "lighthouse http://localhost:1234 --output json --output-path ./lighthouse-report.json --chrome-flags='--headless'",
-    "test": "npm run lint && npm run stylelint"
+    "test:performance:local": "start-server-and-test dev http-get://localhost:1234 test:performance",
+    "test:links": "linkcheck http://localhost:1234",
+    "test:links:local": "start-server-and-test dev http-get://localhost:1234 test:links",
+    "test:security": "npm audit --audit-level moderate",
+    "test:bundle-size": "bundlesize",
+    "test:all": "npm run test && npm run test:accessibility:local && npm run test:performance:local && npm run test:links:local",
+    "serve": "npx http-server dist -p 8080 -c-1",
+    "preview": "npm run build && npm run serve"
   },
   "keywords": [],
   "author": "",
@@ -27,16 +39,33 @@
     "@parcel/transformer-css": "^2.15.2",
     "@parcel/transformer-html": "^2.15.2",
     "@parcel/transformer-js": "^2.15.2",
+    "@playwright/test": "^1.48.2",
+    "bundlesize": "^0.18.1",
     "eslint": "^9.30.0",
+    "html-validate": "^8.24.1",
+    "http-server": "^14.1.1",
     "lighthouse": "^12.7.0",
+    "linkcheck": "^1.2.4",
     "parcel": "^2.15.2",
+    "start-server-and-test": "^2.0.8",
     "stylelint": "^16.21.0",
-    "stylelint-config-standard": "^38.0.0"
+    "stylelint-config-standard": "^38.0.0",
+    "wait-on": "^8.0.1"
   },
   "browserslist": [
     "Chrome >= 63",
     "Firefox >= 63",
     "Safari >= 10.1",
     "Edge >= 79"
+  ],
+  "bundlesize": [
+    {
+      "path": "./dist/**/*.js",
+      "maxSize": "50 kB"
+    },
+    {
+      "path": "./dist/**/*.css",
+      "maxSize": "30 kB"
+    }
   ]
 }
