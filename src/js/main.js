@@ -2,16 +2,11 @@
 // Main JavaScript file
 
 import "../css/main.css";
+import "./analytics.js";
+import "./clarity-config.js";
 import SiteHeader from "./components/site-header/SiteHeader.js";
 import SiteFooter from "./components/site-footer/SiteFooter.js";
-import LazyLoader from "./lazy-loading.js";
-
-// Initialize lazy loading
-const lazyLoader = new LazyLoader({
-  rootMargin: "50px 0px",
-  threshold: 0.01,
-  enableWebP: true,
-});
+// LazyLoader temporarily removed to isolate Web Components issue
 
 // Define the custom elements
 if (window.customElements) {

@@ -179,22 +179,4 @@ class LazyLoader {
   }
 }
 
-// Auto-initialize if not in module environment
-if (
-  typeof window !== "undefined" &&
-  !(/** @type {any} */ (window).lazyLoader)
-) {
-  /** @type {any} */ (window).lazyLoader = new LazyLoader();
-
-  // Re-initialize on dynamic content changes
-  document.addEventListener("DOMContentLoaded", () => {
-    /** @type {any} */ (window).lazyLoader.refresh();
-  });
-}
-
-// Export for module environments
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = LazyLoader;
-}
-
 export default LazyLoader;

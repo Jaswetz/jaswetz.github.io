@@ -46,7 +46,6 @@ export function runPasswordProtectionTests() {
 
   // Test 5: CSS loaded
   console.log("5. Testing CSS loading...");
-  const styles = getComputedStyle(document.body);
   console.log("✓ CSS custom properties available");
 
   console.groupEnd();
