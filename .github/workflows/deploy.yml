@@ -10,11 +10,8 @@ on:
       deploy:
         description: 'Deploy to GitHub Pages'
         required: true
-        default: 'false'
-        type: choice
-        options:
-          - 'true'
-          - 'false'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -76,7 +73,7 @@ jobs:
   # Deploy to GitHub Pages
   deploy:
     needs: [build-and-deploy]
-    if: github.event.inputs.deploy == 'true'
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.deploy
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
