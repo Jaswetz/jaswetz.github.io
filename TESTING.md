@@ -44,6 +44,20 @@ npm run test:performance:local
 npm test
 ```
 
+## Development vs Production Builds
+
+The project uses separate build outputs for development and production:
+
+- **Development**: `npm run dev` → `dev-build/` folder (fast, unoptimized)
+- **Production**: `npm run build` → `dist/` folder (optimized, minified)
+
+This separation ensures:
+
+- No conflicts between dev and prod builds
+- Faster development builds
+- Clean production artifacts
+- Bundle size checks only apply to production builds
+
 ## Test Categories
 
 ### 1. Security Testing
