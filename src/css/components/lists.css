@@ -141,7 +141,7 @@
     Responsive List Styles
     -------------------------------------------------------------------------- */
 
-@media (max-width: 47.9375rem) {
+@media (width <= 47.9375rem) {
     .step-list li {
         padding-left: var(--space-l);
     }

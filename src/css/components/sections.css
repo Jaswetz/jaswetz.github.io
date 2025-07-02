@@ -18,7 +18,7 @@
 }
 
 .section--background {
-    background: rgba(255, 255, 255, 0.4);
+    background: rgb(255 255 255 / 40%);
     margin-left: calc(var(--space-xl) * -1);
     margin-right: calc(var(--space-3xl) * -1);
     padding-left: var(--space-xl);
@@ -86,7 +86,7 @@
 .phase__image {
     border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
     border: var(--border-width) solid var(--color-border);
     width: fit-content;
     height: fit-content;
@@ -199,7 +199,7 @@
 
 .result-benefit:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
 }
 
 .result-benefit__icon {
@@ -216,7 +216,7 @@
 .result-benefit__icon svg {
     width: 24px;
     height: 24px;
-    stroke: currentColor;
+    stroke: currentcolor;
 }
 
 .result-benefit__content {
@@ -260,7 +260,7 @@
     background-color: white;
     border-radius: 50%;
     color: var(--color-primary);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
     flex-shrink: 0;
 }
 
@@ -431,8 +431,7 @@
     Responsive Section Styles
     -------------------------------------------------------------------------- */
 
-@media (max-width: 47.9375rem) {
-
+@media (width <= 47.9375rem) {
     .phase,
     .content-grid,
     .solution-content,
@@ -460,9 +459,9 @@
 }
 
 
-/*=============================================
+/* =============================================
 =            Index: Projects            =
-=============================================*/
+============================================= */
 
 .featured-projects-section .card__link {
     padding: var(--space-l);
@@ -473,9 +472,10 @@
 .project-snippet h3::after {
     content: " →";
     margin-left: 0.25em;
+
     /* Adjust spacing as needed */
 }
 
 
 
-/*=====  End of Index: Projects  ======*/
+/* =====  End of Index: Projects  ====== */

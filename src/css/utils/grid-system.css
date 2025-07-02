@@ -115,9 +115,9 @@
    ========================================================================== */
 
 /* Default: Mobile and Tablet (below xl breakpoint) - Single column and hide sidebar */
-/* This applies to all screen sizes below 80rem (1280px) */
-@media screen and (max-width: 50rem) {
 
+/* This applies to all screen sizes below 80rem (1280px) */
+@media screen and (width <= 50rem) {
   .grid--2-column,
   .grid--3-column,
   .grid--4-column,
@@ -134,8 +134,7 @@
   }
 }
 
-@media screen and (max-width: 79.9375rem) {
-
+@media screen and (width <= 79.9375rem) {
   .grid--2-column--sidebar,
   .grid--2-column--reverse-sidebar {
     grid-template-columns: 1fr !important;
@@ -150,8 +149,7 @@
 }
 
 /* Tablet specific - Allow some multi-column layouts */
-@media (min-width: 48rem) and (max-width: 79.9375rem) {
-
+@media (width >= 48rem) and (width <= 79.9375rem) {
   .grid--3-column,
   .grid--4-column {
     grid-template-columns: repeat(2, 1fr);
@@ -159,8 +157,9 @@
 }
 
 /* Desktop (xl breakpoint and above) - Show sidebar at wider breakpoint */
+
 /* This applies to all screen sizes 80rem (1280px) and above */
-@media screen and (min-width: 80rem) {
+@media screen and (width >= 80rem) {
   .grid--2-column {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -179,11 +178,13 @@
 
   .grid--2-column--sidebar {
     grid-template-columns: 1fr 20rem !important;
+
     /* Main content and fixed 20rem sidebar */
   }
 
   .grid--2-column--reverse-sidebar {
     grid-template-columns: 20rem 1fr !important;
+
     /* Fixed 20rem sidebar and main content */
   }
 
@@ -195,9 +196,10 @@
 }
 
 /* Extra Large (xxl breakpoint) - Enhanced layouts */
-@media (min-width: 96rem) {
+@media (width >= 96rem) {
   .grid--2-column--sidebar {
     grid-template-columns: 1fr 25rem;
+
     /* Final sidebar width */
   }
 
@@ -224,16 +226,14 @@
 }
 
 /* Mobile-first responsive behavior for legacy grids */
-@media (min-width: 48rem) {
-
+@media (width >= 48rem) {
   .results-grid,
   .key-learnings-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 47.9375rem) {
-
+@media (width <= 47.9375rem) {
   .results-grid,
   .key-learnings-grid {
     gap: var(--space-l);
@@ -280,7 +280,7 @@
   display: none;
 }
 
-@media (min-width: 48rem) {
+@media (width >= 48rem) {
   .hide-mobile {
     display: block;
   }
@@ -290,7 +290,7 @@
   }
 }
 
-@media (min-width: 64rem) {
+@media (width >= 64rem) {
   .hide-tablet {
     display: block;
   }
@@ -300,13 +300,13 @@
   }
 }
 
-@media (min-width: 80rem) {
+@media (width >= 80rem) {
   .hide-until-xl {
     display: block;
   }
 }
 
-@media (min-width: 96rem) {
+@media (width >= 96rem) {
   .hide-until-xxl {
     display: block;
   }
@@ -325,6 +325,7 @@
 .flex-grid>* {
   flex: 1 1 280px;
   min-width: 0;
+
   /* Prevent flex item overflow */
 }
 
@@ -336,8 +337,7 @@
   flex: 1 1 calc(33.333% - var(--space-l) / 3 * 2);
 }
 
-@media (max-width: 47.9375rem) {
-
+@media (width <= 47.9375rem) {
   .flex-grid--2-column>*,
   .flex-grid--3-column>* {
     flex: 1 1 100%;
@@ -349,21 +349,22 @@
    ========================================================================== */
 
 /* Apply grid settings above certain breakpoints */
-@media (min-width: 48rem) {
+@media (width >= 48rem) {
   .grid-2-col-desktop {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 64rem) {
+@media (width >= 64rem) {
   .grid-sidebar-desktop {
     grid-template-columns: 1fr 20rem;
+
     /* Content and sidebar */
   }
 }
 
 /* Asymmetric Grids */
-@media (min-width: 48rem) {
+@media (width >= 48rem) {
   .grid-asymmetric-2-1-desktop {
     grid-template-columns: 2fr 1fr;
   }
@@ -374,7 +375,7 @@
 }
 
 /* Sidebar Layout */
-@media (min-width: 48rem) {
+@media (width >= 48rem) {
   .grid--2-column--sidebar {
     display: grid;
     grid-template-columns: 1fr;
@@ -382,16 +383,18 @@
   }
 }
 
-@media (min-width: 64rem) {
+@media (width >= 64rem) {
   .grid--2-column--sidebar {
     grid-template-columns: 1fr 15rem;
+
     /* Content and sidebar */
   }
 }
 
-@media (min-width: 80rem) {
+@media (width >= 80rem) {
   .grid--2-column--sidebar {
     grid-template-columns: 1fr 20rem;
+
     /* Wider sidebar on larger screens */
   }
 }

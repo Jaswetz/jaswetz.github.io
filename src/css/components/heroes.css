@@ -32,8 +32,8 @@
     border: 1px solid var(--color-border);
     border-radius: var(--border-radius);
     box-shadow:
-        0 4px 6px -1px rgba(0, 0, 0, 0.1),
-        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        0 4px 6px -1px rgb(0 0 0 / 10%),
+        0 2px 4px -1px rgb(0 0 0 / 6%);
 }
 
 .hero--project__impact-label {
@@ -62,8 +62,7 @@
    HERO RESPONSIVE STYLES
    ========================================================================== */
 
-@media (max-width: 47.9375rem) {
-
+@media (width <= 47.9375rem) {
     .hero__content,
     .hero--project__content {
         padding: var(--space-l);
@@ -112,8 +111,8 @@
     animation: gradientBackground 20s ease-in-out infinite;
     background-size: 100% 100%;
     background-image: radial-gradient(circle,
-            rgba(255, 255, 255, 0.75) 20%,
-            rgba(210, 206, 200, 0.1) 60%);
+            rgb(255 255 255 / 75%) 20%,
+            rgb(210 206 200 / 10%) 60%);
     background-repeat: repeat;
     background-position: left top;
     margin-top: 0;
@@ -144,7 +143,6 @@
 }
 
 .hero-section h1 {
-    margin-bottom: var(--space-3);
     color: var(--color-primary);
     font-size: var(--size-step-6);
     line-height: var(--line-height-tight);

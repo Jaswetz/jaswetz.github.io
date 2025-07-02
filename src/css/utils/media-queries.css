@@ -20,6 +20,7 @@
 /* ==========================================================================
    BREAKPOINT REFERENCE
    ========================================================================== */
+
 /*
    --breakpoint-xs: 20rem    (320px)  - Small phones
    --breakpoint-sm: 36rem    (576px)  - Large phones  
@@ -34,6 +35,7 @@
    ========================================================================== */
 
 /* Mobile-first approach - preferred method */
+
 /* 
    @media (min-width: 36rem) { ... }   // sm and up
    @media (min-width: 48rem) { ... }   // md and up  
@@ -43,6 +45,7 @@
 */
 
 /* Desktop-first approach - when needed */
+
 /* 
    @media (max-width: 63.9375rem) { ... }  // Below lg
    @media (max-width: 47.9375rem) { ... }  // Below md
@@ -50,6 +53,7 @@
 */
 
 /* Specific ranges */
+
 /* 
    @media (min-width: 48rem) and (max-width: 63.9375rem) { ... }  // md to lg only
 */
@@ -59,21 +63,25 @@
    ========================================================================== */
 
 /* Reduced motion preference */
+
 /* 
    @media (prefers-reduced-motion: reduce) { ... }
 */
 
 /* High contrast preference */
+
 /* 
    @media (prefers-contrast: high) { ... }
 */
 
 /* Color scheme preference */
+
 /* 
    @media (prefers-color-scheme: dark) { ... }
 */
 
 /* Touch vs pointer devices */
+
 /* 
    @media (pointer: coarse) { ... }  // Touch devices
    @media (hover: hover) { ... }     // Devices that can hover
@@ -84,6 +92,7 @@
    ========================================================================== */
 
 /* Common legacy breakpoints mapped to new system */
+
 /*
    OLD: @media (max-width: 768px)
    NEW: @media (max-width: 47.9375rem)  // 767px

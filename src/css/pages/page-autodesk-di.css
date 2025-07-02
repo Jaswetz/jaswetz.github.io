@@ -116,8 +116,7 @@
     Responsive Design
     -------------------------------------------------------------------------- */
 
-@media (min-width: 48rem) {
-
+@media (width >= 48rem) {
     .comparison-item {
         margin-bottom: 0;
     }

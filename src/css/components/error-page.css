@@ -34,7 +34,7 @@
   justify-content: center;
 }
 
-@media (max-width: 47.9375rem) {
+@media (width <= 47.9375rem) {
   .error-nav {
     flex-direction: column;
   }

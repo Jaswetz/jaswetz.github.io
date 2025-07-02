@@ -2,7 +2,7 @@
 
 /* Base card link styles - make entire card clickable */
 
-/*TODO: Cleanup and make more modular and reusable with BEM methodology*/
+/* TODO: Cleanup and make more modular and reusable with BEM methodology */
 
 .card__link {
   display: flex;
@@ -22,10 +22,7 @@
 .card__link::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background: var(--overlay-gradient-light);
   opacity: 0;
   transition: var(--transition-quick);
@@ -77,10 +74,7 @@
   flex-shrink: 0;
   margin-right: var(--space-m);
   max-width: 150px;
-  border-top-left-radius: var(--border-radius);
-  border-top-right-radius: var(--border-radius);
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
 .card__content {
@@ -114,9 +108,8 @@
   padding: var(--space-l);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
-
   background-color: #f7f3eb;
-  background-image: linear-gradient(#99999922 0.6000000000000001px, transparent 0.6000000000000001px), linear-gradient(to right, #99999922 0.6000000000000001px, #f7f3eb 0.6000000000000001px);
+  background-image: linear-gradient(#9992 0.6000000000000001px, transparent 0.6000000000000001px), linear-gradient(to right, #9992 0.6000000000000001px, #f7f3eb 0.6000000000000001px);
   background-size: 12px 12px;
   box-shadow: inset 0 -2px #6f7b901a;
 
@@ -173,7 +166,7 @@
 
 .problem-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
 }
 
 .problem-card__icon img {
@@ -196,7 +189,7 @@
 /* Result Cards */
 .result-card {
   padding: var(--space-xl);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
   text-align: center;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -263,7 +256,7 @@
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
 }
 
 .severity-card__title {
@@ -290,7 +283,7 @@
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
 }
 
 .severity-level__icon {
@@ -304,17 +297,17 @@
 }
 
 .severity-level__icon--high {
-  background-color: rgba(244, 67, 54, 0.1);
+  background-color: rgb(244 67 54 / 10%);
   color: #f44336;
 }
 
 .severity-level__icon--medium {
-  background-color: rgba(33, 150, 243, 0.1);
+  background-color: rgb(33 150 243 / 10%);
   color: #2196f3;
 }
 
 .severity-level__icon--low {
-  background-color: rgba(139, 195, 74, 0.1);
+  background-color: rgb(139 195 74 / 10%);
   color: #8bc34a;
 }
 
@@ -362,7 +355,7 @@
 /* Results Subscriber Cards (Legacy support) */
 .result-subscriber-card {
   padding: var(--space-xl);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
   text-align: center;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -395,7 +388,7 @@
   Most responsive grid behavior is now handled by the global grid-system.css.
   Only component-specific overrides should remain here.
 */
-@media (max-width: 47.9375rem) {
+@media (width <= 47.9375rem) {
   .card--project {
     /* Switch to vertical layout on mobile */
     flex-direction: column;

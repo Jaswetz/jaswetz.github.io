@@ -113,8 +113,8 @@ fi
 
 # 10. Test links
 echo "🔗 Testing links..."
-npx linkcheck http://localhost:8080 || {
-    print_warning "Some links may be broken. Review linkcheck output."
+npx linkinator http://localhost:8080 --recurse --skip 'mailto:' || {
+    print_warning "Some links may be broken. Review linkinator output."
 }
 print_status "Link checking completed"
 

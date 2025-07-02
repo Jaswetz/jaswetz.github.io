@@ -37,7 +37,7 @@ select:focus {
   outline: var(--focus-outline);
   outline-offset: var(--focus-outline-offset);
   border-color: var(--color-primary);
-  box-shadow: var(--focus-shadow), 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--focus-shadow), 0 2px 4px rgb(0 0 0 / 10%);
 }
 
 /* Hover states */
@@ -51,7 +51,7 @@ input[type="number"]:hover,
 textarea:hover,
 select:hover {
   border-color: var(--color-primary);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
 }
 
 /* Active states */
@@ -65,7 +65,7 @@ input[type="number"]:active,
 textarea:active,
 select:active {
   border-color: var(--color-primary-alt);
-  box-shadow: 0 0 0 3px rgba(37, 105, 237, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 3px rgb(37 105 237 / 15%), 0 2px 4px rgb(0 0 0 / 10%);
 }
 
 /* Disabled states */
@@ -96,5 +96,5 @@ input:invalid:focus,
 textarea:invalid:focus,
 select:invalid:focus {
   outline-color: var(--color-danger, #dc3545);
-  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 3px rgb(220 53 69 / 10%), 0 2px 4px rgb(0 0 0 / 10%);
 }

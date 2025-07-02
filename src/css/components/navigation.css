@@ -39,7 +39,7 @@
 }
 
 .sidebar-nav a:hover {
-    background-color: hsla(from var(--color-primary) h s l / 0.05);
+    background-color: hsl(from var(--color-primary) h s l / 5%);
     color: var(--color-primary);
     border-left-color: var(--color-primary);
     transform: translateX(2px);
@@ -47,7 +47,7 @@
 
 .sidebar-nav a:active,
 .sidebar-nav a.active {
-    background-color: hsla(from var(--color-primary) h s l / 0.1);
+    background-color: hsl(from var(--color-primary) h s l / 10%);
     color: var(--color-primary);
     border-left-color: var(--color-primary);
     font-weight: 500;
@@ -115,7 +115,7 @@
     Navigation Responsive Styles
     -------------------------------------------------------------------------- */
 
-@media (max-width: 47.9375rem) {
+@media (width <= 47.9375rem) {
     .project-navigation {
         flex-direction: column;
         gap: var(--space-s);
@@ -128,7 +128,7 @@
 }
 
 /* Responsive styles for mobile */
-@media (max-width: 47.9375rem) {
+@media (width <= 47.9375rem) {
     .site-header__nav {
         display: none;
     }
