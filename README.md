@@ -659,17 +659,32 @@ This project commits to an "Accessibility-by-Design" approach, integrating acces
 
 This section lists general pending tasks. File/component-specific TODOs are typically located as comments within the relevant files.
 
-- `// TODO: [CI/CD] Create .github/workflows/ci.yml file (PS9, Section 12, D4)`
-- `// TODO: [CI/CD] Define all pipeline jobs in ci.yml (install, lint, build, accessibility-test, performance-test, deploy) (12.1, D4.2)`
-- `// TODO: [CI/CD] Implement scripts for each pipeline job in ci.yml`
-- `// TODO: [CI/CD] Add GitHub Actions deployment status badges to README.md once pipeline is operational (PS10)`
+## ✅ Completed
+
+- **[CI/CD] ✅ Created comprehensive CI/CD pipeline** (`.github/workflows/deploy.yml`)
+- **[CI/CD] ✅ Implemented all pipeline jobs** (security, lint, build, accessibility-test, performance-test, deploy)
+- **[CI/CD] ✅ Added GitHub Actions deployment status badges** (See top of README)
+- **[Testing] ✅ Implemented comprehensive testing suite** (See `TESTING.md`)
+  - Security auditing with npm audit
+  - JavaScript linting with ESLint
+  - CSS linting with Stylelint
+  - HTML validation with html-validate
+  - Accessibility testing with axe-core
+  - Performance testing with Lighthouse
+  - Cross-browser testing with Playwright
+  - Bundle size monitoring
+  - Link checking
+- **[Testing] ✅ Created local testing script** (`./test-local.sh`)
+- **[Testing] ✅ Added pre-commit hooks** for quality checks
+
+## 🚧 In Progress / Remaining
+
 - `// TODO: [Content] Add actual portfolio project content to src/content/projects/ (PS8, PS8.1, PS8.2)`
 - `// TODO: [CSS] Create specific CSS for case study layouts (PS3.4)`
 - `// TODO: [Optimization] Implement image optimization techniques when images are added (OP8, OP9)`
 - `// TODO: [Optimization] Implement lazy loading for non-critical assets (OP10, OP16)`
 - `// TODO: [Optimization] Implement web font optimization when custom fonts are added (OP11)`
 - `// TODO: [Accessibility] Ensure all images have appropriate alt text once added (A11Y5)`
-- `// TODO: [Testing] Implement actual linting, cross-browser, performance, and accessibility testing routines (Section 11, A11Y10, D4.2)`
 - `// TODO: [SEO] For each page: Define unique <title> tags (Phase 8.1)`
 - `// TODO: [SEO] For each page: Write meta descriptions (Phase 8.1)`
 - `// TODO: [SEO] For each page: Ensure logical heading hierarchy (Phase 8.1)`
@@ -721,3 +736,62 @@ These are enhancement suggestions for continued development beyond the core requ
 - Added visual elements like icons, badges, and cards
 - Ensured accessibility with proper contrast and semantic HTML
 - Added navigation links in the sidebar for all new sections
+
+# Testing
+
+This project utilizes a comprehensive testing strategy to ensure code quality, performance, and accessibility. The testing process is divided into several key areas:
+
+## 1. Automated Testing
+
+Automated tests are run on each commit and pull request to the main branch. These tests include:
+
+- **Security Audits**: Using `npm audit` to identify and fix vulnerabilities in dependencies.
+- **JavaScript Linting**: Using ESLint to enforce coding standards and catch errors in JavaScript code.
+- **CSS Linting**: Using Stylelint to ensure CSS code quality and consistency.
+- **HTML Validation**: Using html-validate to check HTML files for compliance with web standards.
+- **Accessibility Testing**: Using axe-core to automatically check for WCAG 2.1 accessibility compliance.
+- **Performance Testing**: Using Lighthouse to measure and report on performance metrics.
+- **Cross-Browser Testing**: Using Playwright to test website functionality and layout in different browsers.
+
+These automated tests help catch issues early in the development process and ensure that the website remains secure, performant, and accessible.
+
+## 2. Manual Testing
+
+In addition to automated tests, manual testing is performed to catch issues that automated tests might miss. This includes:
+
+- **Visual Inspection**: Manually checking the website in different browsers and devices to ensure consistent appearance and behavior.
+- **Interactive Testing**: Using the website as an end user would, to identify any usability or functional issues.
+- **Accessibility Testing**: Manual checks with screen readers (e.g., VoiceOver, NVDA) and keyboard navigation to ensure a fully accessible experience.
+
+## 3. Testing Tools and Scripts
+
+Several tools and scripts are used to facilitate testing:
+
+- **Playwright**: For automated cross-browser testing.
+- **Lighthouse**: For performance and accessibility audits.
+- **axe-core**: For automated accessibility testing.
+- **npm scripts**: Custom npm scripts are defined in `package.json` to run the various tests and linters. Some of the key scripts include:
+  - `npm run test`: Runs the JavaScript and CSS linters, HTML validator, and accessibility tests.
+  - `npm run test:watch`: Runs the tests in watch mode, re-running them on file changes.
+  - `npm run test:all`: Runs all tests, including accessibility and performance tests (requires the development server to be running).
+
+## 4. Testing Workflow
+
+The typical workflow for testing is as follows:
+
+1. **Code Changes**: Make changes to the codebase.
+2. **Automated Tests**: Push the changes to the repository. Automated tests will run on the CI server.
+3. **Review Results**: Review the results of the automated tests. Fix any issues that are identified.
+4. **Manual Testing**: Perform manual testing as needed, especially for accessibility and cross-browser compatibility.
+5. **Merge Changes**: Once all tests pass and the code is reviewed, merge the changes into the main branch.
+
+## 5. Testing Documentation
+
+Detailed documentation for testing procedures, tools, and scripts is available in the `TESTING.md` file. This includes:
+
+- How to run tests locally
+- How to interpret test results
+- How to fix common issues identified by the tests
+- Guidelines for writing accessible and high-quality code
+
+By following this testing strategy, the project aims to maintain a high standard of quality, performance, and accessibility throughout its development and maintenance lifecycle.

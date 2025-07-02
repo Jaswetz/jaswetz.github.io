@@ -1,0 +1,21 @@
+{
+  "extends": ["html-validate:recommended"],
+  "rules": {
+    "void-style": "off",
+    "no-inline-style": "off",
+    "require-sri": "off",
+    "script-element": "off",
+    "no-trailing-whitespace": "warn"
+  },
+  "elements": [
+    "html5",
+    {
+      "site-header": {
+        "void": false
+      },
+      "site-footer": {
+        "void": false
+      }
+    }
+  ]
+}
