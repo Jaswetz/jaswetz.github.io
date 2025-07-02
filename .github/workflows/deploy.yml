@@ -1,4 +1,4 @@
-name: Simplified CI/CD Pipeline
+name: Manual Deployment Pipeline
 
 on:
   push:
@@ -73,7 +73,7 @@ jobs:
   # Deploy to GitHub Pages
   deploy:
     needs: [build-and-deploy]
-    if: github.event_name == 'workflow_dispatch' && github.event.inputs.deploy
+    if: github.event.inputs.deploy == 'true'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
