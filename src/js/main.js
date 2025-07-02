@@ -6,14 +6,22 @@ import "./analytics.js";
 import "./clarity-config.js";
 import SiteHeader from "./components/site-header/SiteHeader.js";
 import SiteFooter from "./components/site-footer/SiteFooter.js";
-import LazyLoader from "./lazy-loading.js";
+// TODO: Fix LazyLoader import issue and re-enable
+// import LazyLoader from "./lazy-loading.js";
 
-// Initialize lazy loading
-const lazyLoader = new LazyLoader({
-  rootMargin: "50px 0px",
-  threshold: 0.01,
-  enableWebP: true,
-});
+// TODO: Re-enable lazy loading once import issue is resolved
+// Initialize lazy loading - check if LazyLoader is properly imported
+// let lazyLoader;
+// try {
+//   lazyLoader = new LazyLoader({
+//     rootMargin: "50px 0px",
+//     threshold: 0.01,
+//     enableWebP: true,
+//   });
+// } catch (error) {
+//   console.warn("LazyLoader initialization failed:", error);
+//   // Continue without lazy loading
+// }
 
 // Define the custom elements
 if (window.customElements) {
