@@ -41,6 +41,7 @@ The CI/CD pipeline was temporarily simplified to focus on deployment. The follow
 **Removed Features to Restore:**
 
 1. **Security Audit Job:**
+
    ```yaml
    security:
      runs-on: ubuntu-latest
@@ -55,20 +56,24 @@ The CI/CD pipeline was temporarily simplified to focus on deployment. The follow
    ```
 
 2. **Bundle Size Checking:**
+
    - `npm run test:bundle-size` step in build job
    - Build artifact archiving for testing jobs
 
 3. **Accessibility Testing Job:**
+
    - Automated accessibility testing with axe-core
    - Local server setup for testing built site
    - Accessibility report generation and upload
 
 4. **Performance Testing Job:**
+
    - Lighthouse performance testing
    - Performance score validation (90+ threshold)
    - Performance report generation and upload
 
 5. **Link Checking Job:**
+
    - Internal link validation
    - Broken link detection
 
@@ -87,3 +92,32 @@ The CI/CD pipeline was temporarily simplified to focus on deployment. The follow
    - Add e2e testing
 3. Update job dependencies to ensure proper execution order
 4. Verify all test artifacts are properly uploaded and accessible
+
+## Manual Deployment Control
+
+**Date:** 2025-07-01
+
+**Task:** Configure CI/CD pipeline for manual deployment control.
+
+**Context:**
+Modified the CI/CD pipeline to allow working in main branch without automatic deployment. Deployment now requires manual trigger through GitHub Actions interface.
+
+**How to Deploy:**
+
+1. Go to your GitHub repository
+2. Click on the "Actions" tab
+3. Select "Simplified CI/CD Pipeline" workflow
+4. Click "Run workflow" button
+5. Select "Deploy to GitHub Pages: true"
+6. Click "Run workflow"
+
+**Workflow Behavior:**
+- **Push to main**: Runs linting and builds site (no deployment)
+- **Manual trigger**: Can choose to deploy or just run tests
+- **Pull requests**: Runs linting and builds (no deployment)
+
+**Benefits:**
+- Work freely in main branch
+- Test changes without deploying
+- Deploy only when ready
+- Full control over release timing
