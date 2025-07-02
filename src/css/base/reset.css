@@ -37,11 +37,14 @@ select {
 ol,
 ul {
   list-style: none;
+
   /* margin and padding are reset by `* { margin: 0; }` in reset.css */
 }
 
 /* Ensure a consistent tap highlight color (can be overridden) */
+
 /* Useful for mobile and touch devices - uncomment if needed */
+
 /*
 html {
     -webkit-tap-highlight-color: rgba(0,0,0,0);

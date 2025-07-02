@@ -1,6 +1,7 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
+  "type": "module",
   "description": "## Folders",
   "scripts": {
     "dev": "parcel src/*.html --open",
@@ -16,10 +17,10 @@
     "test:accessibility:local": "start-server-and-test dev http-get://localhost:1234 test:accessibility",
     "test:performance": "lighthouse http://localhost:1234 --output json --output-path ./lighthouse-report.json --chrome-flags='--headless'",
     "test:performance:local": "start-server-and-test dev http-get://localhost:1234 test:performance",
-    "test:links": "linkcheck http://localhost:1234",
+    "test:links": "linkinator http://localhost:1234 --recurse --skip 'mailto:'",
     "test:links:local": "start-server-and-test dev http-get://localhost:1234 test:links",
     "test:security": "npm audit --audit-level moderate",
-    "test:bundle-size": "bundlesize",
+    "test:bundle-size": "node scripts/check-bundle-size.js",
     "test:all": "npm run test && npm run test:accessibility:local && npm run test:performance:local && npm run test:links:local",
     "serve": "npx http-server dist -p 8080 -c-1",
     "preview": "npm run build && npm run serve"
@@ -29,43 +30,32 @@
   "license": "ISC",
   "devDependencies": {
     "@axe-core/cli": "^4.10.2",
-    "@eslint/js": "^9.30.0",
-    "@parcel/config-default": "^2.15.2",
-    "@parcel/optimizer-cssnano": "^2.15.2",
-    "@parcel/optimizer-terser": "^2.15.2",
-    "@parcel/packager-css": "^2.15.2",
-    "@parcel/packager-html": "^2.15.2",
-    "@parcel/packager-js": "^2.15.2",
-    "@parcel/transformer-css": "^2.15.2",
-    "@parcel/transformer-html": "^2.15.2",
-    "@parcel/transformer-js": "^2.15.2",
-    "@playwright/test": "^1.48.2",
-    "bundlesize": "^0.18.1",
-    "eslint": "^9.30.0",
-    "html-validate": "^8.24.1",
+    "@eslint/js": "^9.30.1",
+    "@parcel/config-default": "^2.15.4",
+    "@parcel/optimizer-cssnano": "^2.15.4",
+    "@parcel/optimizer-terser": "^2.15.4",
+    "@parcel/packager-css": "^2.15.4",
+    "@parcel/packager-html": "^2.15.4",
+    "@parcel/packager-js": "^2.15.4",
+    "@parcel/transformer-css": "^2.15.4",
+    "@parcel/transformer-html": "^2.15.4",
+    "@parcel/transformer-js": "^2.15.4",
+    "@playwright/test": "^1.53.2",
+    "eslint": "^9.30.1",
+    "html-validate": "^9.7.1",
     "http-server": "^14.1.1",
     "lighthouse": "^12.7.0",
-    "linkcheck": "^1.2.4",
-    "parcel": "^2.15.2",
-    "start-server-and-test": "^2.0.8",
+    "linkinator": "^6.1.2",
+    "parcel": "^2.15.4",
+    "start-server-and-test": "^2.0.12",
     "stylelint": "^16.21.0",
     "stylelint-config-standard": "^38.0.0",
-    "wait-on": "^8.0.1"
+    "wait-on": "^8.0.3"
   },
   "browserslist": [
     "Chrome >= 63",
     "Firefox >= 63",
     "Safari >= 10.1",
     "Edge >= 79"
-  ],
-  "bundlesize": [
-    {
-      "path": "./dist/**/*.js",
-      "maxSize": "50 kB"
-    },
-    {
-      "path": "./dist/**/*.css",
-      "maxSize": "30 kB"
-    }
   ]
 }

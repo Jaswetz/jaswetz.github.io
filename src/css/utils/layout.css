@@ -1,19 +1,24 @@
 /* src/css/utils/layout.css */
+
 /* Layout utilities will be defined here, within a layer */
 
 /* Display */
 .block {
   display: block;
 }
+
 .inline-block {
   display: inline-block;
 }
+
 .inline {
   display: inline;
 }
+
 .grid {
   display: grid;
 }
+
 .hidden,
 .d-none {
   display: none !important;
@@ -23,6 +28,7 @@
 .visible {
   visibility: visible;
 }
+
 .invisible {
   visibility: hidden;
 }
@@ -31,15 +37,19 @@
 .static {
   position: static;
 }
+
 .relative {
   position: relative;
 }
+
 .absolute {
   position: absolute;
 }
+
 .fixed {
   position: fixed;
 }
+
 .sticky {
   position: sticky;
 }
@@ -48,12 +58,15 @@
 .overflow-auto {
   overflow: auto;
 }
+
 .overflow-hidden {
   overflow: hidden;
 }
+
 .overflow-visible {
   overflow: visible;
 }
+
 .overflow-scroll {
   overflow: scroll;
 }
@@ -62,12 +75,15 @@
 .z-0 {
   z-index: 0;
 }
+
 .z-10 {
   z-index: 10;
 }
+
 .z-20 {
   z-index: 20;
 }
+
 /* TODO: [CSS] Add more z-index utilities if needed */
 
 /* ==========================================================================
@@ -84,13 +100,13 @@
 }
 
 /* Responsive container max-widths using new breakpoint system */
-@media (min-width: 36rem) {
+@media (width >= 36rem) {
   .container {
     max-width: var(--container-sm);
   }
 }
 
-@media (min-width: 48rem) {
+@media (width >= 48rem) {
   .container {
     max-width: var(--container-md);
     padding-left: var(--space-l);
@@ -98,7 +114,7 @@
   }
 }
 
-@media (min-width: 64rem) {
+@media (width >= 64rem) {
   .container {
     max-width: var(--container-lg);
     padding-left: var(--space-xl);
@@ -106,13 +122,13 @@
   }
 }
 
-@media (min-width: 80rem) {
+@media (width >= 80rem) {
   .container {
     max-width: var(--container-xl);
   }
 }
 
-@media (min-width: 96rem) {
+@media (width >= 96rem) {
   .container {
     max-width: var(--container-2xl);
   }

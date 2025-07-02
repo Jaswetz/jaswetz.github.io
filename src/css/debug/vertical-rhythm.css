@@ -6,13 +6,10 @@
 .debug-rhythm::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-image: linear-gradient(
     to bottom,
-    rgba(255, 0, 0, 0.1) 1px,
+    rgb(255 0 0 / 10%) 1px,
     transparent 1px
   );
   background-size: 100% 0.25rem; /* 4px = 0.25rem */
@@ -24,13 +21,10 @@
 .debug-rhythm::after {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-image: linear-gradient(
     to bottom,
-    rgba(0, 0, 255, 0.1) 1px,
+    rgb(0 0 255 / 10%) 1px,
     transparent 1px
   );
   background-size: 100% 1rem; /* 16px = 1rem */
@@ -44,7 +38,7 @@
   right: 1rem;
   font-family: var(--font-family-monospace);
   font-size: 0.75rem;
-  color: rgba(0, 0, 0, 0.5);
+  color: rgb(0 0 0 / 50%);
   pointer-events: none;
   z-index: 10000;
 }
@@ -57,13 +51,10 @@ body.debug-rhythm-enabled {
 body.debug-rhythm-enabled::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-image: linear-gradient(
     to bottom,
-    rgba(255, 0, 0, 0.1) 1px,
+    rgb(255 0 0 / 10%) 1px,
     transparent 1px
   );
   background-size: 100% 0.25rem;
@@ -74,13 +65,10 @@ body.debug-rhythm-enabled::before {
 body.debug-rhythm-enabled::after {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-image: linear-gradient(
     to bottom,
-    rgba(0, 0, 255, 0.1) 1px,
+    rgb(0 0 255 / 10%) 1px,
     transparent 1px
   );
   background-size: 100% 1rem;
