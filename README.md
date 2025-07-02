@@ -676,14 +676,14 @@ This section lists general pending tasks. File/component-specific TODOs are typi
   - Link checking
 - **[Testing] ✅ Created local testing script** (`./test-local.sh`)
 - **[Testing] ✅ Added pre-commit hooks** for quality checks
+- **[Optimization] ✅ Implemented comprehensive asset optimization** (Image compression, WebP conversion, lazy loading)
+- **[Optimization] ✅ Implemented web font optimization** (Preconnect, preload, font-display: swap)
+- **[Optimization] ✅ Updated all HTML files with optimized font loading** (All 9 HTML files now use optimized headers)
 
 ## 🚧 In Progress / Remaining
 
 - `// TODO: [Content] Add actual portfolio project content to src/content/projects/ (PS8, PS8.1, PS8.2)`
 - `// TODO: [CSS] Create specific CSS for case study layouts (PS3.4)`
-- `// TODO: [Optimization] Implement image optimization techniques when images are added (OP8, OP9)`
-- `// TODO: [Optimization] Implement lazy loading for non-critical assets (OP10, OP16)`
-- `// TODO: [Optimization] Implement web font optimization when custom fonts are added (OP11)`
 - `// TODO: [Accessibility] Ensure all images have appropriate alt text once added (A11Y5)`
 - `// TODO: [SEO] For each page: Define unique <title> tags (Phase 8.1)`
 - `// TODO: [SEO] For each page: Write meta descriptions (Phase 8.1)`
@@ -702,7 +702,6 @@ This section lists general pending tasks. File/component-specific TODOs are typi
 These are enhancement suggestions for continued development beyond the core requirements:
 
 - `// TODO: [Content] Consider moving project content to src/content/projects/ structure for better organization (PS8)`
-- `// TODO: [Performance] Implement image optimization with WebP/AVIF formats using Parcel's image transformer (OP8, OP9)`
 - `// TODO: [Performance] Add responsive image srcsets with different sizes for various breakpoints (OP8)`
 - `// TODO: [Testing] Add automated visual regression testing with tools like Percy or Chromatic`
 - `// TODO: [Security] Add security headers to public/_headers for enhanced security (CSP, HSTS, etc.)`
