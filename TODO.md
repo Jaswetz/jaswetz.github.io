@@ -121,3 +121,32 @@ Modified the CI/CD pipeline to allow working in main branch without automatic de
 - Test changes without deploying
 - Deploy only when ready
 - Full control over release timing
+
+## Fix Web Components Production Issue
+
+**Date:** 2025-07-01
+
+**Status:** ✅ RESOLVED
+
+**Issue:** Header and footer Web Components were not loading in production (jaswetz.github.io).
+
+**Root Cause:** 
+- Duplicate script imports in HTML head tags were causing Parcel bundling conflicts
+- Analytics and Clarity scripts were being loaded both in HTML head and main.js module
+- This caused incorrect script references in built files (404.js instead of index.js)
+
+**Solution:**
+1. Removed duplicate `<script src="./js/analytics.js">` and `<script src="./js/clarity-config.js">` from all HTML files
+2. Consolidated all script imports into `main.js` module using ES6 imports
+3. Fixed Parcel build process to properly bundle and reference scripts
+
+**Files Modified:**
+- `src/index.html` - Removed duplicate script tags
+- `src/404.html` - Removed duplicate script tags  
+- `src/about.html` - Removed duplicate script tags
+- `src/contact.html` - Removed duplicate script tags
+- `src/work.html` - Removed duplicate script tags
+- `src/styleguide.html` - Removed duplicate script tags
+- `src/js/main.js` - Added proper ES6 imports for analytics and clarity
+
+**Result:** Web Components now load properly in production deployment.
