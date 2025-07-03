@@ -41,7 +41,7 @@
 }
 
 .project-summary figcaption,
-.project-summary .grid--3-column {
+.project-summary__cards {
     margin-bottom: var(--space-xl);
 }
 

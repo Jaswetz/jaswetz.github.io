@@ -15,9 +15,9 @@ html {
   scroll-behavior: smooth;
 
   /* Enable smooth scrolling for anchor links */
-  scroll-padding-top: 100px;
+  scroll-padding-top: 120px;
 
-  /* Account for fixed header when scrolling to anchors */
+  /* Account for fixed header when scrolling to anchors - increased for better section visibility */
 }
 
 body {

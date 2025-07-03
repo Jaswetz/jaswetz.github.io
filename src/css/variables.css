@@ -33,7 +33,7 @@
   --color-text: #333;
   --color-text-light: #555;
   --color-background: #f7f3eb;
-  --color-border: oklch(93.2% .032 255.585);
+  --color-border: oklch(90% .032 255.585);
 
   /*  */
   --color-text-subtle: #555;

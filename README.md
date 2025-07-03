@@ -12,6 +12,7 @@ A modern UX portfolio website built with fundamental web technologies and native
 - **🎨 Animated 2D Logo**: Interactive animated logo in the hero section featuring the three signature shapes (triangle, circle, square) with smooth CSS animations
 - **📱 Responsive Design**: Mobile-first approach with optimized layouts for all screen sizes
 - **⚡ Performance Optimized**: Lightweight bundle sizes and fast loading times
+- **🧭 Smart Sidebar Navigation**: Automatic scroll spy with active section highlighting and smooth scrolling (see [SIDEBAR_NAVIGATION.md](SIDEBAR_NAVIGATION.md))
 
 ## 🚀 Live Site
 
