@@ -41,6 +41,7 @@
 @import url("./pages/page-index/index-section-quotes.css") layer(components);
 @import url("./pages/page-index/index-section-featured-projects.css") layer(components);
 @import url("./pages/page-index/index-section-about.css") layer(components);
+@import url("./pages/page-index/index-section-companies.css") layer(components);
 
 /* --- Utilities Layer --- */
 @import url("./utils/spacing.css") layer(utilities);
