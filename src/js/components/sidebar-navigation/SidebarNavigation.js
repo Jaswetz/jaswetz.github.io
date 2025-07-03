@@ -11,7 +11,7 @@ class SidebarNavigation {
     this.sections = [];
     this.currentActiveLink = null;
     this.observer = null;
-    
+
     this.init();
   }
 
@@ -28,16 +28,16 @@ class SidebarNavigation {
   setupNavLinks() {
     // Get all navigation links
     const links = this.sidebarNav.querySelectorAll("a[href^=\"#\"]");
-    
-    links.forEach(link => {
+
+    links.forEach((link) => {
       const targetId = link.getAttribute("href").substring(1);
       const targetSection = document.getElementById(targetId);
-      
+
       if (targetSection) {
         this.navLinks.push({
           link: link,
           section: targetSection,
-          id: targetId
+          id: targetId,
         });
         this.sections.push(targetSection);
       }
@@ -49,7 +49,7 @@ class SidebarNavigation {
     const options = {
       root: null,
       rootMargin: "-20% 0px -60% 0px", // Trigger when section is 20% from top
-      threshold: 0
+      threshold: 0,
     };
 
     this.observer = new IntersectionObserver((entries) => {
@@ -57,13 +57,13 @@ class SidebarNavigation {
     }, options);
 
     // Observe all sections
-    this.sections.forEach(section => {
+    this.sections.forEach((section) => {
       this.observer.observe(section);
     });
   }
 
   handleIntersection(entries) {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         this.setActiveLink(entry.target.id);
       }
@@ -89,19 +89,19 @@ class SidebarNavigation {
     this.navLinks.forEach(({ link, section }) => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
-        
+
         // Remove active from all links
         this.navLinks.forEach(({ link: navLink }) => {
           navLink.classList.remove("active");
         });
-        
+
         // Add active to clicked link
         link.classList.add("active");
-        
+
         // Smooth scroll to section
         section.scrollIntoView({
           behavior: "smooth",
-          block: "start"
+          block: "start",
         });
       });
     });
