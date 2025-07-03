@@ -1027,7 +1027,59 @@
       feather.replace();
     </script>
 
-    <site-footer></site-footer>
-    <script type="module" src="../js/main.js?v=1"></script>
+    <!-- Sidebar Navigation Active State Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const sections = document.querySelectorAll("section[id], h2[id]");
+        const navLinks = document.querySelectorAll(".sidebar-nav a");
+
+        function updateActiveNav() {
+          let current = "";
+          const scrollY = window.pageYOffset;
+
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop - 100; // Offset for header
+            const sectionHeight = section.offsetHeight;
+
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+              current = section.getAttribute("id");
+            }
+          });
+
+          navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === "#" + current) {
+              link.classList.add("active");
+            }
+          });
+        }
+
+        // Update on scroll
+        window.addEventListener("scroll", updateActiveNav);
+
+        // Update on load
+        updateActiveNav();
+
+        // Smooth scroll for navigation links
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection) {
+              const headerOffset = 80; // Account for fixed header
+              const elementPosition = targetSection.offsetTop;
+              const offsetPosition = elementPosition - headerOffset;
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
