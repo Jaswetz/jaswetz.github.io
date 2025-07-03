@@ -66,28 +66,28 @@
         border-radius: var(--border-radius);
         border: 1px solid hsl(from var(--color-primary) h s l / 10%);
     }
-    
+
     .sidebar-nav ul {
         display: flex;
         flex-wrap: wrap;
         gap: var(--space-xs);
     }
-    
+
     .sidebar-nav li {
         margin-bottom: 0;
     }
-    
+
     .sidebar-nav a {
         padding: var(--space-2xs) var(--space-xs);
         border-left: none;
         border-radius: var(--border-radius-sm);
         font-size: var(--size-step--2);
     }
-    
+
     .sidebar-nav a:hover {
         transform: none;
     }
-    
+
     .sidebar-nav a:active,
     .sidebar-nav a.active {
         border-left: none;
@@ -157,7 +157,7 @@
     Navigation Responsive Styles
     -------------------------------------------------------------------------- */
 
-@media (width <= 47.9375rem) {
+@media (width <=47.9375rem) {
     .project-navigation {
         flex-direction: column;
         gap: var(--space-s);
@@ -170,7 +170,7 @@
 }
 
 /* Responsive styles for mobile */
-@media (width <= 47.9375rem) {
+@media (width <=47.9375rem) {
     .site-header__nav {
         display: none;
     }

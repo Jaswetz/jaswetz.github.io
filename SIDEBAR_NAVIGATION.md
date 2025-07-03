@@ -25,7 +25,7 @@ To implement sidebar navigation on a page, use the following HTML structure:
       <h2>Section Title</h2>
       <!-- Section content -->
     </section>
-    
+
     <section id="section-2">
       <h2>Another Section</h2>
       <!-- Section content -->
@@ -143,17 +143,17 @@ Here's a complete example for a project page:
           <h2>Project Overview</h2>
           <!-- Content -->
         </section>
-        
+
         <section id="challenge">
           <h2>Challenge</h2>
           <!-- Content -->
         </section>
-        
+
         <section id="solution">
           <h2>Solution</h2>
           <!-- Content -->
         </section>
-        
+
         <section id="results">
           <h2>Results</h2>
           <!-- Content -->
