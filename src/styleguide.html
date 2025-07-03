@@ -62,7 +62,6 @@
     <link rel="apple-touch-icon" href="./assets/favicons/apple-icon.png" />
   </head>
   <body>
-    <site-header></site-header>
     <main>
       <style>
         /* Basic styling for style guide sections for clarity */
@@ -666,6 +665,137 @@
 &lt;/div&gt;</code></pre>
           </section>
 
+          <section id="cards" class="styleguide-section">
+            <h3>Card Components</h3>
+            <p>Various card layouts for displaying different types of content and data.</p>
+
+            <h4>Basic Cards</h4>
+            <div class="grid grid--2-column grid--gap-m" style="margin-bottom: var(--space-xl)">
+              <!-- Basic Card -->
+              <div class="card card--vertical">
+                <div class="card__image">
+                  <div style="width: 100%; height: 120px; background: var(--color-info); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: var(--color-primary);">
+                    Image Placeholder
+                  </div>
+                </div>
+                <div class="card__content">
+                  <h3>Basic Card</h3>
+                  <p>This is a basic card with image and content areas. Useful for general content display.</p>
+                </div>
+              </div>
+
+              <!-- Outline Card -->
+              <div class="card--outline">
+                <h3>Outline Card</h3>
+                <p>A card with a subtle border and background pattern. Great for content that needs to stand out while maintaining a soft appearance.</p>
+              </div>
+            </div>
+
+            <div class="grid grid--2-column grid--gap-m" style="margin-bottom: var(--space-xl)">
+              <!-- White Card -->
+              <div class="card--white">
+                <h3>White Card</h3>
+                <p>A clean white card with subtle styling. Perfect for content that needs a clean, minimal look.</p>
+              </div>
+
+              <!-- Clickable Card Link -->
+              <a href="#" class="card__link" style="text-decoration: none; padding: var(--space-m); border: 1px solid var(--color-border); border-radius: var(--border-radius); background: var(--color-surface);">
+                <h3>Clickable Card</h3>
+                <p>An entire card that acts as a link with hover and focus states.</p>
+              </a>
+            </div>
+
+            <h4>Project Cards</h4>
+            <div class="grid grid--2-column grid--gap-m" style="margin-bottom: var(--space-xl)">
+              <!-- Problem Card -->
+              <div class="problem-card card--outline">
+                <div class="problem-card__icon">
+                  <div style="width: 48px; height: 48px; background: var(--color-danger); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin-bottom: var(--space-s);">!</div>
+                </div>
+                <h3>Problem Card</h3>
+                <p>Used to highlight problems or challenges in project case studies. Features an icon and clear hierarchy.</p>
+              </div>
+
+              <!-- Result Card -->
+              <div class="result-card">
+                <div class="result-card__number">85%</div>
+                <div class="result-card__label">User Satisfaction</div>
+                <div class="result-card__description">Improvement in overall user satisfaction scores after implementation</div>
+              </div>
+            </div>
+
+            <h4>Specialty Cards</h4>
+            <div class="grid grid--3-column grid--gap-m" style="margin-bottom: var(--space-xl)">
+              <!-- Learning Card -->
+              <div class="learning-card">
+                <div class="learning-card__number">01</div>
+                <div class="learning-card__title">Key Learning</div>
+                <div class="learning-card__description">User research should always precede design decisions for better outcomes.</div>
+              </div>
+
+              <!-- Severity Card High -->
+              <div class="severity-card">
+                <div class="severity-level__icon severity-level__icon--high">
+                  <div style="width: 24px; height: 24px; border-radius: 50%; background: currentColor;"></div>
+                </div>
+                <div class="severity-card__title">High Priority</div>
+                <div class="severity-card__description">Critical issues that need immediate attention and resolution.</div>
+              </div>
+
+              <!-- Severity Card Medium -->
+              <div class="severity-level">
+                <div class="severity-level__icon severity-level__icon--medium">
+                  <div style="width: 24px; height: 24px; border-radius: 50%; background: currentColor;"></div>
+                </div>
+                <div class="severity-level__title">Medium Priority</div>
+                <div class="severity-level__description">Important issues that should be addressed in the next iteration.</div>
+              </div>
+            </div>
+
+            <h4>Growth Card</h4>
+            <div class="growth-card" style="margin-bottom: var(--space-xl);">
+              <div style="width: 64px; height: 64px; background: var(--color-primary); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: white; font-size: var(--font-size-xl); flex-shrink: 0;">📈</div>
+              <div class="growth-card__content">
+                <div class="growth-card__title">Professional Growth</div>
+                <div class="growth-card__description">This project helped me develop stronger skills in user research and data analysis, leading to more informed design decisions.</div>
+              </div>
+            </div>
+
+            <h4>Card Usage Examples</h4>
+            <pre><code>&lt;!-- Basic Card --&gt;
+&lt;div class="card card--vertical"&gt;
+  &lt;div class="card__image"&gt;
+    &lt;img src="image.jpg" alt="Description"&gt;
+  &lt;/div&gt;
+  &lt;div class="card__content"&gt;
+    &lt;h3&gt;Card Title&lt;/h3&gt;
+    &lt;p&gt;Card description...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Result Card --&gt;
+&lt;div class="result-card"&gt;
+  &lt;div class="result-card__number"&gt;25%&lt;/div&gt;
+  &lt;div class="result-card__label"&gt;Improvement&lt;/div&gt;
+  &lt;div class="result-card__description"&gt;Increase in user engagement&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Problem Card --&gt;
+&lt;div class="problem-card card--outline"&gt;
+  &lt;div class="problem-card__icon"&gt;
+    &lt;img src="icon.svg" alt=""&gt;
+  &lt;/div&gt;
+  &lt;h3&gt;Problem Title&lt;/h3&gt;
+  &lt;p&gt;Problem description...&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Clickable Card --&gt;
+&lt;a href="/project" class="card__link"&gt;
+  &lt;h3&gt;Project Title&lt;/h3&gt;
+  &lt;p&gt;Project description...&lt;/p&gt;
+&lt;/a&gt;</code></pre>
+          </section>
+
           <section id="buttons" class="styleguide-section">
             <h3>Buttons</h3>
             <p>Examples of different button styles and states.</p>
@@ -814,7 +944,6 @@
         </section>
       </div>
     </main>
-    <site-footer></site-footer>
     <script type="module" src="./js/main.js?v=1"></script>
   </body>
 </html>
