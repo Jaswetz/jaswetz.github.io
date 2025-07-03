@@ -30,10 +30,10 @@ class SiteFooter extends HTMLElement {
           min-height: calc(var(--space-l-3xl) * 2); /* Ensure footer has enough height */
           position: relative; /* Ensure pseudo-element is positioned relative to the host */
           top: calc(-1 * var(--space-l-3xl));
+          border-top: var(--border-width) solid var(--color-border);
         }
 
         :host::after {
-          border-top: 1px solid var(--footer-border-color, #dee2e6);
           content: "";
           position: absolute;
           top: 0;
@@ -41,12 +41,9 @@ class SiteFooter extends HTMLElement {
           width: 100%;
           height: 100%;
           background-color: #f7f3eb;
-          opacity: 0.8;
-          background-image: radial-gradient(
-            #999 0.7000000000000001px,
-            #f7f3eb 0.7000000000000001px
-          );
+          background-image: radial-gradient(var(--color-primary) 0.7px, #f7f3eb 0.7px);
           background-size: 14px 14px;
+          opacity: .7;
           z-index: -1; /* Ensure it stays behind the content */
         }
 
@@ -75,9 +72,11 @@ class SiteFooter extends HTMLElement {
 
         .made-with {
           font-style: italic;
-          color: var(--color-secondary);
+          color: var(--color-text-light);
           margin: 0;
           padding: 0;
+          font-size: var(--size-step--1);
+         
         }
 
         .social-links__list {
@@ -147,7 +146,7 @@ class SiteFooter extends HTMLElement {
             &copy; <span id="current-year">${currentYear}</span> Jason Swetzoff. All rights reserved.
           </p>
           <p class="made-with">
-            Designed by Jason Swetzoff and AI. Hand-coded with HTML, CSS, JS, Parcel and AI.
+            Designed and Hand-coded by Jason Swetzoff with HTML, CSS, JS, Parcel and AI.
           </p>
         </div>
 
