@@ -74,6 +74,7 @@ class SiteHeader extends HTMLElement {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border: var(--border-width) solid var(--color-border);
       padding: var(--space-s) var(--space-m);
       border-radius: var(--border-radius);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -100,6 +101,9 @@ class SiteHeader extends HTMLElement {
       background-color: rgba(255, 255, 255, 0.2);
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
+        border-right: none;
+        border-left: none;
+        border-top: none;
       }
 
       .logo a {
