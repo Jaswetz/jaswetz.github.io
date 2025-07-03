@@ -15,14 +15,14 @@
   position: relative;
 }
 
-.card__link .project-thumbnail {
-  transition: var(--transition-interactive);
-}
-
 /* Project card decorative triangles */
 .project-thumbnail {
   position: relative;
   overflow: hidden;
+}
+
+.card__link .project-thumbnail {
+  transition: var(--transition-interactive);
 }
 
 .project-thumbnail::before {
@@ -472,7 +472,7 @@
 }
 
 /* Responsive adjustments for triangles */
-@media (max-width: 768px) {
+@media (width <=768px) {
   .project-thumbnail::before {
     border-left: 60px solid transparent;
     border-right: 60px solid transparent;

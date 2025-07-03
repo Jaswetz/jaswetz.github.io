@@ -63,7 +63,6 @@
    ========================================================================== */
 
 @media (width <=47.9375rem) {
-
     .hero__content,
     .hero--project__content {
         padding: var(--space-l);
