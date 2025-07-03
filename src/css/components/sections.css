@@ -86,7 +86,6 @@
 .phase__image {
     border-radius: var(--border-radius);
     overflow: hidden;
-
     width: fit-content;
     height: fit-content;
 }
@@ -396,7 +395,6 @@
     -------------------------------------------------------------------------- */
 
 @media (width <=47.9375rem) {
-
     .phase,
     .content-grid,
     .solution-content,
