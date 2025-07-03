@@ -1,6 +1,6 @@
 export default [
   {
-    ignores: ["dist/", ".parcel-cache/", "node_modules/"],
+    ignores: ["dist/", "dev-build/", ".parcel-cache/", "node_modules/"],
   },
   {
     files: ["**/*.js"],

@@ -15,8 +15,41 @@
   position: relative;
 }
 
+/* Project card decorative triangles */
+.project-thumbnail {
+  position: relative;
+  overflow: hidden;
+}
+
 .card__link .project-thumbnail {
   transition: var(--transition-interactive);
+}
+
+.project-thumbnail::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 100px;
+  height: 100px;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-bottom: 175px solid #2569ed;
+  opacity: 0.3;
+  transform: rotate(25deg);
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.card__link:hover .project-thumbnail::before {
+  opacity: 0.5;
+  transform: rotate(30deg) scale(1.1);
+}
+
+/* Ensure image stays above the decorative triangle */
+.project-thumbnail img {
+  position: relative;
+  z-index: 10;
 }
 
 .card__link h3 {
@@ -421,5 +454,38 @@
   .growth-card {
     flex-direction: column;
     padding: var(--space-l);
+  }
+}
+
+/* Variations for different project cards */
+.project-thumbnail--intel::before {
+  border-bottom-color: var(--color-primary);
+  opacity: 0.12;
+  transform: rotate(-20deg);
+  top: -30px;
+  left: -20px;
+}
+
+.card__link:hover .project-thumbnail--intel::before {
+  opacity: 0.2;
+  transform: rotate(-25deg) scale(1.1);
+}
+
+/* Responsive adjustments for triangles */
+@media (width <=768px) {
+  .project-thumbnail::before {
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 105px solid var(--color-primary);
+    top: -15px;
+    right: -15px;
+  }
+
+  .project-thumbnail--intel::before {
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 105px solid var(--color-primary);
+    top: -25px;
+    left: -15px;
   }
 }

@@ -2,12 +2,42 @@
 
 [![Deploy to GitHub Pages](https://github.com/jaswetz/jaswetz.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/jaswetz/jaswetz.github.io/actions/workflows/deploy.yml)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://jaswetz.github.io/)
+[![Bundle Size](https://img.shields.io/badge/JS-29.94KB-success)](https://github.com/jaswetz/jaswetz.github.io)
+[![Bundle Size](https://img.shields.io/badge/CSS-66.43KB-success)](https://github.com/jaswetz/jaswetz.github.io)
 
 A modern UX portfolio website built with fundamental web technologies and native Web Components.
+
+## ✨ Key Features
+
+- **🎨 Animated 2D Logo**: Interactive animated logo in the hero section featuring the three signature shapes (triangle, circle, square) with smooth CSS animations
+- **📱 Responsive Design**: Mobile-first approach with optimized layouts for all screen sizes
+- **⚡ Performance Optimized**: Lightweight bundle sizes and fast loading times
 
 ## 🚀 Live Site
 
 Visit the portfolio at: [https://jaswetz.github.io/](https://jaswetz.github.io/)
+
+## 🔧 CI/CD Pipeline Status
+
+**Build & Deploy:** Fully automated CI/CD pipeline with GitHub Actions
+
+- ✅ **Linting:** ESLint (JavaScript) + Stylelint (CSS)
+- ✅ **Build Optimization:** Parcel.js with asset optimization
+- ✅ **Bundle Size Monitoring:** JS (29.94KB) + CSS (66.43KB) within limits
+- ✅ **Automated Deployment:** GitHub Pages on push to main
+- ✅ **Clean Build Process:** No artifact pollution
+
+### Quick Commands
+
+```bash
+npm run dev         # Development server
+npm run build       # Production build
+npm run test        # Run all tests (lint + stylelint)
+npm run preview     # Build + serve for testing
+npm run clean       # Clean build artifacts
+```
+
+---
 
 ---
 

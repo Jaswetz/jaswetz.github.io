@@ -34,6 +34,8 @@
   --color-text-light: #555;
   --color-background: #f7f3eb;
   --color-border: #ddd;
+
+  /* #9abdf3 */
   --color-text-subtle: #555;
 
   /* ==========================================================================
@@ -258,28 +260,56 @@
      ========================================================================== */
 
   /* Mobile-first breakpoint system using rem units for better accessibility */
-  --breakpoint-xs: 20rem;    /* 320px - Small phones */
-  --breakpoint-sm: 36rem;    /* 576px - Large phones */
-  --breakpoint-md: 48rem;    /* 768px - Tablets */
-  --breakpoint-lg: 64rem;    /* 1024px - Desktop */
-  --breakpoint-xl: 80rem;    /* 1280px - Large desktop */
-  --breakpoint-xxl: 96rem;   /* 1536px - Extra large */
+  --breakpoint-xs: 20rem;
+
+  /* 320px - Small phones */
+  --breakpoint-sm: 36rem;
+
+  /* 576px - Large phones */
+  --breakpoint-md: 48rem;
+
+  /* 768px - Tablets */
+  --breakpoint-lg: 64rem;
+
+  /* 1024px - Desktop */
+  --breakpoint-xl: 80rem;
+
+  /* 1280px - Large desktop */
+  --breakpoint-xxl: 96rem;
+
+  /* 1536px - Extra large */
 
   /* Container max-widths for consistent content boundaries */
   --container-xs: 100%;
-  --container-sm: 33.75rem;   /* 540px */
-  --container-md: 45rem;      /* 720px */
-  --container-lg: 60rem;      /* 960px */
-  --container-xl: 75rem;      /* 1200px */
-  --container-2xl: 81.25rem;  /* 1300px */
+  --container-sm: 33.75rem;
+
+  /* 540px */
+  --container-md: 45rem;
+
+  /* 720px */
+  --container-lg: 60rem;
+
+  /* 960px */
+  --container-xl: 75rem;
+
+  /* 1200px */
+  --container-2xl: 81.25rem;
+
+  /* 1300px */
   --container-full: 100%;
 
   /* Legacy breakpoint mapping for gradual migration */
-  --breakpoint-mobile: var(--breakpoint-md);     /* 768px equivalent */
-  --breakpoint-desktop: var(--breakpoint-lg);    /* 1024px equivalent */
-  --breakpoint-large: var(--breakpoint-xl);      /* 1280px equivalent */
+  --breakpoint-mobile: var(--breakpoint-md);
 
-  @media (width >= 64rem) {
+  /* 768px equivalent */
+  --breakpoint-desktop: var(--breakpoint-lg);
+
+  /* 1024px equivalent */
+  --breakpoint-large: var(--breakpoint-xl);
+
+  /* 1280px equivalent */
+
+  @media (width >=64rem) {
     --section-width: calc(100% - var(--space-2xl));
 
     /* Full width minus larger padding */

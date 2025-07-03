@@ -4,10 +4,14 @@
   "type": "module",
   "description": "## Folders",
   "scripts": {
-    "dev": "parcel src/*.html --open",
-    "build": "parcel build src/*.html --dist-dir dist --public-url / && cp -r src/assets dist/",
-    "build:optimize": "npm run optimize:images && npm run build",
-    "clean": "rm -rf dist .parcel-cache",
+    "dev": "npm run clean:dev && parcel src/*.html --dist-dir dev-build --open",
+    "dev:build": "npm run clean:dev && parcel build src/*.html --dist-dir dev-build",
+    "build": "npm run clean && parcel build src/*.html --dist-dir dist --public-url / && cp -r src/assets dist/",
+    "build:optimize": "npm run clean && npm run optimize:images && npm run build:no-clean",
+    "build:no-clean": "parcel build src/*.html --dist-dir dist --public-url / && cp -r src/assets dist/",
+    "clean": "rm -rf dist dev-build .parcel-cache",
+    "clean:dev": "rm -rf dev-build .parcel-cache",
+    "clean:all": "rm -rf dist dev-build .parcel-cache node_modules package-lock.json",
     "lint": "eslint src/js/**/*.js",
     "lint:fix": "eslint src/js/**/*.js --fix",
     "stylelint": "stylelint 'src/css/**/*.css'",
@@ -26,7 +30,8 @@
     "test:bundle-size": "node scripts/check-bundle-size.js",
     "test:all": "npm run test",
     "serve": "npx http-server dist -p 8080 -c-1",
-    "preview": "npm run build && npm run serve"
+    "preview": "npm run build && npm run serve",
+    "preview:dev": "npm run dev:build && npx http-server dev-build -p 8080 -c-1"
   },
   "keywords": [],
   "author": "",

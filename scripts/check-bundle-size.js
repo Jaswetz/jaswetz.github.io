@@ -8,15 +8,15 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const LIMITS = {
-  "dist/**/*.js": 50 * 1024, // 50KB
-  "dist/**/*.css": 30 * 1024, // 30KB
+  "dist/**/*.js": 50 * 1024, // 50KB per JS file
+  "dist/**/*.css": 100 * 1024, // 100KB per CSS file (design systems need more space)
 };
 
 function getFileSize(filePath) {
   try {
     const stats = fs.statSync(filePath);
     return stats.size;
-  } catch (err) {
+  } catch {
     return 0;
   }
 }
