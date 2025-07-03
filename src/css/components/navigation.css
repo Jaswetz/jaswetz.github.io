@@ -56,7 +56,7 @@
 }
 
 /* Responsive behavior for sidebar navigation */
-@media (max-width: 1024px) {
+@media (width <= 1024px) {
     .sidebar-nav {
         position: static;
         margin-top: var(--space-l);
