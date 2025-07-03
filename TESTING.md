@@ -284,6 +284,7 @@ Recommended VS Code extensions:
 - Check network conditions during test
 - Verify images are optimized
 - Review bundle size reports
+- Lighthouse report structure: Use `report.categories.performance.score` (Lighthouse v12+) instead of `report.lhr.categories.performance.score` (older versions)
 
 **Accessibility tests fail**
 
