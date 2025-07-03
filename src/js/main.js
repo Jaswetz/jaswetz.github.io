@@ -6,6 +6,7 @@ import "./analytics.js";
 import "./clarity-config.js";
 import SiteHeader from "./components/site-header/SiteHeader.js";
 import SiteFooter from "./components/site-footer/SiteFooter.js";
+import SidebarNavigation from "./components/sidebar-navigation/SidebarNavigation.js";
 // LazyLoader temporarily removed to isolate Web Components issue
 
 // Define the custom elements
@@ -22,6 +23,13 @@ if (window.customElements) {
 //DOMContentLoaded is no longer needed for the year,
 //as it's handled within the SiteFooter component itself.
 //Any other global JS can go here or be further modularized.
+
+// Initialize sidebar navigation on pages that have it
+document.addEventListener("DOMContentLoaded", () => {
+  if (document.querySelector(".sidebar-nav")) {
+    new SidebarNavigation();
+  }
+});
 
 // --- Debug Styles Toggle ---
 document.addEventListener("keydown", function (event) {
