@@ -95,7 +95,7 @@ npx lighthouse http://localhost:8080 --output json --output-path ./lighthouse-re
 
 # Check performance score
 if [ -f "./lighthouse-report.json" ]; then
-    SCORE=$(node -e "const report = require('./lighthouse-report.json'); console.log(Math.round(report.lhr.categories.performance.score * 100))")
+    SCORE=$(node -e "const report = require('./lighthouse-report.json'); console.log(Math.round(report.categories.performance.score * 100))")
     echo "Performance Score: $SCORE"
     if [ $SCORE -lt 90 ]; then
         print_warning "Performance score $SCORE is below recommended threshold of 90"
