@@ -11,7 +11,6 @@
 
 /* Consolidated grid system and project-specific layouts */
 @import url("./utils/grid-system.css") layer(layout);
-@import url("./layout/projects.css") layer(layout);
 
 /* --- Components Layer --- */
 @import url("./components/error-page.css") layer(components);
@@ -42,6 +41,7 @@
 @import url("./pages/page-index/index-section-featured-projects.css") layer(components);
 @import url("./pages/page-index/index-section-about.css") layer(components);
 @import url("./pages/page-index/index-section-companies.css") layer(components);
+@import url("./pages/projects.css") layer(components);
 
 /* --- Utilities Layer --- */
 @import url("./utils/spacing.css") layer(utilities);

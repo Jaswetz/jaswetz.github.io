@@ -4,100 +4,6 @@
 
 /* TODO: Cleanup and make more modular and reusable with BEM methodology */
 
-.card__link {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  text-decoration: none;
-  color: inherit;
-  transition: var(--transition-interactive);
-  border-radius: var(--border-radius);
-  position: relative;
-}
-
-/* Project card decorative triangles */
-.project-thumbnail {
-  position: relative;
-  overflow: hidden;
-}
-
-.card__link .project-thumbnail {
-  transition: var(--transition-interactive);
-}
-
-.project-thumbnail::before {
-  content: '';
-  position: absolute;
-  top: -30px;
-  right: -30px;
-  width: 100px;
-  height: 100px;
-  border-left: 100px solid transparent;
-  border-right: 100px solid transparent;
-  border-bottom: 175px solid #2569ed;
-  opacity: 0.3;
-  transform: rotate(25deg);
-  transition: all 0.3s ease;
-  z-index: 1;
-}
-
-.card__link:hover .project-thumbnail::before {
-  opacity: 0.5;
-  transform: rotate(30deg) scale(1.1);
-}
-
-/* Ensure image stays above the decorative triangle */
-.project-thumbnail img {
-  position: relative;
-  z-index: 10;
-}
-
-.card__link h3 {
-  color: var(--color-text);
-}
-
-.card__link p {
-  color: var(--color-text-subtle);
-}
-
-.card__link::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--overlay-gradient-light);
-  opacity: 0;
-  transition: var(--transition-quick);
-  pointer-events: none;
-  z-index: 1;
-  border-radius: var(--border-radius);
-}
-
-/* Card interactive states */
-.card__link:hover {
-  color: var(--color-primary-alt);
-  transform: var(--hover-transform) scale(var(--hover-scale));
-  box-shadow: var(--hover-shadow);
-  text-decoration: none;
-  background-color: var(--color-surface);
-}
-
-.card__link:hover::before {
-  opacity: 1;
-}
-
-.card__link:hover .project-thumbnail {
-  transform: scale(var(--hover-scale-large));
-}
-
-.card__link:focus {
-  outline: var(--focus-outline);
-  outline-offset: var(--focus-outline-offset);
-}
-
-.card__link:active {
-  transform: var(--active-transform-card);
-}
-
 /* Base card styles */
 .card {
   display: flex;
@@ -105,7 +11,63 @@
   border-radius: var(--border-radius);
   transition: var(--transition-base);
   margin-bottom: var(--space-m);
+  position: relative;
+  color: inherit;
+  padding: var(--space-m);
+
+  p {
+    color: var(--color-text-subtle);
+  }
 }
+
+
+
+.card-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  transition: var(--transition-interactive);
+  border-radius: var(--border-radius);
+  border: var(--border-width) solid var(--color-border);
+
+  .card {
+    padding: var(--space-l);
+  }
+
+
+  .project-thumbnail {
+    transition: var(--transition-interactive);
+  }
+
+  .card__content {
+    margin-top: var(--space-xl);
+  }
+
+  /* Card interactive states */
+  &:hover {
+    color: var(--color-primary-alt);
+    transform: var(--hover-transform) scale(var(--hover-scale));
+    box-shadow: var(--hover-shadow);
+    text-decoration: none;
+    background-color: var(--color-surface);
+  }
+
+  &:hover .project-thumbnail {
+    transform: scale(var(--hover-scale-large));
+  }
+
+  &:focus {
+    outline: var(--focus-outline);
+    outline-offset: var(--focus-outline-offset);
+  }
+
+  &:active {
+    transform: var(--active-transform-card);
+  }
+}
+
+
 
 .card__image {
   flex-shrink: 0;
@@ -116,10 +78,6 @@
 
 .card__content {
   flex: 1;
-}
-
-.card__content h3 {
-  padding-top: var(--heading-spacing);
 }
 
 /* Card variations */
@@ -136,25 +94,25 @@
 }
 
 .card--vertical .card__content {
-  padding: var(--space-m);
   text-align: left;
   width: 100%;
 }
 
 .card--outline {
   padding: var(--space-l);
-  border: 1px solid var(--color-border);
+  border: var(--border-width) solid var(--color-border);
   border-radius: var(--border-radius);
   background-color: #f7f3eb;
-  /* background-image: linear-gradient(#9992 0.2px, transparent 0.4px), linear-gradient(to right, #9992 0.6px, #f7f3eb 0.6px); */
-  background-size: 12px 12px;
+  /* background-image: linear-gradient(var(--color-border) 0.2px, transparent 0.4px), linear-gradient(to right, var(--color-border) 0.6px, var(--color-background) 0.6px);
+  background-size: 12px 12px; */
   box-shadow: inset 0 -2px #6f7b901a;
+  background-color: var(--color-background);
 
 }
 
 .card--white {
   padding: var(--space-m);
-  background-color: var(--color-surface);
+  background-color: #ffffff6e;
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--border-radius);
 }
@@ -183,6 +141,8 @@
   color: var(--color-text-subtle);
 }
 
+
+
 /* 
   Problem Cards
   Layout is controlled by utility classes from grid-system.css.
@@ -190,16 +150,6 @@
 
 .problem-card {
   position: relative;
-  padding: var(--space-m);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius);
-  transition: all 0.2s ease;
-}
-
-.problem-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
 }
 
 .problem-card__icon img {
@@ -211,16 +161,14 @@
   margin-bottom: var(--space-s);
   font-size: var(--size-step-1);
   font-weight: 600;
-  color: var(--color-text);
+  width: 100%;
 }
 
-.problem-card p {
-  margin: 0;
-  line-height: var(--leading-normal);
-}
+
 
 /* Card white variant p styles - must come after base p styles */
-.card--white p:last-child {
+.card--white p:last-child,
+.card--outline p:last-child {
   margin-bottom: 0;
 }
 
@@ -261,6 +209,31 @@
 }
 
 /* Learning Cards */
+
+.key-learning-card {
+  position: relative;
+  padding: var(--space-l);
+}
+
+.key-learning-number {
+  margin-bottom: var(--space-xs);
+  font-size: var(--size-step-3);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-primary);
+}
+
+.key-learning-title {
+  margin-bottom: var(--space-s);
+  font-size: var(--size-step-1);
+  font-weight: 600;
+}
+
+.key-learning-description {
+  line-height: var(--leading-normal);
+  color: var(--color-text-subtle);
+}
+
 .learning-card {
   position: relative;
   padding: var(--space-l);
@@ -398,11 +371,8 @@
 /* Results Subscriber Cards (Legacy support) */
 .result-subscriber-card {
   padding: var(--space-xl);
-  box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
+  box-shadow: var(--shadow--highlight);
   text-align: center;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius);
 }
 
 .result-subscriber-number {
@@ -431,7 +401,13 @@
   Most responsive grid behavior is now handled by the global grid-system.css.
   Only component-specific overrides should remain here.
 */
+
 @media (width <=47.9375rem) {
+
+  .card {
+    padding: var(--space-m);
+  }
+
   .card--project {
     /* Switch to vertical layout on mobile */
     flex-direction: column;
@@ -442,9 +418,6 @@
     max-width: 100%;
   }
 
-  .card__content {
-    padding: var(--space-m);
-  }
 
   .result-card,
   .result-subscriber-card {

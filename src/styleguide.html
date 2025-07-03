@@ -65,24 +65,7 @@
     <main>
       <style>
         /* Basic styling for style guide sections for clarity */
-        .styleguide-section {
-          border: 1px solid #eee;
-          padding: 1.5em;
-          margin-bottom: 2em;
-          border-radius: 8px;
-        }
-        .styleguide-section h2 {
-          margin-top: 0;
-          border-bottom: 2px solid #007bff; /* Example accent color */
-          padding-bottom: 0.5em;
-          margin-bottom: 1em;
-        }
-        .styleguide-section h3 {
-          margin-top: 1.5em;
-          border-bottom: 1px solid #ccc;
-          padding-bottom: 0.3em;
-          margin-bottom: 0.8em;
-        }
+
         .color-swatch {
           display: inline-block;
           width: 100px;
@@ -648,10 +631,16 @@
 
           <section id="logo-2d" class="styleguide-section">
             <h3>Animated 2D Logo</h3>
-            <p>The animated logo featuring three shapes: triangle in circle in square. Used in the hero section.</p>
-            
+            <p>
+              The animated logo featuring three shapes: triangle in circle in
+              square. Used in the hero section.
+            </p>
+
             <div class="styleguide-example">
-              <div class="logo-2d" aria-label="Jason Swetzoff's logo - Triangle in Circle in Square">
+              <div
+                class="logo-2d"
+                aria-label="Jason Swetzoff's logo - Triangle in Circle in Square"
+              >
                 <div class="logo-2d__shape logo-2d__square"></div>
                 <div class="logo-2d__shape logo-2d__circle"></div>
                 <div class="logo-2d__shape logo-2d__triangle"></div>
@@ -667,97 +656,165 @@
 
           <section id="cards" class="styleguide-section">
             <h3>Card Components</h3>
-            <p>Various card layouts for displaying different types of content and data.</p>
+            <p>
+              Various card layouts for displaying different types of content and
+              data.
+            </p>
 
             <h4>Basic Cards</h4>
-            <div class="grid grid--2-column grid--gap-m" style="margin-bottom: var(--space-xl)">
+            <div
+              class="grid grid--2-column grid--gap-m"
+              style="margin-bottom: var(--space-xl)"
+            >
               <!-- Basic Card -->
               <div class="card card--vertical">
                 <div class="card__image">
-                  <div style="width: 100%; height: 120px; background: var(--color-info); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: var(--color-primary);">
-                    Image Placeholder
-                  </div>
+                  <div>Image Placeholder</div>
                 </div>
                 <div class="card__content">
                   <h3>Basic Card</h3>
-                  <p>This is a basic card with image and content areas. Useful for general content display.</p>
+                  <p>
+                    This is a basic card with image and content areas. Useful
+                    for general content display.
+                  </p>
                 </div>
               </div>
 
               <!-- Outline Card -->
-              <div class="card--outline">
+              <div class="card card--outline">
                 <h3>Outline Card</h3>
-                <p>A card with a subtle border and background pattern. Great for content that needs to stand out while maintaining a soft appearance.</p>
+                <p>
+                  A card with a subtle border and background pattern. Great for
+                  content that needs to stand out while maintaining a soft
+                  appearance.
+                </p>
               </div>
             </div>
 
-            <div class="grid grid--2-column grid--gap-m" style="margin-bottom: var(--space-xl)">
+            <div
+              class="grid grid--2-column grid--gap-m"
+              style="margin-bottom: var(--space-xl)"
+            >
               <!-- White Card -->
               <div class="card--white">
                 <h3>White Card</h3>
-                <p>A clean white card with subtle styling. Perfect for content that needs a clean, minimal look.</p>
+                <p>
+                  A clean white card with subtle styling. Perfect for content
+                  that needs a clean, minimal look.
+                </p>
               </div>
 
               <!-- Clickable Card Link -->
-              <a href="#" class="card__link" style="text-decoration: none; padding: var(--space-m); border: 1px solid var(--color-border); border-radius: var(--border-radius); background: var(--color-surface);">
-                <h3>Clickable Card</h3>
-                <p>An entire card that acts as a link with hover and focus states.</p>
+              <a href="#" class="card-link">
+                <div class="card card--vertical">
+                  <h3>Clickable Card</h3>
+                  <p>
+                    An entire card that acts as a link with hover and focus
+                    states.
+                  </p>
+                </div>
               </a>
             </div>
 
             <h4>Project Cards</h4>
-            <div class="grid grid--2-column grid--gap-m" style="margin-bottom: var(--space-xl)">
+            <div
+              class="grid grid--2-column grid--gap-m"
+              style="margin-bottom: var(--space-xl)"
+            >
               <!-- Problem Card -->
-              <div class="problem-card card--outline">
+              <div class="problem-card card card--outline">
                 <div class="problem-card__icon">
-                  <div style="width: 48px; height: 48px; background: var(--color-danger); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin-bottom: var(--space-s);">!</div>
+                  <div>!</div>
                 </div>
                 <h3>Problem Card</h3>
-                <p>Used to highlight problems or challenges in project case studies. Features an icon and clear hierarchy.</p>
+                <p>
+                  Used to highlight problems or challenges in project case
+                  studies. Features an icon and clear hierarchy.
+                </p>
               </div>
 
               <!-- Result Card -->
               <div class="result-card">
                 <div class="result-card__number">85%</div>
                 <div class="result-card__label">User Satisfaction</div>
-                <div class="result-card__description">Improvement in overall user satisfaction scores after implementation</div>
+                <div class="result-card__description">
+                  Improvement in overall user satisfaction scores after
+                  implementation
+                </div>
               </div>
             </div>
 
             <h4>Specialty Cards</h4>
-            <div class="grid grid--3-column grid--gap-m" style="margin-bottom: var(--space-xl)">
+            <div
+              class="grid grid--3-column grid--gap-m"
+              style="margin-bottom: var(--space-xl)"
+            >
               <!-- Learning Card -->
-              <div class="learning-card">
+              <div class="learning-card card">
                 <div class="learning-card__number">01</div>
                 <div class="learning-card__title">Key Learning</div>
-                <div class="learning-card__description">User research should always precede design decisions for better outcomes.</div>
+                <div class="learning-card__description">
+                  User research should always precede design decisions for
+                  better outcomes.
+                </div>
               </div>
 
               <!-- Severity Card High -->
-              <div class="severity-card">
+              <div class="severity-card card">
                 <div class="severity-level__icon severity-level__icon--high">
-                  <div style="width: 24px; height: 24px; border-radius: 50%; background: currentColor;"></div>
+                  <div
+                    style="
+                      width: 24px;
+                      height: 24px;
+                      border-radius: 50%;
+                      background: currentColor;
+                    "
+                  ></div>
                 </div>
                 <div class="severity-card__title">High Priority</div>
-                <div class="severity-card__description">Critical issues that need immediate attention and resolution.</div>
+                <div class="severity-card__description">
+                  Critical issues that need immediate attention and resolution.
+                </div>
               </div>
 
               <!-- Severity Card Medium -->
               <div class="severity-level">
                 <div class="severity-level__icon severity-level__icon--medium">
-                  <div style="width: 24px; height: 24px; border-radius: 50%; background: currentColor;"></div>
+                  <div></div>
                 </div>
                 <div class="severity-level__title">Medium Priority</div>
-                <div class="severity-level__description">Important issues that should be addressed in the next iteration.</div>
+                <div class="severity-level__description">
+                  Important issues that should be addressed in the next
+                  iteration.
+                </div>
               </div>
             </div>
 
             <h4>Growth Card</h4>
-            <div class="growth-card" style="margin-bottom: var(--space-xl);">
-              <div style="width: 64px; height: 64px; background: var(--color-primary); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: white; font-size: var(--font-size-xl); flex-shrink: 0;">📈</div>
+            <div class="growth-card" style="margin-bottom: var(--space-xl)">
+              <div
+                style="
+                  width: 64px;
+                  height: 64px;
+                  background: var(--color-primary);
+                  border-radius: var(--border-radius);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: white;
+                  font-size: var(--font-size-xl);
+                  flex-shrink: 0;
+                "
+              >
+                📈
+              </div>
               <div class="growth-card__content">
                 <div class="growth-card__title">Professional Growth</div>
-                <div class="growth-card__description">This project helped me develop stronger skills in user research and data analysis, leading to more informed design decisions.</div>
+                <div class="growth-card__description">
+                  This project helped me develop stronger skills in user
+                  research and data analysis, leading to more informed design
+                  decisions.
+                </div>
               </div>
             </div>
 
@@ -884,7 +941,13 @@
             </ul>
 
             <h4>Note</h4>
-            <p><em>Live examples of header and footer components have been removed from the styleguide to keep it focused on design system documentation.</em></p>
+            <p>
+              <em
+                >Live examples of header and footer components have been removed
+                from the styleguide to keep it focused on design system
+                documentation.</em
+              >
+            </p>
           </section>
 
           <!-- Add more component showcases as they are developed -->

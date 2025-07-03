@@ -16,6 +16,11 @@
     border-bottom: 1px solid var(--color-border);
 }
 
+/* TODO: put border around all none transparent images */
+/* .project__img {
+    border: var(--border-width) solid #ddd;
+} */
+
 /* --------------------------------------------------------------------------
     Project-Specific Hero Background Override (if needed per project)
     -------------------------------------------------------------------------- */
@@ -30,11 +35,19 @@
     Project Summary Image
     -------------------------------------------------------------------------- */
 
+
 .notification .project__img.project-summary__image {
     max-width: 100%;
 }
 
+.project-summary figcaption,
+.project-summary .grid--3-column {
+    margin-bottom: var(--space-xl);
+}
 
+.project-case-study .project-summary {
+    padding-top: var(--space-xl);
+}
 
 /* --------------------------------------------------------------------------
     Project Image Figures
@@ -91,4 +104,8 @@
     color: var(--color-primary);
     margin-bottom: var(--space-s);
 
+}
+
+.img--max-width {
+    max-width: calc(var(--space-2xl-3xl) * 9);
 }

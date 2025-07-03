@@ -215,6 +215,7 @@
     0 0 0 1px rgb(37 105 237 / 10%);
   --hover-shadow-small: 0 2px 8px rgb(37 105 237 / 30%);
 
+
   /* Focus States */
   --focus-outline: 2px solid var(--color-primary);
   --focus-outline-offset: 2px;
@@ -252,6 +253,10 @@
 
   /* Maximum width for main content */
   --section-width: calc(100% - var(--space-l));
+
+  /* Shadows */
+
+  --shadow--highlight: 4px 5px var(--color-border);
 
   /* Full width minus padding */
 
