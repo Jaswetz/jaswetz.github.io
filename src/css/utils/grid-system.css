@@ -117,7 +117,7 @@
 /* Default: Mobile and Tablet (below xl breakpoint) - Single column and hide sidebar */
 
 /* This applies to all screen sizes below 80rem (1280px) */
-@media screen and (width <= 50rem) {
+@media screen and (width <=50rem) {
   .grid--2-column,
   .grid--3-column,
   .grid--4-column,
@@ -134,7 +134,7 @@
   }
 }
 
-@media screen and (width <= 79.9375rem) {
+@media screen and (width <=79.9375rem) {
   .grid--2-column--sidebar,
   .grid--2-column--reverse-sidebar {
     grid-template-columns: 1fr !important;
@@ -149,7 +149,7 @@
 }
 
 /* Tablet specific - Allow some multi-column layouts */
-@media (width >= 48rem) and (width <= 79.9375rem) {
+@media (width >=48rem) and (width <=79.9375rem) {
   .grid--3-column,
   .grid--4-column {
     grid-template-columns: repeat(2, 1fr);
@@ -159,7 +159,7 @@
 /* Desktop (xl breakpoint and above) - Show sidebar at wider breakpoint */
 
 /* This applies to all screen sizes 80rem (1280px) and above */
-@media screen and (width >= 80rem) {
+@media screen and (width >=80rem) {
   .grid--2-column {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -196,7 +196,7 @@
 }
 
 /* Extra Large (xxl breakpoint) - Enhanced layouts */
-@media (width >= 96rem) {
+@media (width >=96rem) {
   .grid--2-column--sidebar {
     grid-template-columns: 1fr 25rem;
 
@@ -226,14 +226,14 @@
 }
 
 /* Mobile-first responsive behavior for legacy grids */
-@media (width >= 48rem) {
+@media (width >=48rem) {
   .results-grid,
   .key-learnings-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (width <= 47.9375rem) {
+@media (width <=47.9375rem) {
   .results-grid,
   .key-learnings-grid {
     gap: var(--space-l);
@@ -247,7 +247,7 @@
 .hero {
   position: relative;
   padding: var(--space-4xl, 4rem) var(--space-xl, 2rem);
-  min-height: 60vh;
+  min-height: 80vh;
   border-bottom: 1px solid var(--color-border, #ddd);
 }
 
@@ -280,7 +280,7 @@
   display: none;
 }
 
-@media (width >= 48rem) {
+@media (width >=48rem) {
   .hide-mobile {
     display: block;
   }
@@ -290,7 +290,7 @@
   }
 }
 
-@media (width >= 64rem) {
+@media (width >=64rem) {
   .hide-tablet {
     display: block;
   }
@@ -300,13 +300,13 @@
   }
 }
 
-@media (width >= 80rem) {
+@media (width >=80rem) {
   .hide-until-xl {
     display: block;
   }
 }
 
-@media (width >= 96rem) {
+@media (width >=96rem) {
   .hide-until-xxl {
     display: block;
   }
@@ -337,7 +337,7 @@
   flex: 1 1 calc(33.333% - var(--space-l) / 3 * 2);
 }
 
-@media (width <= 47.9375rem) {
+@media (width <=47.9375rem) {
   .flex-grid--2-column>*,
   .flex-grid--3-column>* {
     flex: 1 1 100%;
@@ -349,13 +349,13 @@
    ========================================================================== */
 
 /* Apply grid settings above certain breakpoints */
-@media (width >= 48rem) {
+@media (width >=48rem) {
   .grid-2-col-desktop {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (width >= 64rem) {
+@media (width >=64rem) {
   .grid-sidebar-desktop {
     grid-template-columns: 1fr 20rem;
 
@@ -364,7 +364,7 @@
 }
 
 /* Asymmetric Grids */
-@media (width >= 48rem) {
+@media (width >=48rem) {
   .grid-asymmetric-2-1-desktop {
     grid-template-columns: 2fr 1fr;
   }
@@ -375,7 +375,7 @@
 }
 
 /* Sidebar Layout */
-@media (width >= 48rem) {
+@media (width >=48rem) {
   .grid--2-column--sidebar {
     display: grid;
     grid-template-columns: 1fr;
@@ -383,7 +383,7 @@
   }
 }
 
-@media (width >= 64rem) {
+@media (width >=64rem) {
   .grid--2-column--sidebar {
     grid-template-columns: 1fr 15rem;
 
@@ -391,7 +391,7 @@
   }
 }
 
-@media (width >= 80rem) {
+@media (width >=80rem) {
   .grid--2-column--sidebar {
     grid-template-columns: 1fr 20rem;
 
