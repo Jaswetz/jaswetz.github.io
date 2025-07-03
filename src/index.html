@@ -78,34 +78,31 @@
   <body class="page__home">
     <site-header></site-header>
 
-    <main>
-      <section id="hero" class="hero-section hero">
-        <div class="hero-content">
-          <h1>UX and Product Designer</h1>
-          <!-- <p class="hero__tagline">
-          I turn complex tools into products millions of users love.
-        </p > -->
-          <p class="hero__tagline">
-            I create experiences so intuitive and simple that you can’t imagine
-            them any other way.
-          </p>
-          <!-- Animated 2D Logo -->
-          <div
-            class="logo-2d"
-            role="img"
-            aria-label="Jason Swetzoff's logo - Triangle in Circle in Square"
-          >
-            <div class="logo-2d__shape logo-2d__square"></div>
-            <div class="logo-2d__shape logo-2d__circle"></div>
-            <div class="logo-2d__shape logo-2d__triangle"></div>
-          </div>
-          <!-- <div class="hero-content__button-group">
-          <a href=""></a>
-        </div> -->
+    <section id="hero" class="hero-section hero">
+        <h1>UX and Product Designer</h1>
+        <!-- <p class="hero__tagline">
+        I turn complex tools into products millions of users love.
+      </p > -->
+        <p class="hero__tagline">
+          I create experiences so intuitive and simple that you can’t imagine
+          them any other way.
+        </p>
+        <!-- Animated 2D Logo -->
+        <div
+          class="logo-2d"
+          role="img"
+          alt="Jason Swetzoff's logo - Triangle in Circle in Square"
+          aria-label="Jason Swetzoff's logo - Triangle in Circle in Square"
+        >
+          <div class="logo-2d__shape logo-2d__square"></div>
+          <div class="logo-2d__shape logo-2d__circle"></div>
+          <div class="logo-2d__shape logo-2d__triangle"></div>
         </div>
-      </section>
-      <div class="main-content">
-        <div class="wrapper">
+        <!-- <div class="hero-content__button-group">
+        <a href=""></a>
+      </div> -->
+    </section>
+    <main class="main-content wrapper">
           <section id="featured-projects" class="featured-projects-section">
             <h2>Featured Projects</h2>
             <div class="grid grid--2-column">
@@ -180,7 +177,6 @@
                   <span class="tag">Design Systems</span>
                   <span class="tag">Cross-platform</span>
                 </div> -->
-                  </div>
                 </article>
               </a>
             </div>
@@ -259,7 +255,6 @@
               </blockquote>
             </div>
           </section>
-        </div>
         <!-- End wrapper -->
 
         <!-- <section id="contact-cta" class="contact-cta-section">
@@ -297,11 +292,10 @@
           </li>
         </ul>
         <p>Or, visit my contact page for more options:</p>
-        <a href="contact.html" class="cta-button secondary-cta">Contact Page</a>
       </section> -->
-      </div>
     </main>
-    <site-footer id="footer"></site-footer>
+    <site-footer id="footer" role="contentinfo"></site-footer>
     <script type="module" src="./js/main.js?v=1"></script>
+  </body>
   </body>
 </html>
