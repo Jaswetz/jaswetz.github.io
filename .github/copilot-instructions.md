@@ -1,13 +1,5 @@
 # Project Naming Conventions
 
-## GIT
-
-Make git commits frequently at natural points proactively.
-
-## README.md
-
-Capture all changes and decisions in the README.md
-
 ## Folders
 
 Use `kebab-case` for folder names.
@@ -36,19 +28,6 @@ Use `kebab-case` for general script files. `camelCase` can be used for modules o
 - Example (kebab-case): `api-handler.js`
 - Example (kebab-case): `user-profile.js`
 - Example (camelCase): `UserProfile.js` (for a class)
-
-## Image and Asset Files
-
-Use `kebab-case` with descriptive names.
-
-- Example: `profile-picture-large.jpg`
-- Example: `project-thumbnail-blue.png`
-
-## Web Components
-
-- Custom element names MUST contain a hyphen (e.g., `<site-header>`, `<project-card>`).
-- Component JavaScript files should be named in `PascalCase` (e.g., `SiteHeader.js`, `ProjectCard.js`).
-- Component files should be organized by feature/UI element in the `src/js/components/` directory (e.g., `src/js/components/site-header/SiteHeader.js`).
 
 # Development Environment & Tooling
 
@@ -184,13 +163,6 @@ This project uses **Native Web Components** for creating reusable UI elements su
 - These components are then used directly in the HTML pages (e.g., `src/index.html`, `src/about.html`, `src/styleguide.html`).
 - Parcel.js handles the bundling of these components as part of the standard JavaScript build process.
 
-# Living Style Guide
-
-A living style guide is available at `src/styleguide.html`. When running the development server (`npm run dev`), this page can be accessed to view and test all available Web Components, design tokens (colors, typography), and utility classes.
-This page serves as a central reference for the UI of the website.
-
-Add any new components or styles or layouts to this page when created.
-
 ## Core Technologies
 
 The website itself is built using fundamental web technologies:
@@ -203,18 +175,3 @@ The website itself is built using fundamental web technologies:
 These technologies are web standards and are designed for long-term browser compatibility, which significantly contributes to the future-proofing of the actual deployed website.
 
 # Accessibility (A11Y) - Accessibility-by-Design
-
-This project commits to an "Accessibility-by-Design" approach, integrating accessibility considerations throughout the development lifecycle.
-
-- **A11Y1. WCAG 2.1 Level AA:** The primary goal is to meet the Web Content Accessibility Guidelines (WCAG) 2.1 at Level AA.
-- **A11Y2. Semantic HTML5:** Use HTML5 elements according to their semantic meaning to build a well-structured and understandable content hierarchy (e.g., `<header>`, `<nav>`, `<main>`, `<article>`, `<aside>`, `<footer>`).
-- **A11Y3. Keyboard Accessibility:** All interactive elements (links, buttons, future form controls) must be fully operable via keyboard. Focus states must be clear and visible.
-- **A11Y4. ARIA Attributes:** Use ARIA attributes judiciously to enhance accessibility where native HTML semantics are insufficient, especially for custom Web Components. Prefer native HTML elements and attributes first.
-- **A11Y5. Image `alt` Text:** All `<img>` tags will have descriptive `alt` text for informative images, or `alt=""` for purely decorative images.
-- **A11Y6. Color Contrast:** Text and interactive elements will maintain a minimum contrast ratio of 4.5:1 for normal text and 3:1 for large text (as defined by WCAG) against their backgrounds.
-- **A11Y7. Responsiveness & Zoom:** The website will be responsive across various screen sizes. Text must be resizable up to 200% using browser zoom features without loss of content or functionality.
-- **A11Y8. Forms:** If forms are implemented (e.g., a contact form, potentially via a third-party service), they must have clear labels, associated error messages, and support accessible validation.
-- **A11Y9. Web Component Accessibility:** Web Components will be developed with accessibility as a core requirement. This includes managing focus within Shadow DOM, providing appropriate ARIA roles and states for custom elements, and ensuring they are keyboard navigable.
-- **A11Y10. Regular Testing:** Accessibility will be regularly checked using:
-  - Automated tools (e.g., Axe DevTools, Lighthouse accessibility audits).
-  - Manual testing (keyboard-only navigation, screen reader checks with VoiceOver/NVDA, zoom testing, color contrast checks).
