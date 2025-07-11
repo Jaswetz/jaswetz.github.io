@@ -81,12 +81,9 @@
 
 @media (width <=480px) {
   .companies-carousel__track {
-    animation-duration: 20s;
-  }
-
-  .companies-carousel__track {
     gap: var(--spacing-small);
     animation-duration: 25s;
+    gap: var(--space-s);
   }
 
   .company-logo {
@@ -107,8 +104,4 @@
   .companies-carousel__track {
     animation: none;
   }
-}
-
-.companies-carousel__track {
-  animation: none;
 }
