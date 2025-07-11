@@ -73,7 +73,6 @@
 @media (width <=768px) {
   .companies-carousel__track {
     gap: var(--space-s);
-
     animation-duration: 25s;
   }
 
