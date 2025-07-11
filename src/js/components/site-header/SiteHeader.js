@@ -581,17 +581,18 @@ class SiteHeader extends HTMLElement {
       // Add scroll detection for active section highlighting
       const sections = [
         "hero",
-        "quotes",
         "featured-projects",
         "about",
+        "quotes",
         "footer",
       ];
       this.updateActiveSection = () => {
         const headerHeight = this.offsetHeight || 80;
-        const scrollPosition = window.scrollY + headerHeight + 50; // Offset for header height + padding
+        const scrollPosition = window.scrollY + headerHeight + 100; // Increased offset for better detection
 
         let activeSection = "hero"; // Default to hero
 
+        // Check sections in order they appear on page
         for (const sectionId of sections) {
           const sectionElement = document.querySelector(`#${sectionId}`);
           if (
@@ -605,7 +606,8 @@ class SiteHeader extends HTMLElement {
         // Update active states
         scrollLinks.forEach((link) => {
           const href = link.getAttribute("href");
-          if (href === `#${activeSection}`) {
+          const targetSection = href.replace(/^.*#/, ""); // Extract section name from href
+          if (targetSection === activeSection) {
             link.classList.add("active");
           } else {
             link.classList.remove("active");

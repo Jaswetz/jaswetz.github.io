@@ -950,6 +950,45 @@
             </p>
           </section>
 
+          <section id="footer" class="styleguide-section">
+            <h3>SiteFooter Component</h3>
+            <p>
+              The site-wide footer component. It includes copyright information,
+              social links, and a "back to top" button.
+            </p>
+
+            <h4>Usage</h4>
+            <pre><code><site-footer></site-footer></code></pre>
+
+            <h4>Features</h4>
+            <ul>
+              <li>Dynamically updated copyright year.</li>
+              <li>Includes links to email, LinkedIn, and GitHub.</li>
+              <li>
+                <strong>New:</strong> "Back to top" button that appears on
+                scroll and smoothly returns the user to the top of the page.
+              </li>
+            </ul>
+
+            <h4>Live Preview</h4>
+            <p>
+              Scroll down this page to see the "Back to top" button appear in
+              the bottom-right corner.
+            </p>
+            <div
+              class="styleguide-example"
+              style="height: 150vh; border: 1px dashed #ccc; padding: 1em"
+            >
+              <p>Scroll down inside this container...</p>
+            </div>
+            <p>
+              <em
+                >Note: The footer itself is not rendered here to avoid
+                duplication, but the component is active on this page.</em
+              >
+            </p>
+          </section>
+
           <!-- Add more component showcases as they are developed -->
         </section>
 
@@ -978,6 +1017,7 @@
         </section>
       </div>
     </main>
+    <site-footer></site-footer>
     <script type="module" src="./js/main.js?v=1"></script>
   </body>
 </html>

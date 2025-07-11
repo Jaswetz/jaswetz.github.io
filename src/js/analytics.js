@@ -4,54 +4,105 @@
  */
 
 // Check if we're in development environment
-const isDevelopment = 
-  window.location.hostname === 'localhost' || 
-  window.location.hostname === '127.0.0.1' || 
-  window.location.hostname.includes('127.0.0.1') ||
-  window.location.port !== '';
+const isDevelopment =
+  window.location.hostname === "localhost" ||
+  window.location.hostname === "127.0.0.1" ||
+  window.location.hostname.includes("127.0.0.1") ||
+  window.location.port !== "";
 
 // Initialize Google Analytics 4 only in production or when explicitly enabled
-if (!isDevelopment || window.location.search.includes('ga=true')) {
-  // @ts-ignore - Google Analytics dataLayer
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
+function initializeGA4() {
+  if (!isDevelopment || window.location.search.includes("ga=true")) {
     // @ts-ignore - Google Analytics dataLayer
-    dataLayer.push(arguments);
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      // @ts-ignore - Google Analytics dataLayer
+      dataLayer.push(arguments);
+    }
+    // Make gtag globally available
+    // @ts-ignore - Google Analytics gtag
+    window.gtag = gtag;
+
+    gtag("js", new Date());
+
+    // Configure GA4 with enhanced measurement
+    gtag("config", "G-Z5DNDF44NG", {
+      // Enable enhanced measurement features
+      enhanced_measurement: true,
+      // Track page views automatically
+      page_title: document.title,
+      page_location: window.location.href,
+      // Enable demographic reports (optional)
+      allow_ad_personalization_signals: false, // Set to true if you want ad personalization
+      // Enable Google Signals for cross-device tracking (optional)
+      allow_google_signals: true,
+    });
+
+    console.log("Google Analytics 4 initialized");
+  } else {
+    // Create mock gtag function for development
+    // @ts-ignore - Mock function for development
+    window.gtag = function () {
+      console.log("GA4 (dev mode):", arguments);
+    };
+    // @ts-ignore - Google Analytics dataLayer
+    window.dataLayer = [];
+    console.log("Google Analytics disabled in development environment");
   }
-  gtag("js", new Date());
+}
 
-  // Configure GA4 with enhanced measurement
-  gtag("config", "G-Z5DNDF44NG", {
-    // Enable enhanced measurement features
-    enhanced_measurement: true,
-    // Track page views automatically
-    page_title: document.title,
-    page_location: window.location.href,
-    // Enable demographic reports (optional)
-    allow_ad_personalization_signals: false, // Set to true if you want ad personalization
-    // Enable Google Signals for cross-device tracking (optional)
-    allow_google_signals: true,
-  });
+// Wait for GA4 script to load or initialize immediately if in development
+if (!isDevelopment || window.location.search.includes("ga=true")) {
+  // Check if GA4 script is already loaded
+  // @ts-ignore - Google Analytics gtag
+  if (window.gtag) {
+    initializeGA4();
+  } else {
+    // Wait for the GA4 script to load
+    const checkGA4 = setInterval(() => {
+      // @ts-ignore - Google Analytics gtag
+      if (
+        window.gtag ||
+        document.querySelector("script[src*=\"googletagmanager.com/gtag/js\"]")
+      ) {
+        clearInterval(checkGA4);
+        // Give the script a moment to fully initialize
+        setTimeout(initializeGA4, 100);
+      }
+    }, 100);
 
-  console.log('Google Analytics 4 initialized');
+    // Fallback: initialize after 2 seconds even if script doesn't load
+    setTimeout(() => {
+      clearInterval(checkGA4);
+      // @ts-ignore - Google Analytics gtag
+      if (!window.gtag) {
+        console.warn("GA4 script did not load, creating fallback");
+        initializeGA4();
+      }
+    }, 2000);
+  }
 } else {
-  // Create mock gtag function for development
-  // @ts-ignore - Mock function for development
-  window.gtag = function() {
-    console.log('GA4 (dev mode):', arguments);
-  };
-  // @ts-ignore - Google Analytics dataLayer
-  window.dataLayer = [];
-  console.log('Google Analytics disabled in development environment');
+  initializeGA4();
 }
 
 /**
  * Custom Event Tracking Functions
  */
 
+// Safe gtag wrapper that checks if gtag is available
+function safeGtag() {
+  // @ts-ignore - Google Analytics gtag
+  if (typeof window.gtag === "function") {
+    // @ts-ignore - Google Analytics gtag
+    return window.gtag.apply(window, arguments);
+  } else {
+    console.log("GA4 not available, event not tracked:", arguments);
+  }
+}
+
 // Track project card clicks
 function trackProjectClick(projectName, projectType) {
-  gtag("event", "project_view", {
+  safeGtag("event", "project_view", {
     event_category: "Projects",
     event_label: projectName,
     project_type: projectType,
@@ -61,7 +112,7 @@ function trackProjectClick(projectName, projectType) {
 
 // Track resume downloads
 function trackResumeDownload() {
-  gtag("event", "file_download", {
+  safeGtag("event", "file_download", {
     event_category: "Engagement",
     event_label: "Resume PDF",
     file_name: "Jason Swetzoff - Principal UX Designer - Resume.pdf",
@@ -71,7 +122,7 @@ function trackResumeDownload() {
 
 // Track contact form interactions
 function trackContactForm(action, method = "") {
-  gtag("event", action, {
+  safeGtag("event", action, {
     event_category: "Contact",
     event_label: method,
     value: 1,
@@ -80,7 +131,7 @@ function trackContactForm(action, method = "") {
 
 // Track external link clicks
 function trackExternalLink(url, linkText) {
-  gtag("event", "click", {
+  safeGtag("event", "click", {
     event_category: "External Links",
     event_label: url,
     link_text: linkText,
@@ -102,7 +153,7 @@ function trackScrollDepth() {
   milestones.forEach((milestone) => {
     if (scrollPercent >= milestone && !scrollDepthTracked.includes(milestone)) {
       scrollDepthTracked.push(milestone);
-      gtag("event", "scroll", {
+      safeGtag("event", "scroll", {
         event_category: "Engagement",
         event_label: `${milestone}%`,
         value: milestone,
@@ -115,7 +166,7 @@ function trackScrollDepth() {
 let startTime = Date.now();
 function trackTimeOnPage() {
   const timeSpent = Math.round((Date.now() - startTime) / 1000);
-  gtag("event", "timing_complete", {
+  safeGtag("event", "timing_complete", {
     name: "page_view_time",
     value: timeSpent,
   });
@@ -127,7 +178,7 @@ function trackTimeOnPage() {
 document.addEventListener("DOMContentLoaded", function () {
   // Track resume download clicks
   const resumeLinks = document.querySelectorAll(
-    'a[href*="resume"], a[href*="Resume"], a[href*="cv"], a[href*="CV"]'
+    "a[href*=\"resume\"], a[href*=\"Resume\"], a[href*=\"cv\"], a[href*=\"CV\"]"
   );
   resumeLinks.forEach((link) => {
     link.addEventListener("click", trackResumeDownload);
@@ -135,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Track project card clicks
   const projectLinks = document.querySelectorAll(
-    '.card__link, .project-card a, a[href*="project"]'
+    ".card__link, .project-card a, a[href*=\"project\"]"
   );
   projectLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
@@ -155,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Track external links
   const externalLinks = document.querySelectorAll(
-    'a[href^="http"]:not([href*="' + window.location.hostname + '"])'
+    "a[href^=\"http\"]:not([href*=\"" + window.location.hostname + "\"])"
   );
   externalLinks.forEach((link) => {
     link.addEventListener("click", function (e) {

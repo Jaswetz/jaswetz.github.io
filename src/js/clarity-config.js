@@ -22,30 +22,58 @@
   if (
     window.location.hostname === "localhost" ||
     window.location.hostname === "127.0.0.1" ||
-    window.location.hostname.includes("local")
+    window.location.hostname.includes("local") ||
+    window.location.hostname.includes("127.0.0.1") ||
+    window.location.port !== "" ||
+    window.location.protocol === "file:"
   ) {
     console.log("Clarity disabled in development environment");
+    // Create mock clarity function for development
+    c[a] = function () {
+      console.log("Clarity (dev mode):", arguments);
+    };
     return;
   }
 
-  c[a] =
-    c[a] ||
-    function () {
-      (c[a].q = c[a].q || []).push(arguments);
+  try {
+    c[a] =
+      c[a] ||
+      function () {
+        (c[a].q = c[a].q || []).push(arguments);
+      };
+    t = l.createElement(r);
+    t.async = 1;
+    t.src = "https://www.clarity.ms/tag/" + i;
+
+    // Add error handling for script loading
+    t.onerror = function () {
+      console.warn(
+        "Microsoft Clarity script failed to load - this may be due to ad blockers or network issues"
+      );
+      // Create fallback function
+      c[a] = function () {
+        console.log("Clarity fallback:", arguments);
+      };
     };
-  t = l.createElement(r);
-  t.async = 1;
-  t.src = "https://www.clarity.ms/tag/" + i;
 
-  // Add error handling for script loading
-  t.onerror = function () {
-    console.warn(
-      "Microsoft Clarity script failed to load - this is normal in development or with ad blockers"
-    );
-  };
+    t.onload = function () {
+      console.log("Microsoft Clarity script loaded successfully");
+    };
 
-  y = l.getElementsByTagName(r)[0];
-  y.parentNode.insertBefore(t, y);
+    y = l.getElementsByTagName(r)[0];
+    if (y && y.parentNode) {
+      y.parentNode.insertBefore(t, y);
+    } else {
+      // Fallback if no script tags exist yet
+      l.head.appendChild(t);
+    }
+  } catch (error) {
+    console.warn("Error initializing Microsoft Clarity:", error);
+    // Create fallback function
+    c[a] = function () {
+      console.log("Clarity error fallback:", arguments);
+    };
+  }
 })(window, document, "clarity", "script", "s7dys3l8mm");
 
 /**

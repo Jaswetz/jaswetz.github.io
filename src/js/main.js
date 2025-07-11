@@ -29,6 +29,45 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.querySelector(".sidebar-nav")) {
     new SidebarNavigation();
   }
+
+  // Add click functionality to the animated 2D logo
+  const logo2d = document.querySelector(".logo-2d");
+  if (logo2d instanceof HTMLElement) {
+    // Make the logo clickable by adding cursor pointer style
+    logo2d.style.cursor = "pointer";
+
+    // Add click event listener
+    logo2d.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      // Find the featured projects section
+      const featuredProjectsSection =
+        document.querySelector("#featured-projects");
+      if (featuredProjectsSection instanceof HTMLElement) {
+        // Smooth scroll to the featured projects section
+        featuredProjectsSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+
+        // Optional: Update URL hash
+        window.history.pushState(null, null, "#featured-projects");
+      }
+    });
+
+    // Add keyboard accessibility (Enter and Space keys)
+    logo2d.addEventListener("keydown", (e) => {
+      if (e instanceof KeyboardEvent && (e.key === "Enter" || e.key === " ")) {
+        e.preventDefault();
+        logo2d.click(); // Trigger the click event
+      }
+    });
+
+    // Make it focusable for keyboard navigation
+    logo2d.setAttribute("tabindex", "0");
+    logo2d.setAttribute("role", "button");
+    logo2d.setAttribute("aria-label", "Scroll to featured projects section");
+  }
 });
 
 // --- Debug Styles Toggle ---

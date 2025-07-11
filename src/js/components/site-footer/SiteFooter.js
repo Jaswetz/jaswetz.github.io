@@ -9,6 +9,8 @@
 // TODO: [Component][SiteFooter] Expose CSS Custom Properties for more granular theming if needed (WCMP18)
 // TODO: [Component][SiteFooter] Enhance accessibility (e.g. ARIA for links if complex) (A11Y4, A11Y9)
 class SiteFooter extends HTMLElement {
+  _scrollHandler = null;
+
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -122,6 +124,43 @@ class SiteFooter extends HTMLElement {
           outline-offset: var(--focus-outline-offset);
         }
 
+        .back-to-top {
+          position: fixed;
+          bottom: var(--space-l, 1.5rem);
+          right: var(--space-l, 1.5rem);
+          z-index: 1000;
+        }
+
+        .back-to-top__button {
+          background-color: var(--color-primary);
+          color: var(--color-background);
+          border: none;
+          border-radius: 50%;
+          width: 3rem;
+          height: 3rem;
+          font-size: 1.5rem;
+          line-height: 1;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: transform 0.2s ease-out, opacity 0.2s ease-out, visibility 0.2s ease-out;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(1rem);
+        }
+
+        .back-to-top__button:hover {
+          transform: var(--hover-transform-small);
+          background-color: var(--color-primary-alt);
+        }
+
+        .back-to-top__button--visible {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+
         @media (min-width: 64rem) {
           .footer-content {
             grid-template-columns: 1fr 1fr; /* Keep 2 per row on large screens */
@@ -182,7 +221,46 @@ class SiteFooter extends HTMLElement {
           </ul>
         </nav>
       </footer>
+      <div class="back-to-top">
+        <button id="back-to-top-btn" class="back-to-top__button" aria-label="Back to top" title="Back to top">
+            &uarr;
+        </button>
+      </div>
     `;
+    this._setupBackToTop();
+  }
+
+  /**
+   * Sets up the "back to top" button functionality.
+   * It adds event listeners for clicking the button to scroll to the top,
+   * and for showing/hiding the button based on the window's scroll position.
+   * @private
+   */
+  _setupBackToTop() {
+    const backToTopButton = this.shadowRoot.querySelector("#back-to-top-btn");
+    if (!backToTopButton) return;
+
+    backToTopButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    this._scrollHandler = () => {
+      const isVisible = window.scrollY > window.innerHeight;
+      backToTopButton.classList.toggle(
+        "back-to-top__button--visible",
+        isVisible
+      );
+    };
+
+    window.addEventListener("scroll", this._scrollHandler, { passive: true });
+    this._scrollHandler(); // Initial check
+  }
+
+  disconnectedCallback() {
+    if (this._scrollHandler) {
+      window.removeEventListener("scroll", this._scrollHandler);
+    }
   }
 
   // Future: observedAttributes and attributeChangedCallback if props are needed.
