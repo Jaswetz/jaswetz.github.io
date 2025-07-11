@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Track resume downloads
-  document.querySelectorAll("a[href*=\"Resume.pdf\"]").forEach((link) => {
+  document.querySelectorAll("a[href*='Resume.pdf']").forEach((link) => {
     link.addEventListener("click", () => {
       if (window.trackResumeDownload) {
         window.trackResumeDownload();
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Track external link clicks
-  document.querySelectorAll("a[href^=\"http\"]").forEach((link) => {
+  document.querySelectorAll("a[href^='http']").forEach((link) => {
     if (
       link instanceof HTMLAnchorElement &&
       link.hostname !== window.location.hostname

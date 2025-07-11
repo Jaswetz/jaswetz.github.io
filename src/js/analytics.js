@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ".card__link, .project-card a, a[href*=\"project\"]"
   );
   projectLinks.forEach((link) => {
-    link.addEventListener("click", function (e) {
+    link.addEventListener("click", function () {
       const projectName =
         this.querySelector("h3, h2, .card__title")?.textContent ||
         "Unknown Project";
@@ -209,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "a[href^=\"http\"]:not([href*=\"" + window.location.hostname + "\"])"
   );
   externalLinks.forEach((link) => {
-    link.addEventListener("click", function (e) {
+    link.addEventListener("click", function () {
       const url = this.getAttribute("href");
       const linkText =
         this.textContent || this.getAttribute("aria-label") || "External Link";

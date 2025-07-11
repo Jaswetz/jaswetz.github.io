@@ -10,4 +10,5 @@ Thumbs.db
 
 # Editor-specific files
 .vscode/
-.idea/ .kilocode/
+.idea/
+.kilocode/

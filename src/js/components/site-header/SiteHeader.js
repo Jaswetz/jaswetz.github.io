@@ -630,13 +630,12 @@ class SiteHeader extends HTMLElement {
 
   handleScroll() {
     const currentScrollY = window.scrollY;
-    const header = this;
 
     if (currentScrollY > 10) {
       // Changed from 50 to 10 for earlier animation
-      header.classList.add("scrolled");
+      this.classList.add("scrolled");
     } else {
-      header.classList.remove("scrolled");
+      this.classList.remove("scrolled");
     }
 
     this.lastScrollY = currentScrollY;

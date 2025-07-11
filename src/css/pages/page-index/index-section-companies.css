@@ -3,13 +3,11 @@
 .companies-carousel {
   width: 100%;
   overflow: hidden;
-  mask: linear-gradient(
-    to right,
-    transparent 0%,
-    black 10%,
-    black 90%,
-    transparent 100%
-  );
+  mask: linear-gradient(to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%);
   margin-top: var(--space-2xl);
 }
 
@@ -85,6 +83,23 @@
   .companies-carousel__track {
     animation-duration: 20s;
   }
+
+  .companies-carousel__track {
+    gap: var(--spacing-small);
+    animation-duration: 25s;
+  }
+
+  .company-logo {
+    padding: var(--spacing-small);
+  }
+
+}
+
+@media (width <=480px) {
+  .companies-carousel__track {
+    animation-duration: 20s;
+  }
+
 }
 
 /* Accessibility: Respect reduced motion preference */
@@ -92,4 +107,8 @@
   .companies-carousel__track {
     animation: none;
   }
+}
+
+.companies-carousel__track {
+  animation: none;
 }

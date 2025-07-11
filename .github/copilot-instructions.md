@@ -175,3 +175,4 @@ The website itself is built using fundamental web technologies:
 These technologies are web standards and are designed for long-term browser compatibility, which significantly contributes to the future-proofing of the actual deployed website.
 
 # Accessibility (A11Y) - Accessibility-by-Design
+
