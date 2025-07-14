@@ -3,7 +3,6 @@
 /* Typography utilities will be defined here, within a layer */
 
 @layer utilities {
-
   /* Text Alignment */
   .text-left {
     text-align: left;
@@ -153,4 +152,5 @@
 }
 
 /* Issue #11: Add more font-size utility classes if needed */
+
 /* See: https://github.com/Jaswetz/jaswetz.github.io/issues/11 */
