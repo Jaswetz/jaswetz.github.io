@@ -3,6 +3,7 @@
 /* Typography utilities will be defined here, within a layer */
 
 @layer utilities {
+
   /* Text Alignment */
   .text-left {
     text-align: left;
