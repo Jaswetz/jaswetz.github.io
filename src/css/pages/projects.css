@@ -16,7 +16,8 @@
     border-bottom: 1px solid var(--color-border);
 }
 
-/* TODO: put border around all none transparent images */
+/* Issue #11: put border around all none transparent images */
+/* See: https://github.com/Jaswetz/jaswetz.github.io/issues/11 */
 
 /* .project__img {
     border: var(--border-width) solid #ddd;

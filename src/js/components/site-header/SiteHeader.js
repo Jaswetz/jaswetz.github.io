@@ -3,12 +3,8 @@
  * It encapsulates its own structure, styles, and basic behavior.
  * @extends HTMLElement
  */
-// TODO: [Component][SiteHeader] Implement props/attributes if needed (e.g., for different versions of header) (WCMP7, WCMP8)
-// TODO: [Component][SiteHeader] Implement custom events if header interactions need to notify outside (WCMP7)
-// TODO: [Component][SiteHeader] Expose CSS Custom Properties for more granular theming if needed (WCMP18)
-// TODO: [Component][SiteHeader] Enhance accessibility (e.g. ARIA for nav, focus management if complex) (A11Y4, A11Y9)
-// TODO: Add pressed states for all buttons and links (WCMP9)
-// TODO: Update spacing to use CSS Custom Properties (WCMP10)
+// Issue #8: Enhance SiteHeader Component - Props, Events, and Accessibility
+// See: https://github.com/Jaswetz/jaswetz.github.io/issues/8
 
 class SiteHeader extends HTMLElement {
   constructor() {

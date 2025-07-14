@@ -4,10 +4,8 @@
  * @description Custom element for the site-wide footer.
  * It displays copyright information with a dynamically updated year.
  */
-// TODO: [Component][SiteFooter] Implement props/attributes if needed (WCMP7, WCMP8)
-// TODO: [Component][SiteFooter] Implement custom events if footer interactions need to notify outside (WCMP7)
-// TODO: [Component][SiteFooter] Expose CSS Custom Properties for more granular theming if needed (WCMP18)
-// TODO: [Component][SiteFooter] Enhance accessibility (e.g. ARIA for links if complex) (A11Y4, A11Y9)
+// Issue #9: Enhance SiteFooter Component - Props, Events, and Accessibility
+// See: https://github.com/Jaswetz/jaswetz.github.io/issues/9
 class SiteFooter extends HTMLElement {
   _scrollHandler = null;
 
