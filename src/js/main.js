@@ -1,4 +1,5 @@
-// TODO: [Unsupported Browsers] Implement a robust solution for unsupported browsers (Requirement 3.2)
+// Issue #7: Implement a robust solution for unsupported browsers (Requirement 3.2)
+// See: https://github.com/Jaswetz/jaswetz.github.io/issues/7
 // Main JavaScript file
 
 import "../css/main.css";

@@ -6,7 +6,9 @@
     Base Section Styles
     -------------------------------------------------------------------------- */
 
-/* TODO: Move back to projects.css */
+/* Issue #11: Move back to projects.css */
+
+/* See: https://github.com/Jaswetz/jaswetz.github.io/issues/11 */
 
 .section {
     padding-bottom: var(--space-2xl);
