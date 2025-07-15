@@ -89,7 +89,13 @@ if (!isDevelopment || window.location.search.includes("ga=true")) {
  * Custom Event Tracking Functions
  */
 
-// Safe gtag wrapper that checks if gtag is available
+/**
+ * A safe wrapper for the Google Analytics `gtag` function that checks its availability.
+ * If `gtag` is available, it forwards the arguments to the `gtag` function.
+ * If `gtag` is unavailable, it logs a message indicating that the event was not tracked.
+ *
+ * @param {...any} args - The arguments to pass to the `gtag` function.
+ */
 function safeGtag() {
   // @ts-ignore - Google Analytics gtag
   if (typeof window.gtag === "function") {
