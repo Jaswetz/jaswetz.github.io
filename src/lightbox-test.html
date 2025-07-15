@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lightbox Test</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <style>
+        body {
+            padding: 2rem;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-image {
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Lightbox Test Page</h1>
+        
+        <div class="test-image">
+            <figure>
+                <img
+                    src="./img/projects/autodesk-messaging/messaging-final.jpg"
+                    alt="Test image 1"
+                    class="project__img"
+                />
+                <figcaption>
+                    This is the first test image caption
+                </figcaption>
+            </figure>
+        </div>
+
+        <div class="test-image">
+            <figure>
+                <img
+                    src="./img/projects/autodesk-messaging/workshop-2.png"
+                    alt="Test image 2"
+                    class="project__img"
+                />
+                <figcaption>
+                    This is the second test image caption
+                </figcaption>
+            </figure>
+        </div>
+
+        <div class="test-image">
+            <figure>
+                <img
+                    src="./img/projects/autodesk-messaging/analytics.png"
+                    alt="Test image 3"
+                    class="project-summary__image"
+                />
+                <figcaption>
+                    This is the third test image caption
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <!-- Image Lightbox Component -->
+    <image-lightbox></image-lightbox>
+    
+    <script type="module" src="./js/main.js?v=1"></script>
+</body>
+</html>
