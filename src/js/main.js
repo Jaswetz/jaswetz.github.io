@@ -8,12 +8,14 @@ import "./clarity-config.js";
 import SiteHeader from "./components/site-header/SiteHeader.js";
 import SiteFooter from "./components/site-footer/SiteFooter.js";
 import SidebarNavigation from "./components/sidebar-navigation/SidebarNavigation.js";
+import ImageLightbox from "./components/ImageLightbox/ImageLightbox.js";
 // LazyLoader temporarily removed to isolate Web Components issue
 
 // Define the custom elements
 if (window.customElements) {
   customElements.define("site-header", SiteHeader);
   customElements.define("site-footer", SiteFooter);
+  customElements.define("image-lightbox", ImageLightbox);
 } else {
   console.warn(
     "Custom Elements are not supported in this browser. Site may not render correctly."
