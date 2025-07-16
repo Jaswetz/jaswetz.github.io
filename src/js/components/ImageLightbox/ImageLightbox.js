@@ -1,9 +1,9 @@
 /**
  * ImageLightbox Web Component
- * 
+ *
  * A accessible lightbox modal for viewing case study images in full size.
  * Supports keyboard navigation, touch gestures, and maintains WCAG 2.1 Level AA compliance.
- * 
+ *
  * Features:
  * - Click on images to open in lightbox
  * - Keyboard navigation (ESC to close, arrow keys for navigation)
@@ -11,25 +11,25 @@
  * - Focus management for accessibility
  * - Image captions support
  * - Responsive design
- * 
+ *
  * @extends HTMLElement
  */
 class ImageLightbox extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-    
+
     // State management
     this.isOpen = false;
     this.currentImageIndex = 0;
     this.images = [];
     this.originalFocusElement = null;
-    
+
     // Touch handling for mobile gestures
     this.touchStartX = 0;
     this.touchStartY = 0;
     this.minSwipeDistance = 50;
-    
+
     // Bind methods to preserve context
     this.handleKeydown = this.handleKeydown.bind(this);
     this.handleBackdropClick = this.handleBackdropClick.bind(this);
@@ -42,7 +42,7 @@ class ImageLightbox extends HTMLElement {
   connectedCallback() {
     this.render();
     this.initializeImageListeners();
-    
+
     // Add resize listener for responsive behavior
     window.addEventListener("resize", this.handleResize);
   }
@@ -51,7 +51,7 @@ class ImageLightbox extends HTMLElement {
     // Clean up event listeners
     window.removeEventListener("resize", this.handleResize);
     this.removeImageListeners();
-    
+
     // Remove global listeners if lightbox is open
     if (this.isOpen) {
       document.removeEventListener("keydown", this.handleKeydown);
@@ -59,22 +59,9 @@ class ImageLightbox extends HTMLElement {
   }
 
   render() {
-    this.shadowRoot.innerHTML = /*html*/`
+    this.shadowRoot.innerHTML = /*html*/ `
       <style>
         /* language=CSS */
-        :host {
-          --lightbox-bg: rgba(0, 0, 0, 0.9);
-          --lightbox-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          --lightbox-z-index: 9999;
-          --button-size: 48px;
-          --button-bg: rgba(255, 255, 255, 0.1);
-          --button-bg-hover: rgba(255, 255, 255, 0.2);
-          --button-color: #ffffff;
-          --caption-bg: rgba(0, 0, 0, 0.7);
-          --caption-color: #ffffff;
-          --focus-ring: 2px solid var(--accent-color, #0066cc);
-          --focus-ring-offset: 2px;
-        }
 
         .lightbox {
           position: fixed;
@@ -317,11 +304,19 @@ class ImageLightbox extends HTMLElement {
     // Get DOM references
     this.lightboxEl = this.shadowRoot.querySelector(".lightbox");
     this.containerEl = this.shadowRoot.querySelector(".lightbox__container");
-    this.imageEl = /** @type {HTMLImageElement} */ (this.shadowRoot.querySelector(".lightbox__image"));
+    this.imageEl = /** @type {HTMLImageElement} */ (
+      this.shadowRoot.querySelector(".lightbox__image")
+    );
     this.captionEl = this.shadowRoot.querySelector(".lightbox__caption");
-    this.closeBtn = /** @type {HTMLButtonElement} */ (this.shadowRoot.querySelector(".lightbox__close"));
-    this.prevBtn = /** @type {HTMLButtonElement} */ (this.shadowRoot.querySelector(".lightbox__nav--prev"));
-    this.nextBtn = /** @type {HTMLButtonElement} */ (this.shadowRoot.querySelector(".lightbox__nav--next"));
+    this.closeBtn = /** @type {HTMLButtonElement} */ (
+      this.shadowRoot.querySelector(".lightbox__close")
+    );
+    this.prevBtn = /** @type {HTMLButtonElement} */ (
+      this.shadowRoot.querySelector(".lightbox__nav--prev")
+    );
+    this.nextBtn = /** @type {HTMLButtonElement} */ (
+      this.shadowRoot.querySelector(".lightbox__nav--next")
+    );
 
     // Add event listeners
     this.lightboxEl.addEventListener("click", this.handleBackdropClick);
@@ -330,8 +325,12 @@ class ImageLightbox extends HTMLElement {
     this.nextBtn.addEventListener("click", () => this.showNext());
 
     // Touch events for mobile gestures
-    this.containerEl.addEventListener("touchstart", this.handleTouchStart, { passive: false });
-    this.containerEl.addEventListener("touchend", this.handleTouchEnd, { passive: false });
+    this.containerEl.addEventListener("touchstart", this.handleTouchStart, {
+      passive: false,
+    });
+    this.containerEl.addEventListener("touchend", this.handleTouchEnd, {
+      passive: false,
+    });
   }
 
   /**
@@ -339,30 +338,32 @@ class ImageLightbox extends HTMLElement {
    */
   initializeImageListeners() {
     // Find all images in figures that should be lightboxed
-    const figures = document.querySelectorAll("figure img.project__img, figure img.project-summary__image");
-    
+    const figures = document.querySelectorAll(
+      "figure img.project__img, figure img.project-summary__image"
+    );
+
     figures.forEach((_img, index) => {
       const img = /** @type {HTMLImageElement} */ (_img);
       // Store image data
       const figure = img.closest("figure");
       const caption = figure ? figure.querySelector("figcaption") : null;
-      
+
       this.images.push({
         src: img.src,
         alt: img.alt,
         caption: caption ? caption.textContent.trim() : "",
-        originalElement: img
+        originalElement: img,
       });
 
       // Add click listener
       img.addEventListener("click", (e) => this.handleImageClick(e, index));
-      
+
       // Add visual indicator that image is clickable
       img.style.cursor = "pointer";
       img.setAttribute("role", "button");
       img.setAttribute("tabindex", "0");
       img.setAttribute("aria-label", `View larger image: ${img.alt}`);
-      
+
       // Add keyboard support for image activation
       img.addEventListener("keydown", (e) => {
         const keyEvent = /** @type {KeyboardEvent} */ (e);
@@ -380,8 +381,14 @@ class ImageLightbox extends HTMLElement {
   removeImageListeners() {
     this.images.forEach((imageData) => {
       if (imageData.originalElement) {
-        imageData.originalElement.removeEventListener("click", this.handleImageClick);
-        imageData.originalElement.removeEventListener("keydown", this.handleImageClick);
+        imageData.originalElement.removeEventListener(
+          "click",
+          this.handleImageClick
+        );
+        imageData.originalElement.removeEventListener(
+          "keydown",
+          this.handleImageClick
+        );
         imageData.originalElement.style.cursor = "";
         imageData.originalElement.removeAttribute("role");
         imageData.originalElement.removeAttribute("tabindex");
@@ -449,7 +456,10 @@ class ImageLightbox extends HTMLElement {
     const deltaY = this.touchStartY - touchEndY;
 
     // Check if it's a horizontal swipe (not vertical scroll)
-    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > this.minSwipeDistance) {
+    if (
+      Math.abs(deltaX) > Math.abs(deltaY) &&
+      Math.abs(deltaX) > this.minSwipeDistance
+    ) {
       if (deltaX > 0) {
         // Swiped left - show next image
         this.showNext();
@@ -477,7 +487,10 @@ class ImageLightbox extends HTMLElement {
   open(imageIndex = 0) {
     if (this.images.length === 0) return;
 
-    this.currentImageIndex = Math.max(0, Math.min(imageIndex, this.images.length - 1));
+    this.currentImageIndex = Math.max(
+      0,
+      Math.min(imageIndex, this.images.length - 1)
+    );
     this.isOpen = true;
 
     // Store current focus element for restoration
@@ -505,7 +518,11 @@ class ImageLightbox extends HTMLElement {
     }, 100);
 
     // Announce to screen readers
-    this.announceToScreenReader(`Lightbox opened. Viewing image ${this.currentImageIndex + 1} of ${this.images.length}.`);
+    this.announceToScreenReader(
+      `Lightbox opened. Viewing image ${this.currentImageIndex + 1} of ${
+        this.images.length
+      }.`
+    );
   }
 
   /**
@@ -541,16 +558,19 @@ class ImageLightbox extends HTMLElement {
    */
   showPrevious() {
     if (this.images.length <= 1) return;
-    
-    const newIndex = this.currentImageIndex > 0 
-      ? this.currentImageIndex - 1 
-      : this.images.length - 1;
-    
+
+    const newIndex =
+      this.currentImageIndex > 0
+        ? this.currentImageIndex - 1
+        : this.images.length - 1;
+
     this.loadImage(newIndex);
     this.currentImageIndex = newIndex;
     this.updateNavigation();
-    
-    this.announceToScreenReader(`Image ${this.currentImageIndex + 1} of ${this.images.length}.`);
+
+    this.announceToScreenReader(
+      `Image ${this.currentImageIndex + 1} of ${this.images.length}.`
+    );
   }
 
   /**
@@ -558,16 +578,19 @@ class ImageLightbox extends HTMLElement {
    */
   showNext() {
     if (this.images.length <= 1) return;
-    
-    const newIndex = this.currentImageIndex < this.images.length - 1 
-      ? this.currentImageIndex + 1 
-      : 0;
-    
+
+    const newIndex =
+      this.currentImageIndex < this.images.length - 1
+        ? this.currentImageIndex + 1
+        : 0;
+
     this.loadImage(newIndex);
     this.currentImageIndex = newIndex;
     this.updateNavigation();
-    
-    this.announceToScreenReader(`Image ${this.currentImageIndex + 1} of ${this.images.length}.`);
+
+    this.announceToScreenReader(
+      `Image ${this.currentImageIndex + 1} of ${this.images.length}.`
+    );
   }
 
   /**
@@ -577,17 +600,17 @@ class ImageLightbox extends HTMLElement {
     if (!this.images[index]) return;
 
     const imageData = this.images[index];
-    
+
     // Add loading state
     this.imageEl.classList.add("lightbox__image--loading");
-    
+
     // Load the image
     this.imageEl.src = imageData.src;
     this.imageEl.alt = imageData.alt;
-    
+
     // Update caption
     this.captionEl.textContent = imageData.caption;
-    
+
     // Remove loading state when image loads
     this.imageEl.onload = () => {
       this.imageEl.classList.remove("lightbox__image--loading");
@@ -599,7 +622,7 @@ class ImageLightbox extends HTMLElement {
    */
   updateNavigation() {
     const hasMultipleImages = this.images.length > 1;
-    
+
     // Show/hide navigation buttons based on image count
     if (hasMultipleImages) {
       this.prevBtn.classList.remove("lightbox__nav--single");
@@ -627,10 +650,10 @@ class ImageLightbox extends HTMLElement {
     announcement.style.width = "1px";
     announcement.style.height = "1px";
     announcement.style.overflow = "hidden";
-    
+
     document.body.appendChild(announcement);
     announcement.textContent = message;
-    
+
     // Remove the announcement element after a short delay
     setTimeout(() => {
       document.body.removeChild(announcement);
