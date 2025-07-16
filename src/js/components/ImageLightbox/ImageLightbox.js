@@ -77,7 +77,7 @@ class ImageLightbox extends HTMLElement {
           opacity: 0;
           visibility: hidden;
           transition: var(--lightbox-transition);
-          padding: var(--space-m, 1rem);
+          padding: var(--space-m);
           box-sizing: border-box;
         }
 
@@ -104,18 +104,18 @@ class ImageLightbox extends HTMLElement {
           max-width: 100%;
           max-height: calc(90vh - 4rem); /* Reserve space for caption */
           object-fit: contain;
-          border-radius: var(--radius-s, 4px);
+          border-radius: var(--border-radius-sm);
           box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
         .lightbox__caption {
           background: var(--caption-bg);
           color: var(--caption-color);
-          padding: var(--space-s, 0.75rem) var(--space-m, 1rem);
+          padding: var(--space-s) var(--space-m);
           text-align: center;
-          font-size: var(--font-size-s, 0.875rem);
-          line-height: var(--line-height-comfortable, 1.5);
-          border-radius: 0 0 var(--radius-s, 4px) var(--radius-s, 4px);
+          font-size: var(--font-size-sm);
+          line-height: var(--line-height-base);
+          border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
           margin: 0;
         }
 
@@ -128,19 +128,19 @@ class ImageLightbox extends HTMLElement {
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
-          width: var(--button-size);
-          height: var(--button-size);
+          width: var(--touch-target-min);
+          height: var(--touch-target-min);
           background: var(--button-bg);
           border: none;
           border-radius: 50%;
           color: var(--button-color);
-          cursor: pointer;
+          cursor: var(--button-cursor);
           display: flex;
           align-items: center;
           justify-content: center;
           font-size: 1.5rem;
           font-weight: bold;
-          transition: var(--lightbox-transition);
+          transition: var(--button-transition);
           backdrop-filter: blur(4px);
           -webkit-backdrop-filter: blur(4px);
         }
@@ -151,13 +151,13 @@ class ImageLightbox extends HTMLElement {
         }
 
         .lightbox__nav:focus {
-          outline: var(--focus-ring);
-          outline-offset: var(--focus-ring-offset);
+          outline: var(--focus-outline);
+          outline-offset: var(--focus-outline-offset);
         }
 
         .lightbox__nav:disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
+          opacity: var(--disabled-opacity);
+          cursor: var(--disabled-cursor);
         }
 
         .lightbox__nav:disabled:hover {
@@ -166,11 +166,11 @@ class ImageLightbox extends HTMLElement {
         }
 
         .lightbox__nav--prev {
-          left: var(--space-m, 1rem);
+          left: var(--space-m);
         }
 
         .lightbox__nav--next {
-          right: var(--space-m, 1rem);
+          right: var(--space-m);
         }
 
         .lightbox__nav--single {
@@ -180,21 +180,21 @@ class ImageLightbox extends HTMLElement {
         /* Close button */
         .lightbox__close {
           position: absolute;
-          top: var(--space-m, 1rem);
-          right: var(--space-m, 1rem);
-          width: var(--button-size);
-          height: var(--button-size);
+          top: var(--space-m);
+          right: var(--space-m);
+          width: var(--touch-target-min);
+          height: var(--touch-target-min);
           background: var(--button-bg);
           border: none;
           border-radius: 50%;
           color: var(--button-color);
-          cursor: pointer;
+          cursor: var(--button-cursor);
           display: flex;
           align-items: center;
           justify-content: center;
           font-size: 1.5rem;
           font-weight: bold;
-          transition: var(--lightbox-transition);
+          transition: var(--button-transition);
           backdrop-filter: blur(4px);
           -webkit-backdrop-filter: blur(4px);
         }
@@ -205,14 +205,14 @@ class ImageLightbox extends HTMLElement {
         }
 
         .lightbox__close:focus {
-          outline: var(--focus-ring);
-          outline-offset: var(--focus-ring-offset);
+          outline: var(--focus-outline);
+          outline-offset: var(--focus-outline-offset);
         }
 
         /* Mobile responsiveness */
         @media (max-width: 768px) {
           .lightbox {
-            padding: var(--space-s, 0.75rem);
+            padding: var(--space-s);
           }
 
           .lightbox__container {
@@ -225,28 +225,28 @@ class ImageLightbox extends HTMLElement {
           }
 
           .lightbox__nav {
-            width: calc(var(--button-size) * 0.8);
-            height: calc(var(--button-size) * 0.8);
+            width: var(--touch-target-small);
+            height: var(--touch-target-small);
             font-size: 1.2rem;
           }
 
           .lightbox__close {
-            width: calc(var(--button-size) * 0.8);
-            height: calc(var(--button-size) * 0.8);
+            width: var(--touch-target-small);
+            height: var(--touch-target-small);
             font-size: 1.2rem;
           }
 
           .lightbox__nav--prev {
-            left: var(--space-s, 0.75rem);
+            left: var(--space-s);
           }
 
           .lightbox__nav--next {
-            right: var(--space-s, 0.75rem);
+            right: var(--space-s);
           }
 
           .lightbox__close {
-            top: var(--space-s, 0.75rem);
-            right: var(--space-s, 0.75rem);
+            top: var(--space-s);
+            right: var(--space-s);
           }
         }
 
@@ -604,17 +604,29 @@ class ImageLightbox extends HTMLElement {
     // Add loading state
     this.imageEl.classList.add("lightbox__image--loading");
 
-    // Load the image
-    this.imageEl.src = imageData.src;
-    this.imageEl.alt = imageData.alt;
+    // Create a new image to preload and check if it loads successfully
+    const tempImage = new Image();
+    
+    tempImage.onload = () => {
+      // Only set the src after we know the image loads
+      this.imageEl.src = imageData.src;
+      this.imageEl.alt = imageData.alt;
+      this.imageEl.classList.remove("lightbox__image--loading");
+    };
+    
+    tempImage.onerror = () => {
+      console.warn(`Failed to load image: ${imageData.src}`);
+      // Still set the src and remove loading state to show broken image
+      this.imageEl.src = imageData.src;
+      this.imageEl.alt = imageData.alt;
+      this.imageEl.classList.remove("lightbox__image--loading");
+    };
+    
+    // Start loading the image
+    tempImage.src = imageData.src;
 
     // Update caption
     this.captionEl.textContent = imageData.caption;
-
-    // Remove loading state when image loads
-    this.imageEl.onload = () => {
-      this.imageEl.classList.remove("lightbox__image--loading");
-    };
   }
 
   /**
