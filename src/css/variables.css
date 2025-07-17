@@ -269,12 +269,12 @@
   --button-gap: var(--space-xs);
 
   /* Lightbox */
-  --lightbox-bg: rgba(0, 0, 0, 0.9);
+  --lightbox-bg: color-mix(in srgb, black 90%, white 10%);
   --lightbox-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --lightbox-z-index: 9999;
-  --caption-bg: rgba(0, 0, 0, 0.7);
-  --caption-color: #ffffff;
-  --focus-ring: 2px solid var(--accent-color, #0066cc);
+  --caption-bg: color-mix(in srgb, black 70%, white 30%);
+  --caption-color: #fff;
+  --focus-ring: 2px solid var(--accent-color, #06c);
   --focus-ring-offset: 2px;
 
   /* ==========================================================================
