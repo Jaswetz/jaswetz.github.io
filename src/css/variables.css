@@ -33,6 +33,7 @@
   --color-text: #333;
   --color-text-light: #555;
   --color-background: #f7f3eb;
+  --color-border: #e5e5e5; /* Fallback for older browsers */
   --color-border: oklch(90% .032 255.585deg);
   --color-text-subtle: #555;
 
