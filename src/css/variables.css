@@ -34,9 +34,11 @@
   --color-text-light: #555;
   --color-background: #f7f3eb;
     --color-border: #d0dff4; /* Fallback for older browsers */
+
   @supports (color: oklch(0% 0 0)) {
     --color-border: oklch(90% .032 255.585deg);
   }
+
   --color-text-subtle: #555;
 
   /* ==========================================================================
