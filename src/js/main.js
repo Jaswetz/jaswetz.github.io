@@ -3,7 +3,7 @@
 // Main JavaScript file
 
 import "../css/main.css";
-import "./analytics.js";
+import "./analytics/index.js";
 import "./clarity-config.js";
 import SiteHeader from "./components/site-header/SiteHeader.js";
 import SiteFooter from "./components/site-footer/SiteFooter.js";
