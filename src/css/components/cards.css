@@ -114,7 +114,7 @@
 
 .card--white {
   padding: var(--space-m);
-  background-color: #ffffff6e;
+  background-color: var(--color-white-transparent);
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--border-radius);
 }

@@ -174,8 +174,7 @@ export class AnalyticsEventTracker {
     externalLinks.forEach((link) => {
       link.addEventListener("click", () => {
         const url = link.getAttribute("href");
-        const linkText =
-          link.textContent || link.getAttribute("aria-label") || "External Link";
+        const linkText = link.textContent || link.getAttribute("aria-label") || "External Link";
         this.trackExternalLink(url, linkText);
       });
     });

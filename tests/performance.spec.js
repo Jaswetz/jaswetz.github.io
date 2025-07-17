@@ -23,8 +23,8 @@ test.describe("Performance Tests", () => {
       const src = await img.getAttribute("src");
 
       if (src) {
-        // Check that images have proper extensions
-        const hasOptimizedFormat = /\.(webp|avif|jpg|jpeg|png)$/i.test(src);
+        // Check that images have proper extensions (including SVG for logos)
+        const hasOptimizedFormat = /\.(webp|avif|jpg|jpeg|png|svg)$/i.test(src);
         expect(hasOptimizedFormat).toBe(true);
       }
     }
