@@ -1,0 +1,22 @@
+{
+  "enabled": true,
+  "name": "Code Quality Analyzer",
+  "description": "Monitors source code files for changes and provides automated code quality analysis including code smells, design patterns, and best practices suggestions",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "src/**/*.js",
+      "src/**/*.css",
+      "src/**/*.html",
+      "scripts/**/*.js",
+      "tests/**/*.js",
+      "*.js",
+      "*.json"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Analyze the modified code files for potential improvements. Focus on:\n\n1. **Code Smells**: Identify duplicated code, long functions, complex conditionals, and naming issues\n2. **Design Patterns**: Suggest appropriate patterns for Web Components, CSS architecture, and JavaScript modules\n3. **Best Practices**: Review for:\n   - Accessibility compliance (ARIA, semantic HTML)\n   - Performance optimizations (lazy loading, efficient selectors)\n   - Security considerations (XSS prevention, input validation)\n   - Modern JavaScript/CSS features usage\n   - Browser compatibility with the supported range (Chrome 63+, Firefox 63+, Safari 10.1+, Edge 79+)\n\n4. **Architecture Alignment**: Ensure changes follow the established patterns:\n   - CSS Cascade Layers organization\n   - Web Components structure\n   - BEM methodology for styling\n   - Mobile-first responsive design\n\n5. **Maintainability**: Check for proper documentation, consistent formatting, and modular structure\n\nProvide specific, actionable suggestions while preserving existing functionality. Consider the portfolio's performance requirements (current bundle sizes: JS 29.94KB, CSS 66.43KB) and avoid recommendations that would significantly increase bundle size."
+  }
+}
