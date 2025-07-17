@@ -486,7 +486,7 @@ class SiteHeader extends HTMLElement {
       }
       }
     </style>
-    <header class="header-content">
+    <div class="header-content" role="banner">
       <div class="logo">
       <a href="/index.html">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="logo-svg" viewBox="0 0 39 39">
@@ -527,7 +527,7 @@ class SiteHeader extends HTMLElement {
 
       </ul>
       </nav>
-    </header>
+    </div>
     `;
 
     // Add event listeners

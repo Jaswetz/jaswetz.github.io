@@ -1,0 +1,29 @@
+{
+  "enabled": true,
+  "name": "Documentation Sync",
+  "description": "Monitors all source files in the repository and triggers documentation updates when changes are detected. Watches HTML, CSS, JavaScript files, configuration files, and other relevant source patterns to keep README and docs folder synchronized with code changes.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "src/**/*.html",
+      "src/**/*.css",
+      "src/**/*.js",
+      "*.js",
+      "*.json",
+      "*.md",
+      "package.json",
+      "eslint.config.js",
+      "playwright.config.js",
+      ".parcelrc",
+      ".prettierrc.json",
+      ".stylelintrc.json",
+      "scripts/**/*.js",
+      "tests/**/*.js"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Source files have been modified in this portfolio project. Please review the changes and update the documentation accordingly. Focus on:\n\n1. Update the README.md with any new features, dependencies, or architectural changes\n2. If there's a /Docs folder, update relevant documentation files there\n3. Ensure documentation reflects current project structure, build processes, and component architecture\n4. Update any setup instructions, usage examples, or development workflows if they've changed\n5. Keep the documentation consistent with the actual codebase\n\nThe project uses Parcel.js, Web Components, CSS Layers, and has password-protected case studies. Make sure documentation accurately reflects the current state of the codebase."
+  }
+}
