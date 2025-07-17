@@ -6,7 +6,9 @@
     Base Section Styles
     -------------------------------------------------------------------------- */
 
-/* TODO: Move back to projects.css */
+/* Issue #11: Move back to projects.css */
+
+/* See: https://github.com/Jaswetz/jaswetz.github.io/issues/11 */
 
 .section {
     padding-bottom: var(--space-2xl);
@@ -86,8 +88,6 @@
 .phase__image {
     border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
-    border: var(--border-width) solid var(--color-border);
     width: fit-content;
     height: fit-content;
 }
@@ -96,6 +96,8 @@
     width: 100%;
     height: auto;
     display: block;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
+    border: var(--border-width) solid var(--color-border);
 }
 
 .phase-divider {
@@ -299,33 +301,6 @@
     margin-bottom: var(--space-xl);
     font-size: var(--size-step-1);
     line-height: var(--leading-relaxed);
-}
-
-.key-learning-card {
-    position: relative;
-    padding: var(--space-l);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
-}
-
-.key-learning-number {
-    margin-bottom: var(--space-xs);
-    font-size: var(--size-step-3);
-    font-weight: 700;
-    line-height: 1;
-    color: var(--color-primary);
-}
-
-.key-learning-title {
-    margin-bottom: var(--space-s);
-    font-size: var(--size-step-1);
-    font-weight: 600;
-}
-
-.key-learning-description {
-    line-height: var(--leading-normal);
-    color: var(--color-text-subtle);
 }
 
 /* --------------------------------------------------------------------------

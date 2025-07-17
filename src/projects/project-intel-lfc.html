@@ -5,6 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Intel LFC: Immersive Soccer App - Jason Swetzoff's Portfolio</title>
 
+    <!-- Google Analytics 4 - Only load in production -->
+    <script>
+      // Only load GA4 in production environment
+      if (
+        window.location.hostname !== "localhost" &&
+        window.location.hostname !== "127.0.0.1" &&
+        !window.location.hostname.includes("127.0.0.1") &&
+        window.location.port === ""
+      ) {
+        // Load GA4 script with better error handling
+        var script = document.createElement("script");
+        script.async = true;
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG";
+        script.onerror = function () {
+          console.warn(
+            "Google Analytics script failed to load - this may be due to ad blockers or network issues"
+          );
+        };
+        script.onload = function () {
+          console.log("Google Analytics script loaded successfully");
+        };
+        document.head.appendChild(script);
+      }
+    </script>
     <!-- Google Analytics 4 -->
     <script
       async
@@ -93,7 +117,7 @@
                 <img
                   src="../img/projects/lfc/ios-android.png"
                   alt="Intel LFC Android and iOS app final design"
-                  class="project-summary__image project__img"
+                  class="project-summary__image project__img img--max-width"
                 />
                 <figcaption>
                   A sneak peak of the final iOS and Android app.
@@ -149,7 +173,7 @@
               <p>The primary challenges we encountered in this project were:</p>
 
               <div class="grid grid--auto-fit-md">
-                <div class="problem-card">
+                <div class="problem-card card card--white">
                   <div class="problem-card__icon">
                     <!-- <img
                       src="../img/icons/ball.png"
@@ -166,7 +190,7 @@
                   </div>
                 </div>
 
-                <div class="problem-card">
+                <div class="problem-card card card--white">
                   <div class="problem-card__icon">
                     <!-- <img
                       src="../img/icons/graph.png"
@@ -183,7 +207,7 @@
                   </div>
                 </div>
 
-                <div class="problem-card">
+                <div class="problem-card card card--white">
                   <div class="problem-card__icon">
                     <!-- <img
                       src="../img/icons/ux.png"
@@ -200,7 +224,7 @@
                   </div>
                 </div>
 
-                <div class="problem-card">
+                <div class="problem-card card card--white">
                   <div class="problem-card__icon">
                     <!-- <img
                       src="../img/icons/eye.png"
@@ -239,7 +263,7 @@
               <p>We defined our business objectives as the following:</p>
 
               <div class="grid grid--auto-fit-md">
-                <div class="problem-card">
+                <div class="problem-card card card--white">
                   <div class="problem-card__content">
                     <h3>Increase Fan Engagement and Loyalty</h3>
                     <p>
@@ -249,7 +273,7 @@
                   </div>
                 </div>
 
-                <div class="problem-card">
+                <div class="problem-card card card--white">
                   <div class="problem-card__content">
                     <h3>Solidify Leadership in Immersive Media Landscape</h3>
                     <p>
@@ -260,7 +284,7 @@
                   </div>
                 </div>
 
-                <div class="problem-card">
+                <div class="problem-card card card--white">
                   <div class="problem-card__content">
                     <h3>Increase Adoption Rate of Intel's Products</h3>
                     <p>
@@ -302,7 +326,7 @@
                 <img
                   src="../img/projects/lfc/discovery.jpg"
                   alt="Discovery workshop with Post-it notes on wall"
-                  class="process-image project__img"
+                  class="process-image project__img img--max-width"
                 />
                 <figcaption>Discovery workshop.</figcaption>
               </figure>
@@ -826,6 +850,10 @@
       </nav> -->
     </main>
     <site-footer></site-footer>
+
+    <!-- Image Lightbox Component -->
+    <image-lightbox></image-lightbox>
+
     <script type="module" src="../js/main.js?v=1"></script>
   </body>
 </html>

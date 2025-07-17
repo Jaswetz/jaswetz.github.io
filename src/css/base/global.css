@@ -15,14 +15,13 @@ html {
   scroll-behavior: smooth;
 
   /* Enable smooth scrolling for anchor links */
-  scroll-padding-top: 100px;
+  scroll-padding-top: 120px;
 
-  /* Account for fixed header when scrolling to anchors */
+  /* Account for fixed header when scrolling to anchors - increased for better section visibility */
 }
 
 body {
   height: 100vh;
-
 }
 
 /* Main content layout and section styles */
@@ -33,6 +32,9 @@ body {
   /* margin-bottom: var(--space-l-3xl); */
   top: calc(-1 * var(--space-3xl));
   background: var(--color-background);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgb(0 0 0 / 2%) 1px, transparent 0);
+  background-size: 8px 8px;
   box-shadow: 0 -12px 12px -8px rgb(0 0 0 / 5%);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);

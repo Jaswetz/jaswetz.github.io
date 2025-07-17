@@ -3,12 +3,8 @@
  * It encapsulates its own structure, styles, and basic behavior.
  * @extends HTMLElement
  */
-// TODO: [Component][SiteHeader] Implement props/attributes if needed (e.g., for different versions of header) (WCMP7, WCMP8)
-// TODO: [Component][SiteHeader] Implement custom events if header interactions need to notify outside (WCMP7)
-// TODO: [Component][SiteHeader] Expose CSS Custom Properties for more granular theming if needed (WCMP18)
-// TODO: [Component][SiteHeader] Enhance accessibility (e.g. ARIA for nav, focus management if complex) (A11Y4, A11Y9)
-// TODO: Add pressed states for all buttons and links (WCMP9)
-// TODO: Update spacing to use CSS Custom Properties (WCMP10)
+// Issue #8: Enhance SiteHeader Component - Props, Events, and Accessibility
+// See: https://github.com/Jaswetz/jaswetz.github.io/issues/8
 
 class SiteHeader extends HTMLElement {
   constructor() {
@@ -74,6 +70,7 @@ class SiteHeader extends HTMLElement {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border: var(--border-width) solid var(--color-border);
       padding: var(--space-s) var(--space-m);
       border-radius: var(--border-radius);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -100,6 +97,9 @@ class SiteHeader extends HTMLElement {
       background-color: rgba(255, 255, 255, 0.2);
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
+        border-right: none;
+        border-left: none;
+        border-top: none;
       }
 
       .logo a {
@@ -486,7 +486,7 @@ class SiteHeader extends HTMLElement {
       }
       }
     </style>
-    <header class="header-content">
+    <div class="header-content" role="banner">
       <div class="logo">
       <a href="/index.html">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="logo-svg" viewBox="0 0 39 39">
@@ -527,7 +527,7 @@ class SiteHeader extends HTMLElement {
 
       </ul>
       </nav>
-    </header>
+    </div>
     `;
 
     // Add event listeners
@@ -577,17 +577,18 @@ class SiteHeader extends HTMLElement {
       // Add scroll detection for active section highlighting
       const sections = [
         "hero",
-        "quotes",
         "featured-projects",
         "about",
+        "quotes",
         "footer",
       ];
       this.updateActiveSection = () => {
         const headerHeight = this.offsetHeight || 80;
-        const scrollPosition = window.scrollY + headerHeight + 50; // Offset for header height + padding
+        const scrollPosition = window.scrollY + headerHeight + 100; // Increased offset for better detection
 
         let activeSection = "hero"; // Default to hero
 
+        // Check sections in order they appear on page
         for (const sectionId of sections) {
           const sectionElement = document.querySelector(`#${sectionId}`);
           if (
@@ -601,7 +602,8 @@ class SiteHeader extends HTMLElement {
         // Update active states
         scrollLinks.forEach((link) => {
           const href = link.getAttribute("href");
-          if (href === `#${activeSection}`) {
+          const targetSection = href.replace(/^.*#/, ""); // Extract section name from href
+          if (targetSection === activeSection) {
             link.classList.add("active");
           } else {
             link.classList.remove("active");
@@ -624,13 +626,12 @@ class SiteHeader extends HTMLElement {
 
   handleScroll() {
     const currentScrollY = window.scrollY;
-    const header = this;
 
     if (currentScrollY > 10) {
       // Changed from 50 to 10 for earlier animation
-      header.classList.add("scrolled");
+      this.classList.add("scrolled");
     } else {
-      header.classList.remove("scrolled");
+      this.classList.remove("scrolled");
     }
 
     this.lastScrollY = currentScrollY;

@@ -63,7 +63,9 @@
   margin-top: var(--spacing-md, 16px);
 }
 
-/* TODO: [CSS] Add more margin utility classes for md, lg, xl spacing units */
+/* Issue #11: Add more margin utility classes for md, lg, xl spacing units */
+
+/* See: https://github.com/Jaswetz/jaswetz.github.io/issues/11 */
 
 /* Paddings */
 .p-0 {
@@ -100,4 +102,6 @@
   padding-top: var(--spacing-sm, 8px);
 }
 
-/* TODO: [CSS] Add more padding utility classes for sm, md, lg, xl spacing units */
+/* Issue #11: Add more padding utility classes for sm, md, lg, xl spacing units */
+
+/* See: https://github.com/Jaswetz/jaswetz.github.io/issues/11 */

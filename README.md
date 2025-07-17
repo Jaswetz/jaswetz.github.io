@@ -12,6 +12,7 @@ A modern UX portfolio website built with fundamental web technologies and native
 - **🎨 Animated 2D Logo**: Interactive animated logo in the hero section featuring the three signature shapes (triangle, circle, square) with smooth CSS animations
 - **📱 Responsive Design**: Mobile-first approach with optimized layouts for all screen sizes
 - **⚡ Performance Optimized**: Lightweight bundle sizes and fast loading times
+- **🧭 Smart Sidebar Navigation**: Automatic scroll spy with active section highlighting and smooth scrolling (see [SIDEBAR_NAVIGATION.md](SIDEBAR_NAVIGATION.md))
 
 ## 🚀 Live Site
 
@@ -135,82 +136,134 @@ The build is minified and the filenames include hashes for cache busting.
 - **Browser Targets**: The `package.json` file includes a `"browserslist"` field. This configuration informs Parcel (and other tools) about the target browsers for the project. Parcel uses this to determine the level of JavaScript transpilation needed and to generate [differential bundling](https://parceljs.org/features/production/#differential-bundling), serving modern code to modern browsers and fallbacks to older ones, optimizing load times and performance.
 - **Automatic Optimizations**: Parcel automatically handles many optimizations during a production build (`npm run build`), including code minification (HTML, CSS, JS), tree-shaking (to remove unused code), and efficient asset bundling.
 
-# CSS Structure and Organization
+## CSS Structure and Organization
 
-This project employs a hybrid CSS strategy. Global styles are organized using CSS Cascade Layers (`@layer`), and Web Components use encapsulated BEM-style naming within their Shadow DOM. CSS Custom Properties are central for theming.
+### TL;DR
 
-## Overall CSS Architecture with `@layer`
+Use **cascade layers** to control global styles (`reset → base → theme → layout → components → utilities`).  
+Web Components handle their own styles in Shadow DOM using **BEM‑style** class names, while consuming global design tokens declared in `variables.css`.
+
+---
+
+### Directory Overview ⇢ _where things live_
 
 ```text
 src/
 └── css/
-    ├── main.css                # Primary CSS entry point. Defines @layer order and imports.
-    │                           # @import "../variables.css"; (before layers or in an early layer)
-    │                           # @layer reset, base, theme, layout, components, utilities;
-    │
-    ├── variables.css           # Global CSS Custom Properties (design tokens).
-    │
-    ├── base/                   # Styles imported into the 'reset' and 'base' layers.
-    │   ├── reset.css           #   -> @layer reset
-    │   ├── global.css          #   -> @layer base
-    │   └── typography.css      #   -> @layer base
-    │
-    ├── theme/                  # Styles imported into the 'theme' layer.
-    │   └── default-theme.css   #   -> @layer theme (example for default theme)
-    │
-    ├── layout/                 # (Optional) Global layout files for the 'layout' layer.
-    │   └── projects.css        #   -> @layer layout (example for project-specific layouts)
-    │
-    ├── components/             # (Optional) Styles for non-Web Component UI for the 'components' layer.
-    │   └── buttons.css         #   -> @layer components (example)
-    │
-    ├── pages/                  # Page-specific styles, typically imported into the 'components' or 'layout' layer.
-    │   ├── page-about.css      #   -> @layer components (example for about page styles)
-    │   └── page-index/         #   (example for page-specific component styles)
-    │       └── hero-section.css #  -> @layer components
-    │
-    └── utils/                  # Utility class files for the 'utilities' layer.
-        ├── spacing.css         #   -> @layer utilities
-        ├── typography.css      #   -> @layer utilities
-        ├── flexbox.css         #   -> @layer utilities
-        ├── layout.css          #   -> @layer utilities
-        ├── grid-system.css     #   -> @layer utilities
-        ├── media-queries.css   #   -> @layer utilities
-        └── debug.css           #   -> @layer utilities
-
-src/
-└── js/
-    └── components/
-        └── [ComponentName]/
-            └── [ComponentName].js
-                └── <style> /* Shadow DOM Styles (Not part of global @layers) */
-                    /* :host { ... } Block styles */
-                    /* .element { ... } BEM __element styles */
-                    /* .element--modifier { ... } BEM --modifier styles */
-                    /* Consumes global CSS vars from variables.css */
-                </style>
+    ├── main.css            # Defines @layer order & imports (entry point)
+    ├── variables.css       # Design tokens (CSS custom properties)
+    ├── base/               # reset.css, global.css, typography.css
+    ├── theme/              # default-theme.css, dark-theme.css …
+    ├── layout/             # page‑level grid or layout helpers
+    ├── components/         # non‑Web‑Component UI styles
+    └── utils/              # utility classes (spacing, flex, grid, …)
 ```
 
-## 1. Global CSS (`src/css/`) with `@layer`
+Hover the file names in GitHub to jump directly to each folder.
 
-- **`variables.css`**: Defines global CSS Custom Properties. These are imported in `main.css` _before_ any `@layer` declarations or within an early, unlayered import to ensure they are universally available.
-- **`main.css`**: This is the primary stylesheet linked in all HTML files. Its main responsibilities are:
-  1. Importing `variables.css`.
-  2. Defining the order of cascade layers: `@layer reset, base, theme, layout, components, utilities;`.
-  3. Importing other CSS files directly into their designated layers.
-     - `@layer reset { @import url("base/reset.css"); }`
-     - `@layer base { @import url("base/global.css"); @import url("base/typography.css"); }`
-     - `@layer theme { @import url("theme/default-theme.css"); }`
-     - `@layer layout { /* @import url("layout/grid.css"); */ }`
-     - `@layer components { /* @import url("components/buttons.css"); @import url("pages/page-about.css"); */ }`
-     - `@layer utilities { @import url("utils/spacing.css"); /* etc. */ }`
-- **Layer Content:**
-  - **`reset` layer**: Contains minimal custom CSS reset (`base/reset.css`).
-  - **`base` layer**: Holds essential global HTML/body styles, base typography, etc. (`base/global.css`, `base/typography.css`).
-  - **`theme` layer**: Contains theme-specific styles, primarily CSS variable definitions/overrides for different themes (e.g., `default-theme.css`, `dark-theme.css`). This layer allows themes to adapt the look and feel defined in `base` without altering its core structure.
-  - **`layout` layer (Optional)**: For global page structure, grid systems not encapsulated in components.
-  - **`components` layer (Optional)**: For styling UI pieces that are _not_ Web Components. This can include styles for specific pages (e.g., `pages/page-about.css`) or reusable non-web-component UI elements (e.g., `components/buttons.css`).
-  - **`utilities` layer**: Contains single-purpose utility classes (spacing, typography, flexbox, etc.). Styles in this layer will generally override styles from `reset`, `base`, `theme`, `layout`, and `components` layers for the same properties on the same elements, due to layer order, potentially reducing the need for `!important` on some utilities (though `!important` might still be used for highly specific overrides like `.hidden`).
+---
+
+### Declaring the Layer Order
+
+In `src/css/main.css`:
+
+```css
+@import "../variables.css"; /* tokens first */
+
+@layer reset, base, theme, layout, components, utilities;
+
+@layer reset {
+  @import url("base/reset.css");
+}
+@layer base {
+  @import url("base/global.css");
+  @import url("base/typography.css");
+}
+@layer theme {
+  @import url("theme/default-theme.css");
+}
+@layer layout {
+  @import url("layout/projects.css");
+}
+@layer components {
+  @import url("components/buttons.css");
+}
+@layer utilities {
+  @import url("utils/spacing.css"); /* … */
+}
+```
+
+---
+
+### Quick Checklist ✓
+
+- [ ] `variables.css` is imported **before** any `@layer`.
+- [ ] Layer order matches `reset → base → theme → layout → components → utilities`.
+- [ ] New global styles are added inside the correct layer import.
+- [ ] Utility classes are last, so they override earlier layers without `!important`.
+- [ ] Shadow DOM styles stay inside their component `.js` file.
+
+---
+
+### 60‑Second Working Example
+
+> From design token → theme override → component usage
+
+```css
+/* variables.css */
+:root {
+  --brand-color: #0055ff;
+  --brand-color-dark: #0037a6;
+}
+
+/* theme/dark-theme.css */
+@layer theme {
+  :root {
+    --brand-color: #7aa3ff; /* override for dark mode */
+  }
+}
+```
+
+```css
+/* utils/buttons.css */
+@layer utilities;
+.btn {
+  background-color: var(--brand-color);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+```
+
+```html
+<!-- Any page or component -->
+<button class="btn">Primary action</button>
+```
+
+Switching to the dark theme automatically restyles every `.btn`.
+
+---
+
+### Browser Support & Fallback
+
+Cascade Layers are supported in **Chrome 111+, Firefox 110+, Safari 16.4+, Edge 111+**.  
+Older/legacy browsers (including IE 11) will receive the un‑layered fallback output that Parcel generates, so critical styles remain intact. If you must support those browsers, keep overrides minimal or use a PostCSS plugin to flatten layers.
+
+---
+
+### Guiding Principles 🚀
+
+1. **Import tokens first** – `variables.css` must load before any layer.
+2. **One concern per layer** – don’t mix resets with utilities.
+3. **Utilities override by design** – place them last, avoid `!important`.
+4. **BEM‑style inside components** – `:host` is the “block”; use `.element` and `.element--modifier`.
+5. **No global styles inside Shadow DOM** – share design tokens instead.
+
+---
+
+### Looking Ahead 🔭
+
+We’re tracking the emerging `@scope` rule and container queries. Once browser support solidifies, expect an update to layer structure and utility generation to leverage them.
 
 ## 2. Web Component Styles (BEM-like within Shadow DOM)
 

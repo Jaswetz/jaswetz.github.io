@@ -5,6 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notification System Redesign - Jason Swetzoff's Portfolio</title>
 
+    <!-- Google Analytics 4 - Only load in production -->
+    <script>
+      // Only load GA4 in production environment
+      if (
+        window.location.hostname !== "localhost" &&
+        window.location.hostname !== "127.0.0.1" &&
+        !window.location.hostname.includes("127.0.0.1") &&
+        window.location.port === ""
+      ) {
+        // Load GA4 script with better error handling
+        var script = document.createElement("script");
+        script.async = true;
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG";
+        script.onerror = function () {
+          console.warn(
+            "Google Analytics script failed to load - this may be due to ad blockers or network issues"
+          );
+        };
+        script.onload = function () {
+          console.log("Google Analytics script loaded successfully");
+        };
+        document.head.appendChild(script);
+      }
+    </script>
     <!-- Google Analytics 4 -->
     <script
       async
@@ -154,7 +178,7 @@
               <h2 id="the-problem">The Problem</h2>
 
               <div class="grid grid--2-column">
-                <div class="problem-card">
+                <div class="problem-card card--white">
                   <div class="problem-card__icon">
                     <img
                       src="../img/icons/ux.png"
@@ -162,7 +186,7 @@
                       class="problem-card__img"
                     />
                   </div>
-                  <div class="problem-card__content">
+                  <div class="problem-card__content card__text">
                     <h3>User Experience</h3>
                     <p>
                       Inconsistent, overwhelming notifications disrupted
@@ -171,7 +195,7 @@
                   </div>
                 </div>
 
-                <div class="problem-card">
+                <div class="problem-card card--white">
                   <div class="problem-card__icon">
                     <img
                       src="../img/icons/graph.png"
@@ -179,7 +203,7 @@
                       class="problem-card__img"
                     />
                   </div>
-                  <div class="problem-card__content">
+                  <div class="problem-card__content card__text">
                     <h3>Business Impact</h3>
                     <p>
                       Critical communications were lost in the noise, reducing
@@ -188,7 +212,7 @@
                   </div>
                 </div>
 
-                <div class="problem-card">
+                <div class="problem-card card--white">
                   <div class="problem-card__icon">
                     <img
                       src="../img/icons/eye.png"
@@ -196,7 +220,7 @@
                       class="problem-card__img"
                     />
                   </div>
-                  <div class="problem-card__content">
+                  <div class="problem-card__content card__text">
                     <h3>Product Perception</h3>
                     <p>
                       Fragmented messaging hurt brand quality and user trust in
@@ -205,7 +229,7 @@
                   </div>
                 </div>
 
-                <div class="problem-card">
+                <div class="problem-card card--white">
                   <div class="problem-card__icon">
                     <img
                       src="../img/icons/ball.png"
@@ -213,7 +237,7 @@
                       class="problem-card__img"
                     />
                   </div>
-                  <div class="problem-card__content">
+                  <div class="problem-card__content card__text">
                     <h3>Internal Friction</h3>
                     <p>
                       Lack of a unified strategy increased development
@@ -1020,6 +1044,10 @@
       </article>
     </main>
     <site-footer></site-footer>
+
+    <!-- Image Lightbox Component -->
+    <image-lightbox></image-lightbox>
+
     <script type="module" src="../js/main.js?v=1"></script>
 
     <!-- Initialize Feather Icons -->

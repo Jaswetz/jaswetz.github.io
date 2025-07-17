@@ -12,16 +12,16 @@
   line-height: 1;
   text-decoration: none;
   text-align: center;
-  border: 2px solid var(--color-primary);
-  border-radius: var(--border-radius);
-  background-color: var(--color-primary);
-  color: white;
-  cursor: pointer;
-  transition: var(--transition-interactive);
+  border: var(--button-border);
+  border-radius: var(--button-border-radius);
+  background-color: var(--button-bg);
+  color: var(--button-color);
+  cursor: var(--button-cursor);
+  transition: var(--button-transition);
   position: relative;
   overflow: hidden;
-  min-height: var(--touch-target-min);
-  gap: var(--space-xs);
+  min-height: var(--button-min-height);
+  gap: var(--button-gap);
 }
 
 .button::before {
@@ -37,9 +37,9 @@
 
 /* Hover state */
 .button:hover {
-  background-color: var(--color-primary-alt);
+  background-color: var(--button-bg-hover);
   border-color: var(--color-primary-alt);
-  color: white;
+  color: var(--button-color);
   transform: var(--hover-transform);
   box-shadow: var(--hover-shadow);
   text-decoration: none;
@@ -53,9 +53,9 @@
 .button:focus {
   outline: var(--focus-outline);
   outline-offset: var(--focus-outline-offset);
-  background-color: var(--color-primary-alt);
+  background-color: var(--button-bg-hover);
   border-color: var(--color-primary-alt);
-  color: white;
+  color: var(--button-color);
   transform: var(--hover-transform);
   box-shadow: var(--focus-shadow-enhanced);
   text-decoration: none;
@@ -67,9 +67,9 @@
 
 /* Active/pressed state */
 .button:active {
-  background-color: var(--color-primary-alt);
+  background-color: var(--button-bg-hover);
   border-color: var(--color-primary-alt);
-  color: white;
+  color: var(--button-color);
   transform: var(--active-transform);
   box-shadow: var(--active-shadow);
   text-decoration: none;
@@ -92,9 +92,9 @@
 }
 
 .button--secondary:hover {
-  background-color: var(--color-primary);
+  background-color: var(--button-bg);
   border-color: var(--color-primary);
-  color: white;
+  color: var(--button-color);
   transform: var(--hover-transform);
   box-shadow: var(--hover-shadow);
 }
@@ -105,9 +105,9 @@
 }
 
 .button--secondary:focus {
-  background-color: var(--color-primary);
+  background-color: var(--button-bg);
   border-color: var(--color-primary);
-  color: white;
+  color: var(--button-color);
   transform: var(--hover-transform);
   box-shadow: var(--focus-shadow-enhanced);
 }
@@ -118,9 +118,9 @@
 }
 
 .button--secondary:active {
-  background-color: var(--color-primary-alt);
+  background-color: var(--button-bg-hover);
   border-color: var(--color-primary-alt);
-  color: white;
+  color: var(--button-color);
   transform: var(--active-transform);
   box-shadow: var(--active-shadow);
 }
@@ -135,7 +135,7 @@
 .button[disabled] {
   background-color: var(--color-muted, #999);
   border-color: var(--color-muted, #999);
-  color: white;
+  color: var(--button-color);
   cursor: var(--disabled-cursor);
   opacity: var(--disabled-opacity);
   transform: none;
@@ -155,7 +155,7 @@
 .button[disabled]:active {
   background-color: var(--color-muted, #999);
   border-color: var(--color-muted, #999);
-  color: white;
+  color: var(--button-color);
   transform: none;
   box-shadow: none;
 }

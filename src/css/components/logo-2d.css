@@ -8,7 +8,7 @@
     height: 100px;
     margin: var(--space-m) auto var(--space-l) auto;
     animation: logo-float 4s ease-in-out infinite;
-    filter: drop-shadow(0 4px 8px rgb(37 105 237 / 15%));
+    filter: drop-shadow(0 4px 8px rgb(37 105 237 / 45%));
 }
 
 .logo-2d__shape {

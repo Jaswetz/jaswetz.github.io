@@ -33,9 +33,8 @@
   --color-text: #333;
   --color-text-light: #555;
   --color-background: #f7f3eb;
-  --color-border: #ddd;
-
-  /* #9abdf3 */
+  --color-border: #e5e5e5; /* Fallback for older browsers */
+  --color-border: oklch(90% .032 255.585deg);
   --color-text-subtle: #555;
 
   /* ==========================================================================
@@ -215,6 +214,7 @@
     0 0 0 1px rgb(37 105 237 / 10%);
   --hover-shadow-small: 0 2px 8px rgb(37 105 237 / 30%);
 
+
   /* Focus States */
   --focus-outline: 2px solid var(--color-primary);
   --focus-outline-offset: 2px;
@@ -253,7 +253,30 @@
   /* Maximum width for main content */
   --section-width: calc(100% - var(--space-l));
 
-  /* Full width minus padding */
+  /* Shadows */
+
+  --shadow--highlight: 4px 5px var(--color-border);
+
+  /* Buttons */
+
+  --button-border: 2px solid var(--color-primary);
+  --button-border-radius: var(--border-radius);
+  --button-bg: var(--color-primary);
+  --button-bg-hover: var(--color-primary-alt);
+  --button-color: white;
+  --button-cursor: pointer;
+  --button-transition: var(--transition-interactive);
+  --button-min-height: var(--touch-target-min);
+  --button-gap: var(--space-xs);
+
+  /* Lightbox */
+  --lightbox-bg: rgb(0 0 0 / 90%);
+  --lightbox-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --lightbox-z-index: 9999;
+  --caption-bg: rgb(0 0 0 / 70%);
+  --caption-color: #fff;
+  --focus-ring: 2px solid var(--accent-color, #06c);
+  --focus-ring-offset: 2px;
 
   /* ==========================================================================
      RESPONSIVE BREAKPOINTS

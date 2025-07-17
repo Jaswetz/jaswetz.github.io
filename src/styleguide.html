@@ -62,28 +62,10 @@
     <link rel="apple-touch-icon" href="./assets/favicons/apple-icon.png" />
   </head>
   <body>
-    <site-header></site-header>
     <main>
       <style>
         /* Basic styling for style guide sections for clarity */
-        .styleguide-section {
-          border: 1px solid #eee;
-          padding: 1.5em;
-          margin-bottom: 2em;
-          border-radius: 8px;
-        }
-        .styleguide-section h2 {
-          margin-top: 0;
-          border-bottom: 2px solid #007bff; /* Example accent color */
-          padding-bottom: 0.5em;
-          margin-bottom: 1em;
-        }
-        .styleguide-section h3 {
-          margin-top: 1.5em;
-          border-bottom: 1px solid #ccc;
-          padding-bottom: 0.3em;
-          margin-bottom: 0.8em;
-        }
+
         .color-swatch {
           display: inline-block;
           width: 100px;
@@ -210,7 +192,8 @@
               The project's color palette. Colors are defined as CSS Custom
               Properties in <code>src/css/variables.css</code>.
             </p>
-            <!-- TODO: [Styleguide] Dynamically display colors and their variable names from variables.css (LSG3.2) -->
+            <!-- Issue #10: Dynamically display colors and their variable names from variables.css (LSG3.2) -->
+            <!-- See: https://github.com/Jaswetz/jaswetz.github.io/issues/10 -->
             <h4>Primary Colors</h4>
             <div
               class="color-swatch"
@@ -409,7 +392,8 @@
               8px). This is implemented using CSS Custom Properties in
               <code>src/css/variables.css</code>.
             </p>
-            <!-- TODO: [Styleguide] Show examples of spacing units (LSG3.3) -->
+            <!-- Issue #10: Show examples of spacing units (LSG3.3) -->
+            <!-- See: https://github.com/Jaswetz/jaswetz.github.io/issues/10 -->
             <p>Examples:</p>
             <div
               class="spacing-example"
@@ -649,10 +633,16 @@
 
           <section id="logo-2d" class="styleguide-section">
             <h3>Animated 2D Logo</h3>
-            <p>The animated logo featuring three shapes: triangle in circle in square. Used in the hero section.</p>
-            
+            <p>
+              The animated logo featuring three shapes: triangle in circle in
+              square. Used in the hero section.
+            </p>
+
             <div class="styleguide-example">
-              <div class="logo-2d" aria-label="Jason Swetzoff's logo - Triangle in Circle in Square">
+              <div
+                class="logo-2d"
+                aria-label="Jason Swetzoff's logo - Triangle in Circle in Square"
+              >
                 <div class="logo-2d__shape logo-2d__square"></div>
                 <div class="logo-2d__shape logo-2d__circle"></div>
                 <div class="logo-2d__shape logo-2d__triangle"></div>
@@ -664,6 +654,297 @@
   &lt;div class="logo-2d__shape logo-2d__circle"&gt;&lt;/div&gt;
   &lt;div class="logo-2d__shape logo-2d__triangle"&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
+          </section>
+
+          <section id="image-lightbox" class="styleguide-section">
+            <h3>Image Lightbox Component</h3>
+            <p>
+              Accessible lightbox modal for viewing case study images in full
+              size. Supports keyboard navigation, touch gestures, and maintains
+              WCAG 2.1 Level AA compliance.
+            </p>
+
+            <h4>Features</h4>
+            <ul>
+              <li>Click on images to view in lightbox overlay</li>
+              <li>
+                Keyboard navigation (ESC to close, arrow keys for navigation)
+              </li>
+              <li>Touch/swipe gestures on mobile devices</li>
+              <li>Focus management for accessibility</li>
+              <li>Screen reader announcements</li>
+              <li>Image captions support</li>
+              <li>Responsive design with smooth transitions</li>
+            </ul>
+
+            <h4>Usage</h4>
+            <p>
+              Add the <code>&lt;image-lightbox&gt;</code> component to your page
+              and wrap images in <code>&lt;figure&gt;</code> elements with the
+              <code>project__img</code> or
+              <code>project-summary__image</code> classes.
+            </p>
+
+            <div class="styleguide-example">
+              <figure>
+                <img
+                  src="./img/projects/autodesk-messaging/messaging-final.jpg"
+                  alt="Sample lightbox image"
+                  class="project__img"
+                  style="max-width: 300px; cursor: pointer"
+                />
+                <figcaption>Click this image to open in lightbox</figcaption>
+              </figure>
+            </div>
+
+            <pre><code>&lt;!-- Add lightbox component to page --&gt;
+&lt;image-lightbox&gt;&lt;/image-lightbox&gt;
+
+&lt;!-- Images with lightbox functionality --&gt;
+&lt;figure&gt;
+  &lt;img
+    src="path/to/image.jpg"
+    alt="Image description"
+    class="project__img"
+  /&gt;
+  &lt;figcaption&gt;
+    Optional image caption
+  &lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+
+            <h4>Accessibility Features</h4>
+            <ul>
+              <li>
+                <strong>ARIA attributes:</strong> Proper role, aria-modal,
+                aria-hidden, and aria-labelledby
+              </li>
+              <li>
+                <strong>Focus management:</strong> Traps focus within lightbox,
+                restores focus on close
+              </li>
+              <li>
+                <strong>Keyboard support:</strong> ESC to close, arrow keys for
+                navigation, Enter/Space to activate
+              </li>
+              <li>
+                <strong>Screen reader announcements:</strong> Announces lightbox
+                state and image position
+              </li>
+              <li>
+                <strong>High contrast support:</strong> Adapts to
+                prefers-contrast: high
+              </li>
+              <li>
+                <strong>Reduced motion:</strong> Respects prefers-reduced-motion
+                preference
+              </li>
+            </ul>
+
+            <h4>Web Component Implementation</h4>
+            <p>
+              The lightbox is implemented as a native Web Component using Shadow
+              DOM for encapsulation. It automatically discovers and enhances
+              images matching the selector pattern on page load.
+            </p>
+          </section>
+
+          <section id="cards" class="styleguide-section">
+            <h3>Card Components</h3>
+            <p>
+              Various card layouts for displaying different types of content and
+              data.
+            </p>
+
+            <h4>Basic Cards</h4>
+            <div
+              class="grid grid--2-column grid--gap-m"
+              style="margin-bottom: var(--space-xl)"
+            >
+              <!-- Basic Card -->
+              <div class="card card--vertical">
+                <div class="card__image">
+                  <div>Image Placeholder</div>
+                </div>
+                <div class="card__content">
+                  <h3>Basic Card</h3>
+                  <p>
+                    This is a basic card with image and content areas. Useful
+                    for general content display.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Outline Card -->
+              <div class="card card--outline">
+                <h3>Outline Card</h3>
+                <p>
+                  A card with a subtle border and background pattern. Great for
+                  content that needs to stand out while maintaining a soft
+                  appearance.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="grid grid--2-column grid--gap-m"
+              style="margin-bottom: var(--space-xl)"
+            >
+              <!-- White Card -->
+              <div class="card--white">
+                <h3>White Card</h3>
+                <p>
+                  A clean white card with subtle styling. Perfect for content
+                  that needs a clean, minimal look.
+                </p>
+              </div>
+
+              <!-- Clickable Card Link -->
+              <a href="#" class="card-link">
+                <div class="card card--vertical">
+                  <h3>Clickable Card</h3>
+                  <p>
+                    An entire card that acts as a link with hover and focus
+                    states.
+                  </p>
+                </div>
+              </a>
+            </div>
+
+            <h4>Project Cards</h4>
+            <div
+              class="grid grid--2-column grid--gap-m"
+              style="margin-bottom: var(--space-xl)"
+            >
+              <!-- Problem Card -->
+              <div class="problem-card card card--outline">
+                <div class="problem-card__icon">
+                  <div>!</div>
+                </div>
+                <h3>Problem Card</h3>
+                <p>
+                  Used to highlight problems or challenges in project case
+                  studies. Features an icon and clear hierarchy.
+                </p>
+              </div>
+
+              <!-- Result Card -->
+              <div class="result-card">
+                <div class="result-card__number">85%</div>
+                <div class="result-card__label">User Satisfaction</div>
+                <div class="result-card__description">
+                  Improvement in overall user satisfaction scores after
+                  implementation
+                </div>
+              </div>
+            </div>
+
+            <h4>Specialty Cards</h4>
+            <div
+              class="grid grid--3-column grid--gap-m"
+              style="margin-bottom: var(--space-xl)"
+            >
+              <!-- Learning Card -->
+              <div class="learning-card card">
+                <div class="learning-card__number">01</div>
+                <div class="learning-card__title">Key Learning</div>
+                <div class="learning-card__description">
+                  User research should always precede design decisions for
+                  better outcomes.
+                </div>
+              </div>
+
+              <!-- Severity Card High -->
+              <div class="severity-card card">
+                <div class="severity-level__icon severity-level__icon--high">
+                  <div
+                    style="
+                      width: 24px;
+                      height: 24px;
+                      border-radius: 50%;
+                      background: currentColor;
+                    "
+                  ></div>
+                </div>
+                <div class="severity-card__title">High Priority</div>
+                <div class="severity-card__description">
+                  Critical issues that need immediate attention and resolution.
+                </div>
+              </div>
+
+              <!-- Severity Card Medium -->
+              <div class="severity-level">
+                <div class="severity-level__icon severity-level__icon--medium">
+                  <div></div>
+                </div>
+                <div class="severity-level__title">Medium Priority</div>
+                <div class="severity-level__description">
+                  Important issues that should be addressed in the next
+                  iteration.
+                </div>
+              </div>
+            </div>
+
+            <h4>Growth Card</h4>
+            <div class="growth-card" style="margin-bottom: var(--space-xl)">
+              <div
+                style="
+                  width: 64px;
+                  height: 64px;
+                  background: var(--color-primary);
+                  border-radius: var(--border-radius);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: white;
+                  font-size: var(--font-size-xl);
+                  flex-shrink: 0;
+                "
+              >
+                📈
+              </div>
+              <div class="growth-card__content">
+                <div class="growth-card__title">Professional Growth</div>
+                <div class="growth-card__description">
+                  This project helped me develop stronger skills in user
+                  research and data analysis, leading to more informed design
+                  decisions.
+                </div>
+              </div>
+            </div>
+
+            <h4>Card Usage Examples</h4>
+            <pre><code>&lt;!-- Basic Card --&gt;
+&lt;div class="card card--vertical"&gt;
+  &lt;div class="card__image"&gt;
+    &lt;img src="image.jpg" alt="Description"&gt;
+  &lt;/div&gt;
+  &lt;div class="card__content"&gt;
+    &lt;h3&gt;Card Title&lt;/h3&gt;
+    &lt;p&gt;Card description...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Result Card --&gt;
+&lt;div class="result-card"&gt;
+  &lt;div class="result-card__number"&gt;25%&lt;/div&gt;
+  &lt;div class="result-card__label"&gt;Improvement&lt;/div&gt;
+  &lt;div class="result-card__description"&gt;Increase in user engagement&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Problem Card --&gt;
+&lt;div class="problem-card card--outline"&gt;
+  &lt;div class="problem-card__icon"&gt;
+    &lt;img src="icon.svg" alt=""&gt;
+  &lt;/div&gt;
+  &lt;h3&gt;Problem Title&lt;/h3&gt;
+  &lt;p&gt;Problem description...&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Clickable Card --&gt;
+&lt;a href="/project" class="card__link"&gt;
+  &lt;h3&gt;Project Title&lt;/h3&gt;
+  &lt;p&gt;Project description...&lt;/p&gt;
+&lt;/a&gt;</code></pre>
           </section>
 
           <section id="buttons" class="styleguide-section">
@@ -753,37 +1034,53 @@
               <li><code>--header-height</code> - Header height</li>
             </ul>
 
-            <h4>Live Example</h4>
-            <site-header></site-header>
-            <p><em>(Live SiteHeader component above)</em></p>
+            <h4>Note</h4>
+            <p>
+              <em
+                >Live examples of header and footer components have been removed
+                from the styleguide to keep it focused on design system
+                documentation.</em
+              >
+            </p>
           </section>
 
-          <section id="footer-component" class="styleguide-section">
+          <section id="footer" class="styleguide-section">
             <h3>SiteFooter Component</h3>
             <p>
-              Main site footer component with contact information and links.
+              The site-wide footer component. It includes copyright information,
+              social links, and a "back to top" button.
             </p>
 
             <h4>Usage</h4>
-            <pre><code>&lt;site-footer&gt;&lt;/site-footer&gt;</code></pre>
+            <pre><code><site-footer></site-footer></code></pre>
 
             <h4>Features</h4>
             <ul>
-              <li>Contact information display</li>
-              <li>Social media links</li>
-              <li>Copyright information</li>
-              <li>Responsive design</li>
+              <li>Dynamically updated copyright year.</li>
+              <li>Includes links to email, LinkedIn, and GitHub.</li>
+              <li>
+                <strong>New:</strong> "Back to top" button that appears on
+                scroll and smoothly returns the user to the top of the page.
+              </li>
             </ul>
 
-            <h4>CSS Custom Properties</h4>
-            <ul>
-              <li><code>--footer-bg-color</code> - Background color</li>
-              <li><code>--footer-text-color</code> - Text color</li>
-            </ul>
-
-            <h4>Live Example</h4>
-            <site-footer></site-footer>
-            <p><em>(Live SiteFooter component above)</em></p>
+            <h4>Live Preview</h4>
+            <p>
+              Scroll down this page to see the "Back to top" button appear in
+              the bottom-right corner.
+            </p>
+            <div
+              class="styleguide-example"
+              style="height: 150vh; border: 1px dashed #ccc; padding: 1em"
+            >
+              <p>Scroll down inside this container...</p>
+            </div>
+            <p>
+              <em
+                >Note: The footer itself is not rendered here to avoid
+                duplication, but the component is active on this page.</em
+              >
+            </p>
           </section>
 
           <!-- Add more component showcases as they are developed -->
@@ -815,6 +1112,10 @@
       </div>
     </main>
     <site-footer></site-footer>
+
+    <!-- Image Lightbox Component -->
+    <image-lightbox></image-lightbox>
+
     <script type="module" src="./js/main.js?v=1"></script>
   </body>
 </html>
