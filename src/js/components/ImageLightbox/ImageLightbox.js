@@ -436,7 +436,7 @@ class ImageLightbox extends HTMLElement {
       // Add keyboard support for image activation
       img.addEventListener("keydown", (e) => {
         const keyEvent = /** @type {KeyboardEvent} */ (e);
-        if (keyEvent.key === "Enter" || keyEvent.key === " ") {
+        if (keyEvent.key === "Enter" || keyEvent.key === " " || keyEvent.key === "Space") {
           e.preventDefault();
           this.handleImageClick(e, index);
         }
