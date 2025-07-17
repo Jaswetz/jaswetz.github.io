@@ -33,7 +33,7 @@
   --color-text: #333;
   --color-text-light: #555;
   --color-background: #f7f3eb;
-    --color-border: #d0dff4; /* Fallback for older browsers */
+  --color-border: #d0dff4; /* Fallback for older browsers */
 
   @supports (color: oklch(0% 0 0)) {
     --color-border: oklch(90% .032 255.585deg);
@@ -261,7 +261,26 @@
 
   --shadow--highlight: 4px 5px var(--color-border);
 
-  /* Full width minus padding */
+  /* Buttons */
+
+  --button-border: 2px solid var(--color-primary);
+  --button-border-radius: var(--border-radius);
+  --button-bg: var(--color-primary);
+  --button-bg-hover: var(--color-primary-alt);
+  --button-color: white;
+  --button-cursor: pointer;
+  --button-transition: var(--transition-interactive);
+  --button-min-height: var(--touch-target-min);
+  --button-gap: var(--space-xs);
+
+  /* Lightbox */
+  --lightbox-bg: color-mix(in srgb, black 90%, white 10%);
+  --lightbox-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --lightbox-z-index: 9999;
+  --caption-bg: color-mix(in srgb, black 70%, white 30%);
+  --caption-color: #fff;
+  --focus-ring: 2px solid var(--accent-color, #06c);
+  --focus-ring-offset: 2px;
 
   /* ==========================================================================
      RESPONSIVE BREAKPOINTS

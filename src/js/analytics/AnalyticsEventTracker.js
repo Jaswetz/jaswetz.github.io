@@ -77,10 +77,7 @@ export class AnalyticsEventTracker {
     // Track at 25%, 50%, 75%, and 100%
     const milestones = [25, 50, 75, 100];
     milestones.forEach((milestone) => {
-      if (
-        scrollPercent >= milestone &&
-        !this.scrollDepthTracked.includes(milestone)
-      ) {
+      if (scrollPercent >= milestone && !this.scrollDepthTracked.includes(milestone)) {
         this.scrollDepthTracked.push(milestone);
         this.analytics.gtag("event", "scroll", {
           event_category: "Engagement",
@@ -177,10 +174,7 @@ export class AnalyticsEventTracker {
     externalLinks.forEach((link) => {
       link.addEventListener("click", () => {
         const url = link.getAttribute("href");
-        const linkText =
-          link.textContent ||
-          link.getAttribute("aria-label") ||
-          "External Link";
+        const linkText = link.textContent || link.getAttribute("aria-label") || "External Link";
         this.trackExternalLink(url, linkText);
       });
     });

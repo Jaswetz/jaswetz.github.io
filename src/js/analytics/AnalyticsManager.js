@@ -118,7 +118,6 @@ export class AnalyticsManager {
     // Initialize dataLayer and gtag if not already present
     // @ts-ignore - Google Analytics dataLayer
     window.dataLayer = window.dataLayer || [];
-
     // @ts-ignore - Google Analytics gtag
     if (!window.gtag) {
       function gtag() {

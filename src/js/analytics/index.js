@@ -24,12 +24,10 @@ class Analytics {
 
     const success = await this.manager.initialize();
     this.isInitialized = success;
-
     // Enable auto-tracking by default
     if (success) {
       this.tracker.enableAutoTracking();
     }
-
     return success;
   }
 
@@ -99,7 +97,7 @@ class Analytics {
 const analytics = new Analytics();
 
 // Auto-initialize on import
-analytics.init().catch((error) => {
+analytics.init().catch(error => {
   console.warn("Analytics initialization failed:", error);
 });
 

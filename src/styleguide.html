@@ -656,6 +656,98 @@
 &lt;/div&gt;</code></pre>
           </section>
 
+          <section id="image-lightbox" class="styleguide-section">
+            <h3>Image Lightbox Component</h3>
+            <p>
+              Accessible lightbox modal for viewing case study images in full
+              size. Supports keyboard navigation, touch gestures, and maintains
+              WCAG 2.1 Level AA compliance.
+            </p>
+
+            <h4>Features</h4>
+            <ul>
+              <li>Click on images to view in lightbox overlay</li>
+              <li>
+                Keyboard navigation (ESC to close, arrow keys for navigation)
+              </li>
+              <li>Touch/swipe gestures on mobile devices</li>
+              <li>Focus management for accessibility</li>
+              <li>Screen reader announcements</li>
+              <li>Image captions support</li>
+              <li>Responsive design with smooth transitions</li>
+            </ul>
+
+            <h4>Usage</h4>
+            <p>
+              Add the <code>&lt;image-lightbox&gt;</code> component to your page
+              and wrap images in <code>&lt;figure&gt;</code> elements with the
+              <code>project__img</code> or
+              <code>project-summary__image</code> classes.
+            </p>
+
+            <div class="styleguide-example">
+              <figure>
+                <img
+                  src="./img/projects/autodesk-messaging/messaging-final.jpg"
+                  alt="Sample lightbox image"
+                  class="project__img"
+                  style="max-width: 300px; cursor: pointer"
+                />
+                <figcaption>Click this image to open in lightbox</figcaption>
+              </figure>
+            </div>
+
+            <pre><code>&lt;!-- Add lightbox component to page --&gt;
+&lt;image-lightbox&gt;&lt;/image-lightbox&gt;
+
+&lt;!-- Images with lightbox functionality --&gt;
+&lt;figure&gt;
+  &lt;img
+    src="path/to/image.jpg"
+    alt="Image description"
+    class="project__img"
+  /&gt;
+  &lt;figcaption&gt;
+    Optional image caption
+  &lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+
+            <h4>Accessibility Features</h4>
+            <ul>
+              <li>
+                <strong>ARIA attributes:</strong> Proper role, aria-modal,
+                aria-hidden, and aria-labelledby
+              </li>
+              <li>
+                <strong>Focus management:</strong> Traps focus within lightbox,
+                restores focus on close
+              </li>
+              <li>
+                <strong>Keyboard support:</strong> ESC to close, arrow keys for
+                navigation, Enter/Space to activate
+              </li>
+              <li>
+                <strong>Screen reader announcements:</strong> Announces lightbox
+                state and image position
+              </li>
+              <li>
+                <strong>High contrast support:</strong> Adapts to
+                prefers-contrast: high
+              </li>
+              <li>
+                <strong>Reduced motion:</strong> Respects prefers-reduced-motion
+                preference
+              </li>
+            </ul>
+
+            <h4>Web Component Implementation</h4>
+            <p>
+              The lightbox is implemented as a native Web Component using Shadow
+              DOM for encapsulation. It automatically discovers and enhances
+              images matching the selector pattern on page load.
+            </p>
+          </section>
+
           <section id="cards" class="styleguide-section">
             <h3>Card Components</h3>
             <p>
@@ -1020,6 +1112,10 @@
       </div>
     </main>
     <site-footer></site-footer>
+
+    <!-- Image Lightbox Component -->
+    <image-lightbox></image-lightbox>
+
     <script type="module" src="./js/main.js?v=1"></script>
   </body>
 </html>
