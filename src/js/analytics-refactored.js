@@ -1,4 +1,3 @@
-
 /**
  * Google Analytics 4 Configuration and Custom Event Tracking
  * Refactored version using modular architecture
