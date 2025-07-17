@@ -1,0 +1,31 @@
+{
+  "name": "Code Quality Analyzer",
+  "description": "Analyzes modified source code for potential improvements, code smells, design patterns, and best practices",
+  "trigger": {
+    "type": "file_change",
+    "patterns": [
+      "src/**/*.js",
+      "src/**/*.css",
+      "src/**/*.html",
+      "scripts/**/*.js",
+      "tests/**/*.js",
+      "*.js",
+      "*.config.js"
+    ],
+    "excludePatterns": [
+      "src/img/**/*",
+      "src/img-backup/**/*",
+      "src/assets/**/*",
+      "src/svg/**/*",
+      "node_modules/**/*",
+      "dist/**/*",
+      "dev-build/**/*",
+      ".parcel-cache/**/*"
+    ]
+  },
+  "request": {
+    "message": "Analyze the modified code files for potential improvements. Focus on:\n\n1. **Code Smells & Anti-patterns**:\n   - Long functions/methods that should be broken down\n   - Duplicate code that could be refactored\n   - Complex conditional logic that could be simplified\n   - Magic numbers/strings that should be constants\n   - Inconsistent naming conventions\n\n2. **Design Patterns & Architecture**:\n   - Opportunities to apply common design patterns\n   - Component structure improvements for Web Components\n   - CSS architecture alignment with project's cascade layers\n   - Module organization and dependency management\n\n3. **Best Practices**:\n   - Performance optimizations (lazy loading, efficient selectors)\n   - Accessibility improvements (ARIA labels, semantic HTML)\n   - Security considerations (XSS prevention, input validation)\n   - Browser compatibility issues\n   - Error handling and edge cases\n\n4. **Code Quality**:\n   - Readability improvements (comments, variable names)\n   - Maintainability enhancements\n   - Testing opportunities\n   - Documentation gaps\n\n**Important**: Only suggest improvements that maintain existing functionality. Provide specific, actionable recommendations with code examples where helpful. Consider the project's tech stack: Vanilla JS (ES2022), Web Components, CSS Cascade Layers, and Parcel.js bundler.",
+    "includeContext": ["#File"]
+  },
+  "enabled": true
+}
