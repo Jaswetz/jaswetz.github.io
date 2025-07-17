@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Add click functionality to the animated 2D logo
   const logo2d = document.querySelector(".logo-2d");
-  if (logo2d instanceof HTMLElement) {
+  if (logo2d !== null && logo2d instanceof HTMLElement) {
     // Make the logo clickable by adding cursor pointer style
     logo2d.style.cursor = "pointer";
 
