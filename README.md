@@ -12,11 +12,33 @@ A modern UX portfolio website built with fundamental web technologies and native
 - **🎨 Animated 2D Logo**: Interactive animated logo in the hero section featuring the three signature shapes (triangle, circle, square) with smooth CSS animations
 - **📱 Responsive Design**: Mobile-first approach with optimized layouts for all screen sizes
 - **⚡ Performance Optimized**: Lightweight bundle sizes and fast loading times
-- **🧭 Smart Sidebar Navigation**: Automatic scroll spy with active section highlighting and smooth scrolling (see [SIDEBAR_NAVIGATION.md](SIDEBAR_NAVIGATION.md))
+- **🧭 Smart Sidebar Navigation**: Automatic scroll spy with active section highlighting and smooth scrolling for case study pages (see [SIDEBAR_NAVIGATION.md](SIDEBAR_NAVIGATION.md))
+- **🔧 Enhanced Case Study Navigation**: Improved scroll positioning and section detection for optimal reading experience
 
 ## 🚀 Live Site
 
 Visit the portfolio at: [https://jaswetz.github.io/](https://jaswetz.github.io/)
+
+## 🆕 Recent Improvements
+
+### Case Study Navigation Enhancement (In Progress)
+
+The sidebar navigation system for case study pages is being enhanced to provide a better reading experience:
+
+- **Improved Scroll Spy**: Fixing section highlighting issues, particularly for "The Problem" section
+- **Dynamic Offset Calculation**: Section headers will appear at optimal reading position when clicked
+- **Enhanced Section Detection**: Better handling of various HTML structures in case studies
+- **Cross-Browser Compatibility**: Ensuring consistent behavior across all modern browsers
+
+**Current Status**:
+
+- ✅ Task 1: Enhanced section detection logic - **In Progress**
+- ⏳ Task 2: Dynamic offset calculation for scroll positioning - **Planned**
+- ⏳ Task 3: Improved intersection observer configuration - **Planned**
+
+See [.kiro/specs/case-study-navigation-fix/](/.kiro/specs/case-study-navigation-fix/) for detailed specifications and progress tracking.
+
+See [SIDEBAR_NAVIGATION.md](SIDEBAR_NAVIGATION.md) for technical documentation.
 
 ## 🔧 CI/CD Pipeline Status
 
@@ -85,6 +107,12 @@ Use `kebab-case` with descriptive names.
 - Custom element names MUST contain a hyphen (e.g., `<site-header>`, `<project-card>`).
 - Component JavaScript files should be named in `PascalCase` (e.g., `SiteHeader.js`, `ProjectCard.js`).
 - Component files should be organized by feature/UI element in the `src/js/components/` directory (e.g., `src/js/components/site-header/SiteHeader.js`).
+
+### Current Components
+
+- **SiteHeader** (`src/js/components/site-header/`) - Main site navigation and branding
+- **SiteFooter** (`src/js/components/site-footer/`) - Footer with social links and copyright
+- **SidebarNavigation** (`src/js/components/sidebar-navigation/`) - Case study navigation with scroll spy functionality
 
 # Development Environment & Tooling
 
@@ -467,6 +495,8 @@ This project uses **Native Web Components** for creating reusable UI elements su
 - These components are then used directly in the HTML pages (e.g., `src/index.html`, `src/about.html`, `src/styleguide.html`).
 - Parcel.js handles the bundling of these components as part of the standard JavaScript build process.
 
+For detailed information about the project architecture, see [Docs/project_structure.md](Docs/project_structure.md).
+
 ## Living Style Guide
 
 A living style guide is available at `src/styleguide.html`. When running the development server (`npm run dev`), this page can be accessed to view and test all available Web Components, design tokens (colors, typography), and utility classes.
@@ -696,6 +726,7 @@ This section outlines the planned testing approaches to ensure website quality, 
 - **Isolation Testing**: Web Components will be manually tested in isolation using the `styleguide.html` page to verify their appearance, functionality, and responsiveness.
 - **Integration Testing**: Components will be tested on actual pages (`index.html`, `about.html`, etc.) to ensure they integrate correctly with the page layout and other components.
 - **Encapsulation Verification**: Shadow DOM encapsulation will be implicitly verified by ensuring styles do not leak between components or the global scope.
+- **Navigation Testing**: Case study navigation functionality will be tested for proper scroll spy highlighting and smooth scroll positioning across different viewport sizes and browsers.
 
 # Git Workflow & Quality Assurance
 

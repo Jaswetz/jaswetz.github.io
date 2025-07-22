@@ -4,7 +4,7 @@
   "description": "Monitors all source files in the repository and triggers documentation updates when changes are detected. Watches HTML, CSS, JavaScript files, configuration files, and other relevant source patterns to keep README and docs folder synchronized with code changes.",
   "version": "1",
   "when": {
-    "type": "fileEdited",
+    "type": "userTriggered",
     "patterns": [
       "src/**/*.html",
       "src/**/*.css",

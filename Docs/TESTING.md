@@ -180,6 +180,43 @@ npx playwright test
 - Responsive design
 - Navigation behavior
 - Form interactions
+- Case study sidebar navigation (scroll spy and smooth scrolling)
+
+### 9. Navigation System Testing
+
+**Purpose**: Verify case study sidebar navigation functionality
+**Components**: SidebarNavigation Web Component and inline implementations
+**Status**: 🔄 **Enhanced testing in progress** - Navigation system is being improved to fix scroll spy and positioning issues
+
+**Current Implementation Status**:
+
+- ✅ Task 1: Enhanced section detection logic - **In Progress**
+- ⏳ Task 2: Dynamic offset calculation for scroll positioning - **Planned**
+- ⏳ Task 3: Improved intersection observer configuration - **Planned**
+
+**Manual testing checklist**:
+
+- [ ] Navigation links highlight correctly when scrolling through sections
+- [ ] Clicking navigation links scrolls to proper position (not hidden behind header)
+- [ ] "The Problem" section highlighting works correctly (enhanced detection in progress)
+- [ ] Smooth scrolling behavior is consistent across browsers
+- [ ] Keyboard navigation works for all navigation links
+- [ ] Mobile touch scrolling maintains proper highlighting
+- [ ] Dynamic offset calculation accounts for header height changes (planned implementation)
+
+**Automated tests** (via Playwright):
+
+```bash
+# Run navigation-specific tests
+npx playwright test tests/sidebar-navigation-test.js
+```
+
+**Key test scenarios**:
+
+- Scroll spy accuracy across different section types
+- Proper scroll positioning with dynamic header heights
+- Cross-browser smooth scrolling consistency
+- Mobile viewport navigation behavior
 
 ## Continuous Integration
 
