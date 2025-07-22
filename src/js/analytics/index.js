@@ -99,7 +99,7 @@ class Analytics {
 const analytics = new Analytics();
 
 // Auto-initialize on import
-analytics.init().catch(error => {
+analytics.init().catch((error) => {
   console.warn("Analytics initialization failed:", error);
 });
 
