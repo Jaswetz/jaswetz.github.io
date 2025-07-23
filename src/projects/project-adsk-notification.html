@@ -34,7 +34,6 @@
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG"
     ></script>
-    
 
     <!-- Font optimization -->
     <!-- Preconnect to Google Fonts for faster loading -->
@@ -1058,54 +1057,225 @@
     <!-- Sidebar Navigation Active State Script -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        // Enhanced section detection - look for both direct IDs and nested IDs
         const sections = document.querySelectorAll("section[id], h2[id]");
         const navLinks = document.querySelectorAll(".sidebar-nav a");
 
-        function updateActiveNav() {
-          let current = "";
-          const scrollY = window.pageYOffset;
+        // Track scroll animation for cancellation
+        let scrollAnimationFrame = null;
 
-          sections.forEach((section) => {
-            const sectionTop = section.offsetTop - 100; // Offset for header
-            const sectionHeight = section.offsetHeight;
-
-            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-              current = section.getAttribute("id");
-            }
-          });
-
-          navLinks.forEach((link) => {
-            link.classList.remove("active");
-            if (link.getAttribute("href") === "#" + current) {
-              link.classList.add("active");
-            }
-          });
+        /**
+         * Dynamically calculate header offset based on actual header height
+         * @returns {number} Calculated offset in pixels
+         */
+        function calculateScrollOffset() {
+          const header =
+            document.querySelector("site-header") ||
+            document.querySelector("header");
+          // Get actual header height or default to 80px if not found
+          const headerHeight =
+            header && header instanceof HTMLElement ? header.offsetHeight : 80;
+          // Add extra padding for comfortable reading
+          return headerHeight + 20;
         }
 
-        // Update on scroll
+        /**
+         * Enhanced smooth scroll with animation cancellation
+         * @param {number} targetY - Target scroll position
+         * @param {number} duration - Animation duration in ms
+         */
+        function smoothScrollTo(targetY, duration = 400) {
+          // Cancel any ongoing animation first
+          if (scrollAnimationFrame) {
+            cancelAnimationFrame(scrollAnimationFrame);
+            scrollAnimationFrame = null;
+          }
+
+          const startY = window.pageYOffset;
+          const distance = targetY - startY;
+          let startTime = null;
+
+          // Don't animate for very small distances
+          if (Math.abs(distance) < 5) {
+            window.scrollTo(0, targetY);
+            return;
+          }
+
+          function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            const elapsed = timestamp - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            // Improved easing function for smoother animation
+            const ease =
+              progress < 0.5
+                ? 4 * progress * progress * progress
+                : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+            window.scrollTo({
+              top: startY + distance * ease,
+              behavior: "auto", // We're handling the animation manually
+            });
+
+            if (progress < 1) {
+              scrollAnimationFrame = requestAnimationFrame(step);
+            } else {
+              scrollAnimationFrame = null;
+            }
+          }
+
+          scrollAnimationFrame = requestAnimationFrame(step);
+        }
+
+        /**
+         * Update active navigation link based on current scroll position
+         * Uses throttling for better performance
+         */
+        let scrollTimeout;
+        function updateActiveNav() {
+          // Clear any existing timeout to prevent excessive updates
+          if (scrollTimeout) {
+            clearTimeout(scrollTimeout);
+          }
+
+          // Use a small timeout for throttling
+          scrollTimeout = setTimeout(() => {
+            let current = "";
+            const scrollY = window.pageYOffset;
+            const offset = calculateScrollOffset();
+
+            sections.forEach((section) => {
+              // Use dynamic offset calculation
+              const sectionTop = section.offsetTop - offset;
+              const sectionHeight = section.offsetHeight;
+
+              if (
+                scrollY >= sectionTop &&
+                scrollY < sectionTop + sectionHeight
+              ) {
+                // Use ID directly from section or from child element if needed
+                current =
+                  section.getAttribute("id") ||
+                  (section.querySelector("[id]")
+                    ? section.querySelector("[id]").getAttribute("id")
+                    : "");
+              }
+            });
+
+            navLinks.forEach((link) => {
+              link.classList.remove("active");
+              if (link.getAttribute("href") === "#" + current) {
+                link.classList.add("active");
+              }
+            });
+          }, 10); // Small delay for performance
+        }
+
+        // Update on scroll with throttling
         window.addEventListener("scroll", updateActiveNav);
 
         // Update on load
         updateActiveNav();
 
-        // Smooth scroll for navigation links
+        // Enhanced smooth scroll for navigation links
         navLinks.forEach((link) => {
           link.addEventListener("click", function (e) {
             e.preventDefault();
             const targetId = this.getAttribute("href").substring(1);
-            const targetSection = document.getElementById(targetId);
 
-            if (targetSection) {
-              const headerOffset = 80; // Account for fixed header
-              const elementPosition = targetSection.offsetTop;
-              const offsetPosition = elementPosition - headerOffset;
+            // Try to find the target element directly or within a section
+            let targetElement = document.getElementById(targetId);
 
-              window.scrollTo({
-                top: offsetPosition,
-                behavior: "smooth",
+            if (targetElement) {
+              // Update active state immediately for better UX
+              navLinks.forEach((navLink) => {
+                navLink.classList.remove("active");
               });
+              link.classList.add("active");
+
+              // Find the containing section if the target is not a section itself
+              const targetSection =
+                targetElement.tagName.toLowerCase() === "section"
+                  ? targetElement
+                  : targetElement.closest("section") || targetElement;
+
+              // Calculate position with dynamic offset
+              const offset = calculateScrollOffset();
+              const elementPosition = targetSection.offsetTop;
+              const offsetPosition = Math.max(0, elementPosition - offset);
+
+              // Adjust duration based on distance for more natural feeling
+              const distance = Math.abs(window.pageYOffset - offsetPosition);
+              const duration = Math.min(800, Math.max(400, distance / 2));
+
+              // Perform smooth scroll with cancellation support
+              smoothScrollTo(offsetPosition, duration);
             }
           });
+        });
+
+        // Handle initial hash in URL
+        if (window.location.hash) {
+          setTimeout(() => {
+            const targetId = window.location.hash.substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+              // Find the containing section
+              const targetSection =
+                targetElement.tagName.toLowerCase() === "section"
+                  ? targetElement
+                  : targetElement.closest("section") || targetElement;
+
+              // Calculate position with dynamic offset
+              const offset = calculateScrollOffset();
+              const elementPosition = targetSection.offsetTop;
+              const offsetPosition = Math.max(0, elementPosition - offset);
+
+              // Scroll to position
+              smoothScrollTo(offsetPosition, 400);
+
+              // Update active state
+              navLinks.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === "#" + targetId) {
+                  link.classList.add("active");
+                }
+              });
+            }
+          }, 100);
+        }
+
+        // Listen for hash changes (browser back/forward navigation)
+        window.addEventListener("hashchange", function () {
+          if (window.location.hash) {
+            const targetId = window.location.hash.substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+              // Find the containing section
+              const targetSection =
+                targetElement.tagName.toLowerCase() === "section"
+                  ? targetElement
+                  : targetElement.closest("section") || targetElement;
+
+              // Calculate position with dynamic offset
+              const offset = calculateScrollOffset();
+              const elementPosition = targetSection.offsetTop;
+              const offsetPosition = Math.max(0, elementPosition - offset);
+
+              // Scroll to position
+              smoothScrollTo(offsetPosition, 400);
+
+              // Update active state
+              navLinks.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === "#" + targetId) {
+                  link.classList.add("active");
+                }
+              });
+            }
+          }
         });
       });
     </script>
