@@ -2,9 +2,9 @@ name: Build and Deploy
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:
 
 permissions:
@@ -71,7 +71,7 @@ jobs:
   deploy:
     needs: [build-and-deploy]
     # Deploy on pushes to main or manual dispatch
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

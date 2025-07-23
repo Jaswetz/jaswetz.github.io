@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Track resume downloads
-  document.querySelectorAll("a[href*='Resume.pdf']").forEach((link) => {
+  document.querySelectorAll("a[href*=\"Resume.pdf\"]").forEach((link) => {
     link.addEventListener("click", () => {
       if (window.trackResumeDownload) {
         window.trackResumeDownload();

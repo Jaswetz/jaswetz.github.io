@@ -24,12 +24,10 @@ class Analytics {
 
     const success = await this.manager.initialize();
     this.isInitialized = success;
-    
     // Enable auto-tracking by default
     if (success) {
       this.tracker.enableAutoTracking();
     }
-
     return success;
   }
 
