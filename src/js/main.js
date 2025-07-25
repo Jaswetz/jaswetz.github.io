@@ -13,9 +13,16 @@ import ImageLightbox from "./components/ImageLightbox/ImageLightbox.js";
 
 // Define the custom elements
 if (window.customElements) {
-  customElements.define("site-header", SiteHeader);
-  customElements.define("site-footer", SiteFooter);
-  customElements.define("image-lightbox", ImageLightbox);
+  // Check if elements are already defined to prevent duplicate registration
+  if (!customElements.get("site-header")) {
+    customElements.define("site-header", SiteHeader);
+  }
+  if (!customElements.get("site-footer")) {
+    customElements.define("site-footer", SiteFooter);
+  }
+  if (!customElements.get("image-lightbox")) {
+    customElements.define("image-lightbox", ImageLightbox);
+  }
 } else {
   console.warn(
     "Custom Elements are not supported in this browser. Site may not render correctly."

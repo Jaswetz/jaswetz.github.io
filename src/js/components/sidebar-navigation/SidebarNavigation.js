@@ -28,7 +28,6 @@ class SidebarNavigation {
   setupNavLinks() {
     // Get all navigation links
     const links = this.sidebarNav.querySelectorAll("a[href^=\"#\"]");
-
     links.forEach((link) => {
       const targetId = link.getAttribute("href").substring(1);
       const targetSection = document.getElementById(targetId);
@@ -81,6 +80,7 @@ class SidebarNavigation {
     if (activeNavItem) {
       activeNavItem.link.classList.add("active");
       this.currentActiveLink = activeNavItem.link;
+    } else {
     }
   }
 

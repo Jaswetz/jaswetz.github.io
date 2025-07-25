@@ -34,7 +34,6 @@
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG"
     ></script>
-    
 
     <!-- Font optimization -->
     <!-- Preconnect to Google Fonts for faster loading -->
@@ -855,5 +854,65 @@
     <image-lightbox></image-lightbox>
 
     <script type="module" src="../js/main.js?v=1"></script>
+
+    <!-- Sidebar Navigation Active State Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(".sidebar-nav a");
+        const header = document.querySelector("site-header");
+
+        function getHeaderHeight() {
+          return header ? header.offsetHeight : 80;
+        }
+
+        function updateActiveNav() {
+          const scrollY = window.pageYOffset;
+          const headerHeight = getHeaderHeight();
+          let current = "";
+
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop - headerHeight - 50;
+            if (scrollY >= sectionTop) {
+              current = section.getAttribute("id");
+            }
+          });
+
+          navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === "#" + current) {
+              link.classList.add("active");
+            }
+          });
+        }
+
+        // Update on scroll
+        window.addEventListener("scroll", updateActiveNav);
+
+        // Update on load
+        updateActiveNav();
+
+        // Smooth scroll for navigation links
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection) {
+              const headerHeight = getHeaderHeight();
+              const elementPosition = targetSection.offsetTop;
+              // Ensure h2 headers appear at top of viewport with proper spacing
+              const offsetPosition = elementPosition - headerHeight - 30;
+
+              window.scrollTo({
+                top: Math.max(0, offsetPosition),
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>

@@ -23,9 +23,7 @@
             "Google Analytics script failed to load - this may be due to ad blockers or network issues"
           );
         };
-        script.onload = function () {
-          console.log("Google Analytics script loaded successfully");
-        };
+        script.onload = function () {};
         document.head.appendChild(script);
       }
     </script>
@@ -34,7 +32,6 @@
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG"
     ></script>
-    
 
     <!-- Font optimization -->
     <!-- Preconnect to Google Fonts for faster loading -->
@@ -174,8 +171,8 @@
               </p>
             </section>
 
-            <section class="project-problem">
-              <h2 id="the-problem">The Problem</h2>
+            <section class="project-problem" id="the-problem">
+              <h2>The Problem</h2>
 
               <div class="grid grid--2-column">
                 <div class="problem-card card--white">
@@ -1058,18 +1055,23 @@
     <!-- Sidebar Navigation Active State Script -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const sections = document.querySelectorAll("section[id], h2[id]");
+        const sections = document.querySelectorAll("section[id]");
         const navLinks = document.querySelectorAll(".sidebar-nav a");
+        const header = document.querySelector("site-header");
+
+        function getHeaderHeight() {
+          const height = header ? header.offsetHeight : 80;
+          return height;
+        }
 
         function updateActiveNav() {
-          let current = "";
           const scrollY = window.pageYOffset;
+          const headerHeight = getHeaderHeight();
+          let current = "";
 
           sections.forEach((section) => {
-            const sectionTop = section.offsetTop - 100; // Offset for header
-            const sectionHeight = section.offsetHeight;
-
-            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            const sectionTop = section.offsetTop - headerHeight - 50;
+            if (scrollY >= sectionTop) {
               current = section.getAttribute("id");
             }
           });
@@ -1089,19 +1091,27 @@
         updateActiveNav();
 
         // Smooth scroll for navigation links
-        navLinks.forEach((link) => {
+        navLinks.forEach((link, index) => {
           link.addEventListener("click", function (e) {
             e.preventDefault();
             const targetId = this.getAttribute("href").substring(1);
             const targetSection = document.getElementById(targetId);
 
             if (targetSection) {
-              const headerOffset = 80; // Account for fixed header
+              const headerHeight = getHeaderHeight();
               const elementPosition = targetSection.offsetTop;
-              const offsetPosition = elementPosition - headerOffset;
+              const viewportHeight = window.innerHeight;
+              const currentScroll = window.pageYOffset;
 
+              // Try different offset calculations
+              const offsetPosition1 = elementPosition - headerHeight - 30;
+              const offsetPosition2 = elementPosition - headerHeight - 50;
+              const offsetPosition3 = elementPosition - headerHeight;
+
+              // Use the -50 offset for better positioning
+              const finalOffset = Math.max(0, offsetPosition2);
               window.scrollTo({
-                top: offsetPosition,
+                top: finalOffset,
                 behavior: "smooth",
               });
             }
