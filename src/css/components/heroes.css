@@ -6,6 +6,10 @@
     min-height: calc(var(--space-3xl) * 4.5);
 }
 
+.hero .wrapper {
+    padding-inline: 0;
+}
+
 .hero--project__content {
     padding-top: var(--space-m);
 }
@@ -63,9 +67,13 @@
    ========================================================================== */
 
 @media (width <=47.9375rem) {
-    .hero__content,
-    .hero--project__content {
+
+    .hero__content {
         padding: var(--space-l);
+    }
+
+    .hero--project__content {
+        padding-top: var(--space-l);
     }
 
     .hero__meta,
