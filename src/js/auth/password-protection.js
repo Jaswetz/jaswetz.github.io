@@ -135,8 +135,7 @@ export class PasswordProtection {
       <div class="password-protection-modal">
         <div class="password-protection-content">
           <div class="password-protection-header">
-            <h1>${this.config.title}</h1>
-            <p class="password-protection-description">${this.config.description}</p>
+            <h1 class="password-protection-description">${this.config.description}</h1>
           </div>
           
           <form class="password-protection-form" id="password-form">
@@ -157,18 +156,16 @@ export class PasswordProtection {
             </div>
             
             <div class="form-actions">
-              <button type="button" class="btn btn--secondary" id="cancel-btn">
+              <button type="button" class="button button--secondary" id="cancel-btn">
                 Cancel
               </button>
-              <button type="submit" class="btn btn--primary">
+              <button type="submit" class="button">
                 Access Case Study
               </button>
             </div>
           </form>
           
-          <div class="password-protection-footer">
-            <p><small>For access to this case study, please contact Jason Swetzoff.</small></p>
-          </div>
+
         </div>
       </div>
     `;
