@@ -52,7 +52,9 @@ protectedCaseStudies: {
 
 ## Current Protected Case Studies
 
-- **project-autodesk-di**: ""
+- **project-autodesk-di**: Autodesk Fusion Device Independence case study
+  - Password: `CuriousDesign404`
+  - Protected due to confidential enterprise design work and client requirements
 
 ## Configuration Options
 
