@@ -86,6 +86,7 @@
 .card--vertical {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .card--vertical .card__image {
@@ -98,6 +99,10 @@
 .card--vertical .card__content {
   text-align: left;
   width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .card--outline {
