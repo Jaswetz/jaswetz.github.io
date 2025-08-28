@@ -61,6 +61,9 @@ window.portfolioAnalytics = window.portfolioAnalytics || {
   trackExternalLink,
   trackScrollDepth,
   trackTimeOnPage,
+  trackCaseStudyInteraction,
+  trackImageLightbox,
+  trackCaseStudyCompletion,
   safeGtag,
   // Add new methods from modular implementation
   getStatus: () => analytics.getStatus(),
@@ -71,6 +74,19 @@ window.portfolioAnalytics = window.portfolioAnalytics || {
 // Export analytics instance as default for ES6 imports
 export default analytics;
 
+// Case study tracking functions
+function trackCaseStudyInteraction(caseStudyName, action, section) {
+  return analytics.trackCaseStudyInteraction(caseStudyName, action, section);
+}
+
+function trackImageLightbox(imageName, caseStudy) {
+  return analytics.trackImageLightbox(imageName, caseStudy);
+}
+
+function trackCaseStudyCompletion(caseStudyName) {
+  return analytics.trackCaseStudyCompletion(caseStudyName);
+}
+
 // Named exports for backward compatibility
 export {
   trackProjectClick,
@@ -79,5 +95,8 @@ export {
   trackExternalLink,
   trackScrollDepth,
   trackTimeOnPage,
+  trackCaseStudyInteraction,
+  trackImageLightbox,
+  trackCaseStudyCompletion,
   safeGtag,
 };

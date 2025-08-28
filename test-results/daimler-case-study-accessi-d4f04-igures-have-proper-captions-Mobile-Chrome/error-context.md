@@ -1,0 +1,228 @@
+# Page snapshot
+
+```yaml
+- link "Skip to main content":
+  - /url: "#main-content"
+- banner:
+  - link "Jason Swetzoff":
+    - /url: /index.html
+    - img
+    - text: Jason Swetzoff
+  - button "Toggle menu"
+- 'banner "🔒 Streamlining Data Access: Fleet Analytics for Daimler Trucks"':
+  - text: Daimler Trucks North America
+  - 'heading "🔒 Streamlining Data Access: Fleet Analytics for Daimler Trucks" [level=1]'
+  - group "Project metadata": Lead UX Designer| Multi-year project
+- 'main "🔒 Streamlining Data Access: Fleet Analytics for Daimler Trucks"':
+  - article:
+    - region "Project Summary":
+      - heading "Project Summary" [level=2]
+      - 'img "Detroit Connect Direct: Streamlined data access configuration for fleet analytics"':
+        - 'button "View larger image: Detroit Connect Direct data access configuration interface displayed on a MacBook Pro on a wooden desk, showing the clean and intuitive user interface design"': 🖼️ Image failed to load
+        - text: "Detroit Connect Direct: Streamlined data access configuration for fleet analytics"
+      - group "Project details":
+        - group "Client":
+          - heading "Client" [level=3]
+          - paragraph: Daimler Trucks North America
+        - group "Role":
+          - heading "Role" [level=3]
+          - paragraph: Lead UX Designer
+        - group "Platform":
+          - heading "Platform" [level=3]
+          - paragraph: Web Application
+        - group "Timeline":
+          - heading "Timeline" [level=3]
+          - paragraph: Multi-year project
+        - group "Challenge":
+          - heading "Challenge" [level=3]
+          - paragraph: Design a data access configuration tool that is easy to comprehend and enjoyable to use—for everybody from the intern to the data scientist—and can be used by multiple users for different steps.
+    - region "Brief":
+      - heading "Brief" [level=2]
+      - paragraph: Daimler Trucks North America needed a comprehensive solution for fleet operators to access and configure vehicle data streams. The existing system was fragmented, complex, and required extensive technical knowledge to operate effectively. Fleet managers, data analysts, and business users struggled to customize data delivery according to their specific operational needs.
+      - paragraph: The challenge was to create an intuitive interface that could serve users across the entire spectrum of technical expertise—from interns just learning the system to experienced data scientists requiring advanced configuration options.
+    - region "Assignment":
+      - heading "Assignment" [level=2]
+      - paragraph: "As Lead UX Designer, I was tasked with designing the Detroit Connect Direct platform—a data access configuration tool that would revolutionize how Daimler's customers interact with fleet analytics data. The assignment required:"
+      - list:
+        - listitem:
+          - strong: "User Research:"
+          - text: Understanding the diverse needs of fleet operators, from small business owners to enterprise-level data teams
+        - listitem:
+          - strong: "Interface Design:"
+          - text: Creating an intuitive configuration system that scales from simple to complex use cases
+        - listitem:
+          - strong: "Workflow Optimization:"
+          - text: Streamlining multi-step processes that previously required technical expertise
+        - listitem:
+          - strong: "Accessibility:"
+          - text: Ensuring the platform works for users with varying levels of technical proficiency
+    - region "Understanding Our Users":
+      - heading "Understanding Our Users" [level=2]
+      - paragraph: "Through extensive research, we identified three primary user groups with distinct needs and technical capabilities:"
+      - group "User groups and their characteristics":
+        - group "Fleet Managers":
+          - heading "Fleet Managers" [level=3]
+          - paragraph:
+            - strong: "Technical Level:"
+            - text: Basic to Intermediate
+          - paragraph:
+            - strong: "Primary Goals:"
+            - text: Monitor vehicle performance, track maintenance schedules, optimize routes
+          - paragraph:
+            - strong: "Pain Points:"
+            - text: Complex interfaces, too much technical jargon, difficulty finding relevant data
+        - group "Business Analysts":
+          - heading "Business Analysts" [level=3]
+          - paragraph:
+            - strong: "Technical Level:"
+            - text: Intermediate to Advanced
+          - paragraph:
+            - strong: "Primary Goals:"
+            - text: Generate reports, analyze trends, support decision-making
+          - paragraph:
+            - strong: "Pain Points:"
+            - text: Limited customization options, inflexible reporting tools, data silos
+        - group "Data Scientists":
+          - heading "Data Scientists" [level=3]
+          - paragraph:
+            - strong: "Technical Level:"
+            - text: Advanced
+          - paragraph:
+            - strong: "Primary Goals:"
+            - text: Deep data analysis, custom integrations, predictive modeling
+          - paragraph:
+            - strong: "Pain Points:"
+            - text: Lack of API access, limited data export options, restrictive configuration
+    - region "Understanding the Customer Flow":
+      - heading "Understanding the Customer Flow" [level=2]
+      - paragraph: Before designing the interface, we mapped the complete customer journey to understand how different users interact with fleet data throughout their workflows.
+      - 'img "Customer flow mapping: From initial data request to actionable insights"':
+        - 'button "View larger image: Customer flow diagram illustrating the step-by-step journey from initial data request through processing to actionable insights, showing decision points and user interactions"'
+        - text: "Customer flow mapping: From initial data request to actionable insights"
+      - paragraph: This flow analysis revealed critical friction points where users abandoned tasks due to complexity or unclear next steps. These insights directly informed our design priorities and helped us identify opportunities for streamlining the user experience.
+    - region "Understanding the User":
+      - heading "Understanding the User" [level=2]
+      - paragraph: Our user research revealed that successful fleet analytics tools must accommodate vastly different mental models and workflows. We conducted interviews with 15+ users across different organizations and technical backgrounds.
+      - 'img "User research synthesis: Comparing needs across different user types"':
+        - 'button "View larger image: User research synthesis diagram comparing different user types, showing personas, needs, and behavioral patterns across fleet managers, business analysts, and data scientists"'
+        - text: "User research synthesis: Comparing needs across different user types"
+      - region "Key Research Insights":
+        - heading "Key Research Insights" [level=3]
+        - list:
+          - listitem:
+            - strong: "Progressive Disclosure:"
+            - text: Users needed different levels of detail based on their expertise
+          - listitem:
+            - strong: "Contextual Help:"
+            - text: In-line guidance was crucial for less technical users
+          - listitem:
+            - strong: "Flexible Workflows:"
+            - text: Power users wanted shortcuts while novices needed guided experiences
+          - listitem:
+            - strong: "Visual Feedback:"
+            - text: Real-time preview of data configurations reduced errors significantly
+    - region "Key Terms & Understanding":
+      - heading "Key Terms & Understanding" [level=2]
+      - paragraph: Given the technical nature of fleet analytics, establishing a common vocabulary was essential for creating an intuitive interface. We developed clear definitions and visual representations for complex concepts.
+      - group "Technical terminology definitions":
+        - group "Data Streams":
+          - heading "Data Streams" [level=4]
+          - paragraph: Continuous flows of vehicle telemetry data including GPS, engine diagnostics, fuel consumption, and driver behavior metrics.
+        - group "Configuration Profiles":
+          - heading "Configuration Profiles" [level=4]
+          - paragraph: Customizable templates that define which data points are collected, how frequently, and in what format for specific use cases.
+        - group "Fleet Segments":
+          - heading "Fleet Segments" [level=4]
+          - paragraph: Logical groupings of vehicles based on criteria such as route type, vehicle class, or operational purpose.
+        - group "Data Delivery Methods":
+          - heading "Data Delivery Methods" [level=4]
+          - paragraph: Various ways data can be accessed including real-time dashboards, scheduled reports, API endpoints, and data exports.
+    - region "Sketching and Whiteboarding":
+      - heading "Sketching and Whiteboarding" [level=2]
+      - paragraph: The design process began with collaborative sketching sessions to explore different approaches to data configuration. We focused on making complex technical concepts more approachable through visual design.
+      - img "Initial sketches exploring different interface concepts for data configuration":
+        - 'button "View larger image: Hand-drawn sketches on paper showing various interface layout concepts for data configuration, including wireframe boxes, navigation elements, and user flow arrows"'
+        - text: Initial sketches exploring different interface concepts for data configuration
+      - img "Collaborative whiteboarding session mapping user workflows and system interactions":
+        - 'button "View larger image: Whiteboard covered with diagrams, user journey maps, and workflow sketches showing team collaboration on system design and user interactions"'
+        - text: Collaborative whiteboarding session mapping user workflows and system interactions
+    - region "Prototyping and Deeper Wireframing":
+      - heading "Prototyping and Deeper Wireframing" [level=2]
+      - paragraph: Moving from sketches to detailed wireframes, we focused on creating a progressive disclosure system that could accommodate both novice and expert users. The wireframing process helped us refine the information architecture and interaction patterns.
+      - img "Detailed wireframes showing the data configuration interface structure":
+        - 'button "View larger image: Digital wireframes displaying the data configuration interface with labeled sections, navigation elements, form fields, and content areas arranged in a structured layout"'
+        - text: Detailed wireframes showing the data configuration interface structure
+      - img "User flow diagrams illustrating different paths through the configuration process":
+        - 'button "View larger image: User flow diagrams with connected boxes and arrows showing different user paths through the configuration process, including decision points and alternative routes"'
+        - text: User flow diagrams illustrating different paths through the configuration process
+      - img "Comprehensive user flow showing the complete data access configuration journey":
+        - 'button "View larger image: Comprehensive user flow diagram mapping the complete journey from login through data selection, configuration, and final output, with branching paths for different user types"'
+        - text: Comprehensive user flow showing the complete data access configuration journey
+    - region "Final Design and Prototyping":
+      - heading "Final Design and Prototyping" [level=2]
+      - paragraph: The final design solution featured a clean, intuitive interface that guided users through complex data configuration tasks. We implemented a card-based system that allowed users to build their data access profiles step by step.
+      - region "Design Principles":
+        - heading "Design Principles" [level=3]
+        - list:
+          - listitem:
+            - strong: "Progressive Complexity:"
+            - text: Start simple, reveal advanced options as needed
+          - listitem:
+            - strong: "Visual Hierarchy:"
+            - text: Clear information architecture guides user attention
+          - listitem:
+            - strong: "Immediate Feedback:"
+            - text: Real-time preview of configuration changes
+          - listitem:
+            - strong: "Contextual Help:"
+            - text: Just-in-time assistance without cluttering the interface
+    - region "Final Touches":
+      - heading "Final Touches" [level=2]
+      - paragraph: The final implementation included subtle animations and micro-interactions that provided feedback and guided users through complex workflows. These details significantly improved the perceived ease of use.
+      - group "Animation examples":
+        - img "Smooth transitions guide users through configuration steps":
+          - 'button "View larger image: Animated demonstration of smooth interface transitions showing data configuration panels sliding in and out with fade effects"'
+          - text: Smooth transitions guide users through configuration steps
+        - img "Micro-interactions provide immediate feedback for user actions":
+          - 'button "View larger image: Animated micro-interaction showing checkbox selection with subtle bounce effect and color change feedback"'
+          - text: Micro-interactions provide immediate feedback for user actions
+    - region "Results":
+      - heading "Results" [level=2]
+      - paragraph: The Detroit Connect Direct platform successfully transformed how Daimler's customers interact with fleet analytics data. The intuitive interface reduced training time and increased user adoption across all technical skill levels.
+      - group "Project success metrics":
+        - group "User Adoption":
+          - heading "User Adoption" [level=3]
+          - paragraph: 85%
+          - paragraph: Increase in platform usage within first 6 months
+        - group "Training Time":
+          - heading "Training Time" [level=3]
+          - paragraph: 60%
+          - paragraph: Reduction in onboarding time for new users
+        - group "User Satisfaction":
+          - heading "User Satisfaction" [level=3]
+          - paragraph: 4.7/5
+          - paragraph: Average user satisfaction score in post-launch surveys
+      - region "Business Impact":
+        - heading "Business Impact" [level=3]
+        - paragraph: The streamlined data access configuration tool enabled Daimler to expand their analytics offerings to a broader customer base, including smaller fleet operators who previously found the system too complex. This expansion contributed to significant revenue growth in the fleet analytics division.
+      - 'img "The final Detroit Connect Direct interface: Intuitive, powerful, and accessible to all user types"':
+        - 'button "View larger image: Final Detroit Connect Direct interface displayed on MacBook Pro showing the completed data configuration dashboard with clean design and intuitive navigation"'
+        - text: "The final Detroit Connect Direct interface: Intuitive, powerful, and accessible to all user types"
+- contentinfo:
+  - paragraph: © 2025 Jason Swetzoff. All rights reserved.
+  - paragraph: Designed and Hand-coded by Jason Swetzoff with HTML, CSS, JS, Parcel and AI.
+  - navigation:
+    - list:
+      - listitem:
+        - link "Email →":
+          - /url: mailto:swetzoff@gmail.com
+      - listitem:
+        - link "Jason's LinkedIn Profile":
+          - /url: http://www.linkedin.com/in/swetzoff
+          - text: LinkedIn →
+      - listitem:
+        - link "Jason's GitHub Profile":
+          - /url: https://github.com/Jaswetz
+          - text: GitHub →
+- text: Click or press Enter to view in lightbox
+```

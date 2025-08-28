@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> </title>
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Case study: Designing a data access configuration tool for Daimler Trucks Fleet Analytics that simplified complex fleet data for users ranging from interns to data scientists."
+    />
+    <meta
+      name="keywords"
+      content="UX Design, Fleet Analytics, Data Visualization, Daimler Trucks, Detroit Connect Direct, User Experience, Interface Design"
+    />
+    <meta name="author" content="Jason Swetzoff" />
+
+    <!-- OpenGraph Meta Tags -->
+    <meta
+      property="og:title"
+      content="Streamlining Data Access: Fleet Analytics for Daimler Trucks - Jason Swetzoff"
+    />
+    <meta
+      property="og:description"
+      content="Case study: Designing a data access configuration tool for Daimler Trucks Fleet Analytics that simplified complex fleet data for users ranging from interns to data scientists."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://jasonswetzoff.com/projects/project-daimler-dcd.html"
+    />
+    <meta
+      property="og:image"
+      content="https://jasonswetzoff.com/img/projects/dcd/dcd-hero-thumbnail.jpg"
+    />
+    <meta property="og:site_name" content="Jason Swetzoff - UX Portfolio" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Streamlining Data Access: Fleet Analytics for Daimler Trucks"
+    />
+    <meta
+      name="twitter:description"
+      content="Case study: Designing a data access configuration tool for Daimler Trucks Fleet Analytics that simplified complex fleet data for users ranging from interns to data scientists."
+    />
+    <meta
+      name="twitter:image"
+      content="https://jasonswetzoff.com/img/projects/dcd/dcd-hero-thumbnail.jpg"
+    />
+
+    <!-- Google Analytics 4 - Only load in production -->
+    <script>
+      // Only load GA4 in production environment
+      if (
+        window.location.hostname !== "localhost" &&
+        window.location.hostname !== "127.0.0.1" &&
+        !window.location.hostname.includes("127.0.0.1") &&
+        window.location.port === ""
+      ) {
+        // Load GA4 script with better error handling
+        var script = document.createElement("script");
+        script.async = true;
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG";
+        script.onerror = function () {
+          console.warn(
+            "Google Analytics script failed to load - this may be due to ad blockers or network issues"
+          );
+        };
+        script.onload = function () {
+          console.log("Google Analytics script loaded successfully");
+        };
+        document.head.appendChild(script);
+      }
+    </script>
+    <!-- Google Analytics 4 -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG"
+    ></script>
+
+    <!-- Font optimization -->
+    <!-- Preconnect to Google Fonts for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Preload critical fonts -->
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/laila/v18/LYjCdG7kmE0gdQhfgCNqqVIuTN4.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/gentiumplus/v6/CoIGjMz5OlKwGK-Bz_Nx2SOx1RiKBK-X8A.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Optimized Google Fonts CSS with font-display: swap -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Laila:wght@400;600&family=PT+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../css/main.css" />
+
+    <!-- Feather Icons CDN -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- Favicons -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../assets/favicons/favicon.ico"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../assets/favicons/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../assets/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="../assets/favicons/favicon-96x96.png"
+    />
+    <link rel="apple-touch-icon" href="../assets/favicons/apple-icon.png" />
+  </head>
+  <body class="project daimler-dcd">
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <site-header></site-header>
+
+    <!-- Hero Section -->
+    <section
+      class="hero hero--project hero-section"
+      id="hero"
+      role="banner"
+      aria-labelledby="hero-title"
+    >
+      <div class="wrapper">
+        <div class="hero--project__content">
+          <div class="hero--project__label" aria-label="Client name">
+            Daimler Trucks North America
+          </div>
+          <h1 class="hero--project__header" id="hero-title">
+            Streamlining Data Access: Fleet Analytics for Daimler Trucks
+          </h1>
+          <div
+            class="hero--project__meta"
+            role="group"
+            aria-label="Project metadata"
+          >
+            <span class="hero--project__role" aria-label="Role"
+              >Lead UX Designer</span
+            >
+            <span class="hero--project__timeline" aria-label="Timeline"
+              >6 Month Project</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <main
+      class="project-case-study daimler-dcd-case-study-grid main-content wrapper"
+      id="main-content"
+      role="main"
+      aria-labelledby="hero-title"
+    >
+      <article class="article" role="article">
+        <div class="sidebar grid grid--2-column--sidebar">
+          <div class="article__content">
+            <!-- Project Summary Section -->
+            <section
+              class="project-summary"
+              id="project-summary"
+              role="region"
+              aria-labelledby="project-summary-heading"
+            >
+              <h2 id="project-summary-heading" class="sr-only">
+                Project Summary
+              </h2>
+              <figure role="img" aria-labelledby="hero-image-caption">
+                <img
+                  src="../img/projects/dcd/bright-view-of-the-macbook-pro-on-the-table.jpg"
+                  alt="Detroit Connect Direct data access configuration interface displayed on a MacBook Pro on a wooden desk, showing the clean and intuitive user interface design"
+                  class="project-summary__image project__img"
+                  loading="lazy"
+                />
+                <figcaption id="hero-image-caption">
+                  Detroit Connect Direct: Streamlined data access configuration
+                  for fleet analytics
+                </figcaption>
+              </figure>
+
+              <div class="" role="group" aria-label="Project details">
+                <div
+                  class="card--outline card__text project-summary__card"
+                  role="group"
+                  aria-labelledby="challenge-heading"
+                >
+                  <h3 id="challenge-heading">Challenge</h3>
+                  <p>
+                    Design a data access configuration tool that is easy to
+                    comprehend and enjoyable to use—for everybody from the
+                    intern to the data scientist—and can be used by multiple
+                    users for different steps.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <!-- Brief Section -->
+            <section
+              class="project-section"
+              id="brief"
+              role="region"
+              aria-labelledby="brief-heading"
+            >
+              <h2 id="brief-heading">Brief</h2>
+              <p>
+                Daimler Trucks North America needed a comprehensive solution for
+                fleet operators to access and configure vehicle data streams.
+                The existing system was fragmented, complex, and required
+                extensive technical knowledge to operate effectively. Fleet
+                managers, data analysts, and business users struggled to
+                customize data delivery according to their specific operational
+                needs.
+              </p>
+              <p>
+                The challenge was to create an intuitive interface that could
+                serve users across the entire spectrum of technical
+                expertise—from interns just learning the system to experienced
+                data scientists requiring advanced configuration options.
+              </p>
+            </section>
+
+            <!-- Assignment Section -->
+            <section
+              class="project-section"
+              id="assignment"
+              role="region"
+              aria-labelledby="assignment-heading"
+            >
+              <h2 id="assignment-heading">Assignment</h2>
+              <p>
+                As Lead UX Designer, I was tasked with designing the Detroit
+                Connect Direct platform—a data access configuration tool that
+                would revolutionize how Daimler's customers interact with fleet
+                analytics data. The assignment required:
+              </p>
+              <ul>
+                <li>
+                  <strong>User Research:</strong> Understanding the diverse
+                  needs of fleet operators, from small business owners to
+                  enterprise-level data teams
+                </li>
+                <li>
+                  <strong>Interface Design:</strong> Creating an intuitive
+                  configuration system that scales from simple to complex use
+                  cases
+                </li>
+                <li>
+                  <strong>Workflow Optimization:</strong> Streamlining
+                  multi-step processes that previously required technical
+                  expertise
+                </li>
+                <li>
+                  <strong>Accessibility:</strong> Ensuring the platform works
+                  for users with varying levels of technical proficiency
+                </li>
+              </ul>
+            </section>
+
+            <!-- Users Section -->
+            <section
+              class="project-section project-section__user"
+              id="users"
+              role="region"
+              aria-labelledby="users-heading"
+            >
+              <h2 id="users-heading">Understanding Our Users</h2>
+
+              <p>
+                Through extensive research, we identified three primary user
+                groups with distinct needs and technical capabilities:
+              </p>
+
+              <div
+                class="user-groups grid grid--3-column"
+                role="group"
+                aria-label="User groups and their characteristics"
+              >
+                <div
+                  class="user-group card--white"
+                  role="group"
+                  aria-labelledby="fleet-managers-heading"
+                >
+                  <h3 id="fleet-managers-heading">Fleet Managers</h3>
+                  <p><strong>Technical Level:</strong> Basic to Intermediate</p>
+                  <p>
+                    <strong>Primary Goals:</strong> Monitor vehicle performance,
+                    track maintenance schedules, optimize routes
+                  </p>
+                  <p>
+                    <strong>Pain Points:</strong> Complex interfaces, too much
+                    technical jargon, difficulty finding relevant data
+                  </p>
+                </div>
+
+                <div
+                  class="user-group card--white"
+                  role="group"
+                  aria-labelledby="business-analysts-heading"
+                >
+                  <h3 id="business-analysts-heading">Business Analysts</h3>
+                  <p>
+                    <strong>Technical Level:</strong> Intermediate to Advanced
+                  </p>
+                  <p>
+                    <strong>Primary Goals:</strong> Generate reports, analyze
+                    trends, support decision-making
+                  </p>
+                  <p>
+                    <strong>Pain Points:</strong> Limited customization options,
+                    inflexible reporting tools, data silos
+                  </p>
+                </div>
+
+                <div
+                  class="user-group card--white"
+                  role="group"
+                  aria-labelledby="data-scientists-heading"
+                >
+                  <h3 id="data-scientists-heading">Data Scientists</h3>
+                  <p><strong>Technical Level:</strong> Advanced</p>
+                  <p>
+                    <strong>Primary Goals:</strong> Deep data analysis, custom
+                    integrations, predictive modeling
+                  </p>
+                  <p>
+                    <strong>Pain Points:</strong> Lack of API access, limited
+                    data export options, restrictive configuration
+                  </p>
+                </div>
+              </div>
+              <figure role="img" aria-labelledby="user-graph-caption">
+                <img
+                  src="../img/projects/dcd/user-graph.jpg"
+                  alt="User analysis graph showing the distribution of technical expertise levels across different user types, with data points mapping fleet managers, business analysts, and data scientists along complexity and frequency axes"
+                  class="project__img"
+                  loading="lazy"
+                />
+                <figcaption id="user-graph-caption">
+                  User analysis mapping technical expertise levels and usage
+                  patterns across different user types
+                </figcaption>
+              </figure>
+            </section>
+
+            <!-- Understanding the Customer Flow Section -->
+            <section
+              class="project-section"
+              id="customer-flow"
+              role="region"
+              aria-labelledby="customer-flow-heading"
+            >
+              <h2 id="customer-flow-heading">
+                Understanding the Customer Flow
+              </h2>
+              <p>
+                Before designing the interface, we mapped the complete customer
+                journey to understand how different users interact with fleet
+                data throughout their workflows.
+              </p>
+
+              <figure role="img" aria-labelledby="customer-flow-caption">
+                <img
+                  src="../img/projects/dcd/customer-flow.jpg"
+                  alt="Customer flow diagram illustrating the step-by-step journey from initial data request through processing to actionable insights, showing decision points and user interactions"
+                  class="project__img"
+                  loading="lazy"
+                />
+                <figcaption id="customer-flow-caption">
+                  Customer flow mapping: From initial data request to actionable
+                  insights
+                </figcaption>
+              </figure>
+
+              <p>
+                This flow analysis revealed critical friction points where users
+                abandoned tasks due to complexity or unclear next steps. These
+                insights directly informed our design priorities and helped us
+                identify opportunities for streamlining the user experience.
+              </p>
+            </section>
+
+            <!-- Understanding the User Section -->
+            <section
+              class="project-section"
+              id="understanding-user"
+              role="region"
+              aria-labelledby="understanding-user-heading"
+            >
+              <h2 id="understanding-user-heading">Understanding the User</h2>
+              <p>
+                Our user research revealed that successful fleet analytics tools
+                must accommodate vastly different mental models and workflows.
+                We conducted interviews with 15+ users across different
+                organizations and technical backgrounds.
+              </p>
+
+              <figure role="img" aria-labelledby="user-research-caption">
+                <img
+                  src="../img/projects/dcd/user-a-b.jpg"
+                  alt="User research synthesis diagram comparing different user types, showing personas, needs, and behavioral patterns across fleet managers, business analysts, and data scientists"
+                  class="project__img"
+                  loading="lazy"
+                />
+                <figcaption id="user-research-caption">
+                  User research synthesis: Comparing needs across different user
+                  types
+                </figcaption>
+              </figure>
+
+              <div
+                class="key-insights card--outline"
+                role="region"
+                aria-labelledby="key-insights-heading"
+              >
+                <h3 id="key-insights-heading">Key Research Insights</h3>
+                <ul role="list">
+                  <li role="listitem">
+                    <strong>Progressive Disclosure:</strong> Users needed
+                    different levels of detail based on their expertise
+                  </li>
+                  <li role="listitem">
+                    <strong>Contextual Help:</strong> In-line guidance was
+                    crucial for less technical users
+                  </li>
+                  <li role="listitem">
+                    <strong>Flexible Workflows:</strong> Power users wanted
+                    shortcuts while novices needed guided experiences
+                  </li>
+                  <li role="listitem">
+                    <strong>Visual Feedback:</strong> Real-time preview of data
+                    configurations reduced errors significantly
+                  </li>
+                </ul>
+              </div>
+            </section>
+
+            <!-- Key Terms & Understanding Section -->
+            <section
+              class="project-section"
+              id="key-terms"
+              role="region"
+              aria-labelledby="key-terms-heading"
+            >
+              <h2 id="key-terms-heading">Key Terms & Understanding</h2>
+              <p>
+                Given the technical nature of fleet analytics, establishing a
+                common vocabulary was essential for creating an intuitive
+                interface. We developed clear definitions and visual
+                representations for complex concepts.
+              </p>
+
+              <div
+                class="terms-grid grid grid--2-column grid--gap-xl"
+                role="group"
+                aria-label="Technical terminology definitions"
+              >
+                <div
+                  class="term-definition card--white"
+                  role="group"
+                  aria-labelledby="data-streams-term"
+                >
+                  <h4 id="data-streams-term">Data Streams</h4>
+                  <p>
+                    Continuous flows of vehicle telemetry data including GPS,
+                    engine diagnostics, fuel consumption, and driver behavior
+                    metrics.
+                  </p>
+                </div>
+
+                <div
+                  class="term-definition card--white"
+                  role="group"
+                  aria-labelledby="config-profiles-term"
+                >
+                  <h4 id="config-profiles-term">Configuration Profiles</h4>
+                  <p>
+                    Customizable templates that define which data points are
+                    collected, how frequently, and in what format for specific
+                    use cases.
+                  </p>
+                </div>
+
+                <div
+                  class="term-definition card--white"
+                  role="group"
+                  aria-labelledby="fleet-segments-term"
+                >
+                  <h4 id="fleet-segments-term">Fleet Segments</h4>
+                  <p>
+                    Logical groupings of vehicles based on criteria such as
+                    route type, vehicle class, or operational purpose.
+                  </p>
+                </div>
+
+                <div
+                  class="term-definition card--white"
+                  role="group"
+                  aria-labelledby="data-delivery-term"
+                >
+                  <h4 id="data-delivery-term">Data Delivery Methods</h4>
+                  <p>
+                    Various ways data can be accessed including real-time
+                    dashboards, scheduled reports, API endpoints, and data
+                    exports.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <!-- Sketching and Whiteboarding Section -->
+            <section
+              class="project-section"
+              id="sketching-whiteboarding"
+              role="region"
+              aria-labelledby="sketching-heading"
+            >
+              <h2 id="sketching-heading">Sketching and Whiteboarding</h2>
+              <p>
+                The design process began with collaborative sketching sessions
+                to explore different approaches to data configuration. We
+                focused on making complex technical concepts more approachable
+                through visual design.
+              </p>
+
+              <div class="image-grid grid grid--2-column grid--gap-xl">
+                <figure role="img" aria-labelledby="sketches-caption">
+                  <img
+                    src="../img/projects/dcd/first-sketches.jpg"
+                    alt="Hand-drawn sketches on paper showing various interface layout concepts for data configuration, including wireframe boxes, navigation elements, and user flow arrows"
+                    class="process-image project__img"
+                    loading="lazy"
+                  />
+                  <figcaption id="sketches-caption">
+                    Initial sketches exploring different interface concepts for
+                    data configuration
+                  </figcaption>
+                </figure>
+
+                <figure role="img" aria-labelledby="whiteboarding-caption">
+                  <img
+                    src="../img/projects/dcd/whiteboarding.jpg"
+                    alt="Whiteboard covered with diagrams, user journey maps, and workflow sketches showing team collaboration on system design and user interactions"
+                    class="process-image project__img"
+                    loading="lazy"
+                  />
+                  <figcaption id="whiteboarding-caption">
+                    Collaborative whiteboarding session mapping user workflows
+                    and system interactions
+                  </figcaption>
+                </figure>
+              </div>
+            </section>
+
+            <!-- Prototyping and Deeper Wireframing Section -->
+            <section
+              class="project-section"
+              id="prototyping-wireframing"
+              role="region"
+              aria-labelledby="prototyping-heading"
+            >
+              <h2 id="prototyping-heading">
+                Prototyping and Deeper Wireframing
+              </h2>
+              <p>
+                Moving from sketches to detailed wireframes, we focused on
+                creating a progressive disclosure system that could accommodate
+                both novice and expert users. The wireframing process helped us
+                refine the information architecture and interaction patterns.
+              </p>
+
+              <div class="image-grid grid grid--2-column grid--gap-xl">
+                <figure role="img" aria-labelledby="wireframe-caption">
+                  <img
+                    src="../img/projects/dcd/wireframe.jpg"
+                    alt="Digital wireframes displaying the data configuration interface with labeled sections, navigation elements, form fields, and content areas arranged in a structured layout"
+                    class="wireframe-image project__img"
+                    loading="lazy"
+                  />
+                  <figcaption id="wireframe-caption">
+                    Detailed wireframes showing the data configuration interface
+                    structure
+                  </figcaption>
+                </figure>
+                <figure role="img" aria-labelledby="user-flow-caption">
+                  <img
+                    src="../img/projects/dcd/user-flow.jpg"
+                    alt="Comprehensive user flow diagram mapping the complete journey from login through data selection, configuration, and final output, with branching paths for different user types"
+                    class="user-flow-image project__img"
+                    loading="lazy"
+                  />
+                  <figcaption id="user-flow-caption">
+                    Comprehensive user flow showing the complete data access
+                    configuration journey
+                  </figcaption>
+                </figure>
+              </div>
+            </section>
+
+            <!-- Final Design and Prototyping Section -->
+            <section
+              class="project-section"
+              id="final-design"
+              role="region"
+              aria-labelledby="final-design-heading"
+            >
+              <h2 id="final-design-heading">Final Design and Prototyping</h2>
+              <p>
+                The final design solution featured a clean, intuitive interface
+                that guided users through complex data configuration tasks. We
+                implemented a card-based system that allowed users to build
+                their data access profiles step by step.
+              </p>
+
+              <div
+                class="design-principles card--outline"
+                role="region"
+                aria-labelledby="design-principles-heading"
+              >
+                <h3 id="design-principles-heading">Design Principles</h3>
+                <ul role="list">
+                  <li role="listitem">
+                    <strong>Progressive Complexity:</strong> Start simple,
+                    reveal advanced options as needed
+                  </li>
+                  <li role="listitem">
+                    <strong>Visual Hierarchy:</strong> Clear information
+                    architecture guides user attention
+                  </li>
+                  <li role="listitem">
+                    <strong>Immediate Feedback:</strong> Real-time preview of
+                    configuration changes
+                  </li>
+                  <li role="listitem">
+                    <strong>Contextual Help:</strong> Just-in-time assistance
+                    without cluttering the interface
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="animation-examples grid grid--2-column grid--gap-xl"
+                role="group"
+                aria-label="Animation examples"
+              >
+                <figure role="img" aria-labelledby="dcd-animation-caption">
+                  <img
+                    src="../img/projects/dcd/dcd-animation.gif"
+                    alt="Animated demonstration of smooth interface transitions showing data configuration panels sliding in and out with fade effects"
+                    class="project__img"
+                    loading="lazy"
+                  />
+                  <figcaption id="dcd-animation-caption">
+                    Smooth transitions guide users through configuration steps
+                  </figcaption>
+                </figure>
+
+                <figure role="img" aria-labelledby="checkbox-animation-caption">
+                  <img
+                    src="../img/projects/dcd/checkbox.gif"
+                    alt="Animated micro-interaction showing checkbox selection with subtle bounce effect and color change feedback"
+                    class="project__img"
+                    loading="lazy"
+                  />
+                  <figcaption id="checkbox-animation-caption">
+                    Micro-interactions provide immediate feedback for user
+                    actions
+                  </figcaption>
+                </figure>
+              </div>
+            </section>
+
+            <!-- Results Section -->
+            <section
+              class="project-section"
+              id="results"
+              role="region"
+              aria-labelledby="results-heading"
+            >
+              <h2 id="results-heading">Results</h2>
+              <p>
+Detroit Connect Direct represents a significant advancement in commercial vehicle telematics, offering unprecedented data customization and integration capabilities for fleet operators. This adaptability addresses a common challenge in the telematics market where carriers often struggle to integrate vehicle data into their existing operational systems and has been a key driver of Daimler’s success contributing to the growth of its telematics ecosystem.</p>
+
+<p></p>My UX strategy, design, and interaction solutions of the Detroit Connect Direct service has not only fostered stronger relationships with DTNA's key customers but has also generated a new revenue stream. This was achieved by creating and implementing tiered data plan offerings at the point of vehicle purchase. These plans provide customers with valuable features and benefits, enhancing their overall experience while creating a profitable business model for DTNA.
+              </p>
+
+              <div
+                class="results-metrics grid grid--3-column"
+                role="group"
+                aria-label="Project success metrics"
+              >
+                <div
+                  class="metric-card card--white"
+                  role="group"
+                  aria-labelledby="adoption-metric"
+                >
+                  <h3 id="adoption-metric">User Adoption</h3>
+                  <p class="metric-value" aria-label="85 percent">85%</p>
+                  <p>Increase in platform usage within first 6 months</p>
+                </div>
+
+                <div
+                  class="metric-card card--white"
+                  role="group"
+                  aria-labelledby="training-metric"
+                >
+                  <h3 id="training-metric">Training Time</h3>
+                  <p class="metric-value" aria-label="60 percent">60%</p>
+                  <p>Reduction in onboarding time for new users</p>
+                </div>
+
+                <div
+                  class="metric-card card--white"
+                  role="group"
+                  aria-labelledby="satisfaction-metric"
+                >
+                  <h3 id="satisfaction-metric">User Satisfaction</h3>
+                  <p class="metric-value" aria-label="4.7 out of 5">4.7/5</p>
+                  <p>Average user satisfaction score in post-launch surveys</p>
+                </div>
+              </div>
+
+     
+
+              <figure role="img" aria-labelledby="final-interface-caption">
+                <img
+                  src="../img/projects/dcd/bright-view-of-the-macbook-pro-on-the-table.jpg"
+                  alt="Final Detroit Connect Direct interface displayed on MacBook Pro showing the completed data configuration dashboard with clean design and intuitive navigation"
+                  class="project__img"
+                  loading="lazy"
+                />
+                <figcaption id="final-interface-caption">
+                  The final Detroit Connect Direct interface: Intuitive,
+                  powerful, and accessible to all user types
+                </figcaption>
+              </figure>
+            </section>
+          </div>
+
+          <div class="article__sidebar">
+            <nav class="sidebar-nav">
+              <ul>
+                <li><a href="#project-summary">Overview</a></li>
+                <li><a href="#brief">Brief</a></li>
+                <li><a href="#assignment">Assignment</a></li>
+                <li><a href="#users">Understanding Our Users</a></li>
+                <li><a href="#customer-flow">Customer Flow</a></li>
+                <li>
+                  <a href="#understanding-user">Understanding the User</a>
+                </li>
+                <li><a href="#key-terms">Key Terms</a></li>
+                <li>
+                  <a href="#sketching-whiteboarding"
+                    >Sketching & Whiteboarding</a
+                  >
+                </li>
+                <li>
+                  <a href="#prototyping-wireframing"
+                    >Prototyping & Wireframing</a
+                  >
+                </li>
+                <li><a href="#final-design">Final Design</a></li>
+                <li><a href="#final-touches">Final Touches</a></li>
+                <li><a href="#results">Results</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <site-footer></site-footer>
+
+    <!-- Image Lightbox Component -->
+    <image-lightbox></image-lightbox>
+
+    <script type="module" src="../js/main.js?v=1"></script>
+
+    <!-- Password Protection and Performance Optimization -->
+    <script type="module">
+      import { protectCaseStudy } from "../js/password-protection-init.js";
+      import { CaseStudyTracker } from "../js/analytics/CaseStudyTracker.js";
+      import analytics from "../js/analytics/index.js";
+
+      protectCaseStudy("project-daimler-dcd");
+
+      // Initialize analytics for case study
+      document.addEventListener("DOMContentLoaded", () => {
+        // Initialize case study specific analytics tracking
+        new CaseStudyTracker(analytics);
+      });
+    </script>
+
+    <!-- Initialize Feather Icons -->
+    <script>
+      feather.replace();
+    </script>
+
+    <!-- Sidebar Navigation Active State Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(".sidebar-nav a");
+        const header = document.querySelector("site-header");
+
+        function getHeaderHeight() {
+          return header ? header.offsetHeight : 80;
+        }
+
+        function updateActiveNav() {
+          const scrollY = window.pageYOffset;
+          const headerHeight = getHeaderHeight();
+          let current = "";
+
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop - headerHeight - 50;
+            if (scrollY >= sectionTop) {
+              current = section.getAttribute("id");
+            }
+          });
+
+          navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === "#" + current) {
+              link.classList.add("active");
+            }
+          });
+        }
+
+        // Update on scroll
+        window.addEventListener("scroll", updateActiveNav);
+
+        // Update on load
+        updateActiveNav();
+
+        // Smooth scroll for navigation links
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection) {
+              const headerHeight = getHeaderHeight();
+              const elementPosition = targetSection.offsetTop;
+              // Ensure h2 headers appear at top of viewport with proper spacing
+              const offsetPosition = elementPosition - headerHeight - 30;
+
+              window.scrollTo({
+                top: Math.max(0, offsetPosition),
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

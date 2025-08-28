@@ -5,6 +5,7 @@ test.describe("Project Pages", () => {
     "/projects/project-adsk-notification.html",
     "/projects/project-autodesk-di.html",
     "/projects/project-intel-lfc.html",
+    "/projects/project-daimler-dcd.html",
   ];
 
   for (const projectPage of projectPages) {

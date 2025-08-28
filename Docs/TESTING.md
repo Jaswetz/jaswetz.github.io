@@ -147,8 +147,8 @@ npm run test:performance:local
 **Tools**: bundlesize
 **Thresholds**:
 
-- JavaScript: ≤ 50kB
-- CSS: ≤ 30kB
+- JavaScript: ≤ 30kB gzipped
+- CSS: ≤ 70kB gzipped
 
 ```bash
 npm run test:bundle-size

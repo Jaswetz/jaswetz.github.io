@@ -37,6 +37,7 @@
 /* --- Pages Layer (treated as components) --- */
 @import url("./pages/page-about.css") layer(components);
 @import url("./pages/page-autodesk-di.css") layer(components);
+@import url("./pages/page-daimler-dcd.css") layer(components);
 @import url("./pages/page-index/index-section-quotes.css") layer(components);
 @import url("./pages/page-index/index-section-featured-projects.css") layer(components);
 @import url("./pages/page-index/index-section-about.css") layer(components);

@@ -65,6 +65,47 @@ export class AnalyticsEventTracker {
   }
 
   /**
+   * Track case study interactions
+   * @param {string} caseStudyName - Name of the case study
+   * @param {string} action - Action taken (section_view, image_view, etc.)
+   * @param {string} section - Section of the case study
+   */
+  trackCaseStudyInteraction(caseStudyName, action, section = "") {
+    this.analytics.gtag("event", action, {
+      event_category: "Case Study",
+      event_label: caseStudyName,
+      case_study_section: section,
+      value: 1,
+    });
+  }
+
+  /**
+   * Track image lightbox interactions
+   * @param {string} imageName - Name/alt text of the image
+   * @param {string} caseStudy - Case study the image belongs to
+   */
+  trackImageLightbox(imageName, caseStudy) {
+    this.analytics.gtag("event", "image_lightbox_open", {
+      event_category: "Case Study",
+      event_label: caseStudy,
+      image_name: imageName,
+      value: 1,
+    });
+  }
+
+  /**
+   * Track case study completion (reaching results section)
+   * @param {string} caseStudyName - Name of the case study
+   */
+  trackCaseStudyCompletion(caseStudyName) {
+    this.analytics.gtag("event", "case_study_complete", {
+      event_category: "Case Study",
+      event_label: caseStudyName,
+      value: 1,
+    });
+  }
+
+  /**
    * Track scroll depth (custom implementation)
    */
   trackScrollDepth() {
@@ -164,6 +205,7 @@ export class AnalyticsEventTracker {
 
         if (href.includes("autodesk")) projectType = "Autodesk";
         else if (href.includes("intel")) projectType = "Intel";
+        else if (href.includes("daimler")) projectType = "Daimler";
         else if (href.includes("showcase")) projectType = "Showcase";
 
         this.trackProjectClick(projectName, projectType);
@@ -184,6 +226,8 @@ export class AnalyticsEventTracker {
         this.trackExternalLink(url, linkText);
       });
     });
+
+    // Case study tracking is now handled separately to reduce bundle size
 
     // Track scroll depth (debounced)
     let scrollTimeout;

@@ -28,6 +28,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  max-height: 43rem;
   text-decoration: none;
   transition: var(--transition-interactive);
   border-radius: var(--border-radius);
@@ -86,6 +87,7 @@
 .card--vertical {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .card--vertical .card__image {
@@ -93,11 +95,20 @@
   height: auto;
   margin: 0;
   max-width: fit-content;
+  flex-shrink: 1;
+  object-fit: cover;
+  max-height: 60%;
 }
 
 .card--vertical .card__content {
   text-align: left;
   width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 8rem;
+  overflow: hidden;
 }
 
 .card--outline {

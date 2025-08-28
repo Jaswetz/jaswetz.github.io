@@ -2,17 +2,19 @@
 
 [![Deploy to GitHub Pages](https://github.com/jaswetz/jaswetz.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/jaswetz/jaswetz.github.io/actions/workflows/deploy.yml)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://jaswetz.github.io/)
-[![Bundle Size](https://img.shields.io/badge/JS-29.94KB-success)](https://github.com/jaswetz/jaswetz.github.io)
-[![Bundle Size](https://img.shields.io/badge/CSS-66.43KB-success)](https://github.com/jaswetz/jaswetz.github.io)
+[![Bundle Size](https://img.shields.io/badge/JS-<30KB-success)](https://github.com/jaswetz/jaswetz.github.io)
+[![Bundle Size](https://img.shields.io/badge/CSS-<70KB-success)](https://github.com/jaswetz/jaswetz.github.io)
 
-A modern UX portfolio website built with fundamental web technologies and native Web Components.
+A performance-optimized professional UX portfolio showcasing design work and case studies, built with modern web standards and native Web Components.
 
 ## ✨ Key Features
 
-- **🎨 Animated 2D Logo**: Interactive animated logo in the hero section featuring the three signature shapes (triangle, circle, square) with smooth CSS animations
-- **📱 Responsive Design**: Mobile-first approach with optimized layouts for all screen sizes
-- **⚡ Performance Optimized**: Lightweight bundle sizes and fast loading times
-- **🧭 Smart Sidebar Navigation**: Automatic scroll spy with active section highlighting and smooth scrolling (see [SIDEBAR_NAVIGATION.md](SIDEBAR_NAVIGATION.md))
+- **🎨 Interactive 2D Logo Navigation**: Three geometric shapes (triangle, circle, square) in the site header that link to featured projects with performant CSS animations
+- **🔒 Password Protection System**: Client-side protection for confidential case studies with session management and user-friendly interface
+- **📱 Mobile-First Design**: Responsive layouts optimized for all screen sizes with WCAG 2.1 AA accessibility compliance
+- **⚡ Performance First**: Strict bundle size limits (JS: <30KB, CSS: <70KB) with WebP image optimization and Core Web Vitals monitoring
+- **🧭 Smart Sidebar Navigation**: Automatic scroll spy with active section highlighting and smooth scrolling
+- **🎯 Professional Presentation**: Clean, minimal design reflecting UX expertise with measurable outcomes and business impact focus
 
 ## 🚀 Live Site
 
@@ -24,7 +26,7 @@ Visit the portfolio at: [https://jaswetz.github.io/](https://jaswetz.github.io/)
 
 - ✅ **Linting:** ESLint (JavaScript) + Stylelint (CSS)
 - ✅ **Build Optimization:** Parcel.js with asset optimization
-- ✅ **Bundle Size Monitoring:** JS (29.94KB) + CSS (66.43KB) within limits
+- ✅ **Bundle Size Monitoring:** JS (<30KB) + CSS (<70KB) within performance budgets
 - ✅ **Automated Deployment:** GitHub Pages on push to main
 - ✅ **Clean Build Process:** No artifact pollution
 
@@ -85,6 +87,23 @@ Use `kebab-case` with descriptive names.
 - Custom element names MUST contain a hyphen (e.g., `<site-header>`, `<project-card>`).
 - Component JavaScript files should be named in `PascalCase` (e.g., `SiteHeader.js`, `ProjectCard.js`).
 - Component files should be organized by feature/UI element in the `src/js/components/` directory (e.g., `src/js/components/site-header/SiteHeader.js`).
+
+## Development Guidelines
+
+### Component Development Rules
+
+- **Web Components Only**: All interactive elements must be Web Components
+- **Shadow DOM Encapsulation**: Required for styling isolation
+- **Component Registration**: Register in `src/js/main.js`
+- **Performance Animations**: CSS animations must respect `prefers-reduced-motion`
+- **Accessibility**: Full keyboard navigation and screen reader support
+
+### Styling Conventions
+
+- **CSS Cascade Layers**: Use for style organization (`reset → base → theme → layout → components → utilities`)
+- **Design Tokens**: Defined in `variables.css` for consistent theming
+- **BEM Methodology**: For component classes within Shadow DOM
+- **Mobile-First**: Responsive breakpoints using `rem` units
 
 # Development Environment & Tooling
 
@@ -474,6 +493,16 @@ This page serves as a central reference for the UI of the website.
 
 Add any new components or styles or layouts to this page when created.
 
+## Core Product Principles
+
+This portfolio follows strict guidelines to ensure professional presentation and optimal performance:
+
+- **Performance First**: Maintains bundle size limits (JS: <30KB, CSS: <70KB) with Core Web Vitals monitoring
+- **Accessibility Compliance**: WCAG 2.1 AA standards required for all features
+- **Mobile-First Design**: All components work seamlessly across device sizes
+- **Client Confidentiality**: Sensitive case studies protected with password system
+- **Professional Presentation**: Clean, minimal design reflecting UX expertise
+
 ## Password Protection System
 
 This project includes a modular password protection system for case studies that contain confidential or sensitive design work. The system provides client-side password protection with session management.
@@ -538,7 +567,29 @@ The password protection system consists of:
 
 **Not suitable for**: Protecting truly sensitive data or defense against determined attackers.
 
-For more detailed documentation, see `PASSWORD_PROTECTION.md`.
+For more detailed documentation, see `Docs/PASSWORD_PROTECTION.md`.
+
+## Content Guidelines
+
+### Professional Standards
+
+- **Third Person Narrative**: Describes Jason's work professionally
+- **Measurable Outcomes**: Focus on business impact and specific metrics
+- **UX Terminology**: Appropriate use of industry terms (user research, personas, wireframes)
+- **Case Study Structure**: Hero section, problem statement, process, and outcomes
+
+### Image Standards
+
+- **WebP Optimization**: All images optimized with fallbacks for older browsers
+- **Accessibility**: Descriptive alt text for all images
+- **Consistent Ratios**: Maintained aspect ratios within project sections
+- **Organized Storage**: Project-specific images in `src/img/projects/[project-name]/`
+
+### Protection Levels
+
+- **Public**: General portfolio pieces, no protection needed
+- **Protected**: Client work requiring password (Autodesk, Intel projects)
+- **Confidential**: Most sensitive work with additional access controls
 
 ## Testing
 
@@ -666,6 +717,23 @@ These technologies are web standards and are designed for long-term browser comp
 ## Build Output
 
 The `npm run build` command generates a production-ready static site in the `dist/` directory. This output consists of plain HTML, CSS, and JavaScript files that can be hosted on any static web hosting provider (like Github Pages, as intended for this project). Once built, the `dist/` directory is self-contained and does not require Parcel.js or Node.js to be served to users.
+
+## Documentation
+
+### Comprehensive Guides
+
+- **[Architecture Overview](Docs/ARCHITECTURE.md)**: Technical architecture and design decisions
+- **[Project Structure](Docs/project_structure.md)**: Complete file organization and patterns
+- **[Testing Guide](Docs/TESTING.md)**: Multi-layer testing strategy and tools
+- **[Password Protection](Docs/PASSWORD_PROTECTION.md)**: Client-side protection system
+- **[Asset Optimization](Docs/ASSET_OPTIMIZATION_GUIDE.md)**: Image and asset optimization
+
+### Quick Reference
+
+- **Living Style Guide**: `/styleguide.html` - Interactive component documentation
+- **Performance Budgets**: JS <30KB, CSS <70KB (gzipped)
+- **Browser Support**: Chrome 63+, Firefox 63+, Safari 10.1+, Edge 79+
+- **Accessibility**: WCAG 2.1 AA compliance required
 
 # Testing Strategy
 
