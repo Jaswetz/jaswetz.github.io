@@ -9,7 +9,6 @@ import SiteHeader from "./components/site-header/SiteHeader.js";
 import SiteFooter from "./components/site-footer/SiteFooter.js";
 import SidebarNavigation from "./components/sidebar-navigation/SidebarNavigation.js";
 import ImageLightbox from "./components/ImageLightbox/ImageLightbox.js";
-// LazyLoader temporarily removed to isolate Web Components issue
 
 // Define the custom elements
 if (window.customElements) {

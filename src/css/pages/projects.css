@@ -39,7 +39,8 @@
     -------------------------------------------------------------------------- */
 
 
-.notification .project__img.project-summary__image {
+.notification .project__img.project-summary__image,
+.daimler-dcd .project__img.project-summary__image {
     max-width: 100%;
 }
 

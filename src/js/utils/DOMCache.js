@@ -135,9 +135,8 @@ class DOMCache {
   /**
    * Set up mutation observer for context
    * @param {Element|Document} context - Context to observe
-   * @param {string} key - Cache key to invalidate
    */
-  setupObserver(context, key) {
+  setupObserver(context) {
     // Don't create duplicate observers for the same context
     if (this.observers.has(context)) {
       return;

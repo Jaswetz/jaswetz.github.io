@@ -1,0 +1,90 @@
+/* ==========================================================================
+   DAIMLER CASE STUDY PAGE STYLES
+   ========================================================================== */
+
+.daimler-dcd figure {
+    margin: var(--space-xl) auto;
+    text-align: center;
+
+    img {
+        margin: auto;
+    }
+}
+
+.project-summary figure {
+    margin-top: 0;
+}
+
+.term-definition h4 {
+    margin-bottom: var(--space-s);
+    color: var(--color-primary);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Animation examples responsive layout */
+.animation-examples {
+    margin-top: var(--space-xl);
+}
+
+.animation-examples figure {
+    text-align: center;
+}
+
+.animation-examples img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-subtle);
+}
+
+/* Results metrics responsive layout */
+.results-metrics {
+    margin: var(--space-xl) 0;
+}
+
+.metric-card {
+    text-align: center;
+    padding: var(--space-xl);
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-s);
+}
+
+.metric-value {
+    font-size: var(--size-step-4);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    line-height: 1;
+    margin: var(--space-s) 0;
+}
+
+
+.project-section {
+
+    .user-groups {
+        padding-top: var(--space-xl);
+    }
+
+
+
+    h3 {
+
+        color: var(--color-primary);
+    }
+}
+
+.project-section__user {
+    .project__img {
+        max-width: 30rem;
+    }
+}
+
+#results .project__img {
+    max-width: 100%;
+}
+
+.design-principles {
+    margin-top: var(--space-xl);
+}

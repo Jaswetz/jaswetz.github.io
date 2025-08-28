@@ -58,6 +58,22 @@ class Analytics {
     return this.tracker.trackTimeOnPage();
   }
 
+  trackCaseStudyInteraction(caseStudyName, action, section) {
+    return this.tracker.trackCaseStudyInteraction(
+      caseStudyName,
+      action,
+      section
+    );
+  }
+
+  trackImageLightbox(imageName, caseStudy) {
+    return this.tracker.trackImageLightbox(imageName, caseStudy);
+  }
+
+  trackCaseStudyCompletion(caseStudyName) {
+    return this.tracker.trackCaseStudyCompletion(caseStudyName);
+  }
+
   /**
    * Control methods
    */
@@ -96,10 +112,8 @@ class Analytics {
 // Create and export singleton instance
 const analytics = new Analytics();
 
-// Auto-initialize on import
-analytics.init().catch((error) => {
-  console.warn("Analytics initialization failed:", error);
-});
+// Auto-initialize on import (lightweight)
+analytics.init();
 
 export default analytics;
 
@@ -112,5 +126,10 @@ window.portfolioAnalytics = {
   trackExternalLink: (...args) => analytics.trackExternalLink(...args),
   trackScrollDepth: () => analytics.trackScrollDepth(),
   trackTimeOnPage: () => analytics.trackTimeOnPage(),
+  trackCaseStudyInteraction: (...args) =>
+    analytics.trackCaseStudyInteraction(...args),
+  trackImageLightbox: (...args) => analytics.trackImageLightbox(...args),
+  trackCaseStudyCompletion: (...args) =>
+    analytics.trackCaseStudyCompletion(...args),
   getStatus: () => analytics.getStatus(),
 };

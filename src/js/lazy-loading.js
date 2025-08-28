@@ -77,14 +77,8 @@ class LazyLoader {
       const imageLoader = new Image();
 
       imageLoader.onload = () => {
-        // Check if WebP is supported and we have WebP source
-        if (
-          this.options.enableWebP &&
-          this.supportsWebP() &&
-          img.dataset.webp
-        ) {
-          img.src = img.dataset.webp;
-        } else if (img.dataset.src) {
+        // Set the source on the actual image
+        if (img.dataset.src) {
           img.src = img.dataset.src;
         }
 
@@ -113,11 +107,8 @@ class LazyLoader {
         reject(new Error(`Failed to load image: ${img.dataset.src}`));
       };
 
-      // Start loading
-      imageLoader.src =
-        this.options.enableWebP && this.supportsWebP() && img.dataset.webp
-          ? img.dataset.webp
-          : img.dataset.src;
+      // Start loading - use regular src for now, WebP can be handled by picture elements
+      imageLoader.src = img.dataset.src;
     });
   }
 
@@ -147,22 +138,18 @@ class LazyLoader {
   }
 
   supportsWebP() {
+    // Simple synchronous WebP detection
     if (this._webpSupport !== undefined) {
       return this._webpSupport;
     }
 
-    // Create a tiny WebP image to test support
-    const webpData =
-      "data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA";
-    const img = new Image();
+    // Check if browser supports WebP
+    const canvas = document.createElement("canvas");
+    canvas.width = 1;
+    canvas.height = 1;
+    this._webpSupport = canvas.toDataURL("image/webp").indexOf("webp") !== -1;
 
-    return new Promise((resolve) => {
-      img.onload = img.onerror = () => {
-        this._webpSupport = img.width === 1;
-        resolve(this._webpSupport);
-      };
-      img.src = webpData;
-    });
+    return this._webpSupport;
   }
 
   // Public methods
