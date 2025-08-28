@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test MCP Connection</title>
+  </head>
+  <body>
+    <h1>MCP Connection Test</h1>
+    <div id="status">Connecting...</div>
+    <div id="result"></div>
+
+    <script type="module">
+      import { MCPClient } from "./src/js/analytics/MCPClient.js";
+
+      const statusDiv = document.getElementById("status");
+      const resultDiv = document.getElementById("result");
+
+      async function testMCPConnection() {
+        try {
+          statusDiv.textContent = "Creating MCP client...";
+          const client = new MCPClient("ws://localhost:3001");
+
+          statusDiv.textContent = "Connecting to MCP server...";
+          await client.connect();
+
+          statusDiv.textContent = "Getting server info...";
+          const serverInfo = await client.getServerInfo();
+          resultDiv.innerHTML = `<pre>${JSON.stringify(
+            serverInfo,
+            null,
+            2
+          )}</pre>`;
+
+          statusDiv.textContent = "Listing tools...";
+          const tools = await client.listTools();
+          resultDiv.innerHTML += `<h3>Available Tools:</h3><pre>${JSON.stringify(
+            tools,
+            null,
+            2
+          )}</pre>`;
+
+          statusDiv.textContent = "✅ MCP connection successful!";
+          statusDiv.style.color = "green";
+        } catch (error) {
+          statusDiv.textContent = "❌ MCP connection failed";
+          statusDiv.style.color = "red";
+          resultDiv.innerHTML = `<pre style="color: red">${error.message}</pre>`;
+          console.error("MCP test failed:", error);
+        }
+      }
+
+      // Start test when page loads
+      testMCPConnection();
+    </script>
+  </body>
+</html>

@@ -145,8 +145,9 @@ export class ConversionOptimizationFramework {
       segmentation: {
         high_value_untargeted: {
           condition: (data) => {
+            const userProfiles = data.segmentation?.userProfiles || {};
             const highValueUsers =
-              data.segmentation?.userProfiles?.filter((profile) =>
+              Object.values(userProfiles).filter((profile) =>
                 (profile.segments || []).includes("high_value_leads")
               ) || [];
             return (
@@ -492,8 +493,8 @@ export class ConversionOptimizationFramework {
     this.recommendations.sort((a, b) => {
       // Primary sort by priority weight
       const priorityDiff =
-        (this.priorityWeights.get(b.priority) || 0) -
-        (this.priorityWeights.get(a.priority) || 0);
+        (this.priorityWeights[b.priority] || 0) -
+        (this.priorityWeights[a.priority] || 0);
 
       if (priorityDiff !== 0) return priorityDiff;
 

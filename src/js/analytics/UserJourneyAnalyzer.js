@@ -34,7 +34,7 @@ export class UserJourneyAnalyzer {
     this.trackPageSequences();
     this.trackUserFlowPatterns();
     this.trackConversionPaths();
-    this.trackDropOffPoints();
+    // Drop-off point tracking is handled within identifyJourneyPatterns()
   }
 
   /**

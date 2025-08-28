@@ -32,6 +32,7 @@
     "serve": "npx http-server dist -p 8080 -c-1",
     "preview": "npm run build && npm run serve",
     "preview:dev": "npm run dev:build && npx http-server dev-build -p 8080 -c-1",
+    "mcp-bridge": "node src/js/mcp-bridge-server.js",
     "migrate:analyze": "node scripts/migrate-components.js analyze",
     "migrate:run": "node scripts/migrate-components.js migrate",
     "migrate:restore": "node scripts/migrate-components.js restore"
@@ -81,6 +82,8 @@
     "uuid": "^9.0.1"
   },
   "dependencies": {
-    "web-vitals": "^5.1.0"
+    "@modelcontextprotocol/sdk": "^1.17.4",
+    "web-vitals": "^5.1.0",
+    "ws": "^8.18.3"
   }
 }

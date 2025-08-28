@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analytics Dashboard Test</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        margin: 0;
+        padding: 20px;
+        background: #f5f5f5;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+      }
+      .instructions {
+        background: #e8f4fd;
+        border: 1px solid #1e88e5;
+        border-radius: 4px;
+        padding: 15px;
+        margin: 20px 0;
+      }
+      .test-section {
+        margin: 20px 0;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      .btn {
+        background: #4285f4;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px;
+      }
+      .btn:hover {
+        background: #3367d6;
+      }
+      .status {
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 4px;
+      }
+      .success {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+      .error {
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+      .info {
+        background: #d1ecf1;
+        color: #0c5460;
+        border: 1px solid #bee5eb;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🧪 Analytics Dashboard Test</h1>
+
+      <div class="instructions">
+        <h3>Testing Instructions:</h3>
+        <ol>
+          <li>Open your browser's Developer Console (F12)</li>
+          <li>Look for initialization messages</li>
+          <li>Try the keyboard shortcut: <strong>Ctrl + Shift + A</strong></li>
+          <li>
+            Look for the blue "📊 Analytics" button in the top-right corner
+          </li>
+          <li>Click the button to toggle the dashboard</li>
+        </ol>
+      </div>
+
+      <div class="test-section">
+        <h3>Manual Test Functions</h3>
+        <p>Copy and paste these commands into the browser console:</p>
+
+        <div
+          style="
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+          "
+        >
+          // Check if analytics system is loaded<br />
+          console.log("Analytics System:", window.analyticsSystem);<br /><br />
+
+          // Manually show dashboard<br />
+          if (window.analyticsSystem?.conversionDashboard) {<br />
+          &nbsp;&nbsp;window.analyticsSystem.conversionDashboard.showDashboard();<br />
+          }<br /><br />
+
+          // Manually hide dashboard<br />
+          if (window.analyticsSystem?.conversionDashboard) {<br />
+          &nbsp;&nbsp;window.analyticsSystem.conversionDashboard.hideDashboard();<br />
+          }<br /><br />
+
+          // Check dashboard visibility<br />
+          console.log("Dashboard visible:",
+          window.analyticsSystem?.conversionDashboard?.isVisible);<br /><br />
+
+          // Export current data<br />
+          console.log("Current data:", window.analyticsSystem?.exportData());
+        </div>
+      </div>
+
+      <div class="test-section">
+        <h3>Expected Console Messages</h3>
+        <div class="status success">
+          ✅ "🚀 Initializing Advanced Analytics System..."
+        </div>
+        <div class="status success">
+          ✅ "✅ Advanced Analytics System initialized successfully!"
+        </div>
+        <div class="status info">
+          ℹ️ "📊 Use Ctrl+Shift+A to toggle the analytics dashboard"
+        </div>
+        <div class="status info">
+          ℹ️ "🔧 Debug console: window.analyticsSystem (localhost only)"
+        </div>
+      </div>
+
+      <div class="test-section">
+        <h3>Dashboard Features to Test</h3>
+        <ul>
+          <li>
+            <strong>Real-time Metrics:</strong> Page views, conversions,
+            conversion rate, session time
+          </li>
+          <li>
+            <strong>Performance Metrics:</strong> LCP, CLS, FID, TTFB scores
+          </li>
+          <li>
+            <strong>Recommendations:</strong> AI-powered optimization
+            suggestions
+          </li>
+          <li>
+            <strong>Active Experiments:</strong> A/B test status and results
+          </li>
+          <li><strong>User Segments:</strong> Top user segments by count</li>
+          <li>
+            <strong>Journey Insights:</strong> User flow analysis and insights
+          </li>
+        </ul>
+      </div>
+
+      <div class="test-section">
+        <h3>Troubleshooting</h3>
+        <p>If the dashboard doesn't appear:</p>
+        <ol>
+          <li>Check browser console for error messages</li>
+          <li>
+            Ensure you're running on localhost (127.0.0.1) for debug features
+          </li>
+          <li>Try refreshing the page</li>
+          <li>Check if the analytics modules loaded correctly</li>
+          <li>
+            Verify the dashboard button is visible in the top-right corner
+          </li>
+        </ol>
+      </div>
+
+      <div class="test-section">
+        <h3>Quick Test Buttons</h3>
+        <button class="btn" onclick="testDashboard()">Test Dashboard</button>
+        <button class="btn" onclick="showConsoleInfo()">
+          Show Console Info
+        </button>
+        <button class="btn" onclick="exportData()">Export Data</button>
+      </div>
+
+      <div id="test-results" class="test-section" style="display: none">
+        <h3>Test Results</h3>
+        <div id="results-content"></div>
+      </div>
+    </div>
+
+    <script type="module" src="./src/js/main.js"></script>
+
+    <script>
+      function testDashboard() {
+        const results = document.getElementById("results-content");
+        const testResults = document.getElementById("test-results");
+        testResults.style.display = "block";
+
+        let output = "<h4>Dashboard Test Results:</h4>";
+
+        // Check if analytics system exists
+        if (window.analyticsSystem) {
+          output +=
+            '<div class="status success">✅ Analytics system loaded</div>';
+
+          // Check dashboard
+          if (window.analyticsSystem.conversionDashboard) {
+            output +=
+              '<div class="status success">✅ Dashboard module loaded</div>';
+
+            // Test toggle
+            const wasVisible =
+              window.analyticsSystem.conversionDashboard.isVisible;
+            window.analyticsSystem.conversionDashboard.toggleDashboard();
+
+            output += `<div class="status info">ℹ️ Dashboard toggled (was ${
+              wasVisible ? "visible" : "hidden"
+            })</div>`;
+          } else {
+            output +=
+              '<div class="status error">❌ Dashboard module not found</div>';
+          }
+        } else {
+          output +=
+            '<div class="status error">❌ Analytics system not loaded</div>';
+        }
+
+        results.innerHTML = output;
+      }
+
+      function showConsoleInfo() {
+        console.log("=== Analytics System Debug Info ===");
+        console.log("Analytics System:", window.analyticsSystem);
+        console.log("Dashboard:", window.analyticsSystem?.conversionDashboard);
+        console.log(
+          "Dashboard Visible:",
+          window.analyticsSystem?.conversionDashboard?.isVisible
+        );
+        console.log("Modules:", Object.keys(window.analyticsSystem || {}));
+
+        alert("Check the browser console for detailed debug information!");
+      }
+
+      function exportData() {
+        if (window.analyticsSystem?.exportData) {
+          const data = window.analyticsSystem.exportData();
+          console.log("Exported Analytics Data:", data);
+
+          // Show summary in results
+          const results = document.getElementById("results-content");
+          const testResults = document.getElementById("test-results");
+          testResults.style.display = "block";
+
+          results.innerHTML = `
+                    <h4>Exported Data Summary:</h4>
+                    <div class="status success">✅ Data exported to console</div>
+                    <p><strong>Journey Data:</strong> ${
+                      data.journey ? "Available" : "Not available"
+                    }</p>
+                    <p><strong>Segments:</strong> ${
+                      data.segments ? "Available" : "Not available"
+                    }</p>
+                    <p><strong>Performance:</strong> ${
+                      data.performance ? "Available" : "Not available"
+                    }</p>
+                    <p><strong>Recommendations:</strong> ${
+                      data.recommendations ? "Available" : "Not available"
+                    }</p>
+                `;
+        } else {
+          alert("Export function not available. Check console for errors.");
+        }
+      }
+
+      // Auto-test on page load
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          console.log("=== Page Load Test ===");
+          console.log("Analytics System Available:", !!window.analyticsSystem);
+          console.log(
+            "Dashboard Available:",
+            !!window.analyticsSystem?.conversionDashboard
+          );
+
+          if (window.analyticsSystem?.conversionDashboard) {
+            console.log("✅ Dashboard ready for testing!");
+          } else {
+            console.log(
+              "⚠️ Dashboard not ready. Check for initialization errors."
+            );
+          }
+        }, 2000);
+      });
+    </script>
+  </body>
+</html>

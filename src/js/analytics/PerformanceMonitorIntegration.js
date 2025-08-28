@@ -3,10 +3,12 @@
  * Integrates with MCP server for Core Web Vitals, Lighthouse audits, and bundle analysis
  */
 
+import { MCPClient } from "./MCPClient.js";
+
 export class PerformanceMonitorIntegration {
   constructor(analyticsManager) {
     this.analyticsManager = analyticsManager;
-    this.mcpServerUrl = "http://localhost:3001"; // MCP server endpoint
+    this.mcpClient = new MCPClient("ws://localhost:3001");
     this.monitoringInterval = 5 * 60 * 1000; // 5 minutes
     this.performanceData = [];
     this.alerts = [];
@@ -39,17 +41,14 @@ export class PerformanceMonitorIntegration {
    */
   async checkMCPServerConnection() {
     try {
-      const response = await fetch(`${this.mcpServerUrl}/health`, {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-      });
+      console.log("[PerformanceMonitor] Checking MCP server connection...");
 
-      if (!response.ok) {
-        throw new Error(`MCP server responded with ${response.status}`);
-      }
+      // Try to connect to MCP server
+      await this.mcpClient.connect();
 
-      const health = await response.json();
-      console.log("MCP server connection established:", health);
+      // Get server info to verify connection
+      const serverInfo = await this.mcpClient.getServerInfo();
+      console.log("MCP server connection established:", serverInfo);
       return true;
     } catch (error) {
       console.warn("MCP server not available:", error);
@@ -99,25 +98,13 @@ export class PerformanceMonitorIntegration {
     const currentUrl = window.location.href;
 
     try {
-      const response = await fetch(
-        `${this.mcpServerUrl}/tools/measure_core_web_vitals`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            url: currentUrl,
-            device: this.detectDeviceType(),
-          }),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(`MCP server error: ${response.status}`);
-      }
-
-      const result = await response.json();
+      const result = await this.mcpClient.callTool("measure_core_web_vitals", {
+        url: currentUrl,
+        device: this.detectDeviceType(),
+      });
       return result;
     } catch (error) {
+      console.warn("MCP Core Web Vitals measurement failed:", error);
       // Fallback to client-side measurement
       return this.measureCoreWebVitalsFallback();
     }
@@ -338,29 +325,11 @@ export class PerformanceMonitorIntegration {
     const currentUrl = window.location.href;
 
     try {
-      const response = await fetch(
-        `${this.mcpServerUrl}/tools/run_lighthouse_audit`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            url: currentUrl,
-            device: this.detectDeviceType(),
-            categories: [
-              "performance",
-              "accessibility",
-              "best-practices",
-              "seo",
-            ],
-          }),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(`MCP server error: ${response.status}`);
-      }
-
-      const result = await response.json();
+      const result = await this.mcpClient.callTool("run_lighthouse_audit", {
+        url: currentUrl,
+        device: this.detectDeviceType(),
+        categories: ["performance", "accessibility", "best-practices", "seo"],
+      });
       return result;
     } catch (error) {
       console.warn("Lighthouse audit via MCP failed:", error);
@@ -426,23 +395,10 @@ export class PerformanceMonitorIntegration {
    */
   async analyzeBundleSize() {
     try {
-      const response = await fetch(
-        `${this.mcpServerUrl}/tools/analyze_bundle_size`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            buildPath: "./dist", // Adjust path as needed
-            entryPoint: "main.js",
-          }),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(`MCP server error: ${response.status}`);
-      }
-
-      const result = await response.json();
+      const result = await this.mcpClient.callTool("analyze_bundle_size", {
+        buildPath: "./dist", // Adjust path as needed
+        entryPoint: "main.js",
+      });
       return result;
     } catch (error) {
       console.warn("Bundle analysis via MCP failed:", error);
@@ -507,24 +463,14 @@ export class PerformanceMonitorIntegration {
     const currentUrl = window.location.href;
 
     try {
-      const response = await fetch(
-        `${this.mcpServerUrl}/tools/generate_performance_report`,
+      const result = await this.mcpClient.callTool(
+        "generate_performance_report",
         {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            url: currentUrl,
-            buildPath: "./dist",
-            includeBundleAnalysis: true,
-          }),
+          url: currentUrl,
+          buildPath: "./dist",
+          includeBundleAnalysis: true,
         }
       );
-
-      if (!response.ok) {
-        throw new Error(`MCP server error: ${response.status}`);
-      }
-
-      const result = await response.json();
       return result;
     } catch (error) {
       console.warn("Performance report via MCP failed:", error);
@@ -584,7 +530,8 @@ export class PerformanceMonitorIntegration {
     this.monitorCriticalAlerts();
 
     // Setup alert notifications (in production, this would send to monitoring service)
-    this.setupAlertNotifications();
+    // TODO: Implement alert notification system for production monitoring
+    console.log("Performance alert monitoring initialized");
   }
 
   /**
