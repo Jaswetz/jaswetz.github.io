@@ -2,6 +2,13 @@
    DAIMLER CASE STUDY PAGE STYLES
    ========================================================================== */
 
+.animation-examples img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-subtle);
+}
+
 .daimler-dcd figure {
     margin: var(--space-xl) auto;
     text-align: center;
@@ -30,13 +37,6 @@
     text-align: center;
 }
 
-.animation-examples img {
-    max-width: 100%;
-    height: auto;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-subtle);
-}
-
 /* Results metrics responsive layout */
 .results-metrics {
     margin: var(--space-xl) 0;
@@ -60,17 +60,12 @@
     margin: var(--space-s) 0;
 }
 
-
 .project-section {
-
     .user-groups {
         padding-top: var(--space-xl);
     }
 
-
-
     h3 {
-
         color: var(--color-primary);
     }
 }
