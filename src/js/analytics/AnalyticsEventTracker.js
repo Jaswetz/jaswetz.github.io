@@ -162,7 +162,7 @@ export class AnalyticsEventTracker {
    */
   enableAutoTracking() {
     if (this.isAutoTrackingEnabled) {
-      console.warn("Auto-tracking is already enabled");
+      // Auto-tracking is already enabled
       return;
     }
 
@@ -253,7 +253,7 @@ export class AnalyticsEventTracker {
       }
     });
 
-    console.log("Analytics auto-tracking enabled");
+    // Analytics auto-tracking enabled
   }
 
   /**
@@ -263,6 +263,6 @@ export class AnalyticsEventTracker {
     this.isAutoTrackingEnabled = false;
     // Note: This doesn't remove existing listeners, just prevents new ones
     // For full cleanup, we'd need to store listener references
-    console.log("Analytics auto-tracking disabled");
+    // Analytics auto-tracking disabled
   }
 }

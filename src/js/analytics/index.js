@@ -5,11 +5,13 @@
 
 import { AnalyticsManager } from "./AnalyticsManager.js";
 import { AnalyticsEventTracker } from "./AnalyticsEventTracker.js";
+import { WebVitalsTracker } from "./WebVitalsTracker.js";
 
 class Analytics {
   constructor() {
     this.manager = new AnalyticsManager();
     this.tracker = new AnalyticsEventTracker(this.manager);
+    this.webVitals = new WebVitalsTracker(this.manager);
     this.isInitialized = false;
   }
 
@@ -27,6 +29,8 @@ class Analytics {
     // Enable auto-tracking by default
     if (success) {
       this.tracker.enableAutoTracking();
+      // Initialize Web Vitals tracking
+      this.webVitals.initialize();
     }
     return success;
   }
@@ -97,6 +101,7 @@ class Analytics {
       initialized: this.isInitialized,
       gtagAvailable: this.manager.isGtagAvailable(),
       autoTrackingEnabled: this.tracker.isAutoTrackingEnabled,
+      webVitalsInitialized: this.webVitals.isInitialized,
     };
   }
 

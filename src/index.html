@@ -63,6 +63,9 @@
       href="./assets/favicons/favicon-96x96.png"
     />
     <link rel="apple-touch-icon" href="./assets/favicons/apple-icon.png" />
+
+    <!-- Preload critical LCP image -->
+    <link rel="preload" as="image" href="./img/jason-profile-pic-square.png" />
   </head>
 
   <body class="page__home">
@@ -105,6 +108,7 @@
                     src="./img/projects/autodesk-messaging/messaging-final.jpg"
                     alt="Project 1 Thumbnail"
                     class="project-thumbnail card__image"
+                    loading="lazy"
                   />
                   <div class="card__content">
                     <h3>Crafting a Unified Notification Experience</h3>
@@ -129,6 +133,7 @@
                     src="./img/mockuuups-ipad-pro-mockup-isometric-right.png"
                     alt="Project 2 Thumbnail"
                     class="project-thumbnail card__image"
+                    loading="lazy"
                   />
                   <div class="card__content">
 <h3><span aria-label="Locked">🔒</span> Architecting a multi-device platform.</h3>
@@ -152,6 +157,7 @@
                     src="./img/proj-thumb-ios-android.png"
                     alt="Project 3 Thumbnail"
                     class="project-thumbnail card__image project-thumbnail--intel"
+                    loading="lazy"
                   />
                   <div class="card__content">
                     <h3>
@@ -175,6 +181,7 @@
                     src="./img/proj-thumb-dcd.jpg"
                     alt="Daimler Detroit Connect Direct interface mockup"
                     class="project-thumbnail card__image"
+                    loading="lazy"
                   />
                   <div class="card__content">
                     <h3>Streamlining Data Access: Fleet Analytics for Daimler Trucks</h3>
@@ -229,47 +236,47 @@
             <div class="companies-carousel" aria-label="Company logos carousel">
               <div class="companies-carousel__track">
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--intel.svg" alt="LFC" class="company-logo__image" />
+                  <img src="./svg/logos/logo--intel.svg" alt="LFC" class="company-logo__image" loading="lazy" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--daimler.svg" alt="Daimler" class="company-logo__image" />
+                  <img src="./svg/logos/logo--daimler.svg" alt="Daimler" class="company-logo__image" loading="lazy" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--detroit-connect.svg" alt="Detroit Connect" class="company-logo__image" />
+                  <img src="./svg/logos/logo--detroit-connect.svg" alt="Detroit Connect" class="company-logo__image" loading="lazy" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--lfc.svg" alt="LFC" class="company-logo__image" />
+                  <img src="./svg/logos/logo--lfc.svg" alt="LFC" class="company-logo__image" loading="lazy" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--sony.svg" alt="Sony" class="company-logo__image" />
+                  <img src="./svg/logos/logo--sony.svg" alt="Sony" class="company-logo__image" loading="lazy" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--sony-pictures.svg" alt="Sony Pictures" class="company-logo__image" />
+                  <img src="./svg/logos/logo--sony-pictures.svg" alt="Sony Pictures" class="company-logo__image" loading="lazy" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--unfi.svg" alt="UNFI" class="company-logo__image" />
+                  <img src="./svg/logos/logo--unfi.svg" alt="UNFI" class="company-logo__image" loading="lazy" />
                 </div>
                 <!-- Duplicate set for seamless loop -->
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--intel.svg" alt="LFC" class="company-logo__image" />
+                  <img src="./svg/logos/logo--intel.svg" alt="LFC" class="company-logo__image" loading="lazy" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--daimler.svg" alt="Daimler" class="company-logo__image" />
+                  <img src="./svg/logos/logo--daimler.svg" alt="Daimler" class="company-logo__image" loading="lazy" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--detroit-connect.svg" alt="Detroit Connect" class="company-logo__image" />
+                  <img src="./svg/logos/logo--detroit-connect.svg" alt="Detroit Connect" class="company-logo__image" loading="lazy" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--lfc.svg" alt="LFC" class="company-logo__image" />
+                  <img src="./svg/logos/logo--lfc.svg" alt="LFC" class="company-logo__image" loading="lazy" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--sony.svg" alt="Sony" class="company-logo__image" />
+                  <img src="./svg/logos/logo--sony.svg" alt="Sony" class="company-logo__image" loading="lazy" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--sony-pictures.svg" alt="Sony Pictures" class="company-logo__image" />
+                  <img src="./svg/logos/logo--sony-pictures.svg" alt="Sony Pictures" class="company-logo__image" loading="lazy" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--unfi.svg" alt="UNFI" class="company-logo__image" />
+                  <img src="./svg/logos/logo--unfi.svg" alt="UNFI" class="company-logo__image" loading="lazy" />
                 </div>
               </div>
             </div>
@@ -352,6 +359,5 @@
     </main>
     <site-footer></site-footer>
     <script type="module" src="./js/main.js?v=1"></script>
-  </body>
   </body>
 </html>

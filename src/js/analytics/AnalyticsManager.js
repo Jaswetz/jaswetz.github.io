@@ -61,7 +61,7 @@ export class AnalyticsManager {
         await this._waitForGA4Script();
         this._configureGA4();
         this.isInitialized = true;
-        console.log("Google Analytics 4 initialized");
+        // Analytics initialized successfully
         return true;
       } catch (error) {
         console.warn("Failed to initialize GA4:", error);
@@ -70,7 +70,7 @@ export class AnalyticsManager {
       }
     } else {
       this._createMockGtag();
-      console.log("Google Analytics disabled in development environment");
+      // Analytics disabled in development environment
       return false;
     }
   }
@@ -153,7 +153,7 @@ export class AnalyticsManager {
   _createMockGtag() {
     // @ts-ignore - Mock function for development
     window.gtag = function () {
-      console.log("GA4 (dev mode):", arguments);
+      // Analytics event logged in development mode
     };
     // @ts-ignore - Google Analytics dataLayer
     window.dataLayer = window.dataLayer || [];
@@ -177,7 +177,7 @@ export class AnalyticsManager {
       // @ts-ignore - Google Analytics gtag
       return window.gtag.apply(window, args);
     } else {
-      console.log("GA4 not available, event not tracked:", args);
+      // Analytics not available, event not tracked
     }
   }
 
