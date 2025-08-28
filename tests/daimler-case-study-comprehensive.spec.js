@@ -4,8 +4,24 @@ test.describe("Daimler Case Study - Comprehensive Test Coverage", () => {
   const caseStudyUrl = "/projects/project-daimler-dcd.html";
 
   test.beforeEach(async ({ page }) => {
+    // Set up performance monitoring
+    await page.addInitScript(() => {
+      window.testStartTime = performance.now();
+    });
+
     await page.goto(caseStudyUrl);
     await page.waitForLoadState("networkidle");
+
+    // Ensure Web Components are loaded
+    await page.waitForFunction(
+      () => {
+        return (
+          window.customElements.get("site-header") &&
+          window.customElements.get("image-lightbox")
+        );
+      },
+      { timeout: 10000 }
+    );
   });
 
   test.describe("Page Functionality", () => {
@@ -31,17 +47,27 @@ test.describe("Daimler Case Study - Comprehensive Test Coverage", () => {
     });
 
     test("has navigation components", async ({ page }) => {
-      // Wait for site-header to be defined
-      await page.waitForFunction(() =>
-        window.customElements.get("site-header")
-      );
+      // Wait for site-header to be defined with timeout
+      try {
+        await page.waitForFunction(
+          () => window.customElements.get("site-header"),
+          { timeout: 5000 }
+        );
+      } catch (error) {
+        throw new Error(
+          `Site header component failed to load: ${error.message}`
+        );
+      }
 
       const header = page.locator("site-header");
       await expect(header).toBeVisible();
 
-      // Check for skip link
+      // Check for skip link with better error message
       const skipLink = page.locator("a[href=\"#main-content\"]");
       await expect(skipLink).toHaveCount(1);
+
+      // Verify skip link is accessible
+      await expect(skipLink).toHaveAttribute("class", /skip-link/);
     });
 
     test("has main content sections", async ({ page }) => {

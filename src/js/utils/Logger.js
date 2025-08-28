@@ -22,12 +22,20 @@ class Logger {
    * @returns {boolean} True if in development
    */
   checkEnvironment() {
+    // Safely check process.env to avoid ReferenceError in browsers
+    const nodeEnv =
+      typeof process !== "undefined" && process.env && process.env.NODE_ENV;
+
     return (
       window.location.hostname === "localhost" ||
       window.location.hostname === "127.0.0.1" ||
       window.location.hostname === "" ||
       window.location.protocol === "file:" ||
-      process.env.NODE_ENV === "development"
+      nodeEnv === "development" ||
+      // Additional dev environment indicators
+      window.location.port !== "" ||
+      window.location.hostname.includes("dev") ||
+      window.location.hostname.includes("staging")
     );
   }
 

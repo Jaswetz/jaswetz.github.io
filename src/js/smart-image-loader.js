@@ -5,8 +5,8 @@
 
 class SmartImageLoader {
   constructor() {
-    this.optimizedBasePath = "./img/optimized/";
-    this.webpBasePath = "./img/optimized/webp/";
+    this.optimizedBasePath = "./img/";
+    this.webpBasePath = "./img/webp/";
     this.fallbackBasePath = "./img/";
   }
 
@@ -77,7 +77,7 @@ class SmartImageLoader {
 
       if (optimizedPath !== relativePath) {
         imageElement.src = optimizedPath;
-        console.log(`✅ Optimized: ${relativePath} → ${optimizedPath}`);
+        // Image optimized silently for production performance
       }
     });
 

@@ -2,84 +2,105 @@
    DAIMLER CASE STUDY PAGE STYLES
    ========================================================================== */
 
-.animation-examples img {
-    max-width: 100%;
-    height: auto;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-subtle);
-}
+@layer pages {
 
-.daimler-dcd figure {
-    margin: var(--space-xl) auto;
-    text-align: center;
+    /* Animation Examples */
+    .animation-examples {
+        margin-top: var(--space-xl);
 
-    img {
-        margin: auto;
-    }
-}
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-subtle);
 
-.project-summary figure {
-    margin-top: 0;
-}
+            /* Respect user motion preferences */
+            @media (prefers-reduced-motion: reduce) {
+                animation: none;
+                transition: none;
+            }
+        }
 
-.term-definition h4 {
-    margin-bottom: var(--space-s);
-    color: var(--color-primary);
-    font-weight: var(--font-weight-semibold);
-}
-
-/* Animation examples responsive layout */
-.animation-examples {
-    margin-top: var(--space-xl);
-}
-
-.animation-examples figure {
-    text-align: center;
-}
-
-/* Results metrics responsive layout */
-.results-metrics {
-    margin: var(--space-xl) 0;
-}
-
-.metric-card {
-    text-align: center;
-    padding: var(--space-xl);
-    min-height: 180px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: var(--space-s);
-}
-
-.metric-value {
-    font-size: var(--size-step-4);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
-    line-height: 1;
-    margin: var(--space-s) 0;
-}
-
-.project-section {
-    .user-groups {
-        padding-top: var(--space-xl);
+        figure {
+            text-align: center;
+        }
     }
 
-    h3 {
+    /* Project Figures */
+    .daimler-dcd figure {
+        margin: var(--space-xl) auto;
+        text-align: center;
+
+        img {
+            margin: auto;
+        }
+    }
+
+    .project-summary figure {
+        margin-top: 0;
+    }
+
+    /* Term Definitions */
+    .term-definition h4 {
+        margin-bottom: var(--space-s);
         color: var(--color-primary);
+        font-weight: var(--font-weight-semibold);
     }
-}
 
-.project-section__user {
-    .project__img {
+    /* Results Metrics */
+    .results-metrics {
+        margin: var(--space-xl) 0;
+    }
+
+    .metric-card {
+        text-align: center;
+        padding: var(--space-xl);
+        min-height: 180px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: var(--space-s);
+    }
+
+    .metric-value {
+        font-size: var(--size-step-4);
+        font-weight: var(--font-weight-bold);
+        color: var(--color-primary);
+        line-height: 1;
+        margin: var(--space-s) 0;
+    }
+
+    /* Project Sections */
+    .project-section {
+        .user-groups {
+            padding-top: var(--space-xl);
+        }
+
+        h3 {
+            color: var(--color-primary);
+        }
+    }
+
+    .project-section__user .project__img {
         max-width: 30rem;
     }
-}
 
-#results .project__img {
-    max-width: 100%;
-}
+    /* Results Section Images */
+    #results .project__img {
+        max-width: 100%;
+        height: auto;
 
-.design-principles {
-    margin-top: var(--space-xl);
+        /* Optimize image rendering */
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+
+        /* Improve loading performance */
+        content-visibility: auto;
+        contain-intrinsic-size: 300px 200px;
+    }
+
+    /* Design Principles */
+    .design-principles {
+        margin-top: var(--space-xl);
+    }
 }

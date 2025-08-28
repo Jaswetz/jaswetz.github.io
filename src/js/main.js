@@ -5,6 +5,7 @@
 import "../css/main.css";
 import "./analytics/index.js";
 import "./clarity-config.js";
+import SmartImageLoader from "./smart-image-loader.js";
 import SiteHeader from "./components/site-header/SiteHeader.js";
 import SiteFooter from "./components/site-footer/SiteFooter.js";
 import SidebarNavigation from "./components/sidebar-navigation/SidebarNavigation.js";
@@ -94,14 +95,11 @@ document.addEventListener("keydown", function (event) {
     // Toggle typographic rhythm
     body.classList.toggle(rhythmClass);
 
-    if (
-      body.classList.contains(layoutClass) ||
-      body.classList.contains(rhythmClass)
-    ) {
-      console.log("Debug styles enabled. Press Ctrl+Shift+D to disable.");
-    } else {
-      console.log("Debug styles disabled. Press Ctrl+Shift+D to enable.");
-    }
+    // Debug styles toggled (silent operation for production)
   }
 });
 // --- End Debug Styles Toggle ---
+
+// Initialize Smart Image Loader for automatic WebP optimization
+const smartImageLoader = new SmartImageLoader();
+smartImageLoader.optimizePageImages();

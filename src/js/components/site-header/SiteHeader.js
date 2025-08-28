@@ -22,7 +22,6 @@ class SiteHeader extends HTMLElement {
   connectedCallback() {
     // Check if we're on the home page to determine navigation behavior
     const currentPath = window.location.pathname;
-    console.log("SiteHeader - Current path:", currentPath); // Debug logging
 
     const isHomePage =
       currentPath === "/" ||

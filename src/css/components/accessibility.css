@@ -1,7 +1,7 @@
 /* Skip Links - Hidden by default, shown on focus */
 .skip-link {
   position: absolute;
-  top: -40px;
+  top: -80px;
   left: 6px;
   background: var(--color-primary);
   color: white;
@@ -77,6 +77,7 @@ select:focus {
 
 /* Reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -89,6 +90,7 @@ select:focus {
 
 /* High contrast mode support */
 @media (prefers-contrast: more) {
+
   .card__link:focus,
   button:focus,
   input:focus,
@@ -109,6 +111,7 @@ select:focus {
 
 /* Touch target sizes - ensure minimum 44px touch targets */
 @media (pointer: coarse) {
+
   button,
   input[type="button"],
   input[type="submit"],

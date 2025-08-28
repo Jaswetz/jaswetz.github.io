@@ -106,14 +106,27 @@ class DOMCache {
    * @returns {string} Cache key
    */
   generateKey(selector, context) {
-    const contextId =
-      context === document
-        ? "document"
-        : context.tagName +
-          (context.id ? `#${context.id}` : "") +
-          (context.className
-            ? `.${context.className.split(" ").join(".")}`
-            : "");
+    if (context === document) {
+      return `${selector}::document`;
+    }
+
+    // Use a more stable identifier that doesn't change with class modifications
+    let contextId = context.tagName.toLowerCase();
+
+    if (context.id) {
+      contextId += `#${context.id}`;
+    } else if (context.dataset?.component) {
+      // Prefer data-component for Web Components
+      contextId += `[data-component="${context.dataset.component}"]`;
+    } else {
+      // Fallback to position-based identifier for stability
+      const parent = context.parentElement;
+      if (parent) {
+        const siblings = Array.from(parent.children);
+        const index = siblings.indexOf(context);
+        contextId += `:nth-child(${index + 1})`;
+      }
+    }
 
     return `${selector}::${contextId}`;
   }
@@ -135,38 +148,50 @@ class DOMCache {
   /**
    * Set up mutation observer for context
    * @param {Element|Document} context - Context to observe
+   * @param {string} key - Cache key for cleanup tracking
    */
-  setupObserver(context) {
+  setupObserver(context, key) {
     // Don't create duplicate observers for the same context
     if (this.observers.has(context)) {
       return;
     }
 
+    // Use throttled invalidation to prevent excessive cache clearing
+    let invalidationTimeout = null;
+
     const observer = new MutationObserver((mutations) => {
-      let shouldInvalidate = false;
+      // Clear existing timeout
+      if (invalidationTimeout) {
+        clearTimeout(invalidationTimeout);
+      }
 
-      for (const mutation of mutations) {
-        // Check if changes affect our cached queries
-        if (
-          mutation.type === "childList" ||
-          mutation.type === "attributes" ||
-          mutation.type === "characterData"
-        ) {
-          shouldInvalidate = true;
-          break;
+      // Throttle invalidation to 100ms to batch rapid changes
+      invalidationTimeout = setTimeout(() => {
+        let shouldInvalidate = false;
+
+        for (const mutation of mutations) {
+          // Only invalidate for changes that affect DOM structure or relevant attributes
+          if (
+            mutation.type === "childList" ||
+            (mutation.type === "attributes" &&
+              ["class", "id"].includes(mutation.attributeName))
+          ) {
+            shouldInvalidate = true;
+            break;
+          }
         }
-      }
 
-      if (shouldInvalidate) {
-        this.invalidateContext(context);
-      }
+        if (shouldInvalidate) {
+          this.invalidateContext(context);
+        }
+      }, 100);
     });
 
     observer.observe(context, {
       childList: true,
       subtree: true,
       attributes: true,
-      attributeFilter: ["class", "id", "data-*"],
+      attributeFilter: ["class", "id"], // Reduced to essential attributes
       characterData: false,
     });
 
@@ -337,4 +362,3 @@ const domCache = new DOMCache();
 domCache.setupAutoCleanup();
 
 export default domCache;
-export { domCache };
