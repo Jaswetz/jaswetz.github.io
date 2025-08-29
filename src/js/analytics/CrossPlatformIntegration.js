@@ -23,7 +23,7 @@ export class CrossPlatformIntegration {
     this.setupDuplicatePrevention();
     this.isInitialized = true;
 
-    console.log("Cross-platform integration initialized");
+    // Cross-platform integration initialized
   }
 
   /**
@@ -282,6 +282,6 @@ export class CrossPlatformIntegration {
   reset() {
     this.duplicatePrevention.clear();
     this.isInitialized = false;
-    console.log("Cross-platform integration reset");
+    // Cross-platform integration reset
   }
 }

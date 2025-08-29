@@ -27,9 +27,9 @@ export class WebVitalsTracker {
       onTTFB((metric) => this.trackMetric("TTFB", metric));
 
       this.isInitialized = true;
-      console.log("Web Vitals tracking initialized");
+      // Web Vitals tracking initialized
     } catch (error) {
-      console.warn("Failed to initialize Web Vitals tracking:", error);
+      // Failed to initialize Web Vitals tracking
     }
   }
 
@@ -41,12 +41,12 @@ export class WebVitalsTracker {
   trackMetric(name, metric) {
     const { value, rating } = metric;
 
-    // Log to console for development
-    console.log(`Web Vitals ${name}:`, {
+    // Web Vitals metric recorded
+    const formattedData = {
       value: this.formatValue(name, value),
       rating,
       timestamp: new Date().toISOString(),
-    });
+    };
 
     // Send to analytics if available
     if (this.analyticsManager && this.analyticsManager.isGtagAvailable()) {

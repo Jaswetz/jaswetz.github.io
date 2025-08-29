@@ -34,7 +34,7 @@ export class ConversionOptimizationFramework {
     this.setupInsightGeneration();
     this.isInitialized = true;
 
-    console.log("Conversion optimization framework initialized");
+    // Conversion optimization framework initialized
 
     // Generate initial recommendations
     await this.generateInitialRecommendations();
@@ -321,9 +321,7 @@ export class ConversionOptimizationFramework {
    * Generate initial recommendations
    */
   async generateInitialRecommendations() {
-    console.log(
-      "Generating initial conversion optimization recommendations..."
-    );
+    // Generating initial conversion optimization recommendations
 
     const data = await this.collectAllAnalyticsData();
     const recommendations = this.analyzeDataAndGenerateRecommendations(data);
@@ -331,7 +329,7 @@ export class ConversionOptimizationFramework {
     this.recommendations = recommendations;
     this.prioritizeRecommendations();
 
-    console.log(`Generated ${recommendations.length} initial recommendations`);
+    // Generated initial recommendations
   }
 
   /**

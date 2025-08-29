@@ -24,7 +24,7 @@ export class UserJourneyAnalyzer {
     this.setupSessionRecordingAnalysis();
     this.isInitialized = true;
 
-    console.log("User journey analyzer initialized");
+    // User journey analyzer initialized
   }
 
   /**

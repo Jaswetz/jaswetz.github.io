@@ -28,28 +28,11 @@
 
   // Add error handling and logging for Clarity script loading
   t.onerror = function () {
-    console.warn(
-      "Clarity tracking unavailable - likely blocked by ad blocker or privacy extension:",
-      {
-        url: t.src,
-        error: "ERR_BLOCKED_BY_CLIENT",
-        timestamp: new Date().toISOString(),
-        userAgent: navigator.userAgent,
-        referrer: document.referrer,
-        note: "This is expected behavior with privacy tools and won't affect site functionality",
-      }
-    );
-
     // Set a global flag to indicate Clarity is blocked
     window.clarityBlocked = true;
   };
 
   t.onload = function () {
-    console.log("Clarity tracking initialized successfully:", {
-      url: t.src,
-      timestamp: new Date().toISOString(),
-    });
-
     // Set a global flag to indicate Clarity is available
     window.clarityBlocked = false;
   };
@@ -80,7 +63,7 @@ class ClarityEventTracker {
       this.setupAutoTracking();
       this.trackSessionStart();
       this.isInitialized = true;
-      console.log("Enhanced Clarity tracking initialized");
+      // Enhanced Clarity tracking initialized
     });
   }
 
@@ -104,7 +87,7 @@ class ClarityEventTracker {
       // Timeout after 10 seconds
       setTimeout(() => {
         clearInterval(checkClarity);
-        console.warn("Clarity not available within timeout");
+        // Clarity not available within timeout
         resolve();
       }, 10000);
     });
@@ -139,9 +122,7 @@ class ClarityEventTracker {
       typeof window.clarity !== "function" ||
       window.clarityBlocked === true
     ) {
-      console.log(
-        `Clarity tracking skipped for ${eventName} (Clarity unavailable)`
-      );
+      // Clarity tracking skipped - unavailable
       return;
     }
 
@@ -163,7 +144,7 @@ class ClarityEventTracker {
       timestamp: Date.now(),
     });
 
-    console.log(`Clarity Event: ${eventName}`, enhancedProperties);
+    // Event tracked in Clarity
   }
 
   /**
