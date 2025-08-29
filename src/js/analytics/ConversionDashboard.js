@@ -47,6 +47,15 @@ export class ConversionDashboard {
    * Create dashboard container
    */
   createDashboardContainer() {
+    // Check if dashboard should be shown (development or analytics=true parameter)
+    const isProduction =
+      window.location.hostname !== "localhost" &&
+      window.location.hostname !== "127.0.0.1" &&
+      !window.location.port;
+    const showAnalytics = isProduction
+      ? new URLSearchParams(window.location.search).get("analytics") === "true"
+      : true; // Always show in development
+
     // Create dashboard container
     const dashboard = document.createElement("div");
     dashboard.id = "conversion-dashboard";
@@ -68,30 +77,33 @@ export class ConversionDashboard {
       display: none;
     `;
 
-    // Add toggle button
-    const toggleButton = document.createElement("button");
-    toggleButton.id = "dashboard-toggle";
-    toggleButton.textContent = "📊 Analytics";
-    toggleButton.style.cssText = `
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #4285f4;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      padding: 8px 12px;
-      cursor: pointer;
-      font-size: 12px;
-      z-index: 10001;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    `;
+    // Only create toggle button if analytics should be shown
+    if (showAnalytics) {
+      // Add toggle button
+      const toggleButton = document.createElement("button");
+      toggleButton.id = "dashboard-toggle";
+      toggleButton.textContent = "📊 Analytics";
+      toggleButton.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #4285f4;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 8px 12px;
+        cursor: pointer;
+        font-size: 12px;
+        z-index: 10001;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      `;
 
-    document.body.appendChild(toggleButton);
+      document.body.appendChild(toggleButton);
+      this.toggleButton = toggleButton;
+    }
+
     document.body.appendChild(dashboard);
-
     this.dashboard = dashboard;
-    this.toggleButton = toggleButton;
   }
 
   /**
@@ -329,6 +341,9 @@ export class ConversionDashboard {
    * Setup event listeners
    */
   setupEventListeners() {
+    // Only setup listeners if toggle button exists
+    if (!this.toggleButton) return;
+
     // Toggle dashboard visibility
     this.toggleButton.addEventListener("click", () => {
       this.toggleDashboard();
@@ -637,7 +652,9 @@ export class ConversionDashboard {
    */
   showDashboard() {
     this.dashboard.style.display = "block";
-    this.toggleButton.style.display = "none";
+    if (this.toggleButton) {
+      this.toggleButton.style.display = "none";
+    }
     this.isVisible = true;
 
     // Update dashboard immediately when shown
@@ -655,7 +672,9 @@ export class ConversionDashboard {
    */
   hideDashboard() {
     this.dashboard.style.display = "none";
-    this.toggleButton.style.display = "block";
+    if (this.toggleButton) {
+      this.toggleButton.style.display = "block";
+    }
     this.isVisible = false;
   }
 
