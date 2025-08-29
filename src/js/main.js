@@ -107,7 +107,7 @@ smartImageLoader.optimizePageImages();
 // Initialize Advanced Analytics System
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    console.log("🚀 Initializing Advanced Analytics System...");
+    // Initializing Advanced Analytics System
 
     // Import analytics modules dynamically to avoid circular dependencies
     const [
@@ -189,9 +189,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       conversionDashboard.initialize(),
     ]);
 
-    console.log("✅ Advanced Analytics System initialized successfully!");
-    console.log("📊 Use Ctrl+Shift+A to toggle the analytics dashboard");
-    console.log("🔧 Debug console: window.analyticsSystem (localhost only)");
+    // Advanced Analytics System initialized successfully
 
     // Make modules globally available for debugging (remove in production)
     if (
@@ -219,15 +217,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         }),
         resetAll: () => {
           localStorage.clear();
-          console.log("All analytics data reset");
+          // All analytics data reset
         },
       };
     }
   } catch (error) {
-    console.warn("⚠️ Failed to initialize Advanced Analytics System:", error);
-    console.log(
-      "📊 Basic analytics (GA4 + Clarity) will continue to work normally"
-    );
-    console.log("💡 Check browser console for detailed error information");
+    // Failed to initialize Advanced Analytics System - basic analytics will continue
   }
 });

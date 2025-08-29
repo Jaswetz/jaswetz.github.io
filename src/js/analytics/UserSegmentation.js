@@ -26,7 +26,7 @@ export class UserSegmentation {
     this.loadExistingUserData();
     this.isInitialized = true;
 
-    console.log("User segmentation system initialized");
+    // User segmentation system initialized
   }
 
   /**

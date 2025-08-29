@@ -22,7 +22,7 @@ export class MCPClient {
         this.ws = new WebSocket(this.serverUrl);
 
         this.ws.onopen = () => {
-          console.log("[MCPClient] Connected to MCP server");
+          // Connected to MCP server
           this.connected = true;
           resolve();
         };
@@ -32,7 +32,7 @@ export class MCPClient {
         };
 
         this.ws.onclose = () => {
-          console.log("[MCPClient] Disconnected from MCP server");
+          // Disconnected from MCP server
           this.connected = false;
           this.ws = null;
         };

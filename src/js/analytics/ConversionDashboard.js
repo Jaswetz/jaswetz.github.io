@@ -40,7 +40,7 @@ export class ConversionDashboard {
     this.loadInitialData();
     this.isInitialized = true;
 
-    console.log("Conversion dashboard initialized");
+    // Conversion dashboard initialized
   }
 
   /**
@@ -743,6 +743,6 @@ export class ConversionDashboard {
     }
 
     this.isInitialized = false;
-    console.log("Conversion dashboard destroyed");
+    // Conversion dashboard destroyed
   }
 }

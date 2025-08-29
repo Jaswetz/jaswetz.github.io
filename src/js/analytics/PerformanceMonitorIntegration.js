@@ -29,7 +29,7 @@ export class PerformanceMonitorIntegration {
       this.setupRealTimeTracking();
       this.isInitialized = true;
 
-      console.log("Performance monitor integration initialized");
+      // Performance monitor integration initialized
     } catch (error) {
       console.warn("Failed to initialize performance monitoring:", error);
       this.fallbackMonitoring();
@@ -41,17 +41,17 @@ export class PerformanceMonitorIntegration {
    */
   async checkMCPServerConnection() {
     try {
-      console.log("[PerformanceMonitor] Checking MCP server connection...");
+      // Checking MCP server connection
 
       // Try to connect to MCP server
       await this.mcpClient.connect();
 
       // Get server info to verify connection
       const serverInfo = await this.mcpClient.getServerInfo();
-      console.log("MCP server connection established:", serverInfo);
+      // MCP server connection established
       return true;
     } catch (error) {
-      console.warn("MCP server not available:", error);
+      // MCP server not available
       return false;
     }
   }
@@ -531,7 +531,7 @@ export class PerformanceMonitorIntegration {
 
     // Setup alert notifications (in production, this would send to monitoring service)
     // TODO: Implement alert notification system for production monitoring
-    console.log("Performance alert monitoring initialized");
+    // Performance alert monitoring initialized
   }
 
   /**
@@ -547,7 +547,7 @@ export class PerformanceMonitorIntegration {
       );
 
       if (criticalAlerts.length > 0) {
-        console.warn("Critical performance alerts detected:", criticalAlerts);
+        // Critical performance alerts detected
 
         // Track critical alerts
         this.analyticsManager.gtag("event", "critical_performance_alert", {
@@ -777,7 +777,7 @@ export class PerformanceMonitorIntegration {
    * Fallback monitoring when MCP server is unavailable
    */
   fallbackMonitoring() {
-    console.log("Using fallback performance monitoring");
+    // Using fallback performance monitoring
 
     // Basic Core Web Vitals monitoring
     this.startCoreWebVitalsMonitoring();

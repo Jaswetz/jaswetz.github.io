@@ -26,7 +26,7 @@ export class ABTestingFramework {
     this.loadExistingExperiments();
     this.isInitialized = true;
 
-    console.log("A/B testing framework initialized");
+    // A/B testing framework initialized
   }
 
   /**
