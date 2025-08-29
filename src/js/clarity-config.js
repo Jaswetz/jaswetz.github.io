@@ -25,6 +25,34 @@
   t.src = "https://www.clarity.ms/tag/" + i;
   y = l.getElementsByTagName(r)[0];
   y.parentNode.insertBefore(t, y);
+
+  // Add error handling and logging for Clarity script loading
+  t.onerror = function () {
+    console.warn(
+      "Clarity tracking unavailable - likely blocked by ad blocker or privacy extension:",
+      {
+        url: t.src,
+        error: "ERR_BLOCKED_BY_CLIENT",
+        timestamp: new Date().toISOString(),
+        userAgent: navigator.userAgent,
+        referrer: document.referrer,
+        note: "This is expected behavior with privacy tools and won't affect site functionality",
+      }
+    );
+
+    // Set a global flag to indicate Clarity is blocked
+    window.clarityBlocked = true;
+  };
+
+  t.onload = function () {
+    console.log("Clarity tracking initialized successfully:", {
+      url: t.src,
+      timestamp: new Date().toISOString(),
+    });
+
+    // Set a global flag to indicate Clarity is available
+    window.clarityBlocked = false;
+  };
 })(window, document, "clarity", "script", "s7dys3l8mm");
 
 /**
@@ -106,7 +134,16 @@ class ClarityEventTracker {
    * Enhanced event tracking with conversion funnel context
    */
   trackEvent(eventName, properties = {}) {
-    if (typeof window.clarity !== "function") return;
+    // Check if Clarity is blocked or unavailable
+    if (
+      typeof window.clarity !== "function" ||
+      window.clarityBlocked === true
+    ) {
+      console.log(
+        `Clarity tracking skipped for ${eventName} (Clarity unavailable)`
+      );
+      return;
+    }
 
     // Add session context to all events
     const enhancedProperties = {

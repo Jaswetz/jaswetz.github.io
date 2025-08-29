@@ -77,7 +77,6 @@ select:focus {
 
 /* Reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
@@ -90,7 +89,6 @@ select:focus {
 
 /* High contrast mode support */
 @media (prefers-contrast: more) {
-
   .card__link:focus,
   button:focus,
   input:focus,
@@ -111,7 +109,6 @@ select:focus {
 
 /* Touch target sizes - ensure minimum 44px touch targets */
 @media (pointer: coarse) {
-
   button,
   input[type="button"],
   input[type="submit"],
