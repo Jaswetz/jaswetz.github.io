@@ -809,15 +809,15 @@ Detroit Connect Direct represents a significant advancement in commercial vehicl
     <!-- Password Protection and Performance Optimization -->
     <script type="module">
       import { protectCaseStudy } from "../js/password-protection-init.js";
-      import { CaseStudyTracker } from "../js/analytics/CaseStudyTracker.js";
-      import analytics from "../js/analytics/index.js";
+      
+      import analytics from "../js/analytics/simple-analytics.js";
 
       protectCaseStudy("project-daimler-dcd");
 
       // Initialize analytics for case study
       document.addEventListener("DOMContentLoaded", () => {
         // Initialize case study specific analytics tracking
-        new CaseStudyTracker(analytics);
+        analytics.trackCaseStudyInteraction("daimler-dcd", "view");
       });
     </script>
 

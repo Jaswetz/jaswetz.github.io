@@ -10,12 +10,21 @@ declare global {
     gtag: (...args: any[]) => void;
     clarity: (action: string, ...args: any[]) => void;
     portfolioAnalytics: {
-      trackProjectClick: (projectName: string, projectType: string) => void;
+      trackProjectClick: (projectName: string, projectType?: string) => void;
       trackResumeDownload: () => void;
       trackContactForm: (action: string, method?: string) => void;
-      trackExternalLink: (url: string, linkText: string) => void;
+      trackExternalLink: (url: string, linkText?: string) => void;
       trackScrollDepth: () => void;
       trackTimeOnPage: () => void;
+      trackCaseStudyInteraction: (
+        caseStudyName: string,
+        action: string,
+        section?: string
+      ) => void;
+      trackImageLightbox: (imageName: string, caseStudy?: string) => void;
+      trackCaseStudyCompletion: (caseStudyName: string) => void;
+      setConsent: (granted: boolean) => void;
+      getStatus: () => any;
     };
     clarityTracking: {
       trackEvent: (eventName: string, eventData?: any) => void;
