@@ -39,6 +39,16 @@ declare global {
     loadImageLightbox: () => Promise<any>;
     loadSidebarNavigation: () => Promise<any>;
     loadPasswordProtection: () => Promise<void>;
+    enhancedImageLoader?: {
+      init(): void;
+      setupLazyLoading(): void;
+      preloadCriticalImages(): void;
+      getStats(): {
+        loadedImages: number;
+        webpSupported: boolean | null;
+        observerSupported: boolean;
+      };
+    };
   }
 
   function gtag(...args: any[]): void;
