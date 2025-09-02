@@ -6,12 +6,12 @@ import "../css/main.css";
 import "./analytics/simple-analytics.js";
 import "./clarity-config.js";
 import SmartImageLoader from "./smart-image-loader.js";
+
+// Critical components - load immediately
 import SiteHeader from "./components/site-header/SiteHeader.js";
 import SiteFooter from "./components/site-footer/SiteFooter.js";
-import SidebarNavigation from "./components/sidebar-navigation/SidebarNavigation.js";
-import ImageLightbox from "./components/ImageLightbox/ImageLightbox.js";
 
-// Define the custom elements
+// Define critical custom elements immediately
 if (window.customElements) {
   // Check if elements are already defined to prevent duplicate registration
   if (!customElements.get("site-header")) {
@@ -20,9 +20,6 @@ if (window.customElements) {
   if (!customElements.get("site-footer")) {
     customElements.define("site-footer", SiteFooter);
   }
-  if (!customElements.get("image-lightbox")) {
-    customElements.define("image-lightbox", ImageLightbox);
-  }
 } else {
   console.warn(
     "Custom Elements are not supported in this browser. Site may not render correctly."
@@ -30,14 +27,59 @@ if (window.customElements) {
   // Optionally, provide fallback rendering or messages here
 }
 
+// Lazy load non-critical components
+const loadImageLightbox = () =>
+  import("./components/ImageLightbox/ImageLightbox.js");
+const loadSidebarNavigation = () =>
+  import("./components/sidebar-navigation/SidebarNavigation.js");
+const loadPasswordProtection = () => import("./auth/password-protection.js");
+
+// Global function to load image lightbox when needed
+window.loadImageLightbox = async () => {
+  try {
+    const { default: ImageLightbox } = await loadImageLightbox();
+    if (!customElements.get("image-lightbox")) {
+      customElements.define("image-lightbox", ImageLightbox);
+    }
+    return ImageLightbox;
+  } catch (error) {
+    console.warn("Failed to load ImageLightbox:", error);
+  }
+};
+
+// Global function to load sidebar navigation when needed
+window.loadSidebarNavigation = async () => {
+  try {
+    const { default: SidebarNavigation } = await loadSidebarNavigation();
+    return SidebarNavigation;
+  } catch (error) {
+    console.warn("Failed to load SidebarNavigation:", error);
+  }
+};
+
+// Global function to load password protection when needed
+window.loadPasswordProtection = async () => {
+  try {
+    await loadPasswordProtection();
+  } catch (error) {
+    console.warn("Failed to load PasswordProtection:", error);
+  }
+};
+
 //DOMContentLoaded is no longer needed for the year,
 //as it's handled within the SiteFooter component itself.
 //Any other global JS can go here or be further modularized.
 
 // Initialize sidebar navigation on pages that have it
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   if (document.querySelector(".sidebar-nav")) {
-    new SidebarNavigation();
+    try {
+      const { default: SidebarNavigation } =
+        await window.loadSidebarNavigation();
+      new SidebarNavigation();
+    } catch (error) {
+      console.warn("Failed to load SidebarNavigation:", error);
+    }
   }
 
   // Add click functionality to the animated 2D logo

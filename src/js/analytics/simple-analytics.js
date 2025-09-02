@@ -53,7 +53,7 @@ class SimpleAnalytics {
    * Wait for Google Analytics gtag to load
    */
   _waitForGtag() {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       if (this.fallbackMode) {
         resolve();
         return;
@@ -111,7 +111,7 @@ class SimpleAnalytics {
     try {
       const consent = localStorage.getItem("analytics-consent");
       return consent === "granted";
-    } catch (e) {
+    } catch {
       return false; // Default to no consent if localStorage fails
     }
   }
@@ -127,7 +127,7 @@ class SimpleAnalytics {
       if (granted && this.isInitialized) {
         this._processQueue();
       }
-    } catch (e) {
+    } catch {
       // Silently fail if localStorage is not available
     }
   }

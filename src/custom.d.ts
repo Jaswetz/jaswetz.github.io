@@ -35,6 +35,10 @@ declare global {
       setUserID: (userID: string) => void;
       tagUser: (key: string, value: string) => void;
     };
+    // Lazy loading functions for code splitting
+    loadImageLightbox: () => Promise<any>;
+    loadSidebarNavigation: () => Promise<any>;
+    loadPasswordProtection: () => Promise<void>;
   }
 
   function gtag(...args: any[]): void;
