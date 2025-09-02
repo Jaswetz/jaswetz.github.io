@@ -3,35 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Notification System Redesign - Jason Swetzoff's Portfolio</title>
+    <title>Notification System Redesign | Portfolio</title>
 
-    <!-- Google Analytics 4 - Only load in production -->
-    <script>
-      // Only load GA4 in production environment
-      if (
-        window.location.hostname !== "localhost" &&
-        window.location.hostname !== "127.0.0.1" &&
-        !window.location.hostname.includes("127.0.0.1") &&
-        window.location.port === ""
-      ) {
-        // Load GA4 script with better error handling
-        var script = document.createElement("script");
-        script.async = true;
-        script.src = "https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG";
-        script.onerror = function () {
-          console.warn(
-            "Google Analytics script failed to load - this may be due to ad blockers or network issues"
-          );
-        };
-        script.onload = function () {};
-        document.head.appendChild(script);
-      }
-    </script>
-    <!-- Google Analytics 4 -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG"
-    ></script>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Case study: Leading the redesign of Autodesk Fusion's notification system to reduce user fatigue while ensuring critical communications are visible and aligned with business growth objectives."
+    />
+    <meta
+      name="keywords"
+      content="UX Design, Notification System, Autodesk Fusion, User Experience, Interface Design, Product Strategy, Design Systems"
+    />
+    <meta name="author" content="Jason Swetzoff" />
+
+    <!-- OpenGraph Meta Tags -->
+    <meta
+      property="og:title"
+      content="Notification System Redesign | Jason Swetzoff"
+    />
+    <meta
+      property="og:description"
+      content="Case study: Leading the redesign of Autodesk Fusion's notification system to reduce user fatigue while ensuring critical communications are visible and aligned with business growth objectives."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://jasonswetzoff.com/projects/project-adsk-notification.html"
+    />
+    <meta
+      property="og:image"
+      content="https://jasonswetzoff.com/img/projects/autodesk-messaging/messaging-final.jpg"
+    />
+    <meta property="og:site_name" content="Jason Swetzoff - UX Portfolio" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Notification System Redesign" />
+    <meta
+      name="twitter:description"
+      content="Case study: Leading the redesign of Autodesk Fusion's notification system to reduce user fatigue while ensuring critical communications are visible and aligned with business growth objectives."
+    />
+    <meta
+      property="twitter:image"
+      content="https://jasonswetzoff.com/img/projects/autodesk-messaging/messaging-final.jpg"
+    />
 
     <!-- Font optimization -->
     <!-- Preconnect to Google Fonts for faster loading -->
@@ -75,7 +90,6 @@
       href="../assets/favicons/favicon-96x96.png"
     />
     <link rel="apple-touch-icon" href="../assets/favicons/apple-icon.png" />
-    <script src="https://unpkg.com/feather-icons"></script>
   </head>
   <body class="project notification">
     <site-header></site-header>
@@ -1032,6 +1046,21 @@
     <image-lightbox></image-lightbox>
 
     <script type="module" src="../js/main.js?v=1"></script>
+
+    <!-- Password Protection and Performance Optimization -->
+    <script type="module">
+      import { protectCaseStudy } from "../js/password-protection-init.js";
+
+      import analytics from "../js/analytics/simple-analytics.js";
+
+      protectCaseStudy("project-adsk-notification");
+
+      // Initialize analytics for case study
+      document.addEventListener("DOMContentLoaded", () => {
+        // Initialize case study specific analytics tracking
+        analytics.trackCaseStudyInteraction("adsk-notification", "view");
+      });
+    </script>
 
     <!-- Initialize Feather Icons -->
     <script>

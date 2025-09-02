@@ -7,41 +7,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Autodesk Fusion: Achieving Device Independence - Jason Swetzoff's
-      Portfolio
-    </title>
+    <title>Autodesk Fusion: Device Independence | Portfolio</title>
 
-    <!-- Google Analytics 4 - Only load in production -->
-    <script>
-      // Only load GA4 in production environment
-      if (
-        window.location.hostname !== "localhost" &&
-        window.location.hostname !== "127.0.0.1" &&
-        !window.location.hostname.includes("127.0.0.1") &&
-        window.location.port === ""
-      ) {
-        // Load GA4 script with better error handling
-        var script = document.createElement("script");
-        script.async = true;
-        script.src = "https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG";
-        script.onerror = function () {
-          console.warn(
-            "Google Analytics script failed to load - this may be due to ad blockers or network issues"
-          );
-        };
-        script.onload = function () {
-          console.log("Google Analytics script loaded successfully");
-        };
-        document.head.appendChild(script);
-      }
-    </script>
-    <!-- Google Analytics 4 -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG"
-    ></script>
-    
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Case study: Leading the multi-year initiative to redefine Autodesk Fusion as a device-independent product, creating a responsive platform that scales seamlessly across mobile, tablet, web, and desktop environments."
+    />
+    <meta
+      name="keywords"
+      content="UX Design, Autodesk Fusion, Device Independence, Cross-Platform Design, Responsive Design, Mobile UX, Design Systems, Product Strategy"
+    />
+    <meta name="author" content="Jason Swetzoff" />
+
+    <!-- OpenGraph Meta Tags -->
+    <meta
+      property="og:title"
+      content="Autodesk Fusion: Device Independence | Jason Swetzoff"
+    />
+    <meta
+      property="og:description"
+      content="Case study: Leading the multi-year initiative to redefine Autodesk Fusion as a device-independent product, creating a responsive platform that scales seamlessly across mobile, tablet, web, and desktop environments."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://jasonswetzoff.com/projects/project-autodesk-di.html"
+    />
+    <meta
+      property="og:image"
+      content="https://jasonswetzoff.com/img/projects/autodesk-DI/fusion-di.jpg"
+    />
+    <meta property="og:site_name" content="Jason Swetzoff - UX Portfolio" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Autodesk Fusion: Device Independence" />
+    <meta
+      name="twitter:description"
+      content="Case study: Leading the multi-year initiative to redefine Autodesk Fusion as a device-independent product, creating a responsive platform that scales seamlessly across mobile, tablet, web, and desktop environments."
+    />
+    <meta
+      property="twitter:image"
+      content="https://jasonswetzoff.com/img/projects/autodesk-DI/fusion-di.jpg"
+    />
 
     <!-- Font optimization -->
     <!-- Preconnect to Google Fonts for faster loading -->
@@ -238,10 +247,19 @@
 
     <script type="module" src="../js/main.js?v=1"></script>
 
-    <!-- Password Protection -->
+    <!-- Password Protection and Performance Optimization -->
     <script type="module">
       import { protectCaseStudy } from "../js/password-protection-init.js";
+
+      import analytics from "../js/analytics/simple-analytics.js";
+
       protectCaseStudy("project-autodesk-di");
+
+      // Initialize analytics for case study
+      document.addEventListener("DOMContentLoaded", () => {
+        // Initialize case study specific analytics tracking
+        analytics.trackCaseStudyInteraction("autodesk-di", "view");
+      });
     </script>
 
     <!-- Initialize Feather Icons -->
