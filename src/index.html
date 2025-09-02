@@ -75,7 +75,7 @@
       default-src 'self';
       script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com;
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com;
-      font-src 'self' https://fonts.gstatic.com;
+      font-src 'self' https://fonts.gstatic.com https://r2cdn.perplexity.ai;
       img-src 'self' data: https:;
       connect-src 'self' https://www.google-analytics.com;
       object-src 'none';
@@ -113,6 +113,9 @@
     <!-- Preconnect to Google Fonts for faster loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Preload Google Fonts CSS for better performance -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Laila:wght@400;600&family=PT+Sans:wght@400;700&display=swap" as="style" />
 
     <!-- Optimized Google Fonts CSS with font-display: swap -->
     <link
@@ -188,7 +191,6 @@
                     src="./img/projects/autodesk-messaging/messaging-final.jpg"
                     alt="Autodesk notification system interface showing unified messaging design for improved user communication"
                     class="project-thumbnail card__image"
-                    loading="lazy"
                   />
                   <div class="card__content">
                     <h3>Crafting a Unified Notification Experience</h3>
@@ -213,7 +215,6 @@
                     src="./img/mockuuups-ipad-pro-mockup-isometric-right.png"
                     alt="Autodesk Fusion cross-platform interface design showing tablet and mobile layouts for enterprise software"
                     class="project-thumbnail card__image"
-                    loading="lazy"
                   />
                   <div class="card__content">
 <h3><span aria-label="Locked">🔒</span> Architecting a multi-device platform.</h3>
@@ -237,7 +238,6 @@
                     src="./img/proj-thumb-ios-android.png"
                     alt="Intel LFC immersive soccer app interface showing mobile designs for enhanced fan engagement"
                     class="project-thumbnail card__image project-thumbnail--intel"
-                    loading="lazy"
                   />
                   <div class="card__content">
                     <h3>
@@ -261,7 +261,6 @@
                     src="./img/proj-thumb-dcd.jpg"
                     alt="Daimler Detroit Connect Direct interface mockup"
                     class="project-thumbnail card__image"
-                    loading="lazy"
                   />
                   <div class="card__content">
                     <h3>Streamlining Data Access: Fleet Analytics for Daimler Trucks</h3>
@@ -316,47 +315,47 @@
             <div class="companies-carousel" aria-label="Company logos carousel">
               <div class="companies-carousel__track">
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--intel.svg" alt="LFC" class="company-logo__image" loading="lazy" />
+                  <img src="./img/logos/logo--intel.svg" alt="Intel" class="company-logo__image" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--daimler.svg" alt="Daimler" class="company-logo__image" loading="lazy" />
+                  <img src="./img/logos/logo--daimler.svg" alt="Daimler" class="company-logo__image" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--detroit-connect.svg" alt="Detroit Connect" class="company-logo__image" loading="lazy" />
+                  <img src="./img/logos/logo--detroit-connect.svg" alt="Detroit Connect" class="company-logo__image" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--lfc.svg" alt="LFC" class="company-logo__image" loading="lazy" />
+                  <img src="./img/logos/logo--lfc.svg" alt="LFC" class="company-logo__image" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--sony.svg" alt="Sony" class="company-logo__image" loading="lazy" />
+                  <img src="./img/logos/logo--sony.svg" alt="Sony" class="company-logo__image" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--sony-pictures.svg" alt="Sony Pictures" class="company-logo__image" loading="lazy" />
+                  <img src="./img/logos/logo--sony-pictures.svg" alt="Sony Pictures" class="company-logo__image" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--unfi.svg" alt="UNFI" class="company-logo__image" loading="lazy" />
+                  <img src="./img/logos/logo--unfi.svg" alt="UNFI" class="company-logo__image" />
                 </div>
                 <!-- Duplicate set for seamless loop -->
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--intel.svg" alt="LFC" class="company-logo__image" loading="lazy" />
+                  <img src="./img/logos/logo--intel.svg" alt="Intel" class="company-logo__image" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--daimler.svg" alt="Daimler" class="company-logo__image" loading="lazy" />
+                  <img src="./img/logos/logo--daimler.svg" alt="Daimler" class="company-logo__image" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--detroit-connect.svg" alt="Detroit Connect" class="company-logo__image" loading="lazy" />
+                  <img src="./img/logos/logo--detroit-connect.svg" alt="Detroit Connect" class="company-logo__image" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--lfc.svg" alt="LFC" class="company-logo__image" loading="lazy" />
+                  <img src="./img/logos/logo--lfc.svg" alt="LFC" class="company-logo__image" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--sony.svg" alt="Sony" class="company-logo__image" loading="lazy" />
+                  <img src="./img/logos/logo--sony.svg" alt="Sony" class="company-logo__image" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--sony-pictures.svg" alt="Sony Pictures" class="company-logo__image" loading="lazy" />
+                  <img src="./img/logos/logo--sony-pictures.svg" alt="Sony Pictures" class="company-logo__image" />
                 </div>
                 <div class="company-logo card">
-                  <img src="./svg/logos/logo--unfi.svg" alt="UNFI" class="company-logo__image" loading="lazy" />
+                  <img src="./img/logos/logo--unfi.svg" alt="UNFI" class="company-logo__image" />
                 </div>
               </div>
             </div>

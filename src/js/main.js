@@ -5,7 +5,7 @@
 import "../css/main.css";
 import "./analytics/simple-analytics.js";
 import "./clarity-config.js";
-import SmartImageLoader from "./smart-image-loader.js";
+import "./enhanced-image-loader.js";
 
 // Critical components - load immediately
 import SiteHeader from "./components/site-header/SiteHeader.js";
@@ -151,9 +151,41 @@ document.addEventListener("keydown", function (event) {
 });
 // --- End Debug Styles Toggle ---
 
-// Initialize Smart Image Loader for automatic WebP optimization
-const smartImageLoader = new SmartImageLoader();
-smartImageLoader.optimizePageImages();
+// Enhanced Image Loader is auto-initialized in its own module
 
 // Simple analytics system initialized automatically
 // Use window.portfolioAnalytics for manual tracking
+
+// Register Service Worker for caching and offline support
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register(new URL("./service-worker.js", import.meta.url))
+      .then((registration) => {
+        console.log(
+          "Service Worker registered successfully:",
+          registration.scope
+        );
+
+        // Handle updates
+        registration.addEventListener("updatefound", () => {
+          const newWorker = registration.installing;
+          if (newWorker) {
+            newWorker.addEventListener("statechange", () => {
+              if (
+                newWorker.state === "installed" &&
+                navigator.serviceWorker.controller
+              ) {
+                // New version available
+                console.log("New service worker version available");
+                // Optionally show user notification for update
+              }
+            });
+          }
+        });
+      })
+      .catch((error) => {
+        console.warn("Service Worker registration failed:", error);
+      });
+  });
+}

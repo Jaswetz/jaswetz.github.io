@@ -95,20 +95,28 @@ class EnhancedImageLoader {
       // Add loading class for CSS transitions
       img.classList.add("loading");
 
-      // Determine best image format
-      const webpSupported = await this.supportsWebP();
+      // Check if this is an SVG file - load directly without processing
+      const isSvg = /\.svg$/i.test(originalSrc);
       let finalSrc = originalSrc;
 
-      if (webpSupported) {
-        const webpSrc = originalSrc.replace(/\.(jpg|jpeg|png)$/i, ".webp");
-        // Check if WebP version exists
-        if (await this.imageExists(webpSrc)) {
-          finalSrc = webpSrc;
+      if (!isSvg) {
+        // Determine best image format for raster images only
+        const webpSupported = await this.supportsWebP();
+
+        if (webpSupported) {
+          // Try WebP version from webp folder
+          const webpSrc = new URL(originalSrc, window.location.href).pathname
+            .replace(/^(.*\/img\/)/, "$1webp/")
+            .replace(/\.(jpg|jpeg|png)$/i, ".webp");
+          // Check if WebP version exists
+          if (await this.imageExists(webpSrc)) {
+            finalSrc = webpSrc;
+          }
         }
       }
 
-      // Set up responsive image sources if available
-      if (img.dataset.sizes) {
+      // Set up responsive image sources if available (skip for SVG files)
+      if (img.dataset.sizes && !isSvg) {
         const picture = document.createElement("picture");
         const source = document.createElement("source");
 
