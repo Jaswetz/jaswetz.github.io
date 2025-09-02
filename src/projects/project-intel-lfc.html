@@ -15,8 +15,9 @@
       content="UX Design, Immersive Media, Intel, Liverpool FC, Mobile App Design, VR Technology, FreeD, Android iOS Development, Sports Technology"
     />
     <meta name="author" content="Jason Swetzoff" />
+    <meta name="robots" content="index, follow" />
 
-    <!-- OpenGraph Meta Tags -->
+    <!-- Open Graph / Facebook -->
     <meta
       property="og:title"
       content="Intel LFC: Immersive Soccer App | Jason Swetzoff"
@@ -28,15 +29,15 @@
     <meta property="og:type" content="article" />
     <meta
       property="og:url"
-      content="https://jasonswetzoff.com/projects/project-intel-lfc.html"
+      content="https://jaswetz.github.io/projects/project-intel-lfc.html"
     />
     <meta
       property="og:image"
-      content="https://jasonswetzoff.com/img/projects/lfc/ios-android.png"
+      content="https://jaswetz.github.io/img/projects/lfc/ios-android.png"
     />
     <meta property="og:site_name" content="Jason Swetzoff - UX Portfolio" />
 
-    <!-- Twitter Card Meta Tags -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Intel LFC: Immersive Soccer App" />
     <meta
@@ -44,8 +45,8 @@
       content="Case study: Leading UX design for Intel's groundbreaking Immersive Media project, developing native Android and iOS apps that leveraged FreeD, Voke VR, and innovative clip tagging technology to revolutionize soccer fan engagement."
     />
     <meta
-      property="twitter:image"
-      content="https://jasonswetzoff.com/img/projects/lfc/ios-android.png"
+      name="twitter:image"
+      content="https://jaswetz.github.io/img/projects/lfc/ios-android.png"
     />
 
     <!-- Font optimization -->
@@ -102,24 +103,44 @@
     <link rel="apple-touch-icon" href="../assets/favicons/apple-icon.png" />
   </head>
   <body class="project lfc-intel">
-    <site-header></site-header>
-    <section class="hero hero--project hero-section">
-      <div class="wrapper">
-        <div class="hero--project__content">
-          <div class="hero--project__label">Intel & Liverpool FC</div>
-          <h1 class="hero--project__header">
-            Securing Intel's Multi-Year Deal With An Immersive Soccer App
-          </h1>
-
-          <div class="hero--project__meta">
-            <span class="hero--project__role">Lead UX Designer</span>
-            <span class="hero--project__timeline">6-month project</span>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+      <site-header></site-header>
+    </header>
+      <!-- Hero Section -->
+      <section
+        class="hero hero--project hero-section"
+        id="hero"
+        aria-labelledby="hero-title"
+      >
+        <div class="wrapper">
+          <div class="hero--project__content">
+            <div class="hero--project__label" aria-label="Client name">
+              Intel & Liverpool Football Club
+            </div>
+            <h1 class="hero--project__header" id="hero-title">
+              Securing Intel's Multi-Year Deal with an Immersive Soccer App
+            </h1>
+            <div
+              class="hero--project__meta"
+              role="group"
+              aria-label="Project metadata"
+            >
+              <span class="hero--project__role" aria-label="Role"
+                >Lead UX Designer</span
+              >
+              <span class="hero--project__timeline" aria-label="Timeline"
+                >6 Month Project</span
+              >
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </header>
     <main
+      id="main-content"
       class="project-case-study intel-lfc-case-study-grid main-content wrapper"
+      role="main"
     >
       <article class="article">
         <div class="sidebar grid grid--2-column--sidebar">
@@ -130,6 +151,7 @@
                   src="../img/projects/lfc/ios-android.png"
                   alt="Intel LFC Android and iOS app final design"
                   class="project-summary__image project__img img--max-width"
+                  loading="lazy"
                 />
                 <figcaption>
                   A sneak peak of the final iOS and Android app.
@@ -339,6 +361,7 @@
                   src="../img/projects/lfc/discovery.jpg"
                   alt="Discovery workshop with Post-it notes on wall"
                   class="process-image project__img img--max-width"
+                  loading="lazy"
                 />
                 <figcaption>Discovery workshop.</figcaption>
               </figure>
@@ -357,6 +380,7 @@
                     src="../img/projects/lfc/whiteboarding-1.png"
                     alt="Sketches of mobile apps on whiteboard"
                     class="process-image project__img"
+                    loading="lazy"
                   />
                   <figcaption>
                     Here, the PO and I made initial sketches of potential
@@ -369,6 +393,7 @@
                     src="../img/projects/lfc/whiteboarding-2.jpg"
                     alt="Whiteboard showing prioritized list of features"
                     class="process-image project__img"
+                    loading="lazy"
                   />
                   <figcaption>
                     Here, the PO and I made a list of features, refined the
@@ -390,6 +415,7 @@
                     src="../img/projects/lfc/whiteboarding-3.png"
                     alt="Whiteboard showing sticky notes of sitemap"
                     class="process-image project__img"
+                    loading="lazy"
                   />
                   <figcaption>Site mapping workshop.</figcaption>
                 </figure>
@@ -399,6 +425,7 @@
                     src="../img/projects/lfc/user-flow.png"
                     alt="A user flow of the app"
                     class="process-image project__img"
+                    loading="lazy"
                   />
                   <figcaption>High level user flow.</figcaption>
                 </figure>
@@ -520,6 +547,7 @@
                   src="../img/projects/lfc/high-fidelity.png"
                   alt="High-fidelity mockups of the app"
                   class="prototype-image project__img"
+                  loading="lazy"
                 />
                 <figcaption>
                   Screenshots of part of the prototype in Sketch.
@@ -569,6 +597,7 @@
                   src="../img/projects/lfc/hf-user-flow.png"
                   alt="Detailed user flow of the app"
                   class="user-flow-image project__img"
+                  loading="lazy"
                 />
                 <figcaption>Detailed user flows.</figcaption>
               </figure>
@@ -584,6 +613,7 @@
                     src="../img/projects/lfc/sketching-1.png"
                     alt="Sketches of the app"
                     class="sketch-image project__img"
+                    loading="lazy"
                   />
                   <figcaption>
                     Iterations on switching between video formats.
@@ -595,6 +625,7 @@
                     src="../img/projects/lfc/sketching-2.png"
                     alt="Sketches of the app"
                     class="sketch-image project__img"
+                    loading="lazy"
                   />
                   <figcaption>
                     Iterations on switching between video formats.
@@ -616,6 +647,7 @@
                   src="../img/projects/lfc/high-level-proto.png"
                   alt="Overview of a prototype made in Sketch app"
                   class="prototype-overview-image project__img"
+                  loading="lazy"
                 />
                 <figcaption>Overview of the Prototype.</figcaption>
               </figure>

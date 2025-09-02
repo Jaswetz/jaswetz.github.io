@@ -190,14 +190,14 @@ class SiteFooter extends HTMLElement {
         <nav class="social-links">
           <ul class="social-links__list">
             <li>
-              <a id="contact-link" href="mailto:swetzoff@gmail.com" class="button">
+              <a id="contact-link" href="mailto:swetzoff@gmail.com" class="button" aria-label="Send an email to Jason Swetzoff">
                 Email
               </a>
             </li>
             <li>
               <a
                 href="http://www.linkedin.com/in/swetzoff"
-                aria-label="Jason's LinkedIn Profile"
+                aria-label="View Jason Swetzoff's LinkedIn Profile"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="button"
@@ -208,7 +208,7 @@ class SiteFooter extends HTMLElement {
             <li>
               <a
                 href="https://github.com/Jaswetz"
-                aria-label="Jason's GitHub Profile"
+                aria-label="View Jason Swetzoff's GitHub Profile"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="button"

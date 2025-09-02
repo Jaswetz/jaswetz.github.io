@@ -82,6 +82,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
+  // Initialize ImageLightbox on project pages
+  if (document.querySelector("body.project")) {
+    try {
+      await window.loadImageLightbox();
+    } catch (error) {
+      console.warn("Failed to load ImageLightbox:", error);
+    }
+  }
+
   // Add click functionality to the animated 2D logo
   const logo2d = document.querySelector(".logo-2d");
   if (logo2d !== null && logo2d instanceof HTMLElement) {

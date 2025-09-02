@@ -16,7 +16,7 @@
     />
     <meta name="author" content="Jason Swetzoff" />
 
-    <!-- OpenGraph Meta Tags -->
+    <!-- Open Graph / Facebook -->
     <meta
       property="og:title"
       content="Notification System Redesign | Jason Swetzoff"
@@ -28,15 +28,15 @@
     <meta property="og:type" content="article" />
     <meta
       property="og:url"
-      content="https://jasonswetzoff.com/projects/project-adsk-notification.html"
+      content="https://jaswetz.github.io/projects/project-adsk-notification.html"
     />
     <meta
       property="og:image"
-      content="https://jasonswetzoff.com/img/projects/autodesk-messaging/messaging-final.jpg"
+      content="https://jaswetz.github.io/img/projects/autodesk-messaging/messaging-final.jpg"
     />
     <meta property="og:site_name" content="Jason Swetzoff - UX Portfolio" />
 
-    <!-- Twitter Card Meta Tags -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Notification System Redesign" />
     <meta
@@ -45,15 +45,13 @@
     />
     <meta
       property="twitter:image"
-      content="https://jasonswetzoff.com/img/projects/autodesk-messaging/messaging-final.jpg"
+      content="https://jaswetz.github.io/img/projects/autodesk-messaging/messaging-final.jpg"
     />
 
     <!-- Font optimization -->
     <!-- Preconnect to Google Fonts for faster loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Font preloading removed - relying on Google Fonts CSS with display=swap for optimal performance -->
 
     <!-- Optimized Google Fonts CSS with font-display: swap -->
     <link
@@ -66,6 +64,7 @@
     <!-- Feather Icons CDN -->
     <script src="https://unpkg.com/feather-icons"></script>
 
+    <!-- Favicons -->
     <link
       rel="icon"
       type="image/x-icon"
@@ -92,47 +91,55 @@
     <link rel="apple-touch-icon" href="../assets/favicons/apple-icon.png" />
   </head>
   <body class="project notification">
-    <site-header></site-header>
-    <section class="hero hero--project hero-section">
-      <div class="wrapper">
-        <div class="hero--project__content">
-          <div class="hero--project__label">Autodesk</div>
-          <h1 class="hero--project__header">
-            Crafting A Unified Messaging Experience.
-          </h1>
-
-          <div class="hero--project__meta">
-            <span class="hero--project__role">Lead UX Designer</span>
-            <span class="hero--project__timeline">8-month project</span>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+      <!-- Hero Section -->
+      <section
+        class="hero hero--project hero-section"
+        id="hero"
+        aria-labelledby="hero-title"
+      >
+        <div class="wrapper">
+          <div class="hero--project__content">
+            <div class="hero--project__label" aria-label="Client name">
+              Autodesk Fusion
+            </div>
+            <h1 class="hero--project__header" id="hero-title">
+              Crafting a Unified Notification Experience
+            </h1>
+            <div
+              class="hero--project__meta"
+              role="group"
+              aria-label="Project metadata"
+            >
+              <span class="hero--project__role" aria-label="Role"
+                >Lead UX Designer</span
+              >
+              <span class="hero--project__timeline" aria-label="Timeline"
+                >6 Month Project</span
+              >
+            </div>
           </div>
-          <!-- <div class="hero--project__impact">
-            <div class="hero--project__impact-label">
-              <i data-feather="trending-up"></i>
-              Project Impact
-            </div>
-            <div class="hero--project__impact-value">
-              +15,000 new paid users
-            </div>
-            <div class="hero--project__impact-description">
-              in the first month after launch
-            </div>
-          </div> -->
         </div>
-      </div>
-    </section>
+      </section>
+    </header>
+      <site-header></site-header>
+    </header>
     <main
+      id="main-content"
       class="project-case-study notification-case-study-grid main-content wrapper"
+      role="main"
     >
       <article class="article">
         <div class="sidebar grid grid--2-column--sidebar">
           <div class="article__content">
             <section class="project-summary" id="project-summary">
-              <!-- <h2>Overview</h2> -->
               <figure>
                 <img
                   src="../img/projects/autodesk-messaging/messaging-final.jpg"
                   alt="Autodesk Notification Center final design"
                   class="project-summary__image project__img"
+                  loading="lazy"
                 />
                 <figcaption>
                   Final design of the Autodesk Notification Center
@@ -159,7 +166,7 @@
                 from concept to delivery.
               </p>
               <p class="project-summary__description">
-                I proactively identified the need to improve Autodesk Fusion’s
+                I proactively identified the need to improve Autodesk Fusion's
                 notification system and formally proposed it as a critical
                 project. I secured funding and stakeholder support, then led the
                 end-to-end redesign and revamp of the notification system,
@@ -293,6 +300,7 @@
                         src="../img/projects/autodesk-messaging/workshop-2.png"
                         alt="Discovery phase showing notification audit"
                         class="project__img"
+                        loading="lazy"
                       />
                       <figcaption>
                         Discovery phase notification audit workshop
@@ -308,6 +316,7 @@
                         src="../img/projects/autodesk-messaging/analytics.png"
                         alt="Current analytics of the Job Status notifications."
                         class="project__img"
+                        loading="lazy"
                       />
                       <figcaption>
                         Analytics showing Job Status notification patterns
@@ -393,6 +402,7 @@
                         src="../img/projects/autodesk-messaging/severity-matrix.jpg"
                         alt="Notification severity decision matrix showing categorization by importance and time sensitivity"
                         class="project__img"
+                        loading="lazy"
                       />
                       <figcaption>
                         Notification severity decision matrix
@@ -408,6 +418,7 @@
                         src="../img/projects/autodesk-messaging/message-overload copy.gif"
                         alt="Key slide I created to communicate gravity of notifications' poor current state, leading to successful funding of the project."
                         class="project__img"
+                        loading="lazy"
                       />
                       <figcaption>
                         Key slide demonstrating notification overload issues
@@ -488,6 +499,7 @@
                         src="../img/projects/autodesk-messaging/filterting.jpg"
                         alt="Design exploration of filtering options for notification management and organization"
                         class="project__img"
+                        loading="lazy"
                       />
                       <figcaption>
                         Filtering exploration and design iterations
@@ -503,6 +515,7 @@
                         src="../img/projects/autodesk-messaging/notification-icon.jpg"
                         alt="Iterating and feedback on the notification icon placement."
                         class="project__img"
+                        loading="lazy"
                       />
                       <figcaption>
                         Notification icon placement iterations and feedback
@@ -580,6 +593,7 @@
                         src="../img/projects/autodesk-messaging/airtable.png"
                         alt="Airtable tracking system for notification types and implementation progress"
                         class="project__img"
+                        loading="lazy"
                       />
                       <figcaption>
                         Airtable documentation and tracking system
@@ -722,13 +736,13 @@
               </div>
               <blockquote class="center">
                 <p>
-                  “Jason was a great collaborative partner, leading our weekly
+                  "Jason was a great collaborative partner, leading our weekly
                   meetings with fresh ideas and humility, ensuring we stayed
                   aligned and on track. His work had a huge impact in
-                  centralizing in-product messages in Fusion’s Notification
+                  centralizing in-product messages in Fusion's Notification
                   Center and improving how we organized critical updates for the
                   user. As a developer, I really appreciated how well he bridged
-                  design and implementation.”
+                  design and implementation."
                 </p>
                 <cite
                   >Alyssa, Sr Software Engineer, developer of
@@ -795,6 +809,7 @@
                       src="../img/projects/autodesk-messaging/mockup-final.png"
                       alt="Final Notification Center design"
                       class="project__img"
+                      loading="lazy"
                     />
                     <figcaption>
                       Final Notification Center design implementation
@@ -1010,6 +1025,7 @@
               </div>
             </section>
           </div>
+
           <div class="article__sidebar">
             <nav class="sidebar-nav">
               <ul>

@@ -3,7 +3,60 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
     <title>Contact Me - Jason Swetzoff's Portfolio</title>
+    <meta
+      name="description"
+      content="Get in touch with Jason Swetzoff for project inquiries, collaborations, or to say hello. Find contact information for email, LinkedIn, and GitHub."
+    />
+    <meta
+      name="keywords"
+      content="Contact Jason Swetzoff, UX Designer, Product Designer, Project Inquiry, Collaboration"
+    />
+    <meta name="author" content="Jason Swetzoff" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://jaswetz.github.io/contact.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jaswetz.github.io/contact.html" />
+    <meta
+      property="og:title"
+      content="Contact Me - Jason Swetzoff's Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="Get in touch with Jason Swetzoff for project inquiries, collaborations, or to say hello."
+    />
+    <meta
+      property="og:image"
+      content="https://jaswetz.github.io/img/jason-profile-pic.png"
+    />
+    <meta
+      property="og:image:alt"
+      content="A professional photo of Jason Swetzoff."
+    />
+    <meta property="og:site_name" content="Jason Swetzoff's Portfolio" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="Contact Me - Jason Swetzoff's Portfolio"
+    />
+    <meta
+      name="twitter:description"
+      content="Get in touch with Jason Swetzoff for project inquiries, collaborations, or to say hello."
+    />
+    <meta
+      name="twitter:image"
+      content="https://jaswetz.github.io/img/jason-profile-pic.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="A professional photo of Jason Swetzoff."
+    />
 
     <!-- Content Security Policy for enhanced security -->
     <meta
@@ -20,7 +73,6 @@
       form-action 'self';
     "
     />
-    <title>Contact Me - Jason Swetzoff's Portfolio</title>
 
     <!-- Google Analytics 4 - Only load in production -->
     <script>
@@ -92,8 +144,11 @@
     <link rel="apple-touch-icon" href="./assets/favicons/apple-icon.png" />
   </head>
   <body>
-    <site-header></site-header>
-    <main class="contact-page-content">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+      <site-header role="banner"></site-header>
+    </header>
+    <main id="main-content" class="contact-page-content" role="main">
       <section id="contact-intro" class="contact-intro-section">
         <h1>Let's Connect</h1>
         <p>
@@ -133,24 +188,26 @@
             <!-- This is a GitHub Pages link, confirm if it should be a profile link e.g., github.com/username -->
           </li>
           <!-- Optional: Phone number (consider privacy) -->
-          <!-- 
+          <!--
           <li>
-            <strong>Phone:</strong> 
-            <a href="tel:+15551234567">+1 (555) 123-4567</a> 
+            <strong>Phone:</strong>
+            <a href="tel:+15551234567">+1 (555) 123-4567</a>
           </li>
           -->
         </ul>
       </section>
 
       <!-- CC2.2 Contact Form is omitted as per decision -->
-      <!-- 
+      <!--
       <section id="contact-form-container" class="contact-form-section">
         <h2>Send a Message (Optional Form)</h2>
         <p>If a form is implemented via a third-party service like Formspree or Netlify Forms, it would go here.</p>
       </section>
       -->
     </main>
-    <site-footer></site-footer>
+    <footer>
+      <site-footer role="contentinfo"></site-footer>
+    </footer>
     <script type="module" src="./js/main.js?v=1"></script>
   </body>
 </html>

@@ -92,8 +92,9 @@
     <link rel="apple-touch-icon" href="./assets/favicons/apple-icon.png" />
   </head>
   <body>
-    <site-header></site-header>
-    <main>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+      <site-header role="banner"></site-header>
       <section id="work-introduction" class="work-intro-section">
         <h1>My UX Portfolio & Case Studies</h1>
         <p>
@@ -102,6 +103,9 @@
           <!-- Placeholder for: A brief statement about his approach to UX or the types of projects he specializes in. -->
         </p>
       </section>
+    </header>
+    <main id="main-content">
+      <section id="portfolio-grid" class="portfolio-grid-section">
 
       <section id="portfolio-grid" class="portfolio-grid-section">
         <h2>Projects</h2>
@@ -185,7 +189,9 @@
         </div>
       </section>
     </main>
-    <site-footer></site-footer>
+    <footer>
+      <site-footer role="contentinfo"></site-footer>
+    </footer>
     <script type="module" src="./js/main.js?v=1"></script>
   </body>
 </html>

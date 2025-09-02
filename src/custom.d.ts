@@ -36,8 +36,8 @@ declare global {
       tagUser: (key: string, value: string) => void;
     };
     // Lazy loading functions for code splitting
-    loadImageLightbox: () => Promise<any>;
-    loadSidebarNavigation: () => Promise<any>;
+    loadImageLightbox: () => Promise<{ default: CustomElementConstructor }>;
+    loadSidebarNavigation: () => Promise<{ default: CustomElementConstructor }>;
     loadPasswordProtection: () => Promise<void>;
     enhancedImageLoader?: {
       init(): void;

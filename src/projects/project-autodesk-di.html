@@ -1,7 +1,3 @@
-<!--
-  Migrated from old-structure/src/pages/autodesk-di.nunjucks
-  Styles and Nunjucks templating removed. Layout and content preserved.
--->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,7 +16,7 @@
     />
     <meta name="author" content="Jason Swetzoff" />
 
-    <!-- OpenGraph Meta Tags -->
+    <!-- Open Graph / Facebook -->
     <meta
       property="og:title"
       content="Autodesk Fusion: Device Independence | Jason Swetzoff"
@@ -32,15 +28,15 @@
     <meta property="og:type" content="article" />
     <meta
       property="og:url"
-      content="https://jasonswetzoff.com/projects/project-autodesk-di.html"
+      content="https://jaswetz.github.io/projects/project-autodesk-di.html"
     />
     <meta
       property="og:image"
-      content="https://jasonswetzoff.com/img/projects/autodesk-DI/fusion-di.jpg"
+      content="https://jaswetz.github.io/img/projects/autodesk-DI/fusion-di.jpg"
     />
     <meta property="og:site_name" content="Jason Swetzoff - UX Portfolio" />
 
-    <!-- Twitter Card Meta Tags -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Autodesk Fusion: Device Independence" />
     <meta
@@ -49,7 +45,7 @@
     />
     <meta
       property="twitter:image"
-      content="https://jasonswetzoff.com/img/projects/autodesk-DI/fusion-di.jpg"
+      content="https://jaswetz.github.io/img/projects/autodesk-DI/fusion-di.jpg"
     />
 
     <!-- Font optimization -->
@@ -110,22 +106,41 @@
     <link rel="apple-touch-icon" href="../assets/favicons/apple-icon.png" />
   </head>
   <body class="project">
-    <site-header></site-header>
-    <section class="hero hero--project hero-section">
-      <div class="wrapper">
-        <div class="hero--project__content">
-          <div class="hero--project__label">Autodesk</div>
-          <h1 class="hero--project__header">
-            Architecting a multi-device platform.
-          </h1>
-          <div class="hero--project__meta">
-            <span class="hero--project__role">UX Architect (iOS/Web)</span>
-            <span class="hero--project__timeline">3+ Years</span>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+      <site-header></site-header>
+      <!-- Hero Section -->
+      <section
+        class="hero hero--project hero-section"
+        id="hero"
+        aria-labelledby="hero-title"
+      >
+        <div class="wrapper">
+          <div class="hero--project__content">
+            <div class="hero--project__label" aria-label="Client name">
+              Autodesk Fusion
+            </div>
+            <h1 class="hero--project__header" id="hero-title">
+              Architecting a Multi-Device Platform
+            </h1>
+            <div
+              class="hero--project__meta"
+              role="group"
+              aria-label="Project metadata"
+            >
+              <span class="hero--project__role" aria-label="Role"
+                >Lead UX Designer</span
+              >
+              <span class="hero--project__timeline" aria-label="Timeline"
+                >Multi-Year Project</span
+              >
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <main class="main-content wrapper">
+      </section>
+    </header>
+    </header>
+    <main id="main-content" class="main-content wrapper" role="main">
       <article class="article">
         <div class="article__content">
           <section class="journey-section">
@@ -138,6 +153,7 @@
                     src="../img/projects/autodesk-DI/old-fusion.jpg"
                     alt="Original desktop-only Fusion interface"
                     class="comparison-image project__img"
+                    loading="lazy"
                   />
                   <figcaption>
                     Original desktop-only Fusion interface
@@ -161,6 +177,7 @@
                     src="../img/projects/autodesk-DI/fusion-di.jpg"
                     alt="New device-independent Fusion experience"
                     class="comparison-image project__img"
+                    loading="lazy"
                   />
                   <figcaption>
                     New device-independent Fusion experience
@@ -223,6 +240,7 @@
                 src="../img/projects/autodesk-DI/mockuuups-transparent-ipad-pro-mockup.png"
                 alt="Mockup of Fusion on iPad Pro"
                 class="mockup-image project__img"
+                loading="lazy"
               />
               <figcaption>Mockup of Fusion on iPad Pro.</figcaption>
             </figure>

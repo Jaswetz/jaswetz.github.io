@@ -16,7 +16,7 @@
     />
     <meta name="author" content="Jason Swetzoff" />
 
-    <!-- OpenGraph Meta Tags -->
+    <!-- Open Graph / Facebook -->
     <meta
       property="og:title"
       content="Streamlining Data Access: Fleet Analytics for Daimler Trucks - Jason Swetzoff"
@@ -28,15 +28,15 @@
     <meta property="og:type" content="article" />
     <meta
       property="og:url"
-      content="https://jasonswetzoff.com/projects/project-daimler-dcd.html"
+      content="https://jaswetz.github.io/projects/project-daimler-dcd.html"
     />
     <meta
       property="og:image"
-      content="https://jasonswetzoff.com/img/projects/dcd/dcd-hero-thumbnail.jpg"
+      content="https://jaswetz.github.io/img/projects/dcd/dcd-hero-thumbnail.jpg"
     />
     <meta property="og:site_name" content="Jason Swetzoff - UX Portfolio" />
 
-    <!-- Twitter Card Meta Tags -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
@@ -47,8 +47,8 @@
       content="Case study: Designing a data access configuration tool for Daimler Trucks Fleet Analytics that simplified complex fleet data for users ranging from interns to data scientists."
     />
     <meta
-      name="twitter:image"
-      content="https://jasonswetzoff.com/img/projects/dcd/dcd-hero-thumbnail.jpg"
+      property="twitter:image"
+      content="https://jaswetz.github.io/img/projects/dcd/dcd-hero-thumbnail.jpg"
     />
 
     <!-- Google Analytics 4 - Only load in production -->
@@ -75,11 +75,6 @@
         document.head.appendChild(script);
       }
     </script>
-    <!-- Google Analytics 4 -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG"
-    ></script>
 
     <!-- Font optimization -->
     <!-- Preconnect to Google Fonts for faster loading -->
@@ -140,16 +135,15 @@
     <link rel="apple-touch-icon" href="../assets/favicons/apple-icon.png" />
   </head>
   <body class="project daimler-dcd">
-    <!-- Skip to main content link for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <site-header></site-header>
+    <header>
+      <site-header></site-header>
+    </header>
 
     <!-- Hero Section -->
     <section
       class="hero hero--project hero-section"
       id="hero"
-      role="banner"
       aria-labelledby="hero-title"
     >
       <div class="wrapper">
@@ -709,9 +703,24 @@
             >
               <h2 id="results-heading">Results</h2>
               <p>
-Detroit Connect Direct represents a significant advancement in commercial vehicle telematics, offering unprecedented data customization and integration capabilities for fleet operators. This adaptability addresses a common challenge in the telematics market where carriers often struggle to integrate vehicle data into their existing operational systems and has been a key driver of Daimler’s success contributing to the growth of its telematics ecosystem.</p>
-
-<p></p>My UX strategy, design, and interaction solutions of the Detroit Connect Direct service has not only fostered stronger relationships with DTNA's key customers but has also generated a new revenue stream. This was achieved by creating and implementing tiered data plan offerings at the point of vehicle purchase. These plans provide customers with valuable features and benefits, enhancing their overall experience while creating a profitable business model for DTNA.
+                Detroit Connect Direct represents a significant advancement in
+                commercial vehicle telematics, offering unprecedented data
+                customization and integration capabilities for fleet operators.
+                This adaptability addresses a common challenge in the telematics
+                market where carriers often struggle to integrate vehicle data
+                into their existing operational systems and has been a key
+                driver of Daimler’s success contributing to the growth of its
+                telematics ecosystem.
+              </p>
+              <p>
+                My UX strategy, design, and interaction solutions of the Detroit
+                Connect Direct service has not only fostered stronger
+                relationships with DTNA's key customers but has also generated a
+                new revenue stream. This was achieved by creating and
+                implementing tiered data plan offerings at the point of vehicle
+                purchase. These plans provide customers with valuable features
+                and benefits, enhancing their overall experience while creating
+                a profitable business model for DTNA.
               </p>
 
               <div
@@ -749,8 +758,6 @@ Detroit Connect Direct represents a significant advancement in commercial vehicl
                   <p>Average user satisfaction score in post-launch surveys</p>
                 </div>
               </div>
-
-     
 
               <figure role="img" aria-labelledby="final-interface-caption">
                 <img
@@ -809,7 +816,7 @@ Detroit Connect Direct represents a significant advancement in commercial vehicl
     <!-- Password Protection and Performance Optimization -->
     <script type="module">
       import { protectCaseStudy } from "../js/password-protection-init.js";
-      
+
       import analytics from "../js/analytics/simple-analytics.js";
 
       protectCaseStudy("project-daimler-dcd");
