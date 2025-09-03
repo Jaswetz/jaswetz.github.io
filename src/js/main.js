@@ -28,39 +28,42 @@ if (window.customElements) {
 }
 
 // Lazy load non-critical components
-const loadImageLightbox = () =>
+const loadImageLightboxModule = () =>
   import("./components/ImageLightbox/ImageLightbox.js");
-const loadSidebarNavigation = () =>
+const loadSidebarNavigationModule = () =>
   import("./components/sidebar-navigation/SidebarNavigation.js");
-const loadPasswordProtection = () => import("./auth/password-protection.js");
+const loadPasswordProtectionModule = () =>
+  import("./auth/password-protection.js");
 
 // Global function to load image lightbox when needed
 window.loadImageLightbox = async () => {
   try {
-    const { default: ImageLightbox } = await loadImageLightbox();
+    const { default: ImageLightbox } = await loadImageLightboxModule();
     if (!customElements.get("image-lightbox")) {
       customElements.define("image-lightbox", ImageLightbox);
     }
     return ImageLightbox;
   } catch (error) {
     console.warn("Failed to load ImageLightbox:", error);
+    return null;
   }
 };
 
 // Global function to load sidebar navigation when needed
 window.loadSidebarNavigation = async () => {
   try {
-    const { default: SidebarNavigation } = await loadSidebarNavigation();
+    const { default: SidebarNavigation } = await loadSidebarNavigationModule();
     return SidebarNavigation;
   } catch (error) {
     console.warn("Failed to load SidebarNavigation:", error);
+    return null;
   }
 };
 
 // Global function to load password protection when needed
 window.loadPasswordProtection = async () => {
   try {
-    await loadPasswordProtection();
+    await loadPasswordProtectionModule();
   } catch (error) {
     console.warn("Failed to load PasswordProtection:", error);
   }
@@ -74,9 +77,10 @@ window.loadPasswordProtection = async () => {
 document.addEventListener("DOMContentLoaded", async () => {
   if (document.querySelector(".sidebar-nav")) {
     try {
-      const { default: SidebarNavigation } =
-        await window.loadSidebarNavigation();
-      new SidebarNavigation();
+      const SidebarNavigation = await window.loadSidebarNavigation();
+      if (SidebarNavigation) {
+        new SidebarNavigation();
+      }
     } catch (error) {
       console.warn("Failed to load SidebarNavigation:", error);
     }

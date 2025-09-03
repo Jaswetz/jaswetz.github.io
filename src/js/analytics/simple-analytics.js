@@ -88,7 +88,7 @@ class SimpleAnalytics {
    * Configure Google Analytics 4
    */
   _configureGA4() {
-    if (this.fallbackMode) return;
+    if (this.fallbackMode || typeof document === "undefined") return;
 
     // Initialize dataLayer if needed
     window.dataLayer = window.dataLayer || [];
@@ -136,6 +136,9 @@ class SimpleAnalytics {
    * Check if in development environment
    */
   _isDevelopment() {
+    if (typeof window === "undefined") {
+      return false;
+    }
     return (
       window.location.hostname === "localhost" ||
       window.location.hostname === "127.0.0.1" ||
@@ -147,6 +150,8 @@ class SimpleAnalytics {
    * Enable automatic tracking
    */
   _enableAutoTracking() {
+    if (typeof document === "undefined") return;
+
     // Track page visibility changes
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) {
@@ -170,6 +175,99 @@ class SimpleAnalytics {
         }
       }
     });
+
+    // Initialize Core Web Vitals monitoring
+    this._initCoreWebVitals();
+  }
+
+  /**
+   * Initialize Core Web Vitals monitoring
+   */
+  _initCoreWebVitals() {
+    if (typeof window === "undefined" || this.isDevelopment) return;
+
+    // Track Largest Contentful Paint (LCP)
+    this._observeLCP();
+
+    // Track First Input Delay (FID)
+    this._observeFID();
+
+    // Track Cumulative Layout Shift (CLS)
+    this._observeCLS();
+  }
+
+  /**
+   * Observe Largest Contentful Paint
+   */
+  _observeLCP() {
+    try {
+      if ("PerformanceObserver" in window) {
+        const observer = new PerformanceObserver((list) => {
+          const entries = list.getEntries();
+          const lastEntry = entries[entries.length - 1];
+          this.trackCoreWebVital("LCP", lastEntry.startTime);
+        });
+        observer.observe({ entryTypes: ["largest-contentful-paint"] });
+
+        // Fallback for older browsers
+        setTimeout(() => {
+          if (observer) observer.disconnect();
+        }, 5000);
+      }
+    } catch (error) {
+      this._handleError("LCP observation", error);
+    }
+  }
+
+  /**
+   * Observe First Input Delay
+   */
+  _observeFID() {
+    try {
+      if ("PerformanceObserver" in window) {
+        const observer = new PerformanceObserver((list) => {
+          const entries = list.getEntries();
+          entries.forEach((entry) => {
+            this.trackCoreWebVital(
+              "FID",
+              entry.processingStart - entry.startTime
+            );
+          });
+        });
+        observer.observe({ entryTypes: ["first-input"] });
+      }
+    } catch (error) {
+      this._handleError("FID observation", error);
+    }
+  }
+
+  /**
+   * Observe Cumulative Layout Shift
+   */
+  _observeCLS() {
+    try {
+      if ("PerformanceObserver" in window) {
+        let clsValue = 0;
+        const observer = new PerformanceObserver((list) => {
+          const entries = list.getEntries();
+          entries.forEach((entry) => {
+            if (!entry.hadRecentInput) {
+              clsValue += entry.value;
+            }
+          });
+        });
+        observer.observe({ entryTypes: ["layout-shift"] });
+
+        // Report CLS on page unload
+        window.addEventListener("beforeunload", () => {
+          if (clsValue > 0) {
+            this.trackCoreWebVital("CLS", clsValue);
+          }
+        });
+      }
+    } catch (error) {
+      this._handleError("CLS observation", error);
+    }
   }
 
   /**
@@ -320,6 +418,17 @@ class SimpleAnalytics {
   }
 
   /**
+   * Track Core Web Vitals
+   */
+  trackCoreWebVital(metric, value) {
+    this._sendToGA4("core_web_vitals", {
+      metric: metric,
+      value: Math.round(value * 100) / 100, // Round to 2 decimal places
+      page_path: window.location.pathname,
+    });
+  }
+
+  /**
    * Get analytics status
    */
   getStatus() {
@@ -336,25 +445,30 @@ class SimpleAnalytics {
 // Create singleton instance
 const analytics = new SimpleAnalytics();
 
-// Auto-initialize
-analytics.init();
+// Auto-initialize only in browser environment
+if (typeof window !== "undefined") {
+  analytics.init();
+
+  // Global access for backward compatibility
+  /** @type {any} */ (window).portfolioAnalytics = {
+    trackProjectClick: (...args) => analytics.trackProjectClick(...args),
+    trackResumeDownload: () => analytics.trackResumeDownload(),
+    trackContactForm: (...args) => analytics.trackContactForm(...args),
+    trackExternalLink: (...args) => analytics.trackExternalLink(...args),
+    trackScrollDepth: () => analytics.trackScrollDepth(),
+    trackTimeOnPage: () => analytics.trackTimeOnPage(),
+    trackCaseStudyInteraction: (...args) =>
+      analytics.trackCaseStudyInteraction(...args),
+    trackImageLightbox: (...args) => analytics.trackImageLightbox(...args),
+    trackCaseStudyCompletion: (...args) =>
+      analytics.trackCaseStudyCompletion(...args),
+    setConsent: (granted) => analytics.setConsent(granted),
+    getStatus: () => analytics.getStatus(),
+  };
+}
 
 // Export for ES modules
 export default analytics;
 
-// Global access for backward compatibility
-window.portfolioAnalytics = {
-  trackProjectClick: (...args) => analytics.trackProjectClick(...args),
-  trackResumeDownload: () => analytics.trackResumeDownload(),
-  trackContactForm: (...args) => analytics.trackContactForm(...args),
-  trackExternalLink: (...args) => analytics.trackExternalLink(...args),
-  trackScrollDepth: () => analytics.trackScrollDepth(),
-  trackTimeOnPage: () => analytics.trackTimeOnPage(),
-  trackCaseStudyInteraction: (...args) =>
-    analytics.trackCaseStudyInteraction(...args),
-  trackImageLightbox: (...args) => analytics.trackImageLightbox(...args),
-  trackCaseStudyCompletion: (...args) =>
-    analytics.trackCaseStudyCompletion(...args),
-  setConsent: (granted) => analytics.setConsent(granted),
-  getStatus: () => analytics.getStatus(),
-};
+// Also export the class for testing
+export { SimpleAnalytics };
