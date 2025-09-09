@@ -1,7 +1,13 @@
 /**
- * Test setup for Web Component testing
+ * Test setup for Web Component testing with Vitest
  * Configures environment for Custom Elements, Shadow DOM, and component testing utilities
+ * This file is ONLY used by Vitest, not Playwright
  */
+
+// Only run this setup in Vitest environment
+if (typeof vi === "undefined") {
+  throw new Error("This setup file should only be used with Vitest");
+}
 
 // Configure global Web Components API for testing
 import "happy-dom";
@@ -14,10 +20,11 @@ if (!global.crypto) {
 
 // Mock Web Components API for testing
 if (!global.customElements) {
+  const mockFn = typeof vi !== "undefined" ? vi.fn() : () => {};
   global.customElements = {
-    define: vi.fn(),
-    get: vi.fn(),
-    whenDefined: vi.fn(() => Promise.resolve()),
+    define: mockFn,
+    get: mockFn,
+    whenDefined: mockFn.bind(null, () => Promise.resolve()),
   };
 }
 
@@ -52,13 +59,14 @@ if (!global.HTMLElement) {
     }
 
     attachShadow(options) {
+      const mockFn = typeof vi !== "undefined" ? vi.fn() : () => {};
       this._shadowRoot = {
         innerHTML: "",
-        querySelector: vi.fn(() => null),
-        querySelectorAll: vi.fn(() => []),
-        getElementById: vi.fn(() => null),
-        addEventListener: vi.fn(),
-        removeEventListener: vi.fn(),
+        querySelector: mockFn.bind(null, () => null),
+        querySelectorAll: mockFn.bind(null, () => []),
+        getElementById: mockFn.bind(null, () => null),
+        addEventListener: mockFn,
+        removeEventListener: mockFn,
       };
       return this._shadowRoot;
     }
@@ -112,32 +120,44 @@ if (!global.ResizeObserver) {
 
 // Mock Performance API
 if (!global.performance) {
+  const mockFn = typeof vi !== "undefined" ? vi.fn() : () => {};
   global.performance = {
     now: () => Date.now(),
-    mark: vi.fn(),
-    measure: vi.fn(),
+    mark: mockFn,
+    measure: mockFn,
   };
 }
 
 // Mock fetch if not available
 if (!global.fetch) {
-  global.fetch = vi.fn(() =>
-    Promise.resolve({
-      ok: true,
-      json: () => Promise.resolve({}),
-      text: () => Promise.resolve(""),
-    })
-  );
+  const mockFetch =
+    typeof vi !== "undefined"
+      ? vi.fn(() =>
+          Promise.resolve({
+            ok: true,
+            json: () => Promise.resolve({}),
+            text: () => Promise.resolve(""),
+          })
+        )
+      : () =>
+          Promise.resolve({
+            ok: true,
+            json: () => Promise.resolve({}),
+            text: () => Promise.resolve(""),
+          });
+  global.fetch = mockFetch;
 }
 
-// Configure global error handlers for testing
-global.console = {
-  ...global.console,
-  error: vi.fn(),
-  warn: vi.fn(),
-  log: vi.fn(),
-  debug: vi.fn(),
-};
+// Configure global error handlers for testing (Vitest only)
+if (typeof vi !== "undefined") {
+  global.console = {
+    ...global.console,
+    error: vi.fn(),
+    warn: vi.fn(),
+    log: vi.fn(),
+    debug: vi.fn(),
+  };
+}
 
 // Set up test utilities
 global.testUtils = {
@@ -204,21 +224,23 @@ global.testUtils = {
   },
 };
 
-// Mock logger to avoid console pollution during tests
-vi.mock("./src/js/utils/Logger.js", () => ({
-  default: {
-    debug: vi.fn(),
-    info: vi.fn(),
-    warn: vi.fn(),
-    error: vi.fn(),
-    isDevelopment: false,
-  },
-}));
+// Mock logger to avoid console pollution during tests (Vitest only)
+if (typeof vi !== "undefined") {
+  vi.mock("./src/js/utils/Logger.js", () => ({
+    default: {
+      debug: vi.fn(),
+      info: vi.fn(),
+      warn: vi.fn(),
+      error: vi.fn(),
+      isDevelopment: false,
+    },
+  }));
 
-// Mock scroll manager
-vi.mock("./src/js/utils/ScrollManager.js", () => ({
-  scrollManager: {
-    subscribe: vi.fn(() => vi.fn()),
-    unsubscribe: vi.fn(),
-  },
-}));
+  // Mock scroll manager
+  vi.mock("./src/js/utils/ScrollManager.js", () => ({
+    scrollManager: {
+      subscribe: vi.fn(() => vi.fn()),
+      unsubscribe: vi.fn(),
+    },
+  }));
+}

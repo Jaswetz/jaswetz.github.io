@@ -1,6 +1,6 @@
 # Portfolio Refactoring and Optimization Implementation Plan
 
-## Phase 1: Critical Issues Resolution (Weeks 1-2)
+## Phase 1: Critical Issues Resolution (Weeks 1-3) - **EXTENDED DUE TO TEST CRISIS**
 
 ### 1.1 Bundle Size Crisis Resolution
 
@@ -51,7 +51,7 @@
   - _Effort: 1 day_
   - _Priority: Critical_
 
-- [ ] **1.2.3 Fix Playwright Test Conflicts**
+- [x] **1.2.3 Fix Playwright Test Conflicts**
   - Resolve Vitest/Playwright conflict causing test failures
   - Fix "Cannot redefine property: Symbol($$jest-matchers-object)" error
   - Ensure integration tests can run alongside unit tests
@@ -87,6 +87,52 @@
   - Update function signatures to match usage
   - _Requirements: 5.1, 5.4_
   - _Effort: 0.5 days_
+
+### 1.5 Test Infrastructure Emergency Response
+
+- [ ] **1.5.1 Playwright Test System Recovery**
+
+  - Fix all 105 failing integration tests across 6 browsers
+  - Standardize page title patterns: ensure all project pages include "Jason Swetzoff"
+  - Resolve systematic test failures in project-pages.spec.js
+  - Fix selector validation failures in Autodesk DI case study
+  - _Requirements: 6.3, 4.1, 1.4_
+  - _Effort: 3-4 days_
+  - _Priority: **CRITICAL**_
+  - **Status**: 105/551 tests failing - system crisis requiring immediate attention
+
+- [ ] **1.5.2 Analytics System Emergency Rebuild**
+
+  - Fix `window.portfolioAnalytics` global exposure (currently undefined)
+  - Repair analytics initialization failure handling across all browsers
+  - Restore basic tracking functionality for page views and project clicks
+  - Fix SimpleAnalytics test failures in analytics.spec.js
+  - _Requirements: 8.1, 6.3, 1.1_
+  - _Effort: 2-3 days_
+  - _Priority: **CRITICAL**_
+  - **Status**: Complete analytics system failure affecting 15+ tests
+
+- [ ] **1.5.3 Content Structure Standardization Crisis**
+
+  - Add missing sections to Daimler case study (#final-touches, proper metadata)
+  - Fix project summary card counts (expected ≥4-5, currently finding 1)
+  - Restore missing Autodesk DI selectors (#project-summary, .project-summary\_\_card)
+  - Add "Multi-year project" text to Daimler hero metadata
+  - Ensure consistent project page structure across all case studies
+  - _Requirements: 4.1, 6.3, 1.4_
+  - _Effort: 2-3 days_
+  - _Priority: **CRITICAL**_
+  - **Status**: Systematic content structure failures across multiple case studies
+
+- [ ] **1.5.4 Accessibility Compliance Emergency Fixes**
+  - Fix all images with missing or empty alt attributes (Daimler case study)
+  - Resolve reduced motion preference detection (expecting "none|0.01ms", getting "1e-05s")
+  - Fix banner landmark violations (site-header structure issues)
+  - Resolve duplicate banner and landmark uniqueness violations
+  - _Requirements: 4.3, 6.2, 1.5_
+  - _Effort: 1-2 days_
+  - _Priority: **CRITICAL**_
+  - **Status**: 4 accessibility violations blocking WCAG 2.1 AA compliance
 
 ## Phase 2: Performance Enhancement (Weeks 3-4)
 
@@ -298,7 +344,7 @@
   - _Effort: 3-4 days_
   - _Priority: High_
 
-- [ ] **5.1.4 Unit Testing Infrastructure Setup**
+- [x] **5.1.4 Unit Testing Infrastructure Setup**
 
   - Install Vitest, Happy DOM for Web Components testing
   - Create Vitest configuration with Shadow DOM support
@@ -368,6 +414,7 @@
   - _Requirements: 8.1, 8.5, 2.1_
   - _Effort: 2-3 days_
   - _Priority: Medium_
+  - **Status**: Implementation complete but system broken - see Phase 1.5.2 for emergency fixes
 
 - [ ] **6.2.2 Error Monitoring and Reporting**
   - Implement client-side error tracking
@@ -379,24 +426,25 @@
 
 ## Timeline and Dependencies
 
-### Critical Path (Weeks 1-4)
+### Critical Path (Weeks 1-5) - **UPDATED FOR TEST CRISIS**
 
-1. **Week 1**: Bundle size resolution (1.1) → Test fixes (1.2)
-2. **Week 2**: Security fixes (1.3) → Performance optimization start (2.1)
-3. **Week 3**: Core Web Vitals optimization (2.1) → Service worker (2.2)
-4. **Week 4**: Bundle optimization (2.3) → CSS architecture start (3.1)
+1. **Week 1**: Bundle size resolution (1.1) → Test infrastructure emergency (1.5)
+2. **Week 2**: Analytics system rebuild (1.5.2) → Content structure fixes (1.5.3)
+3. **Week 3**: Accessibility compliance fixes (1.5.4) → Security fixes (1.3)
+4. **Week 4**: Performance optimization start (2.1) → Service worker (2.2)
+5. **Week 5**: Bundle optimization (2.3) → CSS architecture start (3.1)
 
-### Parallel Tracks (Weeks 5-8)
+### Parallel Tracks (Weeks 6-9) - **SHIFTED DUE TO PHASE 1 EXTENSION**
 
 - **CSS Track**: Modularization (3.1) → Build process (3.2)
 - **HTML Track**: SEO optimization (4.1) → Accessibility (4.2) → Standardization (4.3)
 
-### Quality Assurance (Weeks 9-10)
+### Quality Assurance (Weeks 10-11) - **SHIFTED DUE TO PHASE 1 EXTENSION**
 
 - **Testing Track**: Unit tests (5.1) → Integration tests (5.1) → Performance tests (5.1)
 - **Quality Track**: Code standards (5.2) → Documentation (5.2)
 
-### Enhancement Phase (Weeks 11-12)
+### Enhancement Phase (Weeks 12-13) - **SHIFTED DUE TO PHASE 1 EXTENSION**
 
 - **PWA Track**: Manifest and installation (6.1) → Advanced caching (6.1)
 - **Monitoring Track**: Analytics (6.2) → Error monitoring (6.2)
@@ -412,10 +460,12 @@
 
 ### Quality Targets
 
-- Test pass rate: 100% (currently **89% passing** on unit tests with 8/12 total tests working - major improvement from 0% baseline. Infrastructure ready for 80%+ coverage on Web Components)
+- **Integration Test Pass Rate**: 100% (currently **81% passing** - 446/551 tests passing, 105 failing)
+- **Unit Test Pass Rate**: ✅ **100% (83/83 tests passing)** - EXCELLENT
+- **Critical Test Failures**: 0 (currently 105 across 6 browsers - URGENT)
 - Web Component unit testing infrastructure: ✅ Complete (Vitest + Happy DOM + utilities + coverage reporting + CI/CD ready)
 - Code coverage: > 80% for Web Components (target)
-- Accessibility score: WCAG 2.1 AA compliance ✅
+- **Accessibility Compliance**: WCAG 2.1 AA (currently 4 violations - needs immediate fix)
 - Security vulnerabilities: 0 high/critical issues ✅
 
 ### User Experience Targets
@@ -477,9 +527,16 @@ This implementation plan has made significant progress with excellent testing in
 - **CSP Implementation**: Security headers commented out, needs activation
 - **Offline Support**: Component directory empty, needs implementation
 
-#### 🎯 **IMMEDIATE PRIORITIES:**
+#### 🚨 **IMMEDIATE CRITICAL PRIORITIES (PHASE 1.5):**
 
-1. **Bundle Size Reduction** - Critical path blocker
-2. **Test Infrastructure Fix** - Integration testing broken
-3. **Security Implementation** - CSP activation needed
-4. **Performance Optimization** - Critical CSS and font loading
+1. **Test Infrastructure Crisis** - 105 failing tests across all browsers (URGENT)
+2. **Analytics System Failure** - Complete breakdown affecting tracking and tests (CRITICAL)
+3. **Content Structure Crisis** - Missing sections and selectors across case studies (CRITICAL)
+4. **Accessibility Violations** - 4 WCAG violations blocking compliance (CRITICAL)
+5. **Bundle Size Reduction** - 72.83KB vs 52KB limit (40% over budget)
+
+#### 🎯 **SECONDARY PRIORITIES:**
+
+6. **Security Implementation** - CSP activation needed
+7. **Performance Optimization** - Critical CSS and font loading
+8. **Offline Support** - Component directory empty, needs implementation

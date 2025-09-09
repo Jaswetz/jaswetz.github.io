@@ -4,6 +4,13 @@ dist/
 dev-build/
 dest/
 
+# Test artifacts and reports
+test-results/
+coverage/
+playwright-report/
+lighthouse-report.json
+junit.xml
+
 # OS-specific files
 .DS_Store
 Thumbs.db

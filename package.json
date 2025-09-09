@@ -62,6 +62,7 @@
     "@parcel/transformer-js": "^2.15.4",
     "@parcel/transformer-jsonld": "^2.15.4",
     "@playwright/test": "^1.53.2",
+    "@vitest/coverage-v8": "^3.2.4",
     "@vitest/ui": "^3.2.4",
     "@vitest/web-worker": "^3.2.4",
     "eslint": "^9.30.1",

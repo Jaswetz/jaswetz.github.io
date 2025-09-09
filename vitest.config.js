@@ -6,17 +6,21 @@ export default defineConfig({
     environment: "happy-dom", // Better for Web Components than jsdom
     globals: true,
     setupFiles: ["./test-setup.js"],
-    include: ["tests/**/*.test.{js,mjs}"], // Only include .test.js files
+    include: [
+      "tests/**/*.test.js", // Only include .test.js files for Vitest
+      "tests/**/*.test.mjs", // Include .test.mjs files
+    ],
     exclude: [
       "**/*.spec.js", // Exclude ALL Playwright .spec.js files
-      "**/analytics.test.js", // Specifically exclude Playwright analytics test
       "**/*integration*.*", // Exclude integration tests
       "**/*e2e*.*", // Exclude E2E tests
+      "**/*playwright*.*", // Exclude any Playwright-specific files
       "node_modules/**",
       "dist/**",
       "dev-build/**",
       ".parcel-cache/**",
-      "tests/analytics.test.js", // Explicitly exclude this Playwright file
+      "tests/selector-validation.js", // Exclude utility files
+      "tests/sidebar-navigation-test.js", // Exclude non-test files
     ],
     coverage: {
       provider: "v8",
