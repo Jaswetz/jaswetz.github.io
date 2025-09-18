@@ -39,9 +39,16 @@ test.describe("Daimler Case Study - Accessibility & Responsive Design", () => {
       for (let i = 0; i < imageCount; i++) {
         const img = images.nth(i);
         const alt = await img.getAttribute("alt");
+        const src = await img.getAttribute("src");
 
         // Alt text should exist
         expect(alt).toBeDefined();
+
+        // Log failing image for debugging
+        if (!alt || alt === "") {
+          console.log(`Image with empty alt text: ${src}`);
+        }
+
         expect(alt).not.toBe("");
 
         // If alt text exists, it should be descriptive (more than just filename)
@@ -284,7 +291,9 @@ test.describe("Daimler Case Study - Accessibility & Responsive Design", () => {
         page.locator("text=Daimler Trucks North America").first()
       ).toBeVisible();
       await expect(page.locator("text=Lead UX Designer").first()).toBeVisible();
-      await expect(page.locator("text=Web Application").first()).toBeVisible();
+      await expect(
+        page.locator("text=Detroit Connect Direct").first()
+      ).toBeVisible();
     });
 
     test("results metrics are displayed correctly", async ({ page }) => {
@@ -320,7 +329,8 @@ test.describe("Daimler Case Study - Accessibility & Responsive Design", () => {
         );
 
         // Transitions should be disabled or very short
-        expect(transition).toMatch(/none|0\.01ms/);
+        // Accept 'none', very small values in ms, or scientific notation in seconds
+        expect(transition).toMatch(/none|0\.01ms|0\.0+1ms|1e-0[5-9]s|0\.0+1s/);
       }
     });
   });

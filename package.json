@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "npm run clean:dev && parcel src/*.html --dist-dir dev-build --open",
     "dev:build": "npm run clean:dev && parcel build src/*.html --dist-dir dev-build",
-    "build": "npm run clean && parcel build src/*.html --dist-dir dist --public-url / && cp -r src/assets dist/",
+    "build": "npm run clean && parcel build src/*.html --dist-dir dist --public-url / && cp -r src/assets dist/ && cp public/_headers dist/",
     "build:optimize": "npm run clean && npm run optimize:images && npm run build:no-clean",
-    "build:no-clean": "parcel build src/*.html --dist-dir dist --public-url / && cp -r src/assets dist/",
+    "build:no-clean": "parcel build src/*.html --dist-dir dist --public-url / && cp -r src/assets dist/ && cp public/_headers dist/",
     "clean": "rm -rf dist dev-build .parcel-cache",
     "clean:dev": "rm -rf dev-build .parcel-cache",
     "clean:all": "rm -rf dist dev-build .parcel-cache node_modules package-lock.json",

@@ -54,6 +54,13 @@ class SimpleAnalytics {
    */
   _waitForGtag() {
     return new Promise((resolve) => {
+      // Check if we're in a browser environment
+      if (typeof window === "undefined") {
+        this.fallbackMode = true;
+        resolve();
+        return;
+      }
+
       if (this.fallbackMode) {
         resolve();
         return;
@@ -137,7 +144,7 @@ class SimpleAnalytics {
    */
   _isDevelopment() {
     if (typeof window === "undefined") {
-      return false;
+      return true; // Assume development if no window (Node.js environment)
     }
     return (
       window.location.hostname === "localhost" ||
@@ -447,10 +454,8 @@ const analytics = new SimpleAnalytics();
 
 // Auto-initialize only in browser environment
 if (typeof window !== "undefined") {
-  analytics.init();
-
-  // Global access for backward compatibility
-  /** @type {any} */ (window).portfolioAnalytics = {
+  // Set up global API immediately (synchronously)
+  const globalAPI = {
     trackProjectClick: (...args) => analytics.trackProjectClick(...args),
     trackResumeDownload: () => analytics.trackResumeDownload(),
     trackContactForm: (...args) => analytics.trackContactForm(...args),
@@ -465,6 +470,23 @@ if (typeof window !== "undefined") {
     setConsent: (granted) => analytics.setConsent(granted),
     getStatus: () => analytics.getStatus(),
   };
+
+  // Expose global API
+  window.portfolioAnalytics = globalAPI;
+
+  // Initialize analytics asynchronously
+  analytics
+    .init()
+    .then((success) => {
+      if (success) {
+        console.log("Portfolio Analytics initialized successfully");
+      } else {
+        console.log("Portfolio Analytics initialized in fallback mode");
+      }
+    })
+    .catch((error) => {
+      console.warn("Portfolio Analytics initialization failed:", error);
+    });
 }
 
 // Export for ES modules

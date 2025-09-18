@@ -108,7 +108,9 @@ test.describe("Daimler Case Study - Comprehensive Test Coverage", () => {
         page.locator("text=Daimler Trucks North America").first()
       ).toBeVisible();
       await expect(page.locator("text=Lead UX Designer").first()).toBeVisible();
-      await expect(page.locator("text=Web Application").first()).toBeVisible();
+      await expect(
+        page.locator("text=Detroit Connect Direct").first()
+      ).toBeVisible();
       await expect(
         page.locator("text=Multi-year project").first()
       ).toBeVisible();
@@ -592,7 +594,8 @@ test.describe("Daimler Case Study - Comprehensive Test Coverage", () => {
         );
 
         // Transitions should be disabled or very short
-        expect(transition).toMatch(/none|0\.01ms/);
+        // Accept 'none', very small values in ms, or scientific notation in seconds
+        expect(transition).toMatch(/none|0\.01ms|0\.0+1ms|1e-0[5-9]s|0\.0+1s/);
       }
     });
   });

@@ -327,7 +327,7 @@ class ImageLightbox extends HTMLElement {
             ‹
           </button>
           
-          <img class="lightbox__image" alt="" role="img" />
+          <img class="lightbox__image" alt="Lightbox image placeholder" role="img" />
           
           <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Next image (Right arrow key)">
             ›
@@ -436,7 +436,11 @@ class ImageLightbox extends HTMLElement {
       // Add keyboard support for image activation
       img.addEventListener("keydown", (e) => {
         const keyEvent = /** @type {KeyboardEvent} */ (e);
-        if (keyEvent.key === "Enter" || keyEvent.key === " " || keyEvent.key === "Space") {
+        if (
+          keyEvent.key === "Enter" ||
+          keyEvent.key === " " ||
+          keyEvent.key === "Space"
+        ) {
           e.preventDefault();
           this.handleImageClick(e, index);
         }

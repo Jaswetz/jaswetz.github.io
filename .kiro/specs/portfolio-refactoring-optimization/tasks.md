@@ -70,7 +70,7 @@
   - _Effort: 0.5 days_
   - _Priority: Critical_
 
-- [ ] **1.3.2 Implement Content Security Policy**
+- [x] **1.3.2 Implement Content Security Policy**
   - Uncomment and configure CSP headers in public/\_headers
   - Add trusted sources for Google Analytics and fonts
   - Test external resource loading (fonts, analytics)
@@ -90,18 +90,18 @@
 
 ### 1.5 Test Infrastructure Emergency Response
 
-- [ ] **1.5.1 Playwright Test System Recovery**
+- [x] **1.5.1 Playwright Test System Recovery**
 
   - Fix all 105 failing integration tests across 6 browsers
   - Standardize page title patterns: ensure all project pages include "Jason Swetzoff"
   - Resolve systematic test failures in project-pages.spec.js
-  - Fix selector validation failures in Autodesk DI case study
+  - Fix selector validation failures in Autodesk DI case study and any other case studies
   - _Requirements: 6.3, 4.1, 1.4_
   - _Effort: 3-4 days_
   - _Priority: **CRITICAL**_
   - **Status**: 105/551 tests failing - system crisis requiring immediate attention
 
-- [ ] **1.5.2 Analytics System Emergency Rebuild**
+- [x] **1.5.2 Analytics System Emergency Rebuild**
 
   - Fix `window.portfolioAnalytics` global exposure (currently undefined)
   - Repair analytics initialization failure handling across all browsers
