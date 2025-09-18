@@ -40,14 +40,9 @@ class SiteHeader extends HTMLElement {
       transform: translateX(-50%);
       width: var(--section-width);
       z-index: 1000;
-      /* MODIFIED transition property */
-      transition: top 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
-            width 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
-            max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
-            box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      will-change: top, width, max-width, box-shadow; /* ADDED */
+      transition: top 0.5s ease, width 0.5s ease, max-width 0.5s ease, box-shadow 0.5s ease;
       max-width: var(--max-width);
-      outline: none; /* Prevent any outline on the host element */
+      outline: none;
       }
 
       :host:focus {
@@ -73,16 +68,11 @@ class SiteHeader extends HTMLElement {
       padding: var(--space-s) var(--space-m);
       border-radius: var(--border-radius);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      /* MODIFIED transition property */
-      transition: padding 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
-            border-radius 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
-            background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-            box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      will-change: padding, border-radius, background-color, box-shadow; /* ADDED */
-      outline: none; /* Prevent outline on header content */
+      transition: padding 0.5s ease, border-radius 0.5s ease, background-color 0.5s ease, box-shadow 0.5s ease;
+      outline: none;
       backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        background-color: rgba(255, 255, 255, 0.3);
+      -webkit-backdrop-filter: blur(5px);
+      background-color: rgba(255, 255, 255, 0.3);
       }
 
       .header-content:focus {

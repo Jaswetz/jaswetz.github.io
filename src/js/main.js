@@ -1,13 +1,10 @@
 // Issue #7: Implement a robust solution for unsupported browsers (Requirement 3.2)
 // See: https://github.com/Jaswetz/jaswetz.github.io/issues/7
-// Main JavaScript file with Advanced Analytics System
+// Main JavaScript file with Optimized Bundle Size
 
 import "../css/main.css";
-import "./analytics/simple-analytics.js";
-import "./clarity-config.js";
-import "./enhanced-image-loader.js";
 
-// Critical components - load immediately
+// Critical components - load immediately (minimal size)
 import SiteHeader from "./components/site-header/SiteHeader.js";
 import SiteFooter from "./components/site-footer/SiteFooter.js";
 
@@ -27,7 +24,10 @@ if (window.customElements) {
   // Optionally, provide fallback rendering or messages here
 }
 
-// Lazy load non-critical components
+// Lazy load non-critical components and systems
+const loadAnalyticsModule = () => import("./analytics/simple-analytics.js");
+const loadClarityModule = () => import("./clarity-config.js");
+const loadImageLoaderModule = () => import("./enhanced-image-loader.js");
 const loadImageLightboxModule = () =>
   import("./components/ImageLightbox/ImageLightbox.js");
 const loadSidebarNavigationModule = () =>
@@ -35,7 +35,35 @@ const loadSidebarNavigationModule = () =>
 const loadPasswordProtectionModule = () =>
   import("./auth/password-protection.js");
 
-// Global function to load image lightbox when needed
+// Global functions to load modules when needed
+window.loadAnalytics = async () => {
+  try {
+    await loadAnalyticsModule();
+    return window.portfolioAnalytics;
+  } catch (error) {
+    console.warn("Failed to load Analytics:", error);
+    return null;
+  }
+};
+
+window.loadClarity = async () => {
+  try {
+    await loadClarityModule();
+  } catch (error) {
+    console.warn("Failed to load Clarity:", error);
+  }
+};
+
+window.loadImageLoader = async () => {
+  try {
+    await loadImageLoaderModule();
+    return window.enhancedImageLoader;
+  } catch (error) {
+    console.warn("Failed to load ImageLoader:", error);
+    return null;
+  }
+};
+
 window.loadImageLightbox = async () => {
   try {
     const { default: ImageLightbox } = await loadImageLightboxModule();
@@ -49,7 +77,6 @@ window.loadImageLightbox = async () => {
   }
 };
 
-// Global function to load sidebar navigation when needed
 window.loadSidebarNavigation = async () => {
   try {
     const { default: SidebarNavigation } = await loadSidebarNavigationModule();
@@ -60,7 +87,6 @@ window.loadSidebarNavigation = async () => {
   }
 };
 
-// Global function to load password protection when needed
 window.loadPasswordProtection = async () => {
   try {
     await loadPasswordProtectionModule();
@@ -69,12 +95,50 @@ window.loadPasswordProtection = async () => {
   }
 };
 
-//DOMContentLoaded is no longer needed for the year,
-//as it's handled within the SiteFooter component itself.
-//Any other global JS can go here or be further modularized.
+// Minimal browser support check (inline)
+if (!("customElements" in window && "attachShadow" in Element.prototype)) {
+  console.warn("Web Components not supported - some features may not work");
+}
 
-// Initialize sidebar navigation on pages that have it
+// Initialize critical systems and lazy load non-critical ones
 document.addEventListener("DOMContentLoaded", async () => {
+  // Load analytics system and set up tracking (non-blocking)
+  window.loadAnalytics().then(() => {
+    // Set up minimal event tracking
+    document.querySelectorAll("[data-track-project-name]").forEach((card) => {
+      card.addEventListener("click", () => {
+        const projectName = card.getAttribute("data-track-project-name");
+        const projectType = card.getAttribute("data-track-project-type");
+        window.portfolioAnalytics?.trackProjectClick(projectName, projectType);
+      });
+    });
+
+    document.querySelectorAll("a[href*=\"Resume.pdf\"]").forEach((link) => {
+      link.addEventListener("click", () => {
+        window.portfolioAnalytics?.trackResumeDownload();
+      });
+    });
+
+    document.querySelectorAll("a[href^='http']").forEach((link) => {
+      if (
+        link instanceof HTMLAnchorElement &&
+        link.hostname !== window.location.hostname
+      ) {
+        link.addEventListener("click", () => {
+          window.portfolioAnalytics?.trackExternalLink(
+            link.href,
+            link.textContent?.trim() || ""
+          );
+        });
+      }
+    });
+  });
+
+  // Load other systems (non-blocking)
+  window.loadClarity();
+  window.loadImageLoader();
+
+  // Initialize sidebar navigation on pages that have it
   if (document.querySelector(".sidebar-nav")) {
     try {
       const SidebarNavigation = await window.loadSidebarNavigation();

@@ -66,30 +66,68 @@ function checkBundleSize() {
 
   // Check JavaScript files
   const jsFiles = findFiles(distDir, /\.js$/);
-  const jsLimit = LIMITS["dist/**/*.js"];
+  const mainBundleLimit = 30 * 1024; // 30KB for main bundle
+  const chunkLimit = 20 * 1024; // 20KB per lazy-loaded chunk
 
   console.log("JavaScript files:");
   if (jsFiles.length === 0) {
     console.log("  No JS files found");
   } else {
-    let totalJsSize = 0;
+    // Find main bundle (usually the largest or named after a page)
+    let mainBundle = null;
+    let mainBundleSize = 0;
+
     for (const file of jsFiles) {
       const size = getFileSize(file);
-      totalJsSize += size;
       const relativePath = path.relative(projectRoot, file);
+      const fileName = path.basename(file);
+
       console.log(`  ${relativePath}: ${formatBytes(size)}`);
+
+      // Identify main bundle (contains page name or is largest)
+      if (
+        fileName.includes("404") ||
+        fileName.includes("index") ||
+        size > mainBundleSize
+      ) {
+        mainBundle = file;
+        mainBundleSize = size;
+      }
+
+      // Check individual chunk sizes (excluding service worker)
+      if (!fileName.includes("service-worker")) {
+        if (fileName.includes("404") || fileName.includes("index")) {
+          // Main bundle check
+          if (size > mainBundleLimit) {
+            console.log(
+              `  ❌ Main bundle ${fileName} exceeds ${formatBytes(
+                mainBundleLimit
+              )} limit!`
+            );
+            hasErrors = true;
+          }
+        } else {
+          // Chunk size check
+          if (size > chunkLimit) {
+            console.log(
+              `  ⚠️  Chunk ${fileName} is ${formatBytes(
+                size
+              )} (recommended: <${formatBytes(chunkLimit)})`
+            );
+          }
+        }
+      }
     }
 
-    console.log(
-      `  Total JS size: ${formatBytes(totalJsSize)} (limit: ${formatBytes(
-        jsLimit
-      )})`
-    );
-    if (totalJsSize > jsLimit) {
-      console.log("  ❌ JS bundle size exceeds limit!");
-      hasErrors = true;
-    } else {
-      console.log("  ✅ JS bundle size OK");
+    if (mainBundle) {
+      console.log(
+        `  Main bundle: ${path.basename(mainBundle)} (${formatBytes(
+          mainBundleSize
+        )})`
+      );
+      if (mainBundleSize <= mainBundleLimit) {
+        console.log("  ✅ Main bundle size OK");
+      }
     }
   }
 

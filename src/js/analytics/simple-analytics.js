@@ -1,7 +1,6 @@
 /**
- * Simple Analytics - Lightweight, privacy-first analytics solution
- * Replaces complex 8-module system with single-file implementation
- * Target size: <5KB, vanilla JavaScript, cross-browser compatible
+ * Minimal Analytics - Ultra-lightweight analytics solution
+ * Target size: <3KB, essential tracking only
  */
 
 class SimpleAnalytics {
@@ -12,10 +11,6 @@ class SimpleAnalytics {
     this.isDevelopment = this._isDevelopment();
     this.queue = [];
     this.fallbackMode = false;
-
-    // Bind methods to preserve context
-    this._handleError = this._handleError.bind(this);
-    this._sendToGA4 = this._sendToGA4.bind(this);
   }
 
   /**
@@ -188,92 +183,26 @@ class SimpleAnalytics {
   }
 
   /**
-   * Initialize Core Web Vitals monitoring
+   * Initialize Core Web Vitals monitoring (simplified)
    */
   _initCoreWebVitals() {
     if (typeof window === "undefined" || this.isDevelopment) return;
 
-    // Track Largest Contentful Paint (LCP)
-    this._observeLCP();
-
-    // Track First Input Delay (FID)
-    this._observeFID();
-
-    // Track Cumulative Layout Shift (CLS)
-    this._observeCLS();
-  }
-
-  /**
-   * Observe Largest Contentful Paint
-   */
-  _observeLCP() {
-    try {
-      if ("PerformanceObserver" in window) {
+    // Simplified LCP tracking
+    if ("PerformanceObserver" in window) {
+      try {
         const observer = new PerformanceObserver((list) => {
           const entries = list.getEntries();
-          const lastEntry = entries[entries.length - 1];
-          this.trackCoreWebVital("LCP", lastEntry.startTime);
-        });
-        observer.observe({ entryTypes: ["largest-contentful-paint"] });
-
-        // Fallback for older browsers
-        setTimeout(() => {
-          if (observer) observer.disconnect();
-        }, 5000);
-      }
-    } catch (error) {
-      this._handleError("LCP observation", error);
-    }
-  }
-
-  /**
-   * Observe First Input Delay
-   */
-  _observeFID() {
-    try {
-      if ("PerformanceObserver" in window) {
-        const observer = new PerformanceObserver((list) => {
-          const entries = list.getEntries();
-          entries.forEach((entry) => {
-            this.trackCoreWebVital(
-              "FID",
-              entry.processingStart - entry.startTime
-            );
-          });
-        });
-        observer.observe({ entryTypes: ["first-input"] });
-      }
-    } catch (error) {
-      this._handleError("FID observation", error);
-    }
-  }
-
-  /**
-   * Observe Cumulative Layout Shift
-   */
-  _observeCLS() {
-    try {
-      if ("PerformanceObserver" in window) {
-        let clsValue = 0;
-        const observer = new PerformanceObserver((list) => {
-          const entries = list.getEntries();
-          entries.forEach((entry) => {
-            if (!entry.hadRecentInput) {
-              clsValue += entry.value;
-            }
-          });
-        });
-        observer.observe({ entryTypes: ["layout-shift"] });
-
-        // Report CLS on page unload
-        window.addEventListener("beforeunload", () => {
-          if (clsValue > 0) {
-            this.trackCoreWebVital("CLS", clsValue);
+          if (entries.length > 0) {
+            const lastEntry = entries[entries.length - 1];
+            this.trackCoreWebVital("LCP", lastEntry.startTime);
           }
         });
+        observer.observe({ entryTypes: ["largest-contentful-paint"] });
+        setTimeout(() => observer.disconnect(), 5000);
+      } catch (error) {
+        this._handleError("Core Web Vitals", error);
       }
-    } catch (error) {
-      this._handleError("CLS observation", error);
     }
   }
 
@@ -362,7 +291,7 @@ class SimpleAnalytics {
   }
 
   /**
-   * Track scroll depth
+   * Track scroll depth (simplified)
    */
   trackScrollDepth(depth = null) {
     const scrollDepth =
@@ -372,56 +301,19 @@ class SimpleAnalytics {
           (document.documentElement.scrollHeight - window.innerHeight)) *
           100
       );
-
-    this._sendToGA4("scroll_depth", {
-      scroll_depth: scrollDepth,
-    });
+    this._sendToGA4("scroll_depth", { scroll_depth: scrollDepth });
   }
 
   /**
-   * Track time on page
+   * Track time on page (simplified)
    */
   trackTimeOnPage() {
     if (!this.pageStartTime) {
       this.pageStartTime = Date.now();
       return;
     }
-
     const timeSpent = Math.round((Date.now() - this.pageStartTime) / 1000);
-    this._sendToGA4("time_on_page", {
-      time_spent_seconds: timeSpent,
-      page_path: window.location.pathname,
-    });
-  }
-
-  /**
-   * Track case study interactions
-   */
-  trackCaseStudyInteraction(caseStudyName, action, section = "") {
-    this._sendToGA4("case_study_interaction", {
-      case_study_name: caseStudyName,
-      action: action,
-      section: section,
-    });
-  }
-
-  /**
-   * Track image lightbox usage
-   */
-  trackImageLightbox(imageName, caseStudy = "") {
-    this._sendToGA4("lightbox_view", {
-      image_name: imageName,
-      case_study: caseStudy,
-    });
-  }
-
-  /**
-   * Track case study completion
-   */
-  trackCaseStudyCompletion(caseStudyName) {
-    this._sendToGA4("case_study_completion", {
-      case_study_name: caseStudyName,
-    });
+    this._sendToGA4("time_on_page", { time_spent_seconds: timeSpent });
   }
 
   /**
