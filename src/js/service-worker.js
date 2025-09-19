@@ -13,7 +13,6 @@ const STATIC_ASSETS = [
   "/",
   "/index.html",
   "/work.html",
-  "/about.html",
   "/contact.html",
   "/css/main.css",
   "/js/main.js",

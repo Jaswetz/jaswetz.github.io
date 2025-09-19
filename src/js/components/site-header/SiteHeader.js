@@ -467,7 +467,7 @@ class SiteHeader extends HTMLElement {
       }
       }
     </style>
-    <div class="header-content" role="banner">
+    <div class="header-content">
       <div class="logo">
       <a href="/index.html">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="logo-svg" viewBox="0 0 39 39">
