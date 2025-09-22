@@ -1,42 +1,29 @@
-import js from "@eslint/js";
-import globals from "globals";
+import js from '@eslint/js';
+import globals from 'globals';
 
 export default [
-  { ignores: ["dist/", "dev-build/", ".parcel-cache/", "node_modules/"] },
+  { ignores: ['dist/', 'dev-build/', '.parcel-cache/', 'node_modules/'] },
   {
-    files: ["**/*.js"],
+    files: ['**/*.js'],
     languageOptions: {
       ecmaVersion: 2022,
-      sourceType: "module",
+      sourceType: 'module',
       globals: {
         ...globals.browser,
-        HTMLElement: "readonly",
-        customElements: "readonly",
-        ShadowRoot: "readonly",
+        HTMLElement: 'readonly',
+        customElements: 'readonly',
+        ShadowRoot: 'readonly',
       },
-    },
-    plugins: {
-      prettier: require("eslint-plugin-prettier"),
     },
     rules: {
       ...js.configs.recommended.rules,
-      "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
-      "no-console": "warn",
-      "no-debugger": "error",
-      "eqeqeq": ["error", "always"],
-      "curly": ["error", "all"],
-      "no-var": "error",
-      "prefer-const": "error",
-      "prettier/prettier": "error",
-    },
-  },
-  {
-    files: ["**/*.html"],
-    plugins: {
-      prettier: require("eslint-plugin-prettier"),
-    },
-    rules: {
-      "prettier/prettier": "error",
+      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      'no-console': 'warn',
+      'no-debugger': 'error',
+      eqeqeq: ['error', 'always'],
+      curly: ['error', 'all'],
+      'no-var': 'error',
+      'prefer-const': 'error',
     },
   },
 ];
