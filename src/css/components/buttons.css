@@ -197,3 +197,29 @@
 .button--full {
   width: 100%;
 }
+
+/* CTA variant - Large prominent call-to-action buttons */
+.button--cta {
+  padding: var(--space-m) var(--space-l);
+  background-color: var(--color-primary);
+  color: white;
+  border: 2px solid var(--color-primary);
+  transition: var(--transition-interactive);
+}
+
+.button--cta:hover {
+  background-color: var(--color-primary-alt);
+  border-color: var(--color-primary-alt);
+  transform: var(--hover-transform);
+  box-shadow: var(--hover-shadow);
+  color: white;
+}
+
+.button--cta:focus {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
+
+.button--cta:active {
+  transform: var(--active-transform);
+}

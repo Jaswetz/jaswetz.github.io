@@ -1,30 +1,42 @@
+import js from "@eslint/js";
+import globals from "globals";
+
 export default [
-  {
-    ignores: ["dist/", "dev-build/", ".parcel-cache/", "node_modules/"],
-  },
+  { ignores: ["dist/", "dev-build/", ".parcel-cache/", "node_modules/"] },
   {
     files: ["**/*.js"],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: "module",
       globals: {
-        window: "readonly",
-        document: "readonly",
-        console: "readonly",
+        ...globals.browser,
         HTMLElement: "readonly",
         customElements: "readonly",
-        Element: "readonly",
         ShadowRoot: "readonly",
-        history: "readonly",
-        location: "readonly",
-        navigator: "readonly",
       },
     },
+    plugins: {
+      prettier: require("eslint-plugin-prettier"),
+    },
     rules: {
-      "no-unused-vars": "warn",
-      "no-console": "off", // Allow console for debugging
-      semi: ["error", "always"],
-      quotes: ["error", "double"],
+      ...js.configs.recommended.rules,
+      "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+      "no-console": "warn",
+      "no-debugger": "error",
+      "eqeqeq": ["error", "always"],
+      "curly": ["error", "all"],
+      "no-var": "error",
+      "prefer-const": "error",
+      "prettier/prettier": "error",
+    },
+  },
+  {
+    files: ["**/*.html"],
+    plugins: {
+      prettier: require("eslint-plugin-prettier"),
+    },
+    rules: {
+      "prettier/prettier": "error",
     },
   },
 ];

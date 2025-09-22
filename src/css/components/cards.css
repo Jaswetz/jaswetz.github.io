@@ -6,7 +6,7 @@
 
 /* See: https://github.com/Jaswetz/jaswetz.github.io/issues/11 */
 
-/* Base card styles */
+/* Base card styles - BEM compliant */
 .card {
   display: flex;
   align-items: center;
@@ -16,15 +16,22 @@
   position: relative;
   color: inherit;
   padding: var(--space-m);
-
-  p {
-    color: var(--color-text-subtle);
-  }
 }
 
+.card__paragraph {
+  color: var(--color-text-subtle);
+}
 
+/* Card text styling */
+.card__text h3 {
+  margin-bottom: var(--space-s);
+  font-size: var(--size-step-0);
+  font-weight: 600;
+  color: var(--color-text);
+}
 
-.card-link {
+/* Card link modifier */
+.card--link {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -33,48 +40,45 @@
   transition: var(--transition-interactive);
   border-radius: var(--border-radius);
   border: var(--border-width) solid var(--color-border);
+}
 
-  .card {
-    padding: var(--space-l);
-  }
+.card--link .card {
+  padding: var(--space-l);
+}
 
+.card--link__thumbnail {
+  transition: var(--transition-interactive);
+}
 
-  .project-thumbnail {
-    transition: var(--transition-interactive);
-  }
+/* Card link interactive states */
+.card--link:hover {
+  color: var(--color-primary-alt);
+  transform: var(--hover-transform) scale(var(--hover-scale));
+  box-shadow: var(--hover-shadow);
+  text-decoration: none;
+  background-color: var(--color-surface);
+}
 
-  /* Card interactive states */
-  &:hover {
-    color: var(--color-primary-alt);
-    transform: var(--hover-transform) scale(var(--hover-scale));
-    box-shadow: var(--hover-shadow);
-    text-decoration: none;
-    background-color: var(--color-surface);
-  }
+.card--link:hover .card--link__thumbnail {
+  transform: scale(var(--hover-scale-large));
+}
 
-  &:hover .project-thumbnail {
-    transform: scale(var(--hover-scale-large));
-  }
+.card--link:focus {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
 
-  &:focus {
-    outline: var(--focus-outline);
-    outline-offset: var(--focus-outline-offset);
-  }
-
-  &:active {
-    transform: var(--active-transform-card);
-  }
+.card--link:active {
+  transform: var(--active-transform-card);
 }
 
 .card__content {
   flex: 1;
 }
 
-.card-link .card__content {
+.card--link .card__content {
   margin-top: var(--space-xl);
 }
-
-
 
 .card__image {
   flex-shrink: 0;
@@ -83,7 +87,7 @@
   border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
-/* Card variations */
+/* Card vertical modifier */
 .card--vertical {
   display: flex;
   flex-direction: column;
@@ -111,18 +115,16 @@
   overflow: hidden;
 }
 
+/* Card outline modifier */
 .card--outline {
   padding: var(--space-l);
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--border-radius);
-
-  /* background-image: linear-gradient(var(--color-border) 0.2px, transparent 0.4px), linear-gradient(to right, var(--color-border) 0.6px, var(--color-background) 0.6px);
-  background-size: 12px 12px; */
   box-shadow: inset 0 -2px #6f7b901a;
   background-color: var(--color-background);
-
 }
 
+/* Card white modifier */
 .card--white {
   padding: var(--space-m);
   background-color: var(--color-white-transparent);
@@ -130,37 +132,23 @@
   border-radius: var(--border-radius);
 }
 
-/* --------------------------------------------------------------------------
-    Project-Specific Card Components (Reusable)
-    -------------------------------------------------------------------------- */
-
-/* 
-  Project Summary Cards (Team, Stakeholders, Tools) 
-  Layout is controlled by utility classes from grid-system.css.
-  Example: <div class="grid grid--auto-fit-lg grid--gap-l">
-*/
-
-.card__text h3 {
-  margin-bottom: var(--space-s);
-  font-size: var(--size-step-0);
-  font-weight: 600;
-  color: var(--color-text);
+/* Project Summary Card modifier */
+.card--summary {
+  /* intentionally empty for now */
 }
 
-.card__text p {
-  margin: 0;
-  font-size: var(--size-step-0);
-  line-height: var(--leading-normal);
-  color: var(--color-text-subtle);
+/* Card white variant paragraph styles */
+.card--white .card__paragraph:last-child,
+.card--outline .card__paragraph:last-child {
+  margin-bottom: 0;
 }
 
+/* Card link hover states for headings */
+.card--link:hover .card__heading {
+  color: var(--color-primary-alt);
+}
 
-
-/* 
-  Problem Cards
-  Layout is controlled by utility classes from grid-system.css.
-*/
-
+/* Problem Card component */
 .problem-card {
   position: relative;
 }
@@ -170,27 +158,14 @@
   margin-bottom: var(--space-xs);
 }
 
-.problem-card h3 {
+.problem-card__heading {
   margin-bottom: var(--space-s);
   font-size: var(--size-step-1);
   font-weight: 600;
   width: 100%;
 }
 
-
-
-/* Card white variant p styles - must come after base p styles */
-.card--white p:last-child,
-.card--outline p:last-child {
-  margin-bottom: 0;
-}
-
-/* Card hover states for h3 elements - must come after base h3 styles */
-.card__link:hover h3 {
-  color: var(--color-primary-alt);
-}
-
-/* Result Cards */
+/* Result Card component */
 .result-card {
   padding: var(--space-xl);
   box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
@@ -221,14 +196,22 @@
   line-height: var(--leading-normal);
 }
 
-/* Learning Cards */
+/*
+  Key Learning Component - BEM Structure
+  Used in project pages for numbered learning insights
+  Follows BEM: key-learning__card, key-learning__number, etc.
+*/
 
-.key-learning-card {
+.key-learning {
+  /* Base block - can be extended with modifiers as needed */
+}
+
+.key-learning__card {
   position: relative;
   padding: var(--space-l);
 }
 
-.key-learning-number {
+.key-learning__number {
   margin-bottom: var(--space-xs);
   font-size: var(--size-step-3);
   font-weight: 700;
@@ -236,17 +219,18 @@
   color: var(--color-primary);
 }
 
-.key-learning-title {
+.key-learning__title {
   margin-bottom: var(--space-s);
   font-size: var(--size-step-1);
   font-weight: 600;
 }
 
-.key-learning-description {
+.key-learning__description {
   line-height: var(--leading-normal);
   color: var(--color-text-subtle);
 }
 
+/* Learning Card component */
 .learning-card {
   position: relative;
   padding: var(--space-l);
@@ -274,12 +258,7 @@
   color: var(--color-text-subtle);
 }
 
-/* 
-  Severity Level Cards
-  Layout is controlled by utility classes from grid-system.css.
-  Example: <div class="grid grid--3-column grid--gap-m">
-*/
-
+/* Severity Card component */
 .severity-card {
   padding: var(--space-m);
   background: var(--color-surface);
@@ -301,12 +280,7 @@
   color: var(--color-text-subtle);
 }
 
-/* 
-  Legacy severity-levels (for backwards compatibility) 
-  Layout is controlled by utility classes from grid-system.css.
-  Example: <div class="grid grid--3-column grid--gap-m">
-*/
-
+/* Legacy severity level for backwards compatibility */
 .severity-level {
   box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
 }
@@ -436,6 +410,16 @@
     flex-direction: column;
     padding: var(--space-l);
   }
+}
+
+/* Project card hover effects */
+.project-snippet:hover {
+  transform: translateY(-2px);
+}
+
+.project-snippet:active,
+.project-snippet:focus {
+  transform: translateY(0);
 }
 
 /* Variations for different project cards */

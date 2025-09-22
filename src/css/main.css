@@ -14,7 +14,6 @@
 
 /* --- Components Layer --- */
 @import url("./components/error-page.css") layer(components);
-@import url("./components/main-content.css") layer(components);
 @import url("./components/cards.css") layer(components);
 @import url("./components/heroes.css") layer(components);
 @import url("./components/logo-2d.css") layer(components);

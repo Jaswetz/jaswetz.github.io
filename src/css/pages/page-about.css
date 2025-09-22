@@ -201,38 +201,9 @@
     box-shadow: var(--shadow-medium, 0 4px 12px rgb(0 0 0 / 10%));
 }
 
-/* CTA button in resume section */
+/* CTA button in resume section - uses reusable .button--cta component */
 .cta-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-m) var(--space-l);
-    background-color: var(--color-primary);
-    color: white;
-    text-decoration: none;
-    border-radius: var(--border-radius);
-    font-weight: var(--font-weight-medium);
-    font-size: var(--font-size-base);
-    transition: var(--transition-interactive);
-    border: 2px solid var(--color-primary);
     margin-top: var(--space-l);
-}
-
-.cta-button:hover {
-    background-color: var(--color-primary-alt);
-    border-color: var(--color-primary-alt);
-    transform: var(--hover-transform, translateY(-2px));
-    box-shadow: var(--shadow-medium, 0 4px 12px rgb(0 0 0 / 15%));
-    color: white;
-}
-
-.cta-button:focus {
-    outline: var(--focus-outline);
-    outline-offset: var(--focus-outline-offset);
-}
-
-.cta-button:active {
-    transform: var(--active-transform, scale(0.98));
 }
 
 /* Responsive design */

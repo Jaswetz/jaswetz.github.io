@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -123,8 +123,7 @@
         </div>
       </section>
     </header>
-      <site-header></site-header>
-    </header>
+    <site-header></site-header>
     <main
       id="main-content"
       class="project-case-study notification-case-study-grid main-content wrapper"
@@ -981,43 +980,43 @@
               </p>
 
               <div class="key-learnings-grid">
-                <div class="key-learning-card card--white">
-                  <div class="key-learning-number">01</div>
-                  <h3 class="key-learning-title">
+                <div class="key-learning__card card--white">
+                  <div class="key-learning__number">01</div>
+                  <h3 class="key-learning__title">
                     Unified messaging is essential
                   </h3>
-                  <p class="key-learning-description">
+                  <p class="key-learning__description">
                     A cohesive notification strategy is critical for user
                     satisfaction and business growth.
                   </p>
                 </div>
 
-                <div class="key-learning-card card--white">
-                  <div class="key-learning-number">02</div>
-                  <h3 class="key-learning-title">Iterative design is key</h3>
-                  <p class="key-learning-description">
+                <div class="key-learning__card card--white">
+                  <div class="key-learning__number">02</div>
+                  <h3 class="key-learning__title">Iterative design is key</h3>
+                  <p class="key-learning__description">
                     Research-grounded, iterative design with stakeholder
                     alignment is crucial for complex systems.
                   </p>
                 </div>
 
-                <div class="key-learning-card card--white">
-                  <div class="key-learning-number">03</div>
-                  <h3 class="key-learning-title">
+                <div class="key-learning__card card--white">
+                  <div class="key-learning__number">03</div>
+                  <h3 class="key-learning__title">
                     Reusable components foster consistency
                   </h3>
-                  <p class="key-learning-description">
+                  <p class="key-learning__description">
                     Providing guidelines and components ensures consistency
                     across different teams.
                   </p>
                 </div>
 
-                <div class="key-learning-card card--white">
-                  <div class="key-learning-number">04</div>
-                  <h3 class="key-learning-title">
+                <div class="key-learning__card card--white">
+                  <div class="key-learning__number">04</div>
+                  <h3 class="key-learning__title">
                     User understanding drives impact
                   </h3>
-                  <p class="key-learning-description">
+                  <p class="key-learning__description">
                     Deep user understanding through research and analytics leads
                     to impactful solutions.
                   </p>
@@ -1065,16 +1064,16 @@
 
     <!-- Password Protection and Performance Optimization -->
     <script type="module">
-      import { protectCaseStudy } from "../js/password-protection-init.js";
+      import { protectCaseStudy } from '../js/password-protection-init.js';
 
-      import analytics from "../js/analytics/simple-analytics.js";
+      import analytics from '../js/analytics/simple-analytics.js';
 
-      protectCaseStudy("project-adsk-notification");
+      protectCaseStudy('project-adsk-notification');
 
       // Initialize analytics for case study
-      document.addEventListener("DOMContentLoaded", () => {
+      document.addEventListener('DOMContentLoaded', () => {
         // Initialize case study specific analytics tracking
-        analytics.trackCaseStudyInteraction("adsk-notification", "view");
+        analytics.trackCaseStudyInteraction('adsk-notification', 'view');
       });
     </script>
 
@@ -1088,14 +1087,14 @@
       // Font loading diagnostics to validate preload issues
       (function () {
         const fontUrls = [
-          "https://fonts.gstatic.com/s/laila/v18/LYjCdG7kmE0gdQhfgCNqqVIuTN4.woff2",
-          "https://fonts.gstatic.com/s/gentiumplus/v6/CoIGjMz5OlKwGK-Bz_Nx2SOx1RiKBK-X8A.woff2",
+          'https://fonts.gstatic.com/s/laila/v18/LYjCdG7kmE0gdQhfgCNqqVIuTN4.woff2',
+          'https://fonts.gstatic.com/s/gentiumplus/v6/CoIGjMz5OlKwGK-Bz_Nx2SOx1RiKBK-X8A.woff2',
         ];
 
         const googleFontsCss =
-          "https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Laila:wght@400;600&family=PT+Sans:wght@400;700&display=swap";
+          'https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Laila:wght@400;600&family=PT+Sans:wght@400;700&display=swap';
 
-        console.log("Font Loading Diagnostics Started:", {
+        console.log('Font Loading Diagnostics Started:', {
           timestamp: new Date().toISOString(),
           preloadUrls: fontUrls,
           googleFontsCss: googleFontsCss,
@@ -1103,16 +1102,16 @@
 
         // Test preload URLs
         fontUrls.forEach((url, index) => {
-          fetch(url, { method: "HEAD" })
-            .then((response) => {
+          fetch(url, { method: 'HEAD' })
+            .then(response => {
               console.log(`Font preload URL ${index + 1} status:`, {
                 url: url,
                 status: response.status,
                 ok: response.ok,
-                contentType: response.headers.get("content-type"),
+                contentType: response.headers.get('content-type'),
               });
             })
-            .catch((error) => {
+            .catch(error => {
               console.error(`Font preload URL ${index + 1} failed:`, {
                 url: url,
                 error: error.message,
@@ -1122,17 +1121,17 @@
         });
 
         // Test Google Fonts CSS
-        fetch(googleFontsCss, { method: "HEAD" })
-          .then((response) => {
-            console.log("Google Fonts CSS status:", {
+        fetch(googleFontsCss, { method: 'HEAD' })
+          .then(response => {
+            console.log('Google Fonts CSS status:', {
               url: googleFontsCss,
               status: response.status,
               ok: response.ok,
-              contentType: response.headers.get("content-type"),
+              contentType: response.headers.get('content-type'),
             });
           })
-          .catch((error) => {
-            console.error("Google Fonts CSS failed:", {
+          .catch(error => {
+            console.error('Google Fonts CSS failed:', {
               url: googleFontsCss,
               error: error.message,
               timestamp: new Date().toISOString(),
@@ -1140,19 +1139,19 @@
           });
 
         // Monitor font loading performance
-        if ("performance" in window && "getEntriesByType" in performance) {
-          window.addEventListener("load", function () {
+        if ('performance' in window && 'getEntriesByType' in performance) {
+          window.addEventListener('load', function () {
             setTimeout(() => {
               const fontEntries = performance
-                .getEntriesByType("resource")
+                .getEntriesByType('resource')
                 .filter(
-                  (entry) =>
-                    entry.name.includes("fonts.gstatic.com") ||
-                    entry.name.includes("fonts.googleapis.com")
+                  entry =>
+                    entry.name.includes('fonts.gstatic.com') ||
+                    entry.name.includes('fonts.googleapis.com')
                 );
 
-              console.log("Font loading performance:", {
-                fontResources: fontEntries.map((entry) => ({
+              console.log('Font loading performance:', {
+                fontResources: fontEntries.map(entry => ({
                   url: entry.name,
                   duration: entry.duration,
                   size: entry.transferSize,
@@ -1168,10 +1167,10 @@
 
     <!-- Sidebar Navigation Active State Script -->
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const sections = document.querySelectorAll("section[id]");
-        const navLinks = document.querySelectorAll(".sidebar-nav a");
-        const header = document.querySelector("site-header");
+      document.addEventListener('DOMContentLoaded', function () {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.sidebar-nav a');
+        const header = document.querySelector('site-header');
 
         function getHeaderHeight() {
           const height = header ? header.offsetHeight : 80;
@@ -1181,34 +1180,34 @@
         function updateActiveNav() {
           const scrollY = window.pageYOffset;
           const headerHeight = getHeaderHeight();
-          let current = "";
+          let current = '';
 
-          sections.forEach((section) => {
+          sections.forEach(section => {
             const sectionTop = section.offsetTop - headerHeight - 50;
             if (scrollY >= sectionTop) {
-              current = section.getAttribute("id");
+              current = section.getAttribute('id');
             }
           });
 
-          navLinks.forEach((link) => {
-            link.classList.remove("active");
-            if (link.getAttribute("href") === "#" + current) {
-              link.classList.add("active");
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+              link.classList.add('active');
             }
           });
         }
 
         // Update on scroll
-        window.addEventListener("scroll", updateActiveNav);
+        window.addEventListener('scroll', updateActiveNav);
 
         // Update on load
         updateActiveNav();
 
         // Smooth scroll for navigation links
         navLinks.forEach((link, index) => {
-          link.addEventListener("click", function (e) {
+          link.addEventListener('click', function (e) {
             e.preventDefault();
-            const targetId = this.getAttribute("href").substring(1);
+            const targetId = this.getAttribute('href').substring(1);
             const targetSection = document.getElementById(targetId);
 
             if (targetSection) {
@@ -1226,7 +1225,7 @@
               const finalOffset = Math.max(0, offsetPosition2);
               window.scrollTo({
                 top: finalOffset,
-                behavior: "smooth",
+                behavior: 'smooth',
               });
             }
           });
