@@ -1,0 +1,70 @@
+{
+  "budgets": {
+    "lcp": 2500,
+    "fid": 100,
+    "cls": 0.1,
+    "fcp": 1800,
+    "ttfb": 800,
+    "speedIndex": 3400,
+    "tbt": 200,
+    "jsBundle": 204800,
+    "cssBundle": 71680,
+    "totalBundle": 102400
+  },
+  "thresholds": {
+    "performance": {
+      "good": 90,
+      "needsImprovement": 70,
+      "poor": 49
+    },
+    "regression": {
+      "warning": 0.1,
+      "error": 0.25
+    }
+  },
+  "pages": [
+    {
+      "name": "home",
+      "url": "/",
+      "critical": true,
+      "customBudgets": {
+        "lcp": 2000,
+        "fcp": 1500
+      }
+    },
+    {
+      "name": "case-study",
+      "url": "/case-study-daimler.html",
+      "critical": true
+    },
+    {
+      "name": "about",
+      "url": "/about.html",
+      "critical": false
+    },
+    {
+      "name": "styleguide",
+      "url": "/styleguide.html",
+      "critical": false,
+      "customBudgets": {
+        "lcp": 3000
+      }
+    }
+  ],
+  "alerts": {
+    "slack": {
+      "enabled": false,
+      "webhook": ""
+    },
+    "email": {
+      "enabled": false,
+      "recipients": []
+    }
+  },
+  "ci": {
+    "failOnRegression": true,
+    "failOnBudgetViolation": true,
+    "maxRegressionPercent": 15,
+    "criticalMetrics": ["lcp", "cls", "jsBundle"]
+  }
+}

@@ -25,6 +25,16 @@
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "test:e2e": "playwright test",
+    "test:performance": "node scripts/performance-monitor.js",
+    "test:performance:ci": "node scripts/performance-monitor.js --ci --export",
+    "test:bundle-regression": "node scripts/bundle-size-monitor.js",
+    "test:bundle-regression:ci": "node scripts/bundle-size-monitor.js --ci --export",
+    "monitor:performance": "npm run build && npm run serve & sleep 5 && npm run test:performance && kill $!",
+    "monitor:performance:full": "npm run build && npm run serve & sleep 5 && npm run test:performance:ci && npm run test:bundle-regression:ci && kill $!",
+    "performance:baseline": "npm run build && npm run serve & sleep 5 && node scripts/performance-monitor.js --export && kill $!",
+    "ci:performance-gate": "npm run build && npm run test:bundle-regression:ci && npm run serve & sleep 10 && npm run test:performance:ci && kill $!",
+    "dashboard:generate": "node scripts/performance-dashboard.js",
+    "dashboard:open": "npm run dashboard:generate && open performance-dashboard.html",
     "prepare": "husky install"
   },
   "lint-staged": {
@@ -80,7 +90,8 @@
     "stylelint-config-standard": "^36.0.0",
     "stylelint-order": "^7.0.0",
     "stylelint-scss": "^6.12.1",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "web-vitals": "^3.5.0"
   },
   "browserslist": [
     "last 2 versions",

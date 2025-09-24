@@ -1,0 +1,56 @@
+{
+  "timestamp": "2025-09-24T22:55:59.129Z",
+  "git": {
+    "commit": "db8ed2b756dccbe47ed2df0e3c558448da940878",
+    "branch": "fix/optimization",
+    "message": "fix lint of styleguide"
+  },
+  "sizes": {
+    "js": 591536,
+    "css": 235953,
+    "other": 1855594,
+    "total": 2683083
+  },
+  "budgets": {
+    "js": 204800,
+    "css": 71680,
+    "total": 102400
+  },
+  "violations": [
+    {
+      "type": "budget",
+      "category": "js",
+      "actual": 591536,
+      "budget": 204800,
+      "excess": 386736,
+      "excessPercent": "188.8",
+      "severity": "critical"
+    },
+    {
+      "type": "budget",
+      "category": "css",
+      "actual": 235953,
+      "budget": 71680,
+      "excess": 164273,
+      "excessPercent": "229.2",
+      "severity": "critical"
+    },
+    {
+      "type": "budget",
+      "category": "total",
+      "actual": 2683083,
+      "budget": 102400,
+      "excess": 2580683,
+      "excessPercent": "2520.2",
+      "severity": "critical"
+    }
+  ],
+  "regressions": [],
+  "improvements": [],
+  "summary": {
+    "passed": false,
+    "budgetViolations": 3,
+    "regressions": 0,
+    "improvements": 0
+  }
+}
