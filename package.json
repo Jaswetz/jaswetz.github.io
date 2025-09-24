@@ -51,6 +51,8 @@
     "@parcel/transformer-jsonld": "^2.16.0",
     "@parcel/transformer-sass": "^2.10.0",
     "@playwright/test": "^1.40.0",
+    "@typescript-eslint/eslint-plugin": "^8.44.1",
+    "@typescript-eslint/parser": "^8.44.1",
     "autoprefixer": "^10.4.19",
     "axe-cli": "^3.2.1",
     "bundlesize": "^0.18.2",

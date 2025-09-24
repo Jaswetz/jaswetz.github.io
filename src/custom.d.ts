@@ -1,4 +1,4 @@
-declare module "*.css" {
+declare module '*.css' {
   const cssText: string;
   export default cssText;
 }
@@ -6,9 +6,9 @@ declare module "*.css" {
 // Google Analytics 4 & Microsoft Clarity type declarations
 declare global {
   interface Window {
-    dataLayer: any[];
-    gtag: (...args: any[]) => void;
-    clarity: (action: string, ...args: any[]) => void;
+    dataLayer: unknown[];
+    gtag: (...args: unknown[]) => void;
+    clarity: (action: string, ...args: unknown[]) => void;
     portfolioAnalytics: {
       trackProjectClick: (projectName: string, projectType?: string) => void;
       trackResumeDownload: () => void;
@@ -24,10 +24,10 @@ declare global {
       trackImageLightbox: (imageName: string, caseStudy?: string) => void;
       trackCaseStudyCompletion: (caseStudyName: string) => void;
       setConsent: (granted: boolean) => void;
-      getStatus: () => any;
+      getStatus: () => unknown;
     };
     clarityTracking: {
-      trackEvent: (eventName: string, eventData?: any) => void;
+      trackEvent: (eventName: string, eventData?: unknown) => void;
       trackProject: (projectName: string, interactionType: string) => void;
       trackResume: () => void;
       trackContact: (action: string) => void;
@@ -51,5 +51,5 @@ declare global {
     };
   }
 
-  function gtag(...args: any[]): void;
+  function gtag(...args: unknown[]): void;
 }

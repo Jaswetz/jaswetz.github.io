@@ -5,9 +5,9 @@
 
 class SmartImageLoader {
   constructor() {
-    this.optimizedBasePath = "./img/";
-    this.webpBasePath = "./img/webp/";
-    this.fallbackBasePath = "./img/";
+    this.optimizedBasePath = './img/';
+    this.webpBasePath = './img/webp/';
+    this.fallbackBasePath = './img/';
   }
 
   /**
@@ -18,12 +18,12 @@ class SmartImageLoader {
    */
   async getBestImagePath(imagePath, preferWebP = true) {
     // Remove leading ./ if present
-    const cleanPath = imagePath.replace(/^\.\/img\//, "");
+    const cleanPath = imagePath.replace(/^\.\/img\//, '');
 
     // Try WebP first if supported and preferred
     if (preferWebP && this.supportsWebP()) {
       const webpPath =
-        this.webpBasePath + cleanPath.replace(/\.(jpg|jpeg|png)$/i, ".webp");
+        this.webpBasePath + cleanPath.replace(/\.(jpg|jpeg|png)$/i, '.webp');
       if (await this.imageExists(webpPath)) {
         return webpPath;
       }
@@ -44,8 +44,8 @@ class SmartImageLoader {
    * @param {string} imagePath
    * @returns {Promise<boolean>}
    */
-  async imageExists(imagePath) {
-    return new Promise((resolve) => {
+  imageExists(imagePath) {
+    return new Promise(resolve => {
       const img = new Image();
       img.onload = () => resolve(true);
       img.onerror = () => resolve(false);
@@ -58,21 +58,21 @@ class SmartImageLoader {
    * @returns {boolean}
    */
   supportsWebP() {
-    const canvas = document.createElement("canvas");
+    const canvas = document.createElement('canvas');
     canvas.width = 1;
     canvas.height = 1;
-    return canvas.toDataURL("image/webp").indexOf("data:image/webp") === 0;
+    return canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
   }
 
   /**
    * Update all images on the page to use optimized versions
    */
   async optimizePageImages() {
-    const images = document.querySelectorAll("img[src*=\"./img/\"]");
-    const promises = Array.from(images).map(async (img) => {
+    const images = document.querySelectorAll('img[src*="./img/"]');
+    const promises = Array.from(images).map(async img => {
       const imageElement = /** @type {HTMLImageElement} */ (img);
       const originalSrc = imageElement.src;
-      const relativePath = originalSrc.replace(window.location.origin, "");
+      const relativePath = originalSrc.replace(window.location.origin, '');
       const optimizedPath = await this.getBestImagePath(relativePath);
 
       if (optimizedPath !== relativePath) {
@@ -86,12 +86,12 @@ class SmartImageLoader {
 }
 
 // Auto-initialize and optimize images
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   const smartLoader = new SmartImageLoader();
 
   // Wait for DOM to be ready
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () => {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
       smartLoader.optimizePageImages();
     });
   } else {

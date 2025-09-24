@@ -17,26 +17,34 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Basic linting (essential only)
-  lint:
+  # Comprehensive code quality checks
+  quality:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-          cache: "npm"
-      - name: Install Dependencies
-        run: npm ci
-      - name: Lint JavaScript
-        run: npm run lint
-      - name: Lint CSS
-        run: npm run stylelint
+       - uses: actions/checkout@v4
+       - name: Setup Node.js
+         uses: actions/setup-node@v4
+         with:
+           node-version: "18"
+           cache: "npm"
+       - name: Install Dependencies
+         run: npm ci
+       - name: Lint JavaScript/TypeScript
+         run: npm run lint
+       - name: Lint CSS/SCSS
+         run: npm run stylelint
+       - name: Check Prettier formatting
+         run: npm run format:check
+       - name: Check bundle size
+         run: npm run test:bundle-size
+       - name: Run unit tests
+         run: npm run test
+       - name: Build project
+         run: npm run build
 
   # Build and deploy
   build-and-deploy:
-    needs: [lint]
+    needs: [quality]
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -44,28 +52,28 @@ jobs:
       id-token: write
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+       - name: Checkout
+         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-          cache: "npm"
+       - name: Setup Node.js
+         uses: actions/setup-node@v4
+         with:
+           node-version: "18"
+           cache: "npm"
 
-      - name: Install dependencies
-        run: npm ci
+       - name: Install dependencies
+         run: npm ci
 
-      - name: Run tests
-        run: npm run test
+       - name: Run tests
+         run: npm run test
 
-      - name: Build site
-        run: npm run clean && npm run build
+       - name: Build site
+         run: npm run clean && npm run build
 
-      - name: Upload artifact for GitHub Pages
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
+       - name: Upload artifact for GitHub Pages
+         uses: actions/upload-pages-artifact@v3
+         with:
+           path: ./dist
 
   # Deploy to GitHub Pages
   deploy:
@@ -77,6 +85,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+       - name: Deploy to GitHub Pages
+         id: deployment
+         uses: actions/deploy-pages@v4

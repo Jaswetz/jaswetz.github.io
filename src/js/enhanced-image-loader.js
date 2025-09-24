@@ -12,42 +12,50 @@ class EnhancedImageLoader {
   }
 
   initIntersectionObserver() {
-    if (!("IntersectionObserver" in window)) {return;}
+    if (!('IntersectionObserver' in window)) {
+      return;
+    }
 
     this.observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting && !this.loadedImages.has(entry.target)) {
             this.loadImage(entry.target);
           }
         });
       },
-      { rootMargin: "50px 0px", threshold: 0.1 }
+      { rootMargin: '50px 0px', threshold: 0.1 }
     );
   }
 
-  async supportsWebP() {
-    if (this.webpSupported !== null) {return this.webpSupported;}
+  supportsWebP() {
+    if (this.webpSupported !== null) {
+      return this.webpSupported;
+    }
 
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       const webP = new Image();
       webP.onload = webP.onerror = () => {
         this.webpSupported = webP.height === 2;
         resolve(this.webpSupported);
       };
       webP.src =
-        "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
+        'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
     });
   }
 
   async loadImage(img) {
-    if (!(img instanceof HTMLImageElement)) {return;}
+    if (!(img instanceof HTMLImageElement)) {
+      return;
+    }
 
     const originalSrc = img.dataset.src || img.src;
-    if (!originalSrc) {return;}
+    if (!originalSrc) {
+      return;
+    }
 
     try {
-      img.classList.add("loading");
+      img.classList.add('loading');
 
       let finalSrc = originalSrc;
       const isSvg = /\.svg$/i.test(originalSrc);
@@ -55,35 +63,35 @@ class EnhancedImageLoader {
       // Try WebP for non-SVG images
       if (!isSvg && (await this.supportsWebP())) {
         const webpSrc = originalSrc
-          .replace(/^(.*\/img\/)/, "$1webp/")
-          .replace(/\.(jpg|jpeg|png)$/i, ".webp");
+          .replace(/^(.*\/img\/)/, '$1webp/')
+          .replace(/\.(jpg|jpeg|png)$/i, '.webp');
         if (await this.imageExists(webpSrc)) {
           finalSrc = webpSrc;
         }
       }
 
       img.onload = () => {
-        img.classList.remove("loading");
-        img.classList.add("loaded");
+        img.classList.remove('loading');
+        img.classList.add('loaded');
       };
       img.onerror = () => {
         img.src = originalSrc;
-        img.classList.remove("loading");
-        img.classList.add("error");
+        img.classList.remove('loading');
+        img.classList.add('error');
       };
 
       img.src = finalSrc;
       this.loadedImages.add(img);
     } catch (error) {
-      console.warn("Failed to load image:", originalSrc, error);
+      console.warn('Failed to load image:', originalSrc, error);
       img.src = originalSrc;
-      img.classList.remove("loading");
-      img.classList.add("error");
+      img.classList.remove('loading');
+      img.classList.add('error');
     }
   }
 
-  async imageExists(src) {
-    return new Promise((resolve) => {
+  imageExists(src) {
+    return new Promise(resolve => {
       const img = new Image();
       img.onload = () => resolve(true);
       img.onerror = () => resolve(false);
@@ -92,8 +100,8 @@ class EnhancedImageLoader {
   }
 
   setupLazyLoading() {
-    const lazyImages = document.querySelectorAll("img[data-src]");
-    lazyImages.forEach((img) => {
+    const lazyImages = document.querySelectorAll('img[data-src]');
+    lazyImages.forEach(img => {
       if (this.observer) {
         this.observer.observe(img);
       } else {
@@ -103,8 +111,8 @@ class EnhancedImageLoader {
   }
 
   preloadCriticalImages() {
-    const criticalImages = document.querySelectorAll("img[data-critical]");
-    criticalImages.forEach((img) => {
+    const criticalImages = document.querySelectorAll('img[data-critical]');
+    criticalImages.forEach(img => {
       if (img instanceof HTMLImageElement) {
         this.loadImage(img);
       }
@@ -118,10 +126,12 @@ class EnhancedImageLoader {
   }
 
   addLoadingStyles() {
-    if (document.getElementById("enhanced-image-loader-styles")) {return;}
+    if (document.getElementById('enhanced-image-loader-styles')) {
+      return;
+    }
 
-    const style = document.createElement("style");
-    style.id = "enhanced-image-loader-styles";
+    const style = document.createElement('style');
+    style.id = 'enhanced-image-loader-styles';
     style.textContent = `
       img.loading { opacity: 0; transition: opacity 0.3s ease-in-out; }
       img.loaded { opacity: 1; }
@@ -141,12 +151,12 @@ class EnhancedImageLoader {
 }
 
 // Auto-initialize
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   const enhancedLoader = new EnhancedImageLoader();
 
   // Initialize when DOM is ready
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () => {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
       enhancedLoader.init();
     });
   } else {
