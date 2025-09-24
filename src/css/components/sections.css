@@ -11,8 +11,8 @@
 /* See: https://github.com/Jaswetz/jaswetz.github.io/issues/11 */
 
 .section {
-    padding-bottom: var(--space-2xl);
     padding-top: var(--space-2xl);
+    padding-bottom: var(--space-2xl);
 }
 
 .section--bordered {
@@ -20,11 +20,11 @@
 }
 
 .section--background {
-    background: rgb(255 255 255 / 40%);
-    margin-left: calc(var(--space-xl) * -1);
     margin-right: calc(var(--space-3xl) * -1);
-    padding-left: var(--space-xl);
+    margin-left: calc(var(--space-xl) * -1);
     padding-right: var(--space-3xl);
+    padding-left: var(--space-xl);
+    background: rgb(255 255 255 / 40%);
 }
 
 /* --------------------------------------------------------------------------
@@ -38,10 +38,10 @@
 }
 
 .section__description {
+    margin-bottom: 0;
+    color: var(--color-text-subtle);
     font-size: var(--size-step-1);
     line-height: var(--leading-normal);
-    color: var(--color-text-subtle);
-    margin-bottom: 0;
 }
 
 .section__description:first-of-type {
@@ -50,10 +50,10 @@
 
 /* Project Summary Section */
 .project-summary__description {
+    margin-bottom: 0;
+    color: var(--color-text-subtle);
     font-size: var(--size-step-1);
     line-height: var(--leading-normal);
-    color: var(--color-text-subtle);
-    margin-bottom: 0;
 }
 
 .project-summary__cards {
@@ -81,23 +81,23 @@
 
 .phase__title {
     margin-bottom: var(--space-s);
-    font-size: var(--size-step-2);
     font-weight: 600;
+    font-size: var(--size-step-2);
 }
 
 .phase__image {
-    border-radius: var(--border-radius);
-    overflow: hidden;
     width: fit-content;
     height: fit-content;
+    border-radius: var(--border-radius);
+    overflow: hidden;
 }
 
 .phase__image img {
+    display: block;
     width: 100%;
     height: auto;
-    display: block;
-    box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
     border: var(--border-width) solid var(--color-border);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
 }
 
 .phase-divider {
@@ -151,8 +151,8 @@
 
 .key-features h3 {
     margin-bottom: var(--space-m);
-    font-size: var(--size-step-1);
     font-weight: 600;
+    font-size: var(--size-step-1);
 }
 
 .key-features p {
@@ -167,19 +167,19 @@
 
 .key-feature-item {
     display: flex;
-    align-items: flex-start;
     gap: var(--space-2xs);
+    align-items: flex-start;
 }
 
 .key-feature-item__icon {
+    flex-shrink: 0;
     color: var(--color-primary);
     font-size: var(--size-step--1);
-    flex-shrink: 0;
 }
 
 .key-feature-item__text {
-    font-size: var(--size-step--1);
     color: var(--color-text);
+    font-size: var(--size-step--1);
 }
 
 /* --------------------------------------------------------------------------
@@ -194,8 +194,8 @@
 
 .result-benefit {
     display: flex;
-    align-items: flex-start;
     gap: var(--space-m);
+    align-items: flex-start;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -206,13 +206,13 @@
 
 .result-benefit__icon {
     display: flex;
+    flex-shrink: 0;
     align-items: center;
     justify-content: center;
     padding: var(--space-s);
-    background-color: var(--color-neutral-100);
     border-radius: var(--border-radius);
+    background-color: var(--color-neutral-100);
     color: var(--color-primary);
-    flex-shrink: 0;
 }
 
 .result-benefit__icon svg {
@@ -228,15 +228,15 @@
 }
 
 .result-benefit__title {
-    font-size: var(--size-step-1);
-    font-weight: 600;
     margin-bottom: 0;
+    font-weight: 600;
+    font-size: var(--size-step-1);
 }
 
 .result-benefit__description {
+    color: var(--color-text-subtle);
     font-size: var(--size-step--1);
     line-height: var(--leading-normal);
-    color: var(--color-text-subtle);
 }
 
 /* --------------------------------------------------------------------------
@@ -245,25 +245,25 @@
 
 .professional-growth {
     display: flex;
-    align-items: flex-start;
     gap: var(--space-l);
+    align-items: flex-start;
     margin-top: var(--space-xl);
     padding: var(--space-xl) var(--space-xl) 0 var(--space-xl);
-    background-color: var(--color-neutral-100);
     border-radius: var(--border-radius);
+    background-color: var(--color-neutral-100);
 }
 
 .professional-growth__icon {
     display: flex;
+    flex-shrink: 0;
     align-items: center;
     justify-content: center;
     width: 48px;
     height: 48px;
-    background-color: white;
     border-radius: 50%;
+    background-color: #fff;
     color: var(--color-primary);
     box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
-    flex-shrink: 0;
 }
 
 .professional-growth__content {
@@ -273,9 +273,9 @@
 }
 
 .professional-growth__title {
-    font-size: var(--size-step-2);
-    font-weight: 600;
     margin-bottom: 0;
+    font-weight: 600;
+    font-size: var(--size-step-2);
 }
 
 .professional-growth__description {
@@ -326,15 +326,15 @@
 }
 
 .solution-image img {
+    display: block;
     width: 100%;
     height: auto;
-    display: block;
 }
 
 .image-caption {
     position: absolute;
-    bottom: var(--space-s);
     right: var(--space-s);
+    bottom: var(--space-s);
 }
 
 .image-caption-button:hover {
@@ -355,16 +355,16 @@
 
 .implementation-subtitle {
     margin-bottom: var(--space-s);
-    font-size: var(--size-step-1);
     color: var(--color-text);
     font-weight: 600;
+    font-size: var(--size-step-1);
 }
 
 .implementation-description {
+    margin: 0;
+    color: var(--color-text-subtle);
     font-size: var(--size-step--1);
     line-height: var(--leading-normal);
-    color: var(--color-text-subtle);
-    margin: 0;
 }
 
 .implementation-section h3 {
@@ -377,9 +377,9 @@
 
 .testing-description {
     margin-bottom: var(--space-m);
+    color: var(--color-text-subtle);
     font-size: var(--size-step--1);
     line-height: var(--leading-normal);
-    color: var(--color-text-subtle);
 }
 
 .findings-section {
@@ -387,9 +387,9 @@
 }
 
 .outcome-text {
+    color: var(--color-text-subtle);
     font-size: var(--size-step--1);
     line-height: var(--leading-relaxed);
-    color: var(--color-text-subtle);
 }
 
 /* --------------------------------------------------------------------------
@@ -411,10 +411,10 @@
     }
 
     .section--background {
-        margin-left: calc(var(--space-l) * -1);
         margin-right: calc(var(--space-l) * -1);
-        padding-left: var(--space-l);
+        margin-left: calc(var(--space-l) * -1);
         padding-right: var(--space-l);
+        padding-left: var(--space-l);
     }
 
     .professional-growth {

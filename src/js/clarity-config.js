@@ -73,7 +73,7 @@ class ClarityEventTracker {
    * Initialize Clarity event tracking
    */
   init() {
-    if (this.isInitialized) return;
+    if (this.isInitialized) {return;}
 
     // Wait for Clarity to load
     this.waitForClarity().then(() => {
@@ -343,7 +343,6 @@ class ClarityEventTracker {
    * Track time on page milestones
    */
   trackTimeOnPage() {
-    const startTime = Date.now();
     const milestones = [30, 60, 120, 300]; // seconds
 
     milestones.forEach((seconds) => {
@@ -385,10 +384,10 @@ class ClarityEventTracker {
    * Get link type for categorization
    */
   getLinkType(url) {
-    if (url.includes("linkedin.com")) return "professional";
-    if (url.includes("github.com")) return "technical";
-    if (url.includes("mailto:")) return "contact";
-    if (url.includes("twitter.com") || url.includes("x.com")) return "social";
+    if (url.includes("linkedin.com")) {return "professional";}
+    if (url.includes("github.com")) {return "technical";}
+    if (url.includes("mailto:")) {return "contact";}
+    if (url.includes("twitter.com") || url.includes("x.com")) {return "social";}
     return "external";
   }
 
@@ -419,9 +418,9 @@ class ClarityEventTracker {
    * Get project type from URL
    */
   getProjectType(url) {
-    if (url.includes("autodesk")) return "enterprise";
-    if (url.includes("intel")) return "technology";
-    if (url.includes("daimler")) return "automotive";
+    if (url.includes("autodesk")) {return "enterprise";}
+    if (url.includes("intel")) {return "technology";}
+    if (url.includes("daimler")) {return "automotive";}
     return "portfolio";
   }
 

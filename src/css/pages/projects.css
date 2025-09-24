@@ -11,8 +11,8 @@
 }
 
 .project-case-study section {
-    padding-bottom: var(--space-2xl);
     padding-top: var(--space-2xl);
+    padding-bottom: var(--space-2xl);
     border-bottom: 1px solid var(--color-border);
 }
 
@@ -59,15 +59,15 @@
 
 .project__img {
     width: 100%;
+    max-width: 53rem;
     height: auto;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-subtle);
-    max-width: 53rem;
 }
 
 .phase__img img {
-    border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 /* --------------------------------------------------------------------------
@@ -86,8 +86,8 @@
 */
 
 .article__sidebar {
-    border-left: var(--border-width) solid var(--color-border);
     padding-left: var(--space-xl);
+    border-left: var(--border-width) solid var(--color-border);
 }
 
 
@@ -105,8 +105,8 @@
 }
 
 .features .card__icon {
-    color: var(--color-primary);
     margin-bottom: var(--space-s);
+    color: var(--color-primary);
 
 }
 

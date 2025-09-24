@@ -236,7 +236,7 @@ class SiteFooter extends HTMLElement {
    */
   _setupBackToTop() {
     const backToTopButton = this.shadowRoot.querySelector("#back-to-top-btn");
-    if (!backToTopButton) return;
+    if (!backToTopButton) {return;}
 
     backToTopButton.addEventListener("click", (e) => {
       e.preventDefault();

@@ -80,7 +80,6 @@ class SidebarNavigation {
     if (activeNavItem) {
       activeNavItem.link.classList.add("active");
       this.currentActiveLink = activeNavItem.link;
-    } else {
     }
   }
 

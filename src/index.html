@@ -150,9 +150,11 @@
   </head>
 
   <body class="page__home">
-    <a href="#featured-projects" class="skip-link">Skip to main content</a>
-    <header>
-      <site-header role="banner"></site-header>
+    <div role="region" aria-label="skip link">
+      <a href="#featured-projects" class="skip-link">Skip to main content</a>
+    </div>
+    <header role="banner">
+      <site-header></site-header>
 
       <section id="hero" class="hero-section hero">
           <h1>UX and Product Designer</h1>
@@ -186,6 +188,7 @@
               <a
                 href="./projects/project-adsk-notification.html"
                 class="card--link"
+                aria-label="View project: Crafting a Unified Notification Experience"
               >
                 <article class="project-snippet grid__item card card--vertical">
                   <img
@@ -210,7 +213,7 @@
                   </div>
                 </article>
               </a>
-              <a href="./projects/project-autodesk-di.html" class="card--link">
+              <a href="./projects/project-autodesk-di.html" class="card--link" aria-label="View project: Architecting a multi-device platform">
                 <article class="project-snippet grid__item card card--vertical">
                   <img
                     src="./img/mockuuups-ipad-pro-mockup-isometric-right.png"
@@ -233,7 +236,7 @@
                 </article>
               </a>
               <!-- Add a third project snippet if desired -->
-              <a href="./projects/project-intel-lfc.html" class="card--link">
+              <a href="./projects/project-intel-lfc.html" class="card--link" aria-label="View project: Securing Intel's Multi-Year Deal with an Immersive Soccer App">
                 <article class="project-snippet grid__item card card--vertical">
                   <img
                     src="./img/proj-thumb-ios-android.png"
@@ -256,7 +259,7 @@
                 </div> -->
                 </article>
               </a>
-              <a href="./projects/project-daimler-dcd.html" class="card--link">
+              <a href="./projects/project-daimler-dcd.html" class="card--link" aria-label="View project: Streamlining Data Access: Fleet Analytics for Daimler Trucks">
                 <article class="project-snippet grid__item card card--vertical">
                   <img
                     src="./img/proj-thumb-dcd.jpg"

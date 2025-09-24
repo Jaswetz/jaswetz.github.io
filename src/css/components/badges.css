@@ -9,12 +9,12 @@
 .badge {
     display: inline-block;
     padding: var(--space-2xs) var(--space-xs-s);
+    border-radius: var(--border-radius);
+    font-weight: 500;
     font-size: var(--font-size-md);
     font-family: var(--font-family-sans);
-    font-weight: 500;
-    letter-spacing: 0.025em;
-    border-radius: var(--border-radius);
     text-align: center;
+    letter-spacing: 0.025em;
     white-space: nowrap;
 }
 
@@ -52,15 +52,15 @@
     -------------------------------------------------------------------------- */
 
 .phase__badge {
-    background-color: var(--color-info);
     display: inline-block;
-    padding: var(--space-2xs) var(--space-xs-s);
-    color: var(--color-primary);
-    letter-spacing: 0.025em;
-    font-size: var(--font-size-md);
-    border-radius: var(--border-radius);
-    font-family: var(--font-family-sans);
     margin-bottom: var(--space-xs);
+    padding: var(--space-2xs) var(--space-xs-s);
+    border-radius: var(--border-radius);
+    background-color: var(--color-info);
+    color: var(--color-primary);
+    font-size: var(--font-size-md);
+    font-family: var(--font-family-sans);
+    letter-spacing: 0.025em;
 }
 
 .badge--phase {

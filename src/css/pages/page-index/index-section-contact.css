@@ -14,21 +14,21 @@
 }
 
 .contact-title {
-  font-size: var(--size-step-3);
-  color: var(--color-primary);
   margin-bottom: var(--space-lg);
+  color: var(--color-primary);
+  font-size: var(--size-step-3);
 }
 
 .contact-description {
+  margin-bottom: var(--space-xl);
+  color: var(--color-text);
   font-size: var(--font-size-lg);
   line-height: var(--leading-relaxed);
-  color: var(--color-text);
-  margin-bottom: var(--space-xl);
 }
 
 .contact-links {
   display: flex;
-  justify-content: center;
-  gap: var(--space);
   flex-wrap: wrap;
+  gap: var(--space);
+  justify-content: center;
 }

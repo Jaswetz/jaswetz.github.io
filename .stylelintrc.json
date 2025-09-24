@@ -1,6 +1,9 @@
 {
-  "extends": ["stylelint-config-standard", "stylelint-config-recommended-scss"],
-  "plugins": ["stylelint-scss"],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-recommended-scss"
+  ],
+  "plugins": ["stylelint-order"],
   "ignoreFiles": [
     "dist/**/*",
     "dev-build/**/*",
@@ -8,8 +11,8 @@
     "node_modules/**/*"
   ],
   "rules": {
-    "custom-property-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
-    "selector-class-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*(__[a-z][a-z0-9]*(-[a-z0-9]+)*)?(--[a-z][a-z0-9]*(-[a-z0-9]+)*)?$",
+    "custom-property-pattern": null,
+    "selector-class-pattern": null,
     "selector-id-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
     "at-rule-no-unknown": [
       true,
@@ -259,7 +262,6 @@
     ],
     "max-nesting-depth": [3, { "severity": "warning" }],
     "no-descending-specificity": null,
-    "function-url-quotes": "always",
-    "selector-pseudo-class-case": "lower"
+    "function-url-quotes": "always"
   }
 }

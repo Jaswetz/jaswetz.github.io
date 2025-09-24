@@ -22,35 +22,35 @@
 .logo-2d__square {
     width: 100px;
     height: 100px;
-    background: transparent;
     border: 3px solid var(--color-primary);
+    background: transparent;
+    transition: all 0.3s ease;
     animation: shape-rotate 8s linear infinite;
     opacity: 0.9;
-    transition: all 0.3s ease;
 }
 
 /* Circle (Middle shape) */
 .logo-2d__circle {
     width: 80px;
     height: 80px;
-    background: transparent;
     border: 3px solid var(--color-primary);
     border-radius: 50%;
+    background: transparent;
+    transition: all 0.3s ease;
     animation: shape-rotate 6s linear infinite reverse;
     opacity: 0.95;
-    transition: all 0.3s ease;
 }
 
 /* Triangle (Inner shape) */
 .logo-2d__triangle {
     width: 0;
     height: 0;
-    border-left: 25px solid transparent;
     border-right: 25px solid transparent;
     border-bottom: 43px solid var(--color-primary);
+    border-left: 25px solid transparent;
+    transition: all 0.3s ease;
     transform: translate(-50%, -60%);
     animation: triangle-pulse 3s ease-in-out infinite;
-    transition: all 0.3s ease;
 }
 
 /* Animations */
@@ -90,20 +90,20 @@
 
 /* Hover effects */
 .logo-2d:hover .logo-2d__square {
-    animation-duration: 4s;
-    border-color: var(--color-primary-alt);
     border-width: 4px;
+    border-color: var(--color-primary-alt);
+    animation-duration: 4s;
 }
 
 .logo-2d:hover .logo-2d__circle {
-    animation-duration: 3s;
-    border-color: var(--color-primary-alt);
     border-width: 4px;
+    border-color: var(--color-primary-alt);
+    animation-duration: 3s;
 }
 
 .logo-2d:hover .logo-2d__triangle {
-    animation-duration: 1.5s;
     border-bottom-color: var(--color-primary-alt);
+    animation-duration: 1.5s;
 }
 
 /* Responsive adjustments */
@@ -127,9 +127,9 @@
     }
 
     .logo-2d__triangle {
-        border-left: 20px solid transparent;
         border-right: 20px solid transparent;
         border-bottom: 34px solid var(--color-primary);
+        border-left: 20px solid transparent;
     }
 }
 

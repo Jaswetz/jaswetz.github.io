@@ -12,7 +12,7 @@ class EnhancedImageLoader {
   }
 
   initIntersectionObserver() {
-    if (!("IntersectionObserver" in window)) return;
+    if (!("IntersectionObserver" in window)) {return;}
 
     this.observer = new IntersectionObserver(
       (entries) => {
@@ -27,7 +27,7 @@ class EnhancedImageLoader {
   }
 
   async supportsWebP() {
-    if (this.webpSupported !== null) return this.webpSupported;
+    if (this.webpSupported !== null) {return this.webpSupported;}
 
     return new Promise((resolve) => {
       const webP = new Image();
@@ -41,10 +41,10 @@ class EnhancedImageLoader {
   }
 
   async loadImage(img) {
-    if (!(img instanceof HTMLImageElement)) return;
+    if (!(img instanceof HTMLImageElement)) {return;}
 
     const originalSrc = img.dataset.src || img.src;
-    if (!originalSrc) return;
+    if (!originalSrc) {return;}
 
     try {
       img.classList.add("loading");
@@ -118,7 +118,7 @@ class EnhancedImageLoader {
   }
 
   addLoadingStyles() {
-    if (document.getElementById("enhanced-image-loader-styles")) return;
+    if (document.getElementById("enhanced-image-loader-styles")) {return;}
 
     const style = document.createElement("style");
     style.id = "enhanced-image-loader-styles";

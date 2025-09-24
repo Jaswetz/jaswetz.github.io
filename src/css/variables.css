@@ -267,17 +267,17 @@
   --button-border-radius: var(--border-radius);
   --button-bg: var(--color-primary);
   --button-bg-hover: var(--color-primary-alt);
-  --button-color: white;
+  --button-color: #fff;
   --button-cursor: pointer;
   --button-transition: var(--transition-interactive);
   --button-min-height: var(--touch-target-min);
   --button-gap: var(--space-xs);
 
   /* Lightbox */
-  --lightbox-bg: color-mix(in srgb, black 90%, white 10%);
+  --lightbox-bg: color-mix(in srgb, #000 90%, #fff 10%);
   --lightbox-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --lightbox-z-index: 9999;
-  --caption-bg: color-mix(in srgb, black 70%, white 30%);
+  --caption-bg: color-mix(in srgb, #000 70%, #fff 30%);
   --caption-color: #fff;
   --focus-ring: 2px solid var(--accent-color, #06c);
   --focus-ring-offset: 2px;

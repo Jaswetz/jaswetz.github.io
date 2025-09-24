@@ -17,7 +17,7 @@ class SimpleAnalytics {
    * Initialize analytics
    */
   async init() {
-    if (this.isInitialized) return true;
+    if (this.isInitialized) {return true;}
 
     try {
       // Wait for gtag to be available or create fallback
@@ -90,7 +90,7 @@ class SimpleAnalytics {
    * Configure Google Analytics 4
    */
   _configureGA4() {
-    if (this.fallbackMode || typeof document === "undefined") return;
+    if (this.fallbackMode || typeof document === "undefined") {return;}
 
     // Initialize dataLayer if needed
     window.dataLayer = window.dataLayer || [];
@@ -152,7 +152,7 @@ class SimpleAnalytics {
    * Enable automatic tracking
    */
   _enableAutoTracking() {
-    if (typeof document === "undefined") return;
+    if (typeof document === "undefined") {return;}
 
     // Track page visibility changes
     document.addEventListener("visibilitychange", () => {
@@ -186,7 +186,7 @@ class SimpleAnalytics {
    * Initialize Core Web Vitals monitoring (simplified)
    */
   _initCoreWebVitals() {
-    if (typeof window === "undefined" || this.isDevelopment) return;
+    if (typeof window === "undefined" || this.isDevelopment) {return;}
 
     // Simplified LCP tracking
     if ("PerformanceObserver" in window) {
@@ -231,7 +231,7 @@ class SimpleAnalytics {
    * Process queued events
    */
   _processQueue() {
-    if (!this.consentGiven) return;
+    if (!this.consentGiven) {return;}
 
     this.queue.forEach(({ eventName, parameters }) => {
       this._sendToGA4(eventName, parameters);
@@ -328,8 +328,26 @@ class SimpleAnalytics {
   }
 
   /**
-   * Get analytics status
+   * Track case study interactions (view, completion, etc.)
    */
+  trackCaseStudyInteraction(
+    caseStudyName,
+    interactionType = "view",
+    section = "body"
+  ) {
+    this._sendToGA4("case_study_interaction", {
+      case_study_name: caseStudyName,
+      action: interactionType,
+      section: section,
+    });
+  }
+
+  /**
+   * Track case study completion
+   */
+  trackCaseStudyCompletion(caseStudyName) {
+    this.trackCaseStudyInteraction(caseStudyName, "complete");
+  }
   getStatus() {
     return {
       initialized: this.isInitialized,
@@ -354,8 +372,6 @@ if (typeof window !== "undefined") {
     trackExternalLink: (...args) => analytics.trackExternalLink(...args),
     trackScrollDepth: () => analytics.trackScrollDepth(),
     trackTimeOnPage: () => analytics.trackTimeOnPage(),
-    trackCaseStudyInteraction: (...args) =>
-      analytics.trackCaseStudyInteraction(...args),
     trackImageLightbox: (...args) => analytics.trackImageLightbox(...args),
     trackCaseStudyCompletion: (...args) =>
       analytics.trackCaseStudyCompletion(...args),

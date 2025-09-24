@@ -3,7 +3,6 @@
    ========================================================================== */
 
 @layer pages {
-
     /* Animation Examples */
     .animation-examples {
         margin-top: var(--space-xl);
@@ -16,8 +15,8 @@
 
             /* Respect user motion preferences */
             @media (prefers-reduced-motion: reduce) {
-                animation: none;
                 transition: none;
+                animation: none;
             }
         }
 
@@ -52,21 +51,21 @@
     }
 
     .metric-card {
-        text-align: center;
-        padding: var(--space-xl);
-        min-height: 180px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         gap: var(--space-s);
+        justify-content: center;
+        min-height: 180px;
+        padding: var(--space-xl);
+        text-align: center;
     }
 
     .metric-value {
-        font-size: var(--size-step-4);
-        font-weight: var(--font-weight-bold);
-        color: var(--color-primary);
-        line-height: 1;
         margin: var(--space-s) 0;
+        color: var(--color-primary);
+        font-weight: var(--font-weight-bold);
+        font-size: var(--size-step-4);
+        line-height: 1;
     }
 
     /* Project Sections */

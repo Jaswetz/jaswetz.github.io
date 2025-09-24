@@ -381,7 +381,7 @@ class ImageLightbox extends HTMLElement {
    */
   addLightboxHint() {
     // Check if hint element already exists
-    if (document.getElementById("lightbox-hint")) return;
+    if (document.getElementById("lightbox-hint")) {return;}
 
     const hint = document.createElement("div");
     hint.id = "lightbox-hint";
@@ -491,7 +491,7 @@ class ImageLightbox extends HTMLElement {
    * Handle keyboard navigation
    */
   handleKeydown(event) {
-    if (!this.isOpen) return;
+    if (!this.isOpen) {return;}
 
     switch (event.key) {
       case "Escape":
@@ -569,7 +569,7 @@ class ImageLightbox extends HTMLElement {
    * Handle touch end for mobile gestures
    */
   handleTouchEnd(event) {
-    if (!this.touchStartX || !this.touchStartY) return;
+    if (!this.touchStartX || !this.touchStartY) {return;}
 
     const touchEndX = event.changedTouches[0].clientX;
     const touchEndY = event.changedTouches[0].clientY;
@@ -606,7 +606,7 @@ class ImageLightbox extends HTMLElement {
    * Open the lightbox with a specific image
    */
   open(imageIndex = 0) {
-    if (this.images.length === 0) return;
+    if (this.images.length === 0) {return;}
 
     this.currentImageIndex = Math.max(
       0,
@@ -659,7 +659,7 @@ class ImageLightbox extends HTMLElement {
    * Close the lightbox
    */
   close() {
-    if (!this.isOpen) return;
+    if (!this.isOpen) {return;}
 
     this.isOpen = false;
 
@@ -687,7 +687,7 @@ class ImageLightbox extends HTMLElement {
    * Show the previous image
    */
   showPrevious() {
-    if (this.images.length <= 1) return;
+    if (this.images.length <= 1) {return;}
 
     const newIndex =
       this.currentImageIndex > 0
@@ -713,7 +713,7 @@ class ImageLightbox extends HTMLElement {
    * Show the next image
    */
   showNext() {
-    if (this.images.length <= 1) return;
+    if (this.images.length <= 1) {return;}
 
     const newIndex =
       this.currentImageIndex < this.images.length - 1
@@ -739,7 +739,7 @@ class ImageLightbox extends HTMLElement {
    * Load an image by index
    */
   loadImage(index) {
-    if (!this.images[index]) return;
+    if (!this.images[index]) {return;}
 
     const imageData = this.images[index];
 

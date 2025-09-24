@@ -22,30 +22,6 @@ const STATIC_ASSETS = [
   "/assets/favicons/apple-icon.png",
 ];
 
-// Runtime caching strategies
-const CACHE_STRATEGIES = {
-  // Cache first for static assets
-  static: {
-    cacheName: STATIC_CACHE,
-    strategy: "cache-first",
-  },
-  // Network first for HTML pages
-  pages: {
-    cacheName: CACHE_NAME,
-    strategy: "network-first",
-  },
-  // Cache first for images
-  images: {
-    cacheName: IMAGE_CACHE,
-    strategy: "cache-first",
-  },
-  // Cache first for fonts
-  fonts: {
-    cacheName: FONT_CACHE,
-    strategy: "cache-first",
-  },
-};
-
 self.addEventListener("install", (event) => {
   console.log("[Service Worker] Installing");
 
@@ -100,7 +76,7 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(request.url);
 
   // Skip non-GET requests
-  if (request.method !== "GET") return;
+  if (request.method !== "GET") {return;}
 
   // Skip external requests (except allowed domains)
   if (

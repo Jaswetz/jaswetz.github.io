@@ -1,8 +1,8 @@
 .error-page {
-  min-height: calc(100vh - var(--header-height) - var(--footer-height));
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
   padding: var(--spacing-xl);
   text-align: center;
 }
@@ -12,20 +12,20 @@
 }
 
 .error-content h1 {
-  font-size: var(--font-size-4xl);
-  color: var(--color-primary);
   margin-bottom: var(--spacing-md);
+  color: var(--color-primary);
+  font-size: var(--font-size-4xl);
 }
 
 .error-content h2 {
-  font-size: var(--font-size-2xl);
   margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-2xl);
 }
 
 .error-content p {
-  font-size: var(--font-size-lg);
   margin-bottom: var(--spacing-xl);
   color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
 }
 
 .error-nav {

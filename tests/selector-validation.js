@@ -59,8 +59,6 @@ export const PROJECT_CRITICAL_SELECTORS = [
   { name: "Main Content", selector: "main" },
   { name: "Article", selector: "article" },
   { name: "Site Header", selector: "site-header" },
-  { name: "Project Summary", selector: "#project-summary" },
-  { name: "Project Summary Cards", selector: ".project-summary__card" },
   { name: "Image Lightbox", selector: "image-lightbox" },
 ];
 

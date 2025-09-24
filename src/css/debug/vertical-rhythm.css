@@ -6,41 +6,41 @@
 .debug-rhythm::before {
   content: "";
   position: absolute;
-  inset: 0;
+  z-index: 9999;
   background-image: linear-gradient(
     to bottom,
     rgb(255 0 0 / 10%) 1px,
     transparent 1px
   );
   background-size: 100% 0.25rem; /* 4px = 0.25rem */
+  inset: 0;
   pointer-events: none;
-  z-index: 9999;
 }
 
 /* Optional: Add markers for larger intervals */
 .debug-rhythm::after {
   content: "";
   position: absolute;
-  inset: 0;
+  z-index: 9998;
   background-image: linear-gradient(
     to bottom,
     rgb(0 0 255 / 10%) 1px,
     transparent 1px
   );
   background-size: 100% 1rem; /* 16px = 1rem */
+  inset: 0;
   pointer-events: none;
-  z-index: 9998;
 }
 
 /* Add labels for the grid lines */
 .debug-rhythm .grid-label {
   position: fixed;
   right: 1rem;
-  font-family: var(--font-family-monospace);
-  font-size: 0.75rem;
-  color: rgb(0 0 0 / 50%);
-  pointer-events: none;
   z-index: 10000;
+  color: rgb(0 0 0 / 50%);
+  font-size: 0.75rem;
+  font-family: var(--font-family-monospace);
+  pointer-events: none;
 }
 
 /* Add this class to your body or container to enable the grid */
@@ -51,27 +51,27 @@ body.debug-rhythm-enabled {
 body.debug-rhythm-enabled::before {
   content: "";
   position: fixed;
-  inset: 0;
+  z-index: 9999;
   background-image: linear-gradient(
     to bottom,
     rgb(255 0 0 / 10%) 1px,
     transparent 1px
   );
   background-size: 100% 0.25rem;
+  inset: 0;
   pointer-events: none;
-  z-index: 9999;
 }
 
 body.debug-rhythm-enabled::after {
   content: "";
   position: fixed;
-  inset: 0;
+  z-index: 9998;
   background-image: linear-gradient(
     to bottom,
     rgb(0 0 255 / 10%) 1px,
     transparent 1px
   );
   background-size: 100% 1rem;
+  inset: 0;
   pointer-events: none;
-  z-index: 9998;
 }

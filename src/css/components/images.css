@@ -6,17 +6,17 @@
 
 /* Base image styles */
 img {
+    display: block;
     max-width: 100%;
     height: auto;
-    display: block;
 }
 
 /* Lazy loading states */
 img.loading {
+    min-height: 200px;
     background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
     background-size: 200% 100%;
     animation: loading 1.5s infinite;
-    min-height: 200px;
 
     /* Prevent layout shift */
 }
@@ -26,22 +26,22 @@ img.loaded {
 }
 
 img.error {
-    background: #f8f8f8;
-    border: 2px dashed #ddd;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 200px;
-    position: relative;
+    border: 2px dashed #ddd;
+    background: #f8f8f8;
 }
 
 img.error::after {
     content: '🖼️ Image failed to load';
-    color: #666;
-    font-size: 0.9rem;
     position: absolute;
     top: 50%;
     left: 50%;
+    color: #666;
+    font-size: 0.9rem;
     transform: translate(-50%, -50%);
 }
 
@@ -73,8 +73,8 @@ img.error::after {
 
 /* Hero background optimizations */
 .hero-section {
-    background-size: cover;
     background-position: center;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
@@ -93,9 +93,9 @@ img.error::after {
 
 /* Profile images */
 .profile-image {
-    border-radius: 50%;
     width: 150px;
     height: 150px;
+    border-radius: 50%;
     object-fit: cover;
 }
 
@@ -174,8 +174,8 @@ picture img {
 /* Respect reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
     img.loading {
-        animation: none;
         background: #f0f0f0;
+        animation: none;
     }
 
     img.loaded {
