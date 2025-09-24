@@ -252,7 +252,7 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker
       .register(new URL('./service-worker.js', import.meta.url))
       .then(registration => {
-        console.log(
+        console.warn(
           'Service Worker registered successfully:',
           registration.scope
         );
@@ -267,7 +267,7 @@ if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.controller
               ) {
                 // New version available
-                console.log('New service worker version available');
+                console.warn('New service worker version available');
                 // Optionally show user notification for update
               }
             });

@@ -5,7 +5,7 @@
 
 class SimpleAnalytics {
   constructor(options = {}) {
-    this.measurementId = options.measurementId || "G-Z5DNDF44NG";
+    this.measurementId = options.measurementId || 'G-Z5DNDF44NG';
     this.isInitialized = false;
     this.consentGiven = this._checkConsent();
     this.isDevelopment = this._isDevelopment();
@@ -17,7 +17,9 @@ class SimpleAnalytics {
    * Initialize analytics
    */
   async init() {
-    if (this.isInitialized) {return true;}
+    if (this.isInitialized) {
+      return true;
+    }
 
     try {
       // Wait for gtag to be available or create fallback
@@ -37,7 +39,7 @@ class SimpleAnalytics {
 
       return true;
     } catch (error) {
-      this._handleError("initialization", error);
+      this._handleError('initialization', error);
       this.fallbackMode = true;
       this.isInitialized = true; // Allow fallback mode
       return false;
@@ -48,9 +50,9 @@ class SimpleAnalytics {
    * Wait for Google Analytics gtag to load
    */
   _waitForGtag() {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       // Check if we're in a browser environment
-      if (typeof window === "undefined") {
+      if (typeof window === 'undefined') {
         this.fallbackMode = true;
         resolve();
         return;
@@ -90,14 +92,16 @@ class SimpleAnalytics {
    * Configure Google Analytics 4
    */
   _configureGA4() {
-    if (this.fallbackMode || typeof document === "undefined") {return;}
+    if (this.fallbackMode || typeof document === 'undefined') {
+      return;
+    }
 
     // Initialize dataLayer if needed
     window.dataLayer = window.dataLayer || [];
 
     // Configure GA4
-    window.gtag("js", new Date());
-    window.gtag("config", this.measurementId, {
+    window.gtag('js', new Date());
+    window.gtag('config', this.measurementId, {
       page_title: document.title,
       page_location: window.location.href,
       allow_ad_personalization_signals: false,
@@ -111,8 +115,8 @@ class SimpleAnalytics {
    */
   _checkConsent() {
     try {
-      const consent = localStorage.getItem("analytics-consent");
-      return consent === "granted";
+      const consent = localStorage.getItem('analytics-consent');
+      return consent === 'granted';
     } catch {
       return false; // Default to no consent if localStorage fails
     }
@@ -123,7 +127,7 @@ class SimpleAnalytics {
    */
   setConsent(granted) {
     try {
-      localStorage.setItem("analytics-consent", granted ? "granted" : "denied");
+      localStorage.setItem('analytics-consent', granted ? 'granted' : 'denied');
       this.consentGiven = granted;
 
       if (granted && this.isInitialized) {
@@ -138,13 +142,13 @@ class SimpleAnalytics {
    * Check if in development environment
    */
   _isDevelopment() {
-    if (typeof window === "undefined") {
+    if (typeof window === 'undefined') {
       return true; // Assume development if no window (Node.js environment)
     }
     return (
-      window.location.hostname === "localhost" ||
-      window.location.hostname === "127.0.0.1" ||
-      window.location.port !== ""
+      window.location.hostname === 'localhost' ||
+      window.location.hostname === '127.0.0.1' ||
+      window.location.port !== ''
     );
   }
 
@@ -152,10 +156,12 @@ class SimpleAnalytics {
    * Enable automatic tracking
    */
   _enableAutoTracking() {
-    if (typeof document === "undefined") {return;}
+    if (typeof document === 'undefined') {
+      return;
+    }
 
     // Track page visibility changes
-    document.addEventListener("visibilitychange", () => {
+    document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
         this.trackTimeOnPage();
       }
@@ -163,7 +169,7 @@ class SimpleAnalytics {
 
     // Track scroll depth
     let maxScrollDepth = 0;
-    window.addEventListener("scroll", () => {
+    window.addEventListener('scroll', () => {
       const scrollDepth = Math.round(
         (window.scrollY /
           (document.documentElement.scrollHeight - window.innerHeight)) *
@@ -186,22 +192,24 @@ class SimpleAnalytics {
    * Initialize Core Web Vitals monitoring (simplified)
    */
   _initCoreWebVitals() {
-    if (typeof window === "undefined" || this.isDevelopment) {return;}
+    if (typeof window === 'undefined' || this.isDevelopment) {
+      return;
+    }
 
     // Simplified LCP tracking
-    if ("PerformanceObserver" in window) {
+    if ('PerformanceObserver' in window) {
       try {
-        const observer = new PerformanceObserver((list) => {
+        const observer = new PerformanceObserver(list => {
           const entries = list.getEntries();
           if (entries.length > 0) {
             const lastEntry = entries[entries.length - 1];
-            this.trackCoreWebVital("LCP", lastEntry.startTime);
+            this.trackCoreWebVital('LCP', lastEntry.startTime);
           }
         });
-        observer.observe({ entryTypes: ["largest-contentful-paint"] });
+        observer.observe({ entryTypes: ['largest-contentful-paint'] });
         setTimeout(() => observer.disconnect(), 5000);
       } catch (error) {
-        this._handleError("Core Web Vitals", error);
+        this._handleError('Core Web Vitals', error);
       }
     }
   }
@@ -215,15 +223,15 @@ class SimpleAnalytics {
       if (!this.consentGiven) {
         this.queue.push({ eventName, parameters });
       } else if (this.fallbackMode) {
-        console.log("Analytics (fallback):", eventName, parameters);
+        console.warn('Analytics (fallback):', eventName, parameters);
       }
       return;
     }
 
     try {
-      window.gtag("event", eventName, parameters);
+      window.gtag('event', eventName, parameters);
     } catch (error) {
-      this._handleError("sendToGA4", error);
+      this._handleError('sendToGA4', error);
     }
   }
 
@@ -231,7 +239,9 @@ class SimpleAnalytics {
    * Process queued events
    */
   _processQueue() {
-    if (!this.consentGiven) {return;}
+    if (!this.consentGiven) {
+      return;
+    }
 
     this.queue.forEach(({ eventName, parameters }) => {
       this._sendToGA4(eventName, parameters);
@@ -252,11 +262,11 @@ class SimpleAnalytics {
   /**
    * Track project clicks/views
    */
-  trackProjectClick(projectName, projectType = "unknown") {
-    this._sendToGA4("project_interaction", {
+  trackProjectClick(projectName, projectType = 'unknown') {
+    this._sendToGA4('project_interaction', {
       project_name: projectName,
       project_type: projectType,
-      interaction_type: "click",
+      interaction_type: 'click',
     });
   }
 
@@ -264,17 +274,17 @@ class SimpleAnalytics {
    * Track resume downloads
    */
   trackResumeDownload() {
-    this._sendToGA4("file_download", {
-      file_name: "resume",
-      file_type: "pdf",
+    this._sendToGA4('file_download', {
+      file_name: 'resume',
+      file_type: 'pdf',
     });
   }
 
   /**
    * Track contact form interactions
    */
-  trackContactForm(action, method = "unknown") {
-    this._sendToGA4("contact_form", {
+  trackContactForm(action, method = 'unknown') {
+    this._sendToGA4('contact_form', {
       action: action,
       method: method,
     });
@@ -283,8 +293,8 @@ class SimpleAnalytics {
   /**
    * Track external link clicks
    */
-  trackExternalLink(url, linkText = "") {
-    this._sendToGA4("external_link", {
+  trackExternalLink(url, linkText = '') {
+    this._sendToGA4('external_link', {
       link_url: url,
       link_text: linkText,
     });
@@ -301,7 +311,7 @@ class SimpleAnalytics {
           (document.documentElement.scrollHeight - window.innerHeight)) *
           100
       );
-    this._sendToGA4("scroll_depth", { scroll_depth: scrollDepth });
+    this._sendToGA4('scroll_depth', { scroll_depth: scrollDepth });
   }
 
   /**
@@ -313,14 +323,14 @@ class SimpleAnalytics {
       return;
     }
     const timeSpent = Math.round((Date.now() - this.pageStartTime) / 1000);
-    this._sendToGA4("time_on_page", { time_spent_seconds: timeSpent });
+    this._sendToGA4('time_on_page', { time_spent_seconds: timeSpent });
   }
 
   /**
    * Track Core Web Vitals
    */
   trackCoreWebVital(metric, value) {
-    this._sendToGA4("core_web_vitals", {
+    this._sendToGA4('core_web_vitals', {
       metric: metric,
       value: Math.round(value * 100) / 100, // Round to 2 decimal places
       page_path: window.location.pathname,
@@ -332,10 +342,10 @@ class SimpleAnalytics {
    */
   trackCaseStudyInteraction(
     caseStudyName,
-    interactionType = "view",
-    section = "body"
+    interactionType = 'view',
+    section = 'body'
   ) {
-    this._sendToGA4("case_study_interaction", {
+    this._sendToGA4('case_study_interaction', {
       case_study_name: caseStudyName,
       action: interactionType,
       section: section,
@@ -346,7 +356,7 @@ class SimpleAnalytics {
    * Track case study completion
    */
   trackCaseStudyCompletion(caseStudyName) {
-    this.trackCaseStudyInteraction(caseStudyName, "complete");
+    this.trackCaseStudyInteraction(caseStudyName, 'complete');
   }
   getStatus() {
     return {
@@ -363,7 +373,7 @@ class SimpleAnalytics {
 const analytics = new SimpleAnalytics();
 
 // Auto-initialize only in browser environment
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // Set up global API immediately (synchronously)
   const globalAPI = {
     trackProjectClick: (...args) => analytics.trackProjectClick(...args),
@@ -375,7 +385,7 @@ if (typeof window !== "undefined") {
     trackImageLightbox: (...args) => analytics.trackImageLightbox(...args),
     trackCaseStudyCompletion: (...args) =>
       analytics.trackCaseStudyCompletion(...args),
-    setConsent: (granted) => analytics.setConsent(granted),
+    setConsent: granted => analytics.setConsent(granted),
     getStatus: () => analytics.getStatus(),
   };
 
@@ -385,15 +395,15 @@ if (typeof window !== "undefined") {
   // Initialize analytics asynchronously
   analytics
     .init()
-    .then((success) => {
+    .then(success => {
       if (success) {
-        console.log("Portfolio Analytics initialized successfully");
+        console.warn('Portfolio Analytics initialized successfully');
       } else {
-        console.log("Portfolio Analytics initialized in fallback mode");
+        console.warn('Portfolio Analytics initialized in fallback mode');
       }
     })
-    .catch((error) => {
-      console.warn("Portfolio Analytics initialization failed:", error);
+    .catch(error => {
+      console.warn('Portfolio Analytics initialization failed:', error);
     });
 }
 

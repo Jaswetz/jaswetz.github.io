@@ -23,17 +23,17 @@ const STATIC_ASSETS = [
 ];
 
 self.addEventListener('install', event => {
-  console.log('[Service Worker] Installing');
+  console.warn('[Service Worker] Installing');
 
   event.waitUntil(
     caches
       .open(STATIC_CACHE)
       .then(cache => {
-        console.log('[Service Worker] Caching static assets');
+        console.warn('[Service Worker] Caching static assets');
         return cache.addAll(STATIC_ASSETS);
       })
       .then(() => {
-        console.log('[Service Worker] Installation complete');
+        console.warn('[Service Worker] Installation complete');
         return self.skipWaiting();
       })
       .catch(error => {
@@ -43,7 +43,7 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('activate', event => {
-  console.log('[Service Worker] Activating');
+  console.warn('[Service Worker] Activating');
 
   event.waitUntil(
     caches
@@ -58,14 +58,14 @@ self.addEventListener('activate', event => {
               cacheName !== FONT_CACHE &&
               !cacheName.startsWith(CACHE_NAME)
             ) {
-              console.log('[Service Worker] Deleting old cache:', cacheName);
+              console.warn('[Service Worker] Deleting old cache:', cacheName);
               return caches.delete(cacheName);
             }
           })
         );
       })
       .then(() => {
-        console.log('[Service Worker] Activation complete');
+        console.warn('[Service Worker] Activation complete');
         return self.clients.claim();
       })
   );
@@ -131,7 +131,7 @@ async function handlePageRequest(request) {
       return networkResponse;
     }
   } catch (error) {
-    console.log(
+    console.warn(
       '[Service Worker] Network failed, trying cache for:',
       request.url
     );
@@ -170,7 +170,7 @@ async function handleImageRequest(request) {
     }
     return networkResponse;
   } catch (error) {
-    console.log('[Service Worker] Image fetch failed:', request.url);
+    console.warn('[Service Worker] Image fetch failed:', request.url);
     // Return a placeholder or cached version if available
     return new Response('', { status: 404 });
   }
@@ -194,7 +194,7 @@ async function handleFontRequest(request) {
     }
     return networkResponse;
   } catch (error) {
-    console.log('[Service Worker] Font fetch failed:', request.url);
+    console.warn('[Service Worker] Font fetch failed:', request.url);
     return new Response('', { status: 404 });
   }
 }
@@ -217,7 +217,7 @@ async function handleStaticRequest(request) {
     }
     return networkResponse;
   } catch (error) {
-    console.log('[Service Worker] Static asset fetch failed:', request.url);
+    console.warn('[Service Worker] Static asset fetch failed:', request.url);
     return new Response('', { status: 404 });
   }
 }
@@ -243,6 +243,6 @@ if (
 
 function syncAnalyticsData() {
   // Implementation for syncing queued analytics data
-  console.log('[Service Worker] Syncing analytics data');
+  console.warn('[Service Worker] Syncing analytics data');
   // This would typically send queued analytics events to your server
 }
