@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -58,22 +58,22 @@
     <script>
       // Only load GA4 in production environment
       if (
-        window.location.hostname !== "localhost" &&
-        window.location.hostname !== "127.0.0.1" &&
-        !window.location.hostname.includes("127.0.0.1") &&
-        window.location.port === ""
+        window.location.hostname !== 'localhost' &&
+        window.location.hostname !== '127.0.0.1' &&
+        !window.location.hostname.includes('127.0.0.1') &&
+        window.location.port === ''
       ) {
         // Load GA4 script with better error handling
-        var script = document.createElement("script");
+        var script = document.createElement('script');
         script.async = true;
-        script.src = "https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG";
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG';
         script.onerror = function () {
           console.warn(
-            "Google Analytics script failed to load - this may be due to ad blockers or network issues"
+            'Google Analytics script failed to load - this may be due to ad blockers or network issues'
           );
         };
         script.onload = function () {
-          console.log("Google Analytics script loaded successfully");
+          console.log('Google Analytics script loaded successfully');
         };
         document.head.appendChild(script);
       }
@@ -166,7 +166,7 @@
               >Lead UX Designer</span
             >
             <span class="hero--project__timeline" aria-label="Timeline"
-              >Multi-year project</span
+              >4 Month Project</span
             >
           </div>
         </div>
@@ -218,58 +218,6 @@
                     comprehend and enjoyable to use—for everybody from the
                     intern to the data scientist—and can be used by multiple
                     users for different steps.
-                  </p>
-                </div>
-
-                <div
-                  class="card--outline card__text project-summary__card"
-                  role="group"
-                  aria-labelledby="role-heading"
-                >
-                  <h3 id="role-heading">Role</h3>
-                  <p>
-                    Lead UX Designer responsible for user research, interface
-                    design, workflow optimization, and accessibility across the
-                    Detroit Connect Direct platform.
-                  </p>
-                </div>
-
-                <div
-                  class="card--outline card__text project-summary__card"
-                  role="group"
-                  aria-labelledby="timeline-heading"
-                >
-                  <h3 id="timeline-heading">Timeline</h3>
-                  <p>
-                    Multi-year project spanning research, design, prototyping,
-                    and iterative development phases with continuous user
-                    feedback integration.
-                  </p>
-                </div>
-
-                <div
-                  class="card--outline card__text project-summary__card"
-                  role="group"
-                  aria-labelledby="outcome-heading"
-                >
-                  <h3 id="outcome-heading">Outcome</h3>
-                  <p>
-                    Successfully launched platform that simplified complex fleet
-                    data access, generated new revenue streams, and strengthened
-                    customer relationships.
-                  </p>
-                </div>
-
-                <div
-                  class="card--outline card__text project-summary__card"
-                  role="group"
-                  aria-labelledby="impact-heading"
-                >
-                  <h3 id="impact-heading">Impact</h3>
-                  <p>
-                    Created tiered data plan offerings that became a key revenue
-                    driver while improving user experience across all technical
-                    skill levels.
                   </p>
                 </div>
               </div>
@@ -914,16 +862,16 @@
 
     <!-- Password Protection and Performance Optimization -->
     <script type="module">
-      import { protectCaseStudy } from "../js/password-protection-init.js";
+      import { protectCaseStudy } from '../js/password-protection-init.js';
 
-      import analytics from "../js/analytics/simple-analytics.js";
+      import analytics from '../js/analytics/simple-analytics.js';
 
-      protectCaseStudy("project-daimler-dcd");
+      protectCaseStudy('project-daimler-dcd');
 
       // Initialize analytics for case study
-      document.addEventListener("DOMContentLoaded", () => {
+      document.addEventListener('DOMContentLoaded', () => {
         // Initialize case study specific analytics tracking
-        analytics.trackCaseStudyInteraction("daimler-dcd", "view");
+        analytics.trackCaseStudyInteraction('daimler-dcd', 'view');
       });
     </script>
 
@@ -934,10 +882,10 @@
 
     <!-- Sidebar Navigation Active State Script -->
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const sections = document.querySelectorAll("section[id]");
-        const navLinks = document.querySelectorAll(".sidebar-nav a");
-        const header = document.querySelector("site-header");
+      document.addEventListener('DOMContentLoaded', function () {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.sidebar-nav a');
+        const header = document.querySelector('site-header');
 
         function getHeaderHeight() {
           return header ? header.offsetHeight : 80;
@@ -946,34 +894,34 @@
         function updateActiveNav() {
           const scrollY = window.pageYOffset;
           const headerHeight = getHeaderHeight();
-          let current = "";
+          let current = '';
 
-          sections.forEach((section) => {
+          sections.forEach(section => {
             const sectionTop = section.offsetTop - headerHeight - 50;
             if (scrollY >= sectionTop) {
-              current = section.getAttribute("id");
+              current = section.getAttribute('id');
             }
           });
 
-          navLinks.forEach((link) => {
-            link.classList.remove("active");
-            if (link.getAttribute("href") === "#" + current) {
-              link.classList.add("active");
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+              link.classList.add('active');
             }
           });
         }
 
         // Update on scroll
-        window.addEventListener("scroll", updateActiveNav);
+        window.addEventListener('scroll', updateActiveNav);
 
         // Update on load
         updateActiveNav();
 
         // Smooth scroll for navigation links
-        navLinks.forEach((link) => {
-          link.addEventListener("click", function (e) {
+        navLinks.forEach(link => {
+          link.addEventListener('click', function (e) {
             e.preventDefault();
-            const targetId = this.getAttribute("href").substring(1);
+            const targetId = this.getAttribute('href').substring(1);
             const targetSection = document.getElementById(targetId);
 
             if (targetSection) {
@@ -984,7 +932,7 @@
 
               window.scrollTo({
                 top: Math.max(0, offsetPosition),
-                behavior: "smooth",
+                behavior: 'smooth',
               });
             }
           });

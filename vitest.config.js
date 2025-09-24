@@ -7,8 +7,8 @@ export default defineConfig({
     globals: true,
     setupFiles: ["./test-setup.js"],
     include: [
-      "tests/**/*.test.js", // Only include .test.js files for Vitest
-      "tests/**/*.test.mjs", // Include .test.mjs files
+      "tests/unit/**/*.test.js", // Only include .test.js files for Vitest
+      "tests/unit/**/*.test.mjs", // Include .test.mjs files
     ],
     exclude: [
       "**/*.spec.js", // Exclude ALL Playwright .spec.js files

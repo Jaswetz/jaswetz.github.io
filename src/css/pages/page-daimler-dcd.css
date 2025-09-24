@@ -3,6 +3,7 @@
    ========================================================================== */
 
 @layer pages {
+
     /* Animation Examples */
     .animation-examples {
         margin-top: var(--space-xl);
@@ -42,7 +43,6 @@
     /* Term Definitions */
     .term-definition h4 {
         margin-bottom: var(--space-s);
-        color: var(--color-primary);
         font-weight: var(--font-weight-semibold);
     }
 
@@ -75,9 +75,6 @@
             padding-top: var(--space-xl);
         }
 
-        h3 {
-            color: var(--color-primary);
-        }
     }
 
     .project-section__user .project__img {
