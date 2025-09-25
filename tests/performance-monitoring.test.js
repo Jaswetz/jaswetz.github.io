@@ -367,7 +367,7 @@ describe('Performance Monitoring System', () => {
       const htmlContent = readFileSync(result.outputFile, 'utf8');
       expect(htmlContent).toContain('Core Web Vitals');
       expect(htmlContent).toContain('Bundle Size Analysis');
-      expect(htmlContent).toContain('Chart.js');
+      expect(htmlContent).toContain('chart.js');
       expect(htmlContent).not.toContain('No Performance Data Available');
     });
 

@@ -194,7 +194,7 @@
           <div class="metric">
             <span class="metric-name">LCP (Largest Contentful Paint)</span>
             <div>
-              <span class="metric-value poor">5158ms</span>
+              <span class="metric-value poor">6353ms</span>
             </div>
           </div>
 
@@ -205,7 +205,7 @@
           <div class="metric">
             <span class="metric-name">FID (First Input Delay)</span>
             <div>
-              <span class="metric-value good">28ms</span>
+              <span class="metric-value good">41ms</span>
             </div>
           </div>
 
@@ -216,7 +216,7 @@
           <div class="metric">
             <span class="metric-name">CLS (Cumulative Layout Shift)</span>
             <div>
-              <span class="metric-value good">0.004</span>
+              <span class="metric-value good">0.003</span>
             </div>
           </div>
 
@@ -227,7 +227,7 @@
           <div class="metric">
             <span class="metric-name">Performance Score</span>
             <div>
-              <span class="metric-value good">61</span>
+              <span class="metric-value good">64</span>
             </div>
           </div>
         </div>
@@ -305,7 +305,7 @@
         </div>
       </div>
 
-      <div class="update-info">Last updated: 9/24/2025, 3:56:25 PM</div>
+      <div class="update-info">Last updated: 9/25/2025, 1:03:34 PM</div>
     </div>
 
     <script>
@@ -313,12 +313,24 @@
         new Chart(document.getElementById('coreWebVitals'), {
           type: 'line',
           data: {
-            labels: ['9/24/2025', '9/24/2025', '9/24/2025'],
+            labels: [
+              '9/24/2025',
+              '9/24/2025',
+              '9/24/2025',
+              '9/24/2025',
+              '9/24/2025',
+              '9/24/2025',
+              '9/24/2025',
+              '9/24/2025',
+              '9/24/2025',
+            ],
             datasets: [
               {
                 label: 'LCP (ms)',
                 data: [
                   5108.861124999999, 5078.3412499999995, 5286.601600000001,
+                  11315.795199999997, 4874.9619999999995, 2626.1376, 5445.9832,
+                  14708.2555, 2727.7806250000003,
                 ],
                 borderColor: 'rgb(255, 99, 132)',
                 backgroundColor: 'rgba(255, 99, 132, 0.1)',
@@ -326,7 +338,7 @@
               },
               {
                 label: 'FID (ms)',
-                data: [24, 19, 41.499999999999545],
+                data: [24, 19, 41.499999999999545, 16, 79, 55.5, 54, 16, 66],
                 borderColor: 'rgb(54, 162, 235)',
                 backgroundColor: 'rgba(54, 162, 235, 0.1)',
                 yAxisID: 'y',
@@ -335,6 +347,8 @@
                 label: 'CLS',
                 data: [
                   3.173551468179304, 2.6205465570540896, 5.016483039334237,
+                  2.518963150131037, 3.087867556244561, 3.28288751941318,
+                  2.681912905459566, 2.681912905459566, 2.681912905459566,
                 ],
                 borderColor: 'rgb(255, 205, 86)',
                 backgroundColor: 'rgba(255, 205, 86, 0.1)',
@@ -379,11 +393,21 @@
         new Chart(document.getElementById('performanceScore'), {
           type: 'line',
           data: {
-            labels: ['9/24/2025', '9/24/2025', '9/24/2025'],
+            labels: [
+              '9/24/2025',
+              '9/24/2025',
+              '9/24/2025',
+              '9/24/2025',
+              '9/24/2025',
+              '9/24/2025',
+              '9/24/2025',
+              '9/24/2025',
+              '9/24/2025',
+            ],
             datasets: [
               {
                 label: 'Performance Score',
-                data: [62, 62, 60],
+                data: [62, 62, 60, 60, 63, 76, 62, 59, 75],
                 borderColor: 'rgb(75, 192, 192)',
                 backgroundColor: 'rgba(75, 192, 192, 0.1)',
                 fill: true,

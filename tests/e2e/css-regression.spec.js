@@ -153,7 +153,7 @@ test.describe('CSS Performance Validation', () => {
   test('No unused CSS classes in key templates', async ({ page }) => {
     // Read the main HTML file
     const htmlContent = fs.readFileSync(
-      path.join(__dirname, '../src/index.html'),
+      path.join(__dirname, '../../src/index.html'),
       'utf8'
     );
 
