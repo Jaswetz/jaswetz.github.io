@@ -68,12 +68,10 @@
         script.async = true;
         script.src = 'https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG';
         script.onerror = function () {
-          console.warn(
-            'Google Analytics script failed to load - this may be due to ad blockers or network issues'
-          );
+          // Google Analytics script failed to load
         };
         script.onload = function () {
-          console.log('Google Analytics script loaded successfully');
+          // Google Analytics script loaded
         };
         document.head.appendChild(script);
       }
@@ -137,15 +135,6 @@
     />
     <link rel="apple-touch-icon" href="../assets/favicons/apple-icon.png" />
   </head>
-  <script>
-    console.log('Project page loaded, checking CSS...');
-    // Check if CSS is loaded
-    setTimeout(() => {
-      const computed = getComputedStyle(document.body);
-      console.log('Body background:', computed.backgroundColor);
-      console.log('Body font-family:', computed.fontFamily);
-    }, 1000);
-  </script>
   <body class="project daimler-dcd">
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <header>
@@ -629,8 +618,8 @@
                   <figcaption id="wireframe-caption">
                     Detailed wireframes showing the data configuration interface
                     structure (Static image - original animation optimized for
-                    performance) (Static image - original animation optimized
-                    for performance)
+                    performance) (Static image - original animation optimized for
+                    performance)
                   </figcaption>
                 </figure>
                 <figure role="img" aria-labelledby="user-flow-caption">
@@ -705,8 +694,8 @@
                   <figcaption id="dcd-animation-caption">
                     Smooth transitions guide users through configuration steps
                     (Static image - original animation optimized for
-                    performance) (Static image - original animation optimized
-                    for performance)
+                    performance) (Static image - original animation optimized for
+                    performance)
                   </figcaption>
                 </figure>
 
@@ -720,8 +709,8 @@
                   <figcaption id="checkbox-animation-caption">
                     Micro-interactions provide immediate feedback for user
                     actions (Static image - original animation optimized for
-                    performance) (Static image - original animation optimized
-                    for performance)
+                    performance) (Static image - original animation optimized for
+                    performance)
                   </figcaption>
                 </figure>
               </div>

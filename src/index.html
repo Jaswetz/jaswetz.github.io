@@ -129,13 +129,12 @@
         var script = document.createElement('script');
         script.async = true;
         script.src = 'https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG';
-        script.onerror = function () {
-          console.warn(
-            'Google Analytics script failed to load - this may be due to ad blockers or network issues'
-          );
-        };
-        script.onload = function () {
-          console.log('Google Analytics script loaded successfully');
+        script.onload = function() {
+          // Google Analytics script loaded
+=======
+        script.onload = function() {
+          // Google Analytics script loaded
+>>>>>>> 95c43202b48c50c3a64f401ee57082423e020f48
         };
         document.head.appendChild(script);
       }

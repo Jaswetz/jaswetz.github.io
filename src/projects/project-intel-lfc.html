@@ -5,49 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Intel LFC: Immersive Soccer App | Jason Swetzoff</title>
 
-    <!-- SEO Meta Tags -->
-    <meta
-      name="description"
-      content="Case study: Leading UX design for Intel's groundbreaking Immersive Media project, developing native Android and iOS apps that leveraged FreeD, Voke VR, and innovative clip tagging technology to revolutionize soccer fan engagement."
-    />
-    <meta
-      name="keywords"
-      content="UX Design, Immersive Media, Intel, Liverpool FC, Mobile App Design, VR Technology, FreeD, Android iOS Development, Sports Technology"
-    />
-    <meta name="author" content="Jason Swetzoff" />
-    <meta name="robots" content="index, follow" />
-
-    <!-- Open Graph / Facebook -->
-    <meta
-      property="og:title"
-      content="Intel LFC: Immersive Soccer App | Jason Swetzoff"
-    />
-    <meta
-      property="og:description"
-      content="Case study: Leading UX design for Intel's groundbreaking Immersive Media project, developing native Android and iOS apps that leveraged FreeD, Voke VR, and innovative clip tagging technology to revolutionize soccer fan engagement."
-    />
-    <meta property="og:type" content="article" />
-    <meta
-      property="og:url"
-      content="https://jaswetz.github.io/projects/project-intel-lfc.html"
-    />
-    <meta
-      property="og:image"
-      content="https://jaswetz.github.io/img/projects/lfc/ios-android.png"
-    />
-    <meta property="og:site_name" content="Jason Swetzoff - UX Portfolio" />
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Intel LFC: Immersive Soccer App" />
-    <meta
-      name="twitter:description"
-      content="Case study: Leading UX design for Intel's groundbreaking Immersive Media project, developing native Android and iOS apps that leveraged FreeD, Voke VR, and innovative clip tagging technology to revolutionize soccer fan engagement."
-    />
-    <meta
-      name="twitter:image"
-      content="https://jaswetz.github.io/img/projects/lfc/ios-android.png"
-    />
+    <!-- Google Analytics 4 - Only load in production -->
+    <script>
+      // Only load GA4 in production environment
+      if (
+        window.location.hostname !== "localhost" &&
+        window.location.hostname !== "127.0.0.1" &&
+        !window.location.hostname.includes("127.0.0.1") &&
+        window.location.port === ""
+      ) {
+        // Load GA4 script with better error handling
+        var script = document.createElement("script");
+        script.async = true;
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG";
+        script.onerror = function () {
+          // Google Analytics script failed to load
+        };
+        script.onload = function () {
+          // Google Analytics script loaded
+        };
+        document.head.appendChild(script);
+      }
+    </script>
+    <!-- Google Analytics 4 -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG"
+    ></script>
 
     <!-- Font optimization -->
     <!-- Preconnect to Google Fonts for faster loading -->
@@ -877,6 +861,7 @@
         >
       </nav> -->
     </main>
+
     <site-footer></site-footer>
 
     <!-- Image Lightbox Component -->
@@ -899,9 +884,14 @@
       });
     </script>
 
+    <!-- Initialize Feather Icons -->
+    <script>
+      feather.replace();
+    </script>
+
     <!-- Sidebar Navigation Active State Script -->
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener('DOMContentLoaded', function () {
         const sections = document.querySelectorAll("section[id]");
         const navLinks = document.querySelectorAll(".sidebar-nav a");
         const header = document.querySelector("site-header");

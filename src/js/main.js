@@ -243,8 +243,106 @@ document.addEventListener('keydown', function (event) {
 
 // Enhanced Image Loader is auto-initialized in its own module
 
-// Simple analytics system initialized automatically
-// Use window.portfolioAnalytics for manual tracking
+// Initialize Advanced Analytics System
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    // Initializing Advanced Analytics System
+
+    // Get the main analytics instance
+    const { default: analytics } = await import("./analytics/index.js");
+
+    // Initialize core analytics modules
+    const conversionTracker = new ConversionTracker(analytics.manager);
+    const crossPlatformIntegration = new CrossPlatformIntegration(
+      analytics.manager,
+      analytics.tracker
+    );
+    const userJourneyAnalyzer = new UserJourneyAnalyzer(
+      analytics.tracker,
+      conversionTracker
+    );
+    const userSegmentation = new UserSegmentation(
+      analytics.manager,
+      conversionTracker
+    );
+    const performanceMonitor = new PerformanceMonitorIntegration(
+      analytics.manager
+    );
+
+    // Initialize optimization framework
+    const optimizationFramework = new ConversionOptimizationFramework(
+      analytics.manager,
+      conversionTracker,
+      userJourneyAnalyzer,
+      userSegmentation,
+      performanceMonitor
+    );
+
+    // Initialize A/B testing framework
+    const abTestingFramework = new ABTestingFramework(
+      analytics.manager,
+      conversionTracker
+    );
+
+    // Initialize dashboard
+    const conversionDashboard = new ConversionDashboard(
+      analytics.manager,
+      conversionTracker,
+      userJourneyAnalyzer,
+      userSegmentation,
+      performanceMonitor,
+      optimizationFramework,
+      abTestingFramework
+    );
+
+    // Initialize all modules in dependency order
+    await Promise.all([
+      conversionTracker.initialize?.() || Promise.resolve(),
+      crossPlatformIntegration.initialize(),
+      userJourneyAnalyzer.initialize(),
+      userSegmentation.initialize(),
+      performanceMonitor.initialize(),
+      optimizationFramework.initialize(),
+      abTestingFramework.initialize(),
+      conversionDashboard.initialize(),
+    ]);
+
+    // Advanced Analytics System initialized successfully
+
+    // Make modules globally available for debugging (remove in production)
+    if (
+      window.location.hostname === "localhost" ||
+      window.location.hostname === "127.0.0.1"
+    ) {
+      window.analyticsSystem = {
+        analytics,
+        conversionTracker,
+        crossPlatformIntegration,
+        userJourneyAnalyzer,
+        userSegmentation,
+        performanceMonitor,
+        optimizationFramework,
+        abTestingFramework,
+        conversionDashboard,
+        // Utility functions
+        exportData: () => ({
+          journey: userJourneyAnalyzer.exportAnalysisData(),
+          segments: userSegmentation.exportSegmentationData(),
+          performance: performanceMonitor.exportPerformanceData(),
+          recommendations: optimizationFramework.exportFrameworkData(),
+          experiments: abTestingFramework.exportTestingData(),
+          dashboard: conversionDashboard.exportDashboardData(),
+        }),
+        resetAll: () => {
+          localStorage.clear();
+          // All analytics data reset
+        },
+      };
+    }
+  } catch (error) {
+    // Failed to initialize Advanced Analytics System - basic analytics will continue
+  }
+});
 
 // Register Service Worker for caching and offline support
 if ('serviceWorker' in navigator) {
@@ -252,10 +350,7 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker
       .register(new URL('./service-worker.js', import.meta.url))
       .then(registration => {
-        console.warn(
-          'Service Worker registered successfully:',
-          registration.scope
-        );
+        // Service Worker registered successfully
 
         // Handle updates
         registration.addEventListener('updatefound', () => {
@@ -267,7 +362,6 @@ if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.controller
               ) {
                 // New version available
-                console.warn('New service worker version available');
                 // Optionally show user notification for update
               }
             });
@@ -275,7 +369,7 @@ if ('serviceWorker' in navigator) {
         });
       })
       .catch(error => {
-        console.warn('Service Worker registration failed:', error);
+        // Service Worker registration failed
       });
   });
 }
