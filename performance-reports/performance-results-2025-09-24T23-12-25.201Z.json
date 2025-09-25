@@ -1,0 +1,140 @@
+{
+  "timestamp": "2025-09-24T23:12:24.671Z",
+  "url": "http://localhost:8080/",
+  "metrics": {
+    "lcp": 14708.2555,
+    "fid": 16,
+    "cls": 0.002681912905459566,
+    "fcp": 2886.0379,
+    "ttfb": 10.993,
+    "speedIndex": 2886.0379,
+    "tbt": null,
+    "performanceScore": 59
+  },
+  "budgetViolations": [],
+  "bundleSizes": {
+    "jsBundle": 699928,
+    "cssBundle": 382939,
+    "totalSize": 1082867,
+    "files": {
+      "js": [
+        "dist/jaswetz.github.io.42ffe72c.js",
+        "dist/SiteHeader.a65b1acb.js",
+        "dist/ImageLightbox.359a6e93.js",
+        "dist/jaswetz.github.io.00ee25dd.js",
+        "dist/SiteHeader.c7cde784.js",
+        "dist/SidebarNavigation.5d540665.js",
+        "dist/jaswetz.github.io.ab476307.js",
+        "dist/clarity-config.c2f33ce0.js",
+        "dist/SidebarNavigation.f9598751.js",
+        "dist/ImageLightbox.850f3e7e.js",
+        "dist/jaswetz.github.io.01cbac0c.js",
+        "dist/js/service-worker.js",
+        "dist/jaswetz.github.io.de8274cc.js",
+        "dist/simple-analytics.b1454544.js",
+        "dist/jaswetz.github.io.bf85f3ca.js",
+        "dist/ImageLightbox.f7bd941c.js",
+        "dist/simple-analytics.b38aa54e.js",
+        "dist/clarity-config.7481c6b1.js",
+        "dist/password-protection.03679f62.js",
+        "dist/SiteFooter.9735e3ae.js",
+        "dist/jaswetz.github.io.6e90b727.js",
+        "dist/jaswetz.github.io.49d0c839.js",
+        "dist/simple-analytics.fe0d3101.js",
+        "dist/jaswetz.github.io.bd0c29ca.js",
+        "dist/jaswetz.github.io.9e6c3dea.js",
+        "dist/enhanced-image-loader.b0ea52fb.js",
+        "dist/project-intel-lfc.1a5c9dda.js",
+        "dist/clarity-config.80bfa700.js",
+        "dist/clarity-config.55facd88.js",
+        "dist/simple-analytics.5afbc888.js",
+        "dist/jaswetz.github.io.f53b5546.js",
+        "dist/password-protection.3a822f86.js",
+        "dist/simple-analytics.b3f1dda6.js",
+        "dist/enhanced-image-loader.db3270fe.js",
+        "dist/SiteFooter.3402e0da.js",
+        "dist/project-adsk-notification.8d8e1d65.js",
+        "dist/enhanced-image-loader.841862f3.js",
+        "dist/project-adsk-notification.4de71427.js",
+        "dist/SiteHeader.0269cc91.js"
+      ],
+      "css": [
+        "dist/jaswetz.github.io.6b1d1108.css",
+        "dist/jaswetz.github.io.d83d2564.css",
+        "dist/jaswetz.github.io.fb223e9b.css",
+        "dist/jaswetz.github.io.c5ecc01e.css",
+        "dist/project-adsk-notification.34df27b5.css",
+        "dist/jaswetz.github.io.34df27b5.css",
+        "dist/jaswetz.github.io.d7c67857.css",
+        "dist/project-adsk-notification.c4215d14.css"
+      ]
+    }
+  },
+  "violations": [
+    {
+      "metric": "lcp",
+      "actual": 14708.2555,
+      "budget": 2500,
+      "impact": "critical",
+      "message": "LCP (14708.26ms) exceeds budget (2500ms)"
+    },
+    {
+      "metric": "fcp",
+      "actual": 2886.0379,
+      "budget": 1800,
+      "impact": "high",
+      "message": "FCP (2886.04ms) exceeds budget (1800ms)"
+    },
+    {
+      "metric": "jsBundle",
+      "actual": 699928,
+      "budget": 204800,
+      "impact": "high",
+      "message": "jsBundle (683.52 KB) exceeds budget (200 KB)"
+    },
+    {
+      "metric": "cssBundle",
+      "actual": 382939,
+      "budget": 71680,
+      "impact": "high",
+      "message": "cssBundle (373.96 KB) exceeds budget (70 KB)"
+    }
+  ],
+  "regressions": [
+    {
+      "metric": "lcp",
+      "current": 14708.2555,
+      "baseline": 5108.861124999999,
+      "regression": "187.9%",
+      "severity": "high"
+    },
+    {
+      "metric": "fcp",
+      "current": 2886.0379,
+      "baseline": 2589.1187999999997,
+      "regression": "11.5%",
+      "severity": "medium"
+    },
+    {
+      "metric": "ttfb",
+      "current": 10.993,
+      "baseline": 7.849,
+      "regression": "40.1%",
+      "severity": "high"
+    },
+    {
+      "metric": "speedIndex",
+      "current": 2886.0379,
+      "baseline": 2589.1187999999997,
+      "regression": "11.5%",
+      "severity": "medium"
+    }
+  ],
+  "summary": {
+    "passed": false,
+    "totalViolations": 4,
+    "criticalViolations": 1,
+    "totalRegressions": 4,
+    "highSeverityRegressions": 2
+  }
+}

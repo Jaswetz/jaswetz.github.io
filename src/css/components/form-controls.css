@@ -8,13 +8,13 @@ textarea {
 
 /* Select specific styles */
 select {
-  cursor: pointer;
+  padding-right: var(--space-l);
   background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23333" d="m0 1 2 2 2-2z"/></svg>');
-  background-repeat: no-repeat;
   background-position: right var(--space-s) center;
   background-size: 12px;
-  padding-right: var(--space-l);
+  background-repeat: no-repeat;
   appearance: none;
+  cursor: pointer;
 }
 
 select:focus {
@@ -70,10 +70,10 @@ input[type="radio"]:active {
 .custom-checkbox input[type="checkbox"],
 .custom-radio input[type="radio"] {
   position: absolute;
-  opacity: 0;
-  cursor: pointer;
   width: 0;
   height: 0;
+  cursor: pointer;
+  opacity: 0;
 }
 
 .custom-checkbox .checkmark,
@@ -109,36 +109,36 @@ input[type="radio"]:active {
 
 .custom-checkbox input:active + .checkmark,
 .custom-radio input:active + .checkmark {
-  transform: scale(0.95);
   border-color: var(--color-primary-alt);
+  transform: scale(0.95);
 }
 
 .custom-checkbox input:checked + .checkmark,
 .custom-radio input:checked + .checkmark {
-  background-color: var(--color-primary);
   border-color: var(--color-primary);
+  background-color: var(--color-primary);
 }
 
 .custom-checkbox input:checked + .checkmark::after {
   content: "✓";
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
+  color: #fff;
+  font-weight: bold;
+  font-size: 12px;
   inset: 0;
 }
 
 .custom-radio input:checked + .checkmark::after {
   content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: white;
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #fff;
   transform: translate(-50%, -50%);
 }

@@ -27,44 +27,43 @@
 }
 
 .sidebar-nav a {
+    position: relative;
     display: block;
-    padding: var(--space-xs) var(--space-xs);
+    padding: var(--space-2xs) var(--space-xs);
     color: var(--color-text);
+    font-size: var(--size-step--1);
+    font-family: var(--font-family-sans);
     text-decoration: none;
     transition: var(--transition-base);
-    position: relative;
-    font-family: var(--font-family-heading);
-    border-left: 2px solid transparent;
-    font-size: var(--size-step--1);
 }
 
 .sidebar-nav a:hover {
+    border-left-color: var(--color-primary);
     background-color: hsl(from var(--color-primary) h s l / 5%);
     color: var(--color-primary);
-    border-left-color: var(--color-primary);
     transform: translateX(2px);
 }
 
 .sidebar-nav a:active,
 .sidebar-nav a.active {
+    border-left-width: 3px;
+    border-left-color: var(--color-primary);
     background-color: hsl(from var(--color-primary) h s l / 15%);
     color: var(--color-primary);
-    border-left-color: var(--color-primary);
-    border-left-width: 3px;
     font-weight: 600;
     transform: translateX(3px);
 }
 
 /* Responsive behavior for sidebar navigation */
-@media (width <= 1024px) {
+@media (width <=1024px) {
     .sidebar-nav {
         position: static;
         margin-top: var(--space-l);
         margin-bottom: var(--space-l);
         padding: var(--space-m);
-        background-color: hsl(from var(--color-primary) h s l / 3%);
-        border-radius: var(--border-radius);
         border: 1px solid hsl(from var(--color-primary) h s l / 10%);
+        border-radius: var(--border-radius);
+        background-color: hsl(from var(--color-primary) h s l / 3%);
     }
 
     .sidebar-nav ul {
@@ -101,9 +100,9 @@
 
 .project-navigation {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     gap: var(--space-m);
+    align-items: center;
+    justify-content: space-between;
     margin: var(--space-3xl) 0 var(--space-xl) 0;
     padding: var(--space-l);
     border: 1px solid var(--color-border);
@@ -129,21 +128,21 @@
 
 .back-to-portfolio {
     display: inline-flex;
-    align-items: center;
     gap: var(--space-xs);
+    align-items: center;
     padding: var(--space-s) var(--space-m);
-    background-color: var(--color-background);
-    color: var(--color-text);
-    text-decoration: none;
-    font-size: var(--size-step--1);
     border: 1px solid var(--color-border);
     border-radius: var(--border-radius);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-size: var(--size-step--1);
+    text-decoration: none;
     transition: var(--transition-base);
 }
 
 .back-to-portfolio:hover {
-    background-color: var(--color-surface);
     border-color: var(--color-primary);
+    background-color: var(--color-surface);
     color: var(--color-primary);
     transform: var(--hover-transform-small);
 }
@@ -164,8 +163,8 @@
     }
 
     .project-navigation a {
-        width: 100%;
         justify-content: center;
+        width: 100%;
     }
 }
 

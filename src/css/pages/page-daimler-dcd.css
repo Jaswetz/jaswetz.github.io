@@ -15,8 +15,8 @@
 
             /* Respect user motion preferences */
             @media (prefers-reduced-motion: reduce) {
-                animation: none;
                 transition: none;
+                animation: none;
             }
         }
 
@@ -42,7 +42,6 @@
     /* Term Definitions */
     .term-definition h4 {
         margin-bottom: var(--space-s);
-        color: var(--color-primary);
         font-weight: var(--font-weight-semibold);
     }
 
@@ -52,21 +51,21 @@
     }
 
     .metric-card {
-        text-align: center;
-        padding: var(--space-xl);
-        min-height: 180px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         gap: var(--space-s);
+        justify-content: center;
+        min-height: 180px;
+        padding: var(--space-xl);
+        text-align: center;
     }
 
     .metric-value {
-        font-size: var(--size-step-4);
-        font-weight: var(--font-weight-bold);
-        color: var(--color-primary);
-        line-height: 1;
         margin: var(--space-s) 0;
+        color: var(--color-primary);
+        font-weight: var(--font-weight-bold);
+        font-size: var(--size-step-4);
+        line-height: 1;
     }
 
     /* Project Sections */
@@ -75,9 +74,6 @@
             padding-top: var(--space-xl);
         }
 
-        h3 {
-            color: var(--color-primary);
-        }
     }
 
     .project-section__user .project__img {

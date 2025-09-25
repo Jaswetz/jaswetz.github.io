@@ -1,0 +1,37 @@
+{
+  "selectors": {
+    "filename": "project-autodesk-di.html",
+    "hero": {
+      "section": ".hero--project",
+      "header": ".hero--project__header",
+      "label": ".hero--project__label",
+      "role": ".hero--project__role",
+      "timeline": ".hero--project__timeline"
+    },
+    "content": {
+      "main": "main",
+      "article": "article",
+      "sections": []
+    },
+    "components": {
+      "siteHeader": "site-header",
+      "imageLightbox": "image-lightbox"
+    },
+    "metadata": {
+      "client": "Autodesk",
+      "title": "Architecting a multi-device platform.",
+      "role": "UX Architect (iOS/Web)",
+      "timeline": "3+ Years"
+    }
+  },
+  "testSelectors": {
+    "heroSection": "await expect(page.locator(\".hero--project\")).toBeVisible();",
+    "heroHeader": "await expect(page.locator(\".hero--project__header\")).toBeVisible();",
+    "projectMetadata": [
+      "await expect(page.locator(\"text=Autodesk\").first()).toBeVisible();",
+      "await expect(page.locator(\"text=UX Architect (iOS/Web)\").first()).toBeVisible();",
+      "await expect(page.locator(\"text=3+ Years\").first()).toBeVisible();"
+    ],
+    "contentSections": []
+  }
+}

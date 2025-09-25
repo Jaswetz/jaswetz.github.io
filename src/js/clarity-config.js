@@ -7,9 +7,9 @@
 (function (c, l, a, r, i, t, y) {
   // Only load in production
   if (
-    window.location.hostname === "localhost" ||
-    window.location.hostname === "127.0.0.1" ||
-    window.location.port !== ""
+    window.location.hostname === 'localhost' ||
+    window.location.hostname === '127.0.0.1' ||
+    window.location.port !== ''
   ) {
     c[a] = () => {};
     return;
@@ -22,7 +22,7 @@
     };
   t = l.createElement(r);
   t.async = 1;
-  t.src = "https://www.clarity.ms/tag/" + i;
+  t.src = 'https://www.clarity.ms/tag/' + i;
   y = l.getElementsByTagName(r)[0];
   y.parentNode.insertBefore(t, y);
 
@@ -36,7 +36,7 @@
     // Set a global flag to indicate Clarity is available
     window.clarityBlocked = false;
   };
-})(window, document, "clarity", "script", "s7dys3l8mm");
+})(window, document, 'clarity', 'script', 's7dys3l8mm');
 
 /**
  * Enhanced Clarity Event Tracking System
@@ -56,7 +56,9 @@ class ClarityEventTracker {
    * Initialize Clarity event tracking
    */
   init() {
-    if (this.isInitialized) return;
+    if (this.isInitialized) {
+      return;
+    }
 
     // Wait for Clarity to load
     this.waitForClarity().then(() => {
@@ -71,14 +73,14 @@ class ClarityEventTracker {
    * Wait for Clarity to be available
    */
   waitForClarity() {
-    return new Promise((resolve) => {
-      if (typeof window.clarity === "function") {
+    return new Promise(resolve => {
+      if (typeof window.clarity === 'function') {
         resolve();
         return;
       }
 
       const checkClarity = setInterval(() => {
-        if (typeof window.clarity === "function") {
+        if (typeof window.clarity === 'function') {
           clearInterval(checkClarity);
           resolve();
         }
@@ -104,7 +106,7 @@ class ClarityEventTracker {
    * Track session start
    */
   trackSessionStart() {
-    this.trackEvent("session_start", {
+    this.trackEvent('session_start', {
       session_id: this.sessionId,
       user_agent: navigator.userAgent,
       referrer: document.referrer,
@@ -119,7 +121,7 @@ class ClarityEventTracker {
   trackEvent(eventName, properties = {}) {
     // Check if Clarity is blocked or unavailable
     if (
-      typeof window.clarity !== "function" ||
+      typeof window.clarity !== 'function' ||
       window.clarityBlocked === true
     ) {
       // Clarity tracking skipped - unavailable
@@ -135,7 +137,7 @@ class ClarityEventTracker {
     };
 
     // Track in Clarity
-    window.clarity("event", eventName, enhancedProperties);
+    window.clarity('event', eventName, enhancedProperties);
 
     // Track user journey for funnel analysis
     this.userJourney.push({
@@ -196,8 +198,8 @@ class ClarityEventTracker {
   /**
    * Track user intent signals
    */
-  trackIntentSignal(signal, strength = "medium") {
-    this.trackEvent("user_intent", {
+  trackIntentSignal(signal, strength = 'medium') {
+    this.trackEvent('user_intent', {
       signal,
       strength, // low, medium, high
       intent_type: this.categorizeIntent(signal),
@@ -210,30 +212,30 @@ class ClarityEventTracker {
   categorizeIntent(signal) {
     const intentCategories = {
       // High intent signals
-      resume_download: "job_inquiry",
-      contact_form_submit: "direct_contact",
-      linkedin_click: "professional_networking",
-      portfolio_view: "career_interest",
+      resume_download: 'job_inquiry',
+      contact_form_submit: 'direct_contact',
+      linkedin_click: 'professional_networking',
+      portfolio_view: 'career_interest',
 
       // Medium intent signals
-      case_study_complete: "project_interest",
-      long_session: "content_engagement",
-      multiple_project_views: "comprehensive_research",
+      case_study_complete: 'project_interest',
+      long_session: 'content_engagement',
+      multiple_project_views: 'comprehensive_research',
 
       // Low intent signals
-      homepage_visit: "initial_awareness",
-      social_share: "content_appreciation",
-      scroll_depth: "content_engagement",
+      homepage_visit: 'initial_awareness',
+      social_share: 'content_appreciation',
+      scroll_depth: 'content_engagement',
     };
 
-    return intentCategories[signal] || "general_engagement";
+    return intentCategories[signal] || 'general_engagement';
   }
 
   /**
    * Track content engagement
    */
   trackContentEngagement(contentType, contentId, action, details = {}) {
-    this.trackEvent("content_engagement", {
+    this.trackEvent('content_engagement', {
       content_type: contentType,
       content_id: contentId,
       action, // view, read, share, save, etc.
@@ -247,7 +249,7 @@ class ClarityEventTracker {
    * Track micro-conversions
    */
   trackMicroConversion(conversionType, value = 1) {
-    this.trackEvent("micro_conversion", {
+    this.trackEvent('micro_conversion', {
       conversion_type: conversionType,
       value,
       conversion_category: this.getConversionCategory(conversionType),
@@ -260,22 +262,22 @@ class ClarityEventTracker {
   getConversionCategory(conversionType) {
     const categories = {
       // Content engagement
-      case_study_view: "content",
-      project_click: "content",
-      scroll_depth_75: "content",
+      case_study_view: 'content',
+      project_click: 'content',
+      scroll_depth_75: 'content',
 
       // Lead generation
-      contact_page_visit: "lead",
-      email_click: "lead",
-      linkedin_click: "lead",
+      contact_page_visit: 'lead',
+      email_click: 'lead',
+      linkedin_click: 'lead',
 
       // Business impact
-      resume_download: "business",
-      contact_form_submit: "business",
-      return_visit: "business",
+      resume_download: 'business',
+      contact_form_submit: 'business',
+      return_visit: 'business',
     };
 
-    return categories[conversionType] || "engagement";
+    return categories[conversionType] || 'engagement';
   }
 
   /**
@@ -297,7 +299,7 @@ class ClarityEventTracker {
     let maxScrollDepth = 0;
     const milestones = [25, 50, 75, 90, 100];
 
-    window.addEventListener("scroll", () => {
+    window.addEventListener('scroll', () => {
       const scrollPercent = Math.round(
         (window.scrollY /
           (document.documentElement.scrollHeight - window.innerHeight)) *
@@ -307,7 +309,7 @@ class ClarityEventTracker {
       if (scrollPercent > maxScrollDepth) {
         maxScrollDepth = scrollPercent;
 
-        milestones.forEach((milestone) => {
+        milestones.forEach(milestone => {
           if (
             scrollPercent >= milestone &&
             !this.conversionEvents.has(`scroll_${milestone}`)
@@ -324,14 +326,13 @@ class ClarityEventTracker {
    * Track time on page milestones
    */
   trackTimeOnPage() {
-    const startTime = Date.now();
     const milestones = [30, 60, 120, 300]; // seconds
 
-    milestones.forEach((seconds) => {
+    milestones.forEach(seconds => {
       setTimeout(() => {
         if (!this.conversionEvents.has(`time_${seconds}s`)) {
           this.conversionEvents.add(`time_${seconds}s`);
-          this.trackEvent("time_on_page", {
+          this.trackEvent('time_on_page', {
             duration_seconds: seconds,
             duration_minutes: Math.round((seconds / 60) * 10) / 10,
             milestone: `${seconds}s`,
@@ -345,16 +346,16 @@ class ClarityEventTracker {
    * Track outbound link clicks
    */
   trackOutboundLinks() {
-    document.addEventListener("click", (e) => {
-      const link = e.target.closest("a");
+    document.addEventListener('click', e => {
+      const link = e.target.closest('a');
       if (link && link.href) {
         const url = new URL(link.href, window.location.origin);
 
         // Check if it's an external link
         if (url.origin !== window.location.origin) {
-          this.trackEvent("outbound_link_click", {
+          this.trackEvent('outbound_link_click', {
             destination_url: link.href,
-            link_text: link.textContent?.trim() || "",
+            link_text: link.textContent?.trim() || '',
             link_type: this.getLinkType(link.href),
           });
         }
@@ -366,27 +367,35 @@ class ClarityEventTracker {
    * Get link type for categorization
    */
   getLinkType(url) {
-    if (url.includes("linkedin.com")) return "professional";
-    if (url.includes("github.com")) return "technical";
-    if (url.includes("mailto:")) return "contact";
-    if (url.includes("twitter.com") || url.includes("x.com")) return "social";
-    return "external";
+    if (url.includes('linkedin.com')) {
+      return 'professional';
+    }
+    if (url.includes('github.com')) {
+      return 'technical';
+    }
+    if (url.includes('mailto:')) {
+      return 'contact';
+    }
+    if (url.includes('twitter.com') || url.includes('x.com')) {
+      return 'social';
+    }
+    return 'external';
   }
 
   /**
    * Track project card interactions
    */
   trackProjectInteractions() {
-    document.addEventListener("click", (e) => {
-      const projectCard = e.target.closest(".card-link, .project-snippet");
+    document.addEventListener('click', e => {
+      const projectCard = e.target.closest('.card-link, .project-snippet');
       if (projectCard) {
-        const link = projectCard.querySelector("a");
+        const link = projectCard.querySelector('a');
         const projectName =
-          projectCard.querySelector("h3, h2")?.textContent?.trim() ||
-          "Unknown Project";
+          projectCard.querySelector('h3, h2')?.textContent?.trim() ||
+          'Unknown Project';
 
         if (link) {
-          this.trackConversionMilestone("project_view", {
+          this.trackConversionMilestone('project_view', {
             project_name: projectName,
             project_url: link.href,
             project_type: this.getProjectType(link.href),
@@ -400,10 +409,16 @@ class ClarityEventTracker {
    * Get project type from URL
    */
   getProjectType(url) {
-    if (url.includes("autodesk")) return "enterprise";
-    if (url.includes("intel")) return "technology";
-    if (url.includes("daimler")) return "automotive";
-    return "portfolio";
+    if (url.includes('autodesk')) {
+      return 'enterprise';
+    }
+    if (url.includes('intel')) {
+      return 'technology';
+    }
+    if (url.includes('daimler')) {
+      return 'automotive';
+    }
+    return 'portfolio';
   }
 
   /**
@@ -411,23 +426,23 @@ class ClarityEventTracker {
    */
   trackContactInteractions() {
     // Track contact page visits
-    if (window.location.pathname.includes("contact")) {
-      this.trackConversionMilestone("contact_page_visit");
+    if (window.location.pathname.includes('contact')) {
+      this.trackConversionMilestone('contact_page_visit');
     }
 
     // Track contact link clicks
-    document.addEventListener("click", (e) => {
+    document.addEventListener('click', e => {
       const contactLink = e.target.closest(
         "a[href*='mailto:'], a[href*='linkedin'], a[href*='github']"
       );
       if (contactLink) {
-        const href = contactLink.getAttribute("href");
+        const href = contactLink.getAttribute('href');
         const linkType = this.getLinkType(href);
 
-        this.trackEvent("contact_interaction", {
+        this.trackEvent('contact_interaction', {
           contact_type: linkType,
           contact_url: href,
-          link_text: contactLink.textContent?.trim() || "",
+          link_text: contactLink.textContent?.trim() || '',
         });
       }
     });
@@ -439,13 +454,13 @@ class ClarityEventTracker {
   trackContentMilestones() {
     // Track case study section views
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             const section = entry.target;
             const sectionId = section.id;
             const sectionName =
-              section.querySelector("h2, h3")?.textContent?.trim() || sectionId;
+              section.querySelector('h2, h3')?.textContent?.trim() || sectionId;
 
             if (
               sectionId &&
@@ -453,9 +468,9 @@ class ClarityEventTracker {
             ) {
               this.conversionEvents.add(`section_${sectionId}`);
               this.trackContentEngagement(
-                "case_study_section",
+                'case_study_section',
                 sectionId,
-                "view",
+                'view',
                 {
                   section_name: sectionName,
                 }
@@ -468,7 +483,7 @@ class ClarityEventTracker {
     );
 
     // Observe all sections
-    document.querySelectorAll("section[id]").forEach((section) => {
+    document.querySelectorAll('section[id]').forEach(section => {
       observer.observe(section);
     });
   }
@@ -488,8 +503,7 @@ class ClarityEventTracker {
           : 0,
       funnel_progress: Math.max(
         ...Array.from(this.conversionEvents).map(
-          (event) =>
-            this.getFunnelStep(event.split("_").slice(1).join("_")) || 0
+          event => this.getFunnelStep(event.split('_').slice(1).join('_')) || 0
         )
       ),
       events: this.userJourney.slice(-20), // Last 20 events
@@ -513,28 +527,28 @@ class ClarityEventTracker {
   analyzeConversionFunnel() {
     const funnel = {
       awareness:
-        this.conversionEvents.has("homepage_visit") ||
-        this.conversionEvents.has("hero_interaction"),
+        this.conversionEvents.has('homepage_visit') ||
+        this.conversionEvents.has('hero_interaction'),
       interest: Array.from(this.conversionEvents).some(
-        (event) =>
-          event.includes("project_view") ||
-          event.includes("case_study") ||
-          event.includes("content_engagement")
+        event =>
+          event.includes('project_view') ||
+          event.includes('case_study') ||
+          event.includes('content_engagement')
       ),
       consideration: Array.from(this.conversionEvents).some(
-        (event) =>
-          event.includes("contact_page") ||
-          event.includes("resume_download") ||
-          event.includes("case_study_complete")
+        event =>
+          event.includes('contact_page') ||
+          event.includes('resume_download') ||
+          event.includes('case_study_complete')
       ),
       action: Array.from(this.conversionEvents).some(
-        (event) =>
-          event.includes("contact_form_submit") ||
-          event.includes("external_link_click")
+        event =>
+          event.includes('contact_form_submit') ||
+          event.includes('external_link_click')
       ),
       retention:
-        this.conversionEvents.has("return_visit") ||
-        this.conversionEvents.has("newsletter_signup"),
+        this.conversionEvents.has('return_visit') ||
+        this.conversionEvents.has('newsletter_signup'),
     };
 
     return {
@@ -564,7 +578,7 @@ class ClarityEventTracker {
 const clarityTracker = new ClarityEventTracker();
 
 // Export for use in other scripts
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   window.clarityTracking = {
     trackEvent: (eventName, properties) =>
       clarityTracker.trackEvent(eventName, properties),

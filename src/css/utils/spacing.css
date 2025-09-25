@@ -24,8 +24,8 @@
 }
 
 .mx-1 {
-  margin-left: var(--spacing-xs, 4px);
   margin-right: var(--spacing-xs, 4px);
+  margin-left: var(--spacing-xs, 4px);
 }
 
 .my-1 {
@@ -50,8 +50,8 @@
 }
 
 .mx-2 {
-  margin-left: var(--spacing-sm, 8px);
   margin-right: var(--spacing-sm, 8px);
+  margin-left: var(--spacing-sm, 8px);
 }
 
 .my-2 {
@@ -89,8 +89,8 @@
 }
 
 .px-1 {
-  padding-left: var(--spacing-xs, 4px);
   padding-right: var(--spacing-xs, 4px);
+  padding-left: var(--spacing-xs, 4px);
 }
 
 .py-1 {

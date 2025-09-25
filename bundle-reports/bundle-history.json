@@ -1,0 +1,998 @@
+[
+  {
+    "timestamp": "2025-09-24T22:26:24.325Z",
+    "git": {
+      "commit": "db8ed2b756dccbe47ed2df0e3c558448da940878",
+      "branch": "fix/optimization",
+      "message": "fix lint of styleguide"
+    },
+    "files": {
+      "ImageLightbox.850f3e7e.js": {
+        "path": "ImageLightbox.850f3e7e.js",
+        "size": 54010,
+        "category": "js",
+        "hash": "cb36009eea66be10e191d02719775a09",
+        "modified": "2025-09-24T22:10:26.648Z"
+      },
+      "ImageLightbox.850f3e7e.js.map": {
+        "path": "ImageLightbox.850f3e7e.js.map",
+        "size": 72442,
+        "category": "other",
+        "hash": "bf4ed8ae06c9a4f8f6c65dcc6e0d3e32",
+        "modified": "2025-09-24T22:10:26.675Z"
+      },
+      "ImageLightbox.f7bd941c.js": {
+        "path": "ImageLightbox.f7bd941c.js",
+        "size": 16683,
+        "category": "js",
+        "hash": "d107579fd5780309dfa0de817b2fcf66",
+        "modified": "2025-09-22T21:43:09.612Z"
+      },
+      "ImageLightbox.f7bd941c.js.map": {
+        "path": "ImageLightbox.f7bd941c.js.map",
+        "size": 66541,
+        "category": "other",
+        "hash": "4f250e2920009abf5ca232e49ddcc0da",
+        "modified": "2025-09-22T21:43:09.617Z"
+      },
+      "SidebarNavigation.5d540665.js": {
+        "path": "SidebarNavigation.5d540665.js",
+        "size": 1930,
+        "category": "js",
+        "hash": "7b2d7e044647f011a9ce61493873c685",
+        "modified": "2025-09-22T21:43:09.612Z"
+      },
+      "SidebarNavigation.5d540665.js.map": {
+        "path": "SidebarNavigation.5d540665.js.map",
+        "size": 11310,
+        "category": "other",
+        "hash": "8b6db16a80150dfc8856936fc2db9720",
+        "modified": "2025-09-22T21:43:09.616Z"
+      },
+      "SidebarNavigation.f9598751.js": {
+        "path": "SidebarNavigation.f9598751.js",
+        "size": 32038,
+        "category": "js",
+        "hash": "d3a00455c888e68409775393a5138c8c",
+        "modified": "2025-09-24T22:10:26.660Z"
+      },
+      "SidebarNavigation.f9598751.js.map": {
+        "path": "SidebarNavigation.f9598751.js.map",
+        "size": 40101,
+        "category": "other",
+        "hash": "fbb814957f23b78aa1a3de170af933bc",
+        "modified": "2025-09-24T22:10:26.675Z"
+      },
+      "SiteFooter.3402e0da.js": {
+        "path": "SiteFooter.3402e0da.js",
+        "size": 7188,
+        "category": "js",
+        "hash": "38431a129149cdddec04367ba46e11d0",
+        "modified": "2025-09-22T21:43:09.613Z"
+      },
+      "SiteFooter.3402e0da.js.map": {
+        "path": "SiteFooter.3402e0da.js.map",
+        "size": 20243,
+        "category": "other",
+        "hash": "7c455425c92052a042aebf120ebced47",
+        "modified": "2025-09-22T21:43:09.617Z"
+      },
+      "SiteFooter.9735e3ae.js": {
+        "path": "SiteFooter.9735e3ae.js",
+        "size": 36479,
+        "category": "js",
+        "hash": "7a0eb8c5b03f7b0a5669dff4174c7093",
+        "modified": "2025-09-24T22:10:26.649Z"
+      },
+      "SiteFooter.9735e3ae.js.map": {
+        "path": "SiteFooter.9735e3ae.js.map",
+        "size": 44493,
+        "category": "other",
+        "hash": "2e02c9b10f8602f5b26a521c526845e7",
+        "modified": "2025-09-24T22:10:26.675Z"
+      },
+      "SiteHeader.0269cc91.js": {
+        "path": "SiteHeader.0269cc91.js",
+        "size": 15990,
+        "category": "js",
+        "hash": "444dcfd7ebafc0a9a63def9f113d7e38",
+        "modified": "2025-09-22T21:43:09.612Z"
+      },
+      "SiteHeader.0269cc91.js.map": {
+        "path": "SiteHeader.0269cc91.js.map",
+        "size": 44051,
+        "category": "other",
+        "hash": "cb17f9a51d97f7d19c11144898abc28f",
+        "modified": "2025-09-22T21:43:09.616Z"
+      },
+      "SiteHeader.a65b1acb.js": {
+        "path": "SiteHeader.a65b1acb.js",
+        "size": 15955,
+        "category": "js",
+        "hash": "fc24896a144874ccf6ce4a42676be9c3",
+        "modified": "2025-09-22T21:05:59.859Z"
+      },
+      "SiteHeader.a65b1acb.js.map": {
+        "path": "SiteHeader.a65b1acb.js.map",
+        "size": 43977,
+        "category": "other",
+        "hash": "0c96a428f1bd9985951e5893067017bd",
+        "modified": "2025-09-22T21:05:59.872Z"
+      },
+      "SiteHeader.c7cde784.js": {
+        "path": "SiteHeader.c7cde784.js",
+        "size": 47218,
+        "category": "js",
+        "hash": "4a45ba724849f362f5c179730e5591a7",
+        "modified": "2025-09-24T22:10:26.669Z"
+      },
+      "SiteHeader.c7cde784.js.map": {
+        "path": "SiteHeader.c7cde784.js.map",
+        "size": 56702,
+        "category": "other",
+        "hash": "3eeed690c90f6cf5b196c960397ddfd6",
+        "modified": "2025-09-24T22:10:26.676Z"
+      },
+      "clarity-config.55facd88.js": {
+        "path": "clarity-config.55facd88.js",
+        "size": 45493,
+        "category": "js",
+        "hash": "dacdd9c952e10aaf564a8a3cc89dae8b",
+        "modified": "2025-09-24T22:10:26.659Z"
+      },
+      "clarity-config.55facd88.js.map": {
+        "path": "clarity-config.55facd88.js.map",
+        "size": 60436,
+        "category": "other",
+        "hash": "8d4d2adbcd07ba19ee1dcc775bb6fb46",
+        "modified": "2025-09-24T22:10:26.675Z"
+      },
+      "clarity-config.7481c6b1.js": {
+        "path": "clarity-config.7481c6b1.js",
+        "size": 8820,
+        "category": "js",
+        "hash": "1efde1ceca931ea0d2fa109be572b396",
+        "modified": "2025-09-24T18:21:01.506Z"
+      },
+      "clarity-config.7481c6b1.js.map": {
+        "path": "clarity-config.7481c6b1.js.map",
+        "size": 47298,
+        "category": "other",
+        "hash": "d8c7f8d8c48f5726641643d7e71d2203",
+        "modified": "2025-09-24T18:21:01.510Z"
+      },
+      "clarity-config.80bfa700.js": {
+        "path": "clarity-config.80bfa700.js",
+        "size": 8822,
+        "category": "js",
+        "hash": "6f62e579a8e15c8a8af70164892e8586",
+        "modified": "2025-09-22T21:05:59.859Z"
+      },
+      "clarity-config.80bfa700.js.map": {
+        "path": "clarity-config.80bfa700.js.map",
+        "size": 47684,
+        "category": "other",
+        "hash": "ff222a3ea66a3959ad6dcc72a4dea0e9",
+        "modified": "2025-09-22T21:05:59.872Z"
+      },
+      "clarity-config.c2f33ce0.js": {
+        "path": "clarity-config.c2f33ce0.js",
+        "size": 8811,
+        "category": "js",
+        "hash": "bce2bd9b6fbb15c504da91b79b9c2d05",
+        "modified": "2025-09-22T21:43:09.612Z"
+      },
+      "clarity-config.c2f33ce0.js.map": {
+        "path": "clarity-config.c2f33ce0.js.map",
+        "size": 47611,
+        "category": "other",
+        "hash": "2031bed10d1775439b8b0e192f80a8cc",
+        "modified": "2025-09-22T21:43:09.616Z"
+      },
+      "enhanced-image-loader.841862f3.js": {
+        "path": "enhanced-image-loader.841862f3.js",
+        "size": 2928,
+        "category": "js",
+        "hash": "b554f44c286c5d46243c7c1479ce20f0",
+        "modified": "2025-09-22T21:43:09.612Z"
+      },
+      "enhanced-image-loader.841862f3.js.map": {
+        "path": "enhanced-image-loader.841862f3.js.map",
+        "size": 13899,
+        "category": "other",
+        "hash": "186bbe3b7e27989c8cd18fcd01cccbc8",
+        "modified": "2025-09-22T21:43:09.616Z"
+      },
+      "enhanced-image-loader.b0ea52fb.js": {
+        "path": "enhanced-image-loader.b0ea52fb.js",
+        "size": 32922,
+        "category": "js",
+        "hash": "9fe9324fd4ffd80da159da7d821c1711",
+        "modified": "2025-09-24T22:10:26.669Z"
+      },
+      "enhanced-image-loader.b0ea52fb.js.map": {
+        "path": "enhanced-image-loader.b0ea52fb.js.map",
+        "size": 41465,
+        "category": "other",
+        "hash": "434922fcdf7ddeab8e3e42dd9ce4880e",
+        "modified": "2025-09-24T22:10:26.676Z"
+      },
+      "enhanced-image-loader.db3270fe.js": {
+        "path": "enhanced-image-loader.db3270fe.js",
+        "size": 2916,
+        "category": "js",
+        "hash": "9988f91d5afcaef4c57b4375d4084b27",
+        "modified": "2025-09-24T18:21:01.506Z"
+      },
+      "enhanced-image-loader.db3270fe.js.map": {
+        "path": "enhanced-image-loader.db3270fe.js.map",
+        "size": 13844,
+        "category": "other",
+        "hash": "f04cb18362350d7f803c2dc5be3c62b8",
+        "modified": "2025-09-24T18:21:01.510Z"
+      },
+      "jaswetz.github.io.01cbac0c.js": {
+        "path": "jaswetz.github.io.01cbac0c.js",
+        "size": 5527,
+        "category": "js",
+        "hash": "aa878e42850cc2a70b30d522a6614cdd",
+        "modified": "2025-09-22T21:05:59.859Z"
+      },
+      "jaswetz.github.io.01cbac0c.js.map": {
+        "path": "jaswetz.github.io.01cbac0c.js.map",
+        "size": 30099,
+        "category": "other",
+        "hash": "acf734e5a23486b4d3111973f5746829",
+        "modified": "2025-09-22T21:05:59.872Z"
+      },
+      "jaswetz.github.io.34df27b5.css": {
+        "path": "jaswetz.github.io.34df27b5.css",
+        "size": 92748,
+        "category": "css",
+        "hash": "7d125d84785737ed09055c3a0c16c9be",
+        "modified": "2025-09-24T17:57:21.221Z"
+      },
+      "jaswetz.github.io.34df27b5.css.map": {
+        "path": "jaswetz.github.io.34df27b5.css.map",
+        "size": 136096,
+        "category": "other",
+        "hash": "65bca2b137613f939593ae1b8d351e23",
+        "modified": "2025-09-24T17:57:21.243Z"
+      },
+      "jaswetz.github.io.42ffe72c.js": {
+        "path": "jaswetz.github.io.42ffe72c.js",
+        "size": 38409,
+        "category": "js",
+        "hash": "ae7632019806fe536531feb84d2ef201",
+        "modified": "2025-09-24T22:10:26.659Z"
+      },
+      "jaswetz.github.io.42ffe72c.js.map": {
+        "path": "jaswetz.github.io.42ffe72c.js.map",
+        "size": 48931,
+        "category": "other",
+        "hash": "a641678344f0451f3ed8de0e27456c6e",
+        "modified": "2025-09-24T22:10:26.675Z"
+      },
+      "jaswetz.github.io.49d0c839.js": {
+        "path": "jaswetz.github.io.49d0c839.js",
+        "size": 5527,
+        "category": "js",
+        "hash": "6931c864ea089adb31983e794a86c7b6",
+        "modified": "2025-09-23T21:15:00.556Z"
+      },
+      "jaswetz.github.io.49d0c839.js.map": {
+        "path": "jaswetz.github.io.49d0c839.js.map",
+        "size": 30099,
+        "category": "other",
+        "hash": "dcc7463439681c5a91e65e8f5f3bdc06",
+        "modified": "2025-09-23T21:15:00.562Z"
+      },
+      "jaswetz.github.io.6b1d1108.css": {
+        "path": "jaswetz.github.io.6b1d1108.css",
+        "size": 71736,
+        "category": "css",
+        "hash": "0f7709587f49e70564d012fa3f9a8870",
+        "modified": "2025-09-22T21:05:59.859Z"
+      },
+      "jaswetz.github.io.6b1d1108.css.map": {
+        "path": "jaswetz.github.io.6b1d1108.css.map",
+        "size": 257071,
+        "category": "other",
+        "hash": "a46e4f2eeee777cbae1926950abe6f06",
+        "modified": "2025-09-22T21:05:59.872Z"
+      },
+      "jaswetz.github.io.6e90b727.js": {
+        "path": "jaswetz.github.io.6e90b727.js",
+        "size": 5527,
+        "category": "js",
+        "hash": "eaf76b311f381edd6946563ba0ae8892",
+        "modified": "2025-09-22T21:43:09.612Z"
+      },
+      "jaswetz.github.io.6e90b727.js.map": {
+        "path": "jaswetz.github.io.6e90b727.js.map",
+        "size": 30099,
+        "category": "other",
+        "hash": "854bb3735ce712e71623ab00b2d9e5fc",
+        "modified": "2025-09-22T21:43:09.616Z"
+      },
+      "jaswetz.github.io.d83d2564.css": {
+        "path": "jaswetz.github.io.d83d2564.css",
+        "size": 71469,
+        "category": "css",
+        "hash": "d878cfbc973c4c1b1742abab20c26f66",
+        "modified": "2025-09-22T21:43:09.613Z"
+      },
+      "jaswetz.github.io.d83d2564.css.map": {
+        "path": "jaswetz.github.io.d83d2564.css.map",
+        "size": 257497,
+        "category": "other",
+        "hash": "5db051668489ed666c88c353611e024c",
+        "modified": "2025-09-22T21:43:09.617Z"
+      },
+      "jaswetz.github.io.f53b5546.js": {
+        "path": "jaswetz.github.io.f53b5546.js",
+        "size": 5529,
+        "category": "js",
+        "hash": "83bbf80045b6044b2f1fb8c227329c96",
+        "modified": "2025-09-24T18:21:01.506Z"
+      },
+      "jaswetz.github.io.f53b5546.js.map": {
+        "path": "jaswetz.github.io.f53b5546.js.map",
+        "size": 30097,
+        "category": "other",
+        "hash": "d8d4b258618d41ab3ee488271452236f",
+        "modified": "2025-09-24T18:21:01.509Z"
+      },
+      "js/service-worker.js": {
+        "path": "js/service-worker.js",
+        "size": 6851,
+        "category": "js",
+        "hash": "7b51265cf710196321a3bc5284794417",
+        "modified": "2025-09-24T18:21:57.759Z"
+      },
+      "js/service-worker.js.map": {
+        "path": "js/service-worker.js.map",
+        "size": 10855,
+        "category": "other",
+        "hash": "7ee353d8f7507ff87aea02ae0a3457f2",
+        "modified": "2025-09-24T18:21:57.762Z"
+      },
+      "password-protection.03679f62.js": {
+        "path": "password-protection.03679f62.js",
+        "size": 5607,
+        "category": "js",
+        "hash": "f7233bf02f3493d41d7e18d15ec8f137",
+        "modified": "2025-09-22T21:43:09.612Z"
+      },
+      "password-protection.03679f62.js.map": {
+        "path": "password-protection.03679f62.js.map",
+        "size": 27850,
+        "category": "other",
+        "hash": "6abd57627c38b36b6e2956a1e8f67c1a",
+        "modified": "2025-09-22T21:43:09.616Z"
+      },
+      "password-protection.3a822f86.js": {
+        "path": "password-protection.3a822f86.js",
+        "size": 39203,
+        "category": "js",
+        "hash": "d9747115251e32791651e896edf0ccd8",
+        "modified": "2025-09-24T22:10:26.659Z"
+      },
+      "password-protection.3a822f86.js.map": {
+        "path": "password-protection.3a822f86.js.map",
+        "size": 48994,
+        "category": "other",
+        "hash": "ce41e903947238785fce7a82798b16d2",
+        "modified": "2025-09-24T22:10:26.675Z"
+      },
+      "project-adsk-notification.8d8e1d65.js": {
+        "path": "project-adsk-notification.8d8e1d65.js",
+        "size": 52300,
+        "category": "js",
+        "hash": "3c30d47afcaf926356fc03423a952ce9",
+        "modified": "2025-09-24T22:10:26.660Z"
+      },
+      "project-adsk-notification.8d8e1d65.js.map": {
+        "path": "project-adsk-notification.8d8e1d65.js.map",
+        "size": 67308,
+        "category": "other",
+        "hash": "19dbe5d4fd2bc7b2ba5f518e8fbe4f1b",
+        "modified": "2025-09-24T22:10:26.675Z"
+      },
+      "project-intel-lfc.1a5c9dda.js": {
+        "path": "project-intel-lfc.1a5c9dda.js",
+        "size": 27451,
+        "category": "js",
+        "hash": "639ea1b57c68e7c6fefaccb84aadb603",
+        "modified": "2025-09-24T18:25:23.310Z"
+      },
+      "project-intel-lfc.1a5c9dda.js.map": {
+        "path": "project-intel-lfc.1a5c9dda.js.map",
+        "size": 33080,
+        "category": "other",
+        "hash": "dfddf72aa04fc399eb5de5af3e22913b",
+        "modified": "2025-09-24T18:25:23.319Z"
+      },
+      "simple-analytics.5afbc888.js": {
+        "path": "simple-analytics.5afbc888.js",
+        "size": 5580,
+        "category": "js",
+        "hash": "a136b7853b259492fad5f5939cc19733",
+        "modified": "2025-09-24T18:21:01.506Z"
+      },
+      "simple-analytics.5afbc888.js.map": {
+        "path": "simple-analytics.5afbc888.js.map",
+        "size": 31418,
+        "category": "other",
+        "hash": "b4d44fb4102660fc4556ed304bda4317",
+        "modified": "2025-09-24T18:21:01.510Z"
+      },
+      "simple-analytics.b1454544.js": {
+        "path": "simple-analytics.b1454544.js",
+        "size": 39306,
+        "category": "js",
+        "hash": "28106d9b7562a0801bb930691d8e9824",
+        "modified": "2025-09-24T22:10:26.660Z"
+      },
+      "simple-analytics.b1454544.js.map": {
+        "path": "simple-analytics.b1454544.js.map",
+        "size": 50767,
+        "category": "other",
+        "hash": "b3a6d065c90464ff842c7d9a03e1d23c",
+        "modified": "2025-09-24T22:10:26.676Z"
+      },
+      "simple-analytics.b38aa54e.js": {
+        "path": "simple-analytics.b38aa54e.js",
+        "size": 5577,
+        "category": "js",
+        "hash": "a2035fb1553919647cb9edc08b10818e",
+        "modified": "2025-09-23T21:15:00.556Z"
+      },
+      "simple-analytics.b38aa54e.js.map": {
+        "path": "simple-analytics.b38aa54e.js.map",
+        "size": 31548,
+        "category": "other",
+        "hash": "ec94965c47dc9c3a7ede91d5cf6aebca",
+        "modified": "2025-09-23T21:15:00.562Z"
+      },
+      "simple-analytics.b3f1dda6.js": {
+        "path": "simple-analytics.b3f1dda6.js",
+        "size": 5444,
+        "category": "js",
+        "hash": "64c7d1d12b1c40b42a4b68589550dfe7",
+        "modified": "2025-09-22T21:05:59.859Z"
+      },
+      "simple-analytics.b3f1dda6.js.map": {
+        "path": "simple-analytics.b3f1dda6.js.map",
+        "size": 30583,
+        "category": "other",
+        "hash": "03655b86c4342c989a8efb46e2f95754",
+        "modified": "2025-09-22T21:05:59.872Z"
+      },
+      "simple-analytics.fe0d3101.js": {
+        "path": "simple-analytics.fe0d3101.js",
+        "size": 5495,
+        "category": "js",
+        "hash": "ee6c27371656812827a90a6e44ea402b",
+        "modified": "2025-09-22T21:43:09.612Z"
+      },
+      "simple-analytics.fe0d3101.js.map": {
+        "path": "simple-analytics.fe0d3101.js.map",
+        "size": 31105,
+        "category": "other",
+        "hash": "9a533c477a29d537132bb6a279fd2b85",
+        "modified": "2025-09-22T21:43:09.616Z"
+      }
+    },
+    "totals": {
+      "js": 591536,
+      "css": 235953,
+      "other": 1855594,
+      "total": 2683083
+    },
+    "counts": {
+      "js": 31,
+      "css": 3,
+      "other": 34,
+      "total": 68
+    }
+  },
+  {
+    "timestamp": "2025-09-24T22:55:59.129Z",
+    "git": {
+      "commit": "db8ed2b756dccbe47ed2df0e3c558448da940878",
+      "branch": "fix/optimization",
+      "message": "fix lint of styleguide"
+    },
+    "files": {
+      "ImageLightbox.850f3e7e.js": {
+        "path": "ImageLightbox.850f3e7e.js",
+        "size": 54010,
+        "category": "js",
+        "hash": "cb36009eea66be10e191d02719775a09",
+        "modified": "2025-09-24T22:10:26.648Z"
+      },
+      "ImageLightbox.850f3e7e.js.map": {
+        "path": "ImageLightbox.850f3e7e.js.map",
+        "size": 72442,
+        "category": "other",
+        "hash": "bf4ed8ae06c9a4f8f6c65dcc6e0d3e32",
+        "modified": "2025-09-24T22:10:26.675Z"
+      },
+      "ImageLightbox.f7bd941c.js": {
+        "path": "ImageLightbox.f7bd941c.js",
+        "size": 16683,
+        "category": "js",
+        "hash": "d107579fd5780309dfa0de817b2fcf66",
+        "modified": "2025-09-22T21:43:09.612Z"
+      },
+      "ImageLightbox.f7bd941c.js.map": {
+        "path": "ImageLightbox.f7bd941c.js.map",
+        "size": 66541,
+        "category": "other",
+        "hash": "4f250e2920009abf5ca232e49ddcc0da",
+        "modified": "2025-09-22T21:43:09.617Z"
+      },
+      "SidebarNavigation.5d540665.js": {
+        "path": "SidebarNavigation.5d540665.js",
+        "size": 1930,
+        "category": "js",
+        "hash": "7b2d7e044647f011a9ce61493873c685",
+        "modified": "2025-09-22T21:43:09.612Z"
+      },
+      "SidebarNavigation.5d540665.js.map": {
+        "path": "SidebarNavigation.5d540665.js.map",
+        "size": 11310,
+        "category": "other",
+        "hash": "8b6db16a80150dfc8856936fc2db9720",
+        "modified": "2025-09-22T21:43:09.616Z"
+      },
+      "SidebarNavigation.f9598751.js": {
+        "path": "SidebarNavigation.f9598751.js",
+        "size": 32038,
+        "category": "js",
+        "hash": "d3a00455c888e68409775393a5138c8c",
+        "modified": "2025-09-24T22:10:26.660Z"
+      },
+      "SidebarNavigation.f9598751.js.map": {
+        "path": "SidebarNavigation.f9598751.js.map",
+        "size": 40101,
+        "category": "other",
+        "hash": "fbb814957f23b78aa1a3de170af933bc",
+        "modified": "2025-09-24T22:10:26.675Z"
+      },
+      "SiteFooter.3402e0da.js": {
+        "path": "SiteFooter.3402e0da.js",
+        "size": 7188,
+        "category": "js",
+        "hash": "38431a129149cdddec04367ba46e11d0",
+        "modified": "2025-09-22T21:43:09.613Z"
+      },
+      "SiteFooter.3402e0da.js.map": {
+        "path": "SiteFooter.3402e0da.js.map",
+        "size": 20243,
+        "category": "other",
+        "hash": "7c455425c92052a042aebf120ebced47",
+        "modified": "2025-09-22T21:43:09.617Z"
+      },
+      "SiteFooter.9735e3ae.js": {
+        "path": "SiteFooter.9735e3ae.js",
+        "size": 36479,
+        "category": "js",
+        "hash": "7a0eb8c5b03f7b0a5669dff4174c7093",
+        "modified": "2025-09-24T22:10:26.649Z"
+      },
+      "SiteFooter.9735e3ae.js.map": {
+        "path": "SiteFooter.9735e3ae.js.map",
+        "size": 44493,
+        "category": "other",
+        "hash": "2e02c9b10f8602f5b26a521c526845e7",
+        "modified": "2025-09-24T22:10:26.675Z"
+      },
+      "SiteHeader.0269cc91.js": {
+        "path": "SiteHeader.0269cc91.js",
+        "size": 15990,
+        "category": "js",
+        "hash": "444dcfd7ebafc0a9a63def9f113d7e38",
+        "modified": "2025-09-22T21:43:09.612Z"
+      },
+      "SiteHeader.0269cc91.js.map": {
+        "path": "SiteHeader.0269cc91.js.map",
+        "size": 44051,
+        "category": "other",
+        "hash": "cb17f9a51d97f7d19c11144898abc28f",
+        "modified": "2025-09-22T21:43:09.616Z"
+      },
+      "SiteHeader.a65b1acb.js": {
+        "path": "SiteHeader.a65b1acb.js",
+        "size": 15955,
+        "category": "js",
+        "hash": "fc24896a144874ccf6ce4a42676be9c3",
+        "modified": "2025-09-22T21:05:59.859Z"
+      },
+      "SiteHeader.a65b1acb.js.map": {
+        "path": "SiteHeader.a65b1acb.js.map",
+        "size": 43977,
+        "category": "other",
+        "hash": "0c96a428f1bd9985951e5893067017bd",
+        "modified": "2025-09-22T21:05:59.872Z"
+      },
+      "SiteHeader.c7cde784.js": {
+        "path": "SiteHeader.c7cde784.js",
+        "size": 47218,
+        "category": "js",
+        "hash": "4a45ba724849f362f5c179730e5591a7",
+        "modified": "2025-09-24T22:10:26.669Z"
+      },
+      "SiteHeader.c7cde784.js.map": {
+        "path": "SiteHeader.c7cde784.js.map",
+        "size": 56702,
+        "category": "other",
+        "hash": "3eeed690c90f6cf5b196c960397ddfd6",
+        "modified": "2025-09-24T22:10:26.676Z"
+      },
+      "clarity-config.55facd88.js": {
+        "path": "clarity-config.55facd88.js",
+        "size": 45493,
+        "category": "js",
+        "hash": "dacdd9c952e10aaf564a8a3cc89dae8b",
+        "modified": "2025-09-24T22:10:26.659Z"
+      },
+      "clarity-config.55facd88.js.map": {
+        "path": "clarity-config.55facd88.js.map",
+        "size": 60436,
+        "category": "other",
+        "hash": "8d4d2adbcd07ba19ee1dcc775bb6fb46",
+        "modified": "2025-09-24T22:10:26.675Z"
+      },
+      "clarity-config.7481c6b1.js": {
+        "path": "clarity-config.7481c6b1.js",
+        "size": 8820,
+        "category": "js",
+        "hash": "1efde1ceca931ea0d2fa109be572b396",
+        "modified": "2025-09-24T18:21:01.506Z"
+      },
+      "clarity-config.7481c6b1.js.map": {
+        "path": "clarity-config.7481c6b1.js.map",
+        "size": 47298,
+        "category": "other",
+        "hash": "d8c7f8d8c48f5726641643d7e71d2203",
+        "modified": "2025-09-24T18:21:01.510Z"
+      },
+      "clarity-config.80bfa700.js": {
+        "path": "clarity-config.80bfa700.js",
+        "size": 8822,
+        "category": "js",
+        "hash": "6f62e579a8e15c8a8af70164892e8586",
+        "modified": "2025-09-22T21:05:59.859Z"
+      },
+      "clarity-config.80bfa700.js.map": {
+        "path": "clarity-config.80bfa700.js.map",
+        "size": 47684,
+        "category": "other",
+        "hash": "ff222a3ea66a3959ad6dcc72a4dea0e9",
+        "modified": "2025-09-22T21:05:59.872Z"
+      },
+      "clarity-config.c2f33ce0.js": {
+        "path": "clarity-config.c2f33ce0.js",
+        "size": 8811,
+        "category": "js",
+        "hash": "bce2bd9b6fbb15c504da91b79b9c2d05",
+        "modified": "2025-09-22T21:43:09.612Z"
+      },
+      "clarity-config.c2f33ce0.js.map": {
+        "path": "clarity-config.c2f33ce0.js.map",
+        "size": 47611,
+        "category": "other",
+        "hash": "2031bed10d1775439b8b0e192f80a8cc",
+        "modified": "2025-09-22T21:43:09.616Z"
+      },
+      "enhanced-image-loader.841862f3.js": {
+        "path": "enhanced-image-loader.841862f3.js",
+        "size": 2928,
+        "category": "js",
+        "hash": "b554f44c286c5d46243c7c1479ce20f0",
+        "modified": "2025-09-22T21:43:09.612Z"
+      },
+      "enhanced-image-loader.841862f3.js.map": {
+        "path": "enhanced-image-loader.841862f3.js.map",
+        "size": 13899,
+        "category": "other",
+        "hash": "186bbe3b7e27989c8cd18fcd01cccbc8",
+        "modified": "2025-09-22T21:43:09.616Z"
+      },
+      "enhanced-image-loader.b0ea52fb.js": {
+        "path": "enhanced-image-loader.b0ea52fb.js",
+        "size": 32922,
+        "category": "js",
+        "hash": "9fe9324fd4ffd80da159da7d821c1711",
+        "modified": "2025-09-24T22:10:26.669Z"
+      },
+      "enhanced-image-loader.b0ea52fb.js.map": {
+        "path": "enhanced-image-loader.b0ea52fb.js.map",
+        "size": 41465,
+        "category": "other",
+        "hash": "434922fcdf7ddeab8e3e42dd9ce4880e",
+        "modified": "2025-09-24T22:10:26.676Z"
+      },
+      "enhanced-image-loader.db3270fe.js": {
+        "path": "enhanced-image-loader.db3270fe.js",
+        "size": 2916,
+        "category": "js",
+        "hash": "9988f91d5afcaef4c57b4375d4084b27",
+        "modified": "2025-09-24T18:21:01.506Z"
+      },
+      "enhanced-image-loader.db3270fe.js.map": {
+        "path": "enhanced-image-loader.db3270fe.js.map",
+        "size": 13844,
+        "category": "other",
+        "hash": "f04cb18362350d7f803c2dc5be3c62b8",
+        "modified": "2025-09-24T18:21:01.510Z"
+      },
+      "jaswetz.github.io.01cbac0c.js": {
+        "path": "jaswetz.github.io.01cbac0c.js",
+        "size": 5527,
+        "category": "js",
+        "hash": "aa878e42850cc2a70b30d522a6614cdd",
+        "modified": "2025-09-22T21:05:59.859Z"
+      },
+      "jaswetz.github.io.01cbac0c.js.map": {
+        "path": "jaswetz.github.io.01cbac0c.js.map",
+        "size": 30099,
+        "category": "other",
+        "hash": "acf734e5a23486b4d3111973f5746829",
+        "modified": "2025-09-22T21:05:59.872Z"
+      },
+      "jaswetz.github.io.34df27b5.css": {
+        "path": "jaswetz.github.io.34df27b5.css",
+        "size": 92748,
+        "category": "css",
+        "hash": "7d125d84785737ed09055c3a0c16c9be",
+        "modified": "2025-09-24T17:57:21.221Z"
+      },
+      "jaswetz.github.io.34df27b5.css.map": {
+        "path": "jaswetz.github.io.34df27b5.css.map",
+        "size": 136096,
+        "category": "other",
+        "hash": "65bca2b137613f939593ae1b8d351e23",
+        "modified": "2025-09-24T17:57:21.243Z"
+      },
+      "jaswetz.github.io.42ffe72c.js": {
+        "path": "jaswetz.github.io.42ffe72c.js",
+        "size": 38409,
+        "category": "js",
+        "hash": "ae7632019806fe536531feb84d2ef201",
+        "modified": "2025-09-24T22:10:26.659Z"
+      },
+      "jaswetz.github.io.42ffe72c.js.map": {
+        "path": "jaswetz.github.io.42ffe72c.js.map",
+        "size": 48931,
+        "category": "other",
+        "hash": "a641678344f0451f3ed8de0e27456c6e",
+        "modified": "2025-09-24T22:10:26.675Z"
+      },
+      "jaswetz.github.io.49d0c839.js": {
+        "path": "jaswetz.github.io.49d0c839.js",
+        "size": 5527,
+        "category": "js",
+        "hash": "6931c864ea089adb31983e794a86c7b6",
+        "modified": "2025-09-23T21:15:00.556Z"
+      },
+      "jaswetz.github.io.49d0c839.js.map": {
+        "path": "jaswetz.github.io.49d0c839.js.map",
+        "size": 30099,
+        "category": "other",
+        "hash": "dcc7463439681c5a91e65e8f5f3bdc06",
+        "modified": "2025-09-23T21:15:00.562Z"
+      },
+      "jaswetz.github.io.6b1d1108.css": {
+        "path": "jaswetz.github.io.6b1d1108.css",
+        "size": 71736,
+        "category": "css",
+        "hash": "0f7709587f49e70564d012fa3f9a8870",
+        "modified": "2025-09-22T21:05:59.859Z"
+      },
+      "jaswetz.github.io.6b1d1108.css.map": {
+        "path": "jaswetz.github.io.6b1d1108.css.map",
+        "size": 257071,
+        "category": "other",
+        "hash": "a46e4f2eeee777cbae1926950abe6f06",
+        "modified": "2025-09-22T21:05:59.872Z"
+      },
+      "jaswetz.github.io.6e90b727.js": {
+        "path": "jaswetz.github.io.6e90b727.js",
+        "size": 5527,
+        "category": "js",
+        "hash": "eaf76b311f381edd6946563ba0ae8892",
+        "modified": "2025-09-22T21:43:09.612Z"
+      },
+      "jaswetz.github.io.6e90b727.js.map": {
+        "path": "jaswetz.github.io.6e90b727.js.map",
+        "size": 30099,
+        "category": "other",
+        "hash": "854bb3735ce712e71623ab00b2d9e5fc",
+        "modified": "2025-09-22T21:43:09.616Z"
+      },
+      "jaswetz.github.io.d83d2564.css": {
+        "path": "jaswetz.github.io.d83d2564.css",
+        "size": 71469,
+        "category": "css",
+        "hash": "d878cfbc973c4c1b1742abab20c26f66",
+        "modified": "2025-09-22T21:43:09.613Z"
+      },
+      "jaswetz.github.io.d83d2564.css.map": {
+        "path": "jaswetz.github.io.d83d2564.css.map",
+        "size": 257497,
+        "category": "other",
+        "hash": "5db051668489ed666c88c353611e024c",
+        "modified": "2025-09-22T21:43:09.617Z"
+      },
+      "jaswetz.github.io.f53b5546.js": {
+        "path": "jaswetz.github.io.f53b5546.js",
+        "size": 5529,
+        "category": "js",
+        "hash": "83bbf80045b6044b2f1fb8c227329c96",
+        "modified": "2025-09-24T18:21:01.506Z"
+      },
+      "jaswetz.github.io.f53b5546.js.map": {
+        "path": "jaswetz.github.io.f53b5546.js.map",
+        "size": 30097,
+        "category": "other",
+        "hash": "d8d4b258618d41ab3ee488271452236f",
+        "modified": "2025-09-24T18:21:01.509Z"
+      },
+      "js/service-worker.js": {
+        "path": "js/service-worker.js",
+        "size": 6851,
+        "category": "js",
+        "hash": "7b51265cf710196321a3bc5284794417",
+        "modified": "2025-09-24T18:21:57.759Z"
+      },
+      "js/service-worker.js.map": {
+        "path": "js/service-worker.js.map",
+        "size": 10855,
+        "category": "other",
+        "hash": "7ee353d8f7507ff87aea02ae0a3457f2",
+        "modified": "2025-09-24T18:21:57.762Z"
+      },
+      "password-protection.03679f62.js": {
+        "path": "password-protection.03679f62.js",
+        "size": 5607,
+        "category": "js",
+        "hash": "f7233bf02f3493d41d7e18d15ec8f137",
+        "modified": "2025-09-22T21:43:09.612Z"
+      },
+      "password-protection.03679f62.js.map": {
+        "path": "password-protection.03679f62.js.map",
+        "size": 27850,
+        "category": "other",
+        "hash": "6abd57627c38b36b6e2956a1e8f67c1a",
+        "modified": "2025-09-22T21:43:09.616Z"
+      },
+      "password-protection.3a822f86.js": {
+        "path": "password-protection.3a822f86.js",
+        "size": 39203,
+        "category": "js",
+        "hash": "d9747115251e32791651e896edf0ccd8",
+        "modified": "2025-09-24T22:10:26.659Z"
+      },
+      "password-protection.3a822f86.js.map": {
+        "path": "password-protection.3a822f86.js.map",
+        "size": 48994,
+        "category": "other",
+        "hash": "ce41e903947238785fce7a82798b16d2",
+        "modified": "2025-09-24T22:10:26.675Z"
+      },
+      "project-adsk-notification.8d8e1d65.js": {
+        "path": "project-adsk-notification.8d8e1d65.js",
+        "size": 52300,
+        "category": "js",
+        "hash": "3c30d47afcaf926356fc03423a952ce9",
+        "modified": "2025-09-24T22:10:26.660Z"
+      },
+      "project-adsk-notification.8d8e1d65.js.map": {
+        "path": "project-adsk-notification.8d8e1d65.js.map",
+        "size": 67308,
+        "category": "other",
+        "hash": "19dbe5d4fd2bc7b2ba5f518e8fbe4f1b",
+        "modified": "2025-09-24T22:10:26.675Z"
+      },
+      "project-intel-lfc.1a5c9dda.js": {
+        "path": "project-intel-lfc.1a5c9dda.js",
+        "size": 27451,
+        "category": "js",
+        "hash": "639ea1b57c68e7c6fefaccb84aadb603",
+        "modified": "2025-09-24T18:25:23.310Z"
+      },
+      "project-intel-lfc.1a5c9dda.js.map": {
+        "path": "project-intel-lfc.1a5c9dda.js.map",
+        "size": 33080,
+        "category": "other",
+        "hash": "dfddf72aa04fc399eb5de5af3e22913b",
+        "modified": "2025-09-24T18:25:23.319Z"
+      },
+      "simple-analytics.5afbc888.js": {
+        "path": "simple-analytics.5afbc888.js",
+        "size": 5580,
+        "category": "js",
+        "hash": "a136b7853b259492fad5f5939cc19733",
+        "modified": "2025-09-24T18:21:01.506Z"
+      },
+      "simple-analytics.5afbc888.js.map": {
+        "path": "simple-analytics.5afbc888.js.map",
+        "size": 31418,
+        "category": "other",
+        "hash": "b4d44fb4102660fc4556ed304bda4317",
+        "modified": "2025-09-24T18:21:01.510Z"
+      },
+      "simple-analytics.b1454544.js": {
+        "path": "simple-analytics.b1454544.js",
+        "size": 39306,
+        "category": "js",
+        "hash": "28106d9b7562a0801bb930691d8e9824",
+        "modified": "2025-09-24T22:10:26.660Z"
+      },
+      "simple-analytics.b1454544.js.map": {
+        "path": "simple-analytics.b1454544.js.map",
+        "size": 50767,
+        "category": "other",
+        "hash": "b3a6d065c90464ff842c7d9a03e1d23c",
+        "modified": "2025-09-24T22:10:26.676Z"
+      },
+      "simple-analytics.b38aa54e.js": {
+        "path": "simple-analytics.b38aa54e.js",
+        "size": 5577,
+        "category": "js",
+        "hash": "a2035fb1553919647cb9edc08b10818e",
+        "modified": "2025-09-23T21:15:00.556Z"
+      },
+      "simple-analytics.b38aa54e.js.map": {
+        "path": "simple-analytics.b38aa54e.js.map",
+        "size": 31548,
+        "category": "other",
+        "hash": "ec94965c47dc9c3a7ede91d5cf6aebca",
+        "modified": "2025-09-23T21:15:00.562Z"
+      },
+      "simple-analytics.b3f1dda6.js": {
+        "path": "simple-analytics.b3f1dda6.js",
+        "size": 5444,
+        "category": "js",
+        "hash": "64c7d1d12b1c40b42a4b68589550dfe7",
+        "modified": "2025-09-22T21:05:59.859Z"
+      },
+      "simple-analytics.b3f1dda6.js.map": {
+        "path": "simple-analytics.b3f1dda6.js.map",
+        "size": 30583,
+        "category": "other",
+        "hash": "03655b86c4342c989a8efb46e2f95754",
+        "modified": "2025-09-22T21:05:59.872Z"
+      },
+      "simple-analytics.fe0d3101.js": {
+        "path": "simple-analytics.fe0d3101.js",
+        "size": 5495,
+        "category": "js",
+        "hash": "ee6c27371656812827a90a6e44ea402b",
+        "modified": "2025-09-22T21:43:09.612Z"
+      },
+      "simple-analytics.fe0d3101.js.map": {
+        "path": "simple-analytics.fe0d3101.js.map",
+        "size": 31105,
+        "category": "other",
+        "hash": "9a533c477a29d537132bb6a279fd2b85",
+        "modified": "2025-09-22T21:43:09.616Z"
+      }
+    },
+    "totals": {
+      "js": 591536,
+      "css": 235953,
+      "other": 1855594,
+      "total": 2683083
+    },
+    "counts": {
+      "js": 31,
+      "css": 3,
+      "other": 34,
+      "total": 68
+    }
+  }
+]

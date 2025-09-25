@@ -9,7 +9,7 @@
 class SiteHeader extends HTMLElement {
   constructor() {
     super();
-    this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: 'open' });
     this.isMenuOpen = false;
     this.lastScrollY = 0;
     this.updateActiveSection = null; // Store reference for cleanup
@@ -24,11 +24,11 @@ class SiteHeader extends HTMLElement {
     const currentPath = window.location.pathname;
 
     const isHomePage =
-      currentPath === "/" ||
-      currentPath === "/index.html" ||
-      currentPath.endsWith("/index.html") ||
-      currentPath === "" ||
-      currentPath.includes("index.html");
+      currentPath === '/' ||
+      currentPath === '/index.html' ||
+      currentPath.endsWith('/index.html') ||
+      currentPath === '' ||
+      currentPath.includes('index.html');
 
     this.shadowRoot.innerHTML = /*html*/ `  
     <style>
@@ -40,14 +40,9 @@ class SiteHeader extends HTMLElement {
       transform: translateX(-50%);
       width: var(--section-width);
       z-index: 1000;
-      /* MODIFIED transition property */
-      transition: top 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
-            width 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
-            max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
-            box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      will-change: top, width, max-width, box-shadow; /* ADDED */
+      transition: top 0.5s ease, width 0.5s ease, max-width 0.5s ease, box-shadow 0.5s ease;
       max-width: var(--max-width);
-      outline: none; /* Prevent any outline on the host element */
+      outline: none;
       }
 
       :host:focus {
@@ -73,16 +68,11 @@ class SiteHeader extends HTMLElement {
       padding: var(--space-s) var(--space-m);
       border-radius: var(--border-radius);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      /* MODIFIED transition property */
-      transition: padding 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
-            border-radius 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
-            background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-            box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      will-change: padding, border-radius, background-color, box-shadow; /* ADDED */
-      outline: none; /* Prevent outline on header content */
+      transition: padding 0.5s ease, border-radius 0.5s ease, background-color 0.5s ease, box-shadow 0.5s ease;
+      outline: none;
       backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        background-color: rgba(255, 255, 255, 0.3);
+      -webkit-backdrop-filter: blur(5px);
+      background-color: rgba(255, 255, 255, 0.3);
       }
 
       .header-content:focus {
@@ -477,7 +467,7 @@ class SiteHeader extends HTMLElement {
       }
       }
     </style>
-    <div class="header-content" role="banner">
+    <div class="header-content">
       <div class="logo">
       <a href="/index.html">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="logo-svg" viewBox="0 0 39 39">
@@ -505,13 +495,13 @@ class SiteHeader extends HTMLElement {
       <ul>
    
         <li><a href="${
-          isHomePage ? "#" : "/index.html#"
+          isHomePage ? '#' : '/index.html#'
         }featured-projects" data-scroll="true">Work</a></li>
         <li><a href="${
-          isHomePage ? "#" : "/index.html#"
+          isHomePage ? '#' : '/index.html#'
         }about" data-scroll="true">About</a></li>
         <li><a href="${
-          isHomePage ? "#" : "/index.html#"
+          isHomePage ? '#' : '/index.html#'
         }quotes" data-scroll="true">Testimonials</a></li>
         <li><a href="https://www.linkedin.com/in/swetzoff/" class="button" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in new tab)">Say Hello!<svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 17 10-10"></path><path d="M7 7h10v10"></path></svg></a></li>
 
@@ -521,16 +511,16 @@ class SiteHeader extends HTMLElement {
     `;
 
     // Add event listeners
-    const menuToggle = this.shadowRoot.querySelector(".menu-toggle");
-    const nav = this.shadowRoot.querySelector("nav");
+    const menuToggle = this.shadowRoot.querySelector('.menu-toggle');
+    const nav = this.shadowRoot.querySelector('nav');
 
-    menuToggle.addEventListener("click", (e) => {
+    menuToggle.addEventListener('click', e => {
       e.preventDefault(); // Prevent any default behavior
       e.stopPropagation(); // Stop event bubbling
 
       this.isMenuOpen = !this.isMenuOpen;
-      menuToggle.classList.toggle("active");
-      nav.classList.toggle("active");
+      menuToggle.classList.toggle('active');
+      nav.classList.toggle('active');
 
       // Keep focus on the button after click
       if (menuToggle instanceof HTMLElement) {
@@ -541,23 +531,23 @@ class SiteHeader extends HTMLElement {
     // Add smooth scrolling for section navigation (only on home page)
     if (isHomePage) {
       const scrollLinks = this.shadowRoot.querySelectorAll(
-        "a[data-scroll=\"true\"]"
+        'a[data-scroll="true"]'
       );
-      scrollLinks.forEach((link) => {
-        link.addEventListener("click", (e) => {
+      scrollLinks.forEach(link => {
+        link.addEventListener('click', e => {
           e.preventDefault();
-          const targetId = link.getAttribute("href");
+          const targetId = link.getAttribute('href');
           const targetElement = document.querySelector(targetId);
 
           if (targetElement) {
             // Close mobile menu if open
             this.isMenuOpen = false;
-            menuToggle.classList.remove("active");
-            nav.classList.remove("active");
+            menuToggle.classList.remove('active');
+            nav.classList.remove('active');
 
             // Smooth scroll to target using native behavior
-            const targetId = link.getAttribute("href");
-            if (targetId.startsWith("#")) {
+            const targetId = link.getAttribute('href');
+            if (targetId.startsWith('#')) {
               window.location.hash = targetId;
             }
           }
@@ -566,17 +556,17 @@ class SiteHeader extends HTMLElement {
 
       // Add scroll detection for active section highlighting
       const sections = [
-        "hero",
-        "featured-projects",
-        "about",
-        "quotes",
-        "footer",
+        'hero',
+        'featured-projects',
+        'about',
+        'quotes',
+        'footer',
       ];
       this.updateActiveSection = () => {
         const headerHeight = this.offsetHeight || 80;
         const scrollPosition = window.scrollY + headerHeight + 100; // Increased offset for better detection
 
-        let activeSection = "hero"; // Default to hero
+        let activeSection = 'hero'; // Default to hero
 
         // Check sections in order they appear on page
         for (const sectionId of sections) {
@@ -590,13 +580,13 @@ class SiteHeader extends HTMLElement {
         }
 
         // Update active states
-        scrollLinks.forEach((link) => {
-          const href = link.getAttribute("href");
-          const targetSection = href.replace(/^.*#/, ""); // Extract section name from href
+        scrollLinks.forEach(link => {
+          const href = link.getAttribute('href');
+          const targetSection = href.replace(/^.*#/, ''); // Extract section name from href
           if (targetSection === activeSection) {
-            link.classList.add("active");
+            link.classList.add('active');
           } else {
-            link.classList.remove("active");
+            link.classList.remove('active');
           }
         });
       };
@@ -605,13 +595,13 @@ class SiteHeader extends HTMLElement {
       this.updateActiveSection();
 
       // Listen for scroll events
-      window.addEventListener("scroll", this.updateActiveSection, {
+      window.addEventListener('scroll', this.updateActiveSection, {
         passive: true,
       });
     }
 
     // Handle scroll events
-    window.addEventListener("scroll", this.handleScroll.bind(this));
+    window.addEventListener('scroll', this.handleScroll.bind(this));
   }
 
   handleScroll() {
@@ -619,9 +609,9 @@ class SiteHeader extends HTMLElement {
 
     if (currentScrollY > 10) {
       // Changed from 50 to 10 for earlier animation
-      this.classList.add("scrolled");
+      this.classList.add('scrolled');
     } else {
-      this.classList.remove("scrolled");
+      this.classList.remove('scrolled');
     }
 
     this.lastScrollY = currentScrollY;
@@ -630,9 +620,9 @@ class SiteHeader extends HTMLElement {
   disconnectedCallback() {
     // Clean up event listeners
     if (this.updateActiveSection) {
-      window.removeEventListener("scroll", this.updateActiveSection);
+      window.removeEventListener('scroll', this.updateActiveSection);
     }
-    window.removeEventListener("scroll", this.handleScroll.bind(this));
+    window.removeEventListener('scroll', this.handleScroll.bind(this));
   }
 }
 

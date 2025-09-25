@@ -1,140 +1,84 @@
-/**
- * Main Analytics Module - Provides a clean public API for analytics functionality
- * Coordinates AnalyticsManager and AnalyticsEventTracker
- */
+// Analytics System Index - Unified interface for advanced analytics
+import { SimpleAnalytics } from './simple-analytics.js';
 
-import { AnalyticsManager } from "./AnalyticsManager.js";
-import { AnalyticsEventTracker } from "./AnalyticsEventTracker.js";
-import { WebVitalsTracker } from "./WebVitalsTracker.js";
+// Create the main analytics instance
+const analyticsInstance = new SimpleAnalytics();
 
-class Analytics {
-  constructor() {
-    this.manager = new AnalyticsManager();
-    this.tracker = new AnalyticsEventTracker(this.manager);
-    this.webVitals = new WebVitalsTracker(this.manager);
-    this.isInitialized = false;
-  }
-
-  /**
-   * Initialize analytics
-   * @returns {Promise<boolean>} Success status
-   */
-  async init() {
-    if (this.isInitialized) {
-      return true;
+// Create a manager interface
+const analyticsManager = {
+  gtag: (...args) => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag(...args);
     }
+  },
 
-    const success = await this.manager.initialize();
-    this.isInitialized = success;
-    // Enable auto-tracking by default
-    if (success) {
-      this.tracker.enableAutoTracking();
-      // Initialize Web Vitals tracking
-      this.webVitals.initialize();
-    }
-    return success;
-  }
+  trackEvent: (eventName, parameters = {}) => {
+    analyticsInstance._sendToGA4(eventName, parameters);
+  },
 
-  /**
-   * Manual event tracking methods (delegated to tracker)
-   */
-  trackProjectClick(projectName, projectType) {
-    return this.tracker.trackProjectClick(projectName, projectType);
-  }
+  trackConversion: (conversionType, data = {}) => {
+    analyticsInstance._sendToGA4('conversion', {
+      conversion_type: conversionType,
+      ...data,
+    });
+  },
 
-  trackResumeDownload() {
-    return this.tracker.trackResumeDownload();
-  }
+  trackUserJourney: (step, data = {}) => {
+    analyticsInstance._sendToGA4('user_journey', {
+      step: step,
+      ...data,
+    });
+  },
 
-  trackContactForm(action, method) {
-    return this.tracker.trackContactForm(action, method);
-  }
+  trackPerformance: (metric, value) => {
+    analyticsInstance._sendToGA4('performance', {
+      metric: metric,
+      value: value,
+    });
+  },
+};
 
-  trackExternalLink(url, linkText) {
-    return this.tracker.trackExternalLink(url, linkText);
-  }
+// Create a tracker interface
+const analyticsTracker = {
+  track: (event, data = {}) => {
+    analyticsInstance._sendToGA4(event, data);
+  },
 
-  trackScrollDepth() {
-    return this.tracker.trackScrollDepth();
-  }
+  trackPageView: (pageData = {}) => {
+    analyticsInstance._sendToGA4('page_view', {
+      page_title: document?.title || '',
+      page_location: window?.location?.href || '',
+      ...pageData,
+    });
+  },
 
-  trackTimeOnPage() {
-    return this.tracker.trackTimeOnPage();
-  }
+  trackUserInteraction: (interactionType, element, data = {}) => {
+    analyticsInstance._sendToGA4('user_interaction', {
+      interaction_type: interactionType,
+      element: element,
+      ...data,
+    });
+  },
 
-  trackCaseStudyInteraction(caseStudyName, action, section) {
-    return this.tracker.trackCaseStudyInteraction(
-      caseStudyName,
-      action,
-      section
-    );
-  }
+  trackError: (error, context = {}) => {
+    analyticsInstance._sendToGA4('error', {
+      error_message: error.message || error,
+      error_context: context,
+    });
+  },
+};
 
-  trackImageLightbox(imageName, caseStudy) {
-    return this.tracker.trackImageLightbox(imageName, caseStudy);
-  }
+// Export the unified analytics system
+const analytics = {
+  manager: analyticsManager,
+  tracker: analyticsTracker,
+  instance: analyticsInstance,
 
-  trackCaseStudyCompletion(caseStudyName) {
-    return this.tracker.trackCaseStudyCompletion(caseStudyName);
-  }
-
-  /**
-   * Control methods
-   */
-  enableAutoTracking() {
-    return this.tracker.enableAutoTracking();
-  }
-
-  disableAutoTracking() {
-    return this.tracker.disableAutoTracking();
-  }
-
-  /**
-   * Utility methods
-   */
-  isReady() {
-    return this.isInitialized && this.manager.isGtagAvailable();
-  }
-
-  getStatus() {
-    return {
-      initialized: this.isInitialized,
-      gtagAvailable: this.manager.isGtagAvailable(),
-      autoTrackingEnabled: this.tracker.isAutoTrackingEnabled,
-      webVitalsInitialized: this.webVitals.isInitialized,
-    };
-  }
-
-  /**
-   * Direct gtag access for custom events
-   * @param {...any} args - Arguments to pass to gtag
-   */
-  gtag(...args) {
-    return this.manager.gtag(...args);
-  }
-}
-
-// Create and export singleton instance
-const analytics = new Analytics();
-
-// Auto-initialize on import (lightweight)
-analytics.init();
+  // Initialize the system
+  initialize: async () => {
+    await analyticsInstance.init();
+    return analytics;
+  },
+};
 
 export default analytics;
-
-// Also export for window global access (backward compatibility)
-// @ts-ignore - Custom analytics object
-window.portfolioAnalytics = {
-  trackProjectClick: (...args) => analytics.trackProjectClick(...args),
-  trackResumeDownload: () => analytics.trackResumeDownload(),
-  trackContactForm: (...args) => analytics.trackContactForm(...args),
-  trackExternalLink: (...args) => analytics.trackExternalLink(...args),
-  trackScrollDepth: () => analytics.trackScrollDepth(),
-  trackTimeOnPage: () => analytics.trackTimeOnPage(),
-  trackCaseStudyInteraction: (...args) =>
-    analytics.trackCaseStudyInteraction(...args),
-  trackImageLightbox: (...args) => analytics.trackImageLightbox(...args),
-  trackCaseStudyCompletion: (...args) =>
-    analytics.trackCaseStudyCompletion(...args),
-  getStatus: () => analytics.getStatus(),
-};

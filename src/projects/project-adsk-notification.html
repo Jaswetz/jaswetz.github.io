@@ -1,44 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Notification System Redesign - Jason Swetzoff's Portfolio</title>
+    <title>Notification System Redesign | Jason Swetzoff</title>
 
-    <!-- Google Analytics 4 - Only load in production -->
-    <script>
-      // Only load GA4 in production environment
-      if (
-        window.location.hostname !== "localhost" &&
-        window.location.hostname !== "127.0.0.1" &&
-        !window.location.hostname.includes("127.0.0.1") &&
-        window.location.port === ""
-      ) {
-        // Load GA4 script with better error handling
-        var script = document.createElement("script");
-        script.async = true;
-        script.src = "https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG";
-        script.onerror = function () {
-          console.warn(
-            "Google Analytics script failed to load - this may be due to ad blockers or network issues"
-          );
-        };
-        script.onload = function () {};
-        document.head.appendChild(script);
-      }
-    </script>
-    <!-- Google Analytics 4 -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG"
-    ></script>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Case study: Leading the redesign of Autodesk Fusion's notification system to reduce user fatigue while ensuring critical communications are visible and aligned with business growth objectives."
+    />
+    <meta
+      name="keywords"
+      content="UX Design, Notification System, Autodesk Fusion, User Experience, Interface Design, Product Strategy, Design Systems"
+    />
+    <meta name="author" content="Jason Swetzoff" />
+
+    <!-- Open Graph / Facebook -->
+    <meta
+      property="og:title"
+      content="Notification System Redesign | Jason Swetzoff"
+    />
+    <meta
+      property="og:description"
+      content="Case study: Leading the redesign of Autodesk Fusion's notification system to reduce user fatigue while ensuring critical communications are visible and aligned with business growth objectives."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://jaswetz.github.io/projects/project-adsk-notification.html"
+    />
+    <meta
+      property="og:image"
+      content="https://jaswetz.github.io/img/projects/autodesk-messaging/messaging-final.jpg"
+    />
+    <meta property="og:site_name" content="Jason Swetzoff - UX Portfolio" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Notification System Redesign" />
+    <meta
+      name="twitter:description"
+      content="Case study: Leading the redesign of Autodesk Fusion's notification system to reduce user fatigue while ensuring critical communications are visible and aligned with business growth objectives."
+    />
+    <meta
+      property="twitter:image"
+      content="https://jaswetz.github.io/img/projects/autodesk-messaging/messaging-final.jpg"
+    />
 
     <!-- Font optimization -->
     <!-- Preconnect to Google Fonts for faster loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Font preloading removed - relying on Google Fonts CSS with display=swap for optimal performance -->
 
     <!-- Optimized Google Fonts CSS with font-display: swap -->
     <link
@@ -51,6 +64,7 @@
     <!-- Feather Icons CDN -->
     <script src="https://unpkg.com/feather-icons"></script>
 
+    <!-- Favicons -->
     <link
       rel="icon"
       type="image/x-icon"
@@ -75,53 +89,60 @@
       href="../assets/favicons/favicon-96x96.png"
     />
     <link rel="apple-touch-icon" href="../assets/favicons/apple-icon.png" />
-    <script src="https://unpkg.com/feather-icons"></script>
   </head>
   <body class="project notification">
-    <site-header></site-header>
-    <section class="hero hero--project hero-section">
-      <div class="wrapper">
-        <div class="hero--project__content">
-          <div class="hero--project__label">Autodesk</div>
-          <h1 class="hero--project__header">
-            Crafting A Unified Messaging Experience.
-          </h1>
-
-          <div class="hero--project__meta">
-            <span class="hero--project__role">Lead UX Designer</span>
-            <span class="hero--project__timeline">8-month project</span>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+      <!-- Hero Section -->
+      <section
+        class="hero hero--project hero-section"
+        id="hero"
+        aria-labelledby="hero-title"
+      >
+        <div class="wrapper">
+          <div class="hero--project__content">
+            <div class="hero--project__label" aria-label="Client name">
+              Autodesk Fusion
+            </div>
+            <h1 class="hero--project__header" id="hero-title">
+              Crafting a Unified Notification Experience
+            </h1>
+            <div
+              class="hero--project__meta"
+              role="group"
+              aria-label="Project metadata"
+            >
+              <span class="hero--project__role" aria-label="Role"
+                >Lead UX Designer</span
+              >
+              <span class="hero--project__timeline" aria-label="Timeline"
+                >6 Month Project</span
+              >
+            </div>
           </div>
-          <!-- <div class="hero--project__impact">
-            <div class="hero--project__impact-label">
-              <i data-feather="trending-up"></i>
-              Project Impact
-            </div>
-            <div class="hero--project__impact-value">
-              +15,000 new paid users
-            </div>
-            <div class="hero--project__impact-description">
-              in the first month after launch
-            </div>
-          </div> -->
         </div>
-      </div>
-    </section>
+      </section>
+    </header>
+    <site-header></site-header>
     <main
+      id="main-content"
       class="project-case-study notification-case-study-grid main-content wrapper"
+      role="main"
     >
       <article class="article">
         <div class="sidebar grid grid--2-column--sidebar">
           <div class="article__content">
             <section class="project-summary" id="project-summary">
-              <!-- <h2>Overview</h2> -->
               <figure>
                 <img
                   src="../img/projects/autodesk-messaging/messaging-final.jpg"
                   alt="Autodesk Notification Center final design"
                   class="project-summary__image project__img"
+                  loading="lazy"
                 />
                 <figcaption>
-                  Final design of the Autodesk Notification Center
+                  Final design of the Autodesk Notification Center (Static image
+                  - original animation optimized for performance)
                 </figcaption>
               </figure>
               <div class="project-summary__cards grid grid--3-column">
@@ -145,7 +166,7 @@
                 from concept to delivery.
               </p>
               <p class="project-summary__description">
-                I proactively identified the need to improve Autodesk Fusion’s
+                I proactively identified the need to improve Autodesk Fusion's
                 notification system and formally proposed it as a critical
                 project. I secured funding and stakeholder support, then led the
                 end-to-end redesign and revamp of the notification system,
@@ -279,9 +300,11 @@
                         src="../img/projects/autodesk-messaging/workshop-2.png"
                         alt="Discovery phase showing notification audit"
                         class="project__img"
+                        loading="lazy"
                       />
                       <figcaption>
-                        Discovery phase notification audit workshop
+                        Discovery phase notification audit workshop (Static
+                        image - original animation optimized for performance)
                       </figcaption>
                     </figure>
                   </div>
@@ -294,9 +317,12 @@
                         src="../img/projects/autodesk-messaging/analytics.png"
                         alt="Current analytics of the Job Status notifications."
                         class="project__img"
+                        loading="lazy"
                       />
                       <figcaption>
                         Analytics showing Job Status notification patterns
+                        (Static image - original animation optimized for
+                        performance)
                       </figcaption>
                     </figure>
                   </div>
@@ -377,11 +403,13 @@
                     <figure>
                       <img
                         src="../img/projects/autodesk-messaging/severity-matrix.jpg"
-                        alt="Severity matrix."
+                        alt="Notification severity decision matrix showing categorization by importance and time sensitivity"
                         class="project__img"
+                        loading="lazy"
                       />
                       <figcaption>
-                        Notification severity decision matrix
+                        Notification severity decision matrix (Static image -
+                        original animation optimized for performance)
                       </figcaption>
                     </figure>
                   </div>
@@ -394,9 +422,12 @@
                         src="../img/projects/autodesk-messaging/message-overload copy.gif"
                         alt="Key slide I created to communicate gravity of notifications' poor current state, leading to successful funding of the project."
                         class="project__img"
+                        loading="lazy"
                       />
                       <figcaption>
                         Key slide demonstrating notification overload issues
+                        (Static image - original animation optimized for
+                        performance)
                       </figcaption>
                     </figure>
                   </div>
@@ -472,11 +503,13 @@
                     <figure>
                       <img
                         src="../img/projects/autodesk-messaging/filterting.jpg"
-                        alt="Filtering exploration."
+                        alt="Design exploration of filtering options for notification management and organization"
                         class="project__img"
+                        loading="lazy"
                       />
                       <figcaption>
-                        Filtering exploration and design iterations
+                        Filtering exploration and design iterations (Static
+                        image - original animation optimized for performance)
                       </figcaption>
                     </figure>
                   </div>
@@ -489,9 +522,12 @@
                         src="../img/projects/autodesk-messaging/notification-icon.jpg"
                         alt="Iterating and feedback on the notification icon placement."
                         class="project__img"
+                        loading="lazy"
                       />
                       <figcaption>
                         Notification icon placement iterations and feedback
+                        (Static image - original animation optimized for
+                        performance)
                       </figcaption>
                     </figure>
                   </div>
@@ -564,11 +600,13 @@
                     <figure>
                       <img
                         src="../img/projects/autodesk-messaging/airtable.png"
-                        alt="Severity matrix."
+                        alt="Airtable tracking system for notification types and implementation progress"
                         class="project__img"
+                        loading="lazy"
                       />
                       <figcaption>
-                        Airtable documentation and tracking system
+                        Airtable documentation and tracking system (Static image
+                        - original animation optimized for performance)
                       </figcaption>
                     </figure>
                   </div>
@@ -708,13 +746,13 @@
               </div>
               <blockquote class="center">
                 <p>
-                  “Jason was a great collaborative partner, leading our weekly
+                  "Jason was a great collaborative partner, leading our weekly
                   meetings with fresh ideas and humility, ensuring we stayed
                   aligned and on track. His work had a huge impact in
-                  centralizing in-product messages in Fusion’s Notification
+                  centralizing in-product messages in Fusion's Notification
                   Center and improving how we organized critical updates for the
                   user. As a developer, I really appreciated how well he bridged
-                  design and implementation.”
+                  design and implementation."
                 </p>
                 <cite
                   >Alyssa, Sr Software Engineer, developer of
@@ -781,9 +819,11 @@
                       src="../img/projects/autodesk-messaging/mockup-final.png"
                       alt="Final Notification Center design"
                       class="project__img"
+                      loading="lazy"
                     />
                     <figcaption>
-                      Final Notification Center design implementation
+                      Final Notification Center design implementation (Static
+                      image - original animation optimized for performance)
                     </figcaption>
                   </figure>
                 </div>
@@ -952,43 +992,43 @@
               </p>
 
               <div class="key-learnings-grid">
-                <div class="key-learning-card card--white">
-                  <div class="key-learning-number">01</div>
-                  <h3 class="key-learning-title">
+                <div class="key-learning__card card--white">
+                  <div class="key-learning__number">01</div>
+                  <h3 class="key-learning__title">
                     Unified messaging is essential
                   </h3>
-                  <p class="key-learning-description">
+                  <p class="key-learning__description">
                     A cohesive notification strategy is critical for user
                     satisfaction and business growth.
                   </p>
                 </div>
 
-                <div class="key-learning-card card--white">
-                  <div class="key-learning-number">02</div>
-                  <h3 class="key-learning-title">Iterative design is key</h3>
-                  <p class="key-learning-description">
+                <div class="key-learning__card card--white">
+                  <div class="key-learning__number">02</div>
+                  <h3 class="key-learning__title">Iterative design is key</h3>
+                  <p class="key-learning__description">
                     Research-grounded, iterative design with stakeholder
                     alignment is crucial for complex systems.
                   </p>
                 </div>
 
-                <div class="key-learning-card card--white">
-                  <div class="key-learning-number">03</div>
-                  <h3 class="key-learning-title">
+                <div class="key-learning__card card--white">
+                  <div class="key-learning__number">03</div>
+                  <h3 class="key-learning__title">
                     Reusable components foster consistency
                   </h3>
-                  <p class="key-learning-description">
+                  <p class="key-learning__description">
                     Providing guidelines and components ensures consistency
                     across different teams.
                   </p>
                 </div>
 
-                <div class="key-learning-card card--white">
-                  <div class="key-learning-number">04</div>
-                  <h3 class="key-learning-title">
+                <div class="key-learning__card card--white">
+                  <div class="key-learning__number">04</div>
+                  <h3 class="key-learning__title">
                     User understanding drives impact
                   </h3>
-                  <p class="key-learning-description">
+                  <p class="key-learning__description">
                     Deep user understanding through research and analytics leads
                     to impactful solutions.
                   </p>
@@ -996,6 +1036,7 @@
               </div>
             </section>
           </div>
+
           <div class="article__sidebar">
             <nav class="sidebar-nav">
               <ul>
@@ -1033,100 +1074,32 @@
 
     <script type="module" src="../js/main.js?v=1"></script>
 
+    <!-- Password Protection and Performance Optimization -->
+    <script type="module">
+      import { protectCaseStudy } from '../js/password-protection-init.js';
+
+      import analytics from '../js/analytics/simple-analytics.js';
+
+      protectCaseStudy('project-adsk-notification');
+
+      // Initialize analytics for case study
+      document.addEventListener('DOMContentLoaded', () => {
+        // Initialize case study specific analytics tracking
+        analytics.trackCaseStudyInteraction('adsk-notification', 'view');
+      });
+    </script>
+
     <!-- Initialize Feather Icons -->
     <script>
       feather.replace();
     </script>
 
-    <!-- Font Loading Diagnostics Script -->
-    <script>
-      // Font loading diagnostics to validate preload issues
-      (function () {
-        const fontUrls = [
-          "https://fonts.gstatic.com/s/laila/v18/LYjCdG7kmE0gdQhfgCNqqVIuTN4.woff2",
-          "https://fonts.gstatic.com/s/gentiumplus/v6/CoIGjMz5OlKwGK-Bz_Nx2SOx1RiKBK-X8A.woff2",
-        ];
-
-        const googleFontsCss =
-          "https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Laila:wght@400;600&family=PT+Sans:wght@400;700&display=swap";
-
-        console.log("Font Loading Diagnostics Started:", {
-          timestamp: new Date().toISOString(),
-          preloadUrls: fontUrls,
-          googleFontsCss: googleFontsCss,
-        });
-
-        // Test preload URLs
-        fontUrls.forEach((url, index) => {
-          fetch(url, { method: "HEAD" })
-            .then((response) => {
-              console.log(`Font preload URL ${index + 1} status:`, {
-                url: url,
-                status: response.status,
-                ok: response.ok,
-                contentType: response.headers.get("content-type"),
-              });
-            })
-            .catch((error) => {
-              console.error(`Font preload URL ${index + 1} failed:`, {
-                url: url,
-                error: error.message,
-                timestamp: new Date().toISOString(),
-              });
-            });
-        });
-
-        // Test Google Fonts CSS
-        fetch(googleFontsCss, { method: "HEAD" })
-          .then((response) => {
-            console.log("Google Fonts CSS status:", {
-              url: googleFontsCss,
-              status: response.status,
-              ok: response.ok,
-              contentType: response.headers.get("content-type"),
-            });
-          })
-          .catch((error) => {
-            console.error("Google Fonts CSS failed:", {
-              url: googleFontsCss,
-              error: error.message,
-              timestamp: new Date().toISOString(),
-            });
-          });
-
-        // Monitor font loading performance
-        if ("performance" in window && "getEntriesByType" in performance) {
-          window.addEventListener("load", function () {
-            setTimeout(() => {
-              const fontEntries = performance
-                .getEntriesByType("resource")
-                .filter(
-                  (entry) =>
-                    entry.name.includes("fonts.gstatic.com") ||
-                    entry.name.includes("fonts.googleapis.com")
-                );
-
-              console.log("Font loading performance:", {
-                fontResources: fontEntries.map((entry) => ({
-                  url: entry.name,
-                  duration: entry.duration,
-                  size: entry.transferSize,
-                  cached: entry.transferSize === 0,
-                })),
-                timestamp: new Date().toISOString(),
-              });
-            }, 1000);
-          });
-        }
-      })();
-    </script>
-
     <!-- Sidebar Navigation Active State Script -->
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const sections = document.querySelectorAll("section[id]");
-        const navLinks = document.querySelectorAll(".sidebar-nav a");
-        const header = document.querySelector("site-header");
+      document.addEventListener('DOMContentLoaded', function () {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.sidebar-nav a');
+        const header = document.querySelector('site-header');
 
         function getHeaderHeight() {
           const height = header ? header.offsetHeight : 80;
@@ -1136,34 +1109,34 @@
         function updateActiveNav() {
           const scrollY = window.pageYOffset;
           const headerHeight = getHeaderHeight();
-          let current = "";
+          let current = '';
 
-          sections.forEach((section) => {
+          sections.forEach(section => {
             const sectionTop = section.offsetTop - headerHeight - 50;
             if (scrollY >= sectionTop) {
-              current = section.getAttribute("id");
+              current = section.getAttribute('id');
             }
           });
 
-          navLinks.forEach((link) => {
-            link.classList.remove("active");
-            if (link.getAttribute("href") === "#" + current) {
-              link.classList.add("active");
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+              link.classList.add('active');
             }
           });
         }
 
         // Update on scroll
-        window.addEventListener("scroll", updateActiveNav);
+        window.addEventListener('scroll', updateActiveNav);
 
         // Update on load
         updateActiveNav();
 
         // Smooth scroll for navigation links
         navLinks.forEach((link, index) => {
-          link.addEventListener("click", function (e) {
+          link.addEventListener('click', function (e) {
             e.preventDefault();
-            const targetId = this.getAttribute("href").substring(1);
+            const targetId = this.getAttribute('href').substring(1);
             const targetSection = document.getElementById(targetId);
 
             if (targetSection) {
@@ -1181,7 +1154,7 @@
               const finalOffset = Math.max(0, offsetPosition2);
               window.scrollTo({
                 top: finalOffset,
-                behavior: "smooth",
+                behavior: 'smooth',
               });
             }
           });

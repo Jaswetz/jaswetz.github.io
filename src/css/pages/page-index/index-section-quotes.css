@@ -14,17 +14,17 @@
 }
 
 .quote-text {
+    margin-bottom: var(--space-lg);
+    color: var(--color-text);
     font-size: var(--font-size-xl);
     font-style: italic;
-    color: var(--color-text);
     line-height: var(--leading-relaxed);
-    margin-bottom: var(--space-lg);
 }
 
 .quote-author {
-    font-size: var(--font-size-md);
-    font-weight: var(--font-weight-medium);
     color: var(--color-text-light);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-md);
 }
 
 .quote-author::before {

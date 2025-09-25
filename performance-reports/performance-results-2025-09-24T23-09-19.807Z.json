@@ -1,0 +1,129 @@
+{
+  "timestamp": "2025-09-24T23:09:19.558Z",
+  "url": "http://localhost:8080/",
+  "metrics": {
+    "lcp": 2626.1376,
+    "fid": 55.5,
+    "cls": 0.00328288751941318,
+    "fcp": 1860.96115,
+    "ttfb": 4.132000000000001,
+    "speedIndex": 1903.5846867696441,
+    "tbt": 18,
+    "performanceScore": 76
+  },
+  "budgetViolations": [],
+  "bundleSizes": {
+    "jsBundle": 700064,
+    "cssBundle": 263775,
+    "totalSize": 963839,
+    "files": {
+      "js": [
+        "dist/jaswetz.github.io.42ffe72c.js",
+        "dist/SiteHeader.a65b1acb.js",
+        "dist/ImageLightbox.359a6e93.js",
+        "dist/jaswetz.github.io.00ee25dd.js",
+        "dist/SiteHeader.c7cde784.js",
+        "dist/SidebarNavigation.5d540665.js",
+        "dist/jaswetz.github.io.ab476307.js",
+        "dist/clarity-config.c2f33ce0.js",
+        "dist/SidebarNavigation.f9598751.js",
+        "dist/ImageLightbox.850f3e7e.js",
+        "dist/jaswetz.github.io.01cbac0c.js",
+        "dist/js/service-worker.js",
+        "dist/jaswetz.github.io.de8274cc.js",
+        "dist/simple-analytics.b1454544.js",
+        "dist/jaswetz.github.io.bf85f3ca.js",
+        "dist/ImageLightbox.f7bd941c.js",
+        "dist/simple-analytics.b38aa54e.js",
+        "dist/clarity-config.7481c6b1.js",
+        "dist/password-protection.03679f62.js",
+        "dist/SiteFooter.9735e3ae.js",
+        "dist/jaswetz.github.io.6e90b727.js",
+        "dist/jaswetz.github.io.49d0c839.js",
+        "dist/simple-analytics.fe0d3101.js",
+        "dist/jaswetz.github.io.bd0c29ca.js",
+        "dist/jaswetz.github.io.9e6c3dea.js",
+        "dist/enhanced-image-loader.b0ea52fb.js",
+        "dist/project-intel-lfc.1a5c9dda.js",
+        "dist/clarity-config.80bfa700.js",
+        "dist/clarity-config.55facd88.js",
+        "dist/simple-analytics.5afbc888.js",
+        "dist/jaswetz.github.io.f53b5546.js",
+        "dist/password-protection.3a822f86.js",
+        "dist/simple-analytics.b3f1dda6.js",
+        "dist/enhanced-image-loader.db3270fe.js",
+        "dist/SiteFooter.3402e0da.js",
+        "dist/project-adsk-notification.8d8e1d65.js",
+        "dist/enhanced-image-loader.841862f3.js",
+        "dist/project-adsk-notification.4de71427.js",
+        "dist/SiteHeader.0269cc91.js"
+      ],
+      "css": [
+        "dist/jaswetz.github.io.6b1d1108.css",
+        "dist/jaswetz.github.io.d83d2564.css",
+        "dist/jaswetz.github.io.34df27b5.css",
+        "dist/jaswetz.github.io.d7c67857.css"
+      ]
+    }
+  },
+  "violations": [
+    {
+      "metric": "lcp",
+      "actual": 2626.1376,
+      "budget": 2500,
+      "impact": "low",
+      "message": "LCP (2626.14ms) exceeds budget (2500ms)"
+    },
+    {
+      "metric": "fcp",
+      "actual": 1860.96115,
+      "budget": 1800,
+      "impact": "low",
+      "message": "FCP (1860.96ms) exceeds budget (1800ms)"
+    },
+    {
+      "metric": "jsBundle",
+      "actual": 700064,
+      "budget": 204800,
+      "impact": "high",
+      "message": "jsBundle (683.66 KB) exceeds budget (200 KB)"
+    },
+    {
+      "metric": "cssBundle",
+      "actual": 263775,
+      "budget": 71680,
+      "impact": "high",
+      "message": "cssBundle (257.59 KB) exceeds budget (70 KB)"
+    }
+  ],
+  "regressions": [
+    {
+      "metric": "fid",
+      "current": 55.5,
+      "baseline": 24,
+      "regression": "131.3%",
+      "severity": "high"
+    },
+    {
+      "metric": "tbt",
+      "current": 18,
+      "baseline": 14.5,
+      "regression": "24.1%",
+      "severity": "medium"
+    },
+    {
+      "metric": "performanceScore",
+      "current": 76,
+      "baseline": 62,
+      "regression": "22.6%",
+      "severity": "medium"
+    }
+  ],
+  "summary": {
+    "passed": false,
+    "totalViolations": 4,
+    "criticalViolations": 0,
+    "totalRegressions": 3,
+    "highSeverityRegressions": 1
+  }
+}

@@ -2,21 +2,21 @@
 
 .companies-carousel {
   width: 100%;
+  margin-top: var(--space-2xl);
   overflow: hidden;
   mask: linear-gradient(to right,
       transparent 0%,
-      black 10%,
-      black 90%,
+      #000 10%,
+      #000 90%,
       transparent 100%);
-  margin-top: var(--space-2xl);
 }
 
 .companies-carousel__track {
   display: flex;
-  align-items: center;
   gap: var(--space-m);
-  animation: scroll-right-to-left 30s linear infinite;
+  align-items: center;
   width: fit-content;
+  animation: scroll-right-to-left 30s linear infinite;
 }
 
 .companies-carousel__track:hover {
@@ -34,18 +34,18 @@
 }
 
 .company-logo {
-  flex-shrink: 0;
-  width: calc(var(--space-2xl-3xl) * 3);
-  height: calc(var(--space-2xl-3xl) * 2);
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
+  width: calc(var(--space-2xl-3xl) * 3);
+  height: calc(var(--space-2xl-3xl) * 2);
   padding: var(--spacing-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
   transition:
     transform 0.2s ease-in-out,
     box-shadow 0.2s ease-in-out;
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius);
 }
 
 .company-logo:hover {
@@ -54,13 +54,13 @@
 }
 
 .company-logo__image {
-  max-width: calc(var(--space-2xl-3xl) * 2);
-  max-height: var(--space-3xl);
   width: auto;
+  max-width: calc(var(--space-2xl-3xl) * 2);
   height: auto;
-  object-fit: contain;
-  filter: saturate(80%) opacity(0.7);
+  max-height: var(--space-3xl);
   transition: filter 0.2s ease-in-out;
+  filter: saturate(80%) opacity(0.7);
+  object-fit: contain;
 }
 
 .company-logo:hover .company-logo__image {
@@ -81,8 +81,8 @@
 
 @media (width <=480px) {
   .companies-carousel__track {
-    animation-duration: 25s;
     gap: var(--space-s);
+    animation-duration: 25s;
   }
 
   .company-logo {

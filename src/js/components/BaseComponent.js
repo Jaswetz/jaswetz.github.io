@@ -1,20 +1,13 @@
 /**
- * Base Web Component Class
- * Provides standardized lifecycle management, event handling, and cleanup
- * All custom components should extend this class for consistent behavior
+ * BaseComponent - Base class for Web Components
+ * Provides common functionality for resource management, event handling, and utilities
  */
-
-import logger from "../utils/Logger.js";
-import { scrollManager } from "../utils/ScrollManager.js";
 
 class BaseComponent extends HTMLElement {
   constructor() {
     super();
 
-    // Create shadow DOM
-    this.attachShadow({ mode: "open" });
-
-    // Initialize cleanup tracking
+    // Resource tracking for cleanup
     this.eventListeners = [];
     this.observers = [];
     this.timeouts = [];
@@ -23,275 +16,150 @@ class BaseComponent extends HTMLElement {
     this.abortControllers = [];
 
     // Component state
-    this.isConnected = false;
-    this.isInitialized = false;
-
-    // Bind methods to maintain context
-    this.handleError = this.handleError.bind(this);
-
-    // Set up error boundary
-    this.setupErrorBoundary();
-
-    logger.debug(`${this.constructor.name}: Component created`);
+    this._errorState = false;
   }
 
   /**
-   * Set up error boundary for the component
-   */
-  setupErrorBoundary() {
-    window.addEventListener("error", this.handleError);
-    window.addEventListener("unhandledrejection", this.handleError);
-  }
-
-  /**
-   * Handle component errors
-   * @param {Event} event - Error event
-   */
-  handleError(event) {
-    if (event.target === this || this.contains(event.target)) {
-      logger.error(
-        `${this.constructor.name}: Component error`,
-        event.error || event.reason
-      );
-      this.onError(event.error || event.reason);
-    }
-  }
-
-  /**
-   * Override this method to handle component-specific errors
-   * @param {Error} error - The error that occurred
-   */
-  onError(error) {
-    // Default error handling - can be overridden by subclasses
-    this.setAttribute("data-error", "true");
-
-    // Optionally show error message in development
-    if (logger.isDevelopment) {
-      const errorDiv = document.createElement("div");
-      errorDiv.style.cssText = `
-        background: #fee; 
-        border: 1px solid #fcc; 
-        padding: 8px; 
-        margin: 4px; 
-        border-radius: 4px;
-        font-family: monospace;
-        font-size: 12px;
-        color: #c00;
-      `;
-      errorDiv.textContent = `Error in ${this.constructor.name}: ${error.message}`;
-      this.shadowRoot.appendChild(errorDiv);
-    }
-  }
-
-  /**
-   * Add event listener with automatic cleanup
-   * @param {EventTarget} target - Event target
+   * Add event listener with automatic cleanup tracking
+   * @param {EventTarget} target - Element to attach listener to
    * @param {string} event - Event type
-   * @param {Function} handler - Event handler
-   * @param {Object|boolean} options - Event options
+   * @param {Function} handler - Event handler function
+   * @param {Object} options - Event listener options
    * @returns {Function} Cleanup function
    */
   addEventListenerWithCleanup(target, event, handler, options = {}) {
-    if (!target || typeof handler !== "function") {
-      logger.warn(
-        `${this.constructor.name}: Invalid event listener parameters`
-      );
-      return () => {};
+    if (!target || !event || typeof handler !== 'function') {
+      return () => {}; // Return no-op cleanup function
     }
 
-    // Create abort controller for this listener
-    const abortController = new AbortController();
-    const listenerOptions = {
-      ...options,
-      signal: abortController.signal,
-    };
+    try {
+      target.addEventListener(event, handler, options);
 
-    target.addEventListener(event, handler, listenerOptions);
+      const cleanup = () => {
+        target.removeEventListener(event, handler, options);
+        const index = this.eventListeners.indexOf(cleanup);
+        if (index > -1) {
+          this.eventListeners.splice(index, 1);
+        }
+      };
 
-    const listenerInfo = {
-      target,
-      event,
-      handler,
-      options: listenerOptions,
-      abortController,
-    };
-
-    this.eventListeners.push(listenerInfo);
-    this.abortControllers.push(abortController);
-
-    // Return cleanup function
-    return () => {
-      abortController.abort();
-      const index = this.eventListeners.indexOf(listenerInfo);
-      if (index > -1) {
-        this.eventListeners.splice(index, 1);
-      }
-    };
+      this.eventListeners.push(cleanup);
+      return cleanup;
+    } catch (error) {
+      console.warn('Failed to add event listener:', error);
+      return () => {};
+    }
   }
 
   /**
-   * Add timeout with automatic cleanup
+   * Add timeout with automatic cleanup tracking
    * @param {Function} callback - Callback function
    * @param {number} delay - Delay in milliseconds
    * @returns {number} Timeout ID
    */
   addTimeoutWithCleanup(callback, delay) {
-    const timeoutId = setTimeout(() => {
-      callback();
-      // Remove from tracking array when it executes
-      const index = this.timeouts.indexOf(timeoutId);
-      if (index > -1) {
-        this.timeouts.splice(index, 1);
-      }
-    }, delay);
-
+    const timeoutId = setTimeout(callback, delay);
     this.timeouts.push(timeoutId);
     return timeoutId;
   }
 
   /**
-   * Add interval with automatic cleanup
+   * Add interval with automatic cleanup tracking
    * @param {Function} callback - Callback function
-   * @param {number} interval - Interval in milliseconds
+   * @param {number} delay - Interval in milliseconds
    * @returns {number} Interval ID
    */
-  addIntervalWithCleanup(callback, interval) {
-    const intervalId = setInterval(callback, interval);
+  addIntervalWithCleanup(callback, delay) {
+    const intervalId = setInterval(callback, delay);
     this.intervals.push(intervalId);
     return intervalId;
   }
 
   /**
-   * Add observer with automatic cleanup
-   * @param {Object} observer - Observer instance (MutationObserver, IntersectionObserver, etc.)
-   * @returns {Object} The observer instance
-   */
-  addObserverWithCleanup(observer) {
-    if (!observer || typeof observer.disconnect !== "function") {
-      logger.warn(`${this.constructor.name}: Invalid observer`);
-      return observer;
-    }
-
-    this.observers.push(observer);
-    return observer;
-  }
-
-  /**
-   * Subscribe to scroll events with automatic cleanup
+   * Add scroll listener with cleanup tracking
    * @param {Function} callback - Scroll callback
-   * @param {Object} options - Scroll options
    * @returns {Function} Unsubscribe function
    */
-  addScrollListenerWithCleanup(callback, options = {}) {
-    const unsubscribe = scrollManager.subscribe(callback, {
-      id: `${this.constructor.name}_${Date.now()}`,
-      ...options,
-    });
+  addScrollListenerWithCleanup(callback) {
+    // Simple scroll listener implementation
+    const unsubscribe = () => {
+      window.removeEventListener('scroll', callback);
+      const index = this.scrollSubscriptions.indexOf(unsubscribe);
+      if (index > -1) {
+        this.scrollSubscriptions.splice(index, 1);
+      }
+    };
 
+    window.addEventListener('scroll', callback, { passive: true });
     this.scrollSubscriptions.push(unsubscribe);
     return unsubscribe;
   }
 
   /**
-   * Create a fetch request with automatic abort on cleanup
-   * @param {string} url - Request URL
+   * Create abortable fetch request
+   * @param {string} url - URL to fetch
    * @param {Object} options - Fetch options
    * @returns {Promise} Fetch promise
    */
   createAbortableFetch(url, options = {}) {
-    const abortController = new AbortController();
-    this.abortControllers.push(abortController);
+    const controller = new AbortController();
+    this.abortControllers.push(controller);
 
     return fetch(url, {
       ...options,
-      signal: abortController.signal,
+      signal: controller.signal,
     });
   }
 
   /**
-   * Safely query elements within the component
+   * Safe DOM query within shadow root
    * @param {string} selector - CSS selector
-   * @param {boolean} all - Whether to return all matches
-   * @returns {Element|NodeList|null} Query result
+   * @returns {Element|null} Found element or null
    */
-  query(selector, all = false) {
+  query(selector) {
     try {
-      return all
-        ? this.shadowRoot.querySelectorAll(selector)
-        : this.shadowRoot.querySelector(selector);
+      return this.shadowRoot?.querySelector(selector) || null;
     } catch (error) {
-      logger.error(
-        `${this.constructor.name}: Invalid selector "${selector}"`,
-        error
-      );
-      return all ? [] : null;
+      console.warn('Invalid selector:', selector, error);
+      return null;
     }
   }
 
   /**
-   * Safely set innerHTML with error handling
+   * Safely set HTML content
    * @param {Element} element - Target element
    * @param {string} html - HTML content
    */
   safeSetHTML(element, html) {
-    if (!element) {
-      logger.warn(`${this.constructor.name}: Cannot set HTML on null element`);
-      return;
-    }
-
-    try {
+    if (element && typeof html === 'string') {
       element.innerHTML = html;
-    } catch (error) {
-      logger.error(`${this.constructor.name}: Error setting HTML`, error);
-      element.textContent = "Error loading content";
     }
   }
 
   /**
-   * Emit custom event from component
-   * @param {string} eventName - Event name
-   * @param {*} detail - Event detail data
-   * @param {Object} options - Event options
-   */
-  emit(eventName, detail = null, options = {}) {
-    const event = new CustomEvent(eventName, {
-      detail,
-      bubbles: true,
-      cancelable: true,
-      ...options,
-    });
-
-    this.dispatchEvent(event);
-    logger.debug(
-      `${this.constructor.name}: Emitted event "${eventName}"`,
-      detail
-    );
-  }
-
-  /**
-   * Get component configuration from attributes
-   * @param {Object} defaults - Default configuration
+   * Get configuration from data attributes
+   * @param {Object} defaults - Default configuration values
    * @returns {Object} Merged configuration
    */
   getConfig(defaults = {}) {
     const config = { ...defaults };
 
     // Parse data attributes
-    for (const attr of this.attributes) {
-      if (attr.name.startsWith("data-")) {
-        const key = attr.name
-          .slice(5)
-          .replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
-        let value = attr.value;
+    if (this.attributes) {
+      for (const attr of this.attributes) {
+        if (attr.name.startsWith('data-')) {
+          const key = attr.name
+            .slice(5)
+            .replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
 
-        // Try to parse as JSON, fallback to string
-        try {
-          value = JSON.parse(value);
-        } catch {
-          // Keep as string
+          try {
+            // Try to parse as JSON first
+            config[key] = JSON.parse(attr.value);
+          } catch {
+            // Fall back to string value
+            config[key] = attr.value;
+          }
         }
-
-        config[key] = value;
       }
     }
 
@@ -299,171 +167,95 @@ class BaseComponent extends HTMLElement {
   }
 
   /**
-   * Standard lifecycle method - called when element is added to DOM
-   */
-  connectedCallback() {
-    this.isConnected = true;
-
-    try {
-      this.init();
-      this.isInitialized = true;
-      logger.debug(`${this.constructor.name}: Connected and initialized`);
-    } catch (error) {
-      logger.error(
-        `${this.constructor.name}: Error during initialization`,
-        error
-      );
-      this.onError(error);
-    }
-  }
-
-  /**
-   * Standard lifecycle method - called when element is removed from DOM
-   */
-  disconnectedCallback() {
-    this.isConnected = false;
-
-    try {
-      this.cleanup();
-      logger.debug(`${this.constructor.name}: Disconnected and cleaned up`);
-    } catch (error) {
-      logger.error(`${this.constructor.name}: Error during cleanup`, error);
-    }
-  }
-
-  /**
-   * Standard lifecycle method - called when attributes change
-   * @param {string} name - Attribute name
-   * @param {string} oldValue - Old value
-   * @param {string} newValue - New value
-   */
-  attributeChangedCallback(name, oldValue, newValue) {
-    if (oldValue !== newValue && this.isInitialized) {
-      try {
-        this.onAttributeChanged(name, oldValue, newValue);
-      } catch (error) {
-        logger.error(
-          `${this.constructor.name}: Error handling attribute change`,
-          error
-        );
-        this.onError(error);
-      }
-    }
-  }
-
-  /**
-   * Override this method to initialize the component
-   * This is called automatically when the component is connected
-   */
-  init() {
-    // Override in subclasses
-    logger.debug(`${this.constructor.name}: Default init called`);
-  }
-
-  /**
-   * Override this method to handle attribute changes
-   * @param {string} name - Attribute name
-   * @param {string} oldValue - Old value
-   * @param {string} newValue - New value
-   */
-  onAttributeChanged(name, oldValue, newValue) {
-    // Override in subclasses
-    logger.debug(
-      `${this.constructor.name}: Attribute "${name}" changed from "${oldValue}" to "${newValue}"`
-    );
-  }
-
-  /**
-   * Cleanup all resources
+   * Clean up all tracked resources
    */
   cleanup() {
-    // Abort all controllers
-    this.abortControllers.forEach((controller) => {
+    // Clean up event listeners
+    this.eventListeners.forEach(cleanup => {
       try {
-        controller.abort();
+        cleanup();
       } catch (error) {
-        logger.warn(
-          `${this.constructor.name}: Error aborting controller`,
-          error
-        );
+        console.warn('Error cleaning up event listener:', error);
       }
     });
+    this.eventListeners = [];
 
     // Clean up observers
-    this.observers.forEach((observer) => {
+    this.observers.forEach(observer => {
       try {
         observer.disconnect();
       } catch (error) {
-        logger.warn(
-          `${this.constructor.name}: Error disconnecting observer`,
-          error
-        );
+        console.warn('Error disconnecting observer:', error);
       }
     });
+    this.observers = [];
 
     // Clean up timeouts
-    this.timeouts.forEach((timeoutId) => {
+    this.timeouts.forEach(timeoutId => {
       try {
         clearTimeout(timeoutId);
       } catch (error) {
-        logger.warn(`${this.constructor.name}: Error clearing timeout`, error);
+        console.warn('Error clearing timeout:', error);
       }
     });
+    this.timeouts = [];
 
     // Clean up intervals
-    this.intervals.forEach((intervalId) => {
+    this.intervals.forEach(intervalId => {
       try {
         clearInterval(intervalId);
       } catch (error) {
-        logger.warn(`${this.constructor.name}: Error clearing interval`, error);
+        console.warn('Error clearing interval:', error);
       }
     });
+    this.intervals = [];
 
     // Clean up scroll subscriptions
-    this.scrollSubscriptions.forEach((unsubscribe) => {
+    this.scrollSubscriptions.forEach(unsubscribe => {
       try {
         unsubscribe();
       } catch (error) {
-        logger.warn(
-          `${this.constructor.name}: Error unsubscribing from scroll`,
-          error
-        );
+        console.warn('Error unsubscribing from scroll:', error);
       }
     });
-
-    // Remove error listeners
-    window.removeEventListener("error", this.handleError);
-    window.removeEventListener("unhandledrejection", this.handleError);
-
-    // Clear arrays
-    this.eventListeners = [];
-    this.observers = [];
-    this.timeouts = [];
-    this.intervals = [];
     this.scrollSubscriptions = [];
-    this.abortControllers = [];
 
-    // Remove error state
-    this.removeAttribute("data-error");
+    // Clean up abort controllers
+    this.abortControllers.forEach(controller => {
+      try {
+        controller.abort();
+      } catch (error) {
+        console.warn('Error aborting controller:', error);
+      }
+    });
+    this.abortControllers = [];
   }
 
   /**
-   * Get component debug information
+   * Get debug information about the component
    * @returns {Object} Debug information
    */
   getDebugInfo() {
     return {
       name: this.constructor.name,
       isConnected: this.isConnected,
-      isInitialized: this.isInitialized,
+      isInitialized: this.isInitialized || false,
       eventListeners: this.eventListeners.length,
       observers: this.observers.length,
       timeouts: this.timeouts.length,
       intervals: this.intervals.length,
       scrollSubscriptions: this.scrollSubscriptions.length,
       abortControllers: this.abortControllers.length,
-      hasError: this.hasAttribute("data-error"),
+      hasError: this._errorState || this.getAttribute('data-error') === 'true',
     };
+  }
+
+  /**
+   * Called when component is disconnected from DOM
+   * Override in subclasses and call super.disconnectedCallback()
+   */
+  disconnectedCallback() {
+    this.cleanup();
   }
 }
 

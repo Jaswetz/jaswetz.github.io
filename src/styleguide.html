@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -62,7 +62,8 @@
     <link rel="apple-touch-icon" href="./assets/favicons/apple-icon.png" />
   </head>
   <body>
-    <main>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <main id="main-content">
       <style>
         /* Basic styling for style guide sections for clarity */
 
@@ -194,6 +195,211 @@
             </p>
             <!-- Issue #10: Dynamically display colors and their variable names from variables.css (LSG3.2) -->
             <!-- See: https://github.com/Jaswetz/jaswetz.github.io/issues/10 -->
+            <h4>Primary Colors</h4>
+            <div class="color-grid">
+              <!-- Color swatches will be dynamically generated -->
+            </div>
+          </section>
+
+          <section id="design-tokens" class="styleguide-section">
+            <h2>3.6 Design Tokens</h2>
+            <p>
+              Design tokens are the atomic building blocks of the design system,
+              defined as CSS custom properties in <code>variables.css</code>.
+              They ensure consistency across components and themes.
+            </p>
+
+            <section id="color-tokens" class="styleguide-section">
+              <h3>Color Tokens</h3>
+              <div class="grid grid--auto-fit grid--gap-s">
+                <div
+                  class="color-token-swatch"
+                  style="
+                    --token-color: var(--color-primary);
+                    --token-name: '--color-primary';
+                  "
+                >
+                  <div class="color-token-swatch__color"></div>
+                  <div class="color-token-swatch__info">
+                    <code>--color-primary</code>
+                    <span class="color-token-swatch__value">#2569ed</span>
+                    <p>Primary brand color for interactive elements</p>
+                  </div>
+                </div>
+
+                <div
+                  class="color-token-swatch"
+                  style="
+                    --token-color: var(--color-primary-alt);
+                    --token-name: '--color-primary-alt';
+                  "
+                >
+                  <div class="color-token-swatch__color"></div>
+                  <div class="color-token-swatch__info">
+                    <code>--color-primary-alt</code>
+                    <span class="color-token-swatch__value">#1746a0</span>
+                    <p>Primary color variant for hover states</p>
+                  </div>
+                </div>
+
+                <div
+                  class="color-token-swatch"
+                  style="
+                    --token-color: var(--color-surface);
+                    --token-name: '--color-surface';
+                  "
+                >
+                  <div class="color-token-swatch__color"></div>
+                  <div class="color-token-swatch__info">
+                    <code>--color-surface</code>
+                    <span class="color-token-swatch__value">#fff</span>
+                    <p>Default background surface color</p>
+                  </div>
+                </div>
+
+                <div
+                  class="color-token-swatch"
+                  style="
+                    --token-color: var(--color-text);
+                    --token-name: '--color-text';
+                  "
+                >
+                  <div class="color-token-swatch__color"></div>
+                  <div class="color-token-swatch__info">
+                    <code>--color-text</code>
+                    <span class="color-token-swatch__value">#333</span>
+                    <p>Primary text color</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section id="typography-tokens" class="styleguide-section">
+              <h3>Typography Tokens</h3>
+              <div class="grid grid--2-column grid--gap-m">
+                <div class="typography-token">
+                  <h4 class="typography-token__heading">
+                    <code>--font-family-heading</code>
+                  </h4>
+                  <p
+                    class="typography-token__sample"
+                    style="font-family: var(--font-family-heading)"
+                  >
+                    "Laila", serif
+                  </p>
+                  <p>Heading font family for titles and prominent text</p>
+                </div>
+
+                <div class="typography-token">
+                  <h4 class="typography-token__heading">
+                    <code>--font-family-body</code>
+                  </h4>
+                  <p
+                    class="typography-token__sample"
+                    style="font-family: var(--font-family-body)"
+                  >
+                    "Gentium Plus", serif
+                  </p>
+                  <p>Body font family for paragraphs and general content</p>
+                </div>
+
+                <div class="typography-token">
+                  <h4 class="typography-token__heading">
+                    <code>--font-weight-semibold</code>
+                  </h4>
+                  <p
+                    class="typography-token__sample"
+                    style="font-weight: var(--font-weight-semibold)"
+                  >
+                    600 - Semibold
+                  </p>
+                  <p>Semibold weight for emphasis and headings</p>
+                </div>
+
+                <div class="typography-token">
+                  <h4 class="typography-token__heading">
+                    <code>--text-size-heading-1</code>
+                  </h4>
+                  <h1
+                    class="typography-token__sample"
+                    style="font-size: var(--text-size-heading-1)"
+                  >
+                    Heading 1
+                  </h1>
+                  <p>Primary heading size (var(--size-step-5))</p>
+                </div>
+              </div>
+            </section>
+
+            <section id="spacing-tokens" class="styleguide-section">
+              <h3>Spacing Tokens</h3>
+              <p>
+                The spacing system uses a consistent scale based on the
+                <code>--unit: 0.25rem</code> (4px) for rhythmic design.
+              </p>
+              <div class="spacing-demo">
+                <div class="spacing-token" style="--spacing: var(--space-xs)">
+                  <code>--space-xs</code> (0.5625rem)
+                </div>
+                <div class="spacing-token" style="--spacing: var(--space-s)">
+                  <code>--space-s</code> (0.75rem)
+                </div>
+                <div class="spacing-token" style="--spacing: var(--space-m)">
+                  <code>--space-m</code> (1.125rem)
+                </div>
+                <div class="spacing-token" style="--spacing: var(--space-l)">
+                  <code>--space-l</code> (1.5rem)
+                </div>
+                <div class="spacing-token" style="--spacing: var(--space-xl)">
+                  <code>--space-xl</code> (1.875rem)
+                </div>
+                <div class="spacing-token" style="--spacing: var(--space-2xl)">
+                  <code>--space-2xl</code> (3rem)
+                </div>
+              </div>
+            </section>
+
+            <section id="border-radius-tokens" class="styleguide-section">
+              <h3>Border Radius Tokens</h3>
+              <div class="grid grid--auto-fit grid--gap-m">
+                <div
+                  class="border-radius-demo"
+                  style="border-radius: var(--border-radius-sm)"
+                >
+                  <code>--border-radius-sm</code> (0.375rem)
+                </div>
+                <div
+                  class="border-radius-demo"
+                  style="border-radius: var(--border-radius)"
+                >
+                  <code>--border-radius</code> (0.75rem)
+                </div>
+                <div
+                  class="border-radius-demo"
+                  style="border-radius: var(--border-radius-md)"
+                >
+                  <code>--border-radius-md</code> (0.5rem)
+                </div>
+                <div
+                  class="border-radius-demo"
+                  style="border-radius: var(--border-radius-lg)"
+                >
+                  <code>--border-radius-lg</code> (1rem)
+                </div>
+                <div
+                  class="border-radius-demo"
+                  style="border-radius: var(--border-radius-xl)"
+                >
+                  <code>--border-radius-xl</code> (1.5rem)
+                </div>
+              </div>
+            </section>
+          </section>
+
+          <section id="legacy-colors" class="styleguide-section">
+            <h2>Legacy Color Swatches</h2>
+            <p>Legacy color demonstration using CSS custom properties.</p>
+
             <h4>Primary Colors</h4>
             <div
               class="color-swatch"
@@ -363,24 +569,24 @@
               // Simple breakpoint detector for demo
               function updateBreakpointIndicator() {
                 const width = window.innerWidth;
-                let currentBp = "xs";
+                let currentBp = 'xs';
 
-                if (width >= 1536) currentBp = "2xl (1536px+)";
-                else if (width >= 1280) currentBp = "xl (1280px+)";
-                else if (width >= 1024) currentBp = "lg (1024px+)";
-                else if (width >= 768) currentBp = "md (768px+)";
-                else if (width >= 576) currentBp = "sm (576px+)";
-                else currentBp = "xs (<576px)";
+                if (width >= 1536) currentBp = '2xl (1536px+)';
+                else if (width >= 1280) currentBp = 'xl (1280px+)';
+                else if (width >= 1024) currentBp = 'lg (1024px+)';
+                else if (width >= 768) currentBp = 'md (768px+)';
+                else if (width >= 576) currentBp = 'sm (576px+)';
+                else currentBp = 'xs (<576px)';
 
-                const indicator = document.getElementById("current-bp");
+                const indicator = document.getElementById('current-bp');
                 if (indicator) {
                   indicator.textContent = currentBp;
                 }
               }
 
               // Update on load and resize
-              window.addEventListener("load", updateBreakpointIndicator);
-              window.addEventListener("resize", updateBreakpointIndicator);
+              window.addEventListener('load', updateBreakpointIndicator);
+              window.addEventListener('resize', updateBreakpointIndicator);
             </script>
           </section>
 
@@ -689,7 +895,7 @@
               <figure>
                 <img
                   src="./img/projects/autodesk-messaging/messaging-final.jpg"
-                  alt="Sample lightbox image"
+                  alt="Autodesk messaging system interface showing notification center with unified design and user-friendly controls"
                   class="project__img"
                   style="max-width: 300px; cursor: pointer"
                 />

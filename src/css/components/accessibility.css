@@ -3,14 +3,14 @@
   position: absolute;
   top: -80px;
   left: 6px;
-  background: var(--color-primary);
-  color: white;
+  z-index: 9999;
   padding: var(--space-xs) var(--space-s);
-  text-decoration: none;
   border-radius: var(--border-radius);
+  background: var(--color-primary);
+  color: #fff;
   font-weight: var(--font-weight-medium);
   font-size: var(--size-step--1);
-  z-index: 9999;
+  text-decoration: none;
   transition: var(--transition-interactive);
   box-shadow: var(--hover-shadow);
 }
@@ -42,12 +42,12 @@
   position: absolute !important;
   width: 1px !important;
   height: 1px !important;
-  padding: 0 !important;
   margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
   overflow: hidden !important;
   clip: rect(0, 0, 0, 0) !important;
   white-space: nowrap !important;
-  border: 0 !important;
 }
 
 /* Focus management for all interactive elements */
@@ -80,9 +80,9 @@ select:focus {
   *,
   *::before,
   *::after {
+    transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
 }
@@ -117,8 +117,8 @@ select:focus {
   nav a,
   .logo a,
   .tag {
-    min-height: var(--touch-target-min);
     min-width: var(--touch-target-min);
+    min-height: var(--touch-target-min);
   }
 
   .tag {

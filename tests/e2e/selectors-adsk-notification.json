@@ -1,0 +1,84 @@
+{
+  "selectors": {
+    "filename": "project-adsk-notification.html",
+    "hero": {
+      "section": ".hero--project",
+      "header": ".hero--project__header",
+      "label": ".hero--project__label",
+      "role": ".hero--project__role",
+      "timeline": ".hero--project__timeline"
+    },
+    "content": {
+      "main": "main",
+      "article": "article",
+      "sections": [
+        {
+          "id": "project-summary",
+          "tag": "section"
+        },
+        {
+          "id": "the-problem",
+          "tag": "section"
+        },
+        {
+          "id": "process",
+          "tag": "section"
+        },
+        {
+          "id": "design-iteration",
+          "tag": "section"
+        },
+        {
+          "id": "user-testing",
+          "tag": "section"
+        },
+        {
+          "id": "implementation",
+          "tag": "section"
+        },
+        {
+          "id": "centralized-solution",
+          "tag": "section"
+        },
+        {
+          "id": "results-impact",
+          "tag": "section"
+        },
+        {
+          "id": "key-learnings",
+          "tag": "section"
+        }
+      ]
+    },
+    "components": {
+      "siteHeader": "site-header",
+      "imageLightbox": "image-lightbox"
+    },
+    "metadata": {
+      "client": "Autodesk",
+      "title": "Crafting A Unified Messaging Experience.",
+      "role": "Lead UX Designer",
+      "timeline": "8-month project"
+    }
+  },
+  "testSelectors": {
+    "heroSection": "await expect(page.locator(\".hero--project\")).toBeVisible();",
+    "heroHeader": "await expect(page.locator(\".hero--project__header\")).toBeVisible();",
+    "projectMetadata": [
+      "await expect(page.locator(\"text=Autodesk\").first()).toBeVisible();",
+      "await expect(page.locator(\"text=Lead UX Designer\").first()).toBeVisible();",
+      "await expect(page.locator(\"text=8-month project\").first()).toBeVisible();"
+    ],
+    "contentSections": [
+      "await expect(page.locator(\"#project-summary\")).toBeVisible();",
+      "await expect(page.locator(\"#the-problem\")).toBeVisible();",
+      "await expect(page.locator(\"#process\")).toBeVisible();",
+      "await expect(page.locator(\"#design-iteration\")).toBeVisible();",
+      "await expect(page.locator(\"#user-testing\")).toBeVisible();",
+      "await expect(page.locator(\"#implementation\")).toBeVisible();",
+      "await expect(page.locator(\"#centralized-solution\")).toBeVisible();",
+      "await expect(page.locator(\"#results-impact\")).toBeVisible();",
+      "await expect(page.locator(\"#key-learnings\")).toBeVisible();"
+    ]
+  }
+}

@@ -1,266 +1,168 @@
-# Architecture Overview
-
-This document provides a comprehensive overview of the technical architecture and design decisions for Jason Swetzoff's UX Portfolio website.
-
-## Core Architecture Principles
-
-### 1. Performance-First Design
-
-- **Bundle Size Limits**: JavaScript <30KB, CSS <70KB (gzipped)
-- **Core Web Vitals**: LCP <2.5s, CLS <0.1, FID <100ms
-- **Image Optimization**: WebP with fallbacks, lazy loading
-- **Minimal Dependencies**: Vanilla JavaScript, no frameworks
-
-### 2. Accessibility Compliance
-
-- **WCAG 2.1 AA Standards**: Required for all features
-- **Keyboard Navigation**: Full keyboard accessibility
-- **Screen Reader Support**: Semantic HTML and ARIA labels
-- **Reduced Motion**: Respects `prefers-reduced-motion`
-
-### 3. Progressive Enhancement
-
-- **Mobile-First**: Responsive design starting from mobile
-- **Browser Support**: Chrome 63+, Firefox 63+, Safari 10.1+, Edge 79+
-- **Graceful Degradation**: Fallbacks for older browsers
-- **No JavaScript Dependency**: Core content accessible without JS
-
-## Technology Stack
-
-### Build System
-
-- **Parcel.js 2.15.4**: Zero-config bundler
-- **Node.js 23.9.0**: Runtime environment
-- **npm**: Package management with locked dependencies
-
-### Frontend Technologies
-
-- **HTML5**: Semantic markup with accessibility focus
-- **CSS3**: Modern features including Grid, Flexbox, Cascade Layers
-- **Vanilla JavaScript (ES2022)**: No frameworks
-- **Web Components**: Custom elements with Shadow DOM
-
-### Development Tools
-
-- **ESLint**: JavaScript linting
-- **Stylelint**: CSS linting
-- **Prettier**: Code formatting
-- **Playwright**: End-to-end testing
-
-## CSS Architecture
-
-### Cascade Layers Strategy
-
-The project uses CSS Cascade Layers for explicit cascade control:
-
-```css
-@layer reset, base, theme, layout, components, utilities, debug;
-```
-
-**Layer Purposes:**
-
-- **Reset**: CSS reset and normalization
-- **Base**: Global styles and typography
-- **Theme**: Color schemes and design tokens
-- **Layout**: Page-level layout systems
-- **Components**: UI component styles
-- **Utilities**: Override utilities and helpers
-- **Debug**: Development debugging styles
-
-### Design Token System
-
-- **CSS Custom Properties**: Centralized in `variables.css`
-- **Responsive Breakpoints**: `rem`-based mobile-first system
-- **Color System**: Semantic color tokens with theme support
-- **Typography Scale**: Consistent font sizes and line heights
-
-### Component Styling
-
-- **Shadow DOM Encapsulation**: Prevents style leakage
-- **BEM-style Classes**: Within component scope
-- **Global Token Consumption**: Components use global design tokens
-- **Separate CSS Files**: Each component has its own stylesheet
-
-## JavaScript Architecture
-
-### Web Components Pattern
-
-All interactive UI elements are implemented as Web Components:
-
-```javascript
-class ComponentName extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: "open" });
-  }
-
-  connectedCallback() {
-    this.shadowRoot.innerHTML = `
-      <style>${styles}</style>
-      <div>Component HTML</div>
-    `;
-  }
-}
-```
-
-### Component Registration
-
-Components are registered in `main.js`:
-
-```javascript
-if (window.customElements) {
-  if (!customElements.get("site-header")) {
-    customElements.define("site-header", SiteHeader);
-  }
-}
-```
-
-### Module System
-
-- **ES6 Modules**: Native module imports/exports
-- **Dynamic Imports**: For code splitting where needed
-- **Tree Shaking**: Unused code elimination via Parcel
-
-## Security Architecture
-
-### Password Protection System
-
-Client-side protection for confidential case studies:
-
-**Components:**
-
-- `password-config.js`: Centralized configuration
-- `password-protection.js`: Core protection logic
-- `password-protection-init.js`: Integration helpers
-
-**Features:**
-
-- Session management with localStorage
-- 24-hour authentication sessions
-- User-friendly password prompts
-- Configurable per case study
-
-**Security Considerations:**
-
-- Client-side only (no server dependencies)
-- Suitable for portfolio access control
-- Not for truly sensitive data protection
-
-### Privacy & Analytics
-
-- **Google Analytics 4**: Traffic analysis with privacy settings
-- **Microsoft Clarity**: User behavior insights with PII masking
-- **GDPR Compliance**: Anonymized IPs, consent-aware
-- **No Tracking**: Password-protected content excluded
-
-## Performance Architecture
-
-### Bundle Optimization
-
-- **Code Splitting**: Separate bundles for different pages
-- **Tree Shaking**: Unused code elimination
-- **Minification**: JavaScript and CSS compression
-- **Asset Optimization**: Image compression and format conversion
-
-### Image Strategy
-
-- **WebP Conversion**: Modern format with fallbacks
-- **Responsive Images**: Multiple sizes for different viewports
-- **Lazy Loading**: Images loaded as needed
-- **Optimization Pipeline**: Sharp-based processing
-
-### Caching Strategy
-
-- **Static Assets**: Long-term caching with hash-based filenames
-- **HTML**: Short-term caching for content updates
-- **Service Worker**: Considered for future implementation
-
-## Testing Architecture
-
-### Multi-Layer Testing
-
-1. **Security**: Dependency vulnerability scanning
-2. **Code Quality**: ESLint and Stylelint
-3. **Accessibility**: axe-core automated testing
-4. **Performance**: Lighthouse Core Web Vitals
-5. **Cross-Browser**: Playwright end-to-end tests
-6. **Bundle Size**: Automated size monitoring
-
 ### Test Environment
 
 - **Local Testing**: `./test-local.sh` comprehensive suite
 - **CI/CD Pipeline**: GitHub Actions automated testing
 - **Development vs Production**: Separate build outputs
 
-## Deployment Architecture
+## Code Quality Architecture
 
-### Static Site Generation
+### Enhanced Linting & Formatting Pipeline
 
-- **Build Output**: Self-contained `dist/` directory
-- **GitHub Pages**: Static hosting via GitHub Actions
-- **No Server Dependencies**: Pure client-side application
-- **CDN**: GitHub's global CDN for fast delivery
+The project implements a comprehensive code quality assurance system with enhanced tooling for maintainable, consistent code:
 
-### Build Pipeline
+#### ESLint Configuration Architecture
 
-1. **Development**: Fast builds with source maps
-2. **Production**: Optimized builds with compression
-3. **Testing**: Automated quality checks
-4. **Deployment**: Automated GitHub Pages deployment
+**Modern Flat Config System:**
 
-## Scalability Considerations
+- **ESLint 9 Flat Config**: Uses `eslint.config.js` instead of legacy `.eslintrc`
+- **TypeScript Integration**: Full type-aware linting with `@typescript-eslint/parser`
+- **Environment-Specific Rules**: Different rule sets for browser, Node.js, and test environments
+- **Custom Project Rules**: Additional rules for security, performance, and consistency
 
-### Component Reusability
+**Configuration Structure:**
 
-- **Modular Design**: Self-contained Web Components
-- **Style Encapsulation**: No global style conflicts
-- **Configuration**: Props-based component configuration
-- **Documentation**: Living style guide at `/styleguide.html`
+```javascript
+// eslint.config.js - Flat config with TypeScript support
+import js from '@eslint/js';
+import tseslint from '@typescript-eslint/eslint-plugin';
+import tsparser from '@typescript-eslint/parser';
 
-### Content Management
+export default [
+  // JavaScript files - browser environment
+  {
+    files: ['src/**/*.js'],
+    languageOptions: { ecmaVersion: 2022 },
+    rules: { ...js.configs.recommended.rules /* project rules */ },
+  },
+  // TypeScript files - strict type checking
+  {
+    files: ['src/**/*.ts', 'src/**/*.tsx'],
+    languageOptions: { parser: tsparser },
+    plugins: { '@typescript-eslint': tseslint },
+    rules: { ...tseslint.configs.recommended.rules /* type rules */ },
+  },
+];
+```
 
-- **File-Based**: HTML files for case studies
-- **Asset Organization**: Structured image directories
-- **Protection System**: Configurable password protection
-- **SEO Optimization**: Semantic HTML and meta tags
+#### Prettier Integration
 
-### Future Extensibility
+**Automated Code Formatting:**
 
-- **Modern Standards**: Built on web standards for longevity
-- **Minimal Dependencies**: Reduces maintenance burden
-- **Modular Architecture**: Easy to extend or modify
-- **Documentation**: Comprehensive guides for maintenance
+- **EditorConfig Integration**: Respects `.editorconfig` for cross-editor consistency
+- **Format on Save**: Automatic formatting in VS Code with proper extension configuration
+- **Import Sorting**: Maintains consistent import order across files
+- **Multi-Language Support**: JavaScript, TypeScript, CSS, SCSS, HTML, JSON, Markdown
 
-## Browser Compatibility
+#### Stylelint Architecture
 
-### Support Matrix
+**CSS Quality Assurance:**
 
-- **Chrome**: >= 63 (Web Components, ES2022)
-- **Firefox**: >= 63 (Custom Elements, CSS Grid)
-- **Safari**: >= 10.1 (Shadow DOM, CSS Custom Properties)
-- **Edge**: >= 79 (Chromium-based features)
+- **BEM Methodology Enforcement**: Automated checking of BEM naming conventions
+- **Property Ordering**: Consistent CSS property order using concentric-css methodology
+- **Cascade Layer Validation**: Ensures proper use of CSS `@layer` directives
+- **SCSS Support**: Full Sass syntax validation and best practices
 
-### Progressive Enhancement
+### Pre-commit Quality Gates
 
-- **Core Functionality**: Works without JavaScript
-- **Enhanced Experience**: JavaScript adds interactivity
-- **Fallback Strategies**: Graceful degradation for older browsers
-- **Feature Detection**: Runtime capability checking
+**Husky + lint-staged Automation:**
 
-## Monitoring & Analytics
+- **Pre-commit Hook**: Lightweight checks on staged files (<5 seconds)
+- **Pre-push Hook**: Comprehensive validation before sharing code
+- **Selective Processing**: Only lints files that are actually being committed
+- **Auto-fixing**: Automatically fixes issues where possible
 
-### Performance Monitoring
+**Hook Configuration:**
 
-- **Core Web Vitals**: Automated Lighthouse testing
-- **Bundle Size**: Continuous monitoring with thresholds
-- **Load Times**: Real user monitoring via analytics
-- **Error Tracking**: Console error monitoring
+```json
+// package.json
+{
+  "lint-staged": {
+    "*.{js,jsx}": ["eslint --fix", "prettier --write"],
+    "*.{ts,tsx}": ["eslint --fix", "prettier --write"],
+    "*.{css,scss}": ["stylelint --fix", "prettier --write"]
+  }
+}
+```
 
-### User Analytics
+### VS Code Integration Architecture
 
-- **Traffic Analysis**: Google Analytics 4
-- **Behavior Insights**: Microsoft Clarity heatmaps
-- **Conversion Tracking**: Project engagement metrics
-- **Privacy Compliant**: GDPR-aware configuration
+**Workspace Configuration:**
 
-This architecture provides a solid foundation for a professional portfolio website that prioritizes performance, accessibility, and maintainability while supporting the specific needs of showcasing UX design work.
+- **Settings**: Comprehensive `.vscode/settings.json` with tool integrations
+- **Extensions**: Recommended extensions in `.vscode/extensions.json`
+- **Format on Save**: Automatic formatting and fixing on file save
+- **Real-time Feedback**: Live linting and error highlighting
+
+**Key Integrations:**
+
+- ESLint extension with flat config support
+- Prettier extension with config file detection
+- Stylelint extension for CSS validation
+- TypeScript extension for enhanced IDE support
+
+### CI/CD Quality Assurance
+
+**GitHub Actions Pipeline:**
+
+- **Multi-stage Validation**: Separate jobs for different quality checks
+- **Parallel Processing**: Concurrent linting, testing, and building
+- **Comprehensive Coverage**: Security, accessibility, performance, and bundle analysis
+- **Fail-fast Strategy**: Stops pipeline on critical quality issues
+
+**Quality Gates:**
+
+```yaml
+# .github/workflows/deploy.yml
+jobs:
+  lint:
+    steps:
+      - run: npm run lint # ESLint validation
+      - run: npm run stylelint # CSS validation
+  build-and-deploy:
+    needs: [lint] # Must pass quality checks
+    steps:
+      - run: npm run build # Production build
+      - run: npm run test # Additional validations
+```
+
+### TypeScript Architecture
+
+**Strict Type Safety:**
+
+- **Full Type Checking**: All TypeScript files use strict mode
+- **ES2022 Target**: Modern JavaScript features with type safety
+- **Module Resolution**: Bundler-compatible type resolution
+- **Declaration Files**: Type definitions for CSS modules and custom elements
+
+**TypeScript Configuration:**
+
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "strict": true,
+    "noImplicitAny": true,
+    "moduleResolution": "bundler",
+    "types": ["vitest/globals"]
+  }
+}
+```
+
+### Code Quality Metrics
+
+**Automated Monitoring:**
+
+- **Bundle Size Limits**: JS <30KB, CSS <70KB with automated checking
+- **Performance Budgets**: Core Web Vitals monitoring in CI/CD
+- **Accessibility Scores**: WCAG 2.1 AA compliance validation
+- **Security Scanning**: Dependency vulnerability assessment
+
+**Quality Assurance Workflow:**
+
+1. **Local Development**: Real-time linting and formatting
+2. **Pre-commit**: Automated quality checks on staged files
+3. **CI/CD Pipeline**: Comprehensive validation before deployment
+4. **Post-deployment**: Performance monitoring and error tracking
+
+This enhanced code quality architecture ensures consistent, maintainable, and high-quality code throughout the development lifecycle while providing excellent developer experience and automated quality assurance.

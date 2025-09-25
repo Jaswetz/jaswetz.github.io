@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Intel LFC: Immersive Soccer App - Jason Swetzoff's Portfolio</title>
+    <title>Intel LFC: Immersive Soccer App | Jason Swetzoff</title>
 
     <!-- Google Analytics 4 - Only load in production -->
     <script>
@@ -19,9 +19,7 @@
         script.async = true;
         script.src = "https://www.googletagmanager.com/gtag/js?id=G-Z5DNDF44NG";
         script.onerror = function () {
-          console.warn(
-            "Google Analytics script failed to load - this may be due to ad blockers or network issues"
-          );
+          // Google Analytics script failed to load
         };
         script.onload = function () {
           // Google Analytics script loaded
@@ -39,22 +37,6 @@
     <!-- Preconnect to Google Fonts for faster loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Preload critical fonts -->
-    <link
-      rel="preload"
-      href="https://fonts.gstatic.com/s/laila/v18/LYjCdG7kmE0gdQhfgCNqqVIuTN4.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="https://fonts.gstatic.com/s/gentiumplus/v6/CoIGjMz5OlKwGK-Bz_Nx2SOx1RiKBK-X8A.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
 
     <!-- Optimized Google Fonts CSS with font-display: swap -->
     <link
@@ -89,24 +71,44 @@
     <link rel="apple-touch-icon" href="../assets/favicons/apple-icon.png" />
   </head>
   <body class="project lfc-intel">
-    <site-header></site-header>
-    <section class="hero hero--project hero-section">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+      <site-header></site-header>
+    </header>
+    <!-- Hero Section -->
+    <section
+      class="hero hero--project hero-section"
+      id="hero"
+      aria-labelledby="hero-title"
+    >
       <div class="wrapper">
         <div class="hero--project__content">
-          <div class="hero--project__label">Intel & Liverpool FC</div>
-          <h1 class="hero--project__header">
-            Securing Intel's Multi-Year Deal With An Immersive Soccer App
+          <div class="hero--project__label" aria-label="Client name">
+            Intel & Liverpool Football Club
+          </div>
+          <h1 class="hero--project__header" id="hero-title">
+            Securing Intel's Multi-Year Deal with an Immersive Soccer App
           </h1>
-
-          <div class="hero--project__meta">
-            <span class="hero--project__role">Lead UX Designer</span>
-            <span class="hero--project__timeline">6-month project</span>
+          <div
+            class="hero--project__meta"
+            role="group"
+            aria-label="Project metadata"
+          >
+            <span class="hero--project__role" aria-label="Role"
+              >Lead UX Designer</span
+            >
+            <span class="hero--project__timeline" aria-label="Timeline"
+              >6 Month Project</span
+            >
           </div>
         </div>
       </div>
     </section>
+
     <main
+      id="main-content"
       class="project-case-study intel-lfc-case-study-grid main-content wrapper"
+      role="main"
     >
       <article class="article">
         <div class="sidebar grid grid--2-column--sidebar">
@@ -117,6 +119,7 @@
                   src="../img/projects/lfc/ios-android.png"
                   alt="Intel LFC Android and iOS app final design"
                   class="project-summary__image project__img img--max-width"
+                  loading="lazy"
                 />
                 <figcaption>
                   A sneak peak of the final iOS and Android app.
@@ -326,6 +329,7 @@
                   src="../img/projects/lfc/discovery.jpg"
                   alt="Discovery workshop with Post-it notes on wall"
                   class="process-image project__img img--max-width"
+                  loading="lazy"
                 />
                 <figcaption>Discovery workshop.</figcaption>
               </figure>
@@ -344,6 +348,7 @@
                     src="../img/projects/lfc/whiteboarding-1.png"
                     alt="Sketches of mobile apps on whiteboard"
                     class="process-image project__img"
+                    loading="lazy"
                   />
                   <figcaption>
                     Here, the PO and I made initial sketches of potential
@@ -356,6 +361,7 @@
                     src="../img/projects/lfc/whiteboarding-2.jpg"
                     alt="Whiteboard showing prioritized list of features"
                     class="process-image project__img"
+                    loading="lazy"
                   />
                   <figcaption>
                     Here, the PO and I made a list of features, refined the
@@ -377,6 +383,7 @@
                     src="../img/projects/lfc/whiteboarding-3.png"
                     alt="Whiteboard showing sticky notes of sitemap"
                     class="process-image project__img"
+                    loading="lazy"
                   />
                   <figcaption>Site mapping workshop.</figcaption>
                 </figure>
@@ -386,6 +393,7 @@
                     src="../img/projects/lfc/user-flow.png"
                     alt="A user flow of the app"
                     class="process-image project__img"
+                    loading="lazy"
                   />
                   <figcaption>High level user flow.</figcaption>
                 </figure>
@@ -507,6 +515,7 @@
                   src="../img/projects/lfc/high-fidelity.png"
                   alt="High-fidelity mockups of the app"
                   class="prototype-image project__img"
+                  loading="lazy"
                 />
                 <figcaption>
                   Screenshots of part of the prototype in Sketch.
@@ -556,6 +565,7 @@
                   src="../img/projects/lfc/hf-user-flow.png"
                   alt="Detailed user flow of the app"
                   class="user-flow-image project__img"
+                  loading="lazy"
                 />
                 <figcaption>Detailed user flows.</figcaption>
               </figure>
@@ -571,6 +581,7 @@
                     src="../img/projects/lfc/sketching-1.png"
                     alt="Sketches of the app"
                     class="sketch-image project__img"
+                    loading="lazy"
                   />
                   <figcaption>
                     Iterations on switching between video formats.
@@ -582,6 +593,7 @@
                     src="../img/projects/lfc/sketching-2.png"
                     alt="Sketches of the app"
                     class="sketch-image project__img"
+                    loading="lazy"
                   />
                   <figcaption>
                     Iterations on switching between video formats.
@@ -603,6 +615,7 @@
                   src="../img/projects/lfc/high-level-proto.png"
                   alt="Overview of a prototype made in Sketch app"
                   class="prototype-overview-image project__img"
+                  loading="lazy"
                 />
                 <figcaption>Overview of the Prototype.</figcaption>
               </figure>
@@ -848,6 +861,7 @@
         >
       </nav> -->
     </main>
+
     <site-footer></site-footer>
 
     <!-- Image Lightbox Component -->
@@ -855,9 +869,29 @@
 
     <script type="module" src="../js/main.js?v=1"></script>
 
+    <!-- Password Protection and Performance Optimization -->
+    <script type="module">
+      import { protectCaseStudy } from "../js/password-protection-init.js";
+
+      import analytics from "../js/analytics/simple-analytics.js";
+
+      protectCaseStudy("project-intel-lfc");
+
+      // Initialize analytics for case study
+      document.addEventListener("DOMContentLoaded", () => {
+        // Initialize case study specific analytics tracking
+        analytics.trackCaseStudyInteraction("intel-lfc", "view");
+      });
+    </script>
+
+    <!-- Initialize Feather Icons -->
+    <script>
+      feather.replace();
+    </script>
+
     <!-- Sidebar Navigation Active State Script -->
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener('DOMContentLoaded', function () {
         const sections = document.querySelectorAll("section[id]");
         const navLinks = document.querySelectorAll(".sidebar-nav a");
         const header = document.querySelector("site-header");

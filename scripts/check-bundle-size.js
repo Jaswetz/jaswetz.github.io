@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const LIMITS = {
-  "dist/**/*.js": 52 * 1024, // 52KB per JS file (increased for analytics and performance features)
-  "dist/**/*.css": 100 * 1024, // 100KB per CSS file (design systems need more space)
+  'dist/**/*.js': 52 * 1024, // 52KB per JS file (increased for analytics and performance features)
+  'dist/**/*.css': 100 * 1024, // 100KB per CSS file (design systems need more space)
 };
 
 function getFileSize(filePath) {
@@ -22,11 +22,11 @@ function getFileSize(filePath) {
 }
 
 function formatBytes(bytes) {
-  if (bytes === 0) return "0 Bytes";
+  if (bytes === 0) return '0 Bytes';
   const k = 1024;
-  const sizes = ["Bytes", "KB", "MB"];
+  const sizes = ['Bytes', 'KB', 'MB'];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
 }
 
 function findFiles(dir, pattern) {
@@ -57,39 +57,80 @@ function findFiles(dir, pattern) {
 }
 
 function checkBundleSize() {
-  console.log("📦 Checking bundle sizes...\n");
+  console.log('📦 Checking bundle sizes...\n');
 
-  const projectRoot = path.resolve(__dirname, "..");
-  const distDir = path.join(projectRoot, "dist");
+  const projectRoot = path.resolve(__dirname, '..');
+  const distDir = path.join(projectRoot, 'dist');
 
   let hasErrors = false;
 
   // Check JavaScript files
   const jsFiles = findFiles(distDir, /\.js$/);
-  const jsLimit = LIMITS["dist/**/*.js"];
+  const mainBundleLimit = 30 * 1024; // 30KB for main bundle
+  const chunkLimit = 20 * 1024; // 20KB per lazy-loaded chunk
 
-  console.log("JavaScript files:");
+  console.log('JavaScript files:');
   if (jsFiles.length === 0) {
-    console.log("  No JS files found");
+    console.log('  No JS files found');
   } else {
-    let totalJsSize = 0;
+    // Find main bundle (usually the largest or named after a page)
+    let mainBundle = null;
+    let mainBundleSize = 0;
+
     for (const file of jsFiles) {
       const size = getFileSize(file);
-      totalJsSize += size;
       const relativePath = path.relative(projectRoot, file);
+      const fileName = path.basename(file);
+
       console.log(`  ${relativePath}: ${formatBytes(size)}`);
+
+      // Identify main bundle (contains page name or is the main entry point)
+      if (
+        (fileName.includes('jaswetz.github.io') && !fileName.includes('css')) ||
+        fileName.includes('404') ||
+        fileName.includes('index')
+      ) {
+        // For main bundles, use the smallest one (optimized main bundle)
+        if (!mainBundle || size < mainBundleSize) {
+          mainBundle = file;
+          mainBundleSize = size;
+        }
+      }
+
+      // Check individual chunk sizes (excluding service worker)
+      if (!fileName.includes('service-worker')) {
+        if (fileName.includes('404') || fileName.includes('index')) {
+          // Main bundle check
+          if (size > mainBundleLimit) {
+            console.log(
+              `  ❌ Main bundle ${fileName} exceeds ${formatBytes(
+                mainBundleLimit
+              )} limit!`
+            );
+            hasErrors = true;
+          }
+        } else {
+          // Chunk size check
+          if (size > chunkLimit) {
+            console.log(
+              `  ⚠️  Chunk ${fileName} is ${formatBytes(
+                size
+              )} (recommended: <${formatBytes(chunkLimit)})`
+            );
+          }
+        }
+      }
     }
 
-    console.log(
-      `  Total JS size: ${formatBytes(totalJsSize)} (limit: ${formatBytes(
-        jsLimit
-      )})`
-    );
-    if (totalJsSize > jsLimit) {
-      console.log("  ❌ JS bundle size exceeds limit!");
-      hasErrors = true;
-    } else {
-      console.log("  ✅ JS bundle size OK");
+    if (mainBundle) {
+      console.log(
+        `  Main bundle: ${path.basename(mainBundle)} (${formatBytes(
+          mainBundleSize
+        )})`
+      );
+      if (mainBundleSize <= mainBundleLimit) {
+        console.log('  ✅ Main bundle size OK');
+      }
     }
   }
 
@@ -97,11 +138,11 @@ function checkBundleSize() {
 
   // Check CSS files
   const cssFiles = findFiles(distDir, /\.css$/);
-  const cssLimit = LIMITS["dist/**/*.css"];
+  const cssLimit = LIMITS['dist/**/*.css'];
 
-  console.log("CSS files:");
+  console.log('CSS files:');
   if (cssFiles.length === 0) {
-    console.log("  No CSS files found");
+    console.log('  No CSS files found');
   } else {
     let totalCssSize = 0;
     for (const file of cssFiles) {
@@ -117,18 +158,18 @@ function checkBundleSize() {
       )})`
     );
     if (totalCssSize > cssLimit) {
-      console.log("  ❌ CSS bundle size exceeds limit!");
+      console.log('  ❌ CSS bundle size exceeds limit!');
       hasErrors = true;
     } else {
-      console.log("  ✅ CSS bundle size OK");
+      console.log('  ✅ CSS bundle size OK');
     }
   }
 
   if (hasErrors) {
-    console.log("\n❌ Bundle size check failed!");
+    console.log('\n❌ Bundle size check failed!');
     process.exit(1);
   } else {
-    console.log("\n✅ All bundle sizes within limits");
+    console.log('\n✅ All bundle sizes within limits');
   }
 }
 

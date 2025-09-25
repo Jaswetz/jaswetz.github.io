@@ -6,161 +6,148 @@
 
 /* See: https://github.com/Jaswetz/jaswetz.github.io/issues/11 */
 
-/* Base card styles */
+/* Base card styles - BEM compliant */
 .card {
+  position: relative;
   display: flex;
   align-items: center;
-  border-radius: var(--border-radius);
-  transition: var(--transition-base);
   margin-bottom: var(--space-m);
-  position: relative;
-  color: inherit;
   padding: var(--space-m);
-
-  p {
-    color: var(--color-text-subtle);
-  }
+  border-radius: var(--border-radius);
+  color: inherit;
+  transition: var(--transition-base);
 }
 
+.card__paragraph {
+  color: var(--color-text-subtle);
+}
 
+/* Card text styling */
+.card__text h3 {
+  margin-bottom: var(--space-s);
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: var(--size-step-0);
+}
 
-.card-link {
+/* Card link modifier */
+.card--link {
   display: flex;
   flex-direction: column;
   height: 100%;
   max-height: 43rem;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+  color: var(--color-text);
   text-decoration: none;
   transition: var(--transition-interactive);
-  border-radius: var(--border-radius);
-  border: var(--border-width) solid var(--color-border);
+}
 
-  .card {
-    padding: var(--space-l);
-  }
+.card--link .card {
+  padding: var(--space-l);
+}
 
+.card--link__thumbnail {
+  transition: var(--transition-interactive);
+}
 
-  .project-thumbnail {
-    transition: var(--transition-interactive);
-  }
+/* Card link interactive states */
+.card--link:hover {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  text-decoration: none;
+  transform: var(--hover-transform) scale(var(--hover-scale));
+  box-shadow: var(--hover-shadow);
+}
 
-  /* Card interactive states */
-  &:hover {
-    color: var(--color-primary-alt);
-    transform: var(--hover-transform) scale(var(--hover-scale));
-    box-shadow: var(--hover-shadow);
-    text-decoration: none;
-    background-color: var(--color-surface);
-  }
+.card--link:hover .card--link__thumbnail {
+  transform: scale(var(--hover-scale-large));
+}
 
-  &:hover .project-thumbnail {
-    transform: scale(var(--hover-scale-large));
-  }
+.card--link:focus {
+  color: var(--color-text);
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
 
-  &:focus {
-    outline: var(--focus-outline);
-    outline-offset: var(--focus-outline-offset);
-  }
-
-  &:active {
-    transform: var(--active-transform-card);
-  }
+.card--link:active {
+  color: var(--color-text);
+  transform: var(--active-transform-card);
 }
 
 .card__content {
   flex: 1;
 }
 
-.card-link .card__content {
+.card--link .card__content {
   margin-top: var(--space-xl);
 }
 
-
-
 .card__image {
   flex-shrink: 0;
-  margin-right: var(--space-m);
   max-width: 150px;
+  margin-right: var(--space-m);
   border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
-/* Card variations */
+/* Card vertical modifier */
 .card--vertical {
   display: flex;
   flex-direction: column;
   height: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+
+.card--vertical picture {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
 }
 
 .card--vertical .card__image {
   width: 100%;
-  height: auto;
+  max-width: 100%;
+  height: 100%;
   margin: 0;
-  max-width: fit-content;
-  flex-shrink: 1;
-  object-fit: cover;
-  max-height: 60%;
+  object-fit: contain;
+  object-position: center;
 }
 
-.card--vertical .card__content {
-  text-align: left;
-  width: 100%;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  min-height: 8rem;
-  overflow: hidden;
-}
-
+/* Card outline modifier */
 .card--outline {
   padding: var(--space-l);
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--border-radius);
-
-  /* background-image: linear-gradient(var(--color-border) 0.2px, transparent 0.4px), linear-gradient(to right, var(--color-border) 0.6px, var(--color-background) 0.6px);
-  background-size: 12px 12px; */
-  box-shadow: inset 0 -2px #6f7b901a;
   background-color: var(--color-background);
-
+  box-shadow: inset 0 -2px #6f7b901a;
 }
 
+/* Card white modifier */
 .card--white {
   padding: var(--space-m);
-  background-color: var(--color-white-transparent);
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--border-radius);
+  background-color: var(--color-white-transparent);
 }
 
-/* --------------------------------------------------------------------------
-    Project-Specific Card Components (Reusable)
-    -------------------------------------------------------------------------- */
-
-/* 
-  Project Summary Cards (Team, Stakeholders, Tools) 
-  Layout is controlled by utility classes from grid-system.css.
-  Example: <div class="grid grid--auto-fit-lg grid--gap-l">
-*/
-
-.card__text h3 {
-  margin-bottom: var(--space-s);
-  font-size: var(--size-step-0);
-  font-weight: 600;
-  color: var(--color-text);
+/* Project Summary Card modifier */
+.card--summary {
+  /* intentionally empty for now */
 }
 
-.card__text p {
-  margin: 0;
-  font-size: var(--size-step-0);
-  line-height: var(--leading-normal);
-  color: var(--color-text-subtle);
+/* Card white variant paragraph styles */
+.card--white .card__paragraph:last-child,
+.card--outline .card__paragraph:last-child {
+  margin-bottom: 0;
 }
 
+/* Card link hover states for headings */
+.card--link:hover .card__heading {
+  color: var(--color-primary-alt);
+}
 
-
-/* 
-  Problem Cards
-  Layout is controlled by utility classes from grid-system.css.
-*/
-
+/* Problem Card component */
 .problem-card {
   position: relative;
 }
@@ -170,48 +157,35 @@
   margin-bottom: var(--space-xs);
 }
 
-.problem-card h3 {
-  margin-bottom: var(--space-s);
-  font-size: var(--size-step-1);
-  font-weight: 600;
+.problem-card__heading {
   width: 100%;
+  margin-bottom: var(--space-s);
+  font-weight: 600;
+  font-size: var(--size-step-1);
 }
 
-
-
-/* Card white variant p styles - must come after base p styles */
-.card--white p:last-child,
-.card--outline p:last-child {
-  margin-bottom: 0;
-}
-
-/* Card hover states for h3 elements - must come after base h3 styles */
-.card__link:hover h3 {
-  color: var(--color-primary-alt);
-}
-
-/* Result Cards */
+/* Result Card component */
 .result-card {
   padding: var(--space-xl);
-  box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
-  text-align: center;
-  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
+  background: var(--color-surface);
+  text-align: center;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
 }
 
 .result-card__number {
   margin-bottom: var(--space-xs);
-  font-size: calc(var(--size-step-4) * 1.5);
-  font-weight: 700;
-  line-height: 1;
   color: var(--color-primary);
+  font-weight: 700;
+  font-size: calc(var(--size-step-4) * 1.5);
+  line-height: 1;
 }
 
 .result-card__label {
   margin-bottom: var(--space-s);
-  font-size: var(--size-step-2);
   font-weight: 600;
+  font-size: var(--size-step-2);
 }
 
 .result-card__description {
@@ -221,92 +195,91 @@
   line-height: var(--leading-normal);
 }
 
-/* Learning Cards */
+/*
+  Key Learning Component - BEM Structure
+  Used in project pages for numbered learning insights
+  Follows BEM: key-learning__card, key-learning__number, etc.
+*/
 
-.key-learning-card {
+.key-learning {
+  /* Base block - can be extended with modifiers as needed */
+}
+
+.key-learning__card {
   position: relative;
   padding: var(--space-l);
 }
 
-.key-learning-number {
+.key-learning__number {
   margin-bottom: var(--space-xs);
-  font-size: var(--size-step-3);
-  font-weight: 700;
-  line-height: 1;
   color: var(--color-primary);
+  font-weight: 700;
+  font-size: var(--size-step-3);
+  line-height: 1;
 }
 
-.key-learning-title {
+.key-learning__title {
   margin-bottom: var(--space-s);
-  font-size: var(--size-step-1);
   font-weight: 600;
+  font-size: var(--size-step-1);
 }
 
-.key-learning-description {
-  line-height: var(--leading-normal);
+.key-learning__description {
   color: var(--color-text-subtle);
+  line-height: var(--leading-normal);
 }
 
+/* Learning Card component */
 .learning-card {
   position: relative;
   padding: var(--space-l);
-  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
+  background: var(--color-surface);
 }
 
 .learning-card__number {
   margin-bottom: var(--space-xs);
-  font-size: var(--size-step-3);
-  font-weight: 700;
-  line-height: 1;
   color: var(--color-primary);
+  font-weight: 700;
+  font-size: var(--size-step-3);
+  line-height: 1;
 }
 
 .learning-card__title {
   margin-bottom: var(--space-s);
-  font-size: var(--size-step-1);
   font-weight: 600;
+  font-size: var(--size-step-1);
 }
 
 .learning-card__description {
-  line-height: var(--leading-normal);
   color: var(--color-text-subtle);
+  line-height: var(--leading-normal);
 }
 
-/* 
-  Severity Level Cards
-  Layout is controlled by utility classes from grid-system.css.
-  Example: <div class="grid grid--3-column grid--gap-m">
-*/
-
+/* Severity Card component */
 .severity-card {
   padding: var(--space-m);
-  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
+  background: var(--color-surface);
   box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
 }
 
 .severity-card__title {
   margin-bottom: var(--space-xs);
-  font-size: var(--size-step-1);
-  font-weight: 600;
   color: var(--color-text);
+  font-weight: 600;
+  font-size: var(--size-step-1);
 }
 
 .severity-card__description {
+  color: var(--color-text-subtle);
   font-size: var(--size-step-0);
   line-height: var(--leading-normal);
-  color: var(--color-text-subtle);
 }
 
-/* 
-  Legacy severity-levels (for backwards compatibility) 
-  Layout is controlled by utility classes from grid-system.css.
-  Example: <div class="grid grid--3-column grid--gap-m">
-*/
-
+/* Legacy severity level for backwards compatibility */
 .severity-level {
   box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
 }
@@ -338,26 +311,26 @@
 
 .severity-level__title {
   margin-bottom: var(--space-xs);
-  font-size: var(--size-step-1);
-  font-weight: 600;
   color: var(--color-text);
+  font-weight: 600;
+  font-size: var(--size-step-1);
 }
 
 .severity-level__description {
+  color: var(--color-text-subtle);
   font-size: var(--size-step-0);
   line-height: var(--leading-normal);
-  color: var(--color-text-subtle);
 }
 
 /* Professional Growth Card */
 .growth-card {
   display: flex;
-  align-items: flex-start;
   gap: var(--space-l);
+  align-items: flex-start;
   margin-top: var(--space-xl);
   padding: var(--space-xl) var(--space-xl) 0 var(--space-xl);
-  background-color: var(--color-neutral-100);
   border-radius: var(--border-radius);
+  background-color: var(--color-neutral-100);
 }
 
 .growth-card__content {
@@ -367,9 +340,9 @@
 }
 
 .growth-card__title {
-  font-size: var(--size-step-2);
-  font-weight: 600;
   color: var(--color-text);
+  font-weight: 600;
+  font-size: var(--size-step-2);
 }
 
 .growth-card__description {
@@ -380,22 +353,22 @@
 /* Results Subscriber Cards (Legacy support) */
 .result-subscriber-card {
   padding: var(--space-xl);
-  box-shadow: var(--shadow--highlight);
   text-align: center;
+  box-shadow: var(--shadow--highlight);
 }
 
 .result-subscriber-number {
   margin-bottom: var(--space-xs);
-  font-size: calc(var(--size-step-4) * 1.5);
-  font-weight: 700;
-  line-height: 1;
   color: var(--color-primary);
+  font-weight: 700;
+  font-size: calc(var(--size-step-4) * 1.5);
+  line-height: 1;
 }
 
 .result-subscriber-label {
   margin-bottom: var(--space-s);
-  font-size: var(--size-step-2);
   font-weight: 600;
+  font-size: var(--size-step-2);
 }
 
 .result-subscriber-description {
@@ -422,10 +395,9 @@
   }
 
   .card__image {
-    margin-bottom: var(--space-m);
     max-width: 100%;
+    margin-bottom: var(--space-m);
   }
-
 
   .result-card,
   .result-subscriber-card {
@@ -438,35 +410,45 @@
   }
 }
 
+/* Project card hover effects */
+.project-snippet:hover {
+  transform: translateY(-2px);
+}
+
+.project-snippet:active,
+.project-snippet:focus {
+  transform: translateY(0);
+}
+
 /* Variations for different project cards */
 .project-thumbnail--intel::before {
-  border-bottom-color: var(--color-primary);
-  opacity: 0.12;
-  transform: rotate(-20deg);
   top: -30px;
   left: -20px;
+  border-bottom-color: var(--color-primary);
+  transform: rotate(-20deg);
+  opacity: 0.12;
 }
 
 .card__link:hover .project-thumbnail--intel::before {
-  opacity: 0.2;
   transform: rotate(-25deg) scale(1.1);
+  opacity: 0.2;
 }
 
 /* Responsive adjustments for triangles */
 @media (width <=768px) {
   .project-thumbnail::before {
-    border-left: 60px solid transparent;
-    border-right: 60px solid transparent;
-    border-bottom: 105px solid var(--color-primary);
     top: -15px;
     right: -15px;
+    border-right: 60px solid transparent;
+    border-bottom: 105px solid var(--color-primary);
+    border-left: 60px solid transparent;
   }
 
   .project-thumbnail--intel::before {
-    border-left: 60px solid transparent;
-    border-right: 60px solid transparent;
-    border-bottom: 105px solid var(--color-primary);
     top: -25px;
     left: -15px;
+    border-right: 60px solid transparent;
+    border-bottom: 105px solid var(--color-primary);
+    border-left: 60px solid transparent;
   }
 }

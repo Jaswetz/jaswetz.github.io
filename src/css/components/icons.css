@@ -8,9 +8,9 @@
 
 .icon {
     display: inline-flex;
+    flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
 }
 
 .icon--sm {
@@ -51,11 +51,11 @@
 
 .icon--background-primary {
     background-color: var(--color-primary);
-    color: white;
+    color: #fff;
 }
 
-.icon--background-white {
-    background-color: white;
+.icon--background-#fff {
+    background-color: #fff;
     color: var(--color-primary);
     box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
 }

@@ -2,20 +2,20 @@
 
 /* About page main content container */
 .about-page-content {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: var(--space-xl);
     display: flex;
     flex-direction: column;
     gap: var(--space-2xl);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: var(--space-xl);
 }
 
 /* About header section */
 .about-header {
-    text-align: center;
+    margin-bottom: var(--space-l);
     padding: var(--space-2xl) 0;
     border-bottom: 1px solid var(--color-border);
-    margin-bottom: var(--space-l);
+    text-align: center;
 }
 
 .about-header h1 {
@@ -24,10 +24,10 @@
 }
 
 .about-subtitle {
-    font-size: var(--font-size-lg);
+    margin: 0;
     color: var(--color-text-light);
     font-weight: var(--font-weight-medium);
-    margin: 0;
+    font-size: var(--font-size-lg);
 }
 
 /* Bio section with image and text layout */
@@ -46,20 +46,20 @@
 }
 
 .bio-text-content h2 {
-    color: var(--color-primary);
     margin-bottom: var(--space-m);
+    color: var(--color-primary);
 }
 
 .bio-text-content p {
+    color: var(--color-text);
     font-size: var(--font-size-base);
     line-height: var(--line-height-relaxed, 1.6);
-    color: var(--color-text);
 }
 
 .bio-image-container {
     display: flex;
-    justify-content: center;
     align-items: flex-start;
+    justify-content: center;
 }
 
 .profile-photo {
@@ -67,8 +67,8 @@
     max-width: 300px;
     height: auto;
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow-medium, 0 4px 12px rgb(0 0 0 / 10%));
     transition: var(--transition-interactive);
+    box-shadow: var(--shadow-medium, 0 4px 12px rgb(0 0 0 / 10%));
 }
 
 .profile-photo:hover {
@@ -83,15 +83,15 @@
 }
 
 .skills-expertise-section h2 {
-    color: var(--color-primary);
     margin-bottom: var(--space-l);
+    color: var(--color-primary);
     text-align: center;
 }
 
 .skills-expertise-section h3 {
-    color: var(--color-text);
     margin-top: var(--space-l);
     margin-bottom: var(--space-m);
+    color: var(--color-text);
     font-size: var(--font-size-lg);
 }
 
@@ -114,36 +114,36 @@
 }
 
 .resume-highlights-section h2 {
-    color: var(--color-primary);
     margin-bottom: var(--space-l);
+    color: var(--color-primary);
     text-align: center;
 }
 
 .resume-entry {
-    background-color: var(--color-surface, #fff);
+    margin-bottom: var(--space-l);
+    padding: var(--space-l);
     border: 1px solid var(--color-border);
     border-radius: var(--border-radius);
-    padding: var(--space-l);
-    margin-bottom: var(--space-l);
+    background-color: var(--color-surface, #fff);
     transition: var(--transition-interactive);
 }
 
 .resume-entry:hover {
-    box-shadow: var(--shadow-medium, 0 4px 12px rgb(0 0 0 / 10%));
     transform: translateY(-2px);
+    box-shadow: var(--shadow-medium, 0 4px 12px rgb(0 0 0 / 10%));
 }
 
 .resume-entry h4 {
-    color: var(--color-primary);
     margin-bottom: var(--space-xs);
+    color: var(--color-primary);
     font-size: var(--font-size-lg);
 }
 
 .date-range {
-    color: var(--color-text-light);
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-medium);
     margin-bottom: var(--space-s);
+    color: var(--color-text-light);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -154,8 +154,8 @@
 }
 
 .resume-entry li {
-    margin-bottom: var(--space-xs);
     position: relative;
+    margin-bottom: var(--space-xs);
 }
 
 .resume-entry li::marker {
@@ -169,8 +169,8 @@
 }
 
 .personal-interests-section h2 {
-    color: var(--color-primary);
     margin-bottom: var(--space-l);
+    color: var(--color-primary);
     text-align: center;
 }
 
@@ -178,68 +178,39 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: var(--space-m);
-    list-style: none;
-    padding: 0;
     margin-top: var(--space-l);
+    padding: 0;
+    list-style: none;
 }
 
 .personal-interests-section li {
-    background-color: var(--color-surface, #fff);
+    padding: var(--space-m);
     border: 1px solid var(--color-border);
     border-radius: var(--border-radius);
-    padding: var(--space-m);
-    text-align: center;
+    background-color: var(--color-surface, #fff);
     font-weight: var(--font-weight-medium);
-    transition: var(--transition-interactive);
+    text-align: center;
     cursor: default;
+    transition: var(--transition-interactive);
 }
 
 .personal-interests-section li:hover {
     background-color: var(--color-primary);
-    color: white;
+    color: #fff;
     transform: translateY(-2px);
     box-shadow: var(--shadow-medium, 0 4px 12px rgb(0 0 0 / 10%));
 }
 
-/* CTA button in resume section */
+/* CTA button in resume section - uses reusable .button--cta component */
 .cta-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-m) var(--space-l);
-    background-color: var(--color-primary);
-    color: white;
-    text-decoration: none;
-    border-radius: var(--border-radius);
-    font-weight: var(--font-weight-medium);
-    font-size: var(--font-size-base);
-    transition: var(--transition-interactive);
-    border: 2px solid var(--color-primary);
     margin-top: var(--space-l);
-}
-
-.cta-button:hover {
-    background-color: var(--color-primary-alt);
-    border-color: var(--color-primary-alt);
-    transform: var(--hover-transform, translateY(-2px));
-    box-shadow: var(--shadow-medium, 0 4px 12px rgb(0 0 0 / 15%));
-    color: white;
-}
-
-.cta-button:focus {
-    outline: var(--focus-outline);
-    outline-offset: var(--focus-outline-offset);
-}
-
-.cta-button:active {
-    transform: var(--active-transform, scale(0.98));
 }
 
 /* Responsive design */
 @media (width <=47.9375rem) {
     .about-page-content {
-        padding: var(--space-m);
         gap: var(--space-l);
+        padding: var(--space-m);
     }
 
     .bio-section {

@@ -5,10 +5,10 @@
 /* Base container with responsive max-widths */
 .container {
   width: 100%;
-  margin-left: auto;
   margin-right: auto;
-  padding-left: var(--space-m);
+  margin-left: auto;
   padding-right: var(--space-m);
+  padding-left: var(--space-m);
 }
 
 /* Responsive container max-widths using new breakpoint system */
@@ -21,16 +21,16 @@
 @media (width >=48rem) {
   .container {
     max-width: var(--container-md);
-    padding-left: var(--space-l);
     padding-right: var(--space-l);
+    padding-left: var(--space-l);
   }
 }
 
 @media (width >=64rem) {
   .container {
     max-width: var(--container-lg);
-    padding-left: var(--space-xl);
     padding-right: var(--space-xl);
+    padding-left: var(--space-xl);
   }
 }
 
@@ -50,19 +50,19 @@
 .container-full {
   width: 100%;
   max-width: none;
-  margin-left: auto;
   margin-right: auto;
-  padding-left: var(--space-m);
+  margin-left: auto;
   padding-right: var(--space-m);
+  padding-left: var(--space-m);
 }
 
 .container-narrow {
   width: 100%;
   max-width: var(--reading-width);
-  margin-left: auto;
   margin-right: auto;
-  padding-left: var(--space-m);
+  margin-left: auto;
   padding-right: var(--space-m);
+  padding-left: var(--space-m);
 }
 
 /* ==========================================================================

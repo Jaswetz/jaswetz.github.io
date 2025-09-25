@@ -1,52 +1,55 @@
 # See https://docs.gitlab.com/ee/user/project/pages/introduction.html#custom-http-headers
+
 # See https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers
 
-/*
-  # Enforce HTTPS
-  # GitLab Pages typically handles HSTS at a higher level for gitlab.io domains
-  # and for custom domains with GitLab-managed Let's Encrypt certs.
-  # Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+/\*
 
-  # Content Security Policy (CSP) - Start with a restrictive policy and loosen as needed.
-  # This is a basic policy. You WILL need to adjust it based on your actual content,
-  # especially if you use inline scripts/styles (not recommended), external fonts, CDNs, analytics, etc.
-  # default-src 'self';
-  # script-src 'self'; # Add 'unsafe-inline' if absolutely necessary, or use hashes/nonces
-  # style-src 'self' 'unsafe-inline'; # Web Components often use inline styles in Shadow DOM
-  # img-src 'self' data:; # Allow self-hosted images and data URIs
-  # font-src 'self';
-  # connect-src 'self'; # For fetch/XHR requests
-  # frame-ancestors 'none'; # Prevents clickjacking
-  # form-action 'self';
-  # base-uri 'self';
-  # object-src 'none'; # Disallow <object>, <embed>, <applet>
+# Enforce HTTPS
 
-  # More restrictive CSP example (adjust as needed):
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none';
-  
-  # X-Content-Type-Options
-  X-Content-Type-Options: nosniff
+# GitLab Pages typically handles HSTS at a higher level for gitlab.io domains
 
-  # X-Frame-Options
-  X-Frame-Options: DENY
+# and for custom domains with GitLab-managed Let's Encrypt certs.
 
-  # Referrer-Policy
-  Referrer-Policy: strict-origin-when-cross-origin
+# Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 
-  # Permissions-Policy (formerly Feature-Policy)
-  # Example: Disable microphone and camera access by default
-  Permissions-Policy: microphone=(), camera=()
+# Content Security Policy (CSP) - Configured for portfolio with analytics and fonts
 
-  # Cache-Control for static assets
-  # Parcel usually adds hashes to filenames, so we can cache aggressively.
-  # For HTML files, we want to ensure they are re-validated.
-  Cache-Control: max-age=0, must-revalidate, public
-*/
+# Allows Google Analytics, Microsoft Clarity, and Google Fonts while maintaining security
+
+Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://www.clarity.ms; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none';
+
+# X-Content-Type-Options
+
+X-Content-Type-Options: nosniff
+
+# X-Frame-Options
+
+X-Frame-Options: DENY
+
+# Referrer-Policy
+
+Referrer-Policy: strict-origin-when-cross-origin
+
+# Permissions-Policy (formerly Feature-Policy)
+
+# Example: Disable microphone and camera access by default
+
+Permissions-Policy: microphone=(), camera=()
+
+# Cache-Control for static assets
+
+# Parcel usually adds hashes to filenames, so we can cache aggressively.
+
+# For HTML files, we want to ensure they are re-validated.
+
+Cache-Control: max-age=0, must-revalidate, public
 
 # For HTML files
-/*.html
-  Cache-Control: no-cache
+
+/\*.html
+Cache-Control: no-cache
 
 # For CSS, JS, and other versioned assets (Parcel adds content hashes)
-(/assets/*|*.css|*.js|*.json|*.png|*.jpg|*.jpeg|*.gif|*.svg|*.woff|*.woff2|*.ttf|*.eot)
-  Cache-Control: public, max-age=31536000, immutable 
+
+(/assets/_|_.css|_.js|_.json|_.png|_.jpg|_.jpeg|_.gif|_.svg|_.woff|_.woff2|_.ttf|\*.eot)
+Cache-Control: public, max-age=31536000, immutable

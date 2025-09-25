@@ -1,0 +1,447 @@
+name: Performance Monitoring & Regression Testing
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+  schedule:
+    # Run daily at 2 AM UTC for continuous monitoring
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      full_audit:
+        description: 'Run full performance audit (all pages)'
+        required: false
+        default: 'false'
+        type: boolean
+      export_results:
+        description: 'Export results to artifacts'
+        required: false
+        default: 'true'
+        type: boolean
+
+permissions:
+  contents: read
+  actions: write
+  checks: write
+  pull-requests: write
+
+concurrency:
+  group: 'performance-${{ github.ref }}'
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: '18'
+  PERFORMANCE_BUDGET_FILE: 'performance-budget.json'
+  LIGHTHOUSE_RUNS: 3
+
+jobs:
+  # Bundle Size Regression Testing
+  bundle-size-analysis:
+    name: 'Bundle Size Analysis'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    outputs:
+      bundle-passed: ${{ steps.bundle-check.outputs.passed }}
+      js-size: ${{ steps.bundle-check.outputs.js-size }}
+      css-size: ${{ steps.bundle-check.outputs.css-size }}
+      total-size: ${{ steps.bundle-check.outputs.total-size }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Fetch enough history for comparison
+          fetch-depth: 50
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Run bundle size analysis
+        id: bundle-check
+        run: |
+          echo "Running bundle size analysis..."
+
+          # Run bundle size monitor with CI flags
+          node scripts/bundle-size-monitor.js --ci --export --junit
+
+          # Extract results for outputs
+          if [ -f "bundle-reports/bundle-analysis-*.json" ]; then
+            LATEST_REPORT=$(ls -t bundle-reports/bundle-analysis-*.json | head -1)
+            JS_SIZE=$(jq -r '.sizes.js' "$LATEST_REPORT")
+            CSS_SIZE=$(jq -r '.sizes.css' "$LATEST_REPORT")
+            TOTAL_SIZE=$(jq -r '.sizes.total' "$LATEST_REPORT")
+            PASSED=$(jq -r '.summary.passed' "$LATEST_REPORT")
+
+            echo "js-size=$JS_SIZE" >> $GITHUB_OUTPUT
+            echo "css-size=$CSS_SIZE" >> $GITHUB_OUTPUT
+            echo "total-size=$TOTAL_SIZE" >> $GITHUB_OUTPUT
+            echo "passed=$PASSED" >> $GITHUB_OUTPUT
+
+            echo "Bundle Analysis Results:"
+            echo "  JavaScript: $(echo "$JS_SIZE / 1024" | bc -l | xargs printf "%.1fKB")"
+            echo "  CSS: $(echo "$CSS_SIZE / 1024" | bc -l | xargs printf "%.1fKB")"
+            echo "  Total: $(echo "$TOTAL_SIZE / 1024" | bc -l | xargs printf "%.1fKB")"
+            echo "  Status: $PASSED"
+          fi
+
+      - name: Upload bundle analysis results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bundle-analysis-results
+          path: |
+            bundle-reports/
+            dist/
+          retention-days: 30
+
+      - name: Publish bundle size results
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: Bundle Size Tests
+          path: 'bundle-reports/bundle-analysis-*.xml'
+          reporter: java-junit
+          fail-on-error: false
+
+  # Core Web Vitals Performance Testing
+  performance-audit:
+    name: 'Performance Audit'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: bundle-size-analysis
+
+    outputs:
+      performance-passed: ${{ steps.performance-check.outputs.passed }}
+      lcp-score: ${{ steps.performance-check.outputs.lcp }}
+      cls-score: ${{ steps.performance-check.outputs.cls }}
+      fid-score: ${{ steps.performance-check.outputs.fid }}
+      performance-score: ${{ steps.performance-check.outputs.performance-score }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Install Chrome dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libnss3 \
+            libatk-bridge2.0-0 \
+            libdrm2 \
+            libgtk-3-0 \
+            libgbm1 \
+            libasound2
+
+      - name: Start local server
+        run: |
+          npm run serve &
+          echo "SERVER_PID=$!" >> $GITHUB_ENV
+
+          # Wait for server to be ready
+          timeout 30s bash -c 'until curl -s http://localhost:8080 > /dev/null; do sleep 1; done'
+          echo "Server is ready!"
+
+      - name: Run Core Web Vitals audit
+        id: performance-check
+        run: |
+          echo "Running Core Web Vitals performance audit..."
+
+          # Create performance reports directory
+          mkdir -p performance-reports
+
+          # Define pages to test
+          PAGES=("/" "/about.html" "/case-study-daimler.html")
+
+          if [ "${{ github.event.inputs.full_audit }}" == "true" ]; then
+            PAGES+=("/styleguide.html")
+          fi
+
+          OVERALL_PASSED=true
+          TOTAL_LCP=0
+          TOTAL_CLS=0
+          TOTAL_FID=0
+          TOTAL_PERF_SCORE=0
+          PAGE_COUNT=${#PAGES[@]}
+
+          for PAGE in "${PAGES[@]}"; do
+            echo "Testing page: $PAGE"
+
+            # Run multiple Lighthouse audits and take median
+            LIGHTHOUSE_SCORES=()
+            for RUN in $(seq 1 $LIGHTHOUSE_RUNS); do
+              echo "  Run $RUN/$LIGHTHOUSE_RUNS"
+
+              npx lighthouse "http://localhost:8080$PAGE" \
+                --only-categories=performance \
+                --output=json \
+                --output-path="performance-reports/lighthouse-$PAGE-run-$RUN.json" \
+                --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" \
+                --throttling-method=simulate \
+                --form-factor=desktop \
+                --quiet
+
+              # Extract scores
+              REPORT="performance-reports/lighthouse-$PAGE-run-$RUN.json"
+              LCP=$(jq -r '.lhr.audits."largest-contentful-paint".numericValue' "$REPORT")
+              CLS=$(jq -r '.lhr.audits."cumulative-layout-shift".numericValue' "$REPORT")
+              FID=$(jq -r '.lhr.audits."max-potential-fid".numericValue' "$REPORT")
+              PERF_SCORE=$(jq -r '.lhr.categories.performance.score * 100' "$REPORT")
+
+              LIGHTHOUSE_SCORES+=("$LCP,$CLS,$FID,$PERF_SCORE")
+            done
+
+            # Calculate median scores for this page
+            echo "${LIGHTHOUSE_SCORES[@]}" | tr ' ' '\n' | sort -t, -k1,1n | sed -n "$((($LIGHTHOUSE_RUNS + 1) / 2))p" | while IFS=, read LCP CLS FID PERF_SCORE; do
+              TOTAL_LCP=$(echo "$TOTAL_LCP + $LCP" | bc -l)
+              TOTAL_CLS=$(echo "$TOTAL_CLS + $CLS" | bc -l)
+              TOTAL_FID=$(echo "$TOTAL_FID + $FID" | bc -l)
+              TOTAL_PERF_SCORE=$(echo "$TOTAL_PERF_SCORE + $PERF_SCORE" | bc -l)
+
+              echo "Page $PAGE results - LCP: ${LCP}ms, CLS: $CLS, FID: ${FID}ms, Performance: $PERF_SCORE"
+            done
+          done
+
+          # Calculate averages
+          AVG_LCP=$(echo "$TOTAL_LCP / $PAGE_COUNT" | bc -l)
+          AVG_CLS=$(echo "$TOTAL_CLS / $PAGE_COUNT" | bc -l)
+          AVG_FID=$(echo "$TOTAL_FID / $PAGE_COUNT" | bc -l)
+          AVG_PERF_SCORE=$(echo "$TOTAL_PERF_SCORE / $PAGE_COUNT" | bc -l)
+
+          echo "lcp=$AVG_LCP" >> $GITHUB_OUTPUT
+          echo "cls=$AVG_CLS" >> $GITHUB_OUTPUT
+          echo "fid=$AVG_FID" >> $GITHUB_OUTPUT
+          echo "performance-score=$AVG_PERF_SCORE" >> $GITHUB_OUTPUT
+
+          # Run comprehensive performance monitor
+          node scripts/performance-monitor.js --ci --export --junit
+
+          if [ -f "performance-reports/performance-results-*.json" ]; then
+            LATEST_REPORT=$(ls -t performance-reports/performance-results-*.json | head -1)
+            PASSED=$(jq -r '.summary.passed' "$LATEST_REPORT")
+            echo "passed=$PASSED" >> $GITHUB_OUTPUT
+
+            echo "Performance Audit Results:"
+            echo "  LCP: ${AVG_LCP}ms"
+            echo "  CLS: $AVG_CLS"
+            echo "  FID: ${AVG_FID}ms"
+            echo "  Performance Score: ${AVG_PERF_SCORE}/100"
+            echo "  Overall Status: $PASSED"
+          else
+            echo "passed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Stop local server
+        if: always()
+        run: |
+          if [ ! -z "$SERVER_PID" ]; then
+            kill $SERVER_PID || true
+          fi
+
+      - name: Upload performance audit results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: performance-audit-results
+          path: |
+            performance-reports/
+            lighthouse-report.json
+          retention-days: 30
+
+      - name: Publish performance test results
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: Core Web Vitals Tests
+          path: 'performance-reports/performance-results-*.xml'
+          reporter: java-junit
+          fail-on-error: false
+
+  # Performance Regression Analysis
+  regression-analysis:
+    name: 'Regression Analysis'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    needs: [bundle-size-analysis, performance-audit]
+    if: always()
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download bundle analysis results
+        uses: actions/download-artifact@v4
+        with:
+          name: bundle-analysis-results
+          path: bundle-reports/
+
+      - name: Download performance audit results
+        uses: actions/download-artifact@v4
+        with:
+          name: performance-audit-results
+          path: performance-reports/
+
+      - name: Analyze regression trends
+        run: |
+          echo "## 📊 Performance Regression Analysis" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Bundle Size Summary
+          echo "### 📦 Bundle Size Analysis" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Size | Budget | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|------|---------|---------|" >> $GITHUB_STEP_SUMMARY
+
+          JS_SIZE="${{ needs.bundle-size-analysis.outputs.js-size }}"
+          CSS_SIZE="${{ needs.bundle-size-analysis.outputs.css-size }}"
+          TOTAL_SIZE="${{ needs.bundle-size-analysis.outputs.total-size }}"
+
+          JS_KB=$(echo "$JS_SIZE / 1024" | bc -l | xargs printf "%.1f")
+          CSS_KB=$(echo "$CSS_SIZE / 1024" | bc -l | xargs printf "%.1f")
+          TOTAL_KB=$(echo "$TOTAL_SIZE / 1024" | bc -l | xargs printf "%.1f")
+
+          JS_STATUS=$([ $JS_SIZE -le 30720 ] && echo "✅ Pass" || echo "❌ Fail")
+          CSS_STATUS=$([ $CSS_SIZE -le 71680 ] && echo "✅ Pass" || echo "❌ Fail")
+
+          echo "| JavaScript | ${JS_KB}KB | 30KB | $JS_STATUS |" >> $GITHUB_STEP_SUMMARY
+          echo "| CSS | ${CSS_KB}KB | 70KB | $CSS_STATUS |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Total** | **${TOTAL_KB}KB** | **100KB** | **$([ $TOTAL_SIZE -le 102400 ] && echo "✅ Pass" || echo "❌ Fail")** |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Core Web Vitals Summary
+          echo "### 🎯 Core Web Vitals Analysis" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Score | Budget | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------|---------|---------|" >> $GITHUB_STEP_SUMMARY
+
+          LCP="${{ needs.performance-audit.outputs.lcp-score }}"
+          CLS="${{ needs.performance-audit.outputs.cls-score }}"
+          FID="${{ needs.performance-audit.outputs.fid-score }}"
+          PERF_SCORE="${{ needs.performance-audit.outputs.performance-score }}"
+
+          LCP_STATUS=$(echo "$LCP <= 2500" | bc -l | grep -q 1 && echo "✅ Good" || echo "❌ Poor")
+          CLS_STATUS=$(echo "$CLS <= 0.1" | bc -l | grep -q 1 && echo "✅ Good" || echo "❌ Poor")
+          FID_STATUS=$(echo "$FID <= 100" | bc -l | grep -q 1 && echo "✅ Good" || echo "❌ Poor")
+          PERF_STATUS=$(echo "$PERF_SCORE >= 90" | bc -l | grep -q 1 && echo "✅ Good" || echo "❌ Poor")
+
+          echo "| LCP (Largest Contentful Paint) | $(printf "%.0f" $LCP)ms | 2500ms | $LCP_STATUS |" >> $GITHUB_STEP_SUMMARY
+          echo "| CLS (Cumulative Layout Shift) | $(printf "%.3f" $CLS) | 0.1 | $CLS_STATUS |" >> $GITHUB_STEP_SUMMARY
+          echo "| FID (First Input Delay) | $(printf "%.0f" $FID)ms | 100ms | $FID_STATUS |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Performance Score** | **$(printf "%.0f" $PERF_SCORE)/100** | **90+** | **$PERF_STATUS** |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Overall Status
+          BUNDLE_PASSED="${{ needs.bundle-size-analysis.outputs.bundle-passed }}"
+          PERF_PASSED="${{ needs.performance-audit.outputs.performance-passed }}"
+
+          if [ "$BUNDLE_PASSED" == "true" ] && [ "$PERF_PASSED" == "true" ]; then
+            echo "### ✅ Overall Status: **PASSED**" >> $GITHUB_STEP_SUMMARY
+            echo "All performance checks have passed successfully! 🎉" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "### ❌ Overall Status: **FAILED**" >> $GITHUB_STEP_SUMMARY
+            echo "Performance regressions detected. Please review and optimize:" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            if [ "$BUNDLE_PASSED" != "true" ]; then
+              echo "- 📦 **Bundle Size**: Exceeds budget limits" >> $GITHUB_STEP_SUMMARY
+            fi
+            if [ "$PERF_PASSED" != "true" ]; then
+              echo "- 🎯 **Core Web Vitals**: Below performance thresholds" >> $GITHUB_STEP_SUMMARY
+            fi
+          fi
+
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const bundlePassed = '${{ needs.bundle-size-analysis.outputs.bundle-passed }}' === 'true';
+            const perfPassed = '${{ needs.performance-audit.outputs.performance-passed }}' === 'true';
+            const jsSize = '${{ needs.bundle-size-analysis.outputs.js-size }}';
+            const cssSize = '${{ needs.bundle-size-analysis.outputs.css-size }}';
+            const lcp = '${{ needs.performance-audit.outputs.lcp-score }}';
+            const cls = '${{ needs.performance-audit.outputs.cls-score }}';
+            const perfScore = '${{ needs.performance-audit.outputs.performance-score }}';
+
+            const jsKB = (parseInt(jsSize) / 1024).toFixed(1);
+            const cssKB = (parseInt(cssSize) / 1024).toFixed(1);
+            const lcpMs = parseFloat(lcp).toFixed(0);
+            const clsScore = parseFloat(cls).toFixed(3);
+            const perfScoreInt = parseFloat(perfScore).toFixed(0);
+
+            const status = bundlePassed && perfPassed ? '✅ PASSED' : '❌ FAILED';
+            const emoji = bundlePassed && perfPassed ? '🎉' : '⚠️';
+
+            const body = `## ${emoji} Performance Check Results
+
+            **Overall Status: ${status}**
+
+            ### 📦 Bundle Size Analysis
+            - **JavaScript**: ${jsKB}KB / 30KB ${parseInt(jsSize) <= 30720 ? '✅' : '❌'}
+            - **CSS**: ${cssKB}KB / 70KB ${parseInt(cssSize) <= 71680 ? '✅' : '❌'}
+
+            ### 🎯 Core Web Vitals
+            - **LCP**: ${lcpMs}ms / 2500ms ${parseFloat(lcp) <= 2500 ? '✅' : '❌'}
+            - **CLS**: ${clsScore} / 0.1 ${parseFloat(cls) <= 0.1 ? '✅' : '❌'}
+            - **Performance Score**: ${perfScoreInt}/100 ${parseFloat(perfScore) >= 90 ? '✅' : '❌'}
+
+            ${bundlePassed && perfPassed ?
+              '🚀 Great work! All performance metrics are within budget.' :
+              '🔍 Performance regressions detected. Please review the detailed reports in the workflow artifacts.'}
+            `;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            });
+
+  # Fail the workflow if performance regressions are critical
+  performance-gate:
+    name: 'Performance Gate'
+    runs-on: ubuntu-latest
+    needs: [bundle-size-analysis, performance-audit]
+    if: always()
+
+    steps:
+      - name: Evaluate performance gate
+        run: |
+          BUNDLE_PASSED="${{ needs.bundle-size-analysis.outputs.bundle-passed }}"
+          PERF_PASSED="${{ needs.performance-audit.outputs.performance-passed }}"
+
+          echo "Bundle Analysis: $BUNDLE_PASSED"
+          echo "Performance Audit: $PERF_PASSED"
+
+          if [ "$BUNDLE_PASSED" != "true" ] || [ "$PERF_PASSED" != "true" ]; then
+            echo "❌ Performance gate failed!"
+            echo "Critical performance regressions detected."
+            exit 1
+          else
+            echo "✅ Performance gate passed!"
+            echo "All performance checks are within acceptable limits."
+          fi

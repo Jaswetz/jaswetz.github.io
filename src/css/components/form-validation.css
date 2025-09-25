@@ -3,14 +3,14 @@
 /* Form validation styles */
 .form-error {
   display: block;
+  margin-top: var(--space-xs);
   color: var(--color-danger, #dc3545);
   font-size: var(--font-size-sm);
-  margin-top: var(--space-xs);
 }
 
 .form-success {
   display: block;
+  margin-top: var(--space-xs);
   color: var(--color-success, #28a745);
   font-size: var(--font-size-sm);
-  margin-top: var(--space-xs);
 }

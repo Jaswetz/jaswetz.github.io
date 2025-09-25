@@ -48,7 +48,7 @@ export class PasswordProtection {
   isAuthenticated() {
     try {
       const authData = localStorage.getItem(this.storageKey);
-      if (!authData) return false;
+      if (!authData) {return false;}
 
       const { timestamp } = JSON.parse(authData);
       const now = Date.now();

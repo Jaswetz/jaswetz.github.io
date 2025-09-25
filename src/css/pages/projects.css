@@ -7,13 +7,13 @@
     -------------------------------------------------------------------------- */
 
 .project-case-study h2 {
-    font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-semibold);
 }
 
 .project-case-study section {
-    padding-bottom: var(--space-2xl);
-    padding-top: var(--space-2xl);
-    border-bottom: 1px solid var(--color-border);
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
+  border-bottom: 1px solid var(--color-border);
 }
 
 /* Issue #11: put border around all none transparent images */
@@ -38,19 +38,18 @@
     Project Summary Image
     -------------------------------------------------------------------------- */
 
-
 .notification .project__img.project-summary__image,
 .daimler-dcd .project__img.project-summary__image {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 .project-summary figcaption,
 .project-summary__cards {
-    margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-xl);
 }
 
 .project-case-study .project-summary {
-    padding-top: var(--space-xl);
+  padding-top: var(--space-xl);
 }
 
 /* --------------------------------------------------------------------------
@@ -58,16 +57,16 @@
     -------------------------------------------------------------------------- */
 
 .project__img {
-    width: 100%;
-    height: auto;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-subtle);
-    max-width: 53rem;
+  width: 100%;
+  max-width: 53rem;
+  height: auto;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-subtle);
 }
 
 .phase__img img {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 /* --------------------------------------------------------------------------
@@ -86,30 +85,27 @@
 */
 
 .article__sidebar {
-    border-left: var(--border-width) solid var(--color-border);
-    padding-left: var(--space-xl);
+  padding-left: var(--space-xl);
+  border-left: var(--border-width) solid var(--color-border);
 }
-
 
 /* --------------------------------------------------------------------------
     LFC & Intel
     -------------------------------------------------------------------------- */
 
-
 .lfc-intel figure {
-    margin: var(--space-xl) 0;
+  margin: var(--space-xl) 0;
 }
 
 .features {
-    margin-bottom: var(--heading-spacing);
+  margin-bottom: var(--heading-spacing);
 }
 
 .features .card__icon {
-    color: var(--color-primary);
-    margin-bottom: var(--space-s);
-
+  margin-bottom: var(--space-s);
+  color: var(--color-primary);
 }
 
 .img--max-width {
-    max-width: calc(var(--space-2xl-3xl) * 9);
+  max-width: calc(var(--space-2xl-3xl) * 9);
 }
