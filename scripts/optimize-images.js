@@ -1,103 +1,223 @@
-#!/usr/bin/env node
+import sharp from 'sharp';
+import { glob } from 'glob';
+import fs from 'fs/promises';
+import path from 'path';
 
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
-import imagemin from "imagemin";
-import imageminMozjpeg from "imagemin-mozjpeg";
-import imageminPngquant from "imagemin-pngquant";
-import imageminWebp from "imagemin-webp";
+const inputDir = 'src/img';
+const outputDir = 'src/img/optimized';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const projectRoot = path.resolve(__dirname, "..");
+// Configuration for different image types and sizes
+const imageConfig = {
+  // Profile/hero images - large but reasonable
+  profile: {
+    maxWidth: 800,
+    maxHeight: 800,
+    quality: 85,
+    sizes: [400, 600, 800, 1200], // responsive sizes
+  },
+  // Project thumbnails
+  thumbnail: {
+    maxWidth: 400,
+    maxHeight: 300,
+    quality: 80,
+    sizes: [200, 300, 400, 1200],
+  },
+  // Project detail images
+  project: {
+    maxWidth: 1200,
+    maxHeight: 800,
+    quality: 82,
+    sizes: [600, 900, 1200],
+  },
+  // Default for other images
+  default: {
+    maxWidth: 1000,
+    maxHeight: 1000,
+    quality: 80,
+    sizes: [500, 750, 1000],
+  },
+};
 
-console.log("🖼️  Optimizing images...\n");
+// Detect image type based on filename patterns
+function getImageType(filename) {
+  const lower = filename.toLowerCase();
+  if (lower.includes('profile') || lower.includes('jason')) return 'profile';
+  if (lower.includes('thumb') || lower.includes('card')) return 'thumbnail';
+  if (lower.includes('proj-') || lower.includes('project')) return 'project';
+  return 'default';
+}
 
-async function optimizeImages() {
-  const inputDir = path.join(projectRoot, "src/img");
-  const outputDir = path.join(projectRoot, "src/img/optimized");
+// Get file size in MB
+async function getFileSizeMB(filePath) {
+  const stats = await fs.stat(filePath);
+  return (stats.size / (1024 * 1024)).toFixed(2);
+}
 
-  // Create output directory if it doesn't exist
-  if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
+async function optimizeImage(inputFile, outputDir, filename, config) {
+  const baseName = path.parse(filename).name;
+  const results = [];
+
+  // Create WebP versions at different sizes
+  for (const size of config.sizes) {
+    const outputFile = path.join(outputDir, `${baseName}-${size}w.webp`);
+
+    await sharp(inputFile)
+      .resize(size, null, {
+        withoutEnlargement: true,
+        fit: 'inside',
+      })
+      .webp({ quality: config.quality })
+      .toFile(outputFile);
+
+    const sizeMB = await getFileSizeMB(outputFile);
+    results.push({ file: outputFile, size: sizeMB });
   }
 
-  try {
-    // Optimize JPEG images
-    console.log("📸 Optimizing JPEG images...");
-    const jpegFiles = await imagemin([path.join(inputDir, "**/*.{jpg,jpeg}")], {
-      destination: outputDir,
-      plugins: [
-        imageminMozjpeg({
-          quality: 85, // Good balance between quality and file size
-          progressive: true,
-        }),
-      ],
-    });
-    console.log(`✅ Optimized ${jpegFiles.length} JPEG images`);
+  // Create a main optimized WebP (largest size)
+  const mainWebP = path.join(outputDir, `${baseName}.webp`);
+  await sharp(inputFile)
+    .resize(config.maxWidth, config.maxHeight, {
+      withoutEnlargement: true,
+      fit: 'inside',
+    })
+    .webp({ quality: config.quality })
+    .toFile(mainWebP);
 
-    // Optimize PNG images
-    console.log("🎨 Optimizing PNG images...");
-    const pngFiles = await imagemin([path.join(inputDir, "**/*.png")], {
-      destination: outputDir,
-      plugins: [
-        imageminPngquant({
-          quality: [0.8, 0.9], // Good quality range
-          strip: true, // Remove metadata
-        }),
-      ],
-    });
-    console.log(`✅ Optimized ${pngFiles.length} PNG images`);
+  const mainSizeMB = await getFileSizeMB(mainWebP);
+  results.push({ file: mainWebP, size: mainSizeMB, isMain: true });
 
-    // Create WebP versions
-    console.log("⚡ Creating WebP versions...");
-    const webpFiles = await imagemin(
-      [path.join(inputDir, "**/*.{jpg,jpeg,png}")],
-      {
-        destination: path.join(outputDir, "webp"),
-        plugins: [
-          imageminWebp({
-            quality: 85,
-            alphaQuality: 85,
-          }),
-        ],
-      }
+  return results;
+}
+
+async function handleGifFiles(inputFile, outputDir, filename) {
+  const baseName = path.parse(filename).name;
+  const results = [];
+
+  // For GIFs, create a static WebP poster and try to optimize the GIF
+  const posterFile = path.join(outputDir, `${baseName}-poster.webp`);
+
+  // Create a static poster image from first frame
+  await sharp(inputFile, { animated: false })
+    .resize(800, 600, {
+      withoutEnlargement: true,
+      fit: 'inside',
+    })
+    .webp({ quality: 85 })
+    .toFile(posterFile);
+
+  const posterSizeMB = await getFileSizeMB(posterFile);
+  results.push({ file: posterFile, size: posterSizeMB, type: 'poster' });
+
+  // For very large GIFs, also create a smaller version
+  const originalSizeMB = await getFileSizeMB(inputFile);
+  if (originalSizeMB > 2) {
+    console.warn(`⚠️  Large GIF detected: ${filename} (${originalSizeMB}MB)`);
+    console.warn(
+      `   Consider converting to video format or reducing frames/size`
     );
-    console.log(`✅ Created ${webpFiles.length} WebP images`);
+    console.warn(`   Poster image created: ${posterFile}`);
+  }
 
-    // Generate responsive sizes for large images
-    console.log("📱 Creating responsive image sizes...");
-    await generateResponsiveImages();
+  return results;
+}
 
-    console.log("\n✨ Image optimization complete!");
-    console.log("💡 Images are optimized but originals are preserved.");
+async function optimizeImages() {
+  try {
+    // Ensure output directory exists
+    await fs.mkdir(outputDir, { recursive: true });
+
+    console.log('🖼️  Starting image optimization...\n');
+
+    // Find all image files
+    const imageFiles = await glob('**/*.{jpg,jpeg,png,gif,webp}', {
+      cwd: inputDir,
+    });
+
+    let totalOriginalSize = 0;
+    let totalOptimizedSize = 0;
+    let processedCount = 0;
+
+    for (const imageFile of imageFiles) {
+      const inputFile = path.join(inputDir, imageFile);
+      const originalSizeMB = await getFileSizeMB(inputFile);
+      totalOriginalSize += parseFloat(originalSizeMB);
+
+      console.log(`📁 Processing: ${imageFile} (${originalSizeMB}MB)`);
+
+      // Create subdirectory structure in output
+      const outputSubDir = path.join(outputDir, path.dirname(imageFile));
+      await fs.mkdir(outputSubDir, { recursive: true });
+
+      const fileExtension = path.extname(imageFile).toLowerCase();
+      let results = [];
+
+      if (fileExtension === '.gif') {
+        // Skip GIF files to preserve animations
+        console.log(
+          `   ⏭️  Skipping GIF: ${path.basename(imageFile)} (preserving animation)`
+        );
+        continue;
+      } else {
+        // Handle regular image files
+        const imageType = getImageType(imageFile);
+        const config = imageConfig[imageType];
+        results = await optimizeImage(
+          inputFile,
+          outputSubDir,
+          path.basename(imageFile),
+          config
+        );
+      }
+
+      // Calculate savings
+      for (const result of results) {
+        totalOptimizedSize += parseFloat(result.size);
+        const savings = (
+          ((originalSizeMB - result.size) / originalSizeMB) *
+          100
+        ).toFixed(1);
+        const icon = result.isMain
+          ? '✨'
+          : result.type === 'poster'
+            ? '🎬'
+            : '📱';
+        console.log(
+          `   ${icon} ${path.basename(result.file)}: ${result.size}MB (${savings}% smaller)`
+        );
+      }
+
+      processedCount++;
+      console.log(''); // Add spacing between files
+    }
+
+    // Summary
+    const totalSavings = (
+      ((totalOriginalSize - totalOptimizedSize) / totalOriginalSize) *
+      100
+    ).toFixed(1);
+    console.log('🎉 Optimization Complete!');
+    console.log(`📊 Processed ${processedCount} images`);
+    console.log(`📉 Original total: ${totalOriginalSize.toFixed(2)}MB`);
+    console.log(`📈 Optimized total: ${totalOptimizedSize.toFixed(2)}MB`);
     console.log(
-      "💡 Update your HTML to use the optimized versions and WebP with fallbacks."
+      `💾 Total savings: ${totalSavings}% (${(totalOriginalSize - totalOptimizedSize).toFixed(2)}MB)`
+    );
+
+    console.log('\n📋 Next Steps:');
+    console.log(
+      '1. Update HTML to use optimized images from src/img/optimized/'
+    );
+    console.log(
+      '2. Use responsive <picture> elements with srcset for different sizes'
+    );
+    console.log(
+      '3. Consider converting large GIFs to video format for better performance'
     );
   } catch (error) {
-    console.error("❌ Error optimizing images:", error);
+    console.error('❌ Error optimizing images:', error);
     process.exit(1);
   }
 }
 
-async function generateResponsiveImages() {
-  // For now, we'll document the sizes that should be created
-  // In a full implementation, you'd use sharp or similar for resizing
-  const responsiveSizes = {
-    "hero-backgrounds": [640, 1024, 1440, 1920],
-    "project-thumbnails": [300, 600, 900],
-    "project-images": [400, 800, 1200],
-    "profile-images": [150, 300, 600],
-  };
-
-  console.log("📋 Responsive image sizes to create:");
-  Object.entries(responsiveSizes).forEach(([category, sizes]) => {
-    console.log(`  ${category}: ${sizes.join("w, ")}w`);
-  });
-  console.log(
-    "💡 Consider using a service like Cloudinary or creating these sizes manually."
-  );
-}
-
+// Run optimization
 optimizeImages();

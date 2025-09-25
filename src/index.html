@@ -31,7 +31,7 @@
     />
     <meta
       property="og:image"
-      content="https://jaswetz.github.io/img/jason-profile-pic-square.png"
+      content="https://jaswetz.github.io/img/optimized/jason-profile-pic-square.webp"
     />
     <meta
       property="og:image:alt"
@@ -51,7 +51,7 @@
     />
     <meta
       name="twitter:image"
-      content="https://jaswetz.github.io/img/jason-profile-pic-square.png"
+      content="https://jaswetz.github.io/img/optimized/jason-profile-pic-square.webp"
     />
     <meta
       name="twitter:image:alt"
@@ -66,7 +66,7 @@
         "name": "Jason Swetzoff",
         "jobTitle": "UX Architect & Product Designer",
         "description": "Senior UX Architect specializing in enterprise platforms, design systems, and cross-platform experiences",
-        "image": "https://jaswetz.github.io/img/jason-profile-pic-square.png",
+        "image": "https://jaswetz.github.io/img/optimized/jason-profile-pic-square.webp",
         "sameAs": [
           "https://www.linkedin.com/in/jason-swetzoff",
           "https://github.com/jaswetz"
@@ -156,6 +156,50 @@
       as="style"
     />
 
+    <!-- Preload Font Files -->
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/gentiumplus/v2/Iurd6Ytw-oSPaZ00r2bNe8VpjA.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/gentiumplus/v2/IurC6Ytw-oSPaZ00r2bNe8VRMLRo4A.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/laila/v20/LYjMdG_8nE8jDIRd.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/laila/v20/LYjBdG_8nE8jDLyFpANA.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/ptsans/v18/jizaRExUiTo99u79P0U.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/ptsans/v18/jizfRExUiTo99u79B_mh4Ok.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+
     <!-- Optimized Google Fonts CSS with font-display: swap -->
     <link
       href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Laila:wght@400;600&family=PT+Sans:wght@400;700&display=swap"
@@ -185,7 +229,11 @@
     <link rel="apple-touch-icon" href="./assets/favicons/apple-icon.png" />
 
     <!-- Preload critical LCP image -->
-    <link rel="preload" as="image" href="./img/jason-profile-pic-square.png" />
+    <link
+      rel="preload"
+      as="image"
+      href="./img/optimized/jason-profile-pic-square.webp"
+    />
   </head>
 
   <body class="page__home">
@@ -231,11 +279,20 @@
             aria-label="View project: Crafting a Unified Notification Experience"
           >
             <article class="project-snippet grid__item card card--vertical">
-              <img
-                src="./img/projects/autodesk-messaging/messaging-final.jpg"
-                alt="Autodesk notification system interface showing unified messaging design for improved user communication"
-                class="project-thumbnail card__image"
-              />
+              <picture>
+                <source
+                  srcset="
+                    ./img/optimized/projects/autodesk-messaging/messaging-final.webp
+                  "
+                  type="image/webp"
+                />
+                <img
+                  src="./img/optimized/projects/autodesk-messaging/messaging-final.webp"
+                  alt="Autodesk notification system interface showing unified messaging design for improved user communication"
+                  class="project-thumbnail card__image"
+                  loading="lazy"
+                />
+              </picture>
               <div class="card__content">
                 <h3>Crafting a Unified Notification Experience</h3>
                 <p>
@@ -258,11 +315,20 @@
             aria-label="View project: Architecting a multi-device platform"
           >
             <article class="project-snippet grid__item card card--vertical">
-              <img
-                src="./img/mockuuups-ipad-pro-mockup-isometric-right.png"
-                alt="Autodesk Fusion cross-platform interface design showing tablet and mobile layouts for enterprise software"
-                class="project-thumbnail card__image"
-              />
+              <picture>
+                <source
+                  srcset="
+                    ./img/optimized/mockuuups-ipad-pro-mockup-isometric-right.webp
+                  "
+                  type="image/webp"
+                />
+                <img
+                  src="./img/optimized/mockuuups-ipad-pro-mockup-isometric-right.webp"
+                  alt="Autodesk Fusion cross-platform interface design showing tablet and mobile layouts for enterprise software"
+                  class="project-thumbnail card__image"
+                  loading="lazy"
+                />
+              </picture>
               <div class="card__content">
                 <h3>
                   <span aria-label="Locked">🔒</span> Architecting a
@@ -288,11 +354,24 @@
             aria-label="View project: Securing Intel's Multi-Year Deal with an Immersive Soccer App"
           >
             <article class="project-snippet grid__item card card--vertical">
-              <img
-                src="./img/proj-thumb-ios-android.png"
-                alt="Intel LFC immersive soccer app interface showing mobile designs for enhanced fan engagement"
-                class="project-thumbnail card__image project-thumbnail--intel"
-              />
+              <picture>
+                <source
+                  srcset="
+                    ./img/optimized/proj-thumb-ios-android-1200w.webp 1200w,
+                    ./img/optimized/proj-thumb-ios-android-400w.webp   400w,
+                    ./img/optimized/proj-thumb-ios-android-300w.webp   300w,
+                    ./img/optimized/proj-thumb-ios-android-200w.webp   200w
+                  "
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  type="image/webp"
+                />
+                <img
+                  src="./img/optimized/proj-thumb-ios-android-400w.webp"
+                  alt="Intel LFC immersive soccer app interface showing mobile designs for enhanced fan engagement"
+                  class="project-thumbnail card__image project-thumbnail--intel"
+                  loading="lazy"
+                />
+              </picture>
               <div class="card__content">
                 <h3>
                   Securing Intel's Multi-Year Deal with an Immersive Soccer App
@@ -315,11 +394,24 @@
             aria-label="View project: Streamlining Data Access: Fleet Analytics for Daimler Trucks"
           >
             <article class="project-snippet grid__item card card--vertical">
-              <img
-                src="./img/proj-thumb-dcd.jpg"
-                alt="Daimler Detroit Connect Direct interface mockup"
-                class="project-thumbnail card__image"
-              />
+              <picture>
+                <source
+                  srcset="
+                    ./img/optimized/proj-thumb-dcd-1200w.webp 1200w,
+                    ./img/optimized/proj-thumb-dcd-400w.webp   400w,
+                    ./img/optimized/proj-thumb-dcd-300w.webp   300w,
+                    ./img/optimized/proj-thumb-dcd-200w.webp   200w
+                  "
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  type="image/webp"
+                />
+                <img
+                  src="./img/optimized/proj-thumb-dcd-400w.webp"
+                  alt="Daimler Detroit Connect Direct interface mockup"
+                  class="project-thumbnail card__image"
+                  loading="lazy"
+                />
+              </picture>
               <div class="card__content">
                 <h3>
                   Streamlining Data Access: Fleet Analytics for Daimler Trucks
@@ -340,11 +432,18 @@
         <h2 class="section-header">About Me</h2>
         <div class="about-section__content grid grid--2-column">
           <div class="about-section__image-wrapper">
-            <img
-              src="./img/jason-profile-pic-square.png"
-              alt="Jason Swetzoff, UX Designer and Strategist"
-              class="about-section__image"
-            />
+            <picture>
+              <source
+                srcset="./img/optimized/jason-profile-pic-square.webp"
+                type="image/webp"
+              />
+              <img
+                src="./img/optimized/jason-profile-pic-square.webp"
+                alt="Jason Swetzoff, UX Designer and Strategist"
+                class="about-section__image"
+                loading="lazy"
+              />
+            </picture>
           </div>
           <div class="about-section__text">
             <p>

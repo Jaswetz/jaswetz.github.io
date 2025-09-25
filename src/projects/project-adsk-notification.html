@@ -141,7 +141,8 @@
                   loading="lazy"
                 />
                 <figcaption>
-                  Final design of the Autodesk Notification Center
+                  Final design of the Autodesk Notification Center (Static image
+                  - original animation optimized for performance)
                 </figcaption>
               </figure>
               <div class="project-summary__cards grid grid--3-column">
@@ -302,7 +303,8 @@
                         loading="lazy"
                       />
                       <figcaption>
-                        Discovery phase notification audit workshop
+                        Discovery phase notification audit workshop (Static
+                        image - original animation optimized for performance)
                       </figcaption>
                     </figure>
                   </div>
@@ -319,6 +321,8 @@
                       />
                       <figcaption>
                         Analytics showing Job Status notification patterns
+                        (Static image - original animation optimized for
+                        performance)
                       </figcaption>
                     </figure>
                   </div>
@@ -404,7 +408,8 @@
                         loading="lazy"
                       />
                       <figcaption>
-                        Notification severity decision matrix
+                        Notification severity decision matrix (Static image -
+                        original animation optimized for performance)
                       </figcaption>
                     </figure>
                   </div>
@@ -421,6 +426,8 @@
                       />
                       <figcaption>
                         Key slide demonstrating notification overload issues
+                        (Static image - original animation optimized for
+                        performance)
                       </figcaption>
                     </figure>
                   </div>
@@ -501,7 +508,8 @@
                         loading="lazy"
                       />
                       <figcaption>
-                        Filtering exploration and design iterations
+                        Filtering exploration and design iterations (Static
+                        image - original animation optimized for performance)
                       </figcaption>
                     </figure>
                   </div>
@@ -518,6 +526,8 @@
                       />
                       <figcaption>
                         Notification icon placement iterations and feedback
+                        (Static image - original animation optimized for
+                        performance)
                       </figcaption>
                     </figure>
                   </div>
@@ -595,7 +605,8 @@
                         loading="lazy"
                       />
                       <figcaption>
-                        Airtable documentation and tracking system
+                        Airtable documentation and tracking system (Static image
+                        - original animation optimized for performance)
                       </figcaption>
                     </figure>
                   </div>
@@ -811,7 +822,8 @@
                       loading="lazy"
                     />
                     <figcaption>
-                      Final Notification Center design implementation
+                      Final Notification Center design implementation (Static
+                      image - original animation optimized for performance)
                     </figcaption>
                   </figure>
                 </div>
@@ -1064,16 +1076,16 @@
 
     <!-- Password Protection and Performance Optimization -->
     <script type="module">
-      import { protectCaseStudy } from "../js/password-protection-init.js";
+      import { protectCaseStudy } from '../js/password-protection-init.js';
 
-      import analytics from "../js/analytics/simple-analytics.js";
+      import analytics from '../js/analytics/simple-analytics.js';
 
-      protectCaseStudy("project-adsk-notification");
+      protectCaseStudy('project-adsk-notification');
 
       // Initialize analytics for case study
-      document.addEventListener("DOMContentLoaded", () => {
+      document.addEventListener('DOMContentLoaded', () => {
         // Initialize case study specific analytics tracking
-        analytics.trackCaseStudyInteraction("adsk-notification", "view");
+        analytics.trackCaseStudyInteraction('adsk-notification', 'view');
       });
     </script>
 
@@ -1084,10 +1096,10 @@
 
     <!-- Sidebar Navigation Active State Script -->
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const sections = document.querySelectorAll("section[id]");
-        const navLinks = document.querySelectorAll(".sidebar-nav a");
-        const header = document.querySelector("site-header");
+      document.addEventListener('DOMContentLoaded', function () {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.sidebar-nav a');
+        const header = document.querySelector('site-header');
 
         function getHeaderHeight() {
           const height = header ? header.offsetHeight : 80;
@@ -1097,34 +1109,34 @@
         function updateActiveNav() {
           const scrollY = window.pageYOffset;
           const headerHeight = getHeaderHeight();
-          let current = "";
+          let current = '';
 
-          sections.forEach((section) => {
+          sections.forEach(section => {
             const sectionTop = section.offsetTop - headerHeight - 50;
             if (scrollY >= sectionTop) {
-              current = section.getAttribute("id");
+              current = section.getAttribute('id');
             }
           });
 
-          navLinks.forEach((link) => {
-            link.classList.remove("active");
-            if (link.getAttribute("href") === "#" + current) {
-              link.classList.add("active");
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+              link.classList.add('active');
             }
           });
         }
 
         // Update on scroll
-        window.addEventListener("scroll", updateActiveNav);
+        window.addEventListener('scroll', updateActiveNav);
 
         // Update on load
         updateActiveNav();
 
         // Smooth scroll for navigation links
         navLinks.forEach((link, index) => {
-          link.addEventListener("click", function (e) {
+          link.addEventListener('click', function (e) {
             e.preventDefault();
-            const targetId = this.getAttribute("href").substring(1);
+            const targetId = this.getAttribute('href').substring(1);
             const targetSection = document.getElementById(targetId);
 
             if (targetSection) {
@@ -1142,7 +1154,7 @@
               const finalOffset = Math.max(0, offsetPosition2);
               window.scrollTo({
                 top: finalOffset,
-                behavior: "smooth",
+                behavior: 'smooth',
               });
             }
           });
