@@ -994,5 +994,1003 @@
       "other": 34,
       "total": 68
     }
+  },
+  {
+    "timestamp": "2025-09-26T02:56:01.310Z",
+    "git": {
+      "commit": "4ba946d0dbaeb6b77732d76bfd3582d166424def",
+      "branch": "fix/ci-cd-quality-checks",
+      "message": "Fix CSS bundle analysis script for hashed filenames"
+    },
+    "files": {
+      "404.4c7be5e2.js": {
+        "path": "404.4c7be5e2.js",
+        "size": 58317,
+        "category": "js",
+        "hash": "d1bdd38c3e3fd97818b923abd0d09a6b",
+        "modified": "2025-09-25T21:49:31.100Z"
+      },
+      "404.4c7be5e2.js.map": {
+        "path": "404.4c7be5e2.js.map",
+        "size": 125419,
+        "category": "other",
+        "hash": "43e193590bb51de2d6b7b0877cc460ab",
+        "modified": "2025-09-25T21:49:31.102Z"
+      },
+      "404.57df7ccf.css": {
+        "path": "404.57df7ccf.css",
+        "size": 71871,
+        "category": "css",
+        "hash": "7802dc6f40e9d80a0297c3394855c229",
+        "modified": "2025-09-25T21:49:31.100Z"
+      },
+      "404.57df7ccf.css.map": {
+        "path": "404.57df7ccf.css.map",
+        "size": 259024,
+        "category": "other",
+        "hash": "4ba81ed1460fe3c3a88b870a87a79fe8",
+        "modified": "2025-09-25T21:49:31.102Z"
+      },
+      "ImageLightbox.850f3e7e.js": {
+        "path": "ImageLightbox.850f3e7e.js",
+        "size": 54010,
+        "category": "js",
+        "hash": "677a78f3a0bd65698742703e17a9dde4",
+        "modified": "2025-09-26T02:37:57.741Z"
+      },
+      "ImageLightbox.850f3e7e.js.map": {
+        "path": "ImageLightbox.850f3e7e.js.map",
+        "size": 72442,
+        "category": "other",
+        "hash": "72a17e0ab19955f9ce49ec9e3f63502a",
+        "modified": "2025-09-26T02:37:57.769Z"
+      },
+      "ImageLightbox.f7bd941c.js": {
+        "path": "ImageLightbox.f7bd941c.js",
+        "size": 16683,
+        "category": "js",
+        "hash": "d107579fd5780309dfa0de817b2fcf66",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "ImageLightbox.f7bd941c.js.map": {
+        "path": "ImageLightbox.f7bd941c.js.map",
+        "size": 66557,
+        "category": "other",
+        "hash": "6c8449f7eb2db4c8b53e572131c59fa0",
+        "modified": "2025-09-26T02:24:25.888Z"
+      },
+      "SidebarNavigation.5d540665.js": {
+        "path": "SidebarNavigation.5d540665.js",
+        "size": 1930,
+        "category": "js",
+        "hash": "7b2d7e044647f011a9ce61493873c685",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "SidebarNavigation.5d540665.js.map": {
+        "path": "SidebarNavigation.5d540665.js.map",
+        "size": 11296,
+        "category": "other",
+        "hash": "b95ecc27ce5b5aa554124e8fd9ed1c90",
+        "modified": "2025-09-26T02:24:25.888Z"
+      },
+      "SidebarNavigation.f9598751.js": {
+        "path": "SidebarNavigation.f9598751.js",
+        "size": 32038,
+        "category": "js",
+        "hash": "5cc850f80b35500c577c91c346ba8312",
+        "modified": "2025-09-26T02:37:57.863Z"
+      },
+      "SidebarNavigation.f9598751.js.map": {
+        "path": "SidebarNavigation.f9598751.js.map",
+        "size": 40101,
+        "category": "other",
+        "hash": "cd273bc0291c8006ecad72b06c71b7d9",
+        "modified": "2025-09-26T02:37:57.881Z"
+      },
+      "SiteFooter.3402e0da.js": {
+        "path": "SiteFooter.3402e0da.js",
+        "size": 7188,
+        "category": "js",
+        "hash": "38431a129149cdddec04367ba46e11d0",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "SiteFooter.3402e0da.js.map": {
+        "path": "SiteFooter.3402e0da.js.map",
+        "size": 20243,
+        "category": "other",
+        "hash": "7c455425c92052a042aebf120ebced47",
+        "modified": "2025-09-26T02:24:25.887Z"
+      },
+      "SiteFooter.9735e3ae.js": {
+        "path": "SiteFooter.9735e3ae.js",
+        "size": 36479,
+        "category": "js",
+        "hash": "ba3411d73f279da5f1f35aa20f90401c",
+        "modified": "2025-09-26T02:37:57.740Z"
+      },
+      "SiteFooter.9735e3ae.js.map": {
+        "path": "SiteFooter.9735e3ae.js.map",
+        "size": 44493,
+        "category": "other",
+        "hash": "11d6293042154b94e6027fe29215aa78",
+        "modified": "2025-09-26T02:37:57.765Z"
+      },
+      "SiteHeader.0269cc91.js": {
+        "path": "SiteHeader.0269cc91.js",
+        "size": 15990,
+        "category": "js",
+        "hash": "444dcfd7ebafc0a9a63def9f113d7e38",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "SiteHeader.0269cc91.js.map": {
+        "path": "SiteHeader.0269cc91.js.map",
+        "size": 44051,
+        "category": "other",
+        "hash": "cb17f9a51d97f7d19c11144898abc28f",
+        "modified": "2025-09-26T02:24:25.887Z"
+      },
+      "SiteHeader.c7cde784.js": {
+        "path": "SiteHeader.c7cde784.js",
+        "size": 47218,
+        "category": "js",
+        "hash": "fd1dc8912d9d20652f5f8229948cc46f",
+        "modified": "2025-09-26T02:37:57.762Z"
+      },
+      "SiteHeader.c7cde784.js.map": {
+        "path": "SiteHeader.c7cde784.js.map",
+        "size": 56702,
+        "category": "other",
+        "hash": "b5fac29435ab882b1ec3f477a0dc24b9",
+        "modified": "2025-09-26T02:37:57.784Z"
+      },
+      "analytics.ab983420.js": {
+        "path": "analytics.ab983420.js",
+        "size": 29819,
+        "category": "js",
+        "hash": "d3bb9e4706d1b58353136697d78da4ec",
+        "modified": "2025-09-26T02:24:32.232Z"
+      },
+      "analytics.ab983420.js.map": {
+        "path": "analytics.ab983420.js.map",
+        "size": 36351,
+        "category": "other",
+        "hash": "04e50a4d644ed793e605c2a1ba908c48",
+        "modified": "2025-09-26T02:24:32.270Z"
+      },
+      "analytics.edaf5437.js": {
+        "path": "analytics.edaf5437.js",
+        "size": 1188,
+        "category": "js",
+        "hash": "62f35b1140bfd46b0652867adb7556de",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "analytics.edaf5437.js.map": {
+        "path": "analytics.edaf5437.js.map",
+        "size": 7636,
+        "category": "other",
+        "hash": "f59e1ac3d084de064ff9b08dd8b8d01c",
+        "modified": "2025-09-26T02:24:25.888Z"
+      },
+      "clarity-config.55facd88.js": {
+        "path": "clarity-config.55facd88.js",
+        "size": 44772,
+        "category": "js",
+        "hash": "0f4e73b12cc477f2d0e68870e854a57b",
+        "modified": "2025-09-26T02:37:57.815Z"
+      },
+      "clarity-config.55facd88.js.map": {
+        "path": "clarity-config.55facd88.js.map",
+        "size": 59423,
+        "category": "other",
+        "hash": "3a7d37e2215257483b6ac66660751e52",
+        "modified": "2025-09-26T02:37:57.832Z"
+      },
+      "clarity-config.7481c6b1.js": {
+        "path": "clarity-config.7481c6b1.js",
+        "size": 8820,
+        "category": "js",
+        "hash": "1efde1ceca931ea0d2fa109be572b396",
+        "modified": "2025-09-25T22:37:38.672Z"
+      },
+      "clarity-config.7481c6b1.js.map": {
+        "path": "clarity-config.7481c6b1.js.map",
+        "size": 47298,
+        "category": "other",
+        "hash": "d8c7f8d8c48f5726641643d7e71d2203",
+        "modified": "2025-09-25T22:37:38.675Z"
+      },
+      "clarity-config.84d72337.js": {
+        "path": "clarity-config.84d72337.js",
+        "size": 8167,
+        "category": "js",
+        "hash": "18b9a9e4013e1fa2ac4287fd1c14cd35",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "clarity-config.84d72337.js.map": {
+        "path": "clarity-config.84d72337.js.map",
+        "size": 45465,
+        "category": "other",
+        "hash": "0e58a0b240698c2c2c726bda06afb37a",
+        "modified": "2025-09-26T02:24:25.888Z"
+      },
+      "enhanced-image-loader.b0ea52fb.js": {
+        "path": "enhanced-image-loader.b0ea52fb.js",
+        "size": 32922,
+        "category": "js",
+        "hash": "f02db72e1e048b1b611afc0f16bb0e0d",
+        "modified": "2025-09-26T02:37:57.762Z"
+      },
+      "enhanced-image-loader.b0ea52fb.js.map": {
+        "path": "enhanced-image-loader.b0ea52fb.js.map",
+        "size": 41465,
+        "category": "other",
+        "hash": "93efaede632ca523244ff25ed5b7dcd3",
+        "modified": "2025-09-26T02:37:57.784Z"
+      },
+      "enhanced-image-loader.db3270fe.js": {
+        "path": "enhanced-image-loader.db3270fe.js",
+        "size": 2916,
+        "category": "js",
+        "hash": "9988f91d5afcaef4c57b4375d4084b27",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "enhanced-image-loader.db3270fe.js.map": {
+        "path": "enhanced-image-loader.db3270fe.js.map",
+        "size": 13844,
+        "category": "other",
+        "hash": "f04cb18362350d7f803c2dc5be3c62b8",
+        "modified": "2025-09-26T02:24:25.888Z"
+      },
+      "jaswetz.github.io.2a0ffc65.js": {
+        "path": "jaswetz.github.io.2a0ffc65.js",
+        "size": 6668,
+        "category": "js",
+        "hash": "630ac81aac3fd16ec8623cac2dbd72e2",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "jaswetz.github.io.2a0ffc65.js.map": {
+        "path": "jaswetz.github.io.2a0ffc65.js.map",
+        "size": 38536,
+        "category": "other",
+        "hash": "c644abdd223184c68159c02e3992c74c",
+        "modified": "2025-09-26T02:24:25.887Z"
+      },
+      "jaswetz.github.io.34df27b5.css": {
+        "path": "jaswetz.github.io.34df27b5.css",
+        "size": 92737,
+        "category": "css",
+        "hash": "a9c051bb55369388b0768d685a8f5e1b",
+        "modified": "2025-09-26T02:37:57.922Z"
+      },
+      "jaswetz.github.io.34df27b5.css.map": {
+        "path": "jaswetz.github.io.34df27b5.css.map",
+        "size": 87330,
+        "category": "other",
+        "hash": "c4bad38e795a82d9ec47b2a9860bee6a",
+        "modified": "2025-09-26T02:37:57.923Z"
+      },
+      "jaswetz.github.io.42ffe72c.js": {
+        "path": "jaswetz.github.io.42ffe72c.js",
+        "size": 41581,
+        "category": "js",
+        "hash": "3406026c247eb3ee9a76d4693d31bdb2",
+        "modified": "2025-09-26T02:37:57.815Z"
+      },
+      "jaswetz.github.io.42ffe72c.js.map": {
+        "path": "jaswetz.github.io.42ffe72c.js.map",
+        "size": 53246,
+        "category": "other",
+        "hash": "51b3cb9def9a7a7455884017c0112cba",
+        "modified": "2025-09-26T02:37:57.832Z"
+      },
+      "jaswetz.github.io.6cb4b235.js": {
+        "path": "jaswetz.github.io.6cb4b235.js",
+        "size": 6668,
+        "category": "js",
+        "hash": "a4b47176dd49fd1e97a58e4b10d52163",
+        "modified": "2025-09-25T23:10:06.755Z"
+      },
+      "jaswetz.github.io.6cb4b235.js.map": {
+        "path": "jaswetz.github.io.6cb4b235.js.map",
+        "size": 38536,
+        "category": "other",
+        "hash": "642f88cdecf4e0c785e115fd9b87f785",
+        "modified": "2025-09-25T23:10:06.758Z"
+      },
+      "jaswetz.github.io.87be434d.css": {
+        "path": "jaswetz.github.io.87be434d.css",
+        "size": 71399,
+        "category": "css",
+        "hash": "fd99b783b92031d2d49948f11a49bd49",
+        "modified": "2025-09-26T02:12:26.805Z"
+      },
+      "jaswetz.github.io.87be434d.css.map": {
+        "path": "jaswetz.github.io.87be434d.css.map",
+        "size": 201497,
+        "category": "other",
+        "hash": "cfe53a7c35f89393b03f73d73fc6559e",
+        "modified": "2025-09-26T02:12:26.812Z"
+      },
+      "jaswetz.github.io.e94e5c81.js": {
+        "path": "jaswetz.github.io.e94e5c81.js",
+        "size": 5529,
+        "category": "js",
+        "hash": "0843bf38ad437f841383ae576717e9bd",
+        "modified": "2025-09-25T22:37:38.671Z"
+      },
+      "jaswetz.github.io.e94e5c81.js.map": {
+        "path": "jaswetz.github.io.e94e5c81.js.map",
+        "size": 30097,
+        "category": "other",
+        "hash": "cea95acbd12baccf33817fc49db5bfbe",
+        "modified": "2025-09-25T22:37:38.675Z"
+      },
+      "jaswetz.github.io.f5582569.css": {
+        "path": "jaswetz.github.io.f5582569.css",
+        "size": 71490,
+        "category": "css",
+        "hash": "7c8c4497a884c9360f466b066e7a0208",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "jaswetz.github.io.f5582569.css.map": {
+        "path": "jaswetz.github.io.f5582569.css.map",
+        "size": 200413,
+        "category": "other",
+        "hash": "26ea7ee5d52eced8255d99a78f7554be",
+        "modified": "2025-09-26T02:24:25.888Z"
+      },
+      "js/service-worker.js": {
+        "path": "js/service-worker.js",
+        "size": 6851,
+        "category": "js",
+        "hash": "7b51265cf710196321a3bc5284794417",
+        "modified": "2025-09-26T02:37:57.762Z"
+      },
+      "js/service-worker.js.map": {
+        "path": "js/service-worker.js.map",
+        "size": 10855,
+        "category": "other",
+        "hash": "7ee353d8f7507ff87aea02ae0a3457f2",
+        "modified": "2025-09-26T02:37:57.785Z"
+      },
+      "password-protection.03679f62.js": {
+        "path": "password-protection.03679f62.js",
+        "size": 5607,
+        "category": "js",
+        "hash": "f7233bf02f3493d41d7e18d15ec8f137",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "password-protection.03679f62.js.map": {
+        "path": "password-protection.03679f62.js.map",
+        "size": 27852,
+        "category": "other",
+        "hash": "965859a8e023f2c03f895ba5373b8969",
+        "modified": "2025-09-26T02:24:25.888Z"
+      },
+      "password-protection.3a822f86.js": {
+        "path": "password-protection.3a822f86.js",
+        "size": 39203,
+        "category": "js",
+        "hash": "53ede6d316c4f8324ceed52dc1814f3a",
+        "modified": "2025-09-26T02:37:57.815Z"
+      },
+      "password-protection.3a822f86.js.map": {
+        "path": "password-protection.3a822f86.js.map",
+        "size": 48994,
+        "category": "other",
+        "hash": "23fb9b126895edc1fd388280a2ca209c",
+        "modified": "2025-09-26T02:37:57.832Z"
+      },
+      "project-adsk-notification.8d8e1d65.js": {
+        "path": "project-adsk-notification.8d8e1d65.js",
+        "size": 52300,
+        "category": "js",
+        "hash": "a10f03ac71297924b596c658b1f18f58",
+        "modified": "2025-09-26T02:37:57.740Z"
+      },
+      "project-adsk-notification.8d8e1d65.js.map": {
+        "path": "project-adsk-notification.8d8e1d65.js.map",
+        "size": 67308,
+        "category": "other",
+        "hash": "040239682ce5ba1175aaae38a2c6293e",
+        "modified": "2025-09-26T02:37:57.775Z"
+      },
+      "simple-analytics.5afbc888.js": {
+        "path": "simple-analytics.5afbc888.js",
+        "size": 5580,
+        "category": "js",
+        "hash": "a136b7853b259492fad5f5939cc19733",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "simple-analytics.5afbc888.js.map": {
+        "path": "simple-analytics.5afbc888.js.map",
+        "size": 31418,
+        "category": "other",
+        "hash": "b4d44fb4102660fc4556ed304bda4317",
+        "modified": "2025-09-26T02:24:25.887Z"
+      },
+      "simple-analytics.b1454544.js": {
+        "path": "simple-analytics.b1454544.js",
+        "size": 39306,
+        "category": "js",
+        "hash": "9afb472e545fd06d5d7d12abc429c75d",
+        "modified": "2025-09-26T02:37:57.863Z"
+      },
+      "simple-analytics.b1454544.js.map": {
+        "path": "simple-analytics.b1454544.js.map",
+        "size": 50767,
+        "category": "other",
+        "hash": "9ce22546625b8b69567331211d8c5e8f",
+        "modified": "2025-09-26T02:37:57.880Z"
+      }
+    },
+    "totals": {
+      "js": 607750,
+      "css": 307497,
+      "other": 1878659,
+      "total": 2793906
+    },
+    "counts": {
+      "js": 26,
+      "css": 4,
+      "other": 30,
+      "total": 60
+    }
+  },
+  {
+    "timestamp": "2025-09-26T21:38:50.755Z",
+    "git": {
+      "commit": "4efcd0bcc7eb8c3e006386c70cdd835863c445ba",
+      "branch": "fix/cl-ci-errors",
+      "message": "fix: add CSS regression tests to CI/CD workflow"
+    },
+    "files": {
+      "404.4c7be5e2.js": {
+        "path": "404.4c7be5e2.js",
+        "size": 58317,
+        "category": "js",
+        "hash": "d1bdd38c3e3fd97818b923abd0d09a6b",
+        "modified": "2025-09-25T21:49:31.100Z"
+      },
+      "404.57df7ccf.css": {
+        "path": "404.57df7ccf.css",
+        "size": 71871,
+        "category": "css",
+        "hash": "7802dc6f40e9d80a0297c3394855c229",
+        "modified": "2025-09-25T21:49:31.100Z"
+      },
+      "ImageLightbox.850f3e7e.js": {
+        "path": "ImageLightbox.850f3e7e.js",
+        "size": 54010,
+        "category": "js",
+        "hash": "677a78f3a0bd65698742703e17a9dde4",
+        "modified": "2025-09-26T20:26:26.173Z"
+      },
+      "ImageLightbox.f7bd941c.js": {
+        "path": "ImageLightbox.f7bd941c.js",
+        "size": 16683,
+        "category": "js",
+        "hash": "d107579fd5780309dfa0de817b2fcf66",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "SidebarNavigation.5d540665.js": {
+        "path": "SidebarNavigation.5d540665.js",
+        "size": 1930,
+        "category": "js",
+        "hash": "7b2d7e044647f011a9ce61493873c685",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "SidebarNavigation.f9598751.js": {
+        "path": "SidebarNavigation.f9598751.js",
+        "size": 32038,
+        "category": "js",
+        "hash": "5cc850f80b35500c577c91c346ba8312",
+        "modified": "2025-09-26T20:26:26.190Z"
+      },
+      "SiteFooter.3402e0da.js": {
+        "path": "SiteFooter.3402e0da.js",
+        "size": 7188,
+        "category": "js",
+        "hash": "38431a129149cdddec04367ba46e11d0",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "SiteFooter.9735e3ae.js": {
+        "path": "SiteFooter.9735e3ae.js",
+        "size": 36479,
+        "category": "js",
+        "hash": "ba3411d73f279da5f1f35aa20f90401c",
+        "modified": "2025-09-26T20:26:26.176Z"
+      },
+      "SiteHeader.0269cc91.js": {
+        "path": "SiteHeader.0269cc91.js",
+        "size": 15990,
+        "category": "js",
+        "hash": "444dcfd7ebafc0a9a63def9f113d7e38",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "SiteHeader.c7cde784.js": {
+        "path": "SiteHeader.c7cde784.js",
+        "size": 47218,
+        "category": "js",
+        "hash": "fd1dc8912d9d20652f5f8229948cc46f",
+        "modified": "2025-09-26T20:26:26.164Z"
+      },
+      "analytics.ab983420.js": {
+        "path": "analytics.ab983420.js",
+        "size": 29819,
+        "category": "js",
+        "hash": "d3bb9e4706d1b58353136697d78da4ec",
+        "modified": "2025-09-26T02:24:32.232Z"
+      },
+      "analytics.edaf5437.js": {
+        "path": "analytics.edaf5437.js",
+        "size": 1188,
+        "category": "js",
+        "hash": "62f35b1140bfd46b0652867adb7556de",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "clarity-config.55facd88.js": {
+        "path": "clarity-config.55facd88.js",
+        "size": 44772,
+        "category": "js",
+        "hash": "0f4e73b12cc477f2d0e68870e854a57b",
+        "modified": "2025-09-26T20:26:26.184Z"
+      },
+      "clarity-config.7481c6b1.js": {
+        "path": "clarity-config.7481c6b1.js",
+        "size": 8820,
+        "category": "js",
+        "hash": "1efde1ceca931ea0d2fa109be572b396",
+        "modified": "2025-09-25T22:37:38.672Z"
+      },
+      "clarity-config.84d72337.js": {
+        "path": "clarity-config.84d72337.js",
+        "size": 8167,
+        "category": "js",
+        "hash": "18b9a9e4013e1fa2ac4287fd1c14cd35",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "enhanced-image-loader.b0ea52fb.js": {
+        "path": "enhanced-image-loader.b0ea52fb.js",
+        "size": 32922,
+        "category": "js",
+        "hash": "f02db72e1e048b1b611afc0f16bb0e0d",
+        "modified": "2025-09-26T20:26:26.164Z"
+      },
+      "enhanced-image-loader.db3270fe.js": {
+        "path": "enhanced-image-loader.db3270fe.js",
+        "size": 2916,
+        "category": "js",
+        "hash": "9988f91d5afcaef4c57b4375d4084b27",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "jaswetz.github.io.2a0ffc65.js": {
+        "path": "jaswetz.github.io.2a0ffc65.js",
+        "size": 6668,
+        "category": "js",
+        "hash": "630ac81aac3fd16ec8623cac2dbd72e2",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "jaswetz.github.io.34df27b5.css": {
+        "path": "jaswetz.github.io.34df27b5.css",
+        "size": 92737,
+        "category": "css",
+        "hash": "a9c051bb55369388b0768d685a8f5e1b",
+        "modified": "2025-09-26T02:37:57.922Z"
+      },
+      "jaswetz.github.io.42ffe72c.js": {
+        "path": "jaswetz.github.io.42ffe72c.js",
+        "size": 41582,
+        "category": "js",
+        "hash": "27dc9cfdcf287831f9cbd838a0202340",
+        "modified": "2025-09-26T20:26:26.184Z"
+      },
+      "jaswetz.github.io.6cb4b235.js": {
+        "path": "jaswetz.github.io.6cb4b235.js",
+        "size": 6668,
+        "category": "js",
+        "hash": "a4b47176dd49fd1e97a58e4b10d52163",
+        "modified": "2025-09-25T23:10:06.755Z"
+      },
+      "jaswetz.github.io.7b2165d1.js": {
+        "path": "jaswetz.github.io.7b2165d1.js",
+        "size": 5355,
+        "category": "js",
+        "hash": "f78d719ec7eed9af2062bc1d595a7d91",
+        "modified": "2025-09-26T21:30:18.010Z"
+      },
+      "jaswetz.github.io.87be434d.css": {
+        "path": "jaswetz.github.io.87be434d.css",
+        "size": 71399,
+        "category": "css",
+        "hash": "fd99b783b92031d2d49948f11a49bd49",
+        "modified": "2025-09-26T02:12:26.805Z"
+      },
+      "jaswetz.github.io.e94e5c81.js": {
+        "path": "jaswetz.github.io.e94e5c81.js",
+        "size": 5529,
+        "category": "js",
+        "hash": "0843bf38ad437f841383ae576717e9bd",
+        "modified": "2025-09-25T22:37:38.671Z"
+      },
+      "jaswetz.github.io.f5582569.css": {
+        "path": "jaswetz.github.io.f5582569.css",
+        "size": 71490,
+        "category": "css",
+        "hash": "7c8c4497a884c9360f466b066e7a0208",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "js/service-worker.js": {
+        "path": "js/service-worker.js",
+        "size": 6851,
+        "category": "js",
+        "hash": "7b51265cf710196321a3bc5284794417",
+        "modified": "2025-09-26T02:37:57.762Z"
+      },
+      "password-protection.03679f62.js": {
+        "path": "password-protection.03679f62.js",
+        "size": 5607,
+        "category": "js",
+        "hash": "f7233bf02f3493d41d7e18d15ec8f137",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "password-protection.3a822f86.js": {
+        "path": "password-protection.3a822f86.js",
+        "size": 39203,
+        "category": "js",
+        "hash": "53ede6d316c4f8324ceed52dc1814f3a",
+        "modified": "2025-09-26T20:26:26.184Z"
+      },
+      "project-adsk-notification.8d8e1d65.js": {
+        "path": "project-adsk-notification.8d8e1d65.js",
+        "size": 52300,
+        "category": "js",
+        "hash": "a10f03ac71297924b596c658b1f18f58",
+        "modified": "2025-09-26T20:26:26.164Z"
+      },
+      "simple-analytics.5afbc888.js": {
+        "path": "simple-analytics.5afbc888.js",
+        "size": 5580,
+        "category": "js",
+        "hash": "a136b7853b259492fad5f5939cc19733",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "simple-analytics.b1454544.js": {
+        "path": "simple-analytics.b1454544.js",
+        "size": 39306,
+        "category": "js",
+        "hash": "9afb472e545fd06d5d7d12abc429c75d",
+        "modified": "2025-09-26T20:26:26.190Z"
+      }
+    },
+    "totals": {
+      "js": 613106,
+      "css": 307497,
+      "other": 0,
+      "total": 920603
+    },
+    "counts": {
+      "js": 27,
+      "css": 4,
+      "other": 0,
+      "total": 31
+    }
+  },
+  {
+    "timestamp": "2025-09-26T21:41:50.742Z",
+    "git": {
+      "commit": "4efcd0bcc7eb8c3e006386c70cdd835863c445ba",
+      "branch": "fix/cl-ci-errors",
+      "message": "fix: add CSS regression tests to CI/CD workflow"
+    },
+    "files": {
+      "404.4c7be5e2.js": {
+        "path": "404.4c7be5e2.js",
+        "size": 58317,
+        "category": "js",
+        "hash": "d1bdd38c3e3fd97818b923abd0d09a6b",
+        "modified": "2025-09-25T21:49:31.100Z"
+      },
+      "404.57df7ccf.css": {
+        "path": "404.57df7ccf.css",
+        "size": 71871,
+        "category": "css",
+        "hash": "7802dc6f40e9d80a0297c3394855c229",
+        "modified": "2025-09-25T21:49:31.100Z"
+      },
+      "ImageLightbox.850f3e7e.js": {
+        "path": "ImageLightbox.850f3e7e.js",
+        "size": 54010,
+        "category": "js",
+        "hash": "677a78f3a0bd65698742703e17a9dde4",
+        "modified": "2025-09-26T20:26:26.173Z"
+      },
+      "ImageLightbox.f7bd941c.js": {
+        "path": "ImageLightbox.f7bd941c.js",
+        "size": 16683,
+        "category": "js",
+        "hash": "d107579fd5780309dfa0de817b2fcf66",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "SidebarNavigation.5d540665.js": {
+        "path": "SidebarNavigation.5d540665.js",
+        "size": 1930,
+        "category": "js",
+        "hash": "7b2d7e044647f011a9ce61493873c685",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "SidebarNavigation.f9598751.js": {
+        "path": "SidebarNavigation.f9598751.js",
+        "size": 32038,
+        "category": "js",
+        "hash": "5cc850f80b35500c577c91c346ba8312",
+        "modified": "2025-09-26T20:26:26.190Z"
+      },
+      "SiteFooter.3402e0da.js": {
+        "path": "SiteFooter.3402e0da.js",
+        "size": 7188,
+        "category": "js",
+        "hash": "38431a129149cdddec04367ba46e11d0",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "SiteFooter.9735e3ae.js": {
+        "path": "SiteFooter.9735e3ae.js",
+        "size": 36479,
+        "category": "js",
+        "hash": "ba3411d73f279da5f1f35aa20f90401c",
+        "modified": "2025-09-26T20:26:26.176Z"
+      },
+      "SiteHeader.0269cc91.js": {
+        "path": "SiteHeader.0269cc91.js",
+        "size": 15990,
+        "category": "js",
+        "hash": "444dcfd7ebafc0a9a63def9f113d7e38",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "SiteHeader.c7cde784.js": {
+        "path": "SiteHeader.c7cde784.js",
+        "size": 47218,
+        "category": "js",
+        "hash": "fd1dc8912d9d20652f5f8229948cc46f",
+        "modified": "2025-09-26T20:26:26.164Z"
+      },
+      "analytics.ab983420.js": {
+        "path": "analytics.ab983420.js",
+        "size": 29819,
+        "category": "js",
+        "hash": "d3bb9e4706d1b58353136697d78da4ec",
+        "modified": "2025-09-26T02:24:32.232Z"
+      },
+      "analytics.edaf5437.js": {
+        "path": "analytics.edaf5437.js",
+        "size": 1188,
+        "category": "js",
+        "hash": "62f35b1140bfd46b0652867adb7556de",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "clarity-config.55facd88.js": {
+        "path": "clarity-config.55facd88.js",
+        "size": 44772,
+        "category": "js",
+        "hash": "0f4e73b12cc477f2d0e68870e854a57b",
+        "modified": "2025-09-26T20:26:26.184Z"
+      },
+      "clarity-config.7481c6b1.js": {
+        "path": "clarity-config.7481c6b1.js",
+        "size": 8820,
+        "category": "js",
+        "hash": "1efde1ceca931ea0d2fa109be572b396",
+        "modified": "2025-09-25T22:37:38.672Z"
+      },
+      "clarity-config.84d72337.js": {
+        "path": "clarity-config.84d72337.js",
+        "size": 8167,
+        "category": "js",
+        "hash": "18b9a9e4013e1fa2ac4287fd1c14cd35",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "enhanced-image-loader.b0ea52fb.js": {
+        "path": "enhanced-image-loader.b0ea52fb.js",
+        "size": 32922,
+        "category": "js",
+        "hash": "f02db72e1e048b1b611afc0f16bb0e0d",
+        "modified": "2025-09-26T20:26:26.164Z"
+      },
+      "enhanced-image-loader.db3270fe.js": {
+        "path": "enhanced-image-loader.db3270fe.js",
+        "size": 2916,
+        "category": "js",
+        "hash": "9988f91d5afcaef4c57b4375d4084b27",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "jaswetz.github.io.2a0ffc65.js": {
+        "path": "jaswetz.github.io.2a0ffc65.js",
+        "size": 6668,
+        "category": "js",
+        "hash": "630ac81aac3fd16ec8623cac2dbd72e2",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "jaswetz.github.io.34df27b5.css": {
+        "path": "jaswetz.github.io.34df27b5.css",
+        "size": 92737,
+        "category": "css",
+        "hash": "a9c051bb55369388b0768d685a8f5e1b",
+        "modified": "2025-09-26T02:37:57.922Z"
+      },
+      "jaswetz.github.io.42ffe72c.js": {
+        "path": "jaswetz.github.io.42ffe72c.js",
+        "size": 41582,
+        "category": "js",
+        "hash": "27dc9cfdcf287831f9cbd838a0202340",
+        "modified": "2025-09-26T20:26:26.184Z"
+      },
+      "jaswetz.github.io.6cb4b235.js": {
+        "path": "jaswetz.github.io.6cb4b235.js",
+        "size": 6668,
+        "category": "js",
+        "hash": "a4b47176dd49fd1e97a58e4b10d52163",
+        "modified": "2025-09-25T23:10:06.755Z"
+      },
+      "jaswetz.github.io.7b2165d1.js": {
+        "path": "jaswetz.github.io.7b2165d1.js",
+        "size": 5355,
+        "category": "js",
+        "hash": "f78d719ec7eed9af2062bc1d595a7d91",
+        "modified": "2025-09-26T21:30:18.010Z"
+      },
+      "jaswetz.github.io.87be434d.css": {
+        "path": "jaswetz.github.io.87be434d.css",
+        "size": 71399,
+        "category": "css",
+        "hash": "fd99b783b92031d2d49948f11a49bd49",
+        "modified": "2025-09-26T02:12:26.805Z"
+      },
+      "jaswetz.github.io.e94e5c81.js": {
+        "path": "jaswetz.github.io.e94e5c81.js",
+        "size": 5529,
+        "category": "js",
+        "hash": "0843bf38ad437f841383ae576717e9bd",
+        "modified": "2025-09-25T22:37:38.671Z"
+      },
+      "jaswetz.github.io.f5582569.css": {
+        "path": "jaswetz.github.io.f5582569.css",
+        "size": 71490,
+        "category": "css",
+        "hash": "7c8c4497a884c9360f466b066e7a0208",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "js/service-worker.js": {
+        "path": "js/service-worker.js",
+        "size": 6851,
+        "category": "js",
+        "hash": "7b51265cf710196321a3bc5284794417",
+        "modified": "2025-09-26T02:37:57.762Z"
+      },
+      "password-protection.03679f62.js": {
+        "path": "password-protection.03679f62.js",
+        "size": 5607,
+        "category": "js",
+        "hash": "f7233bf02f3493d41d7e18d15ec8f137",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "password-protection.3a822f86.js": {
+        "path": "password-protection.3a822f86.js",
+        "size": 39203,
+        "category": "js",
+        "hash": "53ede6d316c4f8324ceed52dc1814f3a",
+        "modified": "2025-09-26T20:26:26.184Z"
+      },
+      "project-adsk-notification.8d8e1d65.js": {
+        "path": "project-adsk-notification.8d8e1d65.js",
+        "size": 52300,
+        "category": "js",
+        "hash": "a10f03ac71297924b596c658b1f18f58",
+        "modified": "2025-09-26T20:26:26.164Z"
+      },
+      "simple-analytics.5afbc888.js": {
+        "path": "simple-analytics.5afbc888.js",
+        "size": 5580,
+        "category": "js",
+        "hash": "a136b7853b259492fad5f5939cc19733",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "simple-analytics.b1454544.js": {
+        "path": "simple-analytics.b1454544.js",
+        "size": 39306,
+        "category": "js",
+        "hash": "9afb472e545fd06d5d7d12abc429c75d",
+        "modified": "2025-09-26T20:26:26.190Z"
+      }
+    },
+    "totals": {
+      "js": 613106,
+      "css": 307497,
+      "other": 0,
+      "total": 920603
+    },
+    "counts": {
+      "js": 27,
+      "css": 4,
+      "other": 0,
+      "total": 31
+    }
+  },
+  {
+    "timestamp": "2025-09-26T21:42:49.042Z",
+    "git": {
+      "commit": "4efcd0bcc7eb8c3e006386c70cdd835863c445ba",
+      "branch": "fix/cl-ci-errors",
+      "message": "fix: add CSS regression tests to CI/CD workflow"
+    },
+    "files": {
+      "jaswetz.github.io.2a0ffc65.js": {
+        "path": "jaswetz.github.io.2a0ffc65.js",
+        "size": 6668,
+        "category": "js",
+        "hash": "630ac81aac3fd16ec8623cac2dbd72e2",
+        "modified": "2025-09-26T02:24:25.878Z"
+      },
+      "jaswetz.github.io.34df27b5.css": {
+        "path": "jaswetz.github.io.34df27b5.css",
+        "size": 92737,
+        "category": "css",
+        "hash": "a9c051bb55369388b0768d685a8f5e1b",
+        "modified": "2025-09-26T02:37:57.922Z"
+      },
+      "jaswetz.github.io.42ffe72c.js": {
+        "path": "jaswetz.github.io.42ffe72c.js",
+        "size": 41582,
+        "category": "js",
+        "hash": "27dc9cfdcf287831f9cbd838a0202340",
+        "modified": "2025-09-26T20:26:26.184Z"
+      },
+      "jaswetz.github.io.6cb4b235.js": {
+        "path": "jaswetz.github.io.6cb4b235.js",
+        "size": 6668,
+        "category": "js",
+        "hash": "a4b47176dd49fd1e97a58e4b10d52163",
+        "modified": "2025-09-25T23:10:06.755Z"
+      },
+      "jaswetz.github.io.7b2165d1.js": {
+        "path": "jaswetz.github.io.7b2165d1.js",
+        "size": 5355,
+        "category": "js",
+        "hash": "f78d719ec7eed9af2062bc1d595a7d91",
+        "modified": "2025-09-26T21:30:18.010Z"
+      },
+      "jaswetz.github.io.87be434d.css": {
+        "path": "jaswetz.github.io.87be434d.css",
+        "size": 71399,
+        "category": "css",
+        "hash": "fd99b783b92031d2d49948f11a49bd49",
+        "modified": "2025-09-26T02:12:26.805Z"
+      },
+      "jaswetz.github.io.e94e5c81.js": {
+        "path": "jaswetz.github.io.e94e5c81.js",
+        "size": 5529,
+        "category": "js",
+        "hash": "0843bf38ad437f841383ae576717e9bd",
+        "modified": "2025-09-25T22:37:38.671Z"
+      },
+      "jaswetz.github.io.f5582569.css": {
+        "path": "jaswetz.github.io.f5582569.css",
+        "size": 71490,
+        "category": "css",
+        "hash": "7c8c4497a884c9360f466b066e7a0208",
+        "modified": "2025-09-26T02:24:25.878Z"
+      }
+    },
+    "totals": {
+      "js": 65802,
+      "css": 235626,
+      "other": 0,
+      "total": 301428
+    },
+    "counts": {
+      "js": 5,
+      "css": 3,
+      "other": 0,
+      "total": 8
+    }
   }
 ]

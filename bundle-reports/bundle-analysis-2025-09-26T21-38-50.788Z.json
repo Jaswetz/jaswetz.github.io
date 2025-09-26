@@ -1,0 +1,78 @@
+{
+  "timestamp": "2025-09-26T21:38:50.755Z",
+  "git": {
+    "commit": "4efcd0bcc7eb8c3e006386c70cdd835863c445ba",
+    "branch": "fix/cl-ci-errors",
+    "message": "fix: add CSS regression tests to CI/CD workflow"
+  },
+  "sizes": {
+    "js": 613106,
+    "css": 307497,
+    "other": 0,
+    "total": 920603
+  },
+  "budgets": {
+    "js": 204800,
+    "css": 71680,
+    "total": 1024000
+  },
+  "violations": [
+    {
+      "type": "budget",
+      "category": "js",
+      "actual": 613106,
+      "budget": 204800,
+      "excess": 408306,
+      "excessPercent": "199.4",
+      "severity": "critical"
+    },
+    {
+      "type": "budget",
+      "category": "css",
+      "actual": 307497,
+      "budget": 71680,
+      "excess": 235817,
+      "excessPercent": "329.0",
+      "severity": "critical"
+    }
+  ],
+  "regressions": [
+    {
+      "type": "total",
+      "category": "css",
+      "current": 307497,
+      "baseline": 235953,
+      "increase": 0.3032129279983726,
+      "increasePercent": "30.3",
+      "severity": "critical",
+      "impact": "69.87 KB"
+    },
+    {
+      "type": "file",
+      "file": "jaswetz.github.io.42ffe72c.js",
+      "current": 41582,
+      "baseline": 38409,
+      "increase": 0.08261084641620453,
+      "increasePercent": "8.3",
+      "severity": "warning",
+      "impact": "3.1 KB"
+    }
+  ],
+  "improvements": [
+    {
+      "type": "total",
+      "category": "total",
+      "current": 920603,
+      "baseline": 2683083,
+      "decrease": 0.6568861268920865,
+      "decreasePercent": "65.7",
+      "impact": "1.68 MB"
+    }
+  ],
+  "summary": {
+    "passed": false,
+    "budgetViolations": 2,
+    "regressions": 2,
+    "improvements": 1
+  }
+}

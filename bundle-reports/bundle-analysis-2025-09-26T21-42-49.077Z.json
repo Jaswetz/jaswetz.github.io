@@ -1,0 +1,66 @@
+{
+  "timestamp": "2025-09-26T21:42:49.042Z",
+  "git": {
+    "commit": "4efcd0bcc7eb8c3e006386c70cdd835863c445ba",
+    "branch": "fix/cl-ci-errors",
+    "message": "fix: add CSS regression tests to CI/CD workflow"
+  },
+  "sizes": {
+    "js": 65802,
+    "css": 235626,
+    "other": 0,
+    "total": 301428
+  },
+  "budgets": {
+    "js": 204800,
+    "css": 71680,
+    "total": 1024000
+  },
+  "violations": [
+    {
+      "type": "budget",
+      "category": "css",
+      "actual": 235626,
+      "budget": 71680,
+      "excess": 163946,
+      "excessPercent": "228.7",
+      "severity": "critical"
+    }
+  ],
+  "regressions": [],
+  "improvements": [
+    {
+      "type": "total",
+      "category": "js",
+      "current": 65802,
+      "baseline": 607750,
+      "decrease": 0.8917285067873303,
+      "decreasePercent": "89.2",
+      "impact": "529.25 KB"
+    },
+    {
+      "type": "total",
+      "category": "css",
+      "current": 235626,
+      "baseline": 307497,
+      "decrease": 0.23372910955228832,
+      "decreasePercent": "23.4",
+      "impact": "70.19 KB"
+    },
+    {
+      "type": "total",
+      "category": "total",
+      "current": 301428,
+      "baseline": 2683083,
+      "decrease": 0.887656103072473,
+      "decreasePercent": "88.8",
+      "impact": "2.27 MB"
+    }
+  ],
+  "summary": {
+    "passed": false,
+    "budgetViolations": 1,
+    "regressions": 0,
+    "improvements": 3
+  }
+}

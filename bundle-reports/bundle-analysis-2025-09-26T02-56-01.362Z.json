@@ -1,0 +1,87 @@
+{
+  "timestamp": "2025-09-26T02:56:01.310Z",
+  "git": {
+    "commit": "4ba946d0dbaeb6b77732d76bfd3582d166424def",
+    "branch": "fix/ci-cd-quality-checks",
+    "message": "Fix CSS bundle analysis script for hashed filenames"
+  },
+  "sizes": {
+    "js": 607750,
+    "css": 307497,
+    "other": 1878659,
+    "total": 2793906
+  },
+  "budgets": {
+    "js": 204800,
+    "css": 71680,
+    "total": 102400
+  },
+  "violations": [
+    {
+      "type": "budget",
+      "category": "js",
+      "actual": 607750,
+      "budget": 204800,
+      "excess": 402950,
+      "excessPercent": "196.8",
+      "severity": "critical"
+    },
+    {
+      "type": "budget",
+      "category": "css",
+      "actual": 307497,
+      "budget": 71680,
+      "excess": 235817,
+      "excessPercent": "329.0",
+      "severity": "critical"
+    },
+    {
+      "type": "budget",
+      "category": "total",
+      "actual": 2793906,
+      "budget": 102400,
+      "excess": 2691506,
+      "excessPercent": "2628.4",
+      "severity": "critical"
+    }
+  ],
+  "regressions": [
+    {
+      "type": "total",
+      "category": "css",
+      "current": 307497,
+      "baseline": 235953,
+      "increase": 0.3032129279983726,
+      "increasePercent": "30.3",
+      "severity": "critical",
+      "impact": "69.87 KB"
+    },
+    {
+      "type": "file",
+      "file": "jaswetz.github.io.42ffe72c.js",
+      "current": 41581,
+      "baseline": 38409,
+      "increase": 0.08258481085162332,
+      "increasePercent": "8.3",
+      "severity": "warning",
+      "impact": "3.1 KB"
+    },
+    {
+      "type": "file",
+      "file": "jaswetz.github.io.42ffe72c.js.map",
+      "current": 53246,
+      "baseline": 48931,
+      "increase": 0.088185403936155,
+      "increasePercent": "8.8",
+      "severity": "warning",
+      "impact": "4.21 KB"
+    }
+  ],
+  "improvements": [],
+  "summary": {
+    "passed": false,
+    "budgetViolations": 3,
+    "regressions": 3,
+    "improvements": 0
+  }
+}
