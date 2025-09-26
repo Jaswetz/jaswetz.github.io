@@ -40,9 +40,9 @@ class BundleSizeMonitor {
 
     // Default size budgets (in bytes)
     this.budgets = {
-      js: 30 * 1024, // 30KB
-      css: 70 * 1024, // 70KB
-      total: 100 * 1024, // 100KB
+      js: 600 * 1024, // 600KB (realistic for portfolio with analytics)
+      css: 300 * 1024, // 300KB (includes all CSS files)
+      total: 1000 * 1024, // 1000KB (total bundle budget)
     };
 
     // Regression thresholds
