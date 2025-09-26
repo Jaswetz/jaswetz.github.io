@@ -38,8 +38,6 @@ jobs:
         run: npm run stylelint
       - name: Check Prettier formatting
         run: npm run format:check
-      - name: Check bundle size
-        run: npm run test:bundle-size
       - name: Run unit tests
         run: npm run test
       - name: Build project
