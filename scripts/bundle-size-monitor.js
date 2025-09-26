@@ -197,6 +197,9 @@ class BundleSizeMonitor {
   /**
    * Get all relevant files from dist directory
    */
+  /**
+   * Get all relevant files from dist directory
+   */
   getDistFiles() {
     const files = [];
 
@@ -211,9 +214,16 @@ class BundleSizeMonitor {
         if (stats.isDirectory()) {
           traverse(dir, itemPath);
         } else {
-          // Include JS, CSS, and other relevant assets
+          // Only include main bundle files (matching bundlesize patterns)
           const ext = extname(item).toLowerCase();
-          if (['.js', '.css', '.mjs', '.map'].includes(ext)) {
+          const baseName = basename(item, ext);
+
+          // Match bundlesize patterns: jaswetz.github.io.*.(js|css)
+          const isMainBundle =
+            baseName.startsWith('jaswetz.github.io.') &&
+            ['.js', '.css'].includes(ext);
+
+          if (isMainBundle) {
             files.push(itemPath);
           }
         }
@@ -223,7 +233,6 @@ class BundleSizeMonitor {
     traverse(this.distDir);
     return files.sort();
   }
-
   /**
    * Get current git information
    */
