@@ -23,7 +23,7 @@
     "css:size-check": "node scripts/check-css-bundle-size.js",
     "test:links:local": "npx linkinator http://localhost:8080 --recurse --skip 'mailto:'",
     "css:size-update": "node scripts/check-css-bundle-size.js --update-baseline",
-    "test:css-regression": "playwright test tests/css-regression.spec.js",
+    "test:css-regression": "playwright test tests/e2e/css-regression.spec.js",
     "lint-staged": "lint-staged",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
