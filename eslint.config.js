@@ -13,7 +13,7 @@ export default [
       'node_modules/',
       '**/*.min.js',
       'src/assets/js/vendor/',
-      'src/js/analytics/', // Temporarily ignore analytics files
+      'src/js/analytics/', // Exclude analytics files from linting
     ],
   },
   // Source files (browser environment) - JavaScript
@@ -112,6 +112,13 @@ export default [
     },
     rules: {
       'no-console': 'off', // Allow console logs in scripts
+    },
+  },
+  // Logger files (allow all console methods)
+  {
+    files: ['src/js/logger.js', 'src/js/utils/Logger.js'],
+    rules: {
+      'no-console': 'off', // Allow all console methods in logger files
     },
   },
   // Test files (Vitest environment)
