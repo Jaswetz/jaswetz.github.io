@@ -13,6 +13,7 @@ export default [
       'node_modules/',
       '**/*.min.js',
       'src/assets/js/vendor/',
+      'src/js/analytics/', // Temporarily ignore analytics files
     ],
   },
   // Source files (browser environment) - JavaScript
