@@ -41,7 +41,21 @@ jobs:
       - name: Check bundle size
         run: npm run test:bundle-size
       - name: Run unit tests
-        run: npm run test
+      - name: Run CSS regression tests
+        run: |
+          npm run serve &
+          SERVER_PID=$!
+          echo "SERVER_PID=$SERVER_PID" >> $GITHUB_ENV
+          
+          # Wait for server to be ready
+          timeout 30s bash -c 'until curl -s http://localhost:8080 > /dev/null; do sleep 1; done'
+          echo "Server is ready!"
+          
+          # Run CSS regression tests
+          npm run test:css-regression
+          
+          # Clean up server
+          kill $SERVER_PID || true        run: npm run test
       - name: Build project
         run: npm run build
 
