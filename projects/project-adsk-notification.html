@@ -1,0 +1,885 @@
+<!DOCTYPE html><html lang=en><script type=module src=/simple-analytics.5afbc888.js></script><script type=module src=/password-protection.03679f62.js></script><meta charset=UTF-8><meta name=viewport content="width=device-width, initial-scale=1.0"><title>Notification System Redesign | Jason Swetzoff</title><meta name=description content="Case study: Leading the redesign of Autodesk Fusion's notification system to reduce user fatigue while ensuring critical communications are visible and aligned with business growth objectives."><meta name=keywords content="UX Design, Notification System, Autodesk Fusion, User Experience, Interface Design, Product Strategy, Design Systems"><meta name=author content="Jason Swetzoff"><meta property=og:title content="Notification System Redesign | Jason Swetzoff"><meta property=og:description content="Case study: Leading the redesign of Autodesk Fusion's notification system to reduce user fatigue while ensuring critical communications are visible and aligned with business growth objectives."><meta property=og:type content=article><meta property=og:url content=https://jaswetz.github.io/projects/project-adsk-notification.html><meta property=og:image content=https://jaswetz.github.io/img/projects/autodesk-messaging/messaging-final.jpg><meta property=og:site_name content="Jason Swetzoff - UX Portfolio"><meta name=twitter:card content=summary_large_image><meta name=twitter:title content="Notification System Redesign"><meta name=twitter:description content="Case study: Leading the redesign of Autodesk Fusion's notification system to reduce user fatigue while ensuring critical communications are visible and aligned with business growth objectives."><meta property=twitter:image content=https://jaswetz.github.io/img/projects/autodesk-messaging/messaging-final.jpg><link rel=preconnect href=https://fonts.googleapis.com crossorigin><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&amp;family=Laila:wght@400;600&amp;family=PT+Sans:wght@400;700&amp;display=swap" rel=stylesheet><link rel=stylesheet href=/jaswetz.github.io.87be434d.css><script src=https://unpkg.com/feather-icons></script><link rel=icon type=image/x-icon href=/favicon.89053a11.ico><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.138c3fb4.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.f6ec8b2a.png><link rel=icon type=image/png sizes=96x96 href=/favicon-96x96.8cee9cbb.png><link rel=apple-touch-icon href=/apple-icon.5a62a7de.png><body class="notification project">
+    <a href=#main-content class=skip-link>Skip to main content</a>
+    <header>
+      
+      <section class="hero hero--project hero-section" id=hero aria-labelledby=hero-title>
+        <div class=wrapper>
+          <div class=hero--project__content>
+            <div class=hero--project__label aria-label="Client name">
+              Autodesk Fusion
+            </div>
+            <h1 class=hero--project__header id=hero-title>
+              Crafting a Unified Notification Experience
+            </h1>
+            <div class=hero--project__meta role=group aria-label="Project metadata">
+              <span class=hero--project__role aria-label=Role>Lead UX Designer</span>
+              <span class=hero--project__timeline aria-label=Timeline>6 Month Project</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </header>
+    <site-header></site-header>
+    <main id=main-content class="main-content notification-case-study-grid project-case-study wrapper" role=main>
+      <article class=article>
+        <div class="grid grid--2-column--sidebar sidebar">
+          <div class=article__content>
+            <section class=project-summary id=project-summary>
+              <figure>
+                <img src=/messaging-final.f87163a7.jpg alt="Autodesk Notification Center final design" class="project-summary__image project__img" loading=lazy>
+                <figcaption>
+                  Final design of the Autodesk Notification Center (Static image
+                  - original animation optimized for performance)
+                </figcaption>
+              </figure>
+              <div class="grid grid--3-column project-summary__cards">
+                <div class="card--outline card__text project-summary__card">
+                  <h3>Team</h3>
+                  <p>Product Manager, 2 Developers</p>
+                </div>
+                <div class="card--outline card__text project-summary__card">
+                  <h3>Stakeholders</h3>
+                  <p>Every other UX team, Business Group, Marketing</p>
+                </div>
+                <div class="card--outline card__text project-summary__card">
+                  <h3>Tools</h3>
+                  <p>Figma, Mural, Airtable, Confluence, Jira</p>
+                </div>
+              </div>
+              <p class=project-summary__description>
+                Autodesk Fusion is a cloud-based platform that integrates tools
+                for 3D CAD design, manufacturing, engineering, and product
+                lifecycle management, supporting the entire production process
+                from concept to delivery.
+              </p>
+              <p class=project-summary__description>
+                I proactively identified the need to improve Autodesk Fusion's
+                notification system and formally proposed it as a critical
+                project. I secured funding and stakeholder support, then led the
+                end-to-end redesign and revamp of the notification system,
+                including its guidelines and patterns. This initiative reduced
+                user distraction, improved communication, and empowered product
+                teams to design more consistent experiences more efficiently. As
+                a direct result, the product saw 15,000 additional subscriptions
+                in the first month after launch.
+              </p>
+            </section>
+
+            <section class=project-problem id=the-problem>
+              <h2>The Problem</h2>
+
+              <div class="grid grid--2-column">
+                <div class="card--white problem-card">
+                  <div class=problem-card__icon>
+                    <img src=/ux.99a0c4d8.png alt="User Experience" class=problem-card__img>
+                  </div>
+                  <div class="card__text problem-card__content">
+                    <h3>User Experience</h3>
+                    <p>
+                      Inconsistent, overwhelming notifications disrupted
+                      workflows and created confusion.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="card--white problem-card">
+                  <div class=problem-card__icon>
+                    <img src=/graph.207dc10b.png alt="User Experience" class=problem-card__img>
+                  </div>
+                  <div class="card__text problem-card__content">
+                    <h3>Business Impact</h3>
+                    <p>
+                      Critical communications were lost in the noise, reducing
+                      subscriber growth and engagement.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="card--white problem-card">
+                  <div class=problem-card__icon>
+                    <img src=/eye.f17d4d38.png alt="User Experience" class=problem-card__img>
+                  </div>
+                  <div class="card__text problem-card__content">
+                    <h3>Product Perception</h3>
+                    <p>
+                      Fragmented messaging hurt brand quality and user trust in
+                      the platform.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="card--white problem-card">
+                  <div class=problem-card__icon>
+                    <img src=/ball.6b316d01.png alt="User Experience" class=problem-card__img>
+                  </div>
+                  <div class="card__text problem-card__content">
+                    <h3>Internal Friction</h3>
+                    <p>
+                      Lack of a unified strategy increased development
+                      complexity and maintenance costs.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class=change-background>
+              <div class="card--outline goals">
+                <h2>Goal</h2>
+                <p>
+                  How might we design a notification system that reduces user
+                  fatigue while ensuring critical communications are visible,
+                  effective, and aligned with business growth objectives?
+                </p>
+              </div>
+            </section>
+
+            <section class=project-process id=process>
+              <h2>Discovery and Research</h2>
+              
+
+              <div class=phases>
+                <div class="grid grid--2-column phase">
+                  <div class=phase__content>
+                    <div class=phase__badge>Phase 1</div>
+                    <h3 class=phase__title>Discovery</h3>
+                    <div class=bullet-points>
+                      <div class="bullet-point phase__item">
+                        <span class=bullet-point__icon>
+                          <i data-feather=check-circle></i>
+                        </span>
+                        <p class="bullet-point__text phase__item-text">
+                          Conducted a <strong>content inventory</strong> of
+                          existing notifications, identifying patterns,
+                          redundancies, and inconsistencies.
+                        </p>
+                      </div>
+                      <div class="bullet-point phase__item">
+                        <span class=bullet-point__icon>
+                          <i data-feather=check-circle></i>
+                        </span>
+                        <p class="bullet-point__text phase__item-text">
+                          <strong>Competitive Analysis:</strong> Examined
+                          notification strategies from internal products like
+                          AutoCAD and Revit, as well as external applications.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=phase__image>
+                    <figure>
+                      <img src=/workshop-2.4be2fa42.png alt="Discovery phase showing notification audit" class=project__img loading=lazy>
+                      <figcaption>
+                        Discovery phase notification audit workshop (Static
+                        image - original animation optimized for performance)
+                      </figcaption>
+                    </figure>
+                  </div>
+                </div>
+                <hr class=phase-divider>
+                <div class="grid grid--2-column phase">
+                  <div class=phase__image>
+                    <figure>
+                      <img src=/analytics.aa582d7c.png alt="Current analytics of the Job Status notifications." class=project__img loading=lazy>
+                      <figcaption>
+                        Analytics showing Job Status notification patterns
+                        (Static image - original animation optimized for
+                        performance)
+                      </figcaption>
+                    </figure>
+                  </div>
+                  <div class=phase__content>
+                    <div class=phase__badge>Phase 2</div>
+                    <h3 class=phase__title>Research</h3>
+                    <div class=bullet-points>
+                      <div class="bullet-point phase__item">
+                        <span class=bullet-point__icon>
+                          <i data-feather=check-circle></i>
+                        </span>
+                        <p class="bullet-point__text phase__item-text">
+                          Gathered insights from user forums, existing research,
+                          and discussions with other UX designers.
+                        </p>
+                      </div>
+                      <div class="bullet-point phase__item">
+                        <span class=bullet-point__icon>
+                          <i data-feather=check-circle></i>
+                        </span>
+                        <p class="bullet-point__text phase__item-text">
+                          <strong>Identified recurring user frustrations</strong>
+                          including overuse and repetition of notifications,
+                          poor content quality, lack of user control and
+                          accessibility, and an overwhelming number of
+                          notification channels.
+                        </p>
+                      </div>
+
+                      <div class="bullet-point phase__item">
+                        <span class=bullet-point__icon>
+                          <i data-feather=check-circle></i>
+                        </span>
+                        <p class="bullet-point__text phase__item-text">
+                          Found that
+                          <strong>banner notifications were frequently
+                            ignored</strong>, and OS notifications were inconsistent and
+                          underutilized.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class=phase-divider>
+                <div class="grid grid--2-column phase">
+                  <div class=phase__content>
+                    <div class=phase__badge>Phase 3</div>
+                    <h3 class=phase__title>Framework Development</h3>
+                    <div class=bullet-points>
+                      <div class="bullet-point phase__item">
+                        <span class=bullet-point__icon>
+                          <i data-feather=check-circle></i>
+                        </span>
+                        <p class="bullet-point__text phase__item-text">
+                          Developed a <strong>severity matrix</strong> to
+                          categorize notifications based on importance and time
+                          sensitivity.
+                        </p>
+                      </div>
+                      <div class="bullet-point phase__item">
+                        <span class=bullet-point__icon>
+                          <i data-feather=check-circle></i>
+                        </span>
+                        <p class="bullet-point__text phase__item-text">
+                          Created a <strong>decision matrix</strong> to align
+                          notification types with appropriate delivery methods
+                          (e.g., toasts for high-severity alerts, flyouts for
+                          less critical messages).
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=phase__image>
+                    <figure>
+                      <img src=/severity-matrix.2ba0737f.jpg alt="Notification severity decision matrix showing categorization by importance and time sensitivity" class=project__img loading=lazy>
+                      <figcaption>
+                        Notification severity decision matrix (Static image -
+                        original animation optimized for performance)
+                      </figcaption>
+                    </figure>
+                  </div>
+                </div>
+                <hr class=phase-divider>
+                <div class="grid grid--2-column phase">
+                  <div class=phase__image>
+                    <figure>
+                      <img src=/message-overload%20copy.e5e521fc.gif alt="Key slide I created to communicate gravity of notifications' poor current state, leading to successful funding of the project." class=project__img loading=lazy>
+                      <figcaption>
+                        Key slide demonstrating notification overload issues
+                        (Static image - original animation optimized for
+                        performance)
+                      </figcaption>
+                    </figure>
+                  </div>
+                  <div class=phase__content>
+                    <div class=phase__badge>Phase 4</div>
+                    <h3 class=phase__title>Stakeholder Engagment</h3>
+                    <div class=bullet-points>
+                      <div class="bullet-point phase__item">
+                        <span class=bullet-point__icon>
+                          <i data-feather=check-circle></i>
+                        </span>
+                        <p class="bullet-point__text phase__item-text">
+                          <strong>Secured funding</strong> by presenting the
+                          strategic value of the project to leadership,
+                          emphasizing how resolving notification issues would
+                          directly benefit both users and the business.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="change-background itteration project-process" id=design-iteration>
+              <div class=phase__badge>Phase 5</div>
+              <h2>Design and Itteration</h2>
+              
+              <hr class=phase-divider>
+
+              <div class=phases>
+                <div class="grid grid--2-column phase">
+                  <div class=phase__content>
+                    <h3 class=phase__title>
+                      Scalability of Filtering and Organization
+                    </h3>
+                    <div class=bullet-points>
+                      <div class="bullet-point phase__item">
+                        <span class="bullet-point__icon bullet-point__icon--problem">
+                          <i data-feather=alert-octagon></i>
+                        </span>
+                        <p class="bullet-point__text phase__item-text">
+                          <strong>Problem:</strong> Early filtering solutions,
+                          such as tabs, quickly became unwieldy as more
+                          notification types were added. This threatened the
+                          long-term scalability of the system.
+                        </p>
+                      </div>
+                      <div class="bullet-point phase__item">
+                        <span class=bullet-point__icon>
+                          <i data-feather=check-circle></i>
+                        </span>
+                        <p class="bullet-point__text phase__item-text">
+                          <strong>Iteration:</strong> I switched to a dropdown
+                          filter, which allowed for easier expansion and
+                          customization. Multiple rounds of prototyping and user
+                          feedback helped refine this approach to ensure it was
+                          both intuitive and future-proof.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=phase__image>
+                    <figure>
+                      <img src=/filterting.ec11fe12.jpg alt="Design exploration of filtering options for notification management and organization" class=project__img loading=lazy>
+                      <figcaption>
+                        Filtering exploration and design iterations (Static
+                        image - original animation optimized for performance)
+                      </figcaption>
+                    </figure>
+                  </div>
+                </div>
+                <hr class=phase-divider>
+                <div class="grid grid--2-column phase">
+                  <div class=phase__image>
+                    <figure>
+                      <img src=/notification-icon.dc365684.jpg alt="Iterating and feedback on the notification icon placement." class=project__img loading=lazy>
+                      <figcaption>
+                        Notification icon placement iterations and feedback
+                        (Static image - original animation optimized for
+                        performance)
+                      </figcaption>
+                    </figure>
+                  </div>
+                  <div class=phase__content>
+                    <h3 class=phase__title>
+                      Visual Clarity and Discoverability
+                    </h3>
+                    <div class=bullet-points>
+                      <div class="bullet-point phase__item">
+                        <span class="bullet-point__icon bullet-point__icon--problem">
+                          <i data-feather=alert-octagon></i>
+                        </span>
+                        <p class="bullet-point__text phase__item-text">
+                          <strong>Problem:</strong> Users struggled to quickly
+                          scan and understand notifications and icons. My goal
+                          was to create the ability to understand the
+                          notifications from a glance.
+                        </p>
+                      </div>
+                      <div class="bullet-point phase__item">
+                        <span class=bullet-point__icon>
+                          <i data-feather=check-circle></i>
+                        </span>
+                        <p class="bullet-point__text phase__item-text">
+                          <strong> Iteration:</strong> I experimented with
+                          iconography, grouping by time, and contextual
+                          overlays. Usability testing revealed that some icons
+                          (like the funnel for filtering) were not obvious,
+                          prompting design tweaks and clearer visual cues.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class=phase-divider>
+                <div class="grid grid--2-column phase">
+                  <div class=phase__content>
+                    <h3 class=phase__title>Technical Constraints</h3>
+                    <div class=bullet-points>
+                      <div class="bullet-point phase__item">
+                        <span class="bullet-point__icon bullet-point__icon--problem">
+                          <i data-feather=alert-octagon></i>
+                        </span>
+                        <p class="bullet-point__text phase__item-text">
+                          <strong>Problem:</strong> Legacy systems and
+                          inconsistent backend implementations made it difficult
+                          to centralize notifications without breaking existing
+                          functionality.
+                        </p>
+                      </div>
+                      <div class="bullet-point phase__item">
+                        <span class=bullet-point__icon>
+                          <i data-feather=check-circle></i>
+                        </span>
+                        <p class="bullet-point__text phase__item-text">
+                          <strong>Iteration:</strong> I worked closely with
+                          developers to audit the current system, track progress
+                          in Airtable, and advocate for a unified front-end and
+                          back-end approach. This required ongoing iteration as
+                          technical limitations surfaced during development
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=phase__image>
+                    <figure>
+                      <img src=/airtable.0b344263.png alt="Airtable tracking system for notification types and implementation progress" class=project__img loading=lazy>
+                      <figcaption>
+                        Airtable documentation and tracking system (Static image
+                        - original animation optimized for performance)
+                      </figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class=user-testing-section id=user-testing>
+              <div class=phase__badge>Phase 6</div>
+              <h2>User Testing</h2>
+
+              <div class="grid grid--2-column testing-content">
+                <div class=testing-participants>
+                  <h3>Participants</h3>
+                  <p class=testing-description>
+                    Tested with 5 users with varying levels of Fusion
+                    experience:
+                  </p>
+                  <div class=bullet-points>
+                    <div class=bullet-point>
+                      <span class=bullet-point__icon>
+                        <i data-feather=user></i>
+                      </span>
+                      <p class=bullet-point__text>3 power users</p>
+                    </div>
+                    <div class=bullet-point>
+                      <span class=bullet-point__icon>
+                        <i data-feather=user></i>
+                      </span>
+                      <p class=bullet-point__text>1 intermediate user</p>
+                    </div>
+                    <div class=bullet-point>
+                      <span class=bullet-point__icon>
+                        <i data-feather=user></i>
+                      </span>
+                      <p class=bullet-point__text>1 new user</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class=testing-findings>
+                  <h3>Key Findings</h3>
+                  <div class=findings-section>
+                    <div class=bullet-points>
+                      <div class=bullet-point>
+                        <span class=bullet-point__icon>
+                          <i data-feather=check-circle></i>
+                        </span>
+                        <p class=bullet-point__text>
+                          Users responded positively to the centralized
+                          Notification Center, appreciating the ease of finding
+                          notifications.
+                        </p>
+                      </div>
+                      <div class=bullet-point>
+                        <span class=bullet-point__icon>
+                          <i data-feather=alert-circle></i>
+                        </span>
+                        <p class=bullet-point__text>
+                          Concerns included potential clutter and unclear
+                          filtering icons.
+                        </p>
+                      </div>
+                      <div class=bullet-point>
+                        <span class=bullet-point__icon>
+                          <i data-feather=help-circle></i>
+                        </span>
+                        <p class=bullet-point__text>
+                          Users questioned how long notifications would remain
+                          in the flyout and what actions would remove them.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card--white testing-outcome">
+                <h3>Outcome</h3>
+                <p class=outcome-text>
+                  The testing validated our MVP approach and helped prioritize
+                  critical feedback for version 1, reserving advanced features
+                  for future iterations. I made immediate adjustments to the
+                  filtering system and added clearer documentation about
+                  notification persistence.
+                </p>
+              </div>
+            </section>
+
+            <section class=implementation-section id=implementation>
+              <div class=phase__badge>Phase 7</div>
+              <h2>Implementation</h2>
+
+              <div class="grid grid--2-column implementation-content">
+                <div class=guidelines-components>
+                  <h3>Guidelines and Components</h3>
+
+                  <div class="card--white implementation-item">
+                    <h4 class=implementation-subtitle>
+                      Comprehensive Guidelines
+                    </h4>
+                    <p class=implementation-description>
+                      Developed detailed documentation for the Notification
+                      Center and banners, ensuring consistent usage across
+                      teams.
+                    </p>
+                  </div>
+
+                  <div class="card--white implementation-item">
+                    <h4 class=implementation-subtitle>Figma Components</h4>
+                    <p class=implementation-description>
+                      Created reusable components to streamline implementation
+                      and maintain design consistency.
+                    </p>
+                  </div>
+                </div>
+
+                <div class=development-collaboration>
+                  <h3>Development Collaboration</h3>
+
+                  <div class="card--white implementation-item">
+                    <h4 class=implementation-subtitle>Code Audit</h4>
+                    <p class=implementation-description>
+                      Conducted a thorough code audit to centralize
+                      notifications and replace inconsistent implementations.
+                    </p>
+                  </div>
+
+                  <div class="card--white implementation-item">
+                    <h4 class=implementation-subtitle>Tracking Progress</h4>
+                    <p class=implementation-description>
+                      Used Airtable to track notification types and progress,
+                      facilitating collaboration with developers.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <blockquote class=center>
+                <p>
+                  "Jason was a great collaborative partner, leading our weekly
+                  meetings with fresh ideas and humility, ensuring we stayed
+                  aligned and on track. His work had a huge impact in
+                  centralizing in-product messages in Fusion's Notification
+                  Center and improving how we organized critical updates for the
+                  user. As a developer, I really appreciated how well he bridged
+                  design and implementation."
+                </p>
+                <cite>Alyssa, Sr Software Engineer, developer of
+                  notifications.</cite>
+              </blockquote>
+            </section>
+
+            <section class="change-background solution-section" id=centralized-solution>
+              <h2>Centralized Notification Center</h2>
+              <p class=solution-section__intro>
+                The final solution delivered a comprehensive notification system
+                that balanced user needs with business requirements.
+              </p>
+
+              <div class=solution-content>
+                <div class=bullet-points>
+                  <div class=bullet-point>
+                    <span class=bullet-point__icon>
+                      <i data-feather=check-circle></i>
+                    </span>
+                    <p class=solution-point__text>
+                      Implemented a centralized Notification Center with clear
+                      guidelines and prioritization.
+                    </p>
+                  </div>
+
+                  <div class=bullet-point>
+                    <span class=bullet-point__icon>
+                      <i data-feather=check-circle></i>
+                    </span>
+                    <p class=solution-point__text>
+                      High-severity messages appear as toasts; less critical
+                      ones in a flyout.
+                    </p>
+                  </div>
+
+                  <div class=bullet-point>
+                    <span class=bullet-point__icon>
+                      <i data-feather=check-circle></i>
+                    </span>
+                    <p class=solution-point__text>
+                      Intermediate messages briefly toast, then move to the
+                      flyout.
+                    </p>
+                  </div>
+
+                  <div class=bullet-point>
+                    <span class=bullet-point__icon>
+                      <i data-feather=check-circle></i>
+                    </span>
+                    <p class=solution-point__text>
+                      Reduced workflow disruption and improved message clarity.
+                    </p>
+                  </div>
+                </div>
+
+                <div class=solution-image>
+                  <figure>
+                    <img src=/mockup-final.a57801bf.png alt="Final Notification Center design" class=project__img loading=lazy>
+                    <figcaption>
+                      Final Notification Center design implementation (Static
+                      image - original animation optimized for performance)
+                    </figcaption>
+                  </figure>
+                </div>
+              </div>
+
+              <div class="card--white key-features">
+                <h3>Key Features</h3>
+                <div class=key-features-list>
+                  <div class=key-feature-item>
+                    <span class=key-feature-item__icon>•</span>
+                    <p class=key-feature-item__text>Severity-based display</p>
+                  </div>
+
+                  <div class=key-feature-item>
+                    <span class=key-feature-item__icon>•</span>
+                    <p class=key-feature-item__text>Customizable filters</p>
+                  </div>
+
+                  <div class=key-feature-item>
+                    <span class=key-feature-item__icon>•</span>
+                    <p class=key-feature-item__text>Bulk actions</p>
+                  </div>
+
+                  <div class=key-feature-item>
+                    <span class=key-feature-item__icon>•</span>
+                    <p class=key-feature-item__text>Read/unread states</p>
+                  </div>
+
+                  <div class=key-feature-item>
+                    <span class=key-feature-item__icon>•</span>
+                    <p class=key-feature-item__text>Category organization</p>
+                  </div>
+
+                  <div class=key-feature-item>
+                    <span class=key-feature-item__icon>•</span>
+                    <p class=key-feature-item__text>Action buttons</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid--3-column severity-levels">
+                <div class="card--white severity-level">
+                  <div class="severity-level__icon severity-level__icon--high">
+                    <i data-feather=alert-triangle></i>
+                  </div>
+                  <h4 class=severity-level__title>High Severity</h4>
+                  <p class=severity-level__description>
+                    Critical alerts appear as prominent toasts requiring
+                    immediate attention.
+                  </p>
+                </div>
+
+                <div class="card--white severity-level">
+                  <div class="severity-level__icon severity-level__icon--medium">
+                    <i data-feather=info></i>
+                  </div>
+                  <h4 class=severity-level__title>Medium Severity</h4>
+                  <p class=severity-level__description>
+                    Important but non-critical notifications briefly toast, then
+                    move to the flyout.
+                  </p>
+                </div>
+
+                <div class="card--white severity-level">
+                  <div class="severity-level__icon severity-level__icon--low">
+                    <i data-feather=clock></i>
+                  </div>
+                  <h4 class=severity-level__title>Low Severity</h4>
+                  <p class=severity-level__description>
+                    Informational updates appear only in the notification center
+                    without interruption.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class=results-section id=results-impact>
+              <h2>Results &amp; Impact</h2>
+              <p class=results-section__intro>
+                The redesigned notification system delivered significant
+                business value and improved user experience.
+              </p>
+
+              <div class=results-grid>
+                <div class="card--white result-subscriber-card">
+                  <div class=result-subscriber-number>+15,000</div>
+                  <div class=result-subscriber-label>
+                    New Paid Subscribers
+                  </div>
+                  <p class=result-subscriber-description>
+                    In the first month after launch, directly attributed to
+                    improved messaging and user experience.
+                  </p>
+                </div>
+
+                <div class=result-benefits>
+                  <div class="card--white result-benefit">
+                    <div class=result-benefit__icon>
+                      <i data-feather=book-open></i>
+                    </div>
+                    <div class=result-benefit__content>
+                      <h4 class=result-benefit__title>Scalable Framework</h4>
+                      <p class=result-benefit__description>
+                        Streamlined product development and reduced technical
+                        debt.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="card--white result-benefit">
+                    <div class=result-benefit__icon>
+                      <i data-feather=file-text></i>
+                    </div>
+                    <div class=result-benefit__content>
+                      <h4 class=result-benefit__title>
+                        Clear Design Patterns
+                      </h4>
+                      <p class=result-benefit__description>
+                        Empowered internal teams and improved consistency.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="card--white result-benefit">
+                    <div class=result-benefit__icon>
+                      <i data-feather=star></i>
+                    </div>
+                    <div class=result-benefit__content>
+                      <h4 class=result-benefit__title>
+                        Design System Influence
+                      </h4>
+                      <p class=result-benefit__description>
+                        Key elements incorporated into Autodesk's Weave design
+                        system.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class=professional-growth>
+                <div class=professional-growth__icon>
+                  <i data-feather=user></i>
+                </div>
+                <div class=professional-growth__content>
+                  <h3 class=professional-growth__title>
+                    Professional Growth
+                  </h3>
+                  <p class=professional-growth__description>
+                    This project established me as the in-house notification
+                    expert and mentor for other designers. I was invited to
+                    present the framework at Autodesk's internal design
+                    conference and received recognition from senior leadership.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class=key-learnings-section id=key-learnings>
+              <h2>Key Learnings</h2>
+              <p class=key-learnings-section__intro>
+                This project provided valuable insights that have shaped my
+                approach to UX design.
+              </p>
+
+              <div class=key-learnings-grid>
+                <div class="card--white key-learning__card">
+                  <div class=key-learning__number>01</div>
+                  <h3 class=key-learning__title>
+                    Unified messaging is essential
+                  </h3>
+                  <p class=key-learning__description>
+                    A cohesive notification strategy is critical for user
+                    satisfaction and business growth.
+                  </p>
+                </div>
+
+                <div class="card--white key-learning__card">
+                  <div class=key-learning__number>02</div>
+                  <h3 class=key-learning__title>Iterative design is key</h3>
+                  <p class=key-learning__description>
+                    Research-grounded, iterative design with stakeholder
+                    alignment is crucial for complex systems.
+                  </p>
+                </div>
+
+                <div class="card--white key-learning__card">
+                  <div class=key-learning__number>03</div>
+                  <h3 class=key-learning__title>
+                    Reusable components foster consistency
+                  </h3>
+                  <p class=key-learning__description>
+                    Providing guidelines and components ensures consistency
+                    across different teams.
+                  </p>
+                </div>
+
+                <div class="card--white key-learning__card">
+                  <div class=key-learning__number>04</div>
+                  <h3 class=key-learning__title>
+                    User understanding drives impact
+                  </h3>
+                  <p class=key-learning__description>
+                    Deep user understanding through research and analytics leads
+                    to impactful solutions.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div class=article__sidebar>
+            <nav class=sidebar-nav>
+              <ul>
+                <li><a href=#project-summary>Project Summary</a></li>
+                <li><a href=#the-problem>The Problem</a></li>
+                <li><a href=#process>Discovery &amp; Research</a></li>
+                <li><a href=#design-iteration>Design &amp; Iteration</a></li>
+                <li><a href=#user-testing>User Testing</a></li>
+                <li><a href=#implementation>Implementation</a></li>
+                <li>
+                  <a href=#centralized-solution>A Centralized Solution</a>
+                </li>
+                <li><a href=#results-impact>Results &amp; Impact</a></li>
+                <li><a href=#key-learnings>Key Learnings</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        
+      </article>
+    </main>
+    <site-footer></site-footer>
+
+    
+    <image-lightbox></image-lightbox>
+
+    <script type=module src=/jaswetz.github.io.2a0ffc65.js></script>
+
+    
+    <script type=module>import"./simple-analytics.5afbc888.js";import"./password-protection.03679f62.js";var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:{},t={},r={},n=e.parcelRequire9b4d;null==n&&((n=function(e){if(e in t)return t[e].exports;if(e in r){var n=r[e];delete r[e];var o={id:e,exports:{}};return t[e]=o,n.call(o.exports,o,o.exports),o.exports}var i=Error("Cannot find module '"+e+"'");throw i.code="MODULE_NOT_FOUND",i}).register=function(e,t){r[e]=t},e.parcelRequire9b4d=n),(0,n.register)("brKKq",function(e,t){Object.defineProperty(e.exports,"protectCaseStudy",{get:function(){return o},set:void 0,enumerable:!0,configurable:!0});var r=n("g4twZ");function o(e){return(0,r.initPasswordProtection)(e)}});var o=n("brKKq"),i=n("grZMe");(0,o.protectCaseStudy)("project-adsk-notification"),document.addEventListener("DOMContentLoaded",()=>{i.default.trackCaseStudyInteraction("adsk-notification","view")});</script>
+
+    
+    <script>feather.replace();</script>
+
+    
+    <script>document.addEventListener("DOMContentLoaded",function(){let e=document.querySelectorAll("section[id]"),t=document.querySelectorAll(".sidebar-nav a"),o=document.querySelector("site-header");function n(){return o?o.offsetHeight:80}function i(){let o=window.pageYOffset,i=n(),r="";e.forEach(e=>{o>=e.offsetTop-i-50&&(r=e.getAttribute("id"))}),t.forEach(e=>{e.classList.remove("active"),e.getAttribute("href")==="#"+r&&e.classList.add("active")})}window.addEventListener("scroll",i),i(),t.forEach((e,t)=>{e.addEventListener("click",function(e){e.preventDefault();let t=this.getAttribute("href").substring(1),o=document.getElementById(t);if(o){let e=n(),t=o.offsetTop;window.innerHeight,window.pageYOffset;let i=Math.max(0,t-e-50);window.scrollTo({top:i,behavior:"smooth"})}})})});</script>
+  
+
