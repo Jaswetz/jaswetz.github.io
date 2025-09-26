@@ -1,0 +1,100 @@
+name: PR Checks (Non-blocking)
+
+on:
+  pull_request:
+    branches: [master, main]
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
+jobs:
+  pr-feedback:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Quick build check
+        id: build
+        run: |
+          if npm run build; then
+            echo "build_status=✅ Build successful" >> $GITHUB_OUTPUT
+          else
+            echo "build_status=⚠️ Build failed" >> $GITHUB_OUTPUT
+          fi
+        continue-on-error: true
+
+      - name: Quick lint check
+        id: lint
+        run: |
+          if npm run lint; then
+            echo "lint_status=✅ Linting passed" >> $GITHUB_OUTPUT
+          else
+            echo "lint_status=⚠️ Linting issues found" >> $GITHUB_OUTPUT
+          fi
+        continue-on-error: true
+
+      - name: Format check
+        id: format
+        run: |
+          if npm run format:check; then
+            echo "format_status=✅ Formatting looks good" >> $GITHUB_OUTPUT
+          else
+            echo "format_status=⚠️ Formatting issues found" >> $GITHUB_OUTPUT
+          fi
+        continue-on-error: true
+
+      - name: Comment PR
+        uses: actions/github-script@v7
+        if: always()
+        with:
+          script: |
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+
+            const botComment = comments.find(comment =>
+              comment.user.type === 'Bot' && comment.body.includes('## PR Quality Check')
+            );
+
+            const body = `## PR Quality Check 🔍
+
+            ${{ steps.build.outputs.build_status }}
+            ${{ steps.lint.outputs.lint_status }}
+            ${{ steps.format.outputs.format_status }}
+
+            ---
+            💡 **Note:** These checks are informational only and won't block your PR from being merged. Feel free to merge when you're ready!
+
+            <sub>This comment will be updated on each push to the PR.</sub>`;
+
+            if (botComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body: body
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: body
+              });
+            }
