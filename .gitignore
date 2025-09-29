@@ -11,6 +11,18 @@ playwright-report/
 lighthouse-report.json
 junit.xml
 
+# Build artifacts (should only be in dist/)
+*.*.js
+*.*.js.map
+*.*.css
+*.*.css.map
+*.*.png
+*.*.jpg
+*.*.gif
+*.*.webp
+*.*.svg
+*.*.ico
+
 # OS-specific files
 .DS_Store
 Thumbs.db
