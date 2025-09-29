@@ -4,175 +4,198 @@ inclusion: always
 
 # UX Portfolio Product Guidelines
 
-_AI agent guidance for maintaining product consistency and user experience_
+_AI agent guidance for Jason Swetzoff's professional UX portfolio - a performance-first showcase built with modern web standards._
 
-## Project Overview
-
-This is Jason Swetzoff's professional UX portfolio - a performance-first showcase built with modern web standards. Key constraints:
-
-- **Bundle Size**: JS <30KB, CSS <70KB (gzipped)
-- **Performance**: LCP <2.5s, CLS <0.1, FID <100ms
-- **Accessibility**: WCAG 2.1 AA compliance required
-- **Tech Stack**: Vanilla JavaScript, Web Components, CSS Cascade Layers
-
-## Core Product Principles
-
-### Performance First
-
-- Maintain bundle size limits (JS: <30KB, CSS: <70KB)
-- Ensure Core Web Vitals meet targets (LCP <2.5s, CLS <0.1, FID <100ms)
-- Optimize images to WebP with fallbacks
-- Minimize dependencies and framework overhead
-
-### Accessibility Compliance
-
-- WCAG 2.1 AA standards required for all features
-- Full keyboard navigation support
-- Screen reader compatibility with semantic HTML and ARIA labels
-- Respect `prefers-reduced-motion` for animations
-
-### Mobile-First Design
-
-- All components must work seamlessly on mobile devices
-- Responsive breakpoints using `rem` units
-- Touch targets minimum 44px for mobile
-- Progressive enhancement for larger screens
-
-### Client Confidentiality
-
-- Sensitive case studies require password protection
-- Client-side only protection suitable for portfolio access
-- Never expose actual passwords in code comments or console logs
-- 24-hour session management with localStorage
-
-## Key Features & Implementation
-
-### Interactive 2D Logo Navigation
-
-- Located in site header, built as Web Component
-- Three geometric shapes (triangle, circle, square) link to featured projects
-- CSS animations should be performant and accessible (respect `prefers-reduced-motion`)
-- Built using CSS transforms and transitions for smooth performance
-
-### Password Protection System
-
-- Client-side only (no server dependencies)
-- Use `protectCaseStudy("case-study-id")` for protected pages
-- Configuration in `src/js/auth/password-config.js`
-- Session management with localStorage
-- User-friendly password prompt interface
-
-### Case Study Structure
-
-- Each project gets dedicated HTML page in `src/projects/`
-- Follow naming convention: `project-[company]-[project].html`
-- Include hero section, problem statement, process, and outcomes
-- Use semantic HTML with proper heading hierarchy
-- Optimize images and implement lazy loading
-
-## Content Guidelines
-
-### Professional Tone
-
-- Write in third person when describing Jason's work
-- Focus on measurable outcomes and business impact
-- Use UX terminology appropriately (user research, personas, wireframes, etc.)
-- Include specific metrics when available (conversion rates, user satisfaction scores)
-- Maintain consistent voice across all case studies
-
-### Image Standards
-
-- All project images must be optimized (WebP with fallbacks)
-- Use descriptive alt text for accessibility
-- Maintain consistent aspect ratios within project sections
-- Store project-specific images in `src/img/projects/[project-name]/`
-- Implement lazy loading for performance
-
-### Case Study Protection Levels
-
-- **Public**: General portfolio pieces, no protection needed
-- **Protected**: Client work requiring password (Autodesk, Intel projects)
-- **Confidential**: Most sensitive work, additional access controls
-
-## Technical Constraints
+## Critical Constraints (NEVER VIOLATE)
 
 ### Performance Budgets
 
-- JavaScript bundle: Maximum 30KB gzipped
-- CSS bundle: Maximum 70KB gzipped
-- Largest Contentful Paint: <2.5s
-- Cumulative Layout Shift: <0.1
-- First Input Delay: <100ms
+- **JavaScript Bundle**: <30KB gzipped (validate with `npm run test:bundle-size`)
+- **CSS Bundle**: <70KB gzipped (validate with `npm run test:bundle-size`)
+- **Core Web Vitals**: LCP <2.5s, CLS <0.1, FID <100ms
+- **Lighthouse Performance**: ≥90 score required
 
-### Browser Support
+### Technology Stack (MANDATORY)
 
-- Chrome/Edge 63+, Firefox 63+, Safari 10.1+
-- Progressive enhancement for older browsers
-- No polyfills for modern JavaScript features
-- Test across all supported browsers
+- **JavaScript**: Vanilla ES2022 modules only (NO frameworks)
+- **Components**: Web Components extending HTMLElement with Shadow DOM
+- **CSS**: Cascade Layers architecture with design tokens
+- **Accessibility**: WCAG 2.1 AA compliance (test with Playwright)
 
-### Analytics & Privacy
+## Architecture Patterns
 
-- Google Analytics 4 for traffic insights
-- Microsoft Clarity for user behavior analysis
-- GDPR-compliant configuration (anonymized IPs, consent-aware)
-- No tracking of password-protected content
-- Privacy-first approach with PII masking
+### Web Components (REQUIRED)
 
-## Development Rules
+```javascript
+// Component structure
+class ComponentName extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
+}
+customElements.define('component-name', ComponentName);
+```
 
-### Component Creation
+**Rules:**
 
-- All interactive elements must be Web Components
-- Shadow DOM encapsulation required for styling isolation
-- Register components in `src/js/main.js`
-- Include both light and dark theme support
-- Follow BEM methodology within component scope
+- All interactive UI MUST be Web Components
+- File structure: `src/js/components/[component-name]/ComponentName.js` + `ComponentName.css`
+- Register in `src/js/main.js`
+- Custom element names require hyphens: `<site-header>`, `<project-card>`
 
-### Styling Conventions
+### CSS Cascade Layers (EXACT ORDER)
 
-- Use CSS Cascade Layers for style organization
-- Design tokens defined in `variables.css`
-- BEM methodology for component classes
-- Mobile-first responsive breakpoints
-- Utility classes in dedicated layer
+```css
+@layer reset, base, theme, layout, components, utilities;
+```
 
-### Content Updates
+**Implementation:**
 
-- New case studies require both HTML page and navigation updates
-- Update project thumbnails in homepage grid
-- Maintain consistent project card structure
-- Test password protection before deploying protected content
-- Update style guide with new components
+- Import layers in `src/css/main.css` in this exact order
+- Design tokens in `src/css/variables.css`
+- BEM methodology within Shadow DOM only
+- Mobile-first responsive design with `rem` units
 
-## Quality Assurance
+### Password Protection System
 
-### Testing Requirements
+```javascript
+// In protected HTML pages
+protectCaseStudy('autodesk-di'); // kebab-case IDs only
+```
 
-- All tests must pass before deployment
-- Accessibility testing with axe-core
-- Performance testing with Lighthouse
-- Cross-browser testing with Playwright
-- Bundle size validation
+**Configuration:**
 
-### Code Review Checklist
+- Edit `src/js/auth/password-config.js` for protected content
+- Client-side only, 24-hour localStorage sessions
+- NEVER log passwords or expose authentication details
 
-- [ ] Follows established coding standards
-- [ ] Includes appropriate error handling
-- [ ] Maintains performance budgets
-- [ ] Meets accessibility requirements
-- [ ] Includes comprehensive tests
-- [ ] Updates documentation as needed
+## Code Style Standards
 
-## Related Documentation
+### File Naming Conventions
 
-- **AGENTS.md**: Main AI agent instructions
-- **Tech Stack**: See `.kiro/steering/tech.md`
-- **Project Structure**: See `.kiro/steering/structure.md`
-- **Architecture**: See `Docs/ARCHITECTURE.md`
-- **Testing**: See `Docs/TESTING.md`
-- **Password Protection**: See `Docs/PASSWORD_PROTECTION.md`
+- **HTML pages**: `kebab-case.html`
+- **Case studies**: `project-[company]-[project].html` in `src/projects/`
+- **Web Components**: `PascalCase.js` (e.g., `SiteHeader.js`)
+- **CSS files**: `kebab-case.css`
+- **Custom elements**: Must contain hyphens (e.g., `<site-header>`)
 
----
+### HTML Requirements
 
-_This file follows the agents.md format for AI coding agent guidance._
+- Semantic elements: `<nav>`, `<main>`, `<section>`, `<article>`
+- Proper heading hierarchy: h1 → h2 → h3 (no skipping)
+- ARIA labels for interactive elements
+- 44px minimum touch targets on mobile
+- `loading="lazy"` for below-fold images
+
+### JavaScript Patterns
+
+- ES2022 modules with `import`/`export`
+- Web Components extend `HTMLElement`
+- Use `querySelector` and `addEventListener`
+- Handle errors with try/catch blocks
+- Respect `prefers-reduced-motion`
+
+## Content Guidelines
+
+### Writing Style
+
+- Third person for Jason's work: "Jason led the design process..."
+- Include quantifiable outcomes: "Increased conversion by 23%"
+- Professional UX terminology: user research, personas, wireframes, prototypes
+- Case study structure: hero, problem, process, outcomes
+
+### Image Management
+
+- Store in `src/img/projects/[project-name]/` structure
+- Run `npm run optimize:images` after adding new images
+- WebP format with JPEG/PNG fallbacks required
+- Descriptive alt text for accessibility
+- Use `loading="lazy"` for images below the fold
+
+### Content Protection Levels
+
+- **Public**: Open portfolio pieces (default)
+- **Protected**: Client work requiring `protectCaseStudy("case-id")`
+
+## Quality Assurance Workflow
+
+### Pre-Deployment Validation (MANDATORY)
+
+```bash
+npm run test:bundle-size    # MUST pass - validates size limits
+npm run test               # ESLint + Stylelint MUST pass
+npx playwright test        # Cross-browser + accessibility MUST pass
+npm run build && npm run preview  # Test production build
+```
+
+### Performance Requirements
+
+- Core Web Vitals within thresholds
+- Lighthouse performance score ≥90
+- Bundle size limits enforced
+- Cross-browser compatibility (Chrome/Edge 63+, Firefox 63+, Safari 10.1+)
+
+## Development Workflows
+
+### Adding Web Components
+
+1. Create `src/js/components/[component-name]/ComponentName.js`
+2. Create `src/js/components/[component-name]/ComponentName.css`
+3. Register in `src/js/main.js`: `customElements.define('component-name', ComponentName)`
+4. Document in `/styleguide.html`
+5. Test with `npm run test && npx playwright test`
+
+### Adding Case Studies
+
+1. Create `src/projects/project-[company]-[project].html`
+2. Add project card to `src/index.html` homepage grid
+3. Add images to `src/img/projects/[project-name]/`
+4. Run `npm run optimize:images`
+5. Add password protection if needed: `protectCaseStudy("project-id")`
+6. Validate with full test suite
+
+### CSS Modifications
+
+1. Add styles to appropriate layer in `src/css/[layer]/`
+2. Import in `src/css/main.css` maintaining layer order
+3. Use design tokens from `src/css/variables.css`
+4. Validate bundle size: `npm run test:bundle-size`
+
+## Critical Files Reference
+
+### Key Files to Update
+
+- `src/js/main.js` - Web Component registration
+- `src/css/main.css` - CSS layer imports (maintain order)
+- `src/js/auth/password-config.js` - Protected content configuration
+- `src/index.html` - Homepage project grid
+- `/styleguide.html` - Component documentation
+
+### Essential Commands
+
+```bash
+# Development
+npm run dev                 # Hot reload development server
+npm run build              # Production build to dist/
+npm run preview            # Test production build
+
+# Quality Assurance (REQUIRED BEFORE DEPLOYMENT)
+npm run test               # Linting validation
+npm run test:bundle-size   # Size limit validation
+npx playwright test        # Full test suite
+
+# Asset Management
+npm run optimize:images    # WebP conversion with fallbacks
+```
+
+## Deployment Checklist
+
+Before any deployment, ALL items must pass:
+
+- [ ] `npm run test` passes (linting)
+- [ ] `npm run test:bundle-size` passes (JS <30KB, CSS <70KB)
+- [ ] `npx playwright test` passes (functionality + accessibility)
+- [ ] Lighthouse performance score ≥90
+- [ ] Password protection tested for protected content
+- [ ] Mobile responsiveness validated on actual devices

@@ -1,289 +1,240 @@
+---
+inclusion: always
+---
+
 # Project Structure
 
 _AI agent guidance for file organization and directory layout_
 
-## Root Directory Structure
+## Critical File Organization Rules
 
-```
-/
-├── src/                    # Source files
-├── dist/                   # Production build output
-├── dev-build/             # Development build output
-├── tests/                 # Playwright test files
-├── scripts/               # Build and optimization scripts
-├── Docs/                  # Project documentation
-├── public/                # Static assets (robots.txt, headers)
-├── .kiro/                 # Kiro AI assistant configuration
-│   ├── hooks/             # Agent hooks for automation
-│   ├── specs/             # Feature specifications
-│   └── steering/          # AI guidance rules
-└── .github/               # GitHub configuration
-    ├── workflows/         # GitHub Actions
-    ├── instructions/      # AI agent instructions
-    └── prompts/           # AI agent prompts
-```
+### Root Directory Structure
 
-## Source Directory (`src/`)
+- `src/` - All source files (HTML, CSS, JS, images)
+- `dist/` - Production build output (DO NOT EDIT)
+- `tests/` - Playwright test files
+- `scripts/` - Build and optimization utilities
+- `public/` - Static assets (robots.txt, \_headers)
 
-### HTML Pages
+### Key Directories
 
-```
-src/
-├── index.html             # Homepage with hero and featured projects
-├── about.html             # About page with professional background
-├── contact.html           # Contact page with LinkedIn integration
-├── work.html              # Work overview with project grid
-├── styleguide.html        # Living style guide for components
-├── 404.html               # Error page
-├── lightbox-test.html     # Component testing page
-└── projects/              # Case study pages
-    ├── project-adsk-notification.html    # Autodesk messaging case study
-    ├── project-autodesk-di.html          # Autodesk DI case study (protected)
-    └── project-intel-lfc.html            # Intel LFC case study
-```
+- `src/js/components/` - Web Components (PascalCase folders)
+- `src/css/` - Cascade Layers architecture
+- `src/projects/` - Case study HTML files
+- `src/img/projects/` - Project images organized by company
 
-### CSS Architecture (Cascade Layers)
+## HTML File Organization
 
-```
-src/css/
-├── main.css               # Entry point with @layer imports and order
-├── variables.css          # Design tokens (CSS custom properties)
-├── base/                  # Foundation styles
-│   ├── reset.css         # CSS reset
-│   ├── global.css        # Global styles
-│   └── typography.css    # Typography system
-├── theme/                 # Theme definitions
-│   └── default-theme.css # Default color scheme and overrides
-├── layout/                # Page-level layout systems
-├── components/            # Reusable UI component styles
-│   ├── accessibility.css # A11y utilities
-│   ├── badges.css        # Badge components
-│   ├── buttons.css       # Button styles
-│   ├── cards.css         # Project cards and content cards
-│   ├── error-page.css    # 404 page styles
-│   ├── forms.css         # Form components
-│   ├── form-*.css        # Specific form element styles
-│   ├── heroes.css        # Hero section styles
-│   ├── icons.css         # Icon styles
-│   ├── images.css        # Image handling and optimization
-│   ├── lists.css         # List styles
-│   ├── logo-2d.css       # Interactive 2D logo animation
-│   ├── main-content.css  # Main content area
-│   ├── navigation.css    # Navigation components
-│   ├── password-protection.css # Password prompt styling
-│   ├── sections.css      # Section layouts
-│   └── tags.css          # Tag components
-├── pages/                 # Page-specific styles
-│   ├── page-about.css    # About page specific styles
-│   ├── page-autodesk-di.css # Autodesk DI case study styles
-│   ├── page-index/       # Homepage section styles
-│   │   ├── index-section-about.css
-│   │   ├── index-section-companies.css
-│   │   ├── index-section-featured-projects.css
-│   │   └── index-section-quotes.css
-│   └── projects.css      # General project page styles
-├── utils/                 # Utility classes and helpers
-│   ├── flexbox.css       # Flexbox utilities
-│   ├── grid-system.css   # Comprehensive grid and layout system
-│   ├── layout.css        # Layout utilities
-│   ├── media-queries.css # Responsive breakpoint system
-│   ├── spacing.css       # Margin and padding utilities
-│   └── typography.css    # Typography utilities
-└── debug/                 # Development debugging styles
-    ├── debug.css         # Layout debugging outlines
-    └── vertical-rhythm.css # Typography baseline grid
+### Page Structure
+
+- `src/index.html` - Homepage with project grid
+- `src/projects/project-[company]-[project].html` - Case studies
+- `src/styleguide.html` - Component documentation
+- `src/404.html` - Error page
+
+### Case Study Naming Convention
+
+**MANDATORY**: `project-[company]-[project].html`
+
+- Examples: `project-autodesk-di.html`, `project-intel-lfc.html`
+- Use kebab-case for company and project names
+- Store in `src/projects/` directory
+
+## CSS Architecture (Cascade Layers)
+
+### CRITICAL: Layer Import Order
+
+**EXACT ORDER in `src/css/main.css`:**
+
+```css
+@layer reset, base, theme, layout, components, utilities;
 ```
 
-### JavaScript Architecture
+### Directory Structure
+
+- `src/css/main.css` - Entry point with layer imports
+- `src/css/variables.css` - Design tokens (CSS custom properties)
+- `src/css/base/` - Foundation styles (reset, typography)
+- `src/css/theme/` - Color schemes and theme overrides
+- `src/css/layout/` - Page-level layout systems
+- `src/css/components/` - UI component styles
+- `src/css/pages/` - Page-specific styles
+- `src/css/utils/` - Utility classes and helpers
+
+### Adding New CSS Files
+
+1. Create file in appropriate layer directory
+2. Import in `src/css/main.css` maintaining layer order
+3. Use design tokens from `variables.css`
+4. Validate bundle size: `npm run test:bundle-size`
+
+## JavaScript Architecture
+
+### Entry Points
+
+- `src/js/main.js` - Component registration and initialization
+- `src/index.js` - Parcel entry point
+
+### Web Components Structure
+
+**MANDATORY Pattern:**
 
 ```
-src/js/
-├── main.js                # Entry point and component registration
-├── analytics/             # Analytics configuration
-│   └── index.js          # Google Analytics 4 setup
-├── analytics-legacy.js    # Legacy analytics (deprecated)
-├── analytics-refactored.js # Refactored analytics (deprecated)
-├── clarity-config.js      # Microsoft Clarity setup
-├── browser-support.js     # Browser compatibility checks
-├── event-listeners.js     # Global event handlers
-├── lazy-loading.js        # Image lazy loading
-├── password-protection-init.js # Password protection initialization
-├── smart-image-loader.js  # Intelligent image loading
-├── auth/                  # Password protection system
-│   ├── password-config.js # Protected case studies configuration
-│   └── password-protection.js # Core protection logic
-└── components/            # Web Components
-    ├── site-header/
-    │   ├── SiteHeader.js  # Site header component
-    │   └── SiteHeader.css # Header styles
-    ├── site-footer/
-    │   ├── SiteFooter.js  # Site footer component
-    │   └── SiteFooter.css # Footer styles
-    ├── sidebar-navigation/
-    │   ├── SidebarNavigation.js # Sidebar nav component
-    │   └── SidebarNavigation.css # Sidebar styles
-    └── ImageLightbox/
-        ├── ImageLightbox.js # Image lightbox component
-        └── ImageLightbox.css # Lightbox styles
+src/js/components/[component-name]/
+├── ComponentName.js    # PascalCase class file
+└── ComponentName.css   # Component styles
 ```
 
-### Assets Organization
+### Key Directories
 
-```
-src/
-├── assets/                # Static assets
-│   ├── favicons/         # Favicon variants (16x16, 32x32, 96x96, apple-icon)
-│   └── pdf/              # Resume and documents
-├── img/                   # Images (original formats)
-│   ├── webp/             # WebP optimized versions
-│   ├── projects/         # Project-specific images organized by project
-│   │   ├── autodesk/     # Autodesk project images
-│   │   ├── dc/           # DC project images
-│   │   ├── dcd/          # Daimler project images
-│   │   ├── househappy/   # HouseHappy project images
-│   │   └── lfc/          # Intel LFC project images
-│   ├── icons/            # Icon assets
-│   └── logos/            # Company logos
-├── img-backup/            # Backup of original images
-└── svg/                   # SVG graphics and logos
-    ├── logo.svg          # Main logo
-    └── logos/            # Company logos in SVG format
+- `src/js/components/` - Web Components (PascalCase folders)
+- `src/js/auth/` - Password protection system
+- `src/js/analytics/` - Analytics configuration
+- `src/js/utils/` - Utility functions
+
+### Component Registration
+
+**ALL components MUST be registered in `src/js/main.js`:**
+
+```javascript
+import { SiteHeader } from './components/site-header/SiteHeader.js';
+customElements.define('site-header', SiteHeader);
 ```
 
-## Build Output Structure
+## Asset Organization
 
-### Development Build (`dev-build/`)
+### Image Management
 
-- Fast, unoptimized build for development
-- Source maps enabled
-- Hot reload support
+- `src/img/` - Original images
+- `src/img/webp/` - WebP optimized versions (auto-generated)
+- `src/img/projects/[company]/` - Project images by company
+- `src/img-backup/` - Backup of originals
 
-### Production Build (`dist/`)
+### Image Workflow
 
-- Optimized and minified assets
-- WebP image conversion
-- Bundle size validation
-- Cache-busting hashes
+1. Add images to `src/img/projects/[company]/`
+2. **ALWAYS run:** `npm run optimize:images`
+3. Use WebP with fallbacks in HTML
+4. Add descriptive alt text for accessibility
 
-## Naming Conventions
+### Static Assets
 
-### Files & Folders
+- `src/assets/favicons/` - Favicon variants
+- `src/assets/pdf/` - Resume and documents
+- `src/svg/` - SVG graphics and logos
 
-- **HTML/CSS/JS**: `kebab-case` (e.g., `about-us.html`, `main-styles.css`, `user-profile.js`)
-- **Web Components**: `PascalCase` (e.g., `SiteHeader.js`)
-- **Folders**: `kebab-case` (e.g., `site-header/`, `project-archive/`)
+## Build Output (DO NOT EDIT)
+
+- `dev-build/` - Development build (fast, unoptimized)
+- `dist/` - Production build (optimized, minified)
+- Generated by Parcel.js - never edit these directories directly
+
+## Naming Conventions (MANDATORY)
+
+### File Naming
+
+- **HTML/CSS/JS files**: `kebab-case.ext`
+- **Web Component classes**: `PascalCase.js`
+- **Component folders**: `kebab-case/`
+- **Case studies**: `project-[company]-[project].html`
 
 ### Web Components
 
-- **Custom Elements**: Must contain hyphens (e.g., `<site-header>`, `<project-card>`)
-- **File Structure**: Component folder with JS and CSS files
-- **Registration**: Components registered in `main.js`
+- **Custom elements**: Must contain hyphens (`<site-header>`)
+- **Class names**: PascalCase (`SiteHeader`)
+- **Folder structure**: `src/js/components/site-header/SiteHeader.js`
 
 ### CSS Classes
 
-- **Global Styles**: BEM methodology (`card__content`, `button--primary`)
-- **Component Styles**: BEM-style within Shadow DOM (`:host`, `.nav-list`)
-- **Utility Classes**: Descriptive names (`grid-cols-2`, `gap-3`)
+- **Global**: BEM methodology (`card__content--primary`)
+- **Component**: Shadow DOM scoped (`:host`, `.nav-list`)
+- **Utilities**: Descriptive (`grid-cols-2`, `gap-3`)
 
-## Development Workflow
+## Development Workflows
 
-### File Creation Guidelines
+### Adding Web Components
 
-1. **HTML Pages**: Add to `src/` root, update navigation in components
-2. **Components**: Create folder in `src/js/components/` with JS and CSS
-3. **Styles**: Add to appropriate layer folder, import in `main.css`
-4. **Images**: Add to `src/img/`, run optimization script
-5. **Case Studies**: Follow naming convention `project-[company]-[project].html`
+1. Create `src/js/components/[component-name]/ComponentName.js`
+2. Create `src/js/components/[component-name]/ComponentName.css`
+3. Register in `src/js/main.js`: `customElements.define('component-name', ComponentName)`
+4. Document in `/styleguide.html`
 
-### Component Development
+### Adding Case Studies
 
-1. Create component folder with PascalCase name
-2. Implement JavaScript class extending HTMLElement
-3. Create separate CSS file for styles
-4. Register component in `main.js`
-5. Add to style guide for documentation
+1. Create `src/projects/project-[company]-[project].html`
+2. Add project card to homepage grid in `src/index.html`
+3. Add images to `src/img/projects/[company]/`
+4. Run `npm run optimize:images`
+5. Add password protection if needed
 
-### Testing Structure
+### Adding CSS
 
-```
-tests/
-├── homepage.spec.js       # Homepage functionality
-├── accessibility.spec.js  # WCAG 2.1 AA compliance
-├── performance.spec.js    # Core Web Vitals metrics
-├── project-pages.spec.js  # Case study pages
-└── web-components.spec.js # Component functionality
-```
+1. Create file in appropriate layer directory (`src/css/[layer]/`)
+2. Import in `src/css/main.css` maintaining layer order
+3. Use design tokens from `src/css/variables.css`
+4. Validate: `npm run test:bundle-size`
 
-## Performance Budgets
+## Critical Files to Update
 
-### Bundle Size Limits
+### Component Registration
 
-- **JavaScript**: Maximum 30KB gzipped
-- **CSS**: Maximum 70KB gzipped
+- `src/js/main.js` - Register ALL Web Components here
 
-### Core Web Vitals Targets
+### CSS Layer Management
 
-- **Largest Contentful Paint (LCP)**: <2.5s
-- **Cumulative Layout Shift (CLS)**: <0.1
-- **First Input Delay (FID)**: <100ms
-
-## Browser Support
-
-- **Chrome**: >= 63
-- **Firefox**: >= 63
-- **Safari**: >= 10.1
-- **Edge**: >= 79
-
-Progressive enhancement for older browsers with graceful degradation.
-
-## Security & Privacy
+- `src/css/main.css` - Maintain exact layer import order
 
 ### Password Protection
 
-- Client-side only (no server dependencies)
-- Session management with localStorage
-- 24-hour authentication sessions
-- Configurable per case study
+- `src/js/auth/password-config.js` - Configure protected content
 
-### Analytics
+### Homepage Updates
 
-- Google Analytics 4 with privacy settings
-- Microsoft Clarity with PII masking
-- GDPR-compliant configuration
-- No tracking of password-protected content
+- `src/index.html` - Add new project cards to grid
 
-## Documentation
+### Documentation
 
-- **Living Style Guide**: `/styleguide.html` for component documentation
-- **API Documentation**: Inline JSDoc comments
-- **Testing Guide**: `Docs/TESTING.md`
-- **Architecture**: `Docs/ARCHITECTURE.md`
-- **Asset Optimization**: `Docs/ASSET_OPTIMIZATION_GUIDE.md`
+- `/styleguide.html` - Document new components
 
-## Maintenance Guidelines
+## Essential Commands
 
-### Regular Tasks
+### Development
 
-- Keep style guide updated with new components
-- Maintain consistent file organization
-- Update documentation for structural changes
-- Review and optimize bundle sizes regularly
+```bash
+npm run dev                # Hot reload development server
+npm run build             # Production build
+npm run preview           # Test production build
+```
 
-### Code Organization
+### Quality Assurance (REQUIRED)
 
-- Group related files in appropriate directories
-- Maintain clear separation of concerns
-- Use consistent naming conventions
-- Document architectural decisions
+```bash
+npm run test              # Linting validation
+npm run test:bundle-size  # Size limits (JS <30KB, CSS <70KB)
+npx playwright test       # Full test suite
+```
 
-## Related Documentation
+### Asset Management
 
-- **AGENTS.md**: Main AI agent instructions
-- **Product Guidelines**: See `.kiro/steering/product.md`
-- **Technology Stack**: See `.kiro/steering/tech.md`
-- **Architecture**: See `Docs/ARCHITECTURE.md`
-- **Project Structure**: See `Docs/project_structure.md`
+```bash
+npm run optimize:images   # WebP conversion (run after adding images)
+```
 
----
+## File Organization Rules
 
-_This file follows the agents.md format for AI coding agent guidance._
+### DO NOT EDIT
+
+- `dist/` and `dev-build/` directories (build output)
+- `.parcel-cache/` directory (build cache)
+
+### ALWAYS UPDATE TOGETHER
+
+- When adding components: JS file + CSS file + registration in main.js
+- When adding case studies: HTML file + homepage grid + images + optimization
+- When adding CSS: layer file + import in main.css
+
+### VALIDATE BEFORE COMMIT
+
+- Bundle size limits enforced
+- All tests must pass
+- Components documented in style guide
