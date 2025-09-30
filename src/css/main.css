@@ -5,6 +5,7 @@
 @import url('./base/reset.css') layer(reset);
 @import url('./base/global.css') layer(base);
 @import url('./base/typography.css') layer(base);
+@import url('./base/font-loading.css') layer(base);
 @import url('./theme/default-theme.css') layer(theme);
 
 /* --- Layout Layer --- */
@@ -38,8 +39,7 @@
 @import url('./pages/page-autodesk-di.css') layer(pages);
 @import url('./pages/page-daimler-dcd.css') layer(pages);
 @import url('./pages/page-index/index-section-quotes.css') layer(pages);
-@import url('./pages/page-index/index-section-featured-projects.css')
-layer(pages);
+@import url('./pages/page-index/index-section-featured-projects.css') layer(pages);
 @import url('./pages/page-index/index-section-about.css') layer(pages);
 @import url('./pages/page-index/index-section-companies.css') layer(pages);
 @import url('./pages/projects.css') layer(pages);

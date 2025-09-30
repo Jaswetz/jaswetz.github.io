@@ -8,6 +8,7 @@
     "build": "parcel build src/*.html src/projects/*.html --dist-dir dist --public-url /",
     "optimize:images": "node scripts/optimize-images.js",
     "optimize:css": "node scripts/inline-critical-css.js",
+    "optimize:fonts": "node scripts/optimize-font-loading.js",
     "optimize:update-images": "node scripts/update-image-references.js",
     "test:security": "npm audit",
     "lint": "eslint .",
