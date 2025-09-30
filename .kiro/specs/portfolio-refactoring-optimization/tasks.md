@@ -137,7 +137,6 @@
 ### 2.1 Core Web Vitals Optimization
 
 - [ ] **2.1.1 Implement Critical CSS Inlining**
-  - Extract above-the-fold CSS for inline inclusion
   - Lazy load non-critical stylesheets
   - Optimize CSS delivery for faster rendering
   - _Requirements: 2.1, 2.4_
@@ -169,14 +168,6 @@
   - _Requirements: 2.4_
   - _Effort: 2-3 days_
   - _Priority: Medium_
-
-- [ ] **2.2.2 Offline Support Enhancement**
-  - Create offline indicator component (directory exists but empty)
-  - Implement fallback pages for network failures
-  - Add offline indicator for user awareness
-  - _Requirements: 2.4_
-  - _Effort: 1-2 days_
-  - _Priority: Low_
 
 ### 2.3 Bundle Optimization
 
@@ -228,7 +219,7 @@
 
 ### 3.2 CSS Build Process Enhancement
 
-- [ ] **3.2.1 PostCSS Integration**
+- [x] **3.2.1 PostCSS Integration**
   - Add PostCSS for advanced CSS processing
   - Implement autoprefixer for browser compatibility
   - Add CSS optimization plugins
@@ -381,8 +372,6 @@
 
 - [ ] **6.1.2 Advanced Caching Strategies**
   - Implement background sync for analytics
-  - Add push notification support (if needed)
-  - Enhance offline experience
   - _Requirements: 2.4_
   - _Effort: 2-3 days_
   - _Priority: Low_

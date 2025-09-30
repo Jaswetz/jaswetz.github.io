@@ -87,6 +87,7 @@
     "postcss-cli": "^11.0.0",
     "postcss-preset-env": "^9.3.2",
     "postcss-purgecss": "^5.0.0",
+    "postcss-sort-media-queries": "^5.2.0",
     "prettier": "^3.2.5",
     "purgecss": "^7.0.2",
     "sharp": "^0.34.4",
