@@ -1,9 +1,18 @@
 // Issue #7: Implement a robust solution for unsupported browsers (Requirement 3.2)
 // See: https://github.com/Jaswetz/jaswetz.github.io/issues/7
-// Main JavaScript file with Optimized Bundle Size
+// Main JavaScript file with Aggressive Code Splitting
 
 // Load CSS normally - simpler approach
 import '../css/main.css';
+
+// Import lazy loading utility for intersection observer-based component loading
+import { setupLazyLoading } from './utils/lazy-loader.js';
+
+// Import password protection initialization utility
+import './auth/password-protection-init.js';
+
+// Import accessibility utilities for enhanced user experience
+import './utils/accessibility-utils.js';
 
 // Load critical components dynamically to reduce main bundle
 const loadSiteHeaderModule = () =>
@@ -11,18 +20,23 @@ const loadSiteHeaderModule = () =>
 const loadSiteFooterModule = () =>
   import('./components/site-footer/SiteFooter.js');
 
-// Lazy load non-critical components and systems
+// Load font optimization system
+const loadFontOptimizerModule = () => import('./utils/font-optimization.js');
+
+// Lazy load non-critical components and systems using dynamic imports
 const loadAnalyticsModule = () => import('./analytics/simple-analytics.js');
 const loadClarityModule = () => import('./clarity-config.js');
 const loadImageLoaderModule = () => import('./enhanced-image-loader.js');
-const loadImageLightboxModule = () =>
-  import('./components/ImageLightbox/ImageLightbox.js');
-const loadSidebarNavigationModule = () =>
-  import('./components/sidebar-navigation/SidebarNavigation.js');
-const loadPasswordProtectionModule = () =>
-  import('./auth/password-protection.js');
 
-// Global functions to load modules when needed
+// Remove direct imports - these will be loaded via intersection observer
+// const loadImageLightboxModule = () =>
+//   import("./components/ImageLightbox/ImageLightbox.js");
+// const loadSidebarNavigationModule = () =>
+//   import("./components/sidebar-navigation/SidebarNavigation.js");
+// const loadPasswordProtectionModule = () =>
+//   import("./auth/password-protection.js");
+
+// Global functions to load modules when needed (kept for backward compatibility)
 window.loadAnalytics = async () => {
   try {
     await loadAnalyticsModule();
@@ -51,9 +65,12 @@ window.loadImageLoader = async () => {
   }
 };
 
+// Simplified global functions - components now loaded via intersection observer
 window.loadImageLightbox = async () => {
   try {
-    const { default: ImageLightbox } = await loadImageLightboxModule();
+    const { default: ImageLightbox } = await import(
+      './components/ImageLightbox/ImageLightbox.js'
+    );
     if (!customElements.get('image-lightbox')) {
       customElements.define('image-lightbox', ImageLightbox);
     }
@@ -66,7 +83,9 @@ window.loadImageLightbox = async () => {
 
 window.loadSidebarNavigation = async () => {
   try {
-    const { default: SidebarNavigation } = await loadSidebarNavigationModule();
+    const { default: SidebarNavigation } = await import(
+      './components/sidebar-navigation/SidebarNavigation.js'
+    );
     return SidebarNavigation;
   } catch (error) {
     console.warn('Failed to load SidebarNavigation:', error);
@@ -76,9 +95,13 @@ window.loadSidebarNavigation = async () => {
 
 window.loadPasswordProtection = async () => {
   try {
-    await loadPasswordProtectionModule();
+    const { initPasswordProtection } = await import(
+      './auth/password-protection.js'
+    );
+    return initPasswordProtection;
   } catch (error) {
     console.warn('Failed to load PasswordProtection:', error);
+    return null;
   }
 };
 
@@ -105,6 +128,14 @@ window.addEventListener('scroll', handleHeaderScroll, { passive: true });
 
 // Initialize critical systems and lazy load non-critical ones
 document.addEventListener('DOMContentLoaded', async () => {
+  // Initialize font optimization early for better performance
+  try {
+    await loadFontOptimizerModule();
+    // Font optimizer is automatically initialized
+  } catch (error) {
+    console.warn('Failed to load font optimizer:', error);
+  }
+
   // Load critical components
   try {
     const [{ default: SiteHeader }, { default: SiteFooter }] =
@@ -160,26 +191,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   window.loadClarity();
   window.loadImageLoader();
 
-  // Initialize sidebar navigation on pages that have it
-  if (document.querySelector('.sidebar-nav')) {
-    try {
-      const SidebarNavigation = await window.loadSidebarNavigation();
-      if (SidebarNavigation) {
-        new SidebarNavigation();
-      }
-    } catch (error) {
-      console.warn('Failed to load SidebarNavigation:', error);
-    }
-  }
-
-  // Initialize ImageLightbox on project pages
-  if (document.querySelector('body.project')) {
-    try {
-      await window.loadImageLightbox();
-    } catch (error) {
-      console.warn('Failed to load ImageLightbox:', error);
-    }
-  }
+  // Set up intersection observer-based lazy loading for components
+  setupLazyLoading();
 
   // Add click functionality to the animated 2D logo
   const logo2d = document.querySelector('.logo-2d');
@@ -246,66 +259,9 @@ document.addEventListener('keydown', function (event) {
 // Initialize Advanced Analytics System (commented out - experimental)
 // document.addEventListener("DOMContentLoaded", async () => {
 //   try {
-//     // Initializing Advanced Analytics System
-
-//     // Get the main analytics instance
-//     const { default: analytics } = await import("./analytics/index.js");
-
-//     // Initialize core analytics modules
-//     const conversionTracker = new ConversionTracker(analytics.manager);
-//     const crossPlatformIntegration = new CrossPlatformIntegration(
-//       analytics.manager,
-//       analytics.tracker
-//     );
-//     const userJourneyAnalyzer = new UserJourneyAnalyzer(
-//       analytics.tracker,
-//       conversionTracker
-//     );
-//     const userSegmentation = new UserSegmentation(
-//       analytics.manager,
-//       conversionTracker
-//     );
-//     const performanceMonitor = new PerformanceMonitorIntegration(
-//       analytics.manager
-//     );
-
-//     // Initialize optimization framework
-//     const optimizationFramework = new ConversionOptimizationFramework(
-//       analytics.manager,
-//       conversionTracker,
-//       userJourneyAnalyzer,
-//       userSegmentation,
-//       performanceMonitor
-//     );
-
-//     // Initialize A/B testing framework
-//     const abTestingFramework = new ABTestingFramework(
-//       analytics.manager,
-//       conversionTracker
-//     );
-
-//     // Initialize dashboard
-//     const conversionDashboard = new ConversionDashboard(
-//       analytics.manager,
-//       conversionTracker,
-//       userJourneyAnalyzer,
-//       userSegmentation,
-//       performanceMonitor,
-//       optimizationFramework,
-//       abTestingFramework
-//     );
-
-//     // Initialize all modules in dependency order
-//     await Promise.all([
-//       conversionTracker.initialize?.() || Promise.resolve(),
-//       crossPlatformIntegration.initialize(),
-//       userJourneyAnalyzer.initialize(),
-//       userSegmentation.initialize(),
-//       performanceMonitor.initialize(),
-//       optimizationFramework.initialize(),
-//       abTestingFramework.initialize(),
-//       conversionDashboard.initialize(),
-//     ]);
+// Simplified Analytics System - Load dynamically
+// Analytics is already initialized in simple-analytics.js
+// Global window.portfolioAnalytics API is available
 
 //     // Advanced Analytics System initialized successfully
 
@@ -344,32 +300,39 @@ document.addEventListener('keydown', function (event) {
 //   }
 // });
 
-// Register Service Worker for caching and offline support
+// Register Service Worker for Core Web Vitals optimization and offline support
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker
-      .register(new URL('./service-worker.js', import.meta.url))
-      .then(registration => {
-        // Service Worker registered successfully
+  // Register immediately for better caching performance
+  navigator.serviceWorker
+    .register(new URL('./service-worker.js', import.meta.url))
+    .then(registration => {
+      // Service Worker registered successfully for Core Web Vitals optimization
 
-        // Handle updates
-        registration.addEventListener('updatefound', () => {
-          const newWorker = registration.installing;
-          if (newWorker) {
-            newWorker.addEventListener('statechange', () => {
-              if (
-                newWorker.state === 'installed' &&
-                navigator.serviceWorker.controller
-              ) {
-                // New version available
-                // Optionally show user notification for update
-              }
-            });
-          }
-        });
-      })
-      .catch(_error => {
-        // Service Worker registration failed
+      // Handle updates for better performance
+      registration.addEventListener('updatefound', () => {
+        const newWorker = registration.installing;
+        if (newWorker) {
+          newWorker.addEventListener('statechange', () => {
+            if (
+              newWorker.state === 'installed' &&
+              navigator.serviceWorker.controller
+            ) {
+              // New version available - skip waiting for immediate activation
+              newWorker.postMessage({ type: 'SKIP_WAITING' });
+            }
+          });
+        }
       });
-  });
+
+      // Listen for controlling service worker changes
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        // Service worker updated - reload for better performance
+        if (navigator.serviceWorker.controller) {
+          window.location.reload();
+        }
+      });
+    })
+    .catch(_error => {
+      // Service Worker registration failed - continue without caching
+    });
 }

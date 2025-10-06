@@ -1,0 +1,164 @@
+/**
+ * Font Loading Optimization
+ * Implements font-display: swap and fallback strategies
+ */
+
+/* Font face declarations optimized for Core Web Vitals */
+@font-face {
+  font-weight: 400;
+  font-family: 'Gentium Plus';
+  font-style: normal;
+  src: url('https://fonts.gstatic.com/s/gentiumplus/v6/Iura6YBj_oCad4hzLCCbvw.woff2')
+    format('woff2');
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF,
+    U+FFFD;
+}
+
+@font-face {
+  font-weight: 400;
+  font-family: Laila;
+  font-style: normal;
+  src: url('https://fonts.gstatic.com/s/laila/v13/LYjMdG_8nE8jDIRdiidIrEIu.woff2')
+    format('woff2');
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF,
+    U+FFFD;
+}
+
+@font-face {
+  font-weight: 400;
+  font-family: 'PT Sans';
+  font-style: normal;
+  src: url('https://fonts.gstatic.com/s/ptsans/v17/jizaRExUiTo99u79D0KExcOPIDU.woff2')
+    format('woff2');
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF,
+    U+FFFD;
+}
+
+/* Fallback font faces for better performance */
+@font-face {
+  font-family: 'Gentium Plus Fallback';
+  src: local('Times New Roman'), local('Georgia'), local('serif');
+  font-display: swap;
+  size-adjust: 100%;
+}
+
+@font-face {
+  font-family: 'Laila Fallback';
+  src: local('Times New Roman'), local('Georgia'), local('serif');
+  font-display: swap;
+  size-adjust: 95%;
+}
+
+@font-face {
+  font-family: 'PT Sans Fallback';
+  src: local('Helvetica Neue'), local('Arial'), local('sans-serif');
+  font-display: swap;
+  size-adjust: 100%;
+}
+
+/* Font loading states */
+.fonts-loading {
+  /* Use fallback fonts while loading */
+  --font-family-heading: 'Laila Fallback', 'Times New Roman', 'Georgia', serif;
+  --font-family-body:
+    'Gentium Plus Fallback', 'Times New Roman', 'Georgia', serif;
+  --font-family-sans:
+    'PT Sans Fallback', -apple-system, blinkmacsystemfont, 'Segoe UI',
+    sans-serif;
+}
+
+.fonts-loaded {
+  /* Use web fonts once loaded */
+  --font-family-heading: 'Laila', 'Times New Roman', 'Georgia', serif;
+  --font-family-body: 'Gentium Plus', 'Times New Roman', 'Georgia', serif;
+  --font-family-sans:
+    'PT Sans', -apple-system, blinkmacsystemfont, 'Segoe UI', sans-serif;
+}
+
+/* Prevent layout shift during font loading */
+body {
+  font-family: var(--font-family-body);
+  transition: font-family 0.1s ease-in-out;
+}
+
+/* Critical font loading optimization */
+@supports (font-display: swap) {
+  /* Modern browsers with font-display support */
+  .fonts-loading * {
+    font-display: swap;
+  }
+}
+
+/* Reduce font loading impact on Core Web Vitals */
+.hero-section h1,
+.section-header,
+.card h3 {
+  /* Ensure critical text uses system fonts initially */
+  font-family: var(--font-family-heading);
+  font-display: swap;
+}
+
+/* Performance optimization for non-critical text */
+.quote,
+.about-section p,
+.project-snippet p {
+  font-family: var(--font-family-body);
+  font-display: swap;
+}
+
+/* Preload hint for critical fonts */
+@media (prefers-reduced-motion: no-preference) {
+  /* Only preload fonts if user doesn't prefer reduced motion */
+  :root {
+    --preload-fonts: true;
+  }
+}
+
+/* Font loading performance monitoring */
+@supports (font-display: optional) {
+  /* Use optional for non-critical fonts to prevent layout shift */
+  .company-logo,
+  .quote__author,
+  .project-tags {
+    font-display: optional;
+  }
+}
+
+/* Responsive font loading strategy */
+@media (width <=768px) {
+  /* On mobile, prioritize performance over custom fonts */
+  .fonts-loading {
+    --font-family-heading:
+      -apple-system, blinkmacsystemfont, 'Segoe UI', sans-serif;
+    --font-family-body:
+      -apple-system, blinkmacsystemfont, 'Segoe UI', sans-serif;
+  }
+}
+
+/* High-contrast mode font optimization */
+@media (prefers-contrast: high) {
+  body {
+    /* Use system fonts for better readability in high contrast */
+    --font-family-body:
+      -apple-system, blinkmacsystemfont, 'Segoe UI', sans-serif;
+    --font-family-heading:
+      -apple-system, blinkmacsystemfont, 'Segoe UI', sans-serif;
+  }
+}
+
+/* Print optimization */
+@media print {
+  * {
+    /* Use system fonts for printing to avoid font loading issues */
+    font-family: 'Times New Roman', serif !important;
+  }
+}

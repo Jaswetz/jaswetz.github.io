@@ -12,11 +12,11 @@
 
 Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 
-# Content Security Policy (CSP) - Configured for portfolio with analytics and fonts
+# Content Security Policy (CSP) - Configured for portfolio with analytics
 
-# Allows Google Analytics, Microsoft Clarity, and Google Fonts while maintaining security
+# Allows Google Analytics and Microsoft Clarity while maintaining security
 
-Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://www.clarity.ms; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none';
+Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://www.clarity.ms; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none';
 
 # X-Content-Type-Options
 

@@ -1,35 +1,5 @@
 @layer utilities;
 
-/* Reusable hover mixin for components */
-.hover\:scale-102:hover {
-  transform: scale(1.02);
-}
-
-/* Reusable shadow mixin for interactive elements */
-.shadow\:hover {
-  transition: box-shadow var(--transition-interactive);
-}
-
-.shadow\:hover:hover {
-  box-shadow: var(--hover-shadow);
-}
-
-/* Focus ring utility for accessibility */
-.focus\:ring {
-  outline: var(--focus-outline);
-  outline-offset: var(--focus-outline-offset);
-}
-
-/* BEM-style card hover state utility */
-.card\:hover {
-  transition: var(--transition-interactive);
-}
-
-.card\:hover:hover {
-  transform: var(--hover-transform-card);
-  box-shadow: var(--hover-shadow-large);
-}
-
 /* Shadow DOM utilities for Web Components using ::part() */
 site-header::part(header) {
   border-bottom: 1px solid var(--color-border);

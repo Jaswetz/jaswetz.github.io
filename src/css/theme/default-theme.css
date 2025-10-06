@@ -1,12 +1,12 @@
 /* src/css/theme/default-theme.css */
 
-/* 
-  Default Theme Styles 
+/*
+  Default Theme Styles
   This file can be used to define the default theme for the website.
   It can override variables defined in variables.css or define new theme-specific ones.
 
-  For example, for a dark mode, you might have a dark-theme.css that redefines 
-  color variables, and then conditionally load it or use a class on the body 
+  For example, for a dark mode, you might have a dark-theme.css that redefines
+  color variables, and then conditionally load it or use a class on the body
   to apply those overrides.
 */
 
@@ -19,15 +19,15 @@
 
   /* --theme-text-color: var(--color-neutral-900); */
 
-  /* Or, if variables.css already defines your default theme, 
+  /* Or, if variables.css already defines your default theme,
      this file might initially be very light or just for documentation.
   */
 }
 
-/* You could also include specific selectors if a theme requires it, 
+/* You could also include specific selectors if a theme requires it,
    but it's often cleaner to manage themes primarily through variable overrides. */
 
-/* 
+/*
 body.dark-theme {
   --theme-background-color: var(--color-neutral-900);
   --theme-text-color: var(--color-neutral-100);

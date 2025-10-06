@@ -2,31 +2,29 @@
 
 /* Quotes section styles for the index page */
 
-
-
 .quotes-container {
-    max-width: var(--measure-xl);
-    margin: 0 auto;
+  max-width: var(--measure-xl);
+  margin: 0 auto;
 }
 
 .quote-item {
-    margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-2xl);
 }
 
 .quote-text {
-    margin-bottom: var(--space-lg);
-    color: var(--color-text);
-    font-size: var(--font-size-xl);
-    font-style: italic;
-    line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-lg);
+  color: var(--color-text);
+  font-size: var(--font-size-xl);
+  font-style: italic;
+  line-height: var(--leading-relaxed);
 }
 
 .quote-author {
-    color: var(--color-text-light);
-    font-weight: var(--font-weight-medium);
-    font-size: var(--font-size-md);
+  color: var(--color-text-light);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-md);
 }
 
 .quote-author::before {
-    content: "— ";
+  content: '— ';
 }

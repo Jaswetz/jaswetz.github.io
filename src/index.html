@@ -100,21 +100,7 @@
       }
     </script>
 
-    <!-- Content Security Policy for enhanced security -->
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="
-      default-src 'self';
-      script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms;
-      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-      font-src 'self' https://fonts.gstatic.com;
-      img-src 'self' data: https:;
-      connect-src 'self' https://www.google-analytics.com https://www.clarity.ms;
-      object-src 'none';
-      base-uri 'self';
-      form-action 'self';
-    "
-    />
+    <!-- Content Security Policy configured in public/_headers file -->
 
     <!-- Google Analytics 4 - Only load in production -->
     <script>
@@ -139,22 +125,70 @@
     <!-- Microsoft Clarity for heatmaps and session recordings -->
     <!-- Scripts are loaded via main.js module -->
 
-    <!-- Font optimization -->
-    <!-- Preconnect to Google Fonts for faster loading -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+
+    <!-- Fallback for browsers that don't support preload -->
+
+
+        <!-- Font optimization -->
+    <!-- Local fonts are used - no external font loading required -->
+
+    <!-- Preload critical font files for Core Web Vitals optimization -->
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/gentiumplus/v6/Iura6YBj_oCad4hzLCCbvw.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/laila/v13/LYjMdG_8nE8jDIRdiidIrEIu.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/ptsans/v17/jizaRExUiTo99u79D0KExcOPIDU.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
 
     <!-- Preload Google Fonts CSS for better performance -->
     <link
       rel="preload"
       href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Laila:wght@400;600&family=PT+Sans:wght@400;700&display=swap"
       as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Laila:wght@400;600&family=PT+Sans:wght@400;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
+    <!-- Fallback for browsers that don't support preload -->
     <link
       href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Laila:wght@400;600&family=PT+Sans:wght@400;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+
+    <!-- Critical CSS for Core Web Vitals optimization -->
+    <style>
+      /* Critical above-the-fold styles for LCP optimization */
+      body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+      .hero-section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+      .hero-section h1 { font-size: clamp(2rem, 5vw, 4rem); margin: 0 0 1rem 0; }
+      .hero__tagline { font-size: clamp(1rem, 2.5vw, 1.5rem); max-width: 600px; margin: 0 auto 2rem; }
+      .logo-2d { width: 120px; height: 120px; position: relative; display: block; }
+      .skip-link { position: absolute; left: -9999px; }
+      .skip-link:focus { position: static; }
+    </style>
 
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="icon" type="image/x-icon" href="./assets/favicons/favicon.ico" />
@@ -235,7 +269,6 @@
                   src="./img/optimized/projects/autodesk-messaging/messaging-final.webp"
                   alt="Autodesk notification system interface showing unified messaging design for improved user communication"
                   class="project-thumbnail card__image"
-                  loading="lazy"
                 />
               </picture>
               <div class="card__content">
@@ -265,7 +298,6 @@
                   src="./img/optimized/mockuuups-ipad-pro-mockup-isometric-right.webp"
                   alt="Autodesk Fusion cross-platform interface design showing tablet and mobile layouts for enterprise software"
                   class="project-thumbnail card__image"
-                  loading="lazy"
                 />
               </picture>
               <div class="card__content">
@@ -412,6 +444,7 @@
                 src="./img/logos/logo--intel.svg"
                 alt="Intel"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -419,6 +452,7 @@
                 src="./img/logos/logo--daimler.svg"
                 alt="Daimler"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -426,6 +460,7 @@
                 src="./img/logos/logo--detroit-connect.svg"
                 alt="Detroit Connect"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -433,6 +468,7 @@
                 src="./img/logos/logo--lfc.svg"
                 alt="LFC"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -440,6 +476,7 @@
                 src="./img/logos/logo--sony.svg"
                 alt="Sony"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -447,6 +484,7 @@
                 src="./img/logos/logo--sony-pictures.svg"
                 alt="Sony Pictures"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -454,6 +492,7 @@
                 src="./img/logos/logo--unfi.svg"
                 alt="UNFI"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <!-- Duplicate set for seamless loop -->
@@ -462,6 +501,7 @@
                 src="./img/logos/logo--intel.svg"
                 alt="Intel"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -469,6 +509,7 @@
                 src="./img/logos/logo--daimler.svg"
                 alt="Daimler"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -476,6 +517,7 @@
                 src="./img/logos/logo--detroit-connect.svg"
                 alt="Detroit Connect"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -483,6 +525,7 @@
                 src="./img/logos/logo--lfc.svg"
                 alt="LFC"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -490,6 +533,7 @@
                 src="./img/logos/logo--sony.svg"
                 alt="Sony"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -497,6 +541,7 @@
                 src="./img/logos/logo--sony-pictures.svg"
                 alt="Sony Pictures"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -504,6 +549,7 @@
                 src="./img/logos/logo--unfi.svg"
                 alt="UNFI"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
           </div>

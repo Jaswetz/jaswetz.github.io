@@ -19,10 +19,10 @@ This design document outlines a comprehensive refactoring and optimization strat
 **Critical Issues:**
 
 - JavaScript bundle 305% over performance budget (158.4KB vs 30KB limit)
-- 63 failing tests across all browsers
-- 3 security vulnerabilities (1 critical)
+- 105 failing integration tests out of 551 total tests
+- npm audit security vulnerabilities requiring resolution
 - Missing content elements causing test failures
-- Over-engineered analytics system
+- Over-engineered analytics system with 11 modules (ABTestingFramework, ConversionDashboard, ConversionOptimizationFramework, CrossPlatformIntegration, MCPClient, PerformanceMonitorIntegration, UserJourneyAnalyzer, UserSegmentation, WebVitalsTracker, etc.)
 
 **Technical Debt:**
 
@@ -37,7 +37,6 @@ This design document outlines a comprehensive refactoring and optimization strat
 Optimized Portfolio Architecture
 ├── Core Bundle (< 15KB)
 │   ├── Essential Web Components
-│   ├── Critical CSS (inline)
 │   └── Core functionality
 ├── Lazy-Loaded Modules
 │   ├── Analytics (simplified, < 5KB)
@@ -49,7 +48,6 @@ Optimized Portfolio Architecture
 │   └── Icons (SVG sprites)
 └── Service Worker
     ├── Caching strategy
-    ├── Offline support
     └── Performance monitoring
 ```
 
@@ -77,23 +75,26 @@ const lazyLoadComponents = new IntersectionObserver((entries) => {
 
 **Analytics Simplification:**
 
-- Replace complex 8-module system with single lightweight tracker
+- Replace complex 11-module system (ABTestingFramework, ConversionDashboard, ConversionOptimizationFramework, CrossPlatformIntegration, MCPClient, PerformanceMonitorIntegration, UserJourneyAnalyzer, UserSegmentation, WebVitalsTracker, etc.) with single lightweight tracker
+- Leverage existing simple-analytics.js as foundation and enhance it
 - Focus on essential metrics: page views, project interactions, contact events
-- Use native browser APIs where possible
-- Implement privacy-first approach
+- Use native browser APIs (Performance Observer, Intersection Observer) where possible
+- Implement privacy-first approach with localStorage sessions
 
 ### 2. CSS Architecture Enhancement
 
 **Enhanced Cascade Layers:**
 
 ```css
-/* Refined layer structure */
-@layer reset, tokens, base, theme, layout, components, utilities, overrides;
+/* Maintain existing proven layer structure */
+@layer reset, base, theme, layout, components, utilities;
 
-/* Component-specific layers for better organization */
-@layer components {
-  @layer components.navigation, components.cards, components.forms;
-}
+/* Leverage existing CSS architecture in src/css/ */
+/* - src/css/base/ for foundation styles */
+/* - src/css/theme/ for color schemes */
+/* - src/css/layout/ for page-level layouts */
+/* - src/css/components/ for UI components */
+/* - src/css/utils/ for utility classes */
 ```
 
 **CSS Custom Properties Optimization:**
@@ -121,11 +122,6 @@ const lazyLoadComponents = new IntersectionObserver((entries) => {
 **Critical Resource Loading:**
 
 ```html
-<!-- Critical CSS inline -->
-<style>
-  /* Critical above-fold styles */
-</style>
-
 <!-- Preload key resources -->
 <link
   rel="preload"
@@ -422,32 +418,64 @@ class SecurityUtils {
 
 ## Implementation Phases
 
-### Phase 1: Critical Issues (Week 1-2)
+### Phase 1: Critical Issues Resolution
 
-- Bundle size optimization
-- Test failure resolution
-- Security vulnerability fixes
-- Content completion
+**Priority 1 - Bundle Size Crisis:**
 
-### Phase 2: Performance Enhancement (Week 3-4)
+- Analytics system simplification (11 modules → 1 lightweight tracker)
+- Code splitting for non-critical features
+- Dynamic imports for lazy-loaded components
+- Bundle size validation with existing `npm run test:bundle-size`
 
-- Code splitting implementation
-- Image optimization
-- Service worker deployment
-- Caching strategy
+**Priority 2 - Test Infrastructure:**
 
-### Phase 3: Architecture Refinement (Week 5-6)
+- Fix 105 failing integration tests out of 551 total
+- Resolve missing content elements causing failures
+- Ensure all quality gates pass: `npm run test`, `npm run test:bundle-size`, `npx playwright test`
 
-- CSS modularization
-- Component testing
-- Documentation updates
-- Quality assurance
+**Priority 3 - Security & Dependencies:**
 
-### Phase 4: Advanced Features (Week 7-8)
+- Resolve npm audit vulnerabilities
+- Update dependencies maintaining Node.js 23.9.0 compatibility
+- Validate security headers in public/\_headers
 
-- Progressive Web App features
-- Advanced analytics
-- Performance monitoring
-- Accessibility enhancements
+### Phase 2: Performance Optimization
+
+**Core Web Vitals Focus:**
+
+- LCP optimization through critical resource preloading
+- CLS reduction via proper image sizing and font loading
+- FID improvement through code splitting and lazy loading
+- Leverage existing performance monitoring scripts
+
+**Asset Optimization:**
+
+- Utilize existing WebP optimization pipeline (`npm run optimize:images`)
+- Implement service worker for caching strategy
+- Optimize font loading with existing scripts
+
+### Phase 3: Architecture Enhancement
+
+**CSS Architecture:**
+
+- Maintain proven Cascade Layers structure
+- Optimize existing src/css/ directory organization
+- Enhance design token system in src/css/variables.css
+- Validate CSS bundle size with existing tooling
+
+**Component System:**
+
+- Enhance existing Web Components in src/js/components/
+- Improve Shadow DOM encapsulation
+- Standardize component registration in src/js/main.js
+
+### Phase 4: Quality Assurance & Monitoring
+
+**Testing Strategy:**
+
+- Leverage existing Vitest + Happy DOM setup for unit tests
+- Enhance Playwright integration tests
+- Maintain accessibility testing with existing axe-cli integration
+- Performance regression testing with existing monitoring scripts
 
 This design provides a comprehensive roadmap for transforming the portfolio into a high-performance, maintainable, and user-friendly application while preserving its excellent architectural foundation.

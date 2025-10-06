@@ -34,42 +34,83 @@
     ></script>
 
     <!-- Font optimization -->
+
+
+        <!-- Font optimization -->
     <!-- Preconnect to Google Fonts for faster loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Optimized Google Fonts CSS with font-display: swap -->
-    <!-- Feather Icons CDN -->
-    <script src="https://unpkg.com/feather-icons"></script>    <link
-      href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Laila:wght@400;600&family=PT+Sans:wght@400;700&display=swap"
-      rel="stylesheet"
+    <!-- Preload critical font files for better performance -->
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/gentiumplus/v6/Iura6YBj_oCad4hzLCCbvw.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/laila/v13/LYjMdG_8nE8jDIRdiidIrEIu.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/ptsans/v17/jizaRExUiTo99u79D0KExcOPIDU.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
 
-    <link rel="stylesheet" href="../css/main.css" />
+    <!-- Preload Google Fonts CSS for better performance -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Laila:wght@400;600&family=PT+Sans:wght@400;700&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Laila:wght@400;600&family=PT+Sans:wght@400;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+
+    <!-- Fallback for browsers that don't support preload -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Laila:wght@400;600&family=PT+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+
+    <link rel="stylesheet" href="/src/css/main.css" />
     <link
       rel="icon"
       type="image/x-icon"
-      href="../assets/favicons/favicon.ico"
+      href="/src/assets/favicons/favicon.ico"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="../assets/favicons/favicon-16x16.png"
+      href="/src/assets/favicons/favicon-16x16.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="../assets/favicons/favicon-32x32.png"
+      href="/src/assets/favicons/favicon-32x32.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="96x96"
-      href="../assets/favicons/favicon-96x96.png"
+      href="/src/assets/favicons/favicon-96x96.png"
     />
-    <link rel="apple-touch-icon" href="../assets/favicons/apple-icon.png" />
+    <link rel="apple-touch-icon" href="/src/assets/favicons/apple-icon.png" />
   </head>
   <body class="project lfc-intel">
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -115,6 +156,7 @@
         <div class="sidebar grid grid--2-column--sidebar">
           <div class="article__content">
             <section class="project-summary" id="project-summary">
+              <h2 class="sr-only">Project Summary</h2>
               <figure>
                 <img
                   src="../img/projects/lfc/ios-android.png"
@@ -868,13 +910,13 @@
     <!-- Image Lightbox Component -->
     <image-lightbox></image-lightbox>
 
-    <script type="module" src="../js/main.js?v=1"></script>
+    <script type="module" src="/src/js/main.js?v=1"></script>
 
     <!-- Password Protection and Performance Optimization -->
     <script type="module">
-      import { protectCaseStudy } from "../js/password-protection-init.js";
+      import { protectCaseStudy } from "/src/js/auth/password-protection-init.js";
 
-      import analytics from "../js/analytics/simple-analytics.js";
+      import analytics from "/src/js/analytics/simple-analytics.js";
 
       protectCaseStudy("project-intel-lfc");
 
@@ -885,6 +927,8 @@
       });
     </script>
 
+    <!-- Feather Icons CDN -->
+    <script src="https://unpkg.com/feather-icons"></script>
     <!-- Initialize Feather Icons -->
     <script>
       feather.replace();
