@@ -48,7 +48,7 @@
   - Implement service worker for static asset caching strategy
   - _Requirements: 2.1, 2.2, 2.5, 2.6_
 
-- [ ] 8. Enhance CSS architecture and maintainability
+- [x] 8. Enhance CSS architecture and maintainability
   - Maintain existing Cascade Layers structure (@layer reset, base, theme, layout, components, utilities)
   - Consolidate design tokens in src/css/variables.css
   - Optimize existing CSS directory organization (src/css/base/, src/css/components/, etc.)
@@ -79,8 +79,6 @@
 - [ ] 12. Implement performance monitoring and analytics simplification
   - Create lightweight analytics system focused on essential metrics only
   - Implement Core Web Vitals monitoring using Performance Observer API
-  - Add privacy-first approach with localStorage sessions and user consent
-  - Create performance dashboard for monitoring LCP, FID, CLS metrics
   - _Requirements: 8.1, 8.3, 8.4, 8.5_
 
 - [ ] 13. Optimize build process and deployment pipeline

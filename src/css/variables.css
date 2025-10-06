@@ -88,58 +88,57 @@
   --text-size-heading-3: var(--size-step-3);
   --text-size-heading-4: var(--size-step-2);
 
-  /* Font Sizes (based on 4px unit) */
-  --font-size-base: 1rem;
+  /* Font Sizes - consolidated with size-step system */
+  --font-size-xs: var(--size-step--2);
 
-  /* 16px */
-  --font-size-xs: 0.75rem;
+  /* ~13px */
+  --font-size-sm: var(--size-step--1);
 
-  /* 12px */
-  --font-size-sm: 0.875rem;
+  /* ~15px */
+  --font-size-base: var(--size-step-0);
 
-  /* 14px */
-  --font-size-md: 1rem;
+  /* ~17px */
+  --font-size-md: var(--size-step-0);
 
-  /* 16px */
-  --font-size-lg: 1.25rem;
+  /* ~17px */
+  --font-size-lg: var(--size-step-1);
 
-  /* 20px */
-  --font-size-xl: 1.5rem;
+  /* ~19px */
+  --font-size-xl: var(--size-step-2);
 
-  /* 24px */
-  --font-size-2xl: 2rem;
+  /* ~21px */
+  --font-size-2xl: var(--size-step-3);
 
-  /* 32px */
-  --font-size-3xl: 2.5rem;
+  /* ~23px */
+  --font-size-3xl: var(--size-step-4);
 
-  /* 40px */
-  --font-size-4xl: 3rem;
+  /* ~25px */
+  --font-size-4xl: var(--size-step-5);
 
-  /* 54px */
-  --font-size-5xl: 3.5rem;
+  /* ~27px */
+  --font-size-5xl: var(--size-step-6);
 
-  /* 63px */
-  --font-size-6xl: 4rem;
+  /* ~29px */
+  --font-size-6xl: var(--size-step-7);
 
-  /* 72px */
-  --font-size-7xl: 5rem;
+  /* ~33px */
+  --font-size-7xl: var(--size-step-8);
 
-  /* 90px */
-  --font-size-8xl: 6rem;
+  /* ~37px */
 
-  /* 108px */
+  /* Line Heights - consolidated with leading system */
+  --line-height-tight: var(--leading-fine);
 
-  /* Line Heights (strict 4px rhythm) */
-  --line-height-tight: 1.25;
+  /* 1.1 */
+  --line-height-base: var(--leading);
 
-  /* 20px for 16px font, good for headings */
-  --line-height-base: 1.5;
+  /* 1.4 */
+  --line-height-loose: var(--leading-short);
 
-  /* 24px for 16px font, standard for body */
-  --line-height-loose: 1.75;
-
-  /* 28px for 16px font, for extra space */
+  /* 1.3 */
   --heading-line-height: var(--leading-fine);
+
+  /* 1.1 */
 
   /* Vertical Spacing Scale (based on 4px unit) */
   --space-2xs: clamp(0.375rem, 0.3414rem + 0.1678vi, 0.5rem);
@@ -174,36 +173,30 @@
   --size-step--2: clamp(0.8125rem, 0.7455rem + 0.3356vi, 1.0625rem);
   --gutter: var(--space-l-xl);
 
-  /* Margin and Padding Utilities */
-  --margin-base: var(--space-s);
-  --padding-base: var(--space-s);
+  /* Semantic Spacing Tokens - consolidated */
+  --spacing-component: var(--space-m);
+  --spacing-section: var(--space-xl);
+  --spacing-page: var(--space-2xl);
+  --spacing-paragraph: var(--space-s);
+  --spacing-heading: var(--space-m);
+  --spacing-list: var(--space-s);
 
-  /* Component Spacing */
-  --component-spacing: var(--space-m);
-  --section-spacing: var(--space-xl);
-  --page-spacing: var(--space-2xl);
-
-  /* Typography Spacing */
-  --paragraph-spacing: var(--space-s);
-  --heading-spacing: var(--space-m);
-  --list-spacing: var(--space-s);
-
-  /* Borders */
-  --border-radius: 0.75rem;
-  --border-radius-sm: 0.375rem;
+  /* Border System - based on 4px unit */
+  --border-radius-sm: calc(var(--unit) * 1.5);
 
   /* 6px */
-  --border-radius-md: 0.5rem;
+  --border-radius: calc(var(--unit) * 3);
+
+  /* 12px */
+  --border-radius-md: calc(var(--unit) * 2);
 
   /* 8px */
-  --border-radius-lg: 1rem;
+  --border-radius-lg: calc(var(--unit) * 4);
 
   /* 16px */
-  --border-radius-xl: 1.5rem;
+  --border-radius-xl: calc(var(--unit) * 6);
 
   /* 24px */
-
-  /* 4px */
   --border-width: 1px;
 
   /* Transitions */
@@ -285,15 +278,6 @@
   --button-min-height: var(--touch-target-min);
   --button-gap: var(--space-xs);
 
-  /* Lightbox */
-  --lightbox-bg: color-mix(in srgb, #000 90%, #fff 10%);
-  --lightbox-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --lightbox-z-index: 9999;
-  --caption-bg: color-mix(in srgb, #000 70%, #fff 30%);
-  --caption-color: #fff;
-  --focus-ring: 2px solid var(--accent-color, #06c);
-  --focus-ring-offset: 2px;
-
   /* ==========================================================================
      RESPONSIVE BREAKPOINTS
      ========================================================================== */
@@ -336,17 +320,6 @@
 
   /* 1300px */
   --container-full: 100%;
-
-  /* Legacy breakpoint mapping for gradual migration */
-  --breakpoint-mobile: var(--breakpoint-md);
-
-  /* 768px equivalent */
-  --breakpoint-desktop: var(--breakpoint-lg);
-
-  /* 1024px equivalent */
-  --breakpoint-large: var(--breakpoint-xl);
-
-  /* 1280px equivalent */
 
   @media (width >=64rem) {
     --section-width: calc(100% - var(--space-2xl));

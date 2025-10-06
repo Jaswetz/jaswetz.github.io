@@ -1,5 +1,5 @@
 /* Define layer order FIRST for optimal rendering performance */
-@layer reset, base, theme, layout, components, pages, utilities, debug;
+@layer reset, base, theme, layout, components, utilities;
 
 /* Layer order optimized for Core Web Vitals:
  * 1. reset - Normalize browser defaults immediately
@@ -7,9 +7,7 @@
  * 3. theme - Color and visual tokens
  * 4. layout - Grid and positioning systems
  * 5. components - Reusable UI components
- * 6. pages - Page-specific overrides
- * 7. utilities - Helper classes
- * 8. debug - Development-only styles
+ * 6. utilities - Helper classes
  */
 
 /* Global variables - imported first to be globally available */
@@ -23,9 +21,8 @@
 @import url('./theme/default-theme.css') layer(theme);
 
 /* --- Layout Layer --- */
-
-/* Consolidated grid system and project-specific layouts */
 @import url('./utils/grid-system.css') layer(layout);
+@import url('./utils/layout.css') layer(layout);
 
 /* --- Components Layer --- */
 @import url('./components/error-page.css') layer(components);
@@ -33,7 +30,6 @@
 @import url('./components/heroes.css') layer(components);
 @import url('./components/logo-2d.css') layer(components);
 @import url('./components/images.css') layer(components);
-@import url('./components/badges.css') layer(components);
 @import url('./components/navigation.css') layer(components);
 @import url('./components/icons.css') layer(components);
 @import url('./components/sections.css') layer(components);
@@ -41,33 +37,24 @@
 @import url('./components/tags.css') layer(components);
 @import url('./components/buttons.css') layer(components);
 @import url('./components/forms.css') layer(components);
-@import url('./components/form-controls.css') layer(components);
-@import url('./components/form-inputs.css') layer(components);
-@import url('./components/form-layout.css') layer(components);
-@import url('./components/form-validation.css') layer(components);
 @import url('./components/accessibility.css') layer(components);
 @import url('./components/password-protection.css') layer(components);
 
-/* --- Pages Layer --- */
-@import url('./pages/page-about.css') layer(pages);
-@import url('./pages/page-autodesk-di.css') layer(pages);
-@import url('./pages/page-daimler-dcd.css') layer(pages);
-@import url('./pages/page-index/index-section-quotes.css') layer(pages);
+/* Page-specific styles moved to components layer for better organization */
+@import url('./pages/page-about.css') layer(components);
+@import url('./pages/page-autodesk-di.css') layer(components);
+@import url('./pages/page-daimler-dcd.css') layer(components);
+@import url('./pages/page-index/index-section-quotes.css') layer(components);
 @import url('./pages/page-index/index-section-featured-projects.css')
-layer(pages);
-@import url('./pages/page-index/index-section-about.css') layer(pages);
-@import url('./pages/page-index/index-section-companies.css') layer(pages);
-@import url('./pages/page-index/index-section-contact.css') layer(pages);
-@import url('./pages/projects.css') layer(pages);
+layer(components);
+@import url('./pages/page-index/index-section-about.css') layer(components);
+@import url('./pages/page-index/index-section-companies.css') layer(components);
+@import url('./pages/page-index/index-section-contact.css') layer(components);
+@import url('./pages/projects.css') layer(components);
 
 /* --- Utilities Layer --- */
 @import url('./utils/spacing.css') layer(utilities);
 @import url('./utils/typography.css') layer(utilities);
 @import url('./utils/flexbox.css') layer(utilities);
-@import url('./utils/layout.css') layer(utilities);
 @import url('./utils/media-queries.css') layer(utilities);
 @import url('./utils/mixins.css') layer(utilities);
-
-/* --- Debug Layer --- */
-@import url('./debug/vertical-rhythm.css') layer(debug);
-@import url('./debug/debug.css') layer(debug);
