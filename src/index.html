@@ -133,27 +133,27 @@
         <!-- Font optimization -->
     <!-- Local fonts are used - no external font loading required -->
 
-    <!-- Preload critical font files for better performance -->
+    <!-- Preload critical font files for Core Web Vitals optimization -->
     <link
       rel="preload"
       href="https://fonts.gstatic.com/s/gentiumplus/v6/Iura6YBj_oCad4hzLCCbvw.woff2"
       as="font"
       type="font/woff2"
-      crossorigin
+      crossorigin="anonymous"
     />
     <link
       rel="preload"
       href="https://fonts.gstatic.com/s/laila/v13/LYjMdG_8nE8jDIRdiidIrEIu.woff2"
       as="font"
       type="font/woff2"
-      crossorigin
+      crossorigin="anonymous"
     />
     <link
       rel="preload"
       href="https://fonts.gstatic.com/s/ptsans/v17/jizaRExUiTo99u79D0KExcOPIDU.woff2"
       as="font"
       type="font/woff2"
-      crossorigin
+      crossorigin="anonymous"
     />
 
     <!-- Preload Google Fonts CSS for better performance -->
@@ -177,6 +177,18 @@
       media="print"
       onload="this.media='all'"
     />
+
+    <!-- Critical CSS for Core Web Vitals optimization -->
+    <style>
+      /* Critical above-the-fold styles for LCP optimization */
+      body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+      .hero-section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+      .hero-section h1 { font-size: clamp(2rem, 5vw, 4rem); margin: 0 0 1rem 0; }
+      .hero__tagline { font-size: clamp(1rem, 2.5vw, 1.5rem); max-width: 600px; margin: 0 auto 2rem; }
+      .logo-2d { width: 120px; height: 120px; position: relative; display: block; }
+      .skip-link { position: absolute; left: -9999px; }
+      .skip-link:focus { position: static; }
+    </style>
 
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="icon" type="image/x-icon" href="./assets/favicons/favicon.ico" />
@@ -257,7 +269,6 @@
                   src="./img/optimized/projects/autodesk-messaging/messaging-final.webp"
                   alt="Autodesk notification system interface showing unified messaging design for improved user communication"
                   class="project-thumbnail card__image"
-                  loading="lazy"
                 />
               </picture>
               <div class="card__content">
@@ -287,7 +298,6 @@
                   src="./img/optimized/mockuuups-ipad-pro-mockup-isometric-right.webp"
                   alt="Autodesk Fusion cross-platform interface design showing tablet and mobile layouts for enterprise software"
                   class="project-thumbnail card__image"
-                  loading="lazy"
                 />
               </picture>
               <div class="card__content">
@@ -434,6 +444,7 @@
                 src="./img/logos/logo--intel.svg"
                 alt="Intel"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -441,6 +452,7 @@
                 src="./img/logos/logo--daimler.svg"
                 alt="Daimler"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -448,6 +460,7 @@
                 src="./img/logos/logo--detroit-connect.svg"
                 alt="Detroit Connect"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -455,6 +468,7 @@
                 src="./img/logos/logo--lfc.svg"
                 alt="LFC"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -462,6 +476,7 @@
                 src="./img/logos/logo--sony.svg"
                 alt="Sony"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -469,6 +484,7 @@
                 src="./img/logos/logo--sony-pictures.svg"
                 alt="Sony Pictures"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -476,6 +492,7 @@
                 src="./img/logos/logo--unfi.svg"
                 alt="UNFI"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <!-- Duplicate set for seamless loop -->
@@ -484,6 +501,7 @@
                 src="./img/logos/logo--intel.svg"
                 alt="Intel"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -491,6 +509,7 @@
                 src="./img/logos/logo--daimler.svg"
                 alt="Daimler"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -498,6 +517,7 @@
                 src="./img/logos/logo--detroit-connect.svg"
                 alt="Detroit Connect"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -505,6 +525,7 @@
                 src="./img/logos/logo--lfc.svg"
                 alt="LFC"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -512,6 +533,7 @@
                 src="./img/logos/logo--sony.svg"
                 alt="Sony"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -519,6 +541,7 @@
                 src="./img/logos/logo--sony-pictures.svg"
                 alt="Sony Pictures"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
             <div class="company-logo card">
@@ -526,6 +549,7 @@
                 src="./img/logos/logo--unfi.svg"
                 alt="UNFI"
                 class="company-logo__image"
+                loading="lazy"
               />
             </div>
           </div>

@@ -300,32 +300,39 @@ document.addEventListener('keydown', function (event) {
 //   }
 // });
 
-// Register Service Worker for caching and offline support
+// Register Service Worker for Core Web Vitals optimization and offline support
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker
-      .register(new URL('./service-worker.js', import.meta.url))
-      .then(registration => {
-        // Service Worker registered successfully
+  // Register immediately for better caching performance
+  navigator.serviceWorker
+    .register(new URL('./service-worker.js', import.meta.url))
+    .then(registration => {
+      // Service Worker registered successfully for Core Web Vitals optimization
 
-        // Handle updates
-        registration.addEventListener('updatefound', () => {
-          const newWorker = registration.installing;
-          if (newWorker) {
-            newWorker.addEventListener('statechange', () => {
-              if (
-                newWorker.state === 'installed' &&
-                navigator.serviceWorker.controller
-              ) {
-                // New version available
-                // Optionally show user notification for update
-              }
-            });
-          }
-        });
-      })
-      .catch(_error => {
-        // Service Worker registration failed
+      // Handle updates for better performance
+      registration.addEventListener('updatefound', () => {
+        const newWorker = registration.installing;
+        if (newWorker) {
+          newWorker.addEventListener('statechange', () => {
+            if (
+              newWorker.state === 'installed' &&
+              navigator.serviceWorker.controller
+            ) {
+              // New version available - skip waiting for immediate activation
+              newWorker.postMessage({ type: 'SKIP_WAITING' });
+            }
+          });
+        }
       });
-  });
+
+      // Listen for controlling service worker changes
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        // Service worker updated - reload for better performance
+        if (navigator.serviceWorker.controller) {
+          window.location.reload();
+        }
+      });
+    })
+    .catch(_error => {
+      // Service Worker registration failed - continue without caching
+    });
 }

@@ -1,7 +1,21 @@
+/* Define layer order FIRST for optimal rendering performance */
+@layer reset, base, theme, layout, components, pages, utilities, debug;
+
+/* Layer order optimized for Core Web Vitals:
+ * 1. reset - Normalize browser defaults immediately
+ * 2. base - Foundation styles for layout stability
+ * 3. theme - Color and visual tokens
+ * 4. layout - Grid and positioning systems
+ * 5. components - Reusable UI components
+ * 6. pages - Page-specific overrides
+ * 7. utilities - Helper classes
+ * 8. debug - Development-only styles
+ */
+
 /* Global variables - imported first to be globally available */
 @import url('./variables.css');
 
-/* Import styles into their respective layers */
+/* Critical CSS layers for faster rendering - ordered by rendering priority */
 @import url('./base/reset.css') layer(reset);
 @import url('./base/global.css') layer(base);
 @import url('./base/typography.css') layer(base);
@@ -57,6 +71,3 @@ layer(pages);
 /* --- Debug Layer --- */
 @import url('./debug/vertical-rhythm.css') layer(debug);
 @import url('./debug/debug.css') layer(debug);
-
-/* Define layer order LAST - this confirms the order of layers established by imports */
-@layer reset, base, theme, layout, components, utilities;

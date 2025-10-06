@@ -8,18 +8,22 @@ const STATIC_CACHE = 'portfolio-static-v1.0.0';
 const IMAGE_CACHE = 'portfolio-images-v1.0.0';
 const FONT_CACHE = 'portfolio-fonts-v1.0.0';
 
-// Assets to cache immediately on install
+// Critical assets to cache immediately on install for Core Web Vitals optimization
 const STATIC_ASSETS = [
   '/',
   '/index.html',
-  '/work.html',
-  '/contact.html',
   '/css/main.css',
   '/js/main.js',
   '/js/enhanced-image-loader.js',
   '/js/analytics/simple-analytics.js',
   '/assets/favicons/favicon.ico',
   '/assets/favicons/apple-icon.png',
+  // Critical fonts for LCP optimization
+  'https://fonts.gstatic.com/s/gentiumplus/v6/Iura6YBj_oCad4hzLCCbvw.woff2',
+  'https://fonts.gstatic.com/s/laila/v13/LYjMdG_8nE8jDIRdiidIrEIu.woff2',
+  'https://fonts.gstatic.com/s/ptsans/v17/jizaRExUiTo99u79D0KExcOPIDU.woff2',
+  // Critical LCP image
+  '/img/optimized/jason-profile-pic-square.webp',
 ];
 
 self.addEventListener('install', event => {

@@ -86,31 +86,31 @@
       onload="this.media='all'"
     />
 
-    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="/src/css/main.css" />
     <link
       rel="icon"
       type="image/x-icon"
-      href="../assets/favicons/favicon.ico"
+      href="/src/assets/favicons/favicon.ico"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="../assets/favicons/favicon-16x16.png"
+      href="/src/assets/favicons/favicon-16x16.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="../assets/favicons/favicon-32x32.png"
+      href="/src/assets/favicons/favicon-32x32.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="96x96"
-      href="../assets/favicons/favicon-96x96.png"
+      href="/src/assets/favicons/favicon-96x96.png"
     />
-    <link rel="apple-touch-icon" href="../assets/favicons/apple-icon.png" />
+    <link rel="apple-touch-icon" href="/src/assets/favicons/apple-icon.png" />
   </head>
   <body class="project lfc-intel">
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -910,13 +910,13 @@
     <!-- Image Lightbox Component -->
     <image-lightbox></image-lightbox>
 
-    <script type="module" src="../js/main.js?v=1"></script>
+    <script type="module" src="/src/js/main.js?v=1"></script>
 
     <!-- Password Protection and Performance Optimization -->
     <script type="module">
-      import { protectCaseStudy } from "../js/password-protection-init.js";
+      import { protectCaseStudy } from "/src/js/auth/password-protection-init.js";
 
-      import analytics from "../js/analytics/simple-analytics.js";
+      import analytics from "/src/js/analytics/simple-analytics.js";
 
       protectCaseStudy("project-intel-lfc");
 
@@ -927,6 +927,8 @@
       });
     </script>
 
+    <!-- Feather Icons CDN -->
+    <script src="https://unpkg.com/feather-icons"></script>
     <!-- Initialize Feather Icons -->
     <script>
       feather.replace();
