@@ -42,7 +42,7 @@ h6 {
   text-wrap: balance;
   letter-spacing: var(--heading-kerning, var(--kerning));
   overflow-wrap: anywhere;
-  font-feature-settings: "cpsp" on;
+  font-feature-settings: 'cpsp' on;
 }
 
 h1 {
@@ -56,7 +56,6 @@ h2 {
 
 h3 {
   font-size: var(--text-size-heading-3);
-
 }
 
 h4 {
@@ -142,7 +141,8 @@ blockquote {
 blockquote p {
   position: relative;
   z-index: 1;
-} */
+}
+*/
 
 cite {
   display: block;

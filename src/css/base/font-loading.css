@@ -29,15 +29,19 @@
 .fonts-loading {
   /* Use fallback fonts while loading */
   --font-family-heading: 'Laila Fallback', 'Times New Roman', 'Georgia', serif;
-  --font-family-body: 'Gentium Plus Fallback', 'Times New Roman', 'Georgia', serif;
-  --font-family-sans: 'PT Sans Fallback', -apple-system, blinkmacsystemfont, 'Segoe UI', sans-serif;
+  --font-family-body:
+    'Gentium Plus Fallback', 'Times New Roman', 'Georgia', serif;
+  --font-family-sans:
+    'PT Sans Fallback', -apple-system, blinkmacsystemfont, 'Segoe UI',
+    sans-serif;
 }
 
 .fonts-loaded {
   /* Use web fonts once loaded */
   --font-family-heading: 'Laila', 'Times New Roman', 'Georgia', serif;
   --font-family-body: 'Gentium Plus', 'Times New Roman', 'Georgia', serif;
-  --font-family-sans: 'PT Sans', -apple-system, blinkmacsystemfont, 'Segoe UI', sans-serif;
+  --font-family-sans:
+    'PT Sans', -apple-system, blinkmacsystemfont, 'Segoe UI', sans-serif;
 }
 
 /* Prevent layout shift during font loading */
@@ -48,7 +52,6 @@ body {
 
 /* Critical font loading optimization */
 @supports (font-display: swap) {
-
   /* Modern browsers with font-display support */
   .fonts-loading * {
     font-display: swap;
@@ -74,7 +77,6 @@ body {
 
 /* Preload hint for critical fonts */
 @media (prefers-reduced-motion: no-preference) {
-
   /* Only preload fonts if user doesn't prefer reduced motion */
   :root {
     --preload-fonts: true;
@@ -83,7 +85,6 @@ body {
 
 /* Font loading performance monitoring */
 @supports (font-display: optional) {
-
   /* Use optional for non-critical fonts to prevent layout shift */
   .company-logo,
   .quote__author,
@@ -94,11 +95,12 @@ body {
 
 /* Responsive font loading strategy */
 @media (width <=768px) {
-
   /* On mobile, prioritize performance over custom fonts */
   .fonts-loading {
-    --font-family-heading: -apple-system, blinkmacsystemfont, 'Segoe UI', sans-serif;
-    --font-family-body: -apple-system, blinkmacsystemfont, 'Segoe UI', sans-serif;
+    --font-family-heading:
+      -apple-system, blinkmacsystemfont, 'Segoe UI', sans-serif;
+    --font-family-body:
+      -apple-system, blinkmacsystemfont, 'Segoe UI', sans-serif;
   }
 }
 
@@ -106,8 +108,10 @@ body {
 @media (prefers-contrast: high) {
   body {
     /* Use system fonts for better readability in high contrast */
-    --font-family-body: -apple-system, blinkmacsystemfont, 'Segoe UI', sans-serif;
-    --font-family-heading: -apple-system, blinkmacsystemfont, 'Segoe UI', sans-serif;
+    --font-family-body:
+      -apple-system, blinkmacsystemfont, 'Segoe UI', sans-serif;
+    --font-family-heading:
+      -apple-system, blinkmacsystemfont, 'Segoe UI', sans-serif;
   }
 }
 

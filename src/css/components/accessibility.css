@@ -72,10 +72,12 @@ select:focus {
 .card__link:focus {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
-  box-shadow: 0 0 0 4px rgb(37 105 237 / 10%), 0 8px 25px rgb(0 0 0 / 15%);
+  box-shadow:
+    0 0 0 4px rgb(37 105 237 / 10%),
+    0 8px 25px rgb(0 0 0 / 15%);
 }
 
-/* Reduced motion preferences */
+/* Reduced motion preferences - Enhanced browser support */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -84,6 +86,48 @@ select:focus {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Fallback for older browsers that don't support prefers-reduced-motion */
+@media (update: slow) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Additional reduced motion support for specific browser quirks */
+@media (prefers-reduced-motion: reduce), (update: slow) {
+  /* Disable parallax and transform animations */
+  .logo-2d,
+  .logo-2d__square,
+  .logo-2d__circle,
+  .logo-2d__triangle {
+    transform: none !important;
+    animation: none !important;
+  }
+
+  /* Disable carousel animations */
+  .companies-carousel__track {
+    animation: none !important;
+  }
+
+  /* Simplify hover effects */
+  .card:hover,
+  .button:hover,
+  a:hover {
+    transform: none !important;
+  }
+
+  /* Disable loading animations */
+  img.loading {
+    background: #f0f0f0 !important;
+    animation: none !important;
   }
 }
 
@@ -110,13 +154,21 @@ select:focus {
 /* Touch target sizes - ensure minimum 44px touch targets */
 @media (pointer: coarse) {
   button,
-  input[type="button"],
-  input[type="submit"],
-  input[type="reset"],
+  input[type='button'],
+  input[type='submit'],
+  input[type='reset'],
   .card__link,
+  .card--link,
   nav a,
   .logo a,
-  .tag {
+  .tag,
+  .skip-link,
+  .project-navigation a,
+  .hero--project__meta span,
+  .quote__author,
+  .company-logo,
+  .phase__badge,
+  .bullet-point__icon {
     min-width: var(--touch-target-min);
     min-height: var(--touch-target-min);
   }
@@ -124,6 +176,44 @@ select:focus {
   .tag {
     padding: var(--space-xs) var(--space-s);
   }
+
+  /* Ensure card links have adequate touch targets */
+  .card--link {
+    padding: var(--space-xs);
+  }
+
+  /* Ensure navigation items have adequate spacing */
+  nav a {
+    padding: var(--space-xs) var(--space-s);
+  }
+
+  /* Ensure interactive icons have adequate touch targets */
+  .bullet-point__icon,
+  .problem-card__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--touch-target-min);
+    min-height: var(--touch-target-min);
+  }
+}
+
+/* Enhanced touch targets for all devices (not just coarse pointers) */
+button,
+input[type='button'],
+input[type='submit'],
+input[type='reset'],
+.button,
+.card--link,
+.skip-link {
+  min-height: var(--touch-target-min);
+}
+
+/* Ensure form inputs have adequate touch targets */
+input,
+textarea,
+select {
+  min-height: var(--touch-target-min);
 }
 
 /* Keyboard navigation enhancement */
@@ -148,7 +238,8 @@ input:invalid:focus,
 textarea:invalid:focus,
 select:invalid:focus {
   outline-color: var(--color-error, #dc2626);
-  box-shadow: 0 0 0 2px rgb(220 38 38 / 10%),
+  box-shadow:
+    0 0 0 2px rgb(220 38 38 / 10%),
     0 0 0 4px rgb(220 38 38 / 5%);
 }
 

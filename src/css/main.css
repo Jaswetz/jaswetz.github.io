@@ -39,9 +39,11 @@
 @import url('./pages/page-autodesk-di.css') layer(pages);
 @import url('./pages/page-daimler-dcd.css') layer(pages);
 @import url('./pages/page-index/index-section-quotes.css') layer(pages);
-@import url('./pages/page-index/index-section-featured-projects.css') layer(pages);
+@import url('./pages/page-index/index-section-featured-projects.css')
+layer(pages);
 @import url('./pages/page-index/index-section-about.css') layer(pages);
 @import url('./pages/page-index/index-section-companies.css') layer(pages);
+@import url('./pages/page-index/index-section-contact.css') layer(pages);
 @import url('./pages/projects.css') layer(pages);
 
 /* --- Utilities Layer --- */
@@ -50,10 +52,11 @@
 @import url('./utils/flexbox.css') layer(utilities);
 @import url('./utils/layout.css') layer(utilities);
 @import url('./utils/media-queries.css') layer(utilities);
+@import url('./utils/mixins.css') layer(utilities);
 
 /* --- Debug Layer --- */
 @import url('./debug/vertical-rhythm.css') layer(debug);
 @import url('./debug/debug.css') layer(debug);
 
 /* Define layer order LAST - this confirms the order of layers established by imports */
-@layer reset, base, theme, layout, components, pages, utilities, debug;
+@layer reset, base, theme, layout, components, utilities;

@@ -7,30 +7,30 @@
     -------------------------------------------------------------------------- */
 
 .icon {
-    display: inline-flex;
-    flex-shrink: 0;
-    align-items: center;
-    justify-content: center;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
 }
 
 .icon--sm {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .icon--md {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
 }
 
 .icon--lg {
-    width: 32px;
-    height: 32px;
+  width: 32px;
+  height: 32px;
 }
 
 .icon--xl {
-    width: 48px;
-    height: 48px;
+  width: 48px;
+  height: 48px;
 }
 
 /* --------------------------------------------------------------------------
@@ -38,26 +38,26 @@
     -------------------------------------------------------------------------- */
 
 .icon--background {
-    border-radius: var(--border-radius);
-    background-color: var(--color-neutral-100);
-    color: var(--color-primary);
+  border-radius: var(--border-radius);
+  background-color: var(--color-neutral-100);
+  color: var(--color-primary);
 }
 
 .icon--background-circle {
-    border-radius: 50%;
-    background-color: var(--color-neutral-100);
-    color: var(--color-primary);
+  border-radius: 50%;
+  background-color: var(--color-neutral-100);
+  color: var(--color-primary);
 }
 
 .icon--background-primary {
-    background-color: var(--color-primary);
-    color: #fff;
+  background-color: var(--color-primary);
+  color: #fff;
 }
 
 .icon--background-#fff {
-    background-color: #fff;
-    color: var(--color-primary);
-    box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+  background-color: #fff;
+  color: var(--color-primary);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
 }
 
 /* --------------------------------------------------------------------------
@@ -65,18 +65,18 @@
     -------------------------------------------------------------------------- */
 
 .icon--severity-high {
-    background-color: rgb(244 67 54 / 10%);
-    color: #f44336;
+  background-color: rgb(244 67 54 / 10%);
+  color: #f44336;
 }
 
 .icon--severity-medium {
-    background-color: rgb(33 150 243 / 10%);
-    color: #2196f3;
+  background-color: rgb(33 150 243 / 10%);
+  color: #2196f3;
 }
 
 .icon--severity-low {
-    background-color: rgb(139 195 74 / 10%);
-    color: #8bc34a;
+  background-color: rgb(139 195 74 / 10%);
+  color: #8bc34a;
 }
 
 /* --------------------------------------------------------------------------
@@ -84,20 +84,20 @@
     -------------------------------------------------------------------------- */
 
 .icon svg {
-    width: 100%;
-    height: 100%;
-    stroke: currentcolor;
-    fill: none;
+  width: 100%;
+  height: 100%;
+  stroke: currentcolor;
+  fill: none;
 }
 
 .icon--stroke-thin svg {
-    stroke-width: 1.5;
+  stroke-width: 1.5;
 }
 
 .icon--stroke-normal svg {
-    stroke-width: 2;
+  stroke-width: 2;
 }
 
 .icon--stroke-bold svg {
-    stroke-width: 2.5;
+  stroke-width: 2.5;
 }

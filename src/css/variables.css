@@ -26,17 +26,19 @@
   --color-warning: #ffc107;
 
   /* Example Yellow */
-  --color-info: #E8EDF5;
+  --color-info: #e8edf5;
 
   /* Example Teal */
 
   --color-text: #333;
   --color-text-light: #555;
   --color-background: #f7f3eb;
-  --color-border: #d0dff4; /* Fallback for older browsers */
+  --color-border: #d0dff4;
+
+  /* Fallback for older browsers */
 
   @supports (color: oklch(0% 0 0)) {
-    --color-border: oklch(90% .032 255.585deg);
+    --color-border: oklch(90% 0.032 255.585deg);
   }
 
   --color-text-subtle: #555;
@@ -44,11 +46,16 @@
   /* ==========================================================================
      TYPOGRAPHY
      ========================================================================== */
-  --font-family-heading: "Laila", "Times New Roman", "Georgia", "Baskerville", serif;
-  --font-family-body: "Gentium Plus", "Times New Roman", "Georgia", "Baskerville", serif;
-  --font-family-sans: "PT Sans", -apple-system, blinkmacsystemfont, "Segoe UI", "Helvetica Neue", arial, sans-serif;
-  --font-family-monospace: sfmono-regular, menlo, monaco, consolas,
-    "Liberation Mono", "Courier New", monospace;
+  --font-family-heading:
+    'Laila', 'Times New Roman', 'Georgia', 'Baskerville', serif;
+  --font-family-body:
+    'Gentium Plus', 'Times New Roman', 'Georgia', 'Baskerville', serif;
+  --font-family-sans:
+    'PT Sans', -apple-system, blinkmacsystemfont, 'Segoe UI', 'Helvetica Neue',
+    arial, sans-serif;
+  --font-family-monospace:
+    sfmono-regular, menlo, monaco, consolas, 'Liberation Mono', 'Courier New',
+    monospace;
   --heading-font-weight: var(--font-weight-semibold);
 
   /* Font Weights */
@@ -212,12 +219,11 @@
   --hover-transform-small: translateY(-1px);
   --hover-scale: 1.02;
   --hover-scale-large: 1.05;
-  --hover-shadow: 0 4px 12px rgb(37 105 237 / 30%),
-    0 0 0 1px rgb(37 105 237 / 10%);
-  --hover-shadow-large: 0 8px 25px rgb(0 0 0 / 15%),
-    0 0 0 1px rgb(37 105 237 / 10%);
+  --hover-shadow:
+    0 4px 12px rgb(37 105 237 / 30%), 0 0 0 1px rgb(37 105 237 / 10%);
+  --hover-shadow-large:
+    0 8px 25px rgb(0 0 0 / 15%), 0 0 0 1px rgb(37 105 237 / 10%);
   --hover-shadow-small: 0 2px 8px rgb(37 105 237 / 30%);
-
 
   /* Focus States */
   --focus-outline: 2px solid var(--color-primary);
@@ -229,23 +235,29 @@
   --active-transform: translateY(0) scale(0.98);
   --active-transform-card: translateY(-4px) scale(1.01);
   --active-scale: 0.95;
-  --active-shadow: 0 2px 6px rgb(37 105 237 / 40%),
-    0 0 0 1px rgb(37 105 237 / 20%);
+  --active-shadow:
+    0 2px 6px rgb(37 105 237 / 40%), 0 0 0 1px rgb(37 105 237 / 20%);
 
   /* Disabled States */
   --disabled-opacity: 0.6;
   --disabled-cursor: not-allowed;
 
   /* Gradient Overlays */
-  --overlay-gradient-light: linear-gradient(135deg,
-      rgb(255 255 255 / 10%),
-      rgb(255 255 255 / 5%));
-  --overlay-gradient-primary: linear-gradient(135deg,
-      rgb(37 105 237 / 5%),
-      rgb(23 70 160 / 10%));
-  --overlay-gradient-enhanced: linear-gradient(135deg,
-      rgb(255 255 255 / 20%),
-      rgb(255 255 255 / 10%));
+  --overlay-gradient-light: linear-gradient(
+    135deg,
+    rgb(255 255 255 / 10%),
+    rgb(255 255 255 / 5%)
+  );
+  --overlay-gradient-primary: linear-gradient(
+    135deg,
+    rgb(37 105 237 / 5%),
+    rgb(23 70 160 / 10%)
+  );
+  --overlay-gradient-enhanced: linear-gradient(
+    135deg,
+    rgb(255 255 255 / 20%),
+    rgb(255 255 255 / 10%)
+  );
 
   /* Touch Targets */
   --touch-target-min: 44px;

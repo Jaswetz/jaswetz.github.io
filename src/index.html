@@ -100,21 +100,7 @@
       }
     </script>
 
-    <!-- Content Security Policy for enhanced security -->
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="
-      default-src 'self';
-      script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms;
-      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-      font-src 'self' https://fonts.gstatic.com;
-      img-src 'self' data: https:;
-      connect-src 'self' https://www.google-analytics.com https://www.clarity.ms;
-      object-src 'none';
-      base-uri 'self';
-      form-action 'self';
-    "
-    />
+    <!-- Content Security Policy configured in public/_headers file -->
 
     <!-- Google Analytics 4 - Only load in production -->
     <script>
@@ -139,15 +125,13 @@
     <!-- Microsoft Clarity for heatmaps and session recordings -->
     <!-- Scripts are loaded via main.js module -->
 
-    
+
 
     <!-- Fallback for browsers that don't support preload -->
-    
+
 
         <!-- Font optimization -->
-    <!-- Preconnect to Google Fonts for faster loading -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Local fonts are used - no external font loading required -->
 
     <!-- Preload critical font files for better performance -->
     <link

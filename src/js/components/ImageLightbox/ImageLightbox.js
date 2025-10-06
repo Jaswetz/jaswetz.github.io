@@ -17,7 +17,7 @@
 class ImageLightbox extends HTMLElement {
   constructor() {
     super();
-    this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: 'open' });
 
     // State management
     this.isOpen = false;
@@ -45,17 +45,17 @@ class ImageLightbox extends HTMLElement {
     this.addLightboxHint();
 
     // Add resize listener for responsive behavior
-    window.addEventListener("resize", this.handleResize);
+    window.addEventListener('resize', this.handleResize);
   }
 
   disconnectedCallback() {
     // Clean up event listeners
-    window.removeEventListener("resize", this.handleResize);
+    window.removeEventListener('resize', this.handleResize);
     this.removeImageListeners();
 
     // Remove global listeners if lightbox is open
     if (this.isOpen) {
-      document.removeEventListener("keydown", this.handleKeydown);
+      document.removeEventListener('keydown', this.handleKeydown);
     }
   }
 
@@ -322,17 +322,17 @@ class ImageLightbox extends HTMLElement {
           <button class="lightbox__close" type="button" aria-label="Close lightbox (Escape key)">
             ✕
           </button>
-          
+
           <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Previous image (Left arrow key)">
             ‹
           </button>
-          
+
           <img class="lightbox__image" alt="Lightbox image placeholder" role="img" />
-          
+
           <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Next image (Right arrow key)">
             ›
           </button>
-          
+
           <p class="lightbox__caption" id="lightbox-caption"></p>
           <div class="lightbox__instructions" id="lightbox-instructions" aria-live="polite" aria-atomic="true">
             Use arrow keys to navigate between images, or Escape to close.
@@ -342,36 +342,36 @@ class ImageLightbox extends HTMLElement {
     `;
 
     // Get DOM references
-    this.lightboxEl = this.shadowRoot.querySelector(".lightbox");
-    this.containerEl = this.shadowRoot.querySelector(".lightbox__container");
+    this.lightboxEl = this.shadowRoot.querySelector('.lightbox');
+    this.containerEl = this.shadowRoot.querySelector('.lightbox__container');
     this.imageEl = /** @type {HTMLImageElement} */ (
-      this.shadowRoot.querySelector(".lightbox__image")
+      this.shadowRoot.querySelector('.lightbox__image')
     );
-    this.captionEl = this.shadowRoot.querySelector(".lightbox__caption");
+    this.captionEl = this.shadowRoot.querySelector('.lightbox__caption');
     this.instructionsEl = this.shadowRoot.querySelector(
-      ".lightbox__instructions"
+      '.lightbox__instructions'
     );
     this.closeBtn = /** @type {HTMLButtonElement} */ (
-      this.shadowRoot.querySelector(".lightbox__close")
+      this.shadowRoot.querySelector('.lightbox__close')
     );
     this.prevBtn = /** @type {HTMLButtonElement} */ (
-      this.shadowRoot.querySelector(".lightbox__nav--prev")
+      this.shadowRoot.querySelector('.lightbox__nav--prev')
     );
     this.nextBtn = /** @type {HTMLButtonElement} */ (
-      this.shadowRoot.querySelector(".lightbox__nav--next")
+      this.shadowRoot.querySelector('.lightbox__nav--next')
     );
 
     // Add event listeners
-    this.lightboxEl.addEventListener("click", this.handleBackdropClick);
-    this.closeBtn.addEventListener("click", () => this.close());
-    this.prevBtn.addEventListener("click", () => this.showPrevious());
-    this.nextBtn.addEventListener("click", () => this.showNext());
+    this.lightboxEl.addEventListener('click', this.handleBackdropClick);
+    this.closeBtn.addEventListener('click', () => this.close());
+    this.prevBtn.addEventListener('click', () => this.showPrevious());
+    this.nextBtn.addEventListener('click', () => this.showNext());
 
     // Touch events for mobile gestures
-    this.containerEl.addEventListener("touchstart", this.handleTouchStart, {
+    this.containerEl.addEventListener('touchstart', this.handleTouchStart, {
       passive: false,
     });
-    this.containerEl.addEventListener("touchend", this.handleTouchEnd, {
+    this.containerEl.addEventListener('touchend', this.handleTouchEnd, {
       passive: false,
     });
   }
@@ -381,19 +381,21 @@ class ImageLightbox extends HTMLElement {
    */
   addLightboxHint() {
     // Check if hint element already exists
-    if (document.getElementById("lightbox-hint")) {return;}
+    if (document.getElementById('lightbox-hint')) {
+      return;
+    }
 
-    const hint = document.createElement("div");
-    hint.id = "lightbox-hint";
-    hint.style.position = "absolute";
-    hint.style.left = "-10000px";
-    hint.style.width = "1px";
-    hint.style.height = "1px";
-    hint.style.overflow = "hidden";
-    hint.style.clip = "rect(0, 0, 0, 0)";
-    hint.style.clipPath = "inset(50%)";
-    hint.style.whiteSpace = "nowrap";
-    hint.textContent = "Click or press Enter to view in lightbox";
+    const hint = document.createElement('div');
+    hint.id = 'lightbox-hint';
+    hint.style.position = 'absolute';
+    hint.style.left = '-10000px';
+    hint.style.width = '1px';
+    hint.style.height = '1px';
+    hint.style.overflow = 'hidden';
+    hint.style.clip = 'rect(0, 0, 0, 0)';
+    hint.style.clipPath = 'inset(50%)';
+    hint.style.whiteSpace = 'nowrap';
+    hint.textContent = 'Click or press Enter to view in lightbox';
 
     document.body.appendChild(hint);
   }
@@ -404,42 +406,42 @@ class ImageLightbox extends HTMLElement {
   initializeImageListeners() {
     // Find all images in figures that should be lightboxed
     const figures = document.querySelectorAll(
-      "figure img.project__img, figure img.project-summary__image"
+      'figure img.project__img, figure img.project-summary__image'
     );
 
     figures.forEach((_img, index) => {
       const img = /** @type {HTMLImageElement} */ (_img);
       // Store image data
-      const figure = img.closest("figure");
-      const caption = figure ? figure.querySelector("figcaption") : null;
+      const figure = img.closest('figure');
+      const caption = figure ? figure.querySelector('figcaption') : null;
 
       this.images.push({
         src: img.src,
         alt: img.alt,
-        caption: caption ? caption.textContent.trim() : "",
+        caption: caption ? caption.textContent.trim() : '',
         originalElement: img,
       });
 
       // Add click listener
-      img.addEventListener("click", (e) => this.handleImageClick(e, index));
+      img.addEventListener('click', e => this.handleImageClick(e, index));
 
       // Add visual indicator that image is clickable
-      img.style.cursor = "pointer";
-      img.setAttribute("role", "button");
-      img.setAttribute("tabindex", "0");
+      img.style.cursor = 'pointer';
+      img.setAttribute('role', 'button');
+      img.setAttribute('tabindex', '0');
       img.setAttribute(
-        "aria-label",
-        `View larger image: ${img.alt || "Unlabeled image"}`
+        'aria-label',
+        `View larger image: ${img.alt || 'Unlabeled image'}`
       );
-      img.setAttribute("aria-describedby", "lightbox-hint");
+      img.setAttribute('aria-describedby', 'lightbox-hint');
 
       // Add keyboard support for image activation
-      img.addEventListener("keydown", (e) => {
+      img.addEventListener('keydown', e => {
         const keyEvent = /** @type {KeyboardEvent} */ (e);
         if (
-          keyEvent.key === "Enter" ||
-          keyEvent.key === " " ||
-          keyEvent.key === "Space"
+          keyEvent.key === 'Enter' ||
+          keyEvent.key === ' ' ||
+          keyEvent.key === 'Space'
         ) {
           e.preventDefault();
           this.handleImageClick(e, index);
@@ -452,20 +454,20 @@ class ImageLightbox extends HTMLElement {
    * Remove all image click listeners
    */
   removeImageListeners() {
-    this.images.forEach((imageData) => {
+    this.images.forEach(imageData => {
       if (imageData.originalElement) {
         imageData.originalElement.removeEventListener(
-          "click",
+          'click',
           this.handleImageClick
         );
         imageData.originalElement.removeEventListener(
-          "keydown",
+          'keydown',
           this.handleImageClick
         );
-        imageData.originalElement.style.cursor = "";
-        imageData.originalElement.removeAttribute("role");
-        imageData.originalElement.removeAttribute("tabindex");
-        imageData.originalElement.removeAttribute("aria-label");
+        imageData.originalElement.style.cursor = '';
+        imageData.originalElement.removeAttribute('role');
+        imageData.originalElement.removeAttribute('tabindex');
+        imageData.originalElement.removeAttribute('aria-label');
       }
     });
   }
@@ -491,26 +493,28 @@ class ImageLightbox extends HTMLElement {
    * Handle keyboard navigation
    */
   handleKeydown(event) {
-    if (!this.isOpen) {return;}
+    if (!this.isOpen) {
+      return;
+    }
 
     switch (event.key) {
-      case "Escape":
+      case 'Escape':
         event.preventDefault();
         this.close();
         break;
-      case "ArrowLeft":
+      case 'ArrowLeft':
         event.preventDefault();
         this.showPrevious();
         break;
-      case "ArrowRight":
+      case 'ArrowRight':
         event.preventDefault();
         this.showNext();
         break;
-      case "Tab":
+      case 'Tab':
         // Trap focus within the lightbox
         this.trapFocus(event);
         break;
-      case "Home":
+      case 'Home':
         event.preventDefault();
         if (this.images.length > 0) {
           this.loadImage(0);
@@ -521,7 +525,7 @@ class ImageLightbox extends HTMLElement {
           );
         }
         break;
-      case "End":
+      case 'End':
         event.preventDefault();
         if (this.images.length > 0) {
           const lastIndex = this.images.length - 1;
@@ -541,7 +545,7 @@ class ImageLightbox extends HTMLElement {
    */
   trapFocus(event) {
     const focusableElements = this.shadowRoot.querySelectorAll(
-      "button:not([disabled]), [tabindex]:not([tabindex=\"-1\"])"
+      'button:not([disabled]), [tabindex]:not([tabindex="-1"])'
     );
     const firstFocusable = /** @type {HTMLElement} */ (focusableElements[0]);
     const lastFocusable = /** @type {HTMLElement} */ (
@@ -569,7 +573,9 @@ class ImageLightbox extends HTMLElement {
    * Handle touch end for mobile gestures
    */
   handleTouchEnd(event) {
-    if (!this.touchStartX || !this.touchStartY) {return;}
+    if (!this.touchStartX || !this.touchStartY) {
+      return;
+    }
 
     const touchEndX = event.changedTouches[0].clientX;
     const touchEndY = event.changedTouches[0].clientY;
@@ -606,7 +612,9 @@ class ImageLightbox extends HTMLElement {
    * Open the lightbox with a specific image
    */
   open(imageIndex = 0) {
-    if (this.images.length === 0) {return;}
+    if (this.images.length === 0) {
+      return;
+    }
 
     this.currentImageIndex = Math.max(
       0,
@@ -618,11 +626,11 @@ class ImageLightbox extends HTMLElement {
     this.originalFocusElement = document.activeElement;
 
     // Prevent body scroll
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = 'hidden';
 
     // Show lightbox
-    this.lightboxEl.classList.add("lightbox--open");
-    this.lightboxEl.setAttribute("aria-hidden", "false");
+    this.lightboxEl.classList.add('lightbox--open');
+    this.lightboxEl.setAttribute('aria-hidden', 'false');
 
     // Load and display the image
     this.loadImage(this.currentImageIndex);
@@ -631,7 +639,7 @@ class ImageLightbox extends HTMLElement {
     this.updateNavigation();
 
     // Add keyboard listener
-    document.addEventListener("keydown", this.handleKeydown);
+    document.addEventListener('keydown', this.handleKeydown);
 
     // Focus management - focus the close button
     setTimeout(() => {
@@ -648,9 +656,9 @@ class ImageLightbox extends HTMLElement {
       announcement += `. Image caption: ${currentImage.caption}`;
     }
     if (totalImages > 1) {
-      announcement += ". Use arrow keys to navigate between images.";
+      announcement += '. Use arrow keys to navigate between images.';
     }
-    announcement += " Press Escape to close.";
+    announcement += ' Press Escape to close.';
 
     this.announceToScreenReader(announcement);
   }
@@ -659,19 +667,21 @@ class ImageLightbox extends HTMLElement {
    * Close the lightbox
    */
   close() {
-    if (!this.isOpen) {return;}
+    if (!this.isOpen) {
+      return;
+    }
 
     this.isOpen = false;
 
     // Restore body scroll
-    document.body.style.overflow = "";
+    document.body.style.overflow = '';
 
     // Hide lightbox
-    this.lightboxEl.classList.remove("lightbox--open");
-    this.lightboxEl.setAttribute("aria-hidden", "true");
+    this.lightboxEl.classList.remove('lightbox--open');
+    this.lightboxEl.setAttribute('aria-hidden', 'true');
 
     // Remove keyboard listener
-    document.removeEventListener("keydown", this.handleKeydown);
+    document.removeEventListener('keydown', this.handleKeydown);
 
     // Restore focus
     if (this.originalFocusElement) {
@@ -680,14 +690,16 @@ class ImageLightbox extends HTMLElement {
     }
 
     // Announce to screen readers
-    this.announceToScreenReader("Lightbox closed.");
+    this.announceToScreenReader('Lightbox closed.');
   }
 
   /**
    * Show the previous image
    */
   showPrevious() {
-    if (this.images.length <= 1) {return;}
+    if (this.images.length <= 1) {
+      return;
+    }
 
     const newIndex =
       this.currentImageIndex > 0
@@ -713,7 +725,9 @@ class ImageLightbox extends HTMLElement {
    * Show the next image
    */
   showNext() {
-    if (this.images.length <= 1) {return;}
+    if (this.images.length <= 1) {
+      return;
+    }
 
     const newIndex =
       this.currentImageIndex < this.images.length - 1
@@ -739,12 +753,14 @@ class ImageLightbox extends HTMLElement {
    * Load an image by index
    */
   loadImage(index) {
-    if (!this.images[index]) {return;}
+    if (!this.images[index]) {
+      return;
+    }
 
     const imageData = this.images[index];
 
     // Add loading state
-    this.imageEl.classList.add("lightbox__image--loading");
+    this.imageEl.classList.add('lightbox__image--loading');
 
     // Create a new image to preload and check if it loads successfully
     const tempImage = new Image();
@@ -754,11 +770,11 @@ class ImageLightbox extends HTMLElement {
       this.imageEl.src = imageData.src;
       this.imageEl.alt =
         imageData.alt || `Image ${index + 1} of ${this.images.length}`;
-      this.imageEl.classList.remove("lightbox__image--loading");
+      this.imageEl.classList.remove('lightbox__image--loading');
 
       // Update ARIA label for better context
       this.imageEl.setAttribute(
-        "aria-label",
+        'aria-label',
         imageData.alt
           ? `${imageData.alt}. Image ${index + 1} of ${this.images.length}`
           : `Image ${index + 1} of ${this.images.length}`
@@ -770,20 +786,20 @@ class ImageLightbox extends HTMLElement {
       // Still set the src and remove loading state to show broken image
       this.imageEl.src = imageData.src;
       this.imageEl.alt = imageData.alt;
-      this.imageEl.classList.remove("lightbox__image--loading");
+      this.imageEl.classList.remove('lightbox__image--loading');
 
       // Update ARIA label for error state
       this.imageEl.setAttribute(
-        "aria-label",
+        'aria-label',
         `Failed to load image ${index + 1} of ${this.images.length}${
-          imageData.alt ? `: ${imageData.alt}` : ""
+          imageData.alt ? `: ${imageData.alt}` : ''
         }`
       );
 
       // Announce error to screen readers
       this.announceToScreenReader(
         `Error loading image ${index + 1}. ${
-          imageData.alt || "No description available"
+          imageData.alt || 'No description available'
         }.`
       );
     };
@@ -803,11 +819,11 @@ class ImageLightbox extends HTMLElement {
 
     // Show/hide navigation buttons based on image count
     if (hasMultipleImages) {
-      this.prevBtn.classList.remove("lightbox__nav--single");
-      this.nextBtn.classList.remove("lightbox__nav--single");
+      this.prevBtn.classList.remove('lightbox__nav--single');
+      this.nextBtn.classList.remove('lightbox__nav--single');
     } else {
-      this.prevBtn.classList.add("lightbox__nav--single");
-      this.nextBtn.classList.add("lightbox__nav--single");
+      this.prevBtn.classList.add('lightbox__nav--single');
+      this.nextBtn.classList.add('lightbox__nav--single');
     }
 
     // Update button states (for future implementation of linear navigation)
@@ -820,19 +836,19 @@ class ImageLightbox extends HTMLElement {
    * @param {string} message - The message to announce
    * @param {string} priority - The aria-live priority ('polite' or 'assertive')
    */
-  announceToScreenReader(message, priority = "polite") {
+  announceToScreenReader(message, priority = 'polite') {
     // Create a temporary element for screen reader announcements
-    const announcement = document.createElement("div");
-    announcement.setAttribute("aria-live", priority);
-    announcement.setAttribute("aria-atomic", "true");
-    announcement.style.position = "absolute";
-    announcement.style.left = "-10000px";
-    announcement.style.width = "1px";
-    announcement.style.height = "1px";
-    announcement.style.overflow = "hidden";
-    announcement.style.clip = "rect(0, 0, 0, 0)";
-    announcement.style.clipPath = "inset(50%)";
-    announcement.style.whiteSpace = "nowrap";
+    const announcement = document.createElement('div');
+    announcement.setAttribute('aria-live', priority);
+    announcement.setAttribute('aria-atomic', 'true');
+    announcement.style.position = 'absolute';
+    announcement.style.left = '-10000px';
+    announcement.style.width = '1px';
+    announcement.style.height = '1px';
+    announcement.style.overflow = 'hidden';
+    announcement.style.clip = 'rect(0, 0, 0, 0)';
+    announcement.style.clipPath = 'inset(50%)';
+    announcement.style.whiteSpace = 'nowrap';
 
     document.body.appendChild(announcement);
 
@@ -850,7 +866,5 @@ class ImageLightbox extends HTMLElement {
   }
 }
 
-// Register the custom element
-customElements.define("image-lightbox", ImageLightbox);
-
+// Export the component class (registration handled by lazy loader)
 export default ImageLightbox;

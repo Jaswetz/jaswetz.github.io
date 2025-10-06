@@ -18,8 +18,8 @@
     "stylelint": "stylelint 'src/css/**/*.css' --cache false --allow-empty-input",
     "stylelint:fix": "stylelint 'src/css/**/*.css' --fix --cache false --allow-empty-input",
     "serve": "parcel serve src/index.html --port 8080",
-    "test:bundle-size": "bundlesize",
-    "test:accessibility:local": "npx axe http://localhost:8080 --exit",
+    "test:bundle-size": "node scripts/check-bundle-size.js",
+    "test:accessibility:local": "npx playwright test tests/e2e/accessibility.spec.js",
     "test:performance:local": "npx lighthouse http://localhost:8080 --output json --output-path ./lighthouse-report.json --chrome-flags='--headless --no-sandbox'",
     "css:size-check": "node scripts/check-css-bundle-size.js",
     "test:links:local": "npx linkinator http://localhost:8080 --recurse --skip 'mailto:'",
@@ -68,8 +68,6 @@
     "@typescript-eslint/eslint-plugin": "^8.44.1",
     "@typescript-eslint/parser": "^8.44.1",
     "autoprefixer": "^10.4.19",
-    "axe-cli": "^3.2.1",
-    "bundlesize": "^0.18.2",
     "critical": "^7.2.1",
     "cssnano": "^7.0.0",
     "eslint": "^8.57.0",
@@ -105,15 +103,5 @@
     "Firefox ESR",
     "> 1%",
     "not dead"
-  ],
-  "bundlesize": [
-    {
-      "path": "dist/jaswetz.github.io.*.css",
-      "maxSize": "75 kB"
-    },
-    {
-      "path": "dist/jaswetz.github.io.*.js",
-      "maxSize": "30 kB"
-    }
   ]
 }
