@@ -134,7 +134,7 @@
   padding: var(--space-m);
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--border-radius);
-  background-color: var(--color-white-transparent);
+  background-color: var(--color-surface);
 }
 
 /* Project Summary Card modifier */
@@ -384,8 +384,8 @@
   line-height: var(--leading-normal);
 }
 
-/* 
-  Card Responsive Styles 
+/*
+  Card Responsive Styles
   Most responsive grid behavior is now handled by the global grid-system.css.
   Only component-specific overrides should remain here.
 */
