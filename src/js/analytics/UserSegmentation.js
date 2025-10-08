@@ -34,8 +34,8 @@ export class UserSegmentation {
    */
   setupDefaultSegments() {
     // High-Value Segments
-    this.segmentRules.set("high_value_leads", {
-      name: "High-Value Leads",
+    this.segmentRules.set('high_value_leads', {
+      name: 'High-Value Leads',
       criteria: {
         resume_download: true,
         case_study_complete: true,
@@ -43,12 +43,12 @@ export class UserSegmentation {
         min_session_time: 300, // 5 minutes
         min_scroll_depth: 75,
       },
-      priority: "critical",
+      priority: 'critical',
       conversion_probability: 0.85,
     });
 
-    this.segmentRules.set("engaged_researchers", {
-      name: "Engaged Researchers",
+    this.segmentRules.set('engaged_researchers', {
+      name: 'Engaged Researchers',
       criteria: {
         multiple_project_views: true,
         case_study_start: true,
@@ -56,87 +56,87 @@ export class UserSegmentation {
         min_session_time: 180, // 3 minutes
         min_page_views: 3,
       },
-      priority: "high",
+      priority: 'high',
       conversion_probability: 0.65,
     });
 
     // Medium-Value Segments
-    this.segmentRules.set("casual_browsers", {
-      name: "Casual Browsers",
+    this.segmentRules.set('casual_browsers', {
+      name: 'Casual Browsers',
       criteria: {
         homepage_visit: true,
         min_scroll_depth: 25,
         max_session_time: 120, // 2 minutes
       },
-      priority: "medium",
+      priority: 'medium',
       conversion_probability: 0.15,
     });
 
-    this.segmentRules.set("contact_interested", {
-      name: "Contact Interested",
+    this.segmentRules.set('contact_interested', {
+      name: 'Contact Interested',
       criteria: {
         contact_page_visit: true,
         linkedin_click: true,
         min_session_time: 60, // 1 minute
       },
-      priority: "medium",
+      priority: 'medium',
       conversion_probability: 0.4,
     });
 
     // Low-Value Segments
-    this.segmentRules.set("bounce_visitors", {
-      name: "Bounce Visitors",
+    this.segmentRules.set('bounce_visitors', {
+      name: 'Bounce Visitors',
       criteria: {
         homepage_visit: true,
         max_scroll_depth: 25,
         max_session_time: 30, // 30 seconds
         single_page: true,
       },
-      priority: "low",
+      priority: 'low',
       conversion_probability: 0.02,
     });
 
-    this.segmentRules.set("job_seekers", {
-      name: "Job Seekers",
+    this.segmentRules.set('job_seekers', {
+      name: 'Job Seekers',
       criteria: {
         resume_download: true,
         linkedin_click: true,
         min_session_time: 120, // 2 minutes
       },
-      priority: "high",
+      priority: 'high',
       conversion_probability: 0.7,
     });
 
     // Behavioral Segments
-    this.segmentRules.set("power_users", {
-      name: "Power Users",
+    this.segmentRules.set('power_users', {
+      name: 'Power Users',
       criteria: {
         min_page_views: 5,
         min_session_time: 600, // 10 minutes
         multiple_case_studies: true,
         scroll_depth_90: true,
       },
-      priority: "critical",
+      priority: 'critical',
       conversion_probability: 0.9,
     });
 
-    this.segmentRules.set("mobile_users", {
-      name: "Mobile Users",
+    this.segmentRules.set('mobile_users', {
+      name: 'Mobile Users',
       criteria: {
-        device_type: "mobile",
+        device_type: 'mobile',
         touch_interactions: true,
       },
-      priority: "medium",
+      priority: 'medium',
       conversion_probability: 0.25,
     });
 
-    this.segmentRules.set("returning_visitors", {
-      name: "Returning Visitors",
+    this.segmentRules.set('returning_visitors', {
+      name: 'Returning Visitors',
       criteria: {
         return_visit_count: { min: 2 },
         min_session_time: 90, // 1.5 minutes
       },
-      priority: "high",
+      priority: 'high',
       conversion_probability: 0.55,
     });
   }
@@ -146,11 +146,11 @@ export class UserSegmentation {
    */
   setupSegmentationEngine() {
     this.segmentationEngine = {
-      evaluateUser: (userData) => this.evaluateUserSegment(userData),
-      getUserSegments: (userId) => this.getUserSegments(userId),
+      evaluateUser: userData => this.evaluateUserSegment(userData),
+      getUserSegments: userId => this.getUserSegments(userId),
       updateUserProfile: (userId, data) => this.updateUserProfile(userId, data),
       getSegmentInsights: () => this.getSegmentInsights(),
-      predictConversion: (userId) => this.predictUserConversion(userId),
+      predictConversion: userId => this.predictUserConversion(userId),
     };
   }
 
@@ -173,7 +173,7 @@ export class UserSegmentation {
    */
   trackUserBehavior() {
     const userId = this.getOrCreateUserId();
-    let userProfile =
+    const userProfile =
       this.userProfiles.get(userId) || this.createEmptyUserProfile(userId);
 
     // Track page views
@@ -191,10 +191,10 @@ export class UserSegmentation {
     trackPageView();
 
     // Track navigation
-    window.addEventListener("popstate", trackPageView);
+    window.addEventListener('popstate', trackPageView);
 
     // Track clicks and interactions
-    document.addEventListener("click", (e) => {
+    document.addEventListener('click', e => {
       userProfile.totalClicks = (userProfile.totalClicks || 0) + 1;
       userProfile.lastInteraction = new Date().toISOString();
 
@@ -211,7 +211,7 @@ export class UserSegmentation {
 
     // Track scroll depth
     let maxScrollDepth = 0;
-    window.addEventListener("scroll", () => {
+    window.addEventListener('scroll', () => {
       const scrollPercent = Math.round(
         (window.scrollY /
           (document.documentElement.scrollHeight - window.innerHeight)) *
@@ -238,7 +238,7 @@ export class UserSegmentation {
     setInterval(updateSessionTime, 1000);
 
     // Track before unload
-    window.addEventListener("beforeunload", () => {
+    window.addEventListener('beforeunload', () => {
       userProfile.lastSessionEnd = new Date().toISOString();
       this.updateUserProfile(userId, userProfile);
     });
@@ -248,15 +248,15 @@ export class UserSegmentation {
    * Get or create unique user ID
    */
   getOrCreateUserId() {
-    let userId = localStorage.getItem("user_segmentation_id");
+    let userId = localStorage.getItem('user_segmentation_id');
 
     if (!userId) {
       userId = `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-      localStorage.setItem("user_segmentation_id", userId);
+      localStorage.setItem('user_segmentation_id', userId);
 
       // Track new user
-      this.analyticsManager.gtag("event", "new_user_segmented", {
-        event_category: "Segmentation",
+      this.analyticsManager.gtag('event', 'new_user_segmented', {
+        event_category: 'Segmentation',
         user_id: userId,
       });
     }
@@ -300,7 +300,7 @@ export class UserSegmentation {
     try {
       localStorage.setItem(`user_profile_${userId}`, JSON.stringify(profile));
     } catch (error) {
-      console.warn("Could not persist user profile:", error);
+      console.warn('Could not persist user profile:', error);
     }
   }
 
@@ -319,7 +319,7 @@ export class UserSegmentation {
         this.userProfiles.set(userId, profile);
       }
     } catch (error) {
-      console.warn("Could not load user profile:", error);
+      console.warn('Could not load user profile:', error);
     }
   }
 
@@ -362,7 +362,7 @@ export class UserSegmentation {
   evaluateCriterion(userData, key, value) {
     const userValue = this.getNestedValue(userData, key);
 
-    if (typeof value === "object" && value !== null) {
+    if (typeof value === 'object' && value !== null) {
       // Range criteria (min/max)
       if (value.min !== undefined && userValue < value.min) return false;
       if (value.max !== undefined && userValue > value.max) return false;
@@ -377,7 +377,7 @@ export class UserSegmentation {
    * Get nested value from user data
    */
   getNestedValue(obj, path) {
-    return path.split(".").reduce((current, key) => current?.[key], obj);
+    return path.split('.').reduce((current, key) => current?.[key], obj);
   }
 
   /**
@@ -387,9 +387,9 @@ export class UserSegmentation {
     const matchingSegments = this.evaluateUserSegment(userProfile);
 
     // Update user profile with new segments
-    userProfile.segments = matchingSegments.map((s) => s.segmentId);
+    userProfile.segments = matchingSegments.map(s => s.segmentId);
     userProfile.conversionProbability = Math.max(
-      ...matchingSegments.map((s) => s.conversionProbability),
+      ...matchingSegments.map(s => s.conversionProbability),
       0
     );
 
@@ -403,9 +403,9 @@ export class UserSegmentation {
 
     // Track segment changes
     if (matchingSegments.length > 0) {
-      this.analyticsManager.gtag("event", "segment_updated", {
-        event_category: "Segmentation",
-        event_label: matchingSegments.map((s) => s.segmentName).join(", "),
+      this.analyticsManager.gtag('event', 'segment_updated', {
+        event_category: 'Segmentation',
+        event_label: matchingSegments.map(s => s.segmentName).join(', '),
         user_id: userId,
         segment_count: matchingSegments.length,
         conversion_probability: userProfile.conversionProbability,
@@ -446,7 +446,7 @@ export class UserSegmentation {
         priorityMultiplier[segment.priority] > priorityMultiplier[max]
           ? segment.priority
           : max,
-      "low"
+      'low'
     );
 
     score *= priorityMultiplier[highestPriority];
@@ -503,7 +503,7 @@ export class UserSegmentation {
 
     // Calculate segment distribution
     for (const [userId, profile] of this.userProfiles) {
-      (profile.segments || []).forEach((segmentId) => {
+      (profile.segments || []).forEach(segmentId => {
         insights.segmentDistribution[segmentId] =
           (insights.segmentDistribution[segmentId] || 0) + 1;
       });
@@ -512,7 +512,7 @@ export class UserSegmentation {
     // Calculate conversion rates by segment
     for (const [segmentId, rule] of this.segmentRules) {
       const segmentUsers = Array.from(this.userProfiles.values()).filter(
-        (profile) => (profile.segments || []).includes(segmentId)
+        profile => (profile.segments || []).includes(segmentId)
       );
 
       if (segmentUsers.length > 0) {
@@ -549,7 +549,7 @@ export class UserSegmentation {
    */
   setupSegmentUpdates() {
     // Listen for conversion events to update segments
-    document.addEventListener("conversion_milestone", (e) => {
+    document.addEventListener('conversion_milestone', e => {
       const userId = this.getOrCreateUserId();
       const userProfile = this.userProfiles.get(userId);
 
@@ -607,38 +607,38 @@ export class UserSegmentation {
     const segments = userProfile.segments || [];
 
     // High-value user recommendations
-    if (segments.includes("high_value_leads")) {
+    if (segments.includes('high_value_leads')) {
       recommendations.push({
-        type: "priority_support",
-        message: "Offer premium support and direct contact",
-        priority: "critical",
+        type: 'priority_support',
+        message: 'Offer premium support and direct contact',
+        priority: 'critical',
       });
     }
 
     // Engaged researcher recommendations
-    if (segments.includes("engaged_researchers")) {
+    if (segments.includes('engaged_researchers')) {
       recommendations.push({
-        type: "content_offer",
-        message: "Offer detailed case studies or whitepapers",
-        priority: "high",
+        type: 'content_offer',
+        message: 'Offer detailed case studies or whitepapers',
+        priority: 'high',
       });
     }
 
     // Contact interested recommendations
-    if (segments.includes("contact_interested")) {
+    if (segments.includes('contact_interested')) {
       recommendations.push({
-        type: "contact_prompt",
-        message: "Show contact form or scheduling option",
-        priority: "high",
+        type: 'contact_prompt',
+        message: 'Show contact form or scheduling option',
+        priority: 'high',
       });
     }
 
     // Returning visitor recommendations
-    if (segments.includes("returning_visitors")) {
+    if (segments.includes('returning_visitors')) {
       recommendations.push({
-        type: "personalization",
-        message: "Show personalized content based on previous visits",
-        priority: "medium",
+        type: 'personalization',
+        message: 'Show personalized content based on previous visits',
+        priority: 'medium',
       });
     }
 

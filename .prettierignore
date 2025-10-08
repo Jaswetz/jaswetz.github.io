@@ -66,3 +66,4 @@ tests/**/*.snap
 # Built HTML files (minified, can't be parsed by prettier)
 dist/*.html
 dev-build/*.html
+projects/*.html

@@ -5,69 +5,69 @@
  * Helps migrate existing components to use BaseComponent and new utilities
  */
 
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 class ComponentMigrator {
   constructor() {
-    this.srcDir = path.join(__dirname, "..", "src");
-    this.componentsDir = path.join(this.srcDir, "js", "components");
-    this.backupDir = path.join(__dirname, "..", "backup-components");
+    this.srcDir = path.join(__dirname, '..', 'src');
+    this.componentsDir = path.join(this.srcDir, 'js', 'components');
+    this.backupDir = path.join(__dirname, '..', 'backup-components');
 
     this.migrationPatterns = [
       {
-        name: "Replace console.log with logger",
+        name: 'Replace console.log with logger',
         pattern: /console\.(log|warn|error|debug)\(/g,
-        replacement: "logger.$1(",
+        replacement: 'logger.$1(',
       },
       {
-        name: "Add logger import",
+        name: 'Add logger import',
         pattern: /^(class \w+ extends HTMLElement)/m,
         replacement: "import logger from '../utils/Logger.js';\n\n$1",
       },
       {
-        name: "Replace HTMLElement with BaseComponent",
+        name: 'Replace HTMLElement with BaseComponent',
         pattern: /extends HTMLElement/g,
-        replacement: "extends BaseComponent",
+        replacement: 'extends BaseComponent',
       },
       {
-        name: "Add BaseComponent import",
+        name: 'Add BaseComponent import',
         pattern: /^(import logger)/m,
         replacement: "import BaseComponent from './BaseComponent.js';\n$1",
       },
       {
-        name: "Replace addEventListener with cleanup version",
+        name: 'Replace addEventListener with cleanup version',
         pattern:
           /(\w+)\.addEventListener\((['"`])(\w+)\2,\s*([^,]+)(?:,\s*([^)]+))?\)/g,
-        replacement: "this.addEventListenerWithCleanup($1, $2$3$2, $4, $5)",
+        replacement: 'this.addEventListenerWithCleanup($1, $2$3$2, $4, $5)',
       },
       {
-        name: "Replace window scroll listeners",
+        name: 'Replace window scroll listeners',
         pattern:
           /window\.addEventListener\((['"`])scroll\1,\s*([^,]+)(?:,\s*([^)]+))?\)/g,
-        replacement: "this.addScrollListenerWithCleanup($2, $3)",
+        replacement: 'this.addScrollListenerWithCleanup($2, $3)',
       },
       {
-        name: "Replace setTimeout with cleanup version",
+        name: 'Replace setTimeout with cleanup version',
         pattern: /setTimeout\(([^,]+),\s*([^)]+)\)/g,
-        replacement: "this.addTimeoutWithCleanup($1, $2)",
+        replacement: 'this.addTimeoutWithCleanup($1, $2)',
       },
       {
-        name: "Replace setInterval with cleanup version",
+        name: 'Replace setInterval with cleanup version',
         pattern: /setInterval\(([^,]+),\s*([^)]+)\)/g,
-        replacement: "this.addIntervalWithCleanup($1, $2)",
+        replacement: 'this.addIntervalWithCleanup($1, $2)',
       },
       {
-        name: "Replace querySelector with cached version",
+        name: 'Replace querySelector with cached version',
         pattern: /document\.querySelectorAll\((['"`])([^'"`]+)\1\)/g,
         replacement: "domCache.query('$2')",
       },
       {
-        name: "Replace shadowRoot.querySelector",
+        name: 'Replace shadowRoot.querySelector',
         pattern: /this\.shadowRoot\.querySelector(All)?\((['"`])([^'"`]+)\2\)/g,
         replacement: "this.query('$3'$1)",
       },
@@ -84,7 +84,7 @@ class ComponentMigrator {
 
     const componentFiles = this.getComponentFiles();
 
-    componentFiles.forEach((filePath) => {
+    componentFiles.forEach(filePath => {
       const relativePath = path.relative(this.componentsDir, filePath);
       const backupPath = path.join(this.backupDir, relativePath);
       const backupDir = path.dirname(backupPath);
@@ -105,16 +105,16 @@ class ComponentMigrator {
   getComponentFiles() {
     const files = [];
 
-    const scanDirectory = (dir) => {
+    const scanDirectory = dir => {
       const items = fs.readdirSync(dir);
 
-      items.forEach((item) => {
+      items.forEach(item => {
         const itemPath = path.join(dir, item);
         const stat = fs.statSync(itemPath);
 
         if (stat.isDirectory()) {
           scanDirectory(itemPath);
-        } else if (item.endsWith(".js") && !item.includes("BaseComponent")) {
+        } else if (item.endsWith('.js') && !item.includes('BaseComponent')) {
           files.push(itemPath);
         }
       });
@@ -131,7 +131,7 @@ class ComponentMigrator {
    * Analyze a component file for migration opportunities
    */
   analyzeFile(filePath) {
-    const content = fs.readFileSync(filePath, "utf8");
+    const content = fs.readFileSync(filePath, 'utf8');
     const issues = [];
 
     // Check for console statements
@@ -141,8 +141,8 @@ class ComponentMigrator {
     }
 
     // Check for HTMLElement extension
-    if (content.includes("extends HTMLElement")) {
-      issues.push("Extends HTMLElement (should use BaseComponent)");
+    if (content.includes('extends HTMLElement')) {
+      issues.push('Extends HTMLElement (should use BaseComponent)');
     }
 
     // Check for manual event listeners
@@ -182,12 +182,12 @@ class ComponentMigrator {
    * Migrate a single component file
    */
   migrateFile(filePath) {
-    let content = fs.readFileSync(filePath, "utf8");
+    let content = fs.readFileSync(filePath, 'utf8');
     const originalContent = content;
-    let changes = [];
+    const changes = [];
 
     // Apply migration patterns
-    this.migrationPatterns.forEach((pattern) => {
+    this.migrationPatterns.forEach(pattern => {
       const matches = content.match(pattern.pattern);
       if (matches) {
         content = content.replace(pattern.pattern, pattern.replacement);
@@ -198,21 +198,21 @@ class ComponentMigrator {
     // Add necessary imports at the top
     const imports = [];
 
-    if (content.includes("logger.")) {
+    if (content.includes('logger.')) {
       imports.push("import logger from '../utils/Logger.js';");
     }
 
-    if (content.includes("BaseComponent")) {
+    if (content.includes('BaseComponent')) {
       imports.push("import BaseComponent from './BaseComponent.js';");
     }
 
-    if (content.includes("domCache.")) {
+    if (content.includes('domCache.')) {
       imports.push("import { domCache } from '../utils/DOMCache.js';");
     }
 
     if (
-      content.includes("scrollManager.") ||
-      content.includes("addScrollListenerWithCleanup")
+      content.includes('scrollManager.') ||
+      content.includes('addScrollListenerWithCleanup')
     ) {
       imports.push(
         "import { scrollManager } from '../utils/ScrollManager.js';"
@@ -221,7 +221,7 @@ class ComponentMigrator {
 
     // Add imports after existing imports or at the top
     if (imports.length > 0) {
-      const importSection = imports.join("\n") + "\n\n";
+      const importSection = imports.join('\n') + '\n\n';
       const existingImports = content.match(/^import.*$/gm);
 
       if (existingImports) {
@@ -229,7 +229,7 @@ class ComponentMigrator {
         const lastImportIndex = content.lastIndexOf(
           existingImports[existingImports.length - 1]
         );
-        const insertIndex = content.indexOf("\n", lastImportIndex) + 1;
+        const insertIndex = content.indexOf('\n', lastImportIndex) + 1;
         content =
           content.slice(0, insertIndex) +
           importSection +
@@ -241,13 +241,13 @@ class ComponentMigrator {
     }
 
     // Replace connectedCallback with init method if extending BaseComponent
-    if (content.includes("extends BaseComponent")) {
-      content = content.replace(/connectedCallback\(\)\s*{/g, "init() {");
+    if (content.includes('extends BaseComponent')) {
+      content = content.replace(/connectedCallback\(\)\s*{/g, 'init() {');
 
       // Remove manual cleanup from disconnectedCallback
       content = content.replace(
         /disconnectedCallback\(\)\s*{[\s\S]*?}/g,
-        "// Cleanup handled automatically by BaseComponent"
+        '// Cleanup handled automatically by BaseComponent'
       );
     }
 
@@ -264,14 +264,14 @@ class ComponentMigrator {
    * Run migration analysis
    */
   analyze() {
-    console.log("🔍 Analyzing components for migration opportunities...\n");
+    console.log('🔍 Analyzing components for migration opportunities...\n');
 
     const componentFiles = this.getComponentFiles();
-    const results = componentFiles.map((file) => this.analyzeFile(file));
+    const results = componentFiles.map(file => this.analyzeFile(file));
 
-    const needsMigration = results.filter((r) => r.needsMigration);
+    const needsMigration = results.filter(r => r.needsMigration);
 
-    console.log("📊 Analysis Results:");
+    console.log('📊 Analysis Results:');
     console.log(`   Total components: ${results.length}`);
     console.log(`   Need migration: ${needsMigration.length}`);
     console.log(
@@ -279,15 +279,15 @@ class ComponentMigrator {
     );
 
     if (needsMigration.length > 0) {
-      console.log("🚨 Components needing migration:\n");
+      console.log('🚨 Components needing migration:\n');
 
-      needsMigration.forEach((result) => {
+      needsMigration.forEach(result => {
         const relativePath = path.relative(this.srcDir, result.filePath);
         console.log(`   ${relativePath}:`);
-        result.issues.forEach((issue) => {
+        result.issues.forEach(issue => {
           console.log(`     - ${issue}`);
         });
-        console.log("");
+        console.log('');
       });
     }
 
@@ -298,7 +298,7 @@ class ComponentMigrator {
    * Run the migration process
    */
   migrate() {
-    console.log("🚀 Starting component migration...\n");
+    console.log('🚀 Starting component migration...\n');
 
     // Create backup first
     this.createBackup();
@@ -306,7 +306,7 @@ class ComponentMigrator {
     const componentFiles = this.getComponentFiles();
     let totalChanges = 0;
 
-    componentFiles.forEach((filePath) => {
+    componentFiles.forEach(filePath => {
       const relativePath = path.relative(this.srcDir, filePath);
       console.log(`📝 Migrating ${relativePath}...`);
 
@@ -315,18 +315,18 @@ class ComponentMigrator {
 
         if (changes.length > 0) {
           console.log(`   ✅ Applied ${changes.length} changes:`);
-          changes.forEach((change) => {
+          changes.forEach(change => {
             console.log(`      - ${change}`);
           });
           totalChanges += changes.length;
         } else {
-          console.log("   ℹ️  No changes needed");
+          console.log('   ℹ️  No changes needed');
         }
       } catch (error) {
         console.log(`   ❌ Error: ${error.message}`);
       }
 
-      console.log("");
+      console.log('');
     });
 
     console.log(
@@ -335,11 +335,11 @@ class ComponentMigrator {
     console.log(`📁 Backup available in: ${this.backupDir}`);
 
     if (totalChanges > 0) {
-      console.log("\n⚠️  Next steps:");
-      console.log("   1. Review the migrated files");
-      console.log("   2. Test components manually");
-      console.log("   3. Run npm run test to verify");
-      console.log("   4. Update any custom logic as needed");
+      console.log('\n⚠️  Next steps:');
+      console.log('   1. Review the migrated files');
+      console.log('   2. Test components manually');
+      console.log('   3. Run npm run test to verify');
+      console.log('   4. Update any custom logic as needed');
     }
   }
 
@@ -348,16 +348,16 @@ class ComponentMigrator {
    */
   restore() {
     if (!fs.existsSync(this.backupDir)) {
-      console.log("❌ No backup found to restore from");
+      console.log('❌ No backup found to restore from');
       return;
     }
 
-    console.log("🔄 Restoring from backup...");
+    console.log('🔄 Restoring from backup...');
 
     const restoreDirectory = (backupPath, targetPath) => {
       const items = fs.readdirSync(backupPath);
 
-      items.forEach((item) => {
+      items.forEach(item => {
         const backupItemPath = path.join(backupPath, item);
         const targetItemPath = path.join(targetPath, item);
         const stat = fs.statSync(backupItemPath);
@@ -374,7 +374,7 @@ class ComponentMigrator {
     };
 
     restoreDirectory(this.backupDir, this.componentsDir);
-    console.log("✅ Restore complete");
+    console.log('✅ Restore complete');
   }
 }
 
@@ -383,35 +383,35 @@ const migrator = new ComponentMigrator();
 const command = process.argv[2];
 
 switch (command) {
-  case "analyze":
+  case 'analyze':
     migrator.analyze();
     break;
 
-  case "migrate":
+  case 'migrate':
     migrator.migrate();
     break;
 
-  case "restore":
+  case 'restore':
     migrator.restore();
     break;
 
   default:
-    console.log("Component Migration Tool");
-    console.log("");
-    console.log("Usage:");
+    console.log('Component Migration Tool');
+    console.log('');
+    console.log('Usage:');
     console.log(
-      "  node scripts/migrate-components.js analyze  - Analyze components for migration opportunities"
+      '  node scripts/migrate-components.js analyze  - Analyze components for migration opportunities'
     );
     console.log(
-      "  node scripts/migrate-components.js migrate  - Run the migration process"
+      '  node scripts/migrate-components.js migrate  - Run the migration process'
     );
     console.log(
-      "  node scripts/migrate-components.js restore  - Restore from backup"
+      '  node scripts/migrate-components.js restore  - Restore from backup'
     );
-    console.log("");
-    console.log("Examples:");
-    console.log("  npm run migrate:analyze   # Analyze components");
-    console.log("  npm run migrate:run       # Run migration");
-    console.log("  npm run migrate:restore   # Restore backup");
+    console.log('');
+    console.log('Examples:');
+    console.log('  npm run migrate:analyze   # Analyze components');
+    console.log('  npm run migrate:run       # Run migration');
+    console.log('  npm run migrate:restore   # Restore backup');
     break;
 }

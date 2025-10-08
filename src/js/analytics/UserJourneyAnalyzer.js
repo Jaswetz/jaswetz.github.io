@@ -41,7 +41,7 @@ export class UserJourneyAnalyzer {
    * Track page sequence patterns
    */
   trackPageSequences() {
-    let pageSequence = [];
+    const pageSequence = [];
     let startTime = Date.now();
 
     // Track page views and sequences
@@ -65,7 +65,7 @@ export class UserJourneyAnalyzer {
     trackPageView();
 
     // Track navigation changes
-    window.addEventListener("popstate", trackPageView);
+    window.addEventListener('popstate', trackPageView);
 
     // Track programmatic navigation (for SPAs)
     const originalPushState = history.pushState;
@@ -88,7 +88,7 @@ export class UserJourneyAnalyzer {
   analyzePageSequence(sequence) {
     if (sequence.length < 2) return;
 
-    const pattern = sequence.map((s) => s.page).join(" → ");
+    const pattern = sequence.map(s => s.page).join(' → ');
     const existingPattern = this.journeyPatterns.get(pattern) || {
       count: 0,
       totalTime: 0,
@@ -146,7 +146,7 @@ export class UserJourneyAnalyzer {
     const dropOffs = new Map();
 
     patterns.forEach(([path, data]) => {
-      const pages = path.split(" → ");
+      const pages = path.split(' → ');
       if (pages.length > 1) {
         // Calculate drop-off rate between pages
         const dropOffRate = 1 - data.conversions / data.count;
@@ -183,7 +183,7 @@ export class UserJourneyAnalyzer {
 
     // Track scroll behavior
     let scrollDepth = 0;
-    window.addEventListener("scroll", () => {
+    window.addEventListener('scroll', () => {
       const newDepth = Math.round(
         (window.scrollY /
           (document.documentElement.scrollHeight - window.innerHeight)) *
@@ -200,7 +200,7 @@ export class UserJourneyAnalyzer {
     });
 
     // Track click patterns
-    document.addEventListener("click", (e) => {
+    document.addEventListener('click', e => {
       flowPatterns.clickPatterns.push({
         element: e.target.tagName,
         x: e.clientX,
@@ -211,7 +211,7 @@ export class UserJourneyAnalyzer {
 
     // Track rage clicks (rapid clicks in same area)
     let recentClicks = [];
-    document.addEventListener("click", (e) => {
+    document.addEventListener('click', e => {
       const click = {
         x: e.clientX,
         y: e.clientY,
@@ -221,9 +221,7 @@ export class UserJourneyAnalyzer {
       recentClicks.push(click);
 
       // Keep only clicks from last 2 seconds
-      recentClicks = recentClicks.filter(
-        (c) => Date.now() - c.timestamp < 2000
-      );
+      recentClicks = recentClicks.filter(c => Date.now() - c.timestamp < 2000);
 
       // Check for rage clicks (5+ clicks in same area within 2 seconds)
       if (recentClicks.length >= 5) {
@@ -233,7 +231,7 @@ export class UserJourneyAnalyzer {
           recentClicks.reduce((sum, c) => sum + c.y, 0) / recentClicks.length;
 
         const isClustered = recentClicks.every(
-          (c) => Math.abs(c.x - avgX) < 50 && Math.abs(c.y - avgY) < 50
+          c => Math.abs(c.x - avgX) < 50 && Math.abs(c.y - avgY) < 50
         );
 
         if (isClustered) {
@@ -259,7 +257,7 @@ export class UserJourneyAnalyzer {
     const conversionPaths = new Map();
 
     // Listen for conversion events
-    document.addEventListener("conversion_milestone", (e) => {
+    document.addEventListener('conversion_milestone', e => {
       const milestone = e.detail?.milestone;
       const currentPath = window.location.pathname;
 
@@ -295,13 +293,13 @@ export class UserJourneyAnalyzer {
   trackClickHeatmap() {
     const clickData = new Map();
 
-    document.addEventListener("click", (e) => {
+    document.addEventListener('click', e => {
       const element = e.target;
       const rect = element.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
-      const key = `${element.tagName}_${element.className || "no-class"}`;
+      const key = `${element.tagName}_${element.className || 'no-class'}`;
       const existing = clickData.get(key) || {
         clicks: [],
         element: element.tagName,
@@ -322,7 +320,7 @@ export class UserJourneyAnalyzer {
     const scrollData = [];
     let lastScrollY = 0;
 
-    window.addEventListener("scroll", () => {
+    window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
       const maxScroll =
         document.documentElement.scrollHeight - window.innerHeight;
@@ -361,8 +359,8 @@ export class UserJourneyAnalyzer {
       const timeSpent = now - lastViewportCheck;
 
       // Get elements in viewport
-      const elements = document.querySelectorAll("*");
-      elements.forEach((element) => {
+      const elements = document.querySelectorAll('*');
+      elements.forEach(element => {
         const rect = element.getBoundingClientRect();
         const isVisible =
           rect.top < window.innerHeight &&
@@ -371,7 +369,7 @@ export class UserJourneyAnalyzer {
           rect.right > 0;
 
         if (isVisible && rect.width > 0 && rect.height > 0) {
-          const key = `${element.tagName}_${element.className || "no-class"}`;
+          const key = `${element.tagName}_${element.className || 'no-class'}`;
           const existing = attentionData.get(key) || {
             totalTime: 0,
             viewCount: 0,
@@ -417,25 +415,25 @@ export class UserJourneyAnalyzer {
     };
 
     // Track page views
-    window.addEventListener("load", () => {
+    window.addEventListener('load', () => {
       sessionMetrics.pageViews++;
     });
 
     // Track scroll distance
     let lastScrollY = 0;
-    window.addEventListener("scroll", () => {
+    window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
       sessionMetrics.totalScrollDistance += Math.abs(scrollY - lastScrollY);
       lastScrollY = scrollY;
     });
 
     // Track clicks
-    document.addEventListener("click", () => {
+    document.addEventListener('click', () => {
       sessionMetrics.totalClickCount++;
     });
 
     // Track rage clicks
-    document.addEventListener("rageClick", () => {
+    document.addEventListener('rageClick', () => {
       sessionMetrics.rageClickCount++;
     });
 
@@ -459,7 +457,7 @@ export class UserJourneyAnalyzer {
     };
 
     // Rage clicks (already tracked in flow patterns)
-    document.addEventListener("rageClick", (e) => {
+    document.addEventListener('rageClick', e => {
       frustrationSignals.rageClicks.push({
         x: e.detail?.x,
         y: e.detail?.y,
@@ -469,11 +467,11 @@ export class UserJourneyAnalyzer {
 
     // Rapid scrolling (indicates frustration or confusion)
     let scrollEvents = [];
-    window.addEventListener("scroll", () => {
+    window.addEventListener('scroll', () => {
       scrollEvents.push(Date.now());
 
       // Keep only events from last 2 seconds
-      scrollEvents = scrollEvents.filter((time) => Date.now() - time < 2000);
+      scrollEvents = scrollEvents.filter(time => Date.now() - time < 2000);
 
       if (scrollEvents.length > 10) {
         // More than 10 scrolls in 2 seconds
@@ -485,12 +483,12 @@ export class UserJourneyAnalyzer {
     });
 
     // Form abandonment
-    document.addEventListener("focusout", (e) => {
+    document.addEventListener('focusout', e => {
       const input = e.target;
-      if (input.tagName === "INPUT" || input.tagName === "TEXTAREA") {
+      if (input.tagName === 'INPUT' || input.tagName === 'TEXTAREA') {
         // Check if form was abandoned (user left without submitting)
         setTimeout(() => {
-          if (!document.activeElement?.closest("form")?.contains(input)) {
+          if (!document.activeElement?.closest('form')?.contains(input)) {
             frustrationSignals.formAbandonment.push({
               field: input.name || input.id,
               timestamp: Date.now(),
@@ -524,25 +522,25 @@ export class UserJourneyAnalyzer {
     };
 
     // Track various touchpoints
-    document.addEventListener("click", (e) => {
-      trackTouchpoint("click", {
+    document.addEventListener('click', e => {
+      trackTouchpoint('click', {
         element: e.target.tagName,
         x: e.clientX,
         y: e.clientY,
       });
     });
 
-    document.addEventListener("scroll", () => {
+    document.addEventListener('scroll', () => {
       const scrollPercent = Math.round(
         (window.scrollY /
           (document.documentElement.scrollHeight - window.innerHeight)) *
           100
       );
-      trackTouchpoint("scroll", { percent: scrollPercent });
+      trackTouchpoint('scroll', { percent: scrollPercent });
     });
 
     // Track conversion completion
-    document.addEventListener("conversion_complete", (e) => {
+    document.addEventListener('conversion_complete', e => {
       conversionJourney.timeToConvert =
         Date.now() - conversionJourney.touchpoints[0]?.timestamp || 0;
       conversionJourney.conversionValue = e.detail?.value || 0;
@@ -576,20 +574,20 @@ export class UserJourneyAnalyzer {
     // Analyze top paths
     if (topPaths.length > 0) {
       recommendations.push({
-        type: "optimization",
-        priority: "high",
-        title: "Optimize Top User Paths",
+        type: 'optimization',
+        priority: 'high',
+        title: 'Optimize Top User Paths',
         description: `The most common user path is: ${topPaths[0][0]}. Consider optimizing this flow.`,
-        impact: "High traffic path optimization",
+        impact: 'High traffic path optimization',
       });
     }
 
     // Analyze high-converting paths
     if (highConvertingPaths.length > 0) {
       recommendations.push({
-        type: "amplification",
-        priority: "high",
-        title: "Amplify High-Converting Paths",
+        type: 'amplification',
+        priority: 'high',
+        title: 'Amplify High-Converting Paths',
         description: `Users following: ${
           highConvertingPaths[0][0]
         } have ${Math.round(
@@ -597,20 +595,20 @@ export class UserJourneyAnalyzer {
             highConvertingPaths[0][1].count) *
             100
         )}% conversion rate.`,
-        impact: "Increase conversion rate",
+        impact: 'Increase conversion rate',
       });
     }
 
     // Analyze drop-off points
     if (dropOffPoints.length > 0) {
       recommendations.push({
-        type: "friction_removal",
-        priority: "medium",
-        title: "Address Drop-off Points",
+        type: 'friction_removal',
+        priority: 'medium',
+        title: 'Address Drop-off Points',
         description: `High drop-off at: ${dropOffPoints[0][0]} (${Math.round(
           dropOffPoints[0][1].rate * 100
         )}% drop-off rate).`,
-        impact: "Reduce bounce rate",
+        impact: 'Reduce bounce rate',
       });
     }
 

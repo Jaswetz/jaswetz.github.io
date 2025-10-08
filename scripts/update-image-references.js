@@ -161,17 +161,7 @@ async function updateImageReferences() {
             );
             fileUpdates++;
 
-            // Add a note that this was originally an animation
-            const figcaptionRegex = /<figcaption([^>]*)>([^<]+)<\/figcaption>/g;
-            content = content.replace(
-              figcaptionRegex,
-              (match, attrs, caption) => {
-                if (!caption.includes('(Static image)')) {
-                  return `<figcaption${attrs}>${caption} (Static image - original animation optimized for performance)</figcaption>`;
-                }
-                return match;
-              }
-            );
+            // Note: Animation optimization handled - no caption modification needed
           }
         }
       }
